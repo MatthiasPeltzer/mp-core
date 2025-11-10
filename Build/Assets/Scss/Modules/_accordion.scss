@@ -1,0 +1,13 @@
+// accordion
+
+.accordion-button {
+  &:not(.collapsed) {
+    background-color: var(--bs-gray-900);
+    color: var(--bs-body-color);
+    font-weight: 700;
+
+    html[data-bs-theme="light"] & {
+      background-color: var(--bs-gray-200);
+    }
+  }
+}

@@ -1,0 +1,80 @@
+# Override fluid_styled_content settings
+styles.templates.layoutRootPath: EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Layouts
+styles.templates.partialRootPath: EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials
+styles.templates.templateRootPath: EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Templates
+
+# Content element settings
+styles.content.textmedia.maxW: 1920
+styles.content.textmedia.maxWInText: 1920
+styles.content.textmedia.linkWrap.width: 1920c
+styles.content.textmedia.linkWrap.height: 1200c
+styles.content.textmedia.linkWrap.newWindow: false
+styles.content.textmedia.linkWrap.lightboxEnabled: false
+styles.content.textmedia.linkWrap.lightboxCssClass: 'lightbox'
+styles.content.textmedia.linkWrap.lightboxRelAttribute: 'lightbox[{field:uid}]'
+styles.content.defaultHeaderType: 2
+styles.content.links.extTarget: _blank
+
+# MP Core Page IDs
+PIDs.pidHome: 1
+PIDs.pidMetaNavTop: 66
+PIDs.pidMetaNavFooter: 25
+PIDs.pidMainNavMeta: 25
+PIDs.pidCategories: 251
+PIDs.pidLogosBannerTop: 391
+PIDs.pidSupplement: 24
+
+# Content Settings
+content.textmedia.maxWidth: 1920
+content.textmedia.maxWidthInText: 1920
+content.lightbox.enabled: true
+content.lightbox.cssClass: 'lightbox'
+content.defaultHeaderType: 2
+content.links.extTarget: '_blank'
+
+# Configuration Settings
+config.admPanel: false
+config.debug: false
+config.noCache: false
+config.removeDefaultJS: 'external'
+config.spamProtectEmailAddresses: true
+config.spamProtectEmailAddresses_atSubst: '[at]'
+config.absRefPrefix: 'auto'
+config.headerComment: ''
+
+# Performance Settings
+performance.compressJs: false
+performance.compressCss: false
+performance.concatenateJs: false
+performance.concatenateCss: false
+performance.enableLazyLoading: true
+
+# Design/Style Settings
+design.colors.primary: '#0066cc'
+design.colors.secondary: '#ff6600'
+design.fonts.primary: 'Open Sans, sans-serif'
+design.fonts.heading: 'Turret Road, sans-serif'
+design.breakpoints.mobile: 768
+design.breakpoints.tablet: 1024
+design.breakpoints.desktop: 1440
+design.container.maxWidth: '1200px'
+
+# Navigation Settings
+navigation.maxDepth: 3
+navigation.showHiddenPages: false
+navigation.enableBreadcrumb: true
+navigation.breadcrumb.includeHome: true
+
+# Meta Data Settings
+meta.viewport: 'width=device-width, initial-scale=1'
+meta.robots: 'index,follow'
+meta.appleMobileWebAppCapable: 'no'
+meta.compatible: 'IE=edge'
+meta.google: 'notranslate'
+meta.googleSiteVerification: ''
+
+# Template Paths
+templates.layoutRootPath: 'EXT:mp_core/Resources/Private/Layouts/'
+templates.partialRootPath: 'EXT:mp_core/Resources/Private/Partials/'
+templates.templateRootPath: 'EXT:mp_core/Resources/Private/Templates/'
+

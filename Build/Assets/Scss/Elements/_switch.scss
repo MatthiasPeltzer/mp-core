@@ -1,0 +1,92 @@
+// switch
+
+.form-switch {
+  display: inline-block;
+  margin-left: 30px;
+  margin-right: 30px;
+  position: relative;
+
+  .form-check-label {
+    @include font-size(17px);
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .form-check-input {
+    background-color: var(--bs-gray-900);
+    border-color: var(--bs-primary);
+    border-width: 2px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: none;
+      outline: 1px solid var(--bs-body-color);
+      outline-offset: 2px;
+    }
+
+    &:checked[type="checkbox"],
+    &:focus {
+      outline-color: var(--bs-body-color);
+    }
+
+    &:checked[type="checkbox"] {
+      background-color: var(--bs-gray-900);
+
+      + .form-check-label {
+        .switch-icon {
+          &.sun {
+            background-color: var(--bs-body-color);
+            mask: url("@assets/Images/Icons/icon-sun.svg") no-repeat center;
+
+            @media (forced-colors: active) {
+              background: url("@assets/Images/Icons/icon-sun.svg") no-repeat center;
+            }
+          }
+
+          &.moon {
+            background-color: var(--bs-yellow);
+            mask: url("@assets/Images/Icons/icon-moon-fill.svg") no-repeat center;
+
+            @media (forced-colors: active) {
+              background: url("@assets/Images/Icons/icon-moon-fill.svg") no-repeat center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.switch-icon {
+  &.sun,
+  &.moon {
+    display: block;
+    height: 20px;
+    mask-size: 18px !important;
+    position: absolute;
+    top: 1px;
+    width: 20px;
+  }
+
+  &.sun {
+    background-color: var(--bs-orange);
+    left: -29px;
+    mask: url("@assets/Images/Icons/icon-sun-fill.svg") no-repeat center;
+
+    @media (forced-colors: active) {
+      background: url("@assets/Images/Icons/icon-sun-fill.svg") no-repeat center;
+    }
+  }
+
+  &.moon {
+    background-color: var(--bs-body-color);
+    mask: url("@assets/Images/Icons/icon-moon.svg") no-repeat center;
+
+    @media (forced-colors: active) {
+      background: url("@assets/Images/Icons/icon-moon.svg") no-repeat center;
+    }
+  }
+}

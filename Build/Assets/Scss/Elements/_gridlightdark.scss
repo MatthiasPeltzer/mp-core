@@ -1,0 +1,54 @@
+// Definiere ein Mix\-in, das die häufig verwendeten Eigenschaften übernimmt
+@mixin grid-colors($color) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  dl,
+  dt,
+  td,
+  a {
+    color: $color;
+  }
+
+  a {
+    &:hover,
+    &:focus,
+    &:active {
+      outline-color: $color;
+    }
+  }
+
+  .icon {
+    &::before {
+      background-color: $color;
+    }
+  }
+
+  .date time::before {
+    background-color: $color;
+  }
+}
+
+.grid {
+  &-light {
+    @include grid-colors(var(--bs-body-bg));
+
+    h1 a span,
+    h2 a span,
+    h3 a span,
+    h4 a span,
+    h5 a span,
+    h6 a span {
+      background-image: linear-gradient(0deg, var(--bs-yellow) 40%, transparent 0) !important;
+    }
+  }
+
+  &-dark {
+    @include grid-colors(var(--bs-body-color));
+  }
+}

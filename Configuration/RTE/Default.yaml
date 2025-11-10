@@ -1,0 +1,183 @@
+# Load default processing options
+imports:
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Processing.yaml' }
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml' }
+  - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml' }
+
+editor:
+  config:
+    contentsCss: ''
+    debug: false
+    allowedContent: true
+    defaultContentLanguage: 'de'
+    defaultLanguage: 'de'
+
+    heading:
+      options:
+        - { model: 'paragraph', title: 'Paragraph' }
+        - { model: 'heading1', view: 'h1', title: 'Heading 1' }
+        - { model: 'heading2', view: 'h2', title: 'Heading 2' }
+        - { model: 'heading3', view: 'h3', title: 'Heading 3' }
+        - { model: 'heading4', view: 'h4', title: 'Heading 4' }
+        - { model: 'heading5', view: 'h5', title: 'Heading 5' }
+        - { model: 'heading6', view: 'h6', title: 'Heading 6' }
+
+    style:
+      definitions:
+        - { name: 'Paragraph: Kicker', element: 'p', classes: [ 'kicker' ] }
+        - { name: 'Paragraph: Subheader', element: 'p', classes: [ 'lead' ] }
+        - { name: 'Blockquote: Quote', element: 'blockquote', classes: [ 'quote-dot' ] }
+
+        - { name: 'Button: Primary', element: 'a', classes: [ 'btn btn-primary' ] }
+        - { name: 'Button: Secondary', element: 'a', classes: [ 'btn btn-secondary' ] }
+        - { name: 'Button: Tertiary', element: 'a', classes: [ 'btn btn-tertiary' ] }
+
+        - { name: 'List: Unstyled', element: 'ul', classes: [ 'list-unstyled' ] }
+        - { name: 'List: Scroll', element: 'ul', classes: [ 'list-scroll' ] }
+
+        - { name: 'Überschrift 2 > 1', element: 'h2', classes: [ 'h1' ] }
+        - { name: 'Überschrift 2 > 3', element: 'h2', classes: [ 'h3' ] }
+        - { name: 'Überschrift 2 > 4', element: 'h2', classes: [ 'h4' ] }
+        - { name: 'Überschrift 2 > 5', element: 'h2', classes: [ 'h5' ] }
+        - { name: 'Überschrift 2 > 6', element: 'h2', classes: [ 'h6' ] }
+
+        - { name: 'Überschrift 3 > 1', element: 'h3', classes: [ 'h1' ] }
+        - { name: 'Überschrift 3 > 2', element: 'h3', classes: [ 'h2' ] }
+        - { name: 'Überschrift 3 > 4', element: 'h3', classes: [ 'h4' ] }
+        - { name: 'Überschrift 3 > 5', element: 'h3', classes: [ 'h5' ] }
+        - { name: 'Überschrift 3 > 6', element: 'h3', classes: [ 'h6' ] }
+
+        - { name: 'Überschrift 4 > 1', element: 'h4', classes: [ 'h1' ] }
+        - { name: 'Überschrift 4 > 2', element: 'h4', classes: [ 'h2' ] }
+        - { name: 'Überschrift 4 > 3', element: 'h4', classes: [ 'h3' ] }
+        - { name: 'Überschrift 4 > 5', element: 'h4', classes: [ 'h5' ] }
+        - { name: 'Überschrift 4 > 6', element: 'h4', classes: [ 'h6' ] }
+
+        - { name: 'Überschrift 5 > 1', element: 'h5', classes: [ 'h1' ] }
+        - { name: 'Überschrift 5 > 2', element: 'h5', classes: [ 'h2' ] }
+        - { name: 'Überschrift 5 > 3', element: 'h5', classes: [ 'h3' ] }
+        - { name: 'Überschrift 5 > 4', element: 'h5', classes: [ 'h4' ] }
+        - { name: 'Überschrift 5 > 6', element: 'h5', classes: [ 'h6' ] }
+
+        - { name: 'Überschrift 6 > 1', element: 'h6', classes: [ 'h1' ] }
+        - { name: 'Überschrift 6 > 2', element: 'h6', classes: [ 'h2' ] }
+        - { name: 'Überschrift 6 > 3', element: 'h6', classes: [ 'h3' ] }
+        - { name: 'Überschrift 6 > 4', element: 'h6', classes: [ 'h4' ] }
+        - { name: 'Überschrift 6 > 5', element: 'h6', classes: [ 'h5' ] }
+
+        - { name: 'Link: Internal', element: 'a', classes: [ 'internal-link' ] }
+        - { name: 'Link: External', element: 'a', classes: [ 'external-link' ] }
+        - { name: 'Link: Download', element: 'a', classes: [ 'download' ] }
+        - { name: 'Link: Email', element: 'a', classes: [ 'email' ] }
+        - { name: 'Link: Phone', element: 'a', classes: [ 'phone' ] }
+        - { name: 'Link: Audio', element: 'a', classes: [ 'audio' ] }
+        - { name: 'Link: Video', element: 'a', classes: [ 'video' ] }
+        - { name: 'Link: Glossary', element: 'a', classes: [ 'glossary' ] }
+        - { name: 'Link: Public', element: 'a', classes: [ 'public' ] }
+        - { name: 'Link: Legal', element: 'a', classes: [ 'legal' ] }
+        - { name: 'Link: Gallery', element: 'a', classes: [ 'gallery' ] }
+        - { name: 'Link: Chart', element: 'a', classes: [ 'chart' ] }
+
+        - { name: 'Text: Lowercased', element: 'span', classes: [ 'text-lowercase' ] }
+        - { name: 'Text: Uppercased', element: 'span', classes: [ 'text-uppercase' ] }
+        - { name: 'Text: Capitalized', element: 'span', classes: [ 'text-capitalize' ] }
+        - { name: 'Text: Bold', element: 'span', classes: [ 'bold' ] }
+        - { name: 'Text: Small', element: 'span', classes: [ 'small' ] }
+        - { name: 'Text: Emphasize', element: 'span', classes: [ 'em' ] }
+        - { name: 'Text: Hidden', element: 'span', classes: [ 'hide visually-hidden' ] }
+
+    toolbar:
+      items:
+        - heading
+        - style
+        - '|'
+        - textPartLanguage
+        - '|'
+        - bold
+        - italic
+        - link
+        - bulletedList
+        - numberedList
+        - '|'
+        - outdent
+        - indent
+        - '|'
+        - blockQuote
+        - alignment
+        - '|'
+        - undo
+        - redo
+        - removeFormat
+        - '|'
+        - insertTable
+        - tableColumn
+        - tableRow
+        - mergeTableCells
+        - TableProperties
+        - TableCellProperties
+        - '|'
+        - superscript
+        - subscript
+        - strikeThrough
+        - horizontalLine
+        - '|'
+        - specialCharacters
+        - sourceEditing
+        - findAndReplace
+        - showBlocks
+
+    table:
+      defaultHeadings: { rows: 1 }
+      contentToolbar:
+        - tableColumn
+        - tableRow
+        - mergeTableCells
+        - tableProperties
+        - tableCellProperties
+        - toggleTableCaption
+
+    language:
+      ui: 'de'
+      textPartLanguage:
+        - { title: 'Deutsch', languageCode: 'de' }
+        - { title: 'English', languageCode: 'en' }
+        - { title: 'Français', languageCode: 'fr' }
+
+    format_tags: 's;p;h1;h2;h3;h4;h5;h6;pre'
+
+    processing:
+      allow_tags:
+        - s
+        - figure
+        - figcaption
+        - i
+        - em
+
+    justifyClasses:
+      - text-left
+      - text-center
+      - text-right
+      - text-justify
+
+    extraPlugins:
+      - justify
+      - autolink
+      - showblocks
+      - language
+
+    removePlugins:
+      - image
+
+    removeButtons:
+      - Underline
+
+    importModules:
+      - { module: '@ckeditor/ckeditor5-word-count', exports: ['WordCount'] }
+      - { module: '@ckeditor/ckeditor5-language', exports: ['TextPartLanguage'] }
+
+buttons:
+  link:
+    properties:
+      class:
+        allowedClasses: 'internal-link, external-link, download, email, phone, audio, video, glossary, public, legal, gallery, chart'
+

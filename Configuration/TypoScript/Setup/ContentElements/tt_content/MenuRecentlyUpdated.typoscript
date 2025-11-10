@@ -1,0 +1,54 @@
+# Recently updated pages:
+# CType: menu_recently_updated
+
+tt_content {
+  menu_recently_updated = FLUIDTEMPLATE
+
+  menu_recently_updated {
+    partialRootPaths {
+      200 = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/
+    }
+
+    templateRootPaths {
+      200 = EXT:mp_core/Resources/Private/Templates/Content/
+    }
+
+    templateName = MenuRecentlyUpdated
+
+    dataProcessing {
+      10 = menu
+      10 {
+        special = updated
+        special {
+          value.field = pages
+          mode = SYS_LASTCHANGED
+          // beginAtLevel = 1
+          maxAge = 3600*24*10000
+          // excludeNoSearchPages = 0
+          limit = 100
+        }
+        dataProcessing {
+          10 = files
+          10 {
+            references.fieldName = media
+          }
+          20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+          20 {
+            table = tt_content
+            pidInList.field = uid
+            orderBy = sorting
+            where = colPos = 0
+            as = content
+
+            dataProcessing {
+              10 = files
+              10 {
+                references.fieldName = assets
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

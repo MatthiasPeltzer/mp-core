@@ -1,0 +1,72 @@
+tt_content {
+  video = FLUIDTEMPLATE
+
+  video {
+    partialRootPaths {
+      200 = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/
+    }
+
+    templateRootPaths {
+      200 = EXT:mp_core/Resources/Private/Templates/Content/
+    }
+
+    templateName = Video
+
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      10 {
+        if.isTrue.field = image
+        references {
+          fieldName = image
+          table = tt_content
+        }
+
+        as = files
+      }
+
+      20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      20 {
+        if.isTrue.field = tx_video_video
+        references {
+          fieldName = tx_video_video
+          table = tt_content
+        }
+
+        as = video
+      }
+
+      30 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      30 {
+        if.isTrue.field = tx_video_caption
+        references {
+          fieldName = tx_video_caption
+          table = tt_content
+        }
+
+        as = video_caption
+      }
+
+      40 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      40 {
+        if.isTrue.field = tx_video_audio_description_src
+        references {
+          fieldName = tx_video_audio_description_src
+          table = tt_content
+        }
+
+        as = audio_description
+      }
+
+      50 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      50 {
+        if.isTrue.field = tx_video_sign_language_src
+        references {
+          fieldName = tx_video_sign_language_src
+          table = tt_content
+        }
+
+        as = sign_language
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+# Seitentitel ausgeben
+lib {
+  headerTitle = TEXT
+  headerTitle {
+    data = page : title
+  }
+
+  headerDescription = TEXT
+  headerDescription {
+    data = page : description
+  }
+}

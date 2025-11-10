@@ -1,0 +1,49 @@
+<html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<div class="frame
+    frame-type-{data.CType}
+    frame-layout-{data.layout}
+    {f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}
+    {f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}
+    {f:if(condition: data.grid_bgfullsize, then: ' grid-fullsize')}
+    {f:if(condition: data.grid_light, then: ' grid-light', else: ' grid-dark')}
+    {f:if(condition: data_bgimage, then: ' grid-bgimage')}
+    {f:if(condition: data.grid_icon_switch, then: ' grid-cols col-12 offset-xl-1 col-xl-10')}
+    position-relative"
+     id="c{data.uid}">
+
+    <f:if condition="{data_bgimage}">
+        <f:variable name="bgimage">{f:uri.image(image: data_bgimage.0, maxWidth: 2560, treatIdAsReference: '1', fileExtension: 'webp')}</f:variable>
+        <f:if condition="{data.grid_parallax} == 0">
+            <f:asset.css identifier="c{data.uid}-data-bgimage" priority="true">
+                #c{data.uid}-data-bgimage
+                <f:format.raw>{</f:format.raw>
+                background-image: url("{bgimage}");
+                <f:format.raw>}</f:format.raw>
+            </f:asset.css>
+        </f:if>
+        <div class="grid-bg{f:if(condition: data.grid_parallax, then: ' grid-parallax')}" id="c{data.uid}-data-bgimage">
+            <f:if condition="{data.grid_parallax}">
+                <img alt="" aria-hidden="true" class="jarallax-img" src="{bgimage}">
+            </f:if>
+        </div>
+    </f:if>
+
+    <f:if condition="{data.grid_bgcolor}">
+        <div class="grid-bg bg{data.grid_bgcolor}"></div>
+    </f:if>
+
+    <f:if condition="{data.grid_icon_switch}">
+        <f:for as="file" each="{files}">
+            <f:render arguments="{_all}" partial="Media/Rendering/ImageIcon"/>
+        </f:for>
+    </f:if>
+
+    {f:if(condition:'{data.grid_container} != 1', then:'<div class="container">')}
+        <f:render optional="true" section="Header">
+            <f:render arguments="{_all}" partial="Header/All"/>
+        </f:render>
+        <f:render optional="true" section="Main"/>
+    {f:if(condition:'{data.grid_container} != 1', then:'</div>')}
+
+</div>
+</html>

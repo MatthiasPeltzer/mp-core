@@ -1,0 +1,72 @@
+################
+#### CONFIG ####
+################
+
+config {
+  no_cache = {$config.no_cache}
+  pageTitleFirst = 1
+  pageTitleSeparator = -
+  pageTitleSeparator.noTrimWrap = | | |
+  doctype = html5
+  removeDefaultJS = {$config.removeDefaultJS}
+  inlineStyle2TempFile = 1
+  moveJsFromHeaderToFooter = 1
+  spamProtectEmailAddresses = {$config.spamProtectEmailAddresses}
+  spamProtectEmailAddresses_atSubst = {$config.spamProtectEmailAddresses_atSubst}
+  admPanel = {$config.admPanel}
+  debug = {$config.debug}
+  cache_period = 43200
+  sendCacheHeaders = 1
+  intTarget =
+  extTarget =
+  disablePrefixComment = 1
+  index_enable = 1
+  index_externals = 1
+  index_metatags = 0
+  headerComment = {$config.headerComment}
+  prefixLocalAnchors = all
+  simulateStaticDocuments = 0
+
+  htmlTag {
+    attributes {
+      class = no-js
+      data-bs-theme = dark
+    }
+  }
+
+  // Compression and concatenation of CSS and JS files
+  compressJs = {$config.compressJs}
+  compressCss = {$config.compressCss}
+  concatenateJs = {$config.concatenateJs}
+  concatenateCss = {$config.concatenateCss}
+}
+
+plugin {
+  tx_min {
+    assetCollector {
+      compressCss = 0
+      compressInlineCss = 0
+      compressJs = 0
+      compressInlineJs = 0
+    }
+    tinysource {
+      enable = 1
+      body {
+        stripComments = 1
+        preventStripOfSearchComment = 1
+        removeTypeInScriptTags = 1
+      }
+
+      protectCode {
+        10 = /(<textarea.*?>.*?<\/textarea>)/is
+        20 = /(<pre.*?>.*?<\/pre>)/is
+      }
+    }
+  }
+
+  htmltables {
+    settings {
+      useResponsiveTable = 1
+    }
+  }
+}

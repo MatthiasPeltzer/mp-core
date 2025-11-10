@@ -1,0 +1,24 @@
+# SEO Extension Settings
+seo.meta.generateDescriptions: true
+seo.meta.maxDescriptionLength: 160
+seo.meta.maxTitleLength: 60
+seo.meta.titleSeparator: ' | '
+
+seo.openGraph.enabled: true
+seo.openGraph.defaultImage: ''
+seo.openGraph.imageWidth: 1200
+seo.openGraph.imageHeight: 630
+
+seo.twitter.enabled: true
+seo.twitter.cardType: 'summary_large_image'
+seo.twitter.site: ''
+
+seo.sitemap.enabled: true
+seo.sitemap.excludeHiddenPages: true
+seo.sitemap.priority: '0.5'
+
+seo.canonical.enabled: true
+
+seo.schema.enabled: true
+seo.schema.organizationType: 'Organization'
+

@@ -1,0 +1,11 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:if condition="{bodytext}">
+    <f:sanitize.html>{bodytext}</f:sanitize.html>
+</f:if>
+<f:if condition="{tx_audio_audio}">
+    <p><b>Name:</b> {record.tx_audio_audio.0.name}</p>
+</f:if>
+<f:if condition="{record.image.0}">
+    <f:image class="figure-img img-fluid" cropVariant="default" fileExtension="webp" image="{record.image.0}" maxWidth="64" treatIdAsReference="1"/>
+</f:if>
+</html>

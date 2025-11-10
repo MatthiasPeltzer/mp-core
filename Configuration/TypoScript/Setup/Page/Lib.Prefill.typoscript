@@ -1,0 +1,71 @@
+lib {
+  prefillUrl = TEXT
+  prefillUrl {
+    dataWrap = {getIndpEnv:TYPO3_REQUEST_HOST}|
+    typolink {
+      parameter {
+        current = 1
+      }
+
+      returnLast = url
+    }
+  }
+
+  currentURL = TEXT
+  currentURL {
+    data = getIndpEnv:TYPO3_REQUEST_URL
+  }
+
+  parseFunc {
+    tags {
+      a {
+        typolink {
+          wrap = <span class="icon" aria-hidden="true"></span>|
+          ATagBeforeWrap = 1
+        }
+      }
+
+      link {
+        typolink {
+          wrap = <span class="icon" aria-hidden="true"></span>|
+          ATagBeforeWrap = 1
+        }
+      }
+    }
+  }
+
+  parseFunc_RTE {
+    tags {
+      a {
+        typolink {
+          wrap = <span class="icon" aria-hidden="true"></span>|
+          ATagBeforeWrap = 1
+        }
+      }
+    }
+
+    externalBlocks {
+      pre {
+        stdWrap {
+          parseFunc {
+            tags {
+              a {
+                typolink {
+                  wrap = <span class="icon" aria-hidden="true"></span>|
+                  ATagBeforeWrap = 1
+                }
+              }
+
+              link {
+                typolink {
+                  wrap = <span class="icon" aria-hidden="true"></span>|
+                  ATagBeforeWrap = 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

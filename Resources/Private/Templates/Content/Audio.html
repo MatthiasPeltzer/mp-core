@@ -1,0 +1,176 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:variable name="file">{files.0}</f:variable>
+<f:variable name="audioRelation">{audio.0}</f:variable>
+
+<div id="c{data.uid}" class="frame frame-type-audio frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}">
+    <f:if condition="{data.header}">
+        <f:render arguments="{_all}" partial="Header/All"/>
+    </f:if>
+
+    <f:if condition="{data.bodytext}">
+        <f:format.html>{data.bodytext}</f:format.html>
+    </f:if>
+
+    <f:comment><!-- Check for local audio files (mp3, wav, webm, ogg) - exclude external sources --></f:comment>
+    <f:if condition="{audioRelation.properties.mime_type} != 'audio/generic'">
+        <div class="audio audio-local">
+            <f:if condition="{file}">
+                <f:alias map="{mpc:format.json.decode(json: file.properties.crop)}">
+                    <picture class="audio-picture" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+                        <source srcset="{f:uri.image(image: file, cropVariant: 'default', maxWidth: 1440, fileExtension: 'webp')}" type="image/webp" media="(min-width: 1220px)">
+                        <source srcset="{f:uri.image(image: file, cropVariant: 'large', maxWidth: 1220, fileExtension: 'webp')}" type="image/webp" media="(min-width: 992px)">
+                        <source srcset="{f:uri.image(image: file, cropVariant: 'medium', maxWidth: 992, fileExtension: 'webp')}" type="image/webp" media="(min-width: 768px)">
+                        <source srcset="{f:uri.image(image: file, cropVariant: 'small', maxWidth: 768, fileExtension: 'webp')}" type="image/webp" media="(min-width: 576px)">
+                        <source srcset="{f:uri.image(image: file, cropVariant: 'xsmall', maxWidth: 576, fileExtension: 'webp')}" type="image/webp" media="(min-width: 0)">
+                        <f:image image="{file}" maxWidth="1440" cropVariant="default" fileExtension="webp" treatIdAsReference="1" class="figure-img img-fluid rounded audio-img" loading="lazy" decoding="async"/>
+                    </picture>
+                </f:alias>
+            </f:if>
+            <f:variable name="audioOptions">{
+                "autoplay":<f:if condition="{data.tx_audio_autoplay}" then="true" else="false" />,
+                "loop":<f:if condition="{data.tx_audio_loop}" then="true" else="false" />,
+                "muted":<f:if condition="{data.tx_audio_muted}" then="true" else="false" />,
+                "volume":<f:if condition="{data.tx_audio_volume}" then="{data.tx_audio_volume}" else="0.8" />,
+                "playbackSpeed":<f:if condition="{data.tx_audio_playback_speed}" then="{data.tx_audio_playback_speed}" else="1.0" />,
+                "startTime":<f:if condition="{data.tx_audio_start_time}" then="{data.tx_audio_start_time}" else="0" />,
+                "controls":<f:if condition="{data.tx_audio_controls} == 0" then="false" else="true" />,
+                "speedButton":<f:if condition="{data.tx_audio_speed_button} == 0" then="false" else="true" />,
+                "volumeControl":<f:if condition="{data.tx_audio_volume_control} == 0" then="false" else="true" />,
+                "captions":<f:if condition="{data.tx_audio_captions} == 0" then="false" else="true" />,
+                "captionsDefault":<f:if condition="{data.tx_audio_captions_default}" then="true" else="false" />,
+                "captionsButton":<f:if condition="{data.tx_audio_captions_button} == 0" then="false" else="true" />,
+                "captionStyleButton":<f:if condition="{data.tx_audio_caption_style_button} == 0" then="false" else="true" />,
+                "transcript":<f:if condition="{data.tx_audio_transcript}" then="true" else="false" />,
+                "transcriptButton":<f:if condition="{data.tx_audio_transcript_button} == 0" then="false" else="true" />,
+                "keyboard":<f:if condition="{data.tx_audio_keyboard} == 0" then="false" else="true" />,
+                "screenReaderAnnouncements":<f:if condition="{data.tx_audio_screen_reader} == 0" then="false" else="true" />,
+                "language":"<f:if condition="{data.tx_audio_language}" then="{data.tx_audio_language}" else="de" />"
+            }</f:variable>
+            <audio 
+                data-vidply 
+                crossorigin 
+                class="player local-audio" 
+                data-vidply-options='{audioOptions}'
+            >
+                <f:for each="{audio}" as="audioFile">
+                    <f:variable name="qualityLabel" value="" />
+                    <f:if condition="{audioFile.properties.tx_quality_label}">
+                        <f:then>
+                            <f:variable name="qualityLabel" value="{audioFile.properties.tx_quality_label}" />
+                        </f:then>
+                        <f:else>
+                            <f:variable name="qualityLabel" value="{f:if(condition: audioFile.properties.title, then: audioFile.properties.title, else: 'Default')}" />
+                        </f:else>
+                    </f:if>
+                    <source 
+                        src="{audioFile.publicUrl}" 
+                        type="{audioFile.properties.mime_type}"
+                        label="{qualityLabel}"
+                    />
+                </f:for>
+                <f:if condition="{caption_files}">
+                    <f:for each="{caption_files}" as="captionFile">
+                        <track 
+                            kind="{f:if(condition: captionFile.properties.tx_track_kind, then: captionFile.properties.tx_track_kind, else: 'captions')}" 
+                            src="{captionFile.publicUrl}" 
+                            srclang="{f:if(condition: captionFile.properties.tx_lang_code, then: captionFile.properties.tx_lang_code, else: 'de')}" 
+                            label="{f:if(condition: captionFile.properties.title, then: captionFile.properties.title, else: 'Deutsch')}"
+                        />
+                    </f:for>
+                </f:if>
+            </audio>
+        </div>
+        <f:asset.script async="async" identifier="vidplyJS" src="EXT:mp_core/Resources/Public/JavaScripts/vidply.js"/>
+    </f:if>
+
+    <f:if condition="{audioRelation.properties.mime_type} == 'audio/generic' && {audioRelation.properties.title} == 'soundcloud'">
+        <div class="audio audio-soundcloud">
+            <div class="dsgvo" {f:if(condition: '{file}', then: ' style="background-image:url(\'{f:uri.image(image: file, maxWidth: 952, maxHeight: 535c)}\');"')}>
+            <div class="player-wrapper">
+                <div class="dsgvo-text">
+                    <button class="audio-start mejs__overlay-button" title="{f:translate(key: 'audio.play', extensionName: 'mp_core')}" data-mediaurl="{audioRelation.publicUrl}">
+                        <span class="visually-hidden">{f:translate(key: 'audio.play', extensionName: 'mp_core')}</span>
+                    </button>
+                    <f:format.raw><p>{f:translate(key: 'audio.link', extensionName: 'mp_core')}</p></f:format.raw>
+                </div>
+            </div>
+        </div>
+</div>
+</f:if>
+
+<f:if condition="{audioRelation.properties.mime_type} == 'audio/generic' && {audioRelation.properties.title} == 'mp3ext'">
+    <div class="audio audio-local">
+        <f:if condition="{file}">
+            <f:alias map="{mpc:format.json.decode(json: file.properties.crop)}">
+                <picture class="audio-picture" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+                    <source srcset="{f:uri.image(image: file, cropVariant: 'default', maxWidth: 1440, fileExtension: 'webp')}" type="image/webp" media="(min-width: 1220px)">
+                    <source srcset="{f:uri.image(image: file, cropVariant: 'large', maxWidth: 1220, fileExtension: 'webp')}" type="image/webp" media="(min-width: 992px)">
+                    <source srcset="{f:uri.image(image: file, cropVariant: 'medium', maxWidth: 992, fileExtension: 'webp')}" type="image/webp" media="(min-width: 768px)">
+                    <source srcset="{f:uri.image(image: file, cropVariant: 'small', maxWidth: 768, fileExtension: 'webp')}" type="image/webp" media="(min-width: 576px)">
+                    <source srcset="{f:uri.image(image: file, cropVariant: 'xsmall', maxWidth: 576, fileExtension: 'webp')}" type="image/webp" media="(min-width: 0)">
+                    <f:image image="{file}" maxWidth="1440" cropVariant="default" fileExtension="webp" treatIdAsReference="1" class="figure-img img-fluid rounded audio-img" loading="lazy" decoding="async"/>
+                </picture>
+            </f:alias>
+        </f:if>
+        <f:variable name="audioOptions">{
+            "autoplay":<f:if condition="{data.tx_audio_autoplay}" then="true" else="false" />,
+            "loop":<f:if condition="{data.tx_audio_loop}" then="true" else="false" />,
+            "muted":<f:if condition="{data.tx_audio_muted}" then="true" else="false" />,
+            "volume":<f:if condition="{data.tx_audio_volume}" then="{data.tx_audio_volume}" else="0.8" />,
+            "playbackSpeed":<f:if condition="{data.tx_audio_playback_speed}" then="{data.tx_audio_playback_speed}" else="1.0" />,
+            "startTime":<f:if condition="{data.tx_audio_start_time}" then="{data.tx_audio_start_time}" else="0" />,
+            "controls":<f:if condition="{data.tx_audio_controls} == 0" then="false" else="true" />,
+            "speedButton":<f:if condition="{data.tx_audio_speed_button} == 0" then="false" else="true" />,
+            "volumeControl":<f:if condition="{data.tx_audio_volume_control} == 0" then="false" else="true" />,
+            "captions":<f:if condition="{data.tx_audio_captions} == 0" then="false" else="true" />,
+            "captionsDefault":<f:if condition="{data.tx_audio_captions_default}" then="true" else="false" />,
+            "captionsButton":<f:if condition="{data.tx_audio_captions_button} == 0" then="false" else="true" />,
+            "captionStyleButton":<f:if condition="{data.tx_audio_caption_style_button} == 0" then="false" else="true" />,
+            "transcript":<f:if condition="{data.tx_audio_transcript}" then="true" else="false" />,
+            "transcriptButton":<f:if condition="{data.tx_audio_transcript_button} == 0" then="false" else="true" />,
+            "keyboard":<f:if condition="{data.tx_audio_keyboard} == 0" then="false" else="true" />,
+            "screenReaderAnnouncements":<f:if condition="{data.tx_audio_screen_reader} == 0" then="false" else="true" />,
+            "language":"<f:if condition="{data.tx_audio_language}" then="{data.tx_audio_language}" else="de" />"
+        }</f:variable>
+        <audio 
+            data-vidply 
+            class="player local-audio" 
+            data-vidply-options='{audioOptions}'
+        >
+            <f:variable name="qualityLabel" value="" />
+            <f:if condition="{audioRelation.properties.tx_quality_label}">
+                <f:then>
+                    <f:variable name="qualityLabel" value="{audioRelation.properties.tx_quality_label}" />
+                </f:then>
+                <f:else>
+                    <f:variable name="qualityLabel" value="{f:if(condition: audioRelation.properties.title, then: audioRelation.properties.title, else: 'Default')}" />
+                </f:else>
+            </f:if>
+            <source 
+                src="{audioRelation.publicUrl}" 
+                type="{audioRelation.properties.mime_type}"
+                label="{qualityLabel}"
+            />
+            <f:if condition="{caption_files}">
+                <f:for each="{caption_files}" as="captionFile">
+                    <track 
+                        kind="{f:if(condition: captionFile.properties.tx_track_kind, then: captionFile.properties.tx_track_kind, else: 'captions')}" 
+                        src="{captionFile.publicUrl}" 
+                        srclang="{f:if(condition: captionFile.properties.tx_lang_code, then: captionFile.properties.tx_lang_code, else: 'de')}" 
+                        label="{f:if(condition: captionFile.properties.title, then: captionFile.properties.title, else: 'Deutsch')}"
+                    />
+                </f:for>
+            </f:if>
+        </audio>
+    </div>
+    <f:asset.script async="async" identifier="vidplyJS" src="EXT:mp_core/Resources/Public/JavaScripts/vidply.js"/>
+</f:if>
+
+<f:asset.css identifier="vidplyCSS" href="EXT:mp_core/Resources/Public/StyleSheets/vidply.css"/>
+</div>
+
+</html>

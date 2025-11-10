@@ -1,0 +1,59 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:variable name="file">{media.0}</f:variable>
+<div class="top-container pb-5">
+    <div class="stage">
+        <div class="container stage-content-wrapper justify-content-center{f:if(condition:data.media, then:'', else: ' position-relative')}">
+            <div class="stage-content text-center teaser">
+                <div class="teaser-content bgcolor-1">
+                    <f:if condition="{data.title}">
+                        <h1 id="headerMain"><span>{data.title}</span></h1>
+                    </f:if>
+                    <f:if condition="{data.lastUpdated} || {mainCategory}">
+                        <f:spaceless>
+                            <p class="date">
+                                <f:if condition="{data.lastUpdated}">
+                                    <time datetime="{f:format.date(date:data.lastUpdated, format:'Y-m-d')}">
+                                        <f:format.date format="%e. %B %G">{data.lastUpdated}</f:format.date>
+                                    </time>
+                                </f:if>
+                                <f:if condition="{mainCategory}">
+                                    <span class="main-category">{f:if(condition: data.lastUpdated, then: '• ')}{mainCategory.0.data.title}</span>
+                                </f:if>
+                            </p>
+                        </f:spaceless>
+                    </f:if>
+                    <f:if condition="{categories}">
+                        <ul class="categories list-inline mb-0">
+                            <f:for each="{categories}" as="category">
+                                <li class="list-inline-item"><span class="kicker">{category.data.title}</span></li>
+                            </f:for>
+                        </ul>
+                    </f:if>
+                    <f:if condition="{data.subtitle}">
+                        <p class="lead">{data.subtitle}</p>
+                    </f:if>
+                </div>
+            </div>
+        </div>
+        <f:if condition="{file} && {data.media} == 1">
+            <div class="stage-image">
+                <f:alias map="{mpc:format.json.decode(json: file.properties.crop)}">
+                    <picture data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+                        <source media="(min-width: 1220px)" srcset="{f:uri.image(image: file, cropVariant: 'default', maxWidth: 1920, fileExtension: 'webp')}" type="image/webp">
+                        <source media="(min-width: 992px)" srcset="{f:uri.image(image: file, cropVariant: 'large', maxWidth: 1220, fileExtension: 'webp')}" type="image/webp">
+                        <source media="(min-width: 768px)" srcset="{f:uri.image(image: file, cropVariant: 'medium', maxWidth: 992, fileExtension: 'webp')}" type="image/webp">
+                        <source media="(min-width: 576px)" srcset="{f:uri.image(image: file, cropVariant: 'small', maxWidth: 768, fileExtension: 'webp')}" type="image/webp">
+                        <source media="(min-width: 0)" srcset="{f:uri.image(image: file, cropVariant: 'xsmall', maxWidth: 576, fileExtension: 'webp')}" type="image/webp">
+                        <f:image additionalAttributes="{fetchpriority:'high'}" class="figure-img img-fluid" cropVariant="default" fileExtension="webp" image="{file}" maxWidth="1920"/>
+                    </picture>
+                </f:alias>
+            </div>
+            <div class="overlay"></div>
+        </f:if>
+    </div>
+</div>
+</html>

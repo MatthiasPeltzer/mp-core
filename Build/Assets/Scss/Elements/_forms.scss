@@ -1,0 +1,60 @@
+// forms
+
+legend {
+  @include font-size($fs-sm-plus);
+  font-weight: 700;
+}
+
+.multicheckbox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  + .invalid-feedback {
+    display: block;
+  }
+}
+
+.form-select,
+.form-check-input,
+.form-control {
+  &:focus {
+    outline: 1px solid var(--bs-body-color);
+    outline-offset: 3px;
+  }
+}
+
+.radiogroup {
+  + .invalid-feedback {
+    display: block;
+  }
+}
+
+textarea.form-control-lg {
+  min-height: 150px;
+}
+
+.invalid-feedback {
+  @include font-size($fs-sm-plus);
+  font-weight: 700;
+}
+
+.form-check {
+  + .invalid-feedback {
+    display: block;
+    padding-left: 26px;
+  }
+
+  &-input {
+    margin-right: 8px;
+  }
+}
+
+.description {
+  @include font-size($fs-sm-plus);
+  font-weight: 700;
+}
+
+.btn-outline-primary {
+  background-color: var(--bs-white);
+}

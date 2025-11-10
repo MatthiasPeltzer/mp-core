@@ -1,0 +1,89 @@
+<div class="frame frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}" id="c{data.uid}">
+    <f:if condition="{data.header}">
+        <f:variable name="header_position">{f:if(condition: data.header_position, then: 'ce-headline-{data.header_position}', else: 'ce-headline-left')}</f:variable>
+
+        <f:switch expression="{data.header_layout}">
+            <f:case value="1">
+                <h1 class="{header_position}" id="headerMain">
+                    <span>{data.header}</span>
+                </h1>
+            </f:case>
+            <f:case value="2">
+                <h2 class="{header_position}">
+                    <span>{data.header}</span>
+                </h2>
+            </f:case>
+            <f:case value="3">
+                <h3 class="{header_position}">
+                    <span>{data.header}</span>
+                </h3>
+            </f:case>
+            <f:case value="4">
+                <h4 class="{header_position}">
+                    <span>{data.header}</span>
+                </h4>
+            </f:case>
+            <f:case value="5">
+                <h5 class="{header_position}">
+                    <span>{data.header}</span>
+                </h5>
+            </f:case>
+            <f:case value="6">
+                <h6 class="{header_position}">
+                    <span>{data.header}</span>
+                </h6>
+            </f:case>
+            <f:case value="7">
+                <h1 class="visually-hidden">
+                    {data.header}
+                </h1>
+            </f:case>
+            <f:case value="8">
+                <h2 class="visually-hidden">
+                    {data.header}
+                </h2>
+            </f:case>
+            <f:case value="9">
+                <h3 class="visually-hidden">
+                    {data.header}
+                </h3>
+            </f:case>
+            <f:case value="10">
+                <h4 class="visually-hidden">
+                    {data.header}
+                </h4>
+            </f:case>
+            <f:case value="10">
+                <h4 class="visually-hidden">
+                    {data.header}
+                </h4>
+            </f:case>
+            <f:case value="11">
+                <h5 class="visually-hidden">
+                    {data.header}
+                </h5>
+            </f:case>
+            <f:case value="12">
+                <h6 class="visually-hidden">
+                    {data.header}
+                </h6>
+            </f:case>
+            <f:case value="100">
+                <f:comment><!-- do not show header --></f:comment>
+            </f:case>
+            <f:defaultCase>
+                <f:if condition="{default}">
+                    <h2>
+                        {data.header}
+                    </h2>
+                </f:if>
+            </f:defaultCase>
+        </f:switch>
+    </f:if>
+    <dl class="{f:if(condition: data.dl_definitionlist_radioboxes, then: ' row', else: 'd-flex flex-column')} mb-3">
+        <f:for each="{data.dl_definitionlist_item}" as="item">
+            <dt class="mb-2{f:if(condition: data.dl_definitionlist_radioboxes, then: ' col-12 col-lg-3')}">{item.text}</dt>
+            <dd class="mb-2{f:if(condition: data.dl_definitionlist_radioboxes, then: ' col-12 col-lg-9')}">{item.textarea -> f:format.html()}</dd>
+        </f:for>
+    </dl>
+</div>

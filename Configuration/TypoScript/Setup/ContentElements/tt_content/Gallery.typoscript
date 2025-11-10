@@ -1,0 +1,25 @@
+tt_content {
+  gallery = FLUIDTEMPLATE
+
+  gallery {
+    partialRootPaths {
+      200 = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/
+    }
+
+    templateRootPaths {
+      200 = EXT:mp_core/Resources/Private/Templates/Content/
+    }
+
+    templateName = Gallery
+    dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+    dataProcessing.10 {
+      if.isTrue.field = image
+      references {
+        fieldName = image
+        table = tt_content
+      }
+
+      as = files
+    }
+  }
+}

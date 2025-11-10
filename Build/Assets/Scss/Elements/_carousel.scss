@@ -1,0 +1,91 @@
+// carousel
+
+$carousel-border-radius: var(--bs-border-radius);
+$carousel-body-color: var(--bs-body-color);
+$carousel-bg-dark: var(--bs-gray-900);
+$carousel-bg-light: var(--bs-gray-100);
+
+@mixin position-absolute($top: null, $right: null, $bottom: null, $left: null) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-inner {
+  overflow: visible;
+}
+
+.carousel-item {
+  position: relative;
+  text-align: center;
+
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  a.stretched-link {
+    display: inline;
+
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none;
+
+      &::after {
+        border-radius: $carousel-border-radius;
+        outline: 1px solid $carousel-body-color;
+        outline-offset: 2px;
+      }
+    }
+  }
+
+  figure {
+    margin-bottom: 0;
+
+    picture {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.carousel-iterator {
+  @include position-absolute(null, null, -69px, null);
+  color: $carousel-body-color;
+  display: block;
+  font-weight: 400;
+  margin: 0;
+  width: 100%;
+}
+
+.carousel-imagetitle {
+  @include font-size(14px);
+  @include position-absolute(null, null, 0, null);
+  background-color: $carousel-bg-dark;
+  color: $carousel-body-color;
+  display: block;
+  margin: 0;
+  min-height: 24px;
+  padding: 5px;
+  width: 100%;
+
+  html[data-bs-theme="light"] & {
+    background-color: $carousel-bg-light;
+  }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  @include flex-center;
+  background-color: var(--bs-primary);
+  border-radius: 50%;
+}

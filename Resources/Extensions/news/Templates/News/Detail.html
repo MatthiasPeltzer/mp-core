@@ -1,0 +1,180 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
+
+<f:layout name="Detail"/>
+
+<f:section name="content">
+    <f:if condition="{newsItem}">
+        <n:format.nothing>
+            <n:excludeDisplayedNews newsItem="{newsItem}"/>
+            <f:if condition="{settings.detail.showMetaTags}">
+                <f:render arguments="{newsItem: newsItem, settings:settings}" partial="Detail/Opengraph"/>
+            </f:if>
+            <f:if condition="{newsItem.alternativeTitle}">
+                <f:then>
+                    <n:titleTag>
+                        <f:format.htmlentitiesDecode>{newsItem.alternativeTitle}</f:format.htmlentitiesDecode>
+                    </n:titleTag>
+                </f:then>
+                <f:else>
+                    <n:titleTag>
+                        <f:format.htmlentitiesDecode>{newsItem.title}</f:format.htmlentitiesDecode>
+                    </n:titleTag>
+                </f:else>
+            </f:if>
+        </n:format.nothing>
+
+        <f:if condition="{settings.detail.showPrevNext}">
+            <n:simplePrevNext as="paginated" news="{newsItem}" pidList="{newsItem.pid}" sortField="datetime">
+                <f:if condition="{paginated}">
+                    <ul class="pager">
+                        <f:if condition="{paginated.prev}">
+                            <li class="previous">
+                                <n:link newsItem="{paginated.prev}" settings="{settings}">
+                                    <span aria-hidden="true">&larr; </span>{paginated.prev.title}
+                                </n:link>
+                            </li>
+                        </f:if>
+                        <f:if condition="{paginated.next}">
+                            <li class="next">
+                                <n:link class="next" newsItem="{paginated.next}" settings="{settings}">
+                                    {paginated.next.title} <span aria-hidden="true"> &rarr;</span>
+                                </n:link>
+                            </li>
+                        </f:if>
+                    </ul>
+                </f:if>
+            </n:simplePrevNext>
+        </f:if>
+
+        <f:if condition="{newsItem.mediaNonPreviews}">
+            <f:then>
+                <div class="row">
+                    <div class="col-12">
+                        <f:for as="mediaElement" each="{newsItem.mediaNonPreviews}">
+                            <f:alias map="{mpc:format.json.decode(json: mediaElement.originalResource.properties.crop)}">
+                                <picture data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+                                    <source media="(min-width: 1220px)" srcset="{f:uri.image(image: mediaElement, cropVariant: 'default', maxWidth: 973, fileExtension: 'webp')}" type="image/webp"
+                                    ">
+                                    <source media="(min-width: 992px)" srcset="{f:uri.image(image: mediaElement, cropVariant: 'large', maxWidth: 973, fileExtension: 'webp')}" type="image/webp"
+                                    ">
+                                    <source media="(min-width: 768px)" srcset="{f:uri.image(image: mediaElement, cropVariant: 'medium', maxWidth: 992, fileExtension: 'webp')}" type="image/webp"
+                                    ">
+                                    <source media="(min-width: 576px)" srcset="{f:uri.image(image: mediaElement, cropVariant: 'small', maxWidth: 768, fileExtension: 'webp')}" type="image/webp"
+                                    ">
+                                    <source media="(min-width: 0)" srcset="{f:uri.image(image: mediaElement, cropVariant: 'xsmall', maxWidth: 576, fileExtension: 'webp')}" type="image/webp"
+                                    ">
+                                    <f:image class="figure-img img-fluid rounded" cropVariant="default" decoding="async" fileExtension="webp" loading="lazy" maxWidth="973" src="{mediaElement.originalResource.properties.uid}" treatIdAsReference="1"/>
+                                </picture>
+                                <f:if condition="{mediaElement.description}">
+                                    <div class="caption">
+                                        {mediaElement.description}
+                                    </div>
+                                </f:if>
+                            </f:alias>
+                        </f:for>
+                    </div>
+                    <div class="col-12">
+                        <f:render arguments="{_all}" section="headline"/>
+                        <f:render arguments="{_all}" section="inner-content"/>
+                    </div>
+                </div>
+            </f:then>
+            <f:else>
+                <f:render arguments="{_all}" section="headline"/>
+                <f:render arguments="{_all}" section="inner-content"/>
+            </f:else>
+        </f:if>
+    </f:if>
+</f:section>
+
+<f:section name="headline">
+    <h1>{newsItem.title}</h1>
+    <f:render arguments="{settings:settings,newsItem:newsItem}" partial="General/AdditionalInformation"/>
+</f:section>
+
+<f:section name="inner-content">
+    <n:renderMedia audioClass="audio-wrapper" imgClass="img-responsive" news="{newsItem}" videoClass="video-wrapper">
+        <f:if condition="{newsItem.contentElements}">
+            <f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}</f:cObject>
+        </f:if>
+
+        <f:if condition="{newsItem.teaser}">
+            <div class="lead" itemprop="description">
+                <f:format.html>{newsItem.teaser}</f:format.html>
+            </div>
+        </f:if>
+
+        <div class="news-text-wrap" itemprop="articleBody">
+            <f:format.html>{newsItem.bodytext}</f:format.html>
+        </div>
+    </n:renderMedia>
+
+    <f:if condition="{newsItem.allRelatedSorted}">
+        <div class="news-related news-related-news">
+            <h2>
+                <f:translate key="related-news"/>
+            </h2>
+            <ul>
+                <f:for as="related" each="{newsItem.allRelatedSorted}">
+                    <li>
+						<span class="news-related-news-date">
+							<f:format.date format="{f:translate(key:'dateFormat')}">{related.datetime}</f:format.date>
+						</span>
+                        <n:link newsItem="{related}" settings="{settings}" title="{related.title}">
+                            {related.title}
+                        </n:link>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </f:if>
+
+    <f:if condition="{newsItem.relatedFiles}">
+        <div class="news-related news-related-files">
+            <h2>
+                <f:translate key="related-files"/>
+            </h2>
+            <ul>
+                <f:for as="relatedFile" each="{newsItem.relatedFiles}">
+                    <li>
+						<span class="news-related-files-link">
+							<a href="{relatedFile.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank">
+								{f:if(condition:relatedFile.originalResource.title, then:relatedFile.originalResource.title, else:relatedFile.originalResource.name)}
+							</a>
+						</span>
+                        <span class="news-related-files-size"> {relatedFile.originalResource.size -> f:format.bytes()} </span>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </f:if>
+
+    <f:if condition="{newsItem.relatedLinks}">
+        <div class="news-related news-related-links">
+            <h2>
+                <f:translate key="related-links"/>
+            </h2>
+            <ul class="list-unstyled pb-3">
+                <f:for as="relatedLink" each="{newsItem.relatedLinks}">
+                    <li>
+                        <f:link.typolink class="external-link" parameter="{relatedLink.uri}" target="{n:targetLink(link:relatedLink.uri)}" title="{relatedLink.title}">
+                            <span class="icon"></span>{f:if(condition: relatedLink.title, then: relatedLink.title, else: relatedLink.uri)}
+                        </f:link.typolink>
+                        <f:if condition="{relatedLink.description}"><span>{relatedLink.description}</span>
+                        </f:if>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </f:if>
+
+    <f:if condition="{settings.backPid}">
+        <f:link.page class="btn btn-primary" pageUid="{settings.backPid}">
+            <f:translate key="back-link"/>
+        </f:link.page>
+    </f:if>
+</f:section>
+</html>

@@ -1,0 +1,75 @@
+// Variablen
+$gradient-dark: $gray-900;
+$gradient-light: $gray-100;
+
+// Mixin für Gradienten
+@mixin gradient($direction, $start-color, $end-color) {
+  background: linear-gradient(to #{$direction}, $start-color 0%, $end-color 100%);
+}
+
+// Gradient-Linien
+.gradient-line {
+  &-before {
+    &::before {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 100%;
+
+      @include gradient(right, transparent, var(--bs-primary));
+    }
+  }
+
+  &-after {
+    &::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 100%;
+
+      @include gradient(right, var(--bs-primary), transparent);
+    }
+  }
+}
+
+// Gradient-Hintergründe
+.gradient-bg,
+.gradient-bottom,
+.gradient-top {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+.gradient-bg::before {
+  @include gradient(right, transparent, $gradient-dark);
+
+  html[data-bs-theme="light"] & {
+    @include gradient(right, transparent, $gradient-light);
+  }
+}
+
+.gradient-bottom::before {
+  @include gradient(bottom, transparent, $gradient-dark);
+
+  html[data-bs-theme="light"] & {
+    @include gradient(bottom, transparent, $gradient-light);
+  }
+}
+
+.gradient-top::before {
+  @include gradient(top, $gradient-dark, transparent);
+
+  html[data-bs-theme="light"] & {
+    @include gradient(top, $gradient-light, transparent);
+  }
+}

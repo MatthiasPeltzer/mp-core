@@ -1,0 +1,34 @@
+<f:if condition="{pagination.paginator.numberOfPages} > 1">
+    <nav aria-label="Navigation Aktuelles">
+        <ul class="pagination justify-content-center">
+            <f:if condition="{pagination.previousPageNumber} && {pagination.previousPageNumber} >= {pagination.firstPageNumber}">
+                <f:then>
+                    <li class="previous page-item">
+                        <a href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.previousPageNumber})}" title="{f:translate(key:'pagination.previous')}" class="page-link"> {f:translate(key:'widget.pagination.previous', extensionName: 'fluid')}
+                            <span class="visually-hidden">Seite</span> </a>
+                    </li>
+                </f:then>
+            </f:if>
+            <f:if condition="{pagination.hasLessPages}">
+                <li class="page-item">…</li>
+            </f:if>
+            <f:for each="{pagination.allPageNumbers}" as="page">
+
+                <li class="{f:if(condition: '{page} == {paginator.currentPageNumber}', then:'current')} page-item">
+                    <a href="{f:uri.action(action:actionName, arguments:{currentPage: page})}" class="page-link"><span class="visually-hidden">Seite: </span>{page}</a>
+                </li>
+            </f:for>
+            <f:if condition="{pagination.hasMorePages}">
+                <li class="page-item">…</li>
+            </f:if>
+            <f:if condition="{pagination.nextPageNumber} && {pagination.nextPageNumber} <= {pagination.lastPageNumber}">
+                <f:then>
+                    <li class="next page-item">
+                        <a href="{f:uri.action(action:actionName, arguments:{currentPage: pagination.nextPageNumber})}" title="{f:translate(key:'pagination.next')}" class="page-link"> {f:translate(key:'widget.pagination.next', extensionName: 'fluid')}<span class="visually-hidden">Seite</span>
+                        </a>
+                    </li>
+                </f:then>
+            </f:if>
+        </ul>
+    </nav>
+</f:if>

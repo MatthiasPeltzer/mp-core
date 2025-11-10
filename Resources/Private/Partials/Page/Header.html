@@ -1,0 +1,52 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:format.raw>{jumpNav}</f:format.raw>
+
+<header aria-label="{f:translate(key: 'header.area', extensionName: 'mp_core')}" class="header-wrapper fixed-top">
+    <div class="layer"></div>
+    <f:if condition="{site.configuration.navType} == 1">
+        <div class="header-wrapper-bg navtype-1">
+            <div class="container">
+                <f:render arguments="{_all}" section="LogoTop"/>
+                <div class="row align-items-center">
+                    <f:render arguments="{_all}" partial="Navigation/Primary/NavPrimary"/>
+                </div>
+            </div>
+        </div>
+    </f:if>
+
+    <f:if condition="{site.configuration.navType} == 2">
+        <div class="header-wrapper-bg navtype-2">
+            <div class="container">
+                <f:render arguments="{_all}" section="LogoTop"/>
+                <f:render arguments="{_all}" partial="Navigation/Secondary/NavSecondary"/>
+            </div>
+        </div>
+    </f:if>
+
+    <f:if condition="{site.configuration.navType} == 3">
+        <div class="header-wrapper-bg navtype-3">
+            <div class="container">
+                <f:render arguments="{_all}" section="LogoTop"/>
+                <f:render arguments="{_all}" partial="Navigation/Tertiary/NavTertiary"/>
+            </div>
+        </div>
+    </f:if>
+</header>
+
+<f:if condition="{data.breadcrumb} != 1">
+    <f:render arguments="{breadcrumb: breadcrumb}" partial="Navigation/Breadcrumb"/>
+</f:if>
+
+<f:section name="LogoTop">
+    <f:if condition="{topLogo} || {headerExtraContent}">
+        <div class="toplogo-container">
+            <f:format.raw>{topLogo}</f:format.raw>
+            <f:format.raw>{headerExtraContent}</f:format.raw>
+        </div>
+    </f:if>
+</f:section>
+
+</html>

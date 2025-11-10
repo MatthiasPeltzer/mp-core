@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/Settings.xlf" date="2013-09-19T09:11:39Z" product-name="mp_core">
+    <header/>
+    <body>
+      <trans-unit id="MPCore.description" resname="MPCore.description">
+        <source>General settings for MP Core extension</source>
+      </trans-unit>
+      <trans-unit id="MPCore.label" resname="MPCore.label">
+        <source>MP Core</source>
+      </trans-unit>
+      <trans-unit id="MPCoreConfig.description" resname="MPCoreConfig.description">
+        <source>General configuration settings</source>
+      </trans-unit>
+      <trans-unit id="MPCoreConfig.label" resname="MPCoreConfig.label">
+        <source>Configuration</source>
+      </trans-unit>
+      <trans-unit id="MPCoreContainer.description" resname="MPCoreContainer.description">
+        <source>Configuration for container extension</source>
+      </trans-unit>
+      <trans-unit id="MPCoreContainer.label" resname="MPCoreContainer.label">
+        <source>Container Settings</source>
+      </trans-unit>
+      <trans-unit id="MPCoreContent.description" resname="MPCoreContent.description">
+        <source>Settings for content elements and media</source>
+      </trans-unit>
+      <trans-unit id="MPCoreContent.label" resname="MPCoreContent.label">
+        <source>Content Elements</source>
+      </trans-unit>
+      <trans-unit id="MPCoreDesign.description" resname="MPCoreDesign.description">
+        <source>Design tokens, colors, fonts, and breakpoints</source>
+      </trans-unit>
+      <trans-unit id="MPCoreDesign.label" resname="MPCoreDesign.label">
+        <source>Design &amp; Layout</source>
+      </trans-unit>
+      <trans-unit id="MPCoreForm.description" resname="MPCoreForm.description">
+        <source>Configuration for form extension</source>
+      </trans-unit>
+      <trans-unit id="MPCoreForm.label" resname="MPCoreForm.label">
+        <source>Form Settings</source>
+      </trans-unit>
+      <trans-unit id="MPCoreMeta.description" resname="MPCoreMeta.description">
+        <source>Meta tag settings for HTML head</source>
+      </trans-unit>
+      <trans-unit id="MPCoreMeta.label" resname="MPCoreMeta.label">
+        <source>Meta Tags</source>
+      </trans-unit>
+      <trans-unit id="MPCoreNavigation.description" resname="MPCoreNavigation.description">
+        <source>Navigation and menu settings</source>
+      </trans-unit>
+      <trans-unit id="MPCoreNavigation.label" resname="MPCoreNavigation.label">
+        <source>Navigation</source>
+      </trans-unit>
+      <trans-unit id="MPCoreNews.description" resname="MPCoreNews.description">
+        <source>Configuration for news extension</source>
+      </trans-unit>
+      <trans-unit id="MPCoreNews.label" resname="MPCoreNews.label">
+        <source>News Settings</source>
+      </trans-unit>
+      <trans-unit id="MPCorePerformance.description" resname="MPCorePerformance.description">
+        <source>Performance optimization settings</source>
+      </trans-unit>
+      <trans-unit id="MPCorePerformance.label" resname="MPCorePerformance.label">
+        <source>Performance</source>
+      </trans-unit>
+      <trans-unit id="MPCoreSEO.description" resname="MPCoreSEO.description">
+        <source>SEO and meta data configuration</source>
+      </trans-unit>
+      <trans-unit id="MPCoreSEO.label" resname="MPCoreSEO.label">
+        <source>SEO Settings</source>
+      </trans-unit>
+      <trans-unit id="PIDs.description" resname="PIDs.description">
+        <source>All relevant page IDs can be set here.</source>
+      </trans-unit>
+      <trans-unit id="PIDs.label" resname="PIDs.label">
+        <source>Page IDs</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidCategories.form.description" resname="PIDs.pidCategories.form.description">
+        <source>Page ID of the categories folder</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidCategories.form.label" resname="PIDs.pidCategories.form.label">
+        <source>Categories Page ID</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidHome.form.description" resname="PIDs.pidHome.form.description">
+        <source>Page ID of the homepage</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidHome.form.label" resname="PIDs.pidHome.form.label">
+        <source>Homepage Page ID</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidLogosBannerTop.form.description" resname="PIDs.pidLogosBannerTop.form.description">
+        <source>Page ID of the additional logos or banners in the header area</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidLogosBannerTop.form.label" resname="PIDs.pidLogosBannerTop.form.label">
+        <source>Logos/Banner Page ID</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMainNavMeta.form.description" resname="PIDs.pidMainNavMeta.form.description">
+        <source>Page ID of the meta navigation in the main navigation</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMainNavMeta.form.label" resname="PIDs.pidMainNavMeta.form.label">
+        <source>Main Navigation Meta Page ID</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMetaNavFooter.form.description" resname="PIDs.pidMetaNavFooter.form.description">
+        <source>Page ID of the meta navigation in the footer</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMetaNavFooter.form.label" resname="PIDs.pidMetaNavFooter.form.label">
+        <source>Footer Meta Navigation Page ID</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMetaNavTop.form.description" resname="PIDs.pidMetaNavTop.form.description">
+        <source>Page ID of the meta navigation in the header</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMetaNavTop.form.label" resname="PIDs.pidMetaNavTop.form.label">
+        <source>Top Meta Navigation Page ID</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidSupplement.form.description" resname="PIDs.pidSupplement.form.description">
+        <source>Page ID of the supplementary area for content under the submenu</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidSupplement.form.label" resname="PIDs.pidSupplement.form.label">
+        <source>Supplement Page ID</source>
+      </trans-unit>
+      <trans-unit id="config.absRefPrefix.form.description" resname="config.absRefPrefix.form.description">
+        <source>Absolute reference prefix (auto, /, or custom)</source>
+      </trans-unit>
+      <trans-unit id="config.absRefPrefix.form.label" resname="config.absRefPrefix.form.label">
+        <source>Absolute Reference Prefix</source>
+      </trans-unit>
+      <trans-unit id="config.admPanel.form.description" resname="config.admPanel.form.description">
+        <source>Show admin panel in frontend</source>
+      </trans-unit>
+      <trans-unit id="config.admPanel.form.label" resname="config.admPanel.form.label">
+        <source>Show Admin Panel</source>
+      </trans-unit>
+      <trans-unit id="config.debug.form.description" resname="config.debug.form.description">
+        <source>Enable debug mode in frontend</source>
+      </trans-unit>
+      <trans-unit id="config.debug.form.label" resname="config.debug.form.label">
+        <source>Enable Debug Mode</source>
+      </trans-unit>
+      <trans-unit id="config.headerComment.form.description" resname="config.headerComment.form.description">
+        <source>Comment to add to HTML head</source>
+      </trans-unit>
+      <trans-unit id="config.headerComment.form.label" resname="config.headerComment.form.label">
+        <source>HTML Header Comment</source>
+      </trans-unit>
+      <trans-unit id="config.noCache.form.description" resname="config.noCache.form.description">
+        <source>Disable page cache</source>
+      </trans-unit>
+      <trans-unit id="config.noCache.form.label" resname="config.noCache.form.label">
+        <source>Disable Cache</source>
+      </trans-unit>
+      <trans-unit id="config.removeDefaultJS.form.description" resname="config.removeDefaultJS.form.description">
+        <source>Remove default JavaScript (external, internal, or empty for none)</source>
+      </trans-unit>
+      <trans-unit id="config.removeDefaultJS.form.label" resname="config.removeDefaultJS.form.label">
+        <source>Remove Default JavaScript</source>
+      </trans-unit>
+      <trans-unit id="config.spamProtectEmailAddresses.form.description" resname="config.spamProtectEmailAddresses.form.description">
+        <source>Enable spam protection for email addresses</source>
+      </trans-unit>
+      <trans-unit id="config.spamProtectEmailAddresses.form.label" resname="config.spamProtectEmailAddresses.form.label">
+        <source>Spam Protect Email Addresses</source>
+      </trans-unit>
+      <trans-unit id="config.spamProtectEmailAddresses_atSubst.form.description" resname="config.spamProtectEmailAddresses_atSubst.form.description">
+        <source>Substitute for @ in email addresses</source>
+      </trans-unit>
+      <trans-unit id="config.spamProtectEmailAddresses_atSubst.form.label" resname="config.spamProtectEmailAddresses_atSubst.form.label">
+        <source>@ Substitute for Emails</source>
+      </trans-unit>
+      <trans-unit id="container.accordion.allowMultiple.form.description" resname="container.accordion.allowMultiple.form.description">
+        <source>Allow multiple accordion items to be open simultaneously</source>
+      </trans-unit>
+      <trans-unit id="container.accordion.allowMultiple.form.label" resname="container.accordion.allowMultiple.form.label">
+        <source>Allow Multiple Open</source>
+      </trans-unit>
+      <trans-unit id="container.accordion.enabled.form.description" resname="container.accordion.enabled.form.description">
+        <source>Enable accordion container support</source>
+      </trans-unit>
+      <trans-unit id="container.accordion.enabled.form.label" resname="container.accordion.enabled.form.label">
+        <source>Enable Accordion</source>
+      </trans-unit>
+      <trans-unit id="container.accordion.firstOpen.form.description" resname="container.accordion.firstOpen.form.description">
+        <source>Open first accordion item by default</source>
+      </trans-unit>
+      <trans-unit id="container.accordion.firstOpen.form.label" resname="container.accordion.firstOpen.form.label">
+        <source>First Item Open</source>
+      </trans-unit>
+      <trans-unit id="container.grid.defaultColumns.form.description" resname="container.grid.defaultColumns.form.description">
+        <source>Default number of columns in grid containers</source>
+      </trans-unit>
+      <trans-unit id="container.grid.defaultColumns.form.label" resname="container.grid.defaultColumns.form.label">
+        <source>Default Columns</source>
+      </trans-unit>
+      <trans-unit id="container.grid.enabled.form.description" resname="container.grid.enabled.form.description">
+        <source>Enable grid container support</source>
+      </trans-unit>
+      <trans-unit id="container.grid.enabled.form.label" resname="container.grid.enabled.form.label">
+        <source>Enable Grid Container</source>
+      </trans-unit>
+      <trans-unit id="container.grid.gutterSize.form.description" resname="container.grid.gutterSize.form.description">
+        <source>Default gutter size between columns (CSS value, e.g., 20px, 1rem)</source>
+      </trans-unit>
+      <trans-unit id="container.grid.gutterSize.form.label" resname="container.grid.gutterSize.form.label">
+        <source>Gutter Size</source>
+      </trans-unit>
+      <trans-unit id="container.grid.maxColumns.form.description" resname="container.grid.maxColumns.form.description">
+        <source>Maximum number of columns allowed</source>
+      </trans-unit>
+      <trans-unit id="container.grid.maxColumns.form.label" resname="container.grid.maxColumns.form.label">
+        <source>Maximum Columns</source>
+      </trans-unit>
+      <trans-unit id="container.tabs.enabled.form.description" resname="container.tabs.enabled.form.description">
+        <source>Enable tabs container support</source>
+      </trans-unit>
+      <trans-unit id="container.tabs.enabled.form.label" resname="container.tabs.enabled.form.label">
+        <source>Enable Tabs</source>
+      </trans-unit>
+      <trans-unit id="container.tabs.position.form.description" resname="container.tabs.position.form.description">
+        <source>Default tab position (top, bottom, left, right)</source>
+      </trans-unit>
+      <trans-unit id="container.tabs.position.form.label" resname="container.tabs.position.form.label">
+        <source>Tab Position</source>
+      </trans-unit>
+      <trans-unit id="container.wrapper.maxWidth.form.description" resname="container.wrapper.maxWidth.form.description">
+        <source>Maximum width for container wrappers (CSS value)</source>
+      </trans-unit>
+      <trans-unit id="container.wrapper.maxWidth.form.label" resname="container.wrapper.maxWidth.form.label">
+        <source>Wrapper Maximum Width</source>
+      </trans-unit>
+      <trans-unit id="container.wrapper.padding.form.description" resname="container.wrapper.padding.form.description">
+        <source>Default padding for container wrappers (CSS value)</source>
+      </trans-unit>
+      <trans-unit id="container.wrapper.padding.form.label" resname="container.wrapper.padding.form.label">
+        <source>Wrapper Padding</source>
+      </trans-unit>
+      <trans-unit id="content.defaultHeaderType.form.description" resname="content.defaultHeaderType.form.description">
+        <source>Default header type for content elements (1=h1, 2=h2, etc.)</source>
+      </trans-unit>
+      <trans-unit id="content.defaultHeaderType.form.label" resname="content.defaultHeaderType.form.label">
+        <source>Default Header Type</source>
+      </trans-unit>
+      <trans-unit id="content.lightbox.cssClass.form.description" resname="content.lightbox.cssClass.form.description">
+        <source>CSS class for lightbox</source>
+      </trans-unit>
+      <trans-unit id="content.lightbox.cssClass.form.label" resname="content.lightbox.cssClass.form.label">
+        <source>Lightbox CSS Class</source>
+      </trans-unit>
+      <trans-unit id="content.lightbox.enabled.form.description" resname="content.lightbox.enabled.form.description">
+        <source>Enable lightbox for images</source>
+      </trans-unit>
+      <trans-unit id="content.lightbox.enabled.form.label" resname="content.lightbox.enabled.form.label">
+        <source>Enable Lightbox</source>
+      </trans-unit>
+      <trans-unit id="content.links.extTarget.form.description" resname="content.links.extTarget.form.description">
+        <source>Target for external links (_blank, _self, _top)</source>
+      </trans-unit>
+      <trans-unit id="content.links.extTarget.form.label" resname="content.links.extTarget.form.label">
+        <source>External Link Target</source>
+      </trans-unit>
+      <trans-unit id="content.textmedia.maxWidth.form.description" resname="content.textmedia.maxWidth.form.description">
+        <source>Maximum width for text/media elements</source>
+      </trans-unit>
+      <trans-unit id="content.textmedia.maxWidth.form.label" resname="content.textmedia.maxWidth.form.label">
+        <source>Text/Media Maximum Width</source>
+      </trans-unit>
+      <trans-unit id="content.textmedia.maxWidthInText.form.description" resname="content.textmedia.maxWidthInText.form.description">
+        <source>Maximum width for media in text</source>
+      </trans-unit>
+      <trans-unit id="content.textmedia.maxWidthInText.form.label" resname="content.textmedia.maxWidthInText.form.label">
+        <source>Media in Text Maximum Width</source>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.desktop.form.description" resname="design.breakpoints.desktop.form.description">
+        <source>Desktop breakpoint in pixels</source>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.desktop.form.label" resname="design.breakpoints.desktop.form.label">
+        <source>Desktop Breakpoint</source>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.mobile.form.description" resname="design.breakpoints.mobile.form.description">
+        <source>Mobile breakpoint in pixels</source>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.mobile.form.label" resname="design.breakpoints.mobile.form.label">
+        <source>Mobile Breakpoint</source>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.tablet.form.description" resname="design.breakpoints.tablet.form.description">
+        <source>Tablet breakpoint in pixels</source>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.tablet.form.label" resname="design.breakpoints.tablet.form.label">
+        <source>Tablet Breakpoint</source>
+      </trans-unit>
+      <trans-unit id="design.colors.primary.form.description" resname="design.colors.primary.form.description">
+        <source>Primary brand color</source>
+      </trans-unit>
+      <trans-unit id="design.colors.primary.form.label" resname="design.colors.primary.form.label">
+        <source>Primary Color</source>
+      </trans-unit>
+      <trans-unit id="design.colors.secondary.form.description" resname="design.colors.secondary.form.description">
+        <source>Secondary brand color</source>
+      </trans-unit>
+      <trans-unit id="design.colors.secondary.form.label" resname="design.colors.secondary.form.label">
+        <source>Secondary Color</source>
+      </trans-unit>
+      <trans-unit id="design.container.maxWidth.form.description" resname="design.container.maxWidth.form.description">
+        <source>Maximum container width in pixels</source>
+      </trans-unit>
+      <trans-unit id="design.container.maxWidth.form.label" resname="design.container.maxWidth.form.label">
+        <source>Container Maximum Width</source>
+      </trans-unit>
+      <trans-unit id="design.fonts.heading.form.description" resname="design.fonts.heading.form.description">
+        <source>Heading font family</source>
+      </trans-unit>
+      <trans-unit id="design.fonts.heading.form.label" resname="design.fonts.heading.form.label">
+        <source>Heading Font Family</source>
+      </trans-unit>
+      <trans-unit id="design.fonts.primary.form.description" resname="design.fonts.primary.form.description">
+        <source>Primary font family</source>
+      </trans-unit>
+      <trans-unit id="design.fonts.primary.form.label" resname="design.fonts.primary.form.label">
+        <source>Primary Font Family</source>
+      </trans-unit>
+      <trans-unit id="form.confirmationPage.enabled.form.description" resname="form.confirmationPage.enabled.form.description">
+        <source>Show confirmation page after form submission</source>
+      </trans-unit>
+      <trans-unit id="form.confirmationPage.enabled.form.label" resname="form.confirmationPage.enabled.form.label">
+        <source>Enable Confirmation Page</source>
+      </trans-unit>
+      <trans-unit id="form.email.replyToEmail.form.description" resname="form.email.replyToEmail.form.description">
+        <source>Default reply-to email address</source>
+      </trans-unit>
+      <trans-unit id="form.email.replyToEmail.form.label" resname="form.email.replyToEmail.form.label">
+        <source>Reply-To Email Address</source>
+      </trans-unit>
+      <trans-unit id="form.email.senderEmail.form.description" resname="form.email.senderEmail.form.description">
+        <source>Default sender email address</source>
+      </trans-unit>
+      <trans-unit id="form.email.senderEmail.form.label" resname="form.email.senderEmail.form.label">
+        <source>Email Sender Address</source>
+      </trans-unit>
+      <trans-unit id="form.email.senderName.form.description" resname="form.email.senderName.form.description">
+        <source>Default sender name for form emails</source>
+      </trans-unit>
+      <trans-unit id="form.email.senderName.form.label" resname="form.email.senderName.form.label">
+        <source>Email Sender Name</source>
+      </trans-unit>
+      <trans-unit id="form.honeypot.enabled.form.description" resname="form.honeypot.enabled.form.description">
+        <source>Enable honeypot spam protection</source>
+      </trans-unit>
+      <trans-unit id="form.honeypot.enabled.form.label" resname="form.honeypot.enabled.form.label">
+        <source>Enable Honeypot</source>
+      </trans-unit>
+      <trans-unit id="form.requiredFieldMarker.form.description" resname="form.requiredFieldMarker.form.description">
+        <source>Marker for required fields (e.g., *)</source>
+      </trans-unit>
+      <trans-unit id="form.requiredFieldMarker.form.label" resname="form.requiredFieldMarker.form.label">
+        <source>Required Field Marker</source>
+      </trans-unit>
+      <trans-unit id="form.storage.saveToDatabase.form.description" resname="form.storage.saveToDatabase.form.description">
+        <source>Save form submissions to database</source>
+      </trans-unit>
+      <trans-unit id="form.storage.saveToDatabase.form.label" resname="form.storage.saveToDatabase.form.label">
+        <source>Save to Database</source>
+      </trans-unit>
+      <trans-unit id="form.storage.uploadFolder.form.description" resname="form.storage.uploadFolder.form.description">
+        <source>Folder for form file uploads (e.g., 1:/forms/)</source>
+      </trans-unit>
+      <trans-unit id="form.storage.uploadFolder.form.label" resname="form.storage.uploadFolder.form.label">
+        <source>Upload Folder</source>
+      </trans-unit>
+      <trans-unit id="form.validation.clientSide.form.description" resname="form.validation.clientSide.form.description">
+        <source>Enable client-side validation</source>
+      </trans-unit>
+      <trans-unit id="form.validation.clientSide.form.label" resname="form.validation.clientSide.form.label">
+        <source>Client-Side Validation</source>
+      </trans-unit>
+      <trans-unit id="form.validation.showInlineErrors.form.description" resname="form.validation.showInlineErrors.form.description">
+        <source>Show validation errors inline with fields</source>
+      </trans-unit>
+      <trans-unit id="form.validation.showInlineErrors.form.label" resname="form.validation.showInlineErrors.form.label">
+        <source>Show Inline Errors</source>
+      </trans-unit>
+      <trans-unit id="meta.appleMobileWebAppCapable.form.description" resname="meta.appleMobileWebAppCapable.form.description">
+        <source>Apple mobile web app capable</source>
+      </trans-unit>
+      <trans-unit id="meta.appleMobileWebAppCapable.form.label" resname="meta.appleMobileWebAppCapable.form.label">
+        <source>Apple Mobile Web App Capable</source>
+      </trans-unit>
+      <trans-unit id="meta.compatible.form.description" resname="meta.compatible.form.description">
+        <source>IE compatibility mode</source>
+      </trans-unit>
+      <trans-unit id="meta.compatible.form.label" resname="meta.compatible.form.label">
+        <source>IE Compatibility Mode</source>
+      </trans-unit>
+      <trans-unit id="meta.google.form.description" resname="meta.google.form.description">
+        <source>Google meta tag content</source>
+      </trans-unit>
+      <trans-unit id="meta.google.form.label" resname="meta.google.form.label">
+        <source>Google Meta Tag</source>
+      </trans-unit>
+      <trans-unit id="meta.googleSiteVerification.form.description" resname="meta.googleSiteVerification.form.description">
+        <source>Google Site Verification code</source>
+      </trans-unit>
+      <trans-unit id="meta.googleSiteVerification.form.label" resname="meta.googleSiteVerification.form.label">
+        <source>Google Site Verification</source>
+      </trans-unit>
+      <trans-unit id="meta.robots.form.description" resname="meta.robots.form.description">
+        <source>Robots meta tag content</source>
+      </trans-unit>
+      <trans-unit id="meta.robots.form.label" resname="meta.robots.form.label">
+        <source>Robots Meta Tag</source>
+      </trans-unit>
+      <trans-unit id="meta.viewport.form.description" resname="meta.viewport.form.description">
+        <source>Viewport meta tag content</source>
+      </trans-unit>
+      <trans-unit id="meta.viewport.form.label" resname="meta.viewport.form.label">
+        <source>Viewport Meta Tag</source>
+      </trans-unit>
+      <trans-unit id="navigation.breadcrumb.includeHome.form.description" resname="navigation.breadcrumb.includeHome.form.description">
+        <source>Include homepage in breadcrumb</source>
+      </trans-unit>
+      <trans-unit id="navigation.breadcrumb.includeHome.form.label" resname="navigation.breadcrumb.includeHome.form.label">
+        <source>Include Home in Breadcrumb</source>
+      </trans-unit>
+      <trans-unit id="navigation.enableBreadcrumb.form.description" resname="navigation.enableBreadcrumb.form.description">
+        <source>Show breadcrumb navigation</source>
+      </trans-unit>
+      <trans-unit id="navigation.enableBreadcrumb.form.label" resname="navigation.enableBreadcrumb.form.label">
+        <source>Enable Breadcrumb</source>
+      </trans-unit>
+      <trans-unit id="navigation.maxDepth.form.description" resname="navigation.maxDepth.form.description">
+        <source>Maximum depth of navigation menu</source>
+      </trans-unit>
+      <trans-unit id="navigation.maxDepth.form.label" resname="navigation.maxDepth.form.label">
+        <source>Maximum Navigation Depth</source>
+      </trans-unit>
+      <trans-unit id="navigation.showHiddenPages.form.description" resname="navigation.showHiddenPages.form.description">
+        <source>Show hidden pages in navigation</source>
+      </trans-unit>
+      <trans-unit id="navigation.showHiddenPages.form.label" resname="navigation.showHiddenPages.form.label">
+        <source>Show Hidden Pages</source>
+      </trans-unit>
+      <trans-unit id="news.detail.enableComments.form.description" resname="news.detail.enableComments.form.description">
+        <source>Enable comments for news articles</source>
+      </trans-unit>
+      <trans-unit id="news.detail.enableComments.form.label" resname="news.detail.enableComments.form.label">
+        <source>Enable Comments</source>
+      </trans-unit>
+      <trans-unit id="news.detail.relatedLimit.form.description" resname="news.detail.relatedLimit.form.description">
+        <source>Maximum number of related news items to show</source>
+      </trans-unit>
+      <trans-unit id="news.detail.relatedLimit.form.label" resname="news.detail.relatedLimit.form.label">
+        <source>Related News Limit</source>
+      </trans-unit>
+      <trans-unit id="news.detail.showBackLink.form.description" resname="news.detail.showBackLink.form.description">
+        <source>Show back link to list in detail view</source>
+      </trans-unit>
+      <trans-unit id="news.detail.showBackLink.form.label" resname="news.detail.showBackLink.form.label">
+        <source>Show Back Link</source>
+      </trans-unit>
+      <trans-unit id="news.detail.showRelated.form.description" resname="news.detail.showRelated.form.description">
+        <source>Show related news in detail view</source>
+      </trans-unit>
+      <trans-unit id="news.detail.showRelated.form.label" resname="news.detail.showRelated.form.label">
+        <source>Show Related News</source>
+      </trans-unit>
+      <trans-unit id="news.list.dateFormat.form.description" resname="news.list.dateFormat.form.description">
+        <source>Date format for news items (PHP date format)</source>
+      </trans-unit>
+      <trans-unit id="news.list.dateFormat.form.label" resname="news.list.dateFormat.form.label">
+        <source>Date Format</source>
+      </trans-unit>
+      <trans-unit id="news.list.orderBy.form.description" resname="news.list.orderBy.form.description">
+        <source>Default sort field for news list</source>
+      </trans-unit>
+      <trans-unit id="news.list.orderBy.form.label" resname="news.list.orderBy.form.label">
+        <source>Order By Field</source>
+      </trans-unit>
+      <trans-unit id="news.list.orderDirection.form.description" resname="news.list.orderDirection.form.description">
+        <source>Default sort direction for news list</source>
+      </trans-unit>
+      <trans-unit id="news.list.orderDirection.form.label" resname="news.list.orderDirection.form.label">
+        <source>Order Direction</source>
+      </trans-unit>
+      <trans-unit id="news.list.paginate.itemsPerPage.form.description" resname="news.list.paginate.itemsPerPage.form.description">
+        <source>Number of news items to display per page in list view</source>
+      </trans-unit>
+      <trans-unit id="news.list.paginate.itemsPerPage.form.label" resname="news.list.paginate.itemsPerPage.form.label">
+        <source>Items per Page</source>
+      </trans-unit>
+      <trans-unit id="news.list.showCategories.form.description" resname="news.list.showCategories.form.description">
+        <source>Show categories in news list</source>
+      </trans-unit>
+      <trans-unit id="news.list.showCategories.form.label" resname="news.list.showCategories.form.label">
+        <source>Show Categories</source>
+      </trans-unit>
+      <trans-unit id="news.list.showTags.form.description" resname="news.list.showTags.form.description">
+        <source>Show tags in news list</source>
+      </trans-unit>
+      <trans-unit id="news.list.showTags.form.label" resname="news.list.showTags.form.label">
+        <source>Show Tags</source>
+      </trans-unit>
+      <trans-unit id="news.media.maxHeight.form.description" resname="news.media.maxHeight.form.description">
+        <source>Maximum height for news images</source>
+      </trans-unit>
+      <trans-unit id="news.media.maxHeight.form.label" resname="news.media.maxHeight.form.label">
+        <source>News Image Maximum Height</source>
+      </trans-unit>
+      <trans-unit id="news.media.maxWidth.form.description" resname="news.media.maxWidth.form.description">
+        <source>Maximum width for news images</source>
+      </trans-unit>
+      <trans-unit id="news.media.maxWidth.form.label" resname="news.media.maxWidth.form.label">
+        <source>News Image Maximum Width</source>
+      </trans-unit>
+      <trans-unit id="performance.compressCss.form.description" resname="performance.compressCss.form.description">
+        <source>Compress CSS files</source>
+      </trans-unit>
+      <trans-unit id="performance.compressCss.form.label" resname="performance.compressCss.form.label">
+        <source>Compress CSS</source>
+      </trans-unit>
+      <trans-unit id="performance.compressJs.form.description" resname="performance.compressJs.form.description">
+        <source>Compress JavaScript files</source>
+      </trans-unit>
+      <trans-unit id="performance.compressJs.form.label" resname="performance.compressJs.form.label">
+        <source>Compress JavaScript</source>
+      </trans-unit>
+      <trans-unit id="performance.concatenateCss.form.description" resname="performance.concatenateCss.form.description">
+        <source>Concatenate CSS files</source>
+      </trans-unit>
+      <trans-unit id="performance.concatenateCss.form.label" resname="performance.concatenateCss.form.label">
+        <source>Concatenate CSS</source>
+      </trans-unit>
+      <trans-unit id="performance.concatenateJs.form.description" resname="performance.concatenateJs.form.description">
+        <source>Concatenate JavaScript files</source>
+      </trans-unit>
+      <trans-unit id="performance.concatenateJs.form.label" resname="performance.concatenateJs.form.label">
+        <source>Concatenate JavaScript</source>
+      </trans-unit>
+      <trans-unit id="performance.enableLazyLoading.form.description" resname="performance.enableLazyLoading.form.description">
+        <source>Enable lazy loading for images</source>
+      </trans-unit>
+      <trans-unit id="performance.enableLazyLoading.form.label" resname="performance.enableLazyLoading.form.label">
+        <source>Enable Lazy Loading</source>
+      </trans-unit>
+      <trans-unit id="seo.canonical.enabled.form.description" resname="seo.canonical.enabled.form.description">
+        <source>Enable canonical URL tags</source>
+      </trans-unit>
+      <trans-unit id="seo.canonical.enabled.form.label" resname="seo.canonical.enabled.form.label">
+        <source>Enable Canonical URLs</source>
+      </trans-unit>
+      <trans-unit id="seo.meta.generateDescriptions.form.description" resname="seo.meta.generateDescriptions.form.description">
+        <source>Automatically generate meta descriptions from content</source>
+      </trans-unit>
+      <trans-unit id="seo.meta.generateDescriptions.form.label" resname="seo.meta.generateDescriptions.form.label">
+        <source>Generate Meta Descriptions</source>
+      </trans-unit>
+      <trans-unit id="seo.meta.maxDescriptionLength.form.description" resname="seo.meta.maxDescriptionLength.form.description">
+        <source>Maximum length for meta descriptions</source>
+      </trans-unit>
+      <trans-unit id="seo.meta.maxDescriptionLength.form.label" resname="seo.meta.maxDescriptionLength.form.label">
+        <source>Max Description Length</source>
+      </trans-unit>
+      <trans-unit id="seo.meta.maxTitleLength.form.description" resname="seo.meta.maxTitleLength.form.description">
+        <source>Maximum length for page titles</source>
+      </trans-unit>
+      <trans-unit id="seo.meta.maxTitleLength.form.label" resname="seo.meta.maxTitleLength.form.label">
+        <source>Max Title Length</source>
+      </trans-unit>
+      <trans-unit id="seo.meta.titleSeparator.form.description" resname="seo.meta.titleSeparator.form.description">
+        <source>Separator between page title and site name</source>
+      </trans-unit>
+      <trans-unit id="seo.meta.titleSeparator.form.label" resname="seo.meta.titleSeparator.form.label">
+        <source>Title Separator</source>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.defaultImage.form.description" resname="seo.openGraph.defaultImage.form.description">
+        <source>Default Open Graph image path (e.g., EXT:mp_core/Resources/Public/Images/og-default.jpg)</source>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.defaultImage.form.label" resname="seo.openGraph.defaultImage.form.label">
+        <source>Default OG Image</source>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.enabled.form.description" resname="seo.openGraph.enabled.form.description">
+        <source>Enable Open Graph meta tags</source>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.enabled.form.label" resname="seo.openGraph.enabled.form.label">
+        <source>Enable Open Graph</source>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.imageHeight.form.description" resname="seo.openGraph.imageHeight.form.description">
+        <source>Open Graph image height in pixels</source>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.imageHeight.form.label" resname="seo.openGraph.imageHeight.form.label">
+        <source>OG Image Height</source>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.imageWidth.form.description" resname="seo.openGraph.imageWidth.form.description">
+        <source>Open Graph image width in pixels</source>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.imageWidth.form.label" resname="seo.openGraph.imageWidth.form.label">
+        <source>OG Image Width</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.enabled.form.description" resname="seo.schema.enabled.form.description">
+        <source>Enable Schema.org structured data</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.enabled.form.label" resname="seo.schema.enabled.form.label">
+        <source>Enable Schema.org</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.organizationType.form.description" resname="seo.schema.organizationType.form.description">
+        <source>Schema.org organization type (Organization, Corporation, LocalBusiness, etc.)</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.organizationType.form.label" resname="seo.schema.organizationType.form.label">
+        <source>Organization Type</source>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.enabled.form.description" resname="seo.sitemap.enabled.form.description">
+        <source>Enable XML sitemap generation</source>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.enabled.form.label" resname="seo.sitemap.enabled.form.label">
+        <source>Enable XML Sitemap</source>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.excludeHiddenPages.form.description" resname="seo.sitemap.excludeHiddenPages.form.description">
+        <source>Exclude hidden pages from sitemap</source>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.excludeHiddenPages.form.label" resname="seo.sitemap.excludeHiddenPages.form.label">
+        <source>Exclude Hidden Pages</source>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.priority.form.description" resname="seo.sitemap.priority.form.description">
+        <source>Default priority for sitemap entries (0.0 to 1.0)</source>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.priority.form.label" resname="seo.sitemap.priority.form.label">
+        <source>Default Sitemap Priority</source>
+      </trans-unit>
+      <trans-unit id="seo.twitter.cardType.form.description" resname="seo.twitter.cardType.form.description">
+        <source>Twitter Card type (summary, summary_large_image, app, player)</source>
+      </trans-unit>
+      <trans-unit id="seo.twitter.cardType.form.label" resname="seo.twitter.cardType.form.label">
+        <source>Twitter Card Type</source>
+      </trans-unit>
+      <trans-unit id="seo.twitter.enabled.form.description" resname="seo.twitter.enabled.form.description">
+        <source>Enable Twitter Card meta tags</source>
+      </trans-unit>
+      <trans-unit id="seo.twitter.enabled.form.label" resname="seo.twitter.enabled.form.label">
+        <source>Enable Twitter Cards</source>
+      </trans-unit>
+      <trans-unit id="seo.twitter.site.form.description" resname="seo.twitter.site.form.description">
+        <source>Twitter username for the website (e.g., @username)</source>
+      </trans-unit>
+      <trans-unit id="seo.twitter.site.form.label" resname="seo.twitter.site.form.label">
+        <source>Twitter Site Username</source>
+      </trans-unit>
+      <trans-unit id="templates.layoutRootPath.form.description" resname="templates.layoutRootPath.form.description">
+        <source>Path to Fluid layouts</source>
+      </trans-unit>
+      <trans-unit id="templates.layoutRootPath.form.label" resname="templates.layoutRootPath.form.label">
+        <source>Layout Root Path</source>
+      </trans-unit>
+      <trans-unit id="templates.partialRootPath.form.description" resname="templates.partialRootPath.form.description">
+        <source>Path to Fluid partials</source>
+      </trans-unit>
+      <trans-unit id="templates.partialRootPath.form.label" resname="templates.partialRootPath.form.label">
+        <source>Partial Root Path</source>
+      </trans-unit>
+      <trans-unit id="templates.templateRootPath.form.description" resname="templates.templateRootPath.form.description">
+        <source>Path to Fluid templates</source>
+      </trans-unit>
+      <trans-unit id="templates.templateRootPath.form.label" resname="templates.templateRootPath.form.label">
+        <source>Template Root Path</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

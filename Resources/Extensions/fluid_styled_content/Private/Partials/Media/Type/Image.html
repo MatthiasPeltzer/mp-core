@@ -1,0 +1,116 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<figure class="figure">
+    <f:if condition="{file.link}">
+        <f:then>
+            <f:link.typolink parameter="{file.link}" title="{file.title}">
+                <f:if condition="{file.extension} == 'svg'">
+                    <f:then>
+                        <f:render partial="Media/Rendering/ImageSVG" arguments="{file: file, dimensions: dimensions, settings: settings, data: data, i: i.index, metaDataProperties: metaDataProperties}"/>
+                    </f:then>
+                    <f:else>
+                        <f:render arguments="{file: file, dimensions: dimensions, settings: settings, data: data, i: i.index, metaDataProperties: metaDataProperties}" partial="Media/Rendering/Image"/>
+                    </f:else>
+                </f:if>
+            </f:link.typolink>
+        </f:then>
+        <f:else>
+            <f:if condition="{file.extension} == 'svg'">
+                <f:then>
+                    <f:render partial="Media/Rendering/ImageSVG" arguments="{file: file, dimensions: dimensions, settings: settings, data: data, i: i.index, metaDataProperties: metaDataProperties}"/>
+                </f:then>
+                <f:else>
+                    <f:render arguments="{file: file, dimensions: dimensions, settings: settings, data: data, i: i.index, metaDataProperties: metaDataProperties}" partial="Media/Rendering/Image"/>
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+    <f:if condition="{file.originalFile.properties.caption}">
+        <figcaption class="figure-caption">
+            <f:if condition="{file.originalFile.properties.caption}">
+                <span class="caption">{file.originalFile.properties.caption} </span>
+            </f:if>
+        </figcaption>
+    </f:if>
+</figure>
+<f:if condition="{file.originalFile.properties.description}
+            || {file.properties.description}
+            || {file.originalFile.properties.copyright}
+            || {file.properties.allow_download}
+            || {data.image_zoom}">
+    <ul class="image-buttons d-flex list-unstyled">
+        <f:if condition="{data.image_zoom}">
+            <li class="btn-group dropstart">
+                <a class="btn btn-image btn-zoom rounded" data-bs-target="#Modal-{file.uid}" data-bs-toggle="modal" href="{f:uri.image(image: file)}" role="button" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
+                    <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_enlarge_picture')}</span>
+                </a>
+            </li>
+        </f:if>
+        <f:if condition="{file.originalFile.properties.description} || {file.properties.description}">
+            <li class="btn-group dropstart">
+                <button class="btn btn-image btn-info rounded" data-bs-target="#modal-description-{data.uid}" data-bs-toggle="modal" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_longdescription')}" type="button">
+                    <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_longdescription')}</span>
+                </button>
+            </li>
+        </f:if>
+        <f:if condition="{file.properties.allow_download}">
+            <li class="btn-group dropstart rounded">
+                <button aria-expanded="false" class="btn btn-image btn-download rounded" data-bs-auto-close="outside" data-bs-toggle="dropdown" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now.button')}" type="button">
+                    <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now.button')}</span>
+                </button>
+                <div class="dropdown-menu dropdown-download p-0 rounded">
+                    <f:link.file class="btn btn-image btn-download rounded" download="true" file="{file.originalFile}" filename="{file.originalFile.name}">
+                        <span>{file.originalFile.size -> f:format.bytes()} ({file.originalFile.extension -> f:format.case(mode: 'upper')})</span> | {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now')}
+                    </f:link.file>
+                </div>
+            </li>
+        </f:if>
+        <f:if condition="{file.originalFile.properties.copyright}">
+            <li class="btn-group dropstart">
+                <button aria-expanded="false" class="btn btn-image btn-copyright rounded" data-bs-auto-close="outside" data-bs-toggle="dropdown" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}" type="button">
+                    <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}</span>
+                </button>
+                <div class="dropdown-menu dropdown-copyright p-0 rounded">
+                    <p>© {file.originalFile.properties.copyright}</p>
+                </div>
+            </li>
+        </f:if>
+    </ul>
+    <f:if condition="{data.image_zoom}">
+        <f:render arguments="{_all}" partial="Media/Rendering/ImagePopup"/>
+    </f:if>
+    <f:if condition="{file.originalFile.properties.description} || {file.properties.description}">
+        <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="modal-description-{data.uid}" tabindex="-1">
+            <div class="modal-dialog modal-md modal-dialog-scrollable modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container">
+                            <div class="row g-0">
+                                <div class="col-10 title">
+                                    <h2>{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_description')}</h2>
+                                </div>
+                                <div class="col-2 close text-end">
+                                    <button class="btn-close" data-bs-dismiss="modal" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}" type="button">
+                                        <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <f:if condition="{file.properties.description}">
+                            <f:then>
+                                <f:format.html>{file.properties.description}</f:format.html>
+                            </f:then>
+                            <f:else>
+                                <f:if condition="{file.originalFile.properties.description}">
+                                    <f:format.html>{file.originalFile.properties.description}</f:format.html>
+                                </f:if>
+                            </f:else>
+                        </f:if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:if>
+</f:if>
+</html>

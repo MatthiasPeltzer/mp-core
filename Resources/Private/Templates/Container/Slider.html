@@ -1,0 +1,51 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:if condition="{children_101}">
+
+        <f:if condition="{data.grid_container} == 0">
+            <f:then>
+                <div class="container">
+                    <f:render arguments="{_all}" section="Slider"/>
+                </div>
+            </f:then>
+            <f:else>
+                <f:render arguments="{_all}" section="Slider"/>
+            </f:else>
+        </f:if>
+
+        <f:asset.script type="module" defer="defer" identifier="swiperJS" src="EXT:mp_core/Resources/Public/JavaScripts/swiper.js"/>
+        <f:asset.css href="EXT:mp_core/Resources/Public/StyleSheets/swiper.css" identifier="swiperCSS"/>
+    </f:if>
+</f:section>
+
+<f:section name="Slider">
+    <div class="swiper swiper-raw swiper-{data.slider_type}-col-{data.grid_columns}">
+        <ul class="slider swiper-wrapper list-unstyled">
+            <f:if condition="{children_101}">
+                <f:for as="child" each="{children_101}">
+                    <li class="swiper-slide swiper-slide">
+                        <f:format.raw>{child.renderedContent}</f:format.raw>
+                    </li>
+                </f:for>
+            </f:if>
+        </ul>
+
+        <f:if condition="{data.slider_autoplay} == '1'">
+            <div class="autoplay">
+                <button class="swiper-start"><span>Start</span></button>
+                <button class="swiper-stop active"><span>Pause</span></button>
+            </div>
+        </f:if>
+
+        <div class="swiper-navigation">
+            <button class="swiper-button swiper-button-prev"></button>
+            <div class="swiper-pagination"></div>
+            <button class="swiper-button swiper-button-next"></button>
+        </div>
+    </div>
+</f:section>
+
+</html>

@@ -1,0 +1,15 @@
+// sticky
+
+body {
+  &.navtype-1 {
+    padding-top: 78px;
+  }
+
+  &.navtype-2 {
+    padding-top: 139px;
+  }
+
+  &.navtype-3 {
+    padding-top: 122px;
+  }
+}

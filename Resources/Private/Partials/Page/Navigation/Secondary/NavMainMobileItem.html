@@ -1,0 +1,76 @@
+<html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:if condition="{menuMainMobile}">
+    <div class="main-nav-wrapper" id="main-menu-list">
+        <div class="container-md">
+            <div class="meta-mobile" id="meta-mobile"></div>
+            <ul class="main-menu list-unstyled row">
+                <f:for as="mainItem" each="{menuMainMobile}">
+                    <li class="col{f:if(condition:'{mainItem.data.doktype} == 4', then:' shortcut')}">
+                        <f:if condition="{mainItem.children}">
+                            <f:then>
+                                <f:if condition="{mainItem.children}">
+                                    <button aria-controls="menu-{mainItem.data.uid}" aria-expanded="false" class="first-child first-child-btn collapsed dropdown-item{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" data-bs-target="#menu-{mainItem.data.uid}" data-bs-toggle="collapse" type="button" title="{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}">{mainItem.title}</button>
+                                    <ul class="list-unstyled collapse" id="menu-{mainItem.data.uid}">
+                                        <f:for as="mainChild" each="{mainItem.children}">
+                                            <f:render arguments="{mainChild: mainChild}" section="submenu"/>
+                                        </f:for>
+                                    </ul>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <f:if condition="{mainItem.current}">
+                                    <f:then>
+                                        <f:link.page aria="{current: 'page'}" class="first-child dropdown-item{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
+                                            {mainItem.title}
+                                        </f:link.page>
+                                    </f:then>
+                                    <f:else>
+                                        <f:link.page class="first-child dropdown-item{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
+                                            {mainItem.title}
+                                        </f:link.page>
+                                    </f:else>
+                                </f:if>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </div>
+</f:if>
+
+<f:section name="submenu">
+    <f:if condition="{mainChild.children}">
+        <f:then>
+            <li
+                {f:if(condition:
+            '{mainChild.data.doktype} == 4', then:' class="shortcut"')}>
+            <button aria-controls="menu-{mainChild.data.uid}" aria-expanded="false" class="sub collapsed dropdown-item dropdown-item-btn{f:if(condition:mainChild.active, then:' act')}{f:if(condition:mainChild.current, then:' current')}{f:if(condition:mainChild.hasSubpages, then:' hassub')}" data-bs-target="#menu-{mainChild.data.uid}" data-bs-toggle="collapse" type="button" title="{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}">{mainChild.title}</button>
+            <ul class="list-unstyled collapse" id="menu-{mainChild.data.uid}">
+                <f:for as="mainChild" each="{mainChild.children}">
+                    <f:render arguments="{mainChild: mainChild}" section="submenu"/>
+                </f:for>
+            </ul>
+            </li>
+        </f:then>
+        <f:else>
+            <li
+                {f:if(condition:
+            '{mainChild.data.doktype} == 4', then:' class="shortcut"')}>
+            <f:if condition="{mainChild.current}">
+                <f:then>
+                    <f:link.page aria="{current: 'page'}" class="sub dropdown-item{f:if(condition:mainChild.active, then:' act')}{f:if(condition:mainChild.current, then:' current')}{f:if(condition:mainChild.hasSubpages, then:' hassub')}" pageUid="{mainChild.data.uid}">
+                        {mainChild.title}
+                    </f:link.page>
+                </f:then>
+                <f:else>
+                    <f:link.page class="sub dropdown-item{f:if(condition:mainChild.active, then:' act')}{f:if(condition:mainChild.current, then:' current')}{f:if(condition:mainChild.hasSubpages, then:' hassub')}" pageUid="{mainChild.data.uid}">
+                        {mainChild.title}
+                    </f:link.page>
+                </f:else>
+            </f:if>
+            </li>
+        </f:else>
+    </f:if>
+</f:section>
+</html>

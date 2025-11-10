@@ -1,0 +1,22 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
+<f:layout name="General"/>
+
+
+<f:section name="content">
+    <f:if condition="{news}">
+        <f:then>
+            <f:for as="newsItem" each="{news}" iteration="iterator">
+                <f:render arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" partial="List/ItemSelected"/>
+            </f:for>
+        </f:then>
+        <f:else>
+            <div class="alert ">
+                <f:translate key="list_nonewsfound"/>
+            </div>
+        </f:else>
+    </f:if>
+</f:section>
+</html>
+

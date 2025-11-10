@@ -1,0 +1,38 @@
+tt_content {
+  stage = FLUIDTEMPLATE
+  stage {
+    partialRootPaths {
+      200 = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/
+    }
+
+    templateRootPaths {
+      200 = EXT:mp_core/Resources/Private/Templates/Content/
+    }
+
+    templateName = Stage
+
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      10 {
+        if.isTrue.field = image
+        references {
+          fieldName = image
+          table = tt_content
+        }
+
+        as = files
+      }
+
+      20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      20 {
+        if.isTrue.field = tx_stage_video
+        references {
+          fieldName = tx_stage_video
+          table = tt_content
+        }
+
+        as = video
+      }
+    }
+  }
+}

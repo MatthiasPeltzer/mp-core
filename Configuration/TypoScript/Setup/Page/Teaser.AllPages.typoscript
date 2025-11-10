@@ -1,0 +1,19 @@
+lib.teaser = CONTENT
+lib.teaser {
+  table = tt_content
+  select {
+    pidInList = {$PIDs.pidSupplement}
+    orderBy = sorting
+    where = colPos=1
+  }
+}
+
+lib.headerExtraContent = CONTENT
+lib.headerExtraContent {
+  table = tt_content
+  select {
+    pidInList = {$PIDs.pidLogosBannerTop}
+    orderBy = sorting
+    where = colPos=1
+  }
+}

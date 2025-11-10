@@ -1,0 +1,5 @@
+.DS_Store
+/Build/node_modules/
+/auth.json
+/sync-sitesets-to-vendor.ps1
+/sync-sitesets-to-vendor.sh

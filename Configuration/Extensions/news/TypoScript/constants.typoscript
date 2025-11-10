@@ -1,0 +1,29 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:news/Configuration/TypoScript/constants.typoscript">
+
+plugin.tx_news {
+  rss.channel {
+    title = mpeltzer.de News
+    description =
+    link = https://yourhost.ddev.docker/news
+    language = de
+    copyright = mpeltzer.de
+    category =
+    generator = mpeltzer.de News
+    typeNum = 9818
+  }
+
+  view.twb {
+    # cat=plugin.tx_news/file; type=string; label=Path to template root (FE)
+    templateRootPath = EXT:mp_core/Resources/Extensions/news/Templates/
+    # cat=plugin.tx_news/file; type=string; label=Path to template partials (FE)
+    partialRootPath = EXT:mp_core/Resources/Extensions/news/Partials/
+    # cat=plugin.tx_news/file; type=string; label=Path to template layouts (FE)
+    layoutRootPath = EXT:mp_core/Resources/Extensions/news/Layouts/
+  }
+
+  settings {
+    # cat=plugin.tx_news/file; type=string; label=Path to CSS file
+    cssFile >
+  }
+}
+

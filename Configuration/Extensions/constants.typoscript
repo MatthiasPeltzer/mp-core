@@ -1,0 +1,2 @@
+@import 'EXT:mp_core/Configuration/Extensions/fluid_styled_content/TypoScript/constants.typoscript'
+@import 'EXT:mp_core/Configuration/Extensions/indexed_search/Configuration/TypoScript/constants.typoscript'

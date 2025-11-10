@@ -1,0 +1,31 @@
+styles {
+  content {
+    defaultHeaderType = 2
+
+    imgtext {
+      maxW = 1920
+      maxWInText = 1920
+      linkWrap.width = 1920c
+      linkWrap.height = 1200c
+      linkWrap.newWindow = 0
+      linkWrap.lightboxEnabled = 0
+      linkWrap.lightboxCssClass =
+      linkWrap.lightboxRelAttribute =
+    }
+
+    textmedia {
+      maxW = 1920
+      maxWInText = 1920
+      linkWrap.width = 1920c
+      linkWrap.height = 1200c
+      linkWrap.newWindow = 0
+      linkWrap.lightboxEnabled = 0
+      linkWrap.lightboxCssClass =
+      linkWrap.lightboxRelAttribute =
+    }
+
+    links {
+      extTarget = _blank
+    }
+  }
+}

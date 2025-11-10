@@ -1,0 +1,90 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:render arguments="{_all}" partial="Header"/>
+
+    <main aria-labelledby="headerMain" class="main-wrapper" id="mainContent">
+        <!--TYPO3SEARCH_begin-->
+        <f:if condition="!{data.headercontainer}">
+            <f:render arguments="{_all}" partial="Header.Title"/>
+        </f:if>
+
+        <f:if condition="{data.headercontainer}">
+            <f:if condition="{data.lastUpdated} || {categories} || {mainCategory}">
+                <div class="date-wrapper">
+                    <f:if condition="{data.lastUpdated} || {mainCategory}">
+                        <f:spaceless>
+                            <p class="date">
+                                <f:if condition="{data.lastUpdated}">
+                                    <time datetime="{f:format.date(date:data.lastUpdated, format:'Y-m-d')}">
+                                        <f:format.date format="%e. %B %G">{data.lastUpdated}</f:format.date>
+                                    </time>
+                                </f:if>
+                                <f:if condition="{mainCategory}">
+                                    <span class="main-category">{f:if(condition: data.lastUpdated, then: '• ')}{mainCategory.0.data.title}</span>
+                                </f:if>
+                            </p>
+                        </f:spaceless>
+                    </f:if>
+                    <f:if condition="{categories}">
+                        <ul class="categories list-inline mb-0">
+                            <f:for each="{categories}" as="category">
+                                <li class="list-inline-item"><span class="kicker">{category.data.title}</span></li>
+                            </f:for>
+                        </ul>
+                    </f:if>
+                </div>
+            </f:if>
+        </f:if>
+
+        <f:if condition="{top}">
+            <div class="top-container">
+                <f:format.raw>{top}</f:format.raw>
+            </div>
+        </f:if>
+        <!--TYPO3SEARCH_end-->
+
+        <div class="main-container container pb-5 gradient-bottom">
+            <f:render arguments="{_all}" partial="Header.Background"/>
+
+            <div class="row">
+
+                <div class="col-12{f:if(condition: site.configuration.subnav, then: ' col-lg-8 col-xl-9')}{f:if(condition: '!{site.configuration.subnavOrder}', then: ' order-1')}">
+                    <div class="article">
+                        <!--TYPO3SEARCH_begin-->
+                        <f:format.raw>{main}</f:format.raw>
+                        <f:format.raw>{bottom}</f:format.raw>
+                        <!--TYPO3SEARCH_end-->
+                    </div>
+                    <f:if condition="{data.socialmedia} != 1">
+                        <f:render arguments="{_all}" partial="Footer.Share"/>
+                    </f:if>
+                </div>
+
+                <f:if condition="{site.configuration.subnav}">
+                    <section aria-label="{f:translate(key: 'supplement.aside', extensionName: 'mp_core')}" class="col-12 col-lg-4 col-xl-3 supplement{f:if(condition: data.headercontainer, then: ' frame-space-before-medium')}{f:if(condition: '!{site.configuration.subnavOrder}', then: ' order-0')}">
+                        <f:render arguments="{menuSub: menuSub}" partial="Navigation/SubNav"/>
+
+                        <f:if condition="{supplement} || {teaser}">
+                            <div class="supplement-wrapper">
+                                <f:format.raw>{supplement}</f:format.raw>
+                                <f:format.raw>{teaser}</f:format.raw>
+                            </div>
+                        </f:if>
+                    </section>
+                </f:if>
+
+            </div>
+        </div>
+    </main>
+
+    <f:render arguments="{_all}" partial="Footer"/>
+
+    <f:render arguments="{_all}" partial="ToTop"/>
+</f:section>
+
+</html>

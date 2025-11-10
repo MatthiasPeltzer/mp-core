@@ -1,0 +1,77 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{gallery.rows}">
+    <f:if condition="{gallery.position.horizontal} == center">
+        <div class="ce-gallery" data-images="{gallery.count.files}">
+    </f:if>
+
+    <f:if condition="{gallery.position.horizontal} == right && {gallery.position.vertical} == intext && {gallery.position.noWrap} != TRUE">
+        <div class="ce-gallery float-end ms-md-5" data-images="{gallery.count.files}">
+    </f:if>
+
+    <f:if condition="{gallery.position.horizontal} == left && {gallery.position.vertical} == intext && {gallery.position.noWrap} != TRUE">
+        <div class="ce-gallery float-start me-md-5" data-images="{gallery.count.files}">
+    </f:if>
+
+    <f:if condition="{gallery.position.horizontal} == right && {gallery.position.vertical} == intext && {gallery.position.noWrap} == TRUE">
+        <div class="ce-gallery ms-md-5 order-1 flex-shrink-0" data-images="{gallery.count.files}">
+    </f:if>
+
+    <f:if condition="{gallery.position.horizontal} == left && {gallery.position.vertical} == intext && {gallery.position.noWrap} == TRUE">
+        <div class="ce-gallery me-md-5 flex-shrink-0" data-images="{gallery.count.files}">
+    </f:if>
+
+    <f:if condition="{gallery.count.files} == 1">
+        <f:then>
+            <f:render section="GalleryDiv" arguments="{_all}"/>
+        </f:then>
+        <f:else>
+            <f:render section="GalleryList" arguments="{_all}"/>
+        </f:else>
+    </f:if>
+
+    <f:if condition="{gallery.position.horizontal} == center">
+        </div>
+    </f:if>
+
+    <f:if condition="{gallery.position.horizontal} == right && {gallery.position.vertical} == intext && {gallery.position.noWrap} != TRUE">
+        </div>
+    </f:if>
+
+    <f:if condition="{gallery.position.horizontal} == left && {gallery.position.vertical} == intext && {gallery.position.noWrap} != TRUE">
+        </div>
+    </f:if>
+
+    <f:if condition="{gallery.position.horizontal} == right && {gallery.position.vertical} == intext && {gallery.position.noWrap} == TRUE">
+        </div>
+    </f:if>
+
+    <f:if condition="{gallery.position.horizontal} == left && {gallery.position.vertical} == intext && {gallery.position.noWrap} == TRUE">
+        </div>
+    </f:if>
+</f:if>
+
+<f:section name="GalleryDiv">
+    <f:for each="{gallery.rows}" as="row" iteration="i">
+        <f:for each="{row.columns}" as="column" iteration="iterator">
+            <f:if condition="{column.media}">
+                <f:render partial="Media/Type" arguments="{file: column.media, dimensions: column.dimensions, data: data, i: i.index, settings: settings}"/>
+            </f:if>
+        </f:for>
+    </f:for>
+</f:section>
+
+<f:section name="GalleryList">
+    <ul class="ce-row list-unstyled{f:if(condition: '{data.imageorient} == 0', then: ' justify-content-center')}{f:if(condition: '{data.imageorient} == 1', then: ' justify-content-end')}{f:if(condition: '{data.imageorient} == 2', then: ' justify-content-start')}{f:if(condition: '{data.CType} == image || {data.imageorient} == 0 || {data.imageorient} == 8 || {data.imagecols} == 2 || {data.imagecols} == 3 || {data.imagecols} == 5', then: ' row flex-row', else: ' row flex-column')}">
+        <f:for each="{gallery.rows}" as="row" iteration="i">
+            <f:for each="{row.columns}" as="column" iteration="iterator">
+                <f:if condition="{column.media}">
+                    <li data-count="{i.index}" class="image-wrapper {f:if(condition: '{data.imagecols} == 1', then: 'col')}{f:if(condition: '{data.imagecols} == 2', then: 'col col-md-6')}{f:if(condition: '{data.imagecols} == 3', then: 'col col-md-4')}{f:if(condition: '{data.imagecols} == 4', then: 'col col-md-4 col-xl-3')}{f:if(condition: '{data.imagecols} == 5', then: 'col')}">
+                        <f:render partial="Media/Type" arguments="{file: column.media, dimensions: column.dimensions, data: data, i: i.cycle, settings: settings}"/>
+                    </li>
+                </f:if>
+            </f:for>
+        </f:for>
+    </ul>
+</f:section>
+
+</html>

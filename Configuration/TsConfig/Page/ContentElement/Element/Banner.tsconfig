@@ -1,0 +1,75 @@
+mod.wizards.newContentElement.wizardItems.common {
+  elements {
+    banner {
+      iconIdentifier = tx_banner
+      title = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:banner.title
+      description = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:banner.description
+      tt_content_defValues {
+        CType = banner
+      }
+    }
+  }
+
+  show := addToList(banner)
+}
+
+TCEFORM {
+  tt_content {
+    tx_link_layout {
+      types {
+        banner {
+          disabled = 1
+        }
+      }
+    }
+
+    tx_link_position {
+      types {
+        banner {
+          disabled = 1
+        }
+      }
+    }
+
+    tx_header_style {
+      types {
+        banner {
+          disabled = 0
+        }
+      }
+    }
+
+    frame_class {
+      types {
+        banner {
+          disabled = 1
+        }
+      }
+    }
+
+    tx_header_inside {
+      types {
+        banner {
+          disabled = 1
+        }
+      }
+    }
+
+    header_position {
+      types {
+        banner {
+          disabled = 0
+        }
+      }
+    }
+
+    imageorient {
+      types {
+        banner {
+          #remove 25 and 26 to get the left right option
+          removeItems = 1,2,8,9,10,17,18
+        }
+      }
+    }
+  }
+}

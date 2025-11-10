@@ -1,0 +1,60 @@
+lib {
+  containerContentElement =< lib.contentElement
+  containerContentElement {
+    layoutRootPaths {
+      0 = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Layouts/
+      10 = {$plugin.containerContentElement.view.layoutRootPath}
+    }
+
+    partialRootPaths {
+      0 = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/
+      10 = {$plugin.containerContentElement.view.partialRootPath}
+    }
+
+    templateRootPaths {
+      0 = EXT:mp_core/Resources/Private/Templates/Container/
+      10 = {$plugin.containerContentElement.view.templateRootPath}
+    }
+
+    dataProcessing {
+      1597060000 = B13\Container\DataProcessing\ContainerProcessor
+      100 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      100 {
+        if.isTrue.field = grid_icon
+        references {
+          fieldName = grid_icon
+          table = tt_content
+        }
+        as = files
+      }
+      200 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      200 {
+        if.isTrue.field = grid_bgimage
+        references {
+          fieldName = grid_bgimage
+          table = tt_content
+        }
+
+        as = data_bgimage
+      }
+    }
+  }
+
+ mpcContainer {
+    renderContent = TEXT
+    renderContent.field = renderedContent
+  }
+}
+
+tt_content {
+  ce_container =< lib.containerContentElement
+  ce_container.templateName = Container
+  ce_grid =< lib.containerContentElement
+  ce_grid.templateName = Grid
+  ce_accordion =< lib.containerContentElement
+  ce_accordion.templateName = Accordion
+  ce_tabs =< lib.containerContentElement
+  ce_tabs.templateName = Tabs
+  ce_slider =< lib.containerContentElement
+  ce_slider.templateName = Slider
+}

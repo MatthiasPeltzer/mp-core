@@ -1,0 +1,25 @@
+<html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<div class="row align-items-center flex-nowrap">
+    <f:render arguments="{_all}" partial="Header.Logo"/>
+    <f:render arguments="{_all}" partial="Navigation/Secondary/NavMeta"/>
+    <f:render arguments="{_all}" partial="Navigation/Secondary/NavMainMobile"/>
+</div>
+
+<div class="row align-items-center d-none d-lg-block">
+    <nav aria-label="{f:translate(key: 'header.mainnavigation', extensionName: 'mp_core')}" class="mainnav-desktop justify-content-end d-none d-lg-flex">
+        <ul class="list-unstyled d-flex mb-0 justify-content-end" id="nav-desktop">
+            <f:for as="mainItem" each="{menuMainDesktop}">
+                <f:render arguments="{mainItem: mainItem}" partial="Navigation/Secondary/NavMain"/>
+            </f:for>
+
+            <f:if condition="{site.configuration.search}">
+                <li class="mainnav-desktop-item searchbox">
+                    <f:render arguments="{_all}" partial="Navigation/Search"/>
+                </li>
+            </f:if>
+        </ul>
+    </nav>
+</div>
+
+</html>

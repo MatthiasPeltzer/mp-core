@@ -1,0 +1,5 @@
+config {
+  pids {
+    # Here you can put ids if you need some specific pages
+  }
+}

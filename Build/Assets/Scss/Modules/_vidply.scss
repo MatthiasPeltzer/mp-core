@@ -1,0 +1,217 @@
+:root {
+  --vidply-primary-light: #F98D00;
+}
+
+.vidply-play-overlay-icon {
+  fill: #900;
+}
+
+.vidply-play-overlay {
+  border: 3px solid #900;
+  border-radius: 50%;
+}
+
+.vidply-player {
+  font-family: OpenSans, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  letter-spacing: normal;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: OpenSans, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    letter-spacing: normal;
+  }
+}
+
+.frame-type-video,
+.frame-type-audio {
+  position: relative;
+  z-index: 3;
+
+  .audio-soundcloud,
+  .video-youtube,
+  .video-vimeo {
+    aspect-ratio: 16/9;
+  }
+
+  .audio-soundcloud,
+  .video {
+    position: relative;
+
+    iframe {
+      aspect-ratio: 16/9;
+      height: auto;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  a.external-link .icon::before {
+    background-color: var(--bs-body-color);
+  }
+}
+
+.dsgvo {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+
+  .audio-start,
+  .video-start {
+    background-color: var(--bs-white);
+    border: 2px solid var(--bs-primary);
+    border-radius: 50%;
+    height: 80px;
+    margin-bottom: 16px;
+    opacity: .7;
+    padding: 0;
+    position: relative;
+    width: 80px;
+
+    &::after {
+      background-color: var(--bs-primary);
+      content: "";
+      display: block;
+      height: 78px;
+      mask-image: url("@assets/Images/Icons/icon-video.svg");
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 48px;
+      width: 80px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      opacity: 1;
+    }
+
+    @media (forced-colors: active) {
+      background-image: url("@assets/Images/Icons/icon-video.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 48px;
+    }
+
+    @include media-breakpoint-down(sm) {
+      height: 60px;
+      margin: auto auto 10px;
+      width: 60px;
+
+      &::after {
+        height: 60px;
+        margin: -2px 0 0 -1px;
+        mask-position: center;
+        mask-size: 32px;
+        width: 60px;
+      }
+    }
+  }
+
+  &-text {
+    align-items: center;
+    color: var(--bs-quaternary);
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    justify-content: center;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      padding: 20px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: 40px;
+    }
+
+    h3 {
+      color: var(--bs-black) !important;
+      font-size: $fs-md !important;
+      margin: 0 !important;
+      max-width: 100%;
+      padding: 0 !important;
+
+      @include media-breakpoint-up(lg) {
+        font-size: $fs-lg !important;
+      }
+
+      &::after {
+        display: none !important;
+      }
+    }
+
+    p {
+      background-color: rgb(255 255 255 / 80%);
+      border: 2px solid var(--bs-secondary);
+      border-radius: 4px;
+      color: var(--bs-black) !important;
+      font-size: $fs-xxs !important;
+      font-weight: 400;
+      hyphens: auto;
+      line-height: 1.6;
+      margin-bottom: 0;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      overflow-y: auto;
+      padding: 8px;
+      word-break: break-word;
+
+      @include media-breakpoint-up(sm) {
+        font-size: $fs-xs-plus !important;
+        font-weight: 400;
+      }
+
+      @include media-breakpoint-up(md) {
+        font-size: $fs-xs-plus !important;
+        max-width: 90%;
+      }
+
+      @include media-breakpoint-up(lg) {
+        font-size: $fs-sm !important;
+        max-width: 80%;
+      }
+
+      a {
+        color: var(--bs-secondary) !important;
+        display: inline;
+        font-size: $fs-xxs !important;
+        font-weight: 400;
+        outline-color: var(--bs-secondary) !important;
+
+        .icon::before {
+          background-color: var(--bs-black) !important;
+        }
+
+        @include media-breakpoint-up(sm) {
+          font-size: $fs-xs-plus !important;
+        }
+
+        @include media-breakpoint-up(lg) {
+          font-size: $fs-sm !important;
+        }
+
+        &.external-link {
+          text-decoration: underline;
+
+          &::before {
+            left: 2px;
+            top: 1px;
+            width: 14px;
+          }
+        }
+      }
+    }
+  }
+}

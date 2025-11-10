@@ -1,0 +1,6 @@
+@import 'EXT:mp_core/Configuration/TsConfig/Page/ContentElement/All.tsconfig'
+@import 'EXT:mp_core/Configuration/TsConfig/Page/Mod/WebLayout/BackendLayouts.tsconfig'
+@import 'EXT:mp_core/Configuration/TsConfig/Page/RTE.tsconfig'
+@import 'EXT:mp_core/Configuration/TsConfig/Page/TCADefaults.tsconfig'
+@import 'EXT:mp_core/Configuration/TsConfig/Page/TCEMAIN.tsconfig'
+@import 'EXT:mp_core/Configuration/TsConfig/Page/TCEFORM.tsconfig'

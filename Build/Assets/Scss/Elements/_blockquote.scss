@@ -1,0 +1,73 @@
+// Variablen
+$blockquote-bg-dark: var(--bs-gray-900);
+$blockquote-bg-light: var(--bs-gray-100);
+$blockquote-border-color: var(--bs-primary);
+$blockquote-icon-size: 50px;
+$blockquote-icon-path: "../Images/Icons/icon-quotation.svg";
+$blockquote-icon-dot-path: "../Images/Icons/icon-dot.svg";
+
+// Mixin für das Icon
+@mixin blockquote-icon($color) {
+  &::before {
+    background-color: $color;
+    content: "";
+    display: inline-block;
+    height: $blockquote-icon-size;
+    left: 16px;
+    mask: url($blockquote-icon-path) no-repeat left top;
+    mask-size: $blockquote-icon-size;
+    position: absolute;
+    top: 16px;
+    width: $blockquote-icon-size;
+  }
+}
+
+// Blockquote-Stile
+blockquote {
+  background-color: $blockquote-bg-dark;
+  border-bottom: 1px solid $blockquote-border-color;
+  border-left: 0;
+  border-top: 1px solid $blockquote-border-color;
+  display: flex;
+  flex-flow: wrap column;
+  margin: 32px 0;
+  padding: 48px 32px 32px 80px;
+  position: relative;
+
+  @include blockquote-icon($blockquote-border-color);
+
+  html[data-bs-theme="light"] & {
+    background-color: $blockquote-bg-light;
+  }
+
+  &.quote-dot {
+    &::before {
+      bottom: 0;
+      height: 150px;
+      left: 0;
+      margin: auto;
+      mask: url($blockquote-icon-dot-path) no-repeat center center;
+      mask-size: 150px;
+      opacity: .3;
+      right: 0;
+      top: -8px;
+      width: 150px;
+      z-index: 0;
+    }
+  }
+
+  p {
+    display: block;
+
+    @include font-size($fs-xl);
+    font-style: italic;
+    font-weight: 400;
+    z-index: 1;
+
+    &.small {
+      @include font-size($fs-md);
+      letter-spacing: normal;
+      text-transform: uppercase;
+    }
+  }
+}

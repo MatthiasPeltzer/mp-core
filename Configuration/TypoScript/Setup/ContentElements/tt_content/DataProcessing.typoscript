@@ -1,0 +1,178 @@
+page {
+  10 {
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
+      10 {
+        as = site
+      }
+
+      20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      20 {
+        references.data = levelmedia: -1, slide
+        as = media
+      }
+
+      25 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      25 {
+        references.fieldName = link_icon
+        as = filesbg
+      }
+
+      30 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      30 {
+        entryLevel = {$PIDs.pidHome}
+        expandAll = 0
+        levels = 6
+        as = menuSub
+      }
+
+      40 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      40 {
+        special = directory
+        special.value = {$PIDs.pidMetaNavFooter}
+        levels = 1
+        as = metaNavFooter
+        dataProcessing {
+          10 = files
+          10 {
+            references.fieldName = link_icon
+          }
+        }
+      }
+
+      50 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      50 {
+        special = directory
+        special.value = {$PIDs.pidMetaNavTop}
+        levels = 1
+        as = metaNavTop
+        dataProcessing {
+          10 = files
+          10 {
+            references.fieldName = link_icon
+          }
+        }
+      }
+
+      60 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      60 {
+        special = directory
+        special.value = {$PIDs.pidMainNavMeta}
+        levels = 1
+        as = mainNavMeta
+        dataProcessing {
+          10 = files
+          10 {
+            references.fieldName = link_icon
+          }
+        }
+      }
+
+      70 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      70 {
+        as = breadcrumb
+        special = rootline
+      }
+
+      75 = GeorgRinger\News\DataProcessing\AddNewsToMenuProcessor
+      75 {
+        menus = breadcrumb
+      }
+
+      80 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+      80 {
+        languages = auto
+        as = languagenavigation
+        addQueryString = 1
+      }
+
+      90 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      90 {
+        table = sys_category
+        selectFields = uid, title
+        pidInList = {$PIDs.pidCategories}
+        join = sys_category_record_mm ON sys_category.uid = sys_category_record_mm.uid_local
+        where.dataWrap = sys_category_record_mm.tablenames = 'pages' AND sys_category_record_mm.fieldname = 'categories' AND sys_category_record_mm.uid_foreign = {FIELD:uid}
+        as = categories
+      }
+
+      100 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+      100 {
+        table = sys_category
+        selectFields = uid, title
+        pidInList = {$PIDs.pidCategories}
+        where.dataWrap = uid = {field:mainCategory}
+        as = mainCategory
+      }
+    }
+  }
+}
+
+[traverse(site("configuration"),"navType") == "1"]
+  page {
+    10 {
+      dataProcessing {
+        110 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+        110 {
+          special = directory
+          special.value = {$PIDs.pidHome}
+          levels = 4
+          includeSpacer = 1
+          as = mainNav
+        }
+      }
+    }
+  }
+[global]
+
+[traverse(site("configuration"),"navType") == "2"]
+  page {
+    10 {
+      dataProcessing {
+        110 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+        110 {
+          special = directory
+          special.value = {$PIDs.pidHome}
+          levels = 4
+          includeSpacer = 1
+          as = menuMainDesktop
+        }
+
+        120 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+        120 {
+          special = directory
+          special.value = {$PIDs.pidHome}
+          levels = 4
+          includeSpacer = 1
+          as = menuMainMobile
+        }
+      }
+    }
+  }
+[global]
+
+[traverse(site("configuration"),"navType") == "3"]
+  page {
+    10 {
+      dataProcessing {
+        110 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+        110 {
+          special = directory
+          special.value = {$PIDs.pidHome}
+          levels = 4
+          includeSpacer = 1
+          as = menuMainDesktop
+        }
+
+        120 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+        120 {
+          special = directory
+          special.value = {$PIDs.pidHome}
+          levels = 4
+          includeSpacer = 1
+          as = menuMainMobile
+        }
+      }
+    }
+  }
+[global]

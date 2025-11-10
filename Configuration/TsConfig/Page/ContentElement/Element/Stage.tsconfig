@@ -1,0 +1,34 @@
+mod.wizards.newContentElement.wizardItems.common {
+  elements {
+    stage {
+      iconIdentifier = tx_stage
+      title = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:stage.tx_stage_title
+      description = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:stage.tx_stage_description
+      tt_content_defValues {
+        CType = stage
+      }
+    }
+  }
+
+  show := addToList(stage)
+}
+
+TCEFORM {
+  tt_content {
+    tx_header_style {
+      types {
+        stage {
+          disabled = 1
+        }
+      }
+    }
+
+    tx_link_position {
+      types {
+        stage {
+          disabled = 0
+        }
+      }
+    }
+  }
+}

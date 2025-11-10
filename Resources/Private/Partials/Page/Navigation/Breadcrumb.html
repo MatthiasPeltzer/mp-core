@@ -1,0 +1,32 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<div class="breadcrumb-wrapper">
+    <nav aria-label="{f:translate(key: 'breadcrumb.headline', extensionName:'mp_core')}" class="container">
+        <ol class="breadcrumb">
+            <f:for as="item" each="{breadcrumb}" iteration="iterator">
+                <li class="breadcrumb-item">
+                    <f:if condition="{item.link} == '/' || {item.link} == '/en/'">
+                        <f:then>
+                            <a class="breadcrumb-link" href="{item.link}" title="{item.title}"><span class="visually-hidden">{item.title}</span></a>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{item.current} == '1'">
+                                <f:then>
+                                    <a aria-current="page" class="breadcrumb-link fw-bold" href="{item.link}"><span>{item.title}</span></a>
+                                </f:then>
+                                <f:else>
+                                    <a class="breadcrumb-link" href="{item.link}"><span>{item.title}</span></a>
+                                </f:else>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </li>
+            </f:for>
+        </ol>
+    </nav>
+</div>
+
+</html>

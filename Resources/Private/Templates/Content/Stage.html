@@ -1,0 +1,57 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<div class="frame frame-type-{data.CType} stage {data.tx_stage_position} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}{f:if(condition: data.tx_stage_bg, then: ' stage-bg')}{f:if(condition: data.tx_stage_bgcolor, then: ' stage-bg-dark', else: ' stage-bg-light')}">
+    <f:if condition="{data.header} || {data.bodytext}">
+        <f:if condition="{data.header_layout} != 100">
+            <div class="container stage-content-wrapper {data.tx_link_position}">
+                <div class="stage-content teaser{f:if(condition: data.header_position, then: ' text-{data.header_position}')}">
+                    <div class="teaser-content{f:if(condition: data.grid_bgcolor, then: ' bg{data.grid_bgcolor}')}">
+                        <f:if condition="{data.header}">
+                            <f:render arguments="{_all}" partial="Header/All"/>
+                        </f:if>
+                        <f:if condition="{data.bodytext}">
+                            <div class="ce-bodytext">
+                                <f:format.html parseFuncTSPath="lib.parseFunc_RTE"><f:format.crop append="..." maxCharacters="100" respectHtml="true" respectWordBoundaries="true">{data.bodytext}</f:format.crop></f:format.html>
+                            </div>
+                        </f:if>
+                        <f:if condition="{data.tx_header_inside} == '1' && {data.tx_link_text} && {data.tx_link_switch}">
+                            <p class="stage-link mb-0">
+                                <span class="{data.tx_link_layout} {data.tx_link_position} teaser-link">
+                                    <span>{data.tx_link_text}</span>
+                                </span>
+                            </p>
+                        </f:if>
+                    </div>
+                    <f:if condition="{data.tx_header_inside} != '1' && {data.tx_link_text} && {data.tx_link_switch}">
+                        <p class="stage-link mt-3 mb-0">
+                            <span class="{data.tx_link_layout} {data.tx_link_position} teaser-link">
+                                <span>{data.tx_link_text}</span>
+                            </span>
+                        </p>
+                    </f:if>
+                </div>
+            </div>
+        </f:if>
+    </f:if>
+    <f:if condition="{data.tx_stage_switch} == 0">
+        <f:then>
+            <f:if condition="{files}">
+                <div class="stage-image">
+                    <f:for as="file" each="{files}">
+                        <f:render arguments="{_all}" partial="Media/Rendering/ImageStage"/>
+                    </f:for>
+                </div>
+            </f:if>
+        </f:then>
+        <f:else>
+            <div class="stage-video" data-aspectratio-lg="16:9" data-aspectratio-md="16:9" data-aspectratio-sm="16:9" data-aspectratio-xl="16:9" data-aspectratio-xs="16:9">
+                <video autoplay class="img-fluid" muted poster="{f:uri.image(image: files.0)}" src="{f:uri.image(image: video.0)}"></video>
+            </div>
+        </f:else>
+    </f:if>
+    <f:if condition="{data.tx_stage_bgcolor}">
+        <div class="overlay dark"></div>
+    </f:if>
+</div>
+
+</html>

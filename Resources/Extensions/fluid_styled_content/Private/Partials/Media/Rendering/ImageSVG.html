@@ -1,0 +1,17 @@
+<html data-namespace-typo3-fluid="true" xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:ff="http://www.w3.org/1999/html">
+    <f:if condition="{data.imageheight} && !{data.imagewidth}">
+        <mpc:svgInline image="{file}" height="{data.imageheight}" class="img-svg" additionalAttributes="{aria-hidden:'true'}" />
+    </f:if>
+
+    <f:if condition="{data.imagewidth} && !{data.imageheight}">
+        <mpc:svgInline image="{file}" height="{data.imagewidth}" class="img-svg" additionalAttributes="{aria-hidden:'true'}" />
+    </f:if>
+
+    <f:if condition="{data.imagewidth} && {data.imageheight}">
+        <mpc:svgInline image="{file}" height="{data.imageheight}" width="{data.imagewidth}" class="img-svg" additionalAttributes="{aria-hidden:'true'}" />
+    </f:if>
+
+    <f:if condition="!{data.imagewidth} && !{data.imageheight}">
+        <mpc:svgInline image="{file}" class="img-svg" additionalAttributes="{aria-hidden:'true'}" />
+    </f:if>
+</html>

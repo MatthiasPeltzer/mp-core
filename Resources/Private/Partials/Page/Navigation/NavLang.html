@@ -1,0 +1,21 @@
+<f:if condition="{languagenavigation}">
+    <f:for as="item" each="{languagenavigation}" iteration="i">
+        <f:if condition="{item.available} && {item.active} != 1">
+            <f:then>
+                <li class="nav-item {f:if(condition: item.active, then: 'active')}">
+                    <a class="nav-link {item.twoLetterIsoCode}{f:if(condition: item.available, else: ' text-muted')}" href="{item.link}" hreflang="{item.hreflang}">
+                        <span class="visually-hidden" lang="{item.twoLetterIsoCode}">{item.navigationTitle}</span> </a>
+                </li>
+            </f:then>
+            <f:else>
+                <f:if condition="{item.active} != 1">
+                    <li class="nav-item {f:if(condition: item.active, then: 'active')}">
+                        <span class="nav-link {item.twoLetterIsoCode}{f:if(condition: item.available, else: ' text-muted')}">
+                            <span class="visually-hidden" lang="{item.twoLetterIsoCode}">{item.navigationTitle}</span>
+                        </span>
+                    </li>
+                </f:if>
+            </f:else>
+        </f:if>
+    </f:for>
+</f:if>

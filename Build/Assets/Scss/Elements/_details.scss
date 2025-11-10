@@ -1,0 +1,79 @@
+// Variablen
+$icon-size: 24px;
+$icon-container-size: 66px;
+$padding-horizontal: 20px;
+$padding-summary: 16px 60px 18px $padding-horizontal;
+
+// Mixins
+@mixin transition($property, $duration, $timing) {
+  transition: #{$property} #{$duration} #{$timing};
+}
+
+// Platzhalter
+%summary-base {
+  color: var(--bs-body-color);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+  list-style: none;
+  padding: $padding-summary;
+  position: relative;
+
+  @include font-size($fs-4xl);
+}
+
+// Details-Styling
+details:not(.extbase-debugger-tree) {
+  background-color: var(--bs-gray-900);
+  border-bottom: 1px solid var(--bs-body-bg);
+  border-radius: var(--bs-border-radius);
+  margin-bottom: 2px;
+  max-height: 200px;
+
+  @include transition(max-height, .35s, ease-in-out);
+
+  html[data-bs-theme="light"] & {
+    background-color: var(--bs-gray-100);
+  }
+
+  summary {
+    @extend %summary-base;
+    @extend %turretroad;
+
+    &::after {
+      background-color: var(--bs-body-color);
+      content: "";
+      display: block;
+      height: $icon-container-size;
+      mask: url("@assets/Images/Icons/icon-chevron-up.svg") no-repeat center;
+      mask-size: $icon-size;
+      position: absolute;
+      right: 0;
+      rotate: 180deg;
+      top: 0;
+      width: $icon-container-size;
+
+      @include transition(rotate, .35s, ease-in-out);
+
+      @media (forced-colors: active) {
+        background: currentcolor url("@assets/Images/Icons/icon-chevron-up.svg") no-repeat center;
+        background-size: $icon-size;
+        mask: none;
+      }
+    }
+  }
+
+  &[open] {
+    max-height: 10000px;
+
+    summary {
+      &::after {
+        rotate: 0deg;
+      }
+    }
+  }
+
+  .frame {
+    padding: 0 $padding-horizontal;
+  }
+}

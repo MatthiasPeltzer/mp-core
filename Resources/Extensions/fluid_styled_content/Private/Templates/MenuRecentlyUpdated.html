@@ -1,0 +1,105 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:if condition="{menu}">
+        <div class="paginated-list">
+            <ul class="list-unstyled row row-cols-1 row-cols-md-2 row-cols-lg-{data.grid_columns}">
+                <f:for as="page" each="{menu}" iteration="iterator">
+                    <li class="{f:if(condition:'{iterator.isFirst}', then:'first')}{f:if(condition:'{iterator.isLast}', then:' last')} mb-4">
+                        <article class="d-flex align-content-start bg{data.grid_bgcolor} flex-wrap teaser{f:if(condition:'{data.imageorient} == 0', then:' textpic topcenter')}{f:if(condition:'{data.imageorient} == 25', then:' textpic nexttotext-right d-md-flex')}{f:if(condition:'{data.imageorient} == 26', then:' textpic nexttotext-left d-lg-flex')} frame frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}">
+                            <div class="order-1 teaser-content ce-bodytext{f:if(condition: newsItem.istopnews, then: ' topnews')}{f:if(condition: data.grid_light, then: ' grid-light', else: ' grid-dark')}">
+                                <header>
+                                    <f:if condition="{data.header_subpages}">
+                                        <f:then>
+                                            <{data.header_subpages} class="{data.header_position}">
+                                            <f:if condition="{data.tx_link_switch}">
+                                                <f:then>
+                                                        <span>
+                                                            <f:format.stripTags><f:format.raw><f:format.crop append="..." maxCharacters="200" respectHtml="true" respectWordBoundaries="true">{page.title}</f:format.crop></f:format.raw></f:format.stripTags>
+                                                        </span>
+                                                </f:then>
+                                                <f:else>
+                                                    <f:link.typolink class="stretched-link teaser-link" parameter="{page.link}">
+                                                            <span>
+                                                               <f:format.stripTags><f:format.raw><f:format.crop append="..." maxCharacters="200" respectHtml="true" respectWordBoundaries="true">{page.title}</f:format.crop></f:format.raw></f:format.stripTags>
+                                                            </span>
+                                                    </f:link.typolink>
+                                                </f:else>
+                                            </f:if>
+                                        </
+                                        {data.header_subpages}></f:then>
+                                        <f:else>
+                                            <h2 class="{data.header_position}">
+                                                <f:if condition="{data.tx_link_switch}">
+                                                    <f:then>
+                                                        <span>
+                                                            <f:format.stripTags><f:format.raw><f:format.crop append="..." maxCharacters="200" respectHtml="true" respectWordBoundaries="true">{page.title}</f:format.crop></f:format.raw></f:format.stripTags>
+                                                        </span>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:link.typolink class="stretched-link teaser-link" parameter="{page.link}">
+                                                            <span>
+                                                               <f:format.stripTags><f:format.raw><f:format.crop append="..." maxCharacters="200" respectHtml="true" respectWordBoundaries="true">{page.title}</f:format.crop></f:format.raw></f:format.stripTags>
+                                                            </span>
+                                                        </f:link.typolink>
+                                                    </f:else>
+                                                </f:if>
+                                            </h2>
+                                        </f:else>
+                                    </f:if>
+                                </header>
+                                <p class="{data.header_position}">
+                                    <f:format.stripTags>
+                                        <f:format.raw>
+                                            <f:format.crop append="..." maxCharacters="150" respectHtml="true" respectWordBoundaries="true">{page.content.0.data.bodytext}</f:format.crop>
+                                        </f:format.raw>
+                                    </f:format.stripTags>
+                                </p>
+                                <f:if condition="{data.tx_link_switch}">
+                                    <f:link.typolink class="stretched-link teaser-link{f:if(condition:'{data.header_position}', then:' {data.header_position}')}{f:if(condition:'{data.tx_link_layout}', then:' {data.tx_link_layout}', else: ' internal-link')}" parameter="{page.link}">
+                                        <span class="icon"></span>
+                                        <f:if condition="{data.tx_link_text}">
+                                            <f:then>
+                                                <span aria-hidden="true">{data.tx_link_text}<span class="visually-hidden">:</span></span>
+                                            </f:then>
+                                            <f:else>
+                                                <span aria-hidden="true">{f:translate(key: 'content.readmore', extensionName: 'mp_core')}<span class="visually-hidden">:</span></span>
+                                            </f:else>
+                                        </f:if>
+                                        <span class="visually-hidden">{f:if(condition:'{page.link}', then:' {page.title}')}</span>
+                                    </f:link.typolink>
+                                </f:if>
+                            </div>
+                            <div class="order-0">
+                                <f:for as="file" each="{page.content.0.files}" iteration="counter">
+                                    <f:if condition="{counter.cycle} == 1">
+                                        <f:alias map="{mpc:format.json.decode(json: file.properties.crop)}">
+                                            <f:if condition="{xsmall.selectedRatio} == 'NaN'">
+                                                <f:then>
+                                                    <picture data-aspectratio-lg="16:9" data-aspectratio-md="16:9" data-aspectratio-sm="16:9" data-aspectratio-xl="16:9" data-aspectratio-xs="16:9">
+                                                        <f:image class="figure-img img-fluid rounded" cropVariant="default" loading="lazy" decoding="async" fileExtension="webp" width="{f:if(condition:'{data.grid_columns} != 1', then:'640c', else: '1920c')}" height="{f:if(condition:'{data.grid_columns} != 1', then:'360c', else: '1080c')}" src="{file.properties.uid}" treatIdAsReference="1"/>
+                                                    </picture>
+                                                </f:then>
+                                                <f:else>
+                                                    <picture data-aspectratio-lg="{xsmall.selectedRatio}" data-aspectratio-md="{xsmall.selectedRatio}" data-aspectratio-sm="{xsmall.selectedRatio}" data-aspectratio-xl="{xsmall.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+                                                        <f:image class="figure-img img-fluid rounded" cropVariant="xsmall" loading="lazy" decoding="async" fileExtension="webp" maxWidth="{f:if(condition:'{data.grid_columns} != 1', then:'640', else: '1920')}" src="{file.properties.uid}" treatIdAsReference="1"/>
+                                                    </picture>
+                                                </f:else>
+                                            </f:if>
+                                        </f:alias>
+                                    </f:if>
+                                </f:for>
+                            </div>
+                        </article>
+                    </li>
+                </f:for>
+            </ul>
+            <div class="pagination-controls"></div>
+        </div>
+    </f:if>
+</f:section>
+</html>

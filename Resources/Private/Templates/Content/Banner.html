@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div id="c{data.uid}" class="frame frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}">
+    <div class="banner bg{data.grid_bgcolor} grid-fullsize{f:if(condition: data.grid_light, then: ' grid-light', else: ' grid-dark')}{f:if(condition:'{data.imageorient} == 0', then:' textpic topcenter')}{f:if(condition:'{data.imageorient} == 25', then:' textpic nexttotext-right d-md-flex')}{f:if(condition:'{data.imageorient} == 26', then:' textpic nexttotext-left d-lg-flex')}">
+
+        <div class="banner-item container">
+            <f:if condition="{data.tx_link_text}">
+                <f:link.typolink parameter="{data.tx_link}" class="banner-link d-flex align-items-center justify-content-center">
+                    <f:if condition="{files}">
+                        <div class="banner-image me-3 p-1">
+                            <f:for each="{files}" as="file">
+                                <f:render partial="Media/Rendering/ImageBanner" arguments="{_all}"/>
+                            </f:for>
+                        </div>
+                    </f:if>
+                    <div class="banner-text p-1">{data.tx_link_text}</div>
+                </f:link.typolink>
+            </f:if>
+        </div>
+
+    </div>
+</div>
+</html>

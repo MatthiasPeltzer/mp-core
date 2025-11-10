@@ -1,0 +1,33 @@
+###########################
+#### VUE CONTENT TYPES ####
+###########################
+
+# CType configuration for Vue TodoList
+tt_content {
+    mpcore_todolist = FLUIDTEMPLATE
+    mpcore_todolist {
+        templateName = TodoList
+        
+        templateRootPaths {
+            0 = EXT:mp_core/Resources/Private/Templates/VueComponent/
+        }
+        
+        partialRootPaths {
+            0 = EXT:mp_core/Resources/Private/Partials/
+        }
+        
+        layoutRootPaths {
+            0 = EXT:mp_core/Resources/Private/Layouts/
+        }
+
+        # Parse FlexForm data
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FlexFormProcessor
+            10 {
+                fieldName = pi_flexform
+                as = settings
+            }
+        }
+    }
+}
+

@@ -1,0 +1,80 @@
+categories:
+  MPCoreForm:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreForm.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreForm.description'
+
+settings:
+  # Form General Settings
+  form.honeypot.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.honeypot.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.honeypot.enabled.form.description'
+    category: MPCoreForm
+    type: bool
+    default: true
+  
+  form.confirmationPage.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.confirmationPage.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.confirmationPage.enabled.form.description'
+    category: MPCoreForm
+    type: bool
+    default: true
+  
+  form.requiredFieldMarker:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.requiredFieldMarker.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.requiredFieldMarker.form.description'
+    category: MPCoreForm
+    type: string
+    default: '*'
+  
+  # Form Email Settings
+  form.email.senderName:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.senderName.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.senderName.form.description'
+    category: MPCoreForm
+    type: string
+    default: 'Website Contact Form'
+  
+  form.email.senderEmail:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.senderEmail.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.senderEmail.form.description'
+    category: MPCoreForm
+    type: string
+    default: 'noreply@example.com'
+  
+  form.email.replyToEmail:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.replyToEmail.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.replyToEmail.form.description'
+    category: MPCoreForm
+    type: string
+    default: 'info@example.com'
+  
+  # Form Validation Settings
+  form.validation.clientSide:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.validation.clientSide.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.validation.clientSide.form.description'
+    category: MPCoreForm
+    type: bool
+    default: true
+  
+  form.validation.showInlineErrors:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.validation.showInlineErrors.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.validation.showInlineErrors.form.description'
+    category: MPCoreForm
+    type: bool
+    default: true
+  
+  # Form Storage Settings
+  form.storage.saveToDatabase:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.storage.saveToDatabase.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.storage.saveToDatabase.form.description'
+    category: MPCoreForm
+    type: bool
+    default: false
+  
+  form.storage.uploadFolder:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.storage.uploadFolder.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.storage.uploadFolder.form.description'
+    category: MPCoreForm
+    type: string
+    default: '1:/forms/'
+

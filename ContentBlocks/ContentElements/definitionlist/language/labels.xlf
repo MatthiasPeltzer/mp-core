@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file datatype="plaintext" original="labels.xlf" source-language="en" date="2025-05-17T14:34:41+00:00" product-name="dl/definitionlist">
+		<header/>
+		<body>
+			<trans-unit id="title">
+				<source>List of definitions</source>
+			</trans-unit>
+			<trans-unit id="description">
+				<source>Adds a definition list.</source>
+			</trans-unit>
+			<trans-unit id="radioboxes.label">
+				<source>Style</source>
+			</trans-unit>
+			<trans-unit id="radioboxes.items.0.label">
+				<source>Below each other</source>
+			</trans-unit>
+			<trans-unit id="radioboxes.items.1.label">
+				<source>Side by side</source>
+			</trans-unit>
+			<trans-unit id="item.label">
+				<source>Item</source>
+			</trans-unit>
+			<trans-unit id="item.text.label">
+				<source>Term</source>
+			</trans-unit>
+			<trans-unit id="item.textarea.label">
+				<source>Definition</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

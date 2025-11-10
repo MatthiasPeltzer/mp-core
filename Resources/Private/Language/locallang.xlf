@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang.xlf" date="2022-12-11T09:48:17" product-name="mp_core">
+    <header/>
+    <body>
+      <trans-unit id="aside.print" resname="aside.print">
+        <source>Print</source>
+      </trans-unit>
+      <trans-unit id="aside.printpage" resname="aside.printpage">
+        <source>Print page</source>
+      </trans-unit>
+      <trans-unit id="aside.share" resname="aside.share">
+        <source>Share</source>
+      </trans-unit>
+      <trans-unit id="aside.shareonbluesky" resname="aside.shareonbluesky">
+        <source>Share on Bluesky</source>
+      </trans-unit>
+      <trans-unit id="aside.shareonfacebook" resname="aside.shareonfacebook">
+        <source>Share on Facebook</source>
+      </trans-unit>
+      <trans-unit id="aside.shareonlinkedin" resname="aside.shareonlinkedin">
+        <source>Share on LinkedIn</source>
+      </trans-unit>
+      <trans-unit id="aside.shareonmastodon" resname="aside.shareonmastodon">
+        <source>Share on Mastodon</source>
+      </trans-unit>
+      <trans-unit id="aside.shareonreddit" resname="aside.shareonreddit">
+        <source>Share on Reddit</source>
+      </trans-unit>
+      <trans-unit id="aside.shareonwhatsapp" resname="aside.shareonwhatsapp">
+        <source>Share on Whatsapp</source>
+      </trans-unit>
+      <trans-unit id="aside.shareonxing" resname="aside.shareonxing">
+        <source>Share on Xing</source>
+      </trans-unit>
+      <trans-unit id="aside.sharepage" resname="aside.sharepage">
+        <source>Share page</source>
+      </trans-unit>
+      <trans-unit id="aside.socialmedia" resname="aside.socialmedia">
+        <source>Socialmedia</source>
+      </trans-unit>
+      <trans-unit id="audio.link" resname="audio.link">
+        <source>To activate the widget you need to click on the button. After activating the button, <![CDATA[<a href="https://soundcloud.com/pages/privacy" target="_blank" class="external-link" rel="noreferrer" title="Link opens in new window"><span class="icon" aria-hidden="true"></span>SoundCloud's privacy policy</a>]]> applies.</source>
+      </trans-unit>
+      <trans-unit id="audio.play" resname="audio.play">
+        <source>Play audio</source>
+      </trans-unit>
+      <trans-unit id="breadcrumb.headline" resname="breadcrumb.headline">
+        <source>You are here:</source>
+      </trans-unit>
+      <trans-unit id="config.allowedAudioDomains" resname="config.allowedAudioDomains">
+        <source>Allowed domains for external audio files: e.g. *.xyz.de, www.xyz.de, https://*.xyz.de</source>
+      </trans-unit>
+      <trans-unit id="config.allowedAudioDomains.list" resname="config.allowedAudioDomains.list">
+        <source>Allowed domains for external audio files:</source>
+      </trans-unit>
+      <trans-unit id="config.allowedVideoDomains" resname="config.allowedVideoDomains">
+        <source>Allowed domains for external videos: e.g. *.xyz.de, www.xyz.de, https://*.xyz.de</source>
+      </trans-unit>
+      <trans-unit id="config.allowedVideoDomains.list" resname="config.allowedVideoDomains.list">
+        <source>Allowed domains for external videos:</source>
+      </trans-unit>
+      <trans-unit id="content.readmore" resname="content.readmore">
+        <source>Read more</source>
+      </trans-unit>
+      <trans-unit id="date.day" resname="date.day">
+        <source>%d</source>
+      </trans-unit>
+      <trans-unit id="date.dayfull" resname="date.dayfull">
+        <source>%A, %d, %H:%M</source>
+      </trans-unit>
+      <trans-unit id="date.daymonth" resname="date.daymonth">
+        <source>%d %b</source>
+      </trans-unit>
+      <trans-unit id="date.daymonthfull" resname="date.daymonthfull">
+        <source>%A, %d %B, %H:%M</source>
+      </trans-unit>
+      <trans-unit id="date.daymonthyear" resname="date.daymonthyear">
+        <source>%d %b %Y</source>
+      </trans-unit>
+      <trans-unit id="date.daymonthyearfull" resname="date.daymonthyearfull">
+        <source>%A, %d %B %Y, %H:%M</source>
+      </trans-unit>
+      <trans-unit id="date.month" resname="date.month">
+        <source>%b</source>
+      </trans-unit>
+      <trans-unit id="date.time" resname="date.time">
+        <source>%H:%M</source>
+      </trans-unit>
+      <trans-unit id="date.year" resname="date.year">
+        <source>%Y</source>
+      </trans-unit>
+      <trans-unit id="element.pflichtfeld.properties.text" resname="element.pflichtfeld.properties.text">
+        <source>Required</source>
+      </trans-unit>
+      <trans-unit id="footer.info" resname="supplement.aside">
+        <source>Further information</source>
+      </trans-unit>
+      <trans-unit id="footer.metanav" resname="footer.metanav">
+        <source>Meta navigation</source>
+      </trans-unit>
+      <trans-unit id="footer.socialmediafooter" resname="footer.socialmediafooter">
+        <source>Always up to date</source>
+      </trans-unit>
+      <trans-unit id="footer.socialmediaheader" resname="footer.socialmediaheader">
+        <source>Follow me at</source>
+      </trans-unit>
+      <trans-unit id="gallery.copyright.button" resname="gallery.copyright.button">
+        <source>Show/hide copyright text</source>
+      </trans-unit>
+      <trans-unit id="header.area" resname="header.area">
+        <source>Navigation area</source>
+      </trans-unit>
+      <trans-unit id="header.closeMenu" resname="header.closeMenu">
+        <source><![CDATA[<span class="visually-hidden">Close</span>]]> menu</source>
+      </trans-unit>
+      <trans-unit id="header.closeMenuTitle" resname="header.closeMenuTitle">
+        <source>Close menu</source>
+      </trans-unit>
+      <trans-unit id="header.closeMenuTitleClose" resname="header.closeMenuTitle">
+        <source>Close</source>
+      </trans-unit>
+      <trans-unit id="header.jumpto" resname="header.jumpto">
+        <source>Jump directly to:</source>
+      </trans-unit>
+      <trans-unit id="header.jumptocontent" resname="header.jumptocontent">
+        <source>Jump to content</source>
+      </trans-unit>
+      <trans-unit id="header.mainnavigation" resname="header.mainnavigation">
+        <source>Main navigation</source>
+      </trans-unit>
+      <trans-unit id="header.openMenu" resname="header.openMenu">
+        <source><![CDATA[<span class="visually-hidden">Open</span>]]> menu</source>
+      </trans-unit>
+      <trans-unit id="header.openMenuTitle" resname="header.openMenuTitle">
+        <source>Open menu</source>
+      </trans-unit>
+      <trans-unit id="header.submenuOpen" resname="header.submenuOpen">
+        <source>Open submenu</source>
+      </trans-unit>
+      <trans-unit id="header.switch" resname="header.switch">
+        <source>Light and dark color mode</source>
+      </trans-unit>
+      <trans-unit id="header.text" resname="header.text">
+        <source>Link to Homepage</source>
+      </trans-unit>
+      <trans-unit id="header.text.aria" resname="header.text.aria">
+        <source>Link to Homepage - </source>
+      </trans-unit>
+      <trans-unit id="innewwindow" resname="innewwindow">
+        <source>(New window)</source>
+      </trans-unit>
+      <trans-unit id="is_accessible" resname="is_accessible">
+        <source>(not accessible)</source>
+      </trans-unit>
+      <trans-unit id="is_accessible.0" resname="is_accessible.0">
+        <source>(not accessible)</source>
+      </trans-unit>
+      <trans-unit id="is_accessible.1" resname="is_accessible.1">
+        <source/>
+      </trans-unit>
+      <trans-unit id="link.newwindow" resname="link.newwindow">
+        <source>External (New window)</source>
+      </trans-unit>
+      <trans-unit id="meta.navigation" resname="meta.navigation">
+        <source>Service navigation and language</source>
+      </trans-unit>
+      <trans-unit id="opens" resname="opens">
+        <source>External</source>
+      </trans-unit>
+      <trans-unit id="supplement.areamenu" resname="supplement.areamenu">
+        <source>Section navigation</source>
+      </trans-unit>
+      <trans-unit id="supplement.aside" resname="supplement.aside">
+        <source>Additional information</source>
+      </trans-unit>
+      <trans-unit id="toTop" resname="toTop">
+        <source>To top</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery" resname="tt_content.gallery">
+        <source>Gallery</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery.entry" resname="tt_content.gallery.entry">
+        <source>Gallery entry</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_close" resname="tt_content.gallery_close">
+        <source>Close</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_download" resname="tt_content.gallery_download">
+        <source>Download</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_download_now" resname="tt_content.gallery_download_now">
+        <source>Download</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_download_now.button" resname="tt_content.gallery_download_now.button">
+        <source>Show/hide download link</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_enlarge_picture" resname="tt_content.gallery_enlarge_picture">
+        <source>Opens image in enlarged view</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_next" resname="tt_content.gallery_next">
+        <source>Previous image</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_of" resname="tt_content.gallery_of">
+        <source>of</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_picture_description" resname="tt_content.gallery_picture_description">
+        <source>Description</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_picture_longdescription" resname="tt_content.gallery_picture_longdescription">
+        <source>Long description</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_previous" resname="tt_content.gallery_previous">
+        <source>Next image</source>
+      </trans-unit>
+      <trans-unit id="tt_content.images" resname="tt_content.images">
+        <source>images</source>
+      </trans-unit>
+      <trans-unit id="videovimeo.link" resname="videovimeo.link">
+        <source>To activate the video you need to click on the button. After activating the button, <![CDATA[<a href="https://vimeo.com/privacy" target="_blank" class="external-link" rel="noreferrer" title="Link opens in new window"><span class="icon" aria-hidden="true"></span>Vimeos privacy policy</a>]]> applies.</source>
+      </trans-unit>
+      <trans-unit id="videovimeo.play" resname="videovimeo.play">
+        <source>Play video</source>
+      </trans-unit>
+      <trans-unit id="videoyoutube.link" resname="videoyoutube.link">
+        <source>To activate the video you need to click on the button. After activating the button,	<![CDATA[<a href="https://policies.google.com/privacy?hl=en&gl=ZZ" target="_blank" class="external-link" rel="noreferrer" title="Link opens in new window"><span class="icon" aria-hidden="true"></span>Googles privacy policy</a>]]> applies.</source>
+      </trans-unit>
+      <trans-unit id="videoyoutube.play" resname="videoyoutube.play">
+        <source>Play video</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

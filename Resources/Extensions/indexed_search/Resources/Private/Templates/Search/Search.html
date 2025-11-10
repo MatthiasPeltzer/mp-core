@@ -1,0 +1,67 @@
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+>
+
+<f:asset.script identifier="indexed_search_pagination" src="EXT:indexed_search/Resources/Public/JavaScript/pagination.js" />
+
+<f:alias map="{sword: searchParams.sword}">
+    <f:render arguments="{_all}" partial="Form"/>
+</f:alias>
+<f:for as="result" each="{resultsets}" key="freeIndexUid">
+    <f:if condition="{result.categoryTitle}">
+        <h1 class="tx-indexedsearch-category">{result.categoryTitle}</h1>
+    </f:if>
+    <f:if condition="{result.count} > 0">
+        <div class="tx-indexedsearch-info-sword">
+            <f:for as="searchWord" each="{searchWords}" key="key">
+                <f:if condition="{key} > 0">
+                    <f:then>
+                        <f:translate key="searchFor.{searchWord.operatorLabel}"/>&nbsp;<span class="tx-indexedsearch-info-sword-word">{searchWord.sword}</span>
+                    </f:then>
+                    <f:else>
+                        <f:translate key="searchFor"/>&nbsp;<span class="tx-indexedsearch-info-sword-word">{searchWord.sword}</span>
+                    </f:else>
+                </f:if>
+            </f:for>
+        </div>
+    </f:if>
+    {result.searchedInSectionInfo}
+    <f:if condition="{result.count} > 0">
+        <f:then>
+            <p>
+                <f:sanitize.html>
+                    <f:translate arguments="{0: result.pagination.startRecordNumber, 1: result.pagination.endRecordNumber, 2: result.pagination.totalAmount}" key="displayResults"/>
+                </f:sanitize.html>
+            </p>
+
+            <f:render arguments="{pagination: result.pagination, searchParams: searchParams}" partial="Pagination"/>
+
+            <ul class="results">
+                <f:for as="row" each="{result.rows}">
+                    <f:if condition="{row.isSectionHeader}">
+                        <f:then>
+                            <div class="tx-indexedsearch-sectionhead" id="anchor_{row.sectionId}">
+                                <h2 class="tx-indexedsearch-title">
+                                    <f:format.html>{row.sectionTitle}</f:format.html>
+                                    <span class="tx-indexedsearch-result-count">{row.numResultRows} <f:translate key="{f:if(condition: '{row.numResultRows} > 1', then: 'result.pages', else: 'result.page')}"/></span>
+                                </h2>
+                            </div>
+                        </f:then>
+                        <f:else>
+                            <f:render arguments="{row: row, searchParams: searchParams, firstRow: firstRow}" partial="Searchresult"/>
+                        </f:else>
+                    </f:if>
+                </f:for>
+            </ul>
+
+            <f:render arguments="{pagination: result.pagination, searchParams: searchParams, freeIndexUid: freeIndexUid}" partial="Pagination"/>
+        </f:then>
+        <f:else>
+            <div class="tx-indexedsearch-info-noresult">
+                <f:translate key="result.noResult"/>
+            </div>
+        </f:else>
+    </f:if>
+</f:for>
+</html>

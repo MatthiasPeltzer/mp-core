@@ -1,0 +1,13 @@
+page.headerData.2039 = FLUIDTEMPLATE
+page.headerData.2039 {
+  dataProcessing.10 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
+  dataProcessing.10 {
+    as = site
+  }
+  file = EXT:mp_core/Resources/Private/Partials/Page/Favicons.html
+  # set extension name
+  extbase {
+    controllerExtensionName = mp_core
+  }
+}
+

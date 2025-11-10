@@ -1,0 +1,81 @@
+// modal
+
+.modal {
+  &-title {
+    @extend %opensansweb;
+    @include font-size($fs-md);
+    font-weight: 400;
+    letter-spacing: normal !important;
+    margin-bottom: 0;
+  }
+
+  &-header {
+    > .container {
+      background-color: var(--bs-gray-900);
+      border-radius: 25px;
+      padding-bottom: 6px;
+      padding-top: 6px;
+
+      html[data-bs-theme="light"] & {
+        background-color: var(--bs-gray-100);
+      }
+    }
+
+    .row {
+      align-items: center;
+    }
+
+    .btn-close {
+      background-color: var(--bs-primary);
+      border-radius: 50%;
+      margin: 0;
+      padding: 10px;
+    }
+  }
+
+  &-footer {
+    border-radius: 25px !important;
+    padding-bottom: 6px;
+    padding-top: 6px;
+
+    html[data-bs-theme="light"] & {
+      background-color: var(--bs-gray-100);
+    }
+
+    nav {
+      height: 40px;
+      margin: 0;
+      width: 100%;
+
+      ul {
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        margin-bottom: 0;
+
+        li {
+          height: 100%;
+          position: relative;
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  &-body {
+    picture {
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-buttons .btn-image + .dropdown-menu.dropdown-download {
+      margin-top: -9px !important;
+    }
+  }
+
+  &-backdrop {
+    html[data-bs-theme="light"] & {
+      background-color: var(--bs-body-color);
+    }
+  }
+}

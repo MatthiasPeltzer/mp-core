@@ -1,0 +1,55 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers">
+<formvh:renderRenderable renderable="{page}">
+    <fieldset>
+        <f:if condition="{page.label}">
+            <legend class="h1">{formvh:translateElementProperty(element: page, property: 'label')}</legend>
+        </f:if>
+        <div class="{page.renderingOptions.listClassAttribute}">
+            <dl class="{page.renderingOptions.listRowClassAttribute}">
+                <formvh:renderAllFormValues as="formValue" renderable="{page.rootForm}">
+                    <f:if condition="{formValue.isSection}">
+                        <f:then>
+                            <dt class="col col-12 col-lg-6 mb-3">
+                                <strong class="fs-3">{formvh:translateElementProperty(element: formValue.element, property: 'label')}</strong>
+                            </dt>
+                            <dd class="col col-12 col-lg-6 mb-3"></dd>
+                        </f:then>
+                        <f:else>
+
+                            <dt class="{page.renderingOptions.labelWrapperClassAttribute} col-12 col-lg-6 mb-3">{formvh:translateElementProperty(element: formValue.element, property: 'label')}:</dt>
+                            <dd class="{page.renderingOptions.valueWrapperClassAttribute} col-12 col-lg-6 mb-3">
+                                <f:if condition="{formValue.value}">
+                                    <f:then>
+                                        <f:if condition="{0: formValue.element.type} == {0: 'ImageUpload'}">
+                                            <f:then>
+                                                <f:image alt="{formvh:translateElementProperty(element: formValue.element, property: 'altText')}" image="{formValue.value}" maxHeight="{formValue.element.properties.imageMaxHeight}" maxWidth="{formValue.element.properties.imageMaxWidth}"/>
+                                            </f:then>
+                                            <f:else>
+                                                <f:if condition="{formValue.isMultiValue}">
+                                                    <f:then>
+                                                        <ul>
+                                                            <f:for as="value" each="{formValue.processedValue}">
+                                                                <li>{value}</li>
+                                                            </f:for>
+                                                        </ul>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:format.nl2br>{formValue.processedValue}</f:format.nl2br>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:else>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        -
+                                    </f:else>
+                                </f:if>
+                            </dd>
+                        </f:else>
+                    </f:if>
+                </formvh:renderAllFormValues>
+            </dl>
+        </div>
+    </fieldset>
+</formvh:renderRenderable>
+</html>

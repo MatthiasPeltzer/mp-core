@@ -1,0 +1,51 @@
+{
+	"name": "bootstrap5-vite",
+	"version": "1.0.0",
+	"description": "Bootstrap 5, Vite, PostCSS, Stylelint, ESLint",
+	"type": "module",
+	"scripts": {
+		"build": "vite build --mode production",
+		"dev": "vite build --mode development",
+		"watch": "vite build --mode development --watch",
+		"eslint": "eslint .",
+		"eslint.fix": "eslint --fix .",
+		"eslint.junit": "eslint -f junit -o reports/eslintreport.junit.xml Assets/**/*.js",
+		"stylelint": "stylelint Assets/Scss/**/*.scss",
+		"stylelint.fix": "stylelint Assets/Scss/**/*.scss --fix",
+		"stylelint.json": "stylelint --config stylelint.config.js -f json -o reports/stylelintreport.json Assets/Scss/**/*.scss",
+		"stylelint.junit": "stylelint --config stylelint.config.js --custom-formatter node_modules/stylelint-checkstyle-reporter/dist/stylelint-checkstyle-reporter.mjs -o reports/stylelintreport.junit.xml Assets/Scss/**/*.scss",
+		"stylelint.verbose": "stylelint --config stylelint.config.js -f verbose -o reports/stylelintreport.verbose.txt Assets/Scss/**/*.scss"
+	},
+	"author": "Matthias Peltzer",
+	"license": "GPL-3.0-or-later",
+	"dependencies": {
+		"@popperjs/core": "^2.11.8",
+		"bootstrap": "5.3.8",
+		"jarallax": "^2.2.1",
+		"swiper": "^12.0.3",
+		"vidply": "^1.0.10",
+		"vue": "^3.5.24"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.39.1",
+		"@nabla/vite-plugin-eslint": "^2.0.6",
+		"@vitejs/plugin-vue": "^6.0.1",
+		"autoprefixer": "^10.4.21",
+		"eslint": "^9.39.1",
+		"eslint-formatter-junit": "^9.0.1",
+		"globals": "^16.5.0",
+		"postcss": "^8.5.6",
+		"postcss-preset-env": "^10.4.0",
+		"postcss-pxtorem": "^6.1.0",
+		"sass": "1.93.3",
+		"stylelint": "^16.25.0",
+		"stylelint-checkstyle-reporter": "^1.1.1",
+		"stylelint-config-recommended": "^17.0.0",
+		"stylelint-config-recommended-scss": "^16.0.2",
+		"stylelint-config-standard": "^39.0.1",
+		"stylelint-order": "^7.0.0",
+		"stylelint-scss": "^6.12.1",
+		"vite": "^7.2.2",
+		"vite-plugin-stylelint": "^6.0.2"
+	}
+}

@@ -1,0 +1,16 @@
+# News Extension Settings
+news.list.paginate.itemsPerPage: 10
+news.list.orderBy: 'datetime'
+news.list.orderDirection: 'desc'
+news.list.dateFormat: 'd.m.Y'
+news.list.showCategories: true
+news.list.showTags: true
+
+news.detail.showBackLink: true
+news.detail.showRelated: true
+news.detail.relatedLimit: 3
+news.detail.enableComments: false
+
+news.media.maxWidth: 1200
+news.media.maxHeight: 800
+

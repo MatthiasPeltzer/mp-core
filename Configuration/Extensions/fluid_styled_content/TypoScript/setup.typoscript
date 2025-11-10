@@ -1,0 +1,6 @@
+# Include setup
+@import './Helper/ContentElement.typoscript'
+@import './Helper/ParseFunc.typoscript'
+
+# Typical content elements
+// @import './ContentElement/'

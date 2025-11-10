@@ -1,0 +1,68 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
+
+<n:excludeDisplayedNews newsItem="{newsItem}"/>
+
+<article class="news-inner{f:if(condition: newsItem.istopnews, then: ' topnews')}">
+    <div class="news-inner-wrapper row">
+        <f:if condition="{newsItem.istopnews}">
+            <f:then>
+                <div class="box">
+                    <div class="ribbon"><span>Top <b>News</b></span></div>
+                </div>
+            </f:then>
+        </f:if>
+        <div class="col-md-5">
+            <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                <f:if condition="{newsItem.mediaPreviews}">
+                    <f:then>
+                        <f:alias map="{mpc:format.json.decode(json: newsItem.mediaPreviews.0.originalResource.properties.crop)}">
+                            <picture data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+                                <f:image class="figure-img img-fluid rounded" cropVariant="default" decoding="async" fileExtension="webp" loading="lazy" maxWidth="575" src="{newsItem.mediaPreviews.0.originalResource.properties.uid}" treatIdAsReference="1"/>
+                            </picture>
+                        </f:alias>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{settings.displayDummyIfNoMedia}">
+                            <f:image alt="{mediaElement.originalResource.title}" class="img-dummy img-responsive figure-img img-fluid rounded" fileExtension="webp" maxHeight="{settings.list.media.image.maxHeight}" maxWidth="{settings.list.media.image.maxWidth}" src="{settings.list.media.dummyImage}"/>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </n:link>
+        </div>
+
+        <div class="col-md-7 articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <p class="date">
+                <f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+            </p>
+
+            <h3>
+                <n:link newsItem="{newsItem}" settings="{settings}">
+                    {newsItem.title}
+                </n:link>
+            </h3>
+
+            <!-- teaser -->
+            <p class="lead">
+                <n:removeMediaTags>
+                    <f:if condition="{newsItem.teaser}">
+                        <f:then>
+                            {newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.raw()}
+                        </f:then>
+                        <f:else>
+                            {newsItem.bodytext -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.raw()}
+                        </f:else>
+                    </f:if>
+                </n:removeMediaTags>
+            </p>
+
+            <n:link class="btn btn-primary btn-read-more" newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                <f:translate key="more-link"/>
+            </n:link>
+        </div>
+    </div>
+</article>
+
+</html>

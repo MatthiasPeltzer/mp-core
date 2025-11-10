@@ -1,0 +1,205 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:variable name="videoImg">{files.0}</f:variable>
+<f:variable name="videoRelation">{video.0}</f:variable>
+<f:variable name="videoCaption">{video_caption.0}</f:variable>
+
+<f:comment><!-- Check for local video files (mp4, webm, ogg) --></f:comment>
+<f:if condition="{videoRelation.properties.mime_type} != 'video/youtube' && {videoRelation.properties.mime_type} != 'video/vimeo'">
+    <div class="frame frame-type-video frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}" id="c{data.uid}">
+        <f:if condition="{data.header}">
+            <f:render arguments="{_all}" partial="Header/All"/>
+        </f:if>
+        <f:if condition="{data.bodytext}">
+            <f:format.html>{data.bodytext}</f:format.html>
+        </f:if>
+        <div class="video video-local">
+            <f:if condition="{videoImg}">
+                <f:then>
+                    <f:variable name="audioDescFile">{audio_description.0}</f:variable>
+                    <f:variable name="signLangFile">{sign_language.0}</f:variable>
+                    <f:variable name="videoOptions">{
+                        "autoplay":<f:if condition="{data.tx_video_autoplay}" then="true" else="false" />,
+                        "loop":<f:if condition="{data.tx_video_loop}" then="true" else="false" />,
+                        "muted":<f:if condition="{data.tx_video_muted}" then="true" else="false" />,
+                        "volume":<f:if condition="{data.tx_video_volume}" then="{data.tx_video_volume}" else="0.8" />,
+                        "playbackSpeed":<f:if condition="{data.tx_video_playback_speed}" then="{data.tx_video_playback_speed}" else="1.0" />,
+                        "startTime":<f:if condition="{data.tx_video_start_time}" then="{data.tx_video_start_time}" else="0" />,
+                        "controls":<f:if condition="{data.tx_video_controls} == 0" then="false" else="true" />,
+                        "speedButton":<f:if condition="{data.tx_video_speed_button} == 0" then="false" else="true" />,
+                        "volumeControl":<f:if condition="{data.tx_video_volume_control} == 0" then="false" else="true" />,
+                        "fullscreenButton":<f:if condition="{data.tx_video_fullscreen_button} == 0" then="false" else="true" />,
+                        "pipButton":<f:if condition="{data.tx_video_pip_button} == 0" then="false" else="true" />,
+                        "chaptersButton":<f:if condition="{data.tx_video_chapters_button} == 0" then="false" else="true" />,
+                        "qualityButton":<f:if condition="{data.tx_video_quality_button} == 0" then="false" else="true" />,
+                        "captions":<f:if condition="{data.tx_video_captions} == 0" then="false" else="true" />,
+                        "captionsDefault":<f:if condition="{data.tx_video_captions_default}" then="true" else="false" />,
+                        "captionsButton":<f:if condition="{data.tx_video_captions_button} == 0" then="false" else="true" />,
+                        "captionStyleButton":<f:if condition="{data.tx_video_caption_style_button} == 0" then="false" else="true" />,
+                        "transcript":<f:if condition="{data.tx_video_transcript}" then="true" else="false" />,
+                        "transcriptButton":<f:if condition="{data.tx_video_transcript_button} == 0" then="false" else="true" />,<f:if condition="{audioDescFile}">
+                        "audioDescriptionSrc":"<f:format.raw>{audioDescFile.publicUrl}</f:format.raw>",</f:if>
+                        "audioDescriptionButton":<f:if condition="{data.tx_video_audio_description_button} == 0" then="false" else="true" />,<f:if condition="{signLangFile}">
+                        "signLanguageSrc":"<f:format.raw>{signLangFile.publicUrl}</f:format.raw>",</f:if>
+                        "signLanguageButton":<f:if condition="{data.tx_video_sign_language_button} == 0" then="false" else="true" />,
+                        "signLanguagePosition":"<f:if condition="{data.tx_video_sign_language_position}" then="{data.tx_video_sign_language_position}" else="bottom-right" />",
+                        "keyboard":<f:if condition="{data.tx_video_keyboard} == 0" then="false" else="true" />,
+                        "screenReaderAnnouncements":<f:if condition="{data.tx_video_screen_reader} == 0" then="false" else="true" />,
+                        "language":"<f:if condition="{data.tx_video_language}" then="{data.tx_video_language}" else="de" />"
+                    }</f:variable>
+                    <video 
+                        data-vidply 
+                        class="player local-video" 
+                        poster="{f:uri.image(image: '{videoImg}', maxWidth: 973, maxHeight: 535c)}" 
+                        style="background-color: var(--bs-gray-dark); width:100%; height:100%;" 
+                        data-vidply-options='{videoOptions}'
+                    >
+                        <f:for each="{video}" as="videoFile">
+                            <f:variable name="qualityLabel" value="" />
+                            <f:if condition="{videoFile.properties.tx_quality_label}">
+                                <f:then>
+                                    <f:variable name="qualityLabel" value="{videoFile.properties.tx_quality_label}" />
+                                </f:then>
+                                <f:else>
+                                    <f:variable name="qualityLabel" value="{f:if(condition: videoFile.properties.title, then: videoFile.properties.title, else: 'Default')}" />
+                                </f:else>
+                            </f:if>
+                            <source 
+                                src="{videoFile.publicUrl}" 
+                                type="{videoFile.properties.mime_type}"
+                                label="{qualityLabel}"
+                            />
+                        </f:for>
+                        <f:if condition="{videoCaption}">
+                            <f:for each="{video_caption}" as="captionFile">
+                                <track 
+                                    kind="{f:if(condition: captionFile.properties.tx_track_kind, then: captionFile.properties.tx_track_kind, else: 'captions')}" 
+                                    src="{captionFile.publicUrl}" 
+                                    srclang="{f:if(condition: captionFile.properties.tx_lang_code, then: captionFile.properties.tx_lang_code, else: 'de')}" 
+                                    label="{f:if(condition: captionFile.properties.title, then: captionFile.properties.title, else: 'Deutsch')}"
+                                />
+                            </f:for>
+                        </f:if>
+                    </video>
+                </f:then>
+                <f:else>
+                    <f:variable name="audioDescFile">{audio_description.0}</f:variable>
+                    <f:variable name="signLangFile">{sign_language.0}</f:variable>
+                    <f:variable name="videoOptions">{
+                        "autoplay":<f:if condition="{data.tx_video_autoplay}" then="true" else="false" />,
+                        "loop":<f:if condition="{data.tx_video_loop}" then="true" else="false" />,
+                        "muted":<f:if condition="{data.tx_video_muted}" then="true" else="false" />,
+                        "volume":<f:if condition="{data.tx_video_volume}" then="{data.tx_video_volume}" else="0.8" />,
+                        "playbackSpeed":<f:if condition="{data.tx_video_playback_speed}" then="{data.tx_video_playback_speed}" else="1.0" />,
+                        "startTime":<f:if condition="{data.tx_video_start_time}" then="{data.tx_video_start_time}" else="0" />,
+                        "controls":<f:if condition="{data.tx_video_controls} == 0" then="false" else="true" />,
+                        "speedButton":<f:if condition="{data.tx_video_speed_button} == 0" then="false" else="true" />,
+                        "volumeControl":<f:if condition="{data.tx_video_volume_control} == 0" then="false" else="true" />,
+                        "fullscreenButton":<f:if condition="{data.tx_video_fullscreen_button} == 0" then="false" else="true" />,
+                        "pipButton":<f:if condition="{data.tx_video_pip_button} == 0" then="false" else="true" />,
+                        "chaptersButton":<f:if condition="{data.tx_video_chapters_button} == 0" then="false" else="true" />,
+                        "qualityButton":<f:if condition="{data.tx_video_quality_button} == 0" then="false" else="true" />,
+                        "captions":<f:if condition="{data.tx_video_captions} == 0" then="false" else="true" />,
+                        "captionsDefault":<f:if condition="{data.tx_video_captions_default}" then="true" else="false" />,
+                        "captionsButton":<f:if condition="{data.tx_video_captions_button} == 0" then="false" else="true" />,
+                        "captionStyleButton":<f:if condition="{data.tx_video_caption_style_button} == 0" then="false" else="true" />,
+                        "transcript":<f:if condition="{data.tx_video_transcript}" then="true" else="false" />,
+                        "transcriptButton":<f:if condition="{data.tx_video_transcript_button} == 0" then="false" else="true" />,<f:if condition="{audioDescFile}">
+                        "audioDescriptionSrc":"<f:format.raw>{audioDescFile.publicUrl}</f:format.raw>",</f:if>
+                        "audioDescriptionButton":<f:if condition="{data.tx_video_audio_description_button} == 0" then="false" else="true" />,<f:if condition="{signLangFile}">
+                        "signLanguageSrc":"<f:format.raw>{signLangFile.publicUrl}</f:format.raw>",</f:if>
+                        "signLanguageButton":<f:if condition="{data.tx_video_sign_language_button} == 0" then="false" else="true" />,
+                        "signLanguagePosition":"<f:if condition="{data.tx_video_sign_language_position}" then="{data.tx_video_sign_language_position}" else="bottom-right" />",
+                        "keyboard":<f:if condition="{data.tx_video_keyboard} == 0" then="false" else="true" />,
+                        "screenReaderAnnouncements":<f:if condition="{data.tx_video_screen_reader} == 0" then="false" else="true" />,
+                        "language":"<f:if condition="{data.tx_video_language}" then="{data.tx_video_language}" else="de" />"
+                    }</f:variable>
+                    <video 
+                        data-vidply 
+                        class="player local-video" 
+                        style="background-color: var(--bs-gray-dark); width:100%; height:100%;" 
+                        data-vidply-options='{videoOptions}'
+                    >
+                        <f:for each="{video}" as="videoFile">
+                            <f:variable name="qualityLabel" value="" />
+                            <f:if condition="{videoFile.properties.tx_quality_label}">
+                                <f:then>
+                                    <f:variable name="qualityLabel" value="{videoFile.properties.tx_quality_label}" />
+                                </f:then>
+                                <f:else>
+                                    <f:variable name="qualityLabel" value="{f:if(condition: videoFile.properties.title, then: videoFile.properties.title, else: 'Default')}" />
+                                </f:else>
+                            </f:if>
+                            <source 
+                                src="{videoFile.publicUrl}" 
+                                type="{videoFile.properties.mime_type}"
+                                label="{qualityLabel}"
+                            />
+                        </f:for>
+                        <f:if condition="{videoCaption}">
+                            <f:for each="{video_caption}" as="captionFile">
+                                <track 
+                                    kind="{f:if(condition: captionFile.properties.tx_track_kind, then: captionFile.properties.tx_track_kind, else: 'captions')}" 
+                                    src="{captionFile.publicUrl}" 
+                                    srclang="{f:if(condition: captionFile.properties.tx_lang_code, then: captionFile.properties.tx_lang_code, else: 'de')}" 
+                                    label="{f:if(condition: captionFile.properties.title, then: captionFile.properties.title, else: 'Deutsch')}"
+                                />
+                            </f:for>
+                        </f:if>
+                    </video>
+                </f:else>
+            </f:if>
+        </div>
+    </div>
+    <f:asset.css identifier="vidplyCSS" href="EXT:mp_core/Resources/Public/StyleSheets/vidply.css"/>
+    <f:asset.script async="async" identifier="vidplyJS" src="EXT:mp_core/Resources/Public/JavaScripts/vidply.js"/>
+</f:if>
+
+<f:if condition="{videoRelation.properties.mime_type} == 'video/youtube'">
+    <div class="frame frame-type-video frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}" id="c{data.uid}">
+        <f:if condition="{data.header}">
+            <f:render arguments="{_all}" partial="Header/All"/>
+        </f:if>
+        <f:if condition="{data.bodytext}">
+            <f:format.html>{data.bodytext}</f:format.html>
+        </f:if>
+        <div class="video video-youtube">
+            <div class="dsgvo dsgvo-youtube" style="background-color:var(--bs-gray-dark); background-image:url('{f:uri.image(image: videoImg, maxWidth: 973, maxHeight: 535c, fileExtension: 'webp')}');" data-src="{videoRelation.publicUrl}" data-title="{videoRelation.properties.title}">
+                <div class="player-wrapper">
+                    <div class="dsgvo-text">
+                        <button class="video-start video-start-youtube" title="{f:translate(key: 'videoyoutube.play', extensionName: 'mp_core')}" type="button">
+                            <span class="visually-hidden">{f:translate(key: 'videoyoutube.play', extensionName: 'mp_core')}</span>
+                        </button>
+                        <f:format.raw><p>{f:translate(key: 'videoyoutube.link', extensionName: 'mp_core')}</p></f:format.raw>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <f:asset.css identifier="vidplyCSS" href="EXT:mp_core/Resources/Public/StyleSheets/vidply.css"/>
+</f:if>
+
+<f:if condition="{videoRelation.properties.mime_type} == 'video/vimeo'">
+    <div class="frame frame-type-video frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}" id="c{data.uid}">
+        <f:if condition="{data.header}">
+            <f:render arguments="{_all}" partial="Header/All"/>
+        </f:if>
+        <f:if condition="{data.bodytext}">
+            <f:format.html>{data.bodytext}</f:format.html>
+        </f:if>
+        <div class="video video-vimeo">
+            <div class="dsgvo dsgvo-vimeo" style="background-color:var(--bs-gray-dark); background-image:url('{f:uri.image(image: videoImg, maxWidth: 973, maxHeight: 535c, fileExtension: 'webp')}');" data-src="{videoRelation.publicUrl}" data-title="{videoRelation.properties.title}">
+                <div class="player-wrapper">
+                    <div class="dsgvo-text">
+                        <button class="video-start video-start-vimeo" title="{f:translate(key: 'videovimeo.play', extensionName: 'mp_core')}" type="button">
+                            <span class="visually-hidden">{f:translate(key: 'videovimeo.play', extensionName: 'mp_core')}</span>
+                        </button>
+                        <f:format.raw><p>{f:translate(key: 'videovimeo.link', extensionName: 'mp_core')}</p></f:format.raw>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <f:asset.css identifier="vidplyCSS" href="EXT:mp_core/Resources/Public/StyleSheets/vidply.css"/>
+</f:if>
+</html>

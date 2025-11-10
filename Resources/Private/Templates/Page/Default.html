@@ -1,0 +1,48 @@
+<html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+
+    <f:render arguments="{_all}" partial="Header"/>
+
+    <main aria-labelledby="headerMain" class="main-wrapper" id="mainContent">
+        <f:if condition="!{data.headercontainer}">
+            <!--TYPO3SEARCH_begin-->
+            <f:render arguments="{_all}" partial="Header.Title"/>
+            <!--TYPO3SEARCH_end-->
+        </f:if>
+
+        <f:if condition="{top}">
+            <div class="top-container">
+                <!--TYPO3SEARCH_begin-->
+                <f:format.raw>{top}</f:format.raw>
+                <!--TYPO3SEARCH_end-->
+            </div>
+        </f:if>
+
+        <div class="main-container container pb-5 gradient-bottom">
+            <f:render arguments="{_all}" partial="Header.Background"/>
+
+            <div class="row">
+                <div class="col-12">
+                    <!--TYPO3SEARCH_begin-->
+                    <f:format.raw>{main}</f:format.raw>
+
+                    <f:format.raw>{bottom}</f:format.raw>
+                    <!--TYPO3SEARCH_end-->
+                    <f:if condition="{data.socialmedia} != 1">
+                        <f:render arguments="{_all}" partial="Footer.Share"/>
+                    </f:if>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <f:render arguments="{_all}" partial="Footer"/>
+
+    <f:render arguments="{_all}" partial="ToTop"/>
+
+</f:section>
+
+</html>

@@ -1,0 +1,33 @@
+<html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<section aria-label="{f:translate(key:'aside.socialmedia', extensionName:'mp_core')}" class="pt-3 pb-3" id="share">
+    <h2 class="h3">{f:translate(key:'aside.sharepage', extensionName:'mp_core')}</h2>
+    <ul class="row g-0 list-unstyled share">
+        <li class="col mastodon">
+            <a aria-label="{f:translate(key:'aside.shareonmastodon', extensionName:'mp_core')}" class="popup-window" href="https://mastodonshare.com/?url={f:cObject(typoscriptObjectPath: 'lib.currentURL', data: '{data.uid}') -> f:format.urlencode()}" rel="nofollow" role="button" title="{f:translate(key:'aside.shareonmastodon', extensionName:'mp_core')}">
+                <span class="icon-share icon-mastodon"></span>
+                <span class="visually-hidden">{f:translate(key:'aside.share', extensionName:'mp_core')}</span>
+            </a>
+        </li>
+        <li class="col bluesky">
+            <a aria-label="{f:translate(key:'aside.shareonbluesky', extensionName:'mp_core')}" class="popup-window" href="https://bsky.app/intent/compose?text={headertitle -> f:format.urlencode()}&nbsp;&ndash;&nbsp;{headerDescription -> f:format.urlencode()}&amp;url={f:cObject(typoscriptObjectPath: 'lib.currentURL', data: '{data.uid}') -> f:format.urlencode()}&amp;via={f:cObject(typoscriptObjectPath: 'lib.prefillUrl') -> f:format.urlencode()}" rel="nofollow" role="button" title="{f:translate(key:'aside.shareonbluesky', extensionName:'mp_core')}">
+                <span class="icon-share icon-bluesky"></span>
+                <span class="visually-hidden">{f:translate(key:'aside.share', extensionName:'mp_core')}</span>
+            </a>
+        </li>
+        <li class="col linkedin">
+            <a aria-label="{f:translate(key:'aside.shareonlinkedin', extensionName:'mp_core')}" class="popup-window" href="https://www.linkedin.com/shareArticle?url={f:cObject(typoscriptObjectPath: 'lib.currentURL', data: '{data.uid}') -> f:format.urlencode()}" rel="nofollow" role="button" title="{f:translate(key:'aside.shareonlinkedin', extensionName:'mp_core')}">
+                <span class="icon-share icon-linkedin"></span>
+                <span class="visually-hidden">{f:translate(key:'aside.share', extensionName:'mp_core')}</span>
+            </a>
+        </li>
+        <li class="col print">
+            <a aria-label="{f:translate(key:'aside.printpage', extensionName:'mp_core')}" href="javascript:window.print();" rel="nofollow" role="button" title="{f:translate(key:'aside.printpage', extensionName:'mp_core')}">
+                <span class="icon-share icon-print"></span>
+                <span class="visually-hidden">{f:translate(key:'aside.print', extensionName:'mp_core')}</span>
+            </a>
+        </li>
+    </ul>
+</section>
+
+</html>

@@ -1,0 +1,34 @@
+name: dl/definitionlist
+typeName: definitionlist
+group: lists
+prefixFields: true
+prefixType: full
+fields:
+  - identifier: TYPO3/Header
+    type: Basic
+    useExistingField: true
+  - identifier: radioboxes
+    label: 'Style'
+    type: Radio
+    default: '0'
+    items:
+      - label: 'Below each other'
+        value: 0
+      - label: 'Side by side'
+        value: 1
+  - identifier: item
+    label: 'Item'
+    type: Collection
+    labelField: text
+    minitems: 1
+    fields:
+      - identifier: text
+        type: Text
+        label: Term
+      - identifier: textarea
+        type: Textarea
+        label: Definition
+        enableRichtext: true
+  - identifier: TYPO3/Appearance
+    type: Basic
+    useExistingField: true

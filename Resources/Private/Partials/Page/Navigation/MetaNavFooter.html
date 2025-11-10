@@ -1,0 +1,56 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:if condition="{metaNavFooter}">
+    <div class="row">
+        <div class="col-12">
+            <div class="footer-nav">
+                <nav aria-label="{f:translate(key: 'footer.metanav', extensionName: 'mp_core')}">
+                    <ul class="footer-nav nav justify-content-center">
+                        <f:for as="mainItem" each="{metaNavFooter}" iteration="i">
+                            <li class="nav-item mb-1">
+                                <f:if condition="{mainItem.current}">
+                                    <f:then>
+                                        <f:link.typolink
+                                            parameter="{mainItem.link}"
+                                            target="{mainItem.data.target}"
+                                            title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+                                            class="nav-link{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainChild.data.target, then:' external-link')}"
+                                            additionalAttributes="{'aria-current': 'page'}">
+                                            <f:spaceless>
+                                                <f:if condition="{mainItem.files.0}">
+                                                    <mpc:svgInline src="fileadmin/{mainItem.files.0.properties.identifier}" width="16" height="16" class="nav-icon" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
+                                                </f:if>
+                                                <f:if condition="{mainItem.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+                                                <span class="text-decoration-underline">{mainItem.title}</span>
+                                            </f:spaceless>
+                                        </f:link.typolink>
+                                    </f:then>
+                                    <f:else>
+                                        <f:link.typolink
+                                            parameter="{mainItem.link}"
+                                            target="{mainItem.data.target}"
+                                            title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+                                            class="nav-link fw-normal{f:if(condition: mainItem.data.target, then:' external-link')}">
+                                            <f:spaceless>
+                                                <f:if condition="{mainItem.files.0}">
+                                                    <mpc:svgInline src="fileadmin/{mainItem.files.0.properties.identifier}" width="16" height="16" class="nav-icon" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
+                                                </f:if>
+                                                <f:if condition="{mainItem.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+                                                <span>{mainItem.title}</span>
+                                            </f:spaceless>
+                                        </f:link.typolink>
+                                    </f:else>
+                                </f:if>
+                            </li>
+                        </f:for>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</f:if>
+
+</html>

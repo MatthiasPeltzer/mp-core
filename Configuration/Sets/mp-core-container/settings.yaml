@@ -1,0 +1,16 @@
+# Container Extension Settings
+container.grid.enabled: true
+container.grid.defaultColumns: 2
+container.grid.maxColumns: 4
+container.grid.gutterSize: '20px'
+
+container.accordion.enabled: true
+container.accordion.allowMultiple: false
+container.accordion.firstOpen: true
+
+container.tabs.enabled: true
+container.tabs.position: 'top'
+
+container.wrapper.maxWidth: '1200px'
+container.wrapper.padding: '15px'
+

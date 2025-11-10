@@ -1,0 +1,1603 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang_db.xlf" date="2025-01-26T12:00:00" product-name="mp_core">
+    <header/>
+    <body>
+      <trans-unit id="BackendLayouts.bottom" resname="BackendLayouts.bottom" approved="yes">
+        <source>Bottom</source>
+        <target>Unten</target>
+      </trans-unit>
+      <trans-unit id="BackendLayouts.logos.top" resname="BackendLayouts.logos.top" approved="yes">
+        <source>Logos/Banner top</source>
+        <target>Logos/Banner oben</target>
+      </trans-unit>
+      <trans-unit id="BackendLayouts.main" resname="BackendLayouts.main" approved="yes">
+        <source>Main content</source>
+        <target>Hauptinhalt</target>
+      </trans-unit>
+      <trans-unit id="BackendLayouts.supplement" resname="BackendLayouts.supplement" approved="yes">
+        <source>Supplement</source>
+        <target>Ergänzung</target>
+      </trans-unit>
+      <trans-unit id="BackendLayouts.top" resname="BackendLayouts.top" approved="yes">
+        <source>Top (full width)</source>
+        <target>Oben (volle Breite)</target>
+      </trans-unit>
+      <trans-unit id="accordion.description" resname="accordion.description" approved="yes">
+        <source>The content elements are accessible in an accordion</source>
+        <target>Die Inhaltselemente sind in einem Akkordeon zugänglich</target>
+      </trans-unit>
+      <trans-unit id="accordion.description.onload" resname="accordion.description.onload" approved="yes">
+        <source>Open a specific accordion tile when loading</source>
+        <target>Öffne eine bestimmte Akkordeon-Kachel beim Laden</target>
+      </trans-unit>
+      <trans-unit id="accordion.description.onloadall" resname="accordion.description.onloadall" approved="yes">
+        <source>Close accordions when an accordion element is selected / Accordions stay open</source>
+        <target>Akkordeons schließen sich bei Auswahl eines Akkordeon Elementes / Akkordeons bleiben geöffnet
+				</target>
+      </trans-unit>
+      <trans-unit id="accordion.description.open" resname="accordion.description.open" approved="yes">
+        <source>Choose the accordion tile, wich should be opened</source>
+        <target>Wähle die Akkordeonkachel, die geöffnet werden soll</target>
+      </trans-unit>
+      <trans-unit id="accordion.label.onload" resname="accordion.label.onload" approved="yes">
+        <source>On load</source>
+        <target>Beim Laden</target>
+      </trans-unit>
+      <trans-unit id="accordion.label.onloadall" resname="accordion.label.onloadall" approved="yes">
+        <source>Accordion toggle</source>
+        <target>Akkordeon Toggle</target>
+      </trans-unit>
+      <trans-unit id="accordion.label.open" resname="accordion.label.open" approved="yes">
+        <source>Accordion tile</source>
+        <target>Akkordeon Kachel</target>
+      </trans-unit>
+      <trans-unit id="accordion.title" resname="accordion.title" approved="yes">
+        <source>Accordion</source>
+        <target>Akkordeon</target>
+      </trans-unit>
+      <trans-unit id="accordion.type.bootstrap" resname="accordion.type.bootstrap" approved="yes">
+        <source>Bootstrap Accordion</source>
+        <target>Bootstrap-Akkordeon</target>
+      </trans-unit>
+      <trans-unit id="accordion.type.label" resname="accordion.type.label" approved="yes">
+        <source>Type</source>
+        <target>Typ</target>
+      </trans-unit>
+      <trans-unit id="accordion.type.native" resname="accordion.type.native" approved="yes">
+        <source>Native Detail Accordion</source>
+        <target>Natives Detail-Akkordeon</target>
+      </trans-unit>
+      <trans-unit id="audio.audio_description" resname="audio.audio_description" approved="yes">
+        <source>Puts a local or external audio on the page</source>
+        <target>Legt ein lokales Audio oder ein externes Audio an</target>
+      </trans-unit>
+      <trans-unit id="audio.audio_title" resname="audio.audio_title" approved="yes">
+        <source>Audio</source>
+        <target>Audio</target>
+      </trans-unit>
+      <trans-unit id="banner.description" resname="banner.description" approved="yes">
+        <source>Adds a banner element with optional image, link and background color</source>
+        <target>Fügt ein Banner Element mit optionalem Bild, Link und Hintergrundfarbe hinzu</target>
+      </trans-unit>
+      <trans-unit id="banner.title" resname="banner.title" approved="yes">
+        <source>Banner</source>
+        <target>Banner</target>
+      </trans-unit>
+      <trans-unit id="container.description" resname="container.description" approved="yes">
+        <source>Container covering the entire page or screen width</source>
+        <target>Container, der sich über die gesamte Seiten- oder Bildschirmbreite erstreckt</target>
+      </trans-unit>
+      <trans-unit id="container.title" resname="container.title" approved="yes">
+        <source>Page container</source>
+        <target>Seitencontainer</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.appearance" approved="yes">
+        <source>Appearance</source>
+        <target>Erscheinungsbild</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.cardTitle" approved="yes">
+        <source>Card Title</source>
+        <target>Kartentitel</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme" approved="yes">
+        <source>Color Scheme</source>
+        <target>Farbschema</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme.danger" approved="yes">
+        <source>Danger (Red)</source>
+        <target>Gefahr (Rot)</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme.info" approved="yes">
+        <source>Info (Cyan)</source>
+        <target>Info (Cyan)</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme.primary" approved="yes">
+        <source>Primary (Blue)</source>
+        <target>Primär (Blau)</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme.success" approved="yes">
+        <source>Success (Green)</source>
+        <target>Erfolg (Grün)</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme.warning" approved="yes">
+        <source>Warning (Yellow)</source>
+        <target>Warnung (Gelb)</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.maxItems" approved="yes">
+        <source>Maximum Items</source>
+        <target>Maximale Anzahl</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.predefinedItems" approved="yes">
+        <source>Pre-populated Tasks</source>
+        <target>Vordefinierte Aufgaben</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.predefinedItems.description" approved="yes">
+        <source>Enter one task per line. These tasks will appear when the to-do list is first loaded (if session storage is empty).</source>
+        <target>Geben Sie eine Aufgabe pro Zeile ein. Diese Aufgaben werden beim ersten Laden der To-Do-Liste angezeigt (wenn der Session-Speicher leer ist).</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.settings" approved="yes">
+        <source>General Settings</source>
+        <target>Allgemeine Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showClearCompleted" approved="yes">
+        <source>Show Clear Completed Button</source>
+        <target>Button "Erledigte löschen" anzeigen</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showClearCompleted.enable" approved="yes">
+        <source>Enable button to clear all completed tasks</source>
+        <target>Button aktivieren, um alle erledigten Aufgaben zu löschen</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showDeleteButton" approved="yes">
+        <source>Show Delete Button</source>
+        <target>Löschen-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showDeleteButton.enable" approved="yes">
+        <source>Enable delete button for individual tasks</source>
+        <target>Löschen-Button für einzelne Aufgaben aktivieren</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showFilter" approved="yes">
+        <source>Show Filter Buttons</source>
+        <target>Filter-Buttons anzeigen</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showFilter.enable" approved="yes">
+        <source>Enable filter buttons (All/Active/Completed)</source>
+        <target>Filter-Buttons aktivieren (Alle/Aktiv/Erledigt)</target>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.tab.settings" approved="yes">
+        <source>TodoList Settings</source>
+        <target>TodoList-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="gallery.description" resname="gallery.description" approved="yes">
+        <source>Inserts a gallery element as a single image preview, tiles or slider</source>
+        <target>Fügt ein Galerieelement als Einzelbild Vorschau, Kacheln oder Slider ein</target>
+      </trans-unit>
+      <trans-unit id="gallery.title" resname="gallery.title" approved="yes">
+        <source>Gallery</source>
+        <target>Galerie</target>
+      </trans-unit>
+      <trans-unit id="grid.bg.bgcolor" resname="grid.bg.bgcolor" approved="yes">
+        <source>Backgroud color</source>
+        <target>Hintergrundfarbe</target>
+      </trans-unit>
+      <trans-unit id="grid.bg.bgcolor.description" resname="grid.bg.bgcolor.description" approved="yes">
+        <source>Set a backgroundcolor</source>
+        <target>Eine Hintergrundfarbe festlegen</target>
+      </trans-unit>
+      <trans-unit id="grid.bg.bgfullsize" resname="grid.bg.bgfullsize" approved="yes">
+        <source>Grid Ausdehnung</source>
+        <target>Grid Ausdehnung</target>
+      </trans-unit>
+      <trans-unit id="grid.bg.bgfullsize.description" resname="grid.bg.bgfullsize.description" approved="yes">
+        <source>Drag grid container across the entire width</source>
+        <target>Grid Container über die ganze Breite ziehen</target>
+      </trans-unit>
+      <trans-unit id="grid.bg.container" resname="grid.bg.container" approved="yes">
+        <source>Container</source>
+        <target>Container</target>
+      </trans-unit>
+      <trans-unit id="grid.bg.container.description" resname="grid.bg.container.description" approved="yes">
+        <source>Turns off the container wrapper</source>
+        <target>Schaltet den Container Wrapper aus</target>
+      </trans-unit>
+      <trans-unit id="grid.bg.light" resname="grid.bg.light" approved="yes">
+        <source>Grid font-color</source>
+        <target>Raster Schriftfarbe</target>
+      </trans-unit>
+      <trans-unit id="grid.bg.light.description" resname="grid.bg.light.description" approved="yes">
+        <source>Switch font-color from dark to light</source>
+        <target>Schriftfarbe von dunkel auf hell umstellen</target>
+      </trans-unit>
+      <trans-unit id="grid.bgimage.container" resname="grid.bgimage.container" approved="yes">
+        <source>Background image</source>
+        <target>Hintergrundbild</target>
+      </trans-unit>
+      <trans-unit id="grid.bgimage.container.description" resname="grid.bgimage.container.description" approved="yes">
+        <source>Add a background image to the container.</source>
+        <target>Ein Hintergrundbild dem Container hinzufügen.</target>
+      </trans-unit>
+      <trans-unit id="grid.columns" resname="grid.columns" approved="yes">
+        <source>Grid Columns</source>
+        <target>Raster Spalten</target>
+      </trans-unit>
+      <trans-unit id="grid.columns.description" resname="grid.columns.description" approved="yes">
+        <source>Choose how many columns the grid will be divided into</source>
+        <target>Wähle, in wie viele Spalten das Raster aufgeteilt wird</target>
+      </trans-unit>
+      <trans-unit id="grid.columns.fourcol" resname="grid.columns.fourcol" approved="yes">
+        <source>Four columns</source>
+        <target>Vier Spalten</target>
+      </trans-unit>
+      <trans-unit id="grid.columns.onecol" resname="grid.columns.onecol" approved="yes">
+        <source>One column</source>
+        <target>Eine Spalte</target>
+      </trans-unit>
+      <trans-unit id="grid.columns.threecol" resname="grid.columns.threecol" approved="yes">
+        <source>Three columns</source>
+        <target>Drei Spalten</target>
+      </trans-unit>
+      <trans-unit id="grid.columns.twocol" resname="grid.columns.twocol" approved="yes">
+        <source>Two columns</source>
+        <target>Zwei Spalten</target>
+      </trans-unit>
+      <trans-unit id="grid.description" resname="grid.description" approved="yes">
+        <source>Create a grid with any number of elements.</source>
+        <target>Erstelle ein Raster mit einer beliebigen Anzahl von Elementen.</target>
+      </trans-unit>
+      <trans-unit id="grid.elements" resname="grid.elements" approved="yes">
+        <source>Grid elements</source>
+        <target>Raster Elemente</target>
+      </trans-unit>
+      <trans-unit id="grid.grid_icon_switch" resname="grid.grid_icon_switch" approved="yes">
+        <source>Move out element</source>
+        <target>Element ausrücken</target>
+      </trans-unit>
+      <trans-unit id="grid.grid_icon_switch.description" resname="grid.grid_icon_switch.description" approved="yes">
+        <source>Move out, add padding to element and add optional icon</source>
+        <target>Element ausrücken und abstand hinzufügen und optionales Icon hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="grid.icon" resname="grid.bgimage" approved="yes">
+        <source>Container Icon</source>
+        <target>Container Icon (Bild)</target>
+      </trans-unit>
+      <trans-unit id="grid.icon.description" resname="grid.bgimage.description" approved="yes">
+        <source>Insert icon at the top left of the container</source>
+        <target>Icon oben links am Container einfügen</target>
+      </trans-unit>
+      <trans-unit id="grid.parallax" resname="grid.bgimage.container" approved="yes">
+        <source>Parallax animation</source>
+        <target>Parallax-Animation</target>
+      </trans-unit>
+      <trans-unit id="grid.parallax.description" resname="grid.bgimage.container.description" approved="yes">
+        <source>Add a parallax animation to the background image.</source>
+        <target>Das Hintergrundbild mit einer Parallax-Animation versehen.</target>
+      </trans-unit>
+      <trans-unit id="grid.slider.type" resname="grid.slider.type" approved="yes">
+        <source>Slider type</source>
+        <target>Slider Typ</target>
+      </trans-unit>
+      <trans-unit id="grid.slider.type.description" resname="grid.slider.type.description" approved="yes">
+        <source>Slide or Fade (Fade only in one column)</source>
+        <target>Slide oder Fade (Fade nur in einer Spalte)</target>
+      </trans-unit>
+      <trans-unit id="grid.title" resname="grid.title" approved="yes">
+        <source>Grid</source>
+        <target>Raster</target>
+      </trans-unit>
+      <trans-unit id="grid.type" resname="grid.type" approved="yes">
+        <source>Grid type</source>
+        <target>Raster Typ</target>
+      </trans-unit>
+      <trans-unit id="grid.type.container" resname="grid.type.container" approved="yes">
+        <source>Container</source>
+        <target>Container</target>
+      </trans-unit>
+      <trans-unit id="grid.type.description" resname="grid.type.description" approved="yes">
+        <source>Choose whether elements are in a list or in containers</source>
+        <target>Wähle, ob Elemente in einer Liste oder in Containern sind</target>
+      </trans-unit>
+      <trans-unit id="grid.type.list" resname="grid.type.list" approved="yes">
+        <source>List</source>
+        <target>Liste</target>
+      </trans-unit>
+      <trans-unit id="hasCaption" resname="hasCaption" approved="yes">
+        <source>Has editorial caption</source>
+        <target>Hat eine redaktionelle Caption</target>
+      </trans-unit>
+      <trans-unit id="header.h1" resname="header.h1" approved="yes">
+        <source>H1</source>
+        <target>H1</target>
+      </trans-unit>
+      <trans-unit id="header.h2" resname="header.h2" approved="yes">
+        <source>H2</source>
+        <target>H2</target>
+      </trans-unit>
+      <trans-unit id="header.h3" resname="header.h3" approved="yes">
+        <source>H3</source>
+        <target>H3</target>
+      </trans-unit>
+      <trans-unit id="header.h4" resname="header.h4" approved="yes">
+        <source>H4</source>
+        <target>H4</target>
+      </trans-unit>
+      <trans-unit id="header.h5" resname="header.h5" approved="yes">
+        <source>H5</source>
+        <target>H5</target>
+      </trans-unit>
+      <trans-unit id="header.h6" resname="header.h6" approved="yes">
+        <source>H6</source>
+        <target>H6</target>
+      </trans-unit>
+      <trans-unit id="header_layout.0" resname="header_layout.0" approved="yes">
+        <source>Default</source>
+        <target>Standard</target>
+      </trans-unit>
+      <trans-unit id="header_layout.1" resname="header_layout.1" approved="yes">
+        <source>H1</source>
+        <target>H1</target>
+      </trans-unit>
+      <trans-unit id="header_layout.10" resname="header_layout.10" approved="yes">
+        <source>H4 - Hidden (SR only)</source>
+        <target>H4 - Versteckt (nur SR)</target>
+      </trans-unit>
+      <trans-unit id="header_layout.11" resname="header_layout.11" approved="yes">
+        <source>H5 - Hidden (SR only)</source>
+        <target>H5 - Versteckt (nur SR)</target>
+      </trans-unit>
+      <trans-unit id="header_layout.12" resname="header_layout.12" approved="yes">
+        <source>H6 - Hidden (SR only)</source>
+        <target>H6 - Versteckt (nur SR)</target>
+      </trans-unit>
+      <trans-unit id="header_layout.2" resname="header_layout.2" approved="yes">
+        <source>H2 - Default</source>
+        <target>H2 - Standard</target>
+      </trans-unit>
+      <trans-unit id="header_layout.3" resname="header_layout.3" approved="yes">
+        <source>H3</source>
+        <target>H3</target>
+      </trans-unit>
+      <trans-unit id="header_layout.4" resname="header_layout.4" approved="yes">
+        <source>H4</source>
+        <target>H4</target>
+      </trans-unit>
+      <trans-unit id="header_layout.5" resname="header_layout.5" approved="yes">
+        <source>H5</source>
+        <target>H5</target>
+      </trans-unit>
+      <trans-unit id="header_layout.6" resname="header_layout.6" approved="yes">
+        <source>H6</source>
+        <target>H6</target>
+      </trans-unit>
+      <trans-unit id="header_layout.7" resname="header_layout.7" approved="yes">
+        <source>H1 - Hidden (SR only)</source>
+        <target>H1 - Versteckt (nur SR)</target>
+      </trans-unit>
+      <trans-unit id="header_layout.8" resname="header_layout.8" approved="yes">
+        <source>H2 - Hidden (SR only)</source>
+        <target>H2 - Versteckt (nur SR)</target>
+      </trans-unit>
+      <trans-unit id="header_layout.9" resname="header_layout.9" approved="yes">
+        <source>H3 - Hidden (SR only)</source>
+        <target>H3 - Versteckt (nur SR)</target>
+      </trans-unit>
+      <trans-unit id="language.de" resname="language.de" approved="yes">
+        <source>Deutsch</source>
+        <target>Deutsch</target>
+      </trans-unit>
+      <trans-unit id="language.en" resname="language.en" approved="yes">
+        <source>English</source>
+        <target>Englisch</target>
+      </trans-unit>
+      <trans-unit id="language.es" resname="language.es" approved="yes">
+        <source>Español</source>
+        <target>Spanisch</target>
+      </trans-unit>
+      <trans-unit id="language.fr" resname="language.fr" approved="yes">
+        <source>Français</source>
+        <target>Französisch</target>
+      </trans-unit>
+      <trans-unit id="language.ja" resname="language.ja" approved="yes">
+        <source>日本語</source>
+        <target>Japanisch</target>
+      </trans-unit>
+      <trans-unit id="layout.0" resname="layout.0" approved="yes">
+        <source>Normal box (default)</source>
+        <target>Normale Box (Standard)</target>
+      </trans-unit>
+      <trans-unit id="layout.1" resname="layout.1" approved="yes">
+        <source>Element indentation (col-8)</source>
+        <target>Element Einrückung (col-8)</target>
+      </trans-unit>
+      <trans-unit id="layout.2" resname="layout.2" approved="yes">
+        <source>Element indentation (col-10)</source>
+        <target>Element Einrückung (col-10)</target>
+      </trans-unit>
+      <trans-unit id="linkicon.description" resname="linkicon.description" approved="yes">
+        <source>Link Icon for the page navigation, e.g. for accessible link.</source>
+        <target>Link-Symbol für die Seitennavigation, z. B. für barrierefreie Links.</target>
+      </trans-unit>
+      <trans-unit id="linkicon.label" resname="linkicon.label" approved="yes">
+        <source>Link icon</source>
+        <target>Link-Symbol</target>
+      </trans-unit>
+      <trans-unit id="pages.Breadcrumb" resname="pages.Breadcrumb" approved="yes">
+        <source>Breadcrumb</source>
+        <target>Breadcrumb</target>
+      </trans-unit>
+      <trans-unit id="pages.Breadcrumb.description" resname="pages.Breadcrumb.description" approved="yes">
+        <source>Remove breadcrumb</source>
+        <target>Breadcrumb entfernen</target>
+      </trans-unit>
+      <trans-unit id="pages.HeaderContainer" resname="pages.HeaderContainer.description" approved="yes">
+        <source>Header</source>
+        <target>Header</target>
+      </trans-unit>
+      <trans-unit id="pages.HeaderContainer.description" resname="pages.HeaderContainer.description" approved="yes">
+        <source>Remove header</source>
+        <target>Header entfernen</target>
+      </trans-unit>
+      <trans-unit id="pages.MainCategory.description" resname="pages.MainCategory.description" approved="yes">
+        <source>Only one main category can be selected and will be displayed alone or next to the date.</source>
+        <target>Nur eine Hauptkategorie kann ausgewählt werden und wird alleine oder neben dem Datum angezeigt.</target>
+      </trans-unit>
+      <trans-unit id="pages.MainCategory.label" resname="pages.MainCategory.label" approved="yes">
+        <source>Main category</source>
+        <target>Hauptkategorie</target>
+      </trans-unit>
+      <trans-unit id="pages.NewsletterBox" resname="pages.NewsletterBox" approved="yes">
+        <source>Newsletter Box</source>
+        <target>Newsletter-Box</target>
+      </trans-unit>
+      <trans-unit id="pages.NewsletterBox.description" resname="pages.NewsletterBox.description" approved="yes">
+        <source>Remove newsletter box</source>
+        <target>Newsletter-Box entfernen</target>
+      </trans-unit>
+      <trans-unit id="pages.SocialmediaBar" resname="pages.SocialmediaBar" approved="yes">
+        <source>Socialmedia Bar</source>
+        <target>Socialmedia-Leiste</target>
+      </trans-unit>
+      <trans-unit id="pages.SocialmediaBar.description" resname="pages.SocialmediaBar.description" approved="yes">
+        <source>Remove socialmedia bar</source>
+        <target>Socialmedia-Leiste entfernen</target>
+      </trans-unit>
+      <trans-unit id="pages.TeaserDescription" resname="pages.TeaserDescription.description" approved="yes">
+        <source>Teaser short text</source>
+        <target>Teaser Kurztext</target>
+      </trans-unit>
+      <trans-unit id="pages.TeaserDescription.description" resname="pages.TeaserDescription.description" approved="yes">
+        <source>Short text that can be displayed in teasers to this page</source>
+        <target>Kurztext der in Teasern zu dieser Seite angezeigt werden kann</target>
+      </trans-unit>
+      <trans-unit id="singleteaser.description" resname="singleteaser.description" approved="yes">
+        <source>Adds a teaser with headline, image, text and link element</source>
+        <target>Fügt einen Teaser mit Überschrift, Bild, Text und Linkelement hinzu</target>
+      </trans-unit>
+      <trans-unit id="singleteaser.title" resname="singleteaser.title" approved="yes">
+        <source>Single teaser</source>
+        <target>Einzelteaser</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.apple-touch-icon" resname="site.configuration.apple-touch-icon" approved="yes">
+        <source>Apple Touch Icon (PNG)</source>
+        <target>Apple Touch Icon (PNG)</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.bandcamp.label" resname="site.configuration.bandcamp.label" approved="yes">
+        <source>Bandcamp</source>
+        <target>Bandcamp</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.bluesky.label" resname="site.configuration.bluesky.label" approved="yes">
+        <source>Bluesky</source>
+        <target>Bluesky</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-0" resname="site.configuration.color-0" approved="yes">
+        <source>Choose background color</source>
+        <target>Hintergrundfarbe auswählen</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-1" resname="site.configuration.color-1" approved="yes">
+        <source>First color</source>
+        <target>Erste Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-1.description" resname="site.configuration.color-1.description" approved="yes">
+        <source>Specify the first color in the selection field here.</source>
+        <target>Legen Sie hier die erste Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-1.label" resname="site.configuration.color-1.label" approved="yes">
+        <source>First Color identifier</source>
+        <target>Erste Farbe Bezeichner</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-1.label.description" resname="site.configuration.color-1.label.description" approved="yes">
+        <source>Specify the name for the first color in the selection field here.</source>
+        <target>Legen Sie hier den Namen für die erste Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-2" resname="site.configuration.color-2" approved="yes">
+        <source>Second color</source>
+        <target>Zweite Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-2.description" resname="site.configuration.color-2.description" approved="yes">
+        <source>Specify the second color in the selection field here.</source>
+        <target>Legen Sie hier die zweite Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-2.label" resname="site.configuration.color-2.label" approved="yes">
+        <source>Second Color identifier</source>
+        <target>Zweite Farbe Bezeichner</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-2.label.description" resname="site.configuration.color-2.label.description" approved="yes">
+        <source>Specify the name for the second color in the selection field here.</source>
+        <target>Legen Sie hier den Namen für die zweite Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-3" resname="site.configuration.color-3" approved="yes">
+        <source>Third color</source>
+        <target>Dritte Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-3.description" resname="site.configuration.color-3.description" approved="yes">
+        <source>Specify the third color in the selection field here.</source>
+        <target>Legen Sie hier die dritte Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-3.label" resname="site.configuration.color-3.label" approved="yes">
+        <source>Third color identifier</source>
+        <target>Dritte Farbe Bezeichner</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-3.label.description" resname="site.configuration.color-3.label.description" approved="yes">
+        <source>Specify the name for the third color in the selection field here.</source>
+        <target>Legen Sie hier den Namen für die dritte Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-4" resname="site.configuration.color-4" approved="yes">
+        <source>Fourth color</source>
+        <target>Vierte Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-4.description" resname="site.configuration.color-4.description" approved="yes">
+        <source>Specify the fourth color in the selection field here.</source>
+        <target>Legen Sie hier die vierte Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-4.label" resname="site.configuration.color-4.label" approved="yes">
+        <source>Fourth color identifier</source>
+        <target>Vierte Farbe Bezeichner</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-4.label.description" resname="site.configuration.color-4.label.description" approved="yes">
+        <source>Specify the name for the fourth color in the selection field here.</source>
+        <target>Legen Sie hier den Namen für die vierte Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-5" resname="site.configuration.color-5" approved="yes">
+        <source>Fifth color</source>
+        <target>Fünfte Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-5.description" resname="site.configuration.color-5.description" approved="yes">
+        <source>Specify the fifth color in the selection field here.</source>
+        <target>Legen Sie hier die fünfte Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-5.label" resname="site.configuration.color-5.label" approved="yes">
+        <source>Fifth color identifier</source>
+        <target>Fünfte Farbe Bezeichner</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-5.label.description" resname="site.configuration.color-5.label.description" approved="yes">
+        <source>Specify the name for the fifth color in the selection field here.</source>
+        <target>Legen Sie hier den Namen für die fünfte Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-6" resname="site.configuration.color-6" approved="yes">
+        <source>Sixth color</source>
+        <target>Sechste Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-6.description" resname="site.configuration.color-6.description" approved="yes">
+        <source>Specify the sixth color in the selection field here.</source>
+        <target>Legen Sie hier die sechste Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-6.label" resname="site.configuration.color-6.label" approved="yes">
+        <source>Sixth color identifier</source>
+        <target>Sechste Farbe Bezeichner</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-6.label.description" resname="site.configuration.color-6.label.description" approved="yes">
+        <source>Specify the name for the sixth color in the selection field here.</source>
+        <target>Legen Sie hier den Namen für die sechste Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-7" resname="site.configuration.color-7" approved="yes">
+        <source>Seventh color</source>
+        <target>Siebte Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-7.description" resname="site.configuration.color-7.description" approved="yes">
+        <source>Specify the seventh color in the selection field here.</source>
+        <target>Legen Sie hier die siebte Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-7.label" resname="site.configuration.color-7.label" approved="yes">
+        <source>Seventh color identifier</source>
+        <target>Siebte Farbe Bezeichner</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-7.label.description" resname="site.configuration.color-7.label.description" approved="yes">
+        <source>Specify the name for the seventh color in the selection field here.</source>
+        <target>Legen Sie hier den Namen für die siebte Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-8" resname="site.configuration.color-8" approved="yes">
+        <source>Eighth color</source>
+        <target>Achte Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-8.description" resname="site.configuration.color-8.description" approved="yes">
+        <source>Specify the eighth color in the selection field here.</source>
+        <target>Legen Sie hier die achte Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-8.label" resname="site.configuration.color-8.label" approved="yes">
+        <source>Eighth color identifier</source>
+        <target>Achte Farbe Bezeichner</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-8.label.description" resname="site.configuration.color-8.label.description" approved="yes">
+        <source>Specify the name for the eighth color in the selection field here.</source>
+        <target>Legen Sie hier den Namen für die achte Farbe für das Auswahlfeld fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-primary.description" resname="site.configuration.color-primary.description" approved="yes">
+        <source>Set the primary page color here.</source>
+        <target>Legen Sie hier die primäre Seitenfarbe fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-primary.label" resname="site.configuration.color-primary.label" approved="yes">
+        <source>Primary Color</source>
+        <target>Primäre Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-quaternary.description" resname="site.configuration.color-quaternary.description" approved="yes">
+        <source>Set the quaternary page color here.</source>
+        <target>Legen Sie hier die quartäre Seiten-Farbe fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-quaternary.label" resname="site.configuration.color-quaternary.label" approved="yes">
+        <source>Quaternary Color</source>
+        <target>Quartäre Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-secondary-rgba.description" resname="site.configuration.color-secondary-rgba.description" approved="yes">
+        <source>Set the secondary page color here. You should also set a transparency value here.</source>
+        <target>Legen Sie hier die sekundäre Seitenfarbe fest. Hier sollten Sie zusätzlich einen Transparentwert festlegen.
+				</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-secondary-rgba.label" resname="site.configuration.color-secondary-rgba.label" approved="yes">
+        <source>Secondary Color RGBA</source>
+        <target>Sekundäre Farbe RGBA</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-secondary.description" resname="site.configuration.color-secondary.description" approved="yes">
+        <source>Set the secondary page color here.</source>
+        <target>Legen Sie hier die sekundäre Seitenfarbe fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-secondary.label" resname="site.configuration.color-secondary.label" approved="yes">
+        <source>Secondary color</source>
+        <target>Sekundäre Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-tertiary.description" resname="site.configuration.color-tertiary.description" approved="yes">
+        <source>Set the tertiary page color here.</source>
+        <target>Legen Sie hier die tertiäre Seiten-Farbe fest.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-tertiary.label" resname="site.configuration.color-tertiary.label" approved="yes">
+        <source>Tertiary Color</source>
+        <target>Tertiäre Farbe</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-toggle" resname="site.configuration.color-toggle" approved="yes">
+        <source>Turn on color selector</source>
+        <target>Farbwähler einschalten</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-toggle.description" resname="site.configuration.color-toggle.description" approved="yes">
+        <source>This selection switch activates all colors below it. If it is turned off, no color is passed on to the frontend. When it is turned on, only the filled colors are passed on.</source>
+        <target>Dieser Auswahlschalter aktiviert alle darunter liegenden Farben. Wenn er ausgeschaltet ist, wird keine Farbe an das Frontend weitergegeben. Wenn er eingeschaltet ist werden nur die ausgefüllten Farben weitergegeben.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.colorsAndStyles" resname="site.configuration.colorsAndStyles" approved="yes">
+        <source>Colors and styles</source>
+        <target>Farben und Styles</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.copyrightText.description" resname="site.configuration.copyrightText.description" approved="yes">
+        <source>In the footer, the copyright notice is displayed with a © sign and the current year.</source>
+        <target>Der Urheberrechtshinweis wird im Footer mit einem © Zeichen und der aktuellen Jahreszahl ausgespielt.
+				</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.copyrightText.label" resname="site.configuration.copyrightText.label" approved="yes">
+        <source>Copyright notice</source>
+        <target>Urheberrechtshinweis</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.customization" resname="site.configuration.customization" approved="yes">
+        <source>Customization</source>
+        <target>Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.apple-touch-icon" resname="site.configuration.description.apple-touch-icon" approved="yes">
+        <source>The PNG file has to be square in 180x180 pixel. Filename must be 'apple-touch-icon.png'.</source>
+        <target>Die PNG-Datei muss quadratisch sein und eine Größe von 180x180 Pixel haben. Dateiname muss "apple-touch-icon.png" sein.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.favicon-48x48-png" resname="site.configuration.description.favicon-48x48-png" approved="yes">
+        <source>The PNG file has to be square in 48x48 pixel. Filename must be 'favicon-48x48.png'.</source>
+        <target>Die PNG-Datei muss quadratisch sein und eine Größe von 48x48 Pixel haben. Dateiname muss "favicon-48x48.png" sein.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.favicon-96x96-png" resname="site.configuration.description.favicon-96x96-png" approved="yes">
+        <source>The PNG file has to be square in 48x48 pixel. Filename must be 'favicon-96x96.png'.</source>
+        <target>Die PNG-Datei muss quadratisch sein und eine Größe von 96x96 Pixel haben. Dateiname muss "favicon-96x96.png" sein.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.faviconIco" resname="site.configuration.description.faviconIco" approved="yes">
+        <source>The classic Ico file must be square and have a size of 48x48 pixels. Filename must be 'favicon.ico'.</source>
+        <target>Die klassische Ico-Datei muss quadratisch sein und eine Größe von 48x48 Pixel haben. Dateiname muss "favicon.ico" sein.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.faviconSvg" resname="site.configuration.description.faviconSvg" approved="yes">
+        <source>The SVG touch icon must be square and have a size of 512x512 pixels. Filename must be 'favicon.svg'.</source>
+        <target>Das SVG Touch Icon muss muss quadratisch sein und eine Größe von 512x512 Pixeln haben. Dateiname muss "favicon.svg" sein.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.web-app-manifest-192x192" resname="site.configuration.description.web-app-manifest-192x192" approved="yes">
+        <source>The PNG file has to be square in 192x192 pixel. Filename must be 'web-app-manifest-192x192.png'.</source>
+        <target>Die PNG-Datei muss quadratisch sein und eine Größe von 192x192 Pixel haben. Dateiname muss "web-app-manifest-192x192.png" sein.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.web-app-manifest-512x512" resname="site.configuration.description.web-app-manifest-512x512" approved="yes">
+        <source>The PNG file has to be square in 512x512 pixel. Filename must be 'web-app-manifest-512x512.png'.</source>
+        <target>Die PNG-Datei muss quadratisch sein und eine Größe von 512x512 Pixel haben. Dateiname muss "web-app-manifest-512x512.png" sein.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.webmanifest" resname="site.configuration.description.webmanifest" approved="yes">
+        <source>The Webmanifest file must first be customized according to your preferences. The file name must be “site.webmanifest”.</source>
+        <target>Die Webmanifest-Datei muss vorher nach ihren Wünschen angepasst werden. Dateiname muss "site.webmanifest" sein.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.discord.label" resname="site.configuration.discord.label" approved="yes">
+        <source>Discord</source>
+        <target>Discord</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.facebook.label" resname="site.configuration.facebook.label" approved="yes">
+        <source>Facebook</source>
+        <target>Facebook</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.favicon-48x48-png" resname="site.configuration.favicon-48x48-png" approved="yes">
+        <source>Favicon 48x48 PNG</source>
+        <target>Favicon 48x48 PNG</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.favicon-96x96-png" resname="site.configuration.favicon-96x96-png" approved="yes">
+        <source>Favicon 96x96 PNG</source>
+        <target>Favicon 96x96 PNG</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.faviconIco" resname="site.configuration.faviconIco" approved="yes">
+        <source>Favicon Icon (ICO)</source>
+        <target>Favicon Icon (ICO)</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.faviconSvg" resname="site.configuration.faviconSvg" approved="yes">
+        <source>Favicon SVG</source>
+        <target>Favicon SVG</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.favicons" resname="site.configuration.favicons" approved="yes">
+        <source>Favicons</source>
+        <target>Favicons</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.instagram.label" resname="site.configuration.instagram.label" approved="yes">
+        <source>Instagram</source>
+        <target>Instagram</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.linkedin.label" resname="site.configuration.linkedin.label" approved="yes">
+        <source>LinkedIn</source>
+        <target>LinkedIn</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoBig.description" resname="site.configuration.logoBig.description" approved="yes">
+        <source>The general standard logo</source>
+        <target>Das generelle Standardlogo</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoBig.label" resname="site.configuration.logoBig.label" approved="yes">
+        <source>Big logo</source>
+        <target>Grosses Logo</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoSmall.description" resname="site.configuration.logoSmall.description" approved="yes">
+        <source>Logo for mobile and sticky header view</source>
+        <target>Logo für die mobile und Sticky Header Ansicht</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoSmall.label" resname="site.configuration.logoSmall.label" approved="yes">
+        <source>Small Logo</source>
+        <target>Kleines Logo</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoSvg.description" resname="site.configuration.logoSvg.description" approved="yes">
+        <source>Logo is in SVG format</source>
+        <target>Logo hat das SVG Format</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoSvg.label" resname="site.configuration.logoSvg.label" approved="yes">
+        <source>SVG Logo</source>
+        <target>SVG Logo</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoText.description" resname="site.configuration.logoText.description" approved="yes">
+        <source>The text or claim to the right of the logo</source>
+        <target>Der Text oder Claim der rechts neben dem Logo steht</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoText.label" resname="site.configuration.logoText.label" approved="yes">
+        <source>Logo text</source>
+        <target>Logotext</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoTextHidden.description" resname="site.configuration.logoTextHidden.description" approved="yes">
+        <source>Hide the logo text</source>
+        <target>Logo Text verstecken</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoTextHidden.label" resname="site.configuration.logoTextHidden.label" approved="yes">
+        <source>Logo text</source>
+        <target>Logo Text</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.logos.title" resname="site.configuration.logos.title" approved="yes">
+        <source>Logos</source>
+        <target>Logos</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.mastodon.label" resname="site.configuration.mastodon.label" approved="yes">
+        <source>Mastodon</source>
+        <target>Mastodon</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.navType" resname="site.configuration.navType" approved="yes">
+        <source>Navigation type</source>
+        <target>Navigations-Typ</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.navType.0" resname="site.configuration.navType.0" approved="yes">
+        <source>Primary navigation</source>
+        <target>Primäre Navigation</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.navType.1" resname="site.configuration.navType.1" approved="yes">
+        <source>Secondary navigation</source>
+        <target>Sekundäre Navigation</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.navType.2" resname="site.configuration.navType.2" approved="yes">
+        <source>Tertiary navigation</source>
+        <target>Tertiäre Navigation</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.navType.description" resname="site.configuration.navType.description" approved="yes">
+        <source>Customise the page navigation type here.</source>
+        <target>Navigations-Typ der Seite anpassen.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.pinterest.label" resname="site.configuration.pinterest.label" approved="yes">
+        <source>Pinterest</source>
+        <target>Pinterest</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.reddit.label" resname="site.configuration.reddit.label" approved="yes">
+        <source>Reddit</source>
+        <target>Reddit</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.search.description" resname="site.configuration.search.description" approved="yes">
+        <source>Use search on the website. Adds a search field next to the main navigation.</source>
+        <target>Suche auf der Webseite verwenden. Fügt ein Suchfeld neben der Hauptnavigation hinzu.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.search.label" resname="site.configuration.search.label" approved="yes">
+        <source>Use search</source>
+        <target>Suche nutzen</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.signal.label" resname="site.configuration.signal.label" approved="yes">
+        <source>Signal</source>
+        <target>Signal</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.socialMediaSwitch.description" resname="site.configuration.socialMediaSwitch.description" approved="yes">
+        <source>Toggle the social media bar in the footer on or off.</source>
+        <target>Schaltet die SozialeMedien Leiste im Footer an oder aus.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.socialMediaSwitch.label" resname="site.configuration.socialMediaSwitch.label" approved="yes">
+        <source>Social media on/off switch</source>
+        <target>SozialeMedien An- und Ausschalter</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.socialMediaTitle.title" resname="site.configuration.socialMedia.title" approved="yes">
+        <source>SocialMedia</source>
+        <target>SozialeMedien</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.soundcloud.label" resname="site.configuration.soundcloud.label" approved="yes">
+        <source>Soundcloud</source>
+        <target>Soundcloud</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.spotify.label" resname="site.configuration.spotify.label" approved="yes">
+        <source>Spotify</source>
+        <target>Spotify</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.styles" resname="site.configuration.styles" approved="yes">
+        <source>Edit styles</source>
+        <target>Styles anpassen</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.styles.description" resname="site.configuration.styles.description" approved="yes">
+        <source>You can make further individual CSS adjustments here. However, you should do this with caution.</source>
+        <target>Hier können Sie weitere individuelle CSS-Anpassungen vornehmen. Sie sollten dies allerdings mit Vorsicht tun.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.subnav.description" resname="site.configuration.subnav.description" approved="yes">
+        <source>Adds a column with subnavigation to the article template.</source>
+        <target>Fügt im Artikeltemplate eine Spalte mit einer Unternavigation hinzu.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.subnav.label" resname="site.configuration.subnav.label" approved="yes">
+        <source>Use subnav</source>
+        <target>Unternavigation verwenden</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.subnavOrder.description" resname="site.configuration.subnavOrder.description" approved="yes">
+        <source>Arrange subnavigation on the left (off) or right (on).</source>
+        <target>Unternavigation links (aus) oder rechts (an) anordnen.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.subnavOrder.label" resname="site.configuration.subnavOrder.label" approved="yes">
+        <source>Arrange subnavigation</source>
+        <target>Unternavigation anordnen</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.telegram.label" resname="site.configuration.telegram.label" approved="yes">
+        <source>Telegram</source>
+        <target>Telegram</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.threads.label" resname="site.configuration.threads.label" approved="yes">
+        <source>Threads</source>
+        <target>Threads</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.tiktok.label" resname="site.configuration.tiktok.label" approved="yes">
+        <source>TikTok</source>
+        <target>TikTok</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.tumblr.label" resname="site.configuration.tumblr.label" approved="yes">
+        <source>Tumblr</source>
+        <target>Tumblr</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.vimeo.label" resname="site.configuration.vimeo.label" approved="yes">
+        <source>Vimeo</source>
+        <target>Vimeo</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.web-app-manifest-192x192" resname="site.configuration.web-app-manifest-192x192" approved="yes">
+        <source>Web App Manifest 192x192 PNG</source>
+        <target>Web App Manifest 192x192 PNG</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.web-app-manifest-512x512" resname="site.configuration.web-app-manifest-512x512" approved="yes">
+        <source>Web App Manifest 512x512 PNG</source>
+        <target>Web App Manifest 512x512 PNG</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.webmanifest" resname="site.configuration.webmanifest" approved="yes">
+        <source>Site Webmanifest</source>
+        <target>Site Webmanifest</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.whatsapp.label" resname="site.configuration.whatsapp.label" approved="yes">
+        <source>Whatsapp</source>
+        <target>Whatsapp</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.x.label" resname="site.configuration.x.label" approved="yes">
+        <source>X</source>
+        <target>X</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.xing.label" resname="site.configuration.xing.label" approved="yes">
+        <source>Xing</source>
+        <target>Xing</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.youtube.label" resname="site.configuration.youtube.label" approved="yes">
+        <source>YouTube</source>
+        <target>YouTube</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.youtube.label" resname="site.configuration.youtube.label" approved="yes">
+        <source>YouTube</source>
+        <target>YouTube</target>
+      </trans-unit>
+      <trans-unit id="slider.description" resname="slider.description" approved="yes">
+        <source>Container element for Slider</source>
+        <target>Container für Slider</target>
+      </trans-unit>
+      <trans-unit id="slider.title" resname="slider.title" approved="yes">
+        <source>Slideshow</source>
+        <target>Slideshow</target>
+      </trans-unit>
+      <trans-unit id="slider.type.fade" resname="slider.type.fade" approved="yes">
+        <source>Fade</source>
+        <target>Fade</target>
+      </trans-unit>
+      <trans-unit id="slider.type.slide" resname="slider.type.slide" approved="yes">
+        <source>Slide</source>
+        <target>Slide</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_bg" resname="stage.tx_stage_bg" approved="yes">
+        <source>Stage background</source>
+        <target>Bühne Hintergrund</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_bgcolor" resname="stage.tx_stage_bgcolor" approved="yes">
+        <source>Stage font and link color</source>
+        <target>Bühne Schrift- und Linkfarbe</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_bgcolor.I.0" resname="stage.tx_stage_bgcolor.I.0" approved="yes">
+        <source>Bright</source>
+        <target>Hell</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_bgcolor.I.1" resname="stage.tx_stage_bgcolor.I.1" approved="yes">
+        <source>Dark</source>
+        <target>Dunkel</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_bgcolor.description" resname="stage.tx_stage_bgcolor.description" approved="yes">
+        <source>Change font and link color from light to dark.</source>
+        <target>Schrift- und Linkfarbe von Hell auf Dunkel umstellen.</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_description" resname="stage.tx_stage_description" approved="yes">
+        <source>Inserts a stage module</source>
+        <target>Fügt ein Bühnenelement ein</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_file" resname="stage.tx_stage_file" approved="yes">
+        <source>Stage Image</source>
+        <target>Bühne Bild</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position" resname="stage.tx_stage_position" approved="yes">
+        <source>Stage text position</source>
+        <target>Bühne Text Position</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position.I.0" resname="stage.tx_stage_position.I.0" approved="yes">
+        <source>Default</source>
+        <target>Standard</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position.I.1" resname="stage.tx_stage_position.I.1" approved="yes">
+        <source>Top</source>
+        <target>Oben</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position.I.2" resname="stage.tx_stage_position.I.2" approved="yes">
+        <source>Centered</source>
+        <target>Zentriert</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position.I.3" resname="stage.tx_stage_position.I.3" approved="yes">
+        <source>Bottom</source>
+        <target>Unten</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position.description" resname="stage.tx_stage_position.description" approved="yes">
+        <source>Vertical stage text position</source>
+        <target>Vertikale Bühnen Text Position</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_salutation.I.0" resname="stage.tx_stage_salutation.I.0" approved="yes">
+        <source>Hide</source>
+        <target>Verborgen</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_salutation.I.1" resname="stage.tx_stage_salutation.I.1" approved="yes">
+        <source>Show</source>
+        <target>Anzeigen</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_switch" resname="stage.tx_stage_switch" approved="yes">
+        <source>Stage Type</source>
+        <target>Bühnen Typ</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_switch_image" resname="stage.tx_stage_switch_image" approved="yes">
+        <source>Stage with image</source>
+        <target>Bühne mit Bild</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_switch_video" resname="stage.tx_stage_switch_video" approved="yes">
+        <source>Stage with video</source>
+        <target>Bühne mit Video</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_textcolor.I.0" resname="stage.tx_stage_textcolor.I.0" approved="yes">
+        <source>Black</source>
+        <target>Schwarz</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_textcolor.I.1" resname="stage.tx_stage_textcolor.I.1" approved="yes">
+        <source>White</source>
+        <target>Weiss</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_title" resname="stage.tx_stage_title" approved="yes">
+        <source>Stage</source>
+        <target>Bühne</target>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_video" resname="stage.tx_stage_video" approved="yes">
+        <source>Stage Video</source>
+        <target>Bühne Video</target>
+      </trans-unit>
+      <trans-unit id="sys_file_metadata.is_accessible.description" resname="sys_file_metadata.is_accessible.description">
+        <source>Please activate this option if the file (PDF) is accessible.</source>
+        <target>Bitte aktivieren Sie diese Option, wenn die Datei (PDF) barrierefrei ist.</target>
+      </trans-unit>
+      <trans-unit id="sys_file_metadata.is_accessible.label" resname="sys_file_metadata.is_accessible.label">
+        <source>File is accessible</source>
+        <target>Datei ist barrierefrei</target>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.allow_download" resname="sys_file_reference.allow_download" approved="yes">
+        <source>Allow download</source>
+        <target>Download erlauben</target>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.outline" resname="sys_file_reference.outline" approved="yes">
+        <source>Show Outline</source>
+        <target>Outline anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tabs.description" resname="tabs.description" approved="yes">
+        <source>The content elements are accessible through tabs</source>
+        <target>Die Inhaltselemente sind über Tabs zugänglich</target>
+      </trans-unit>
+      <trans-unit id="tabs.description.onload" resname="tabs.description.onload" approved="yes">
+        <source>Open a specific tab when loading</source>
+        <target>Öffne einen bestimmten Tab beim Laden</target>
+      </trans-unit>
+      <trans-unit id="tabs.label.onload" resname="tabs.label.onload" approved="yes">
+        <source>On load</source>
+        <target>Beim Laden</target>
+      </trans-unit>
+      <trans-unit id="tabs.title" resname="tabs.title" approved="yes">
+        <source>Tabs</source>
+        <target>Tabs</target>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.audio" resname="tt_content.CType.audio" approved="yes">
+        <source>Audio</source>
+        <target>Audio</target>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.div._gallery_" resname="tt_content.CType.div._gallery_" approved="yes">
+        <source>Gallery</source>
+        <target>Galerie</target>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.div._images_" resname="tt_content.CType.div._images_" approved="yes">
+        <source>Pictures</source>
+        <target>Bilder</target>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.div.video" resname="tt_content.CType.div.video" approved="yes">
+        <source>Multimedia</source>
+        <target>Multimedia</target>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.gallery" resname="tt_content.CType.gallery" approved="yes">
+        <source>Gallery</source>
+        <target>Galerie</target>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.stage" resname="tt_content.CType.stage" approved="yes">
+        <source>Stage</source>
+        <target>Bühne</target>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.video" resname="tt_content.CType.video" approved="yes">
+        <source>Video</source>
+        <target>Video</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_columns" resname="tt_content.gallery_columns" approved="yes">
+        <source>Gallery columns</source>
+        <target>Galerie Spaltigkeit</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_columns.description" resname="tt_content.gallery_columns.description" approved="yes">
+        <source>Select the number of columns the grid will be divided into.</source>
+        <target>Wählen Sie in wie viele Spalten das Raster aufgeteilt wird.</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout" resname="tt_content.gallery_layout" approved="yes">
+        <source>Gallery layout</source>
+        <target>Galerie Layout</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout.I.0" resname="tt_content.gallery_layout.I.0" approved="yes">
+        <source>Single</source>
+        <target>Einzeln</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout.I.1" resname="tt_content.gallery_layout.I.1" approved="yes">
+        <source>Tiles</source>
+        <target>Kacheln</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout.I.2" resname="tt_content.gallery_layout.I.2" approved="yes">
+        <source>Slider</source>
+        <target>Slider</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout.I.3" resname="tt_content.gallery_layout.I.3" approved="yes">
+        <source>Thumbs</source>
+        <target>Thumbs</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout.description" resname="tt_content.gallery_layout.description" approved="yes">
+        <source>Single image, tiles or slider</source>
+        <target>Einzelbild, Kacheln oder Slider</target>
+      </trans-unit>
+      <trans-unit id="tt_content.header_position.inside" resname="tt_content.header_position.inside" approved="yes">
+        <source>Inside bodytext</source>
+        <target>Innerhalb Bodytext</target>
+      </trans-unit>
+      <trans-unit id="tt_content.header_position.inside.label" resname="tt_content.header_position.inside.label" approved="yes">
+        <source>Position</source>
+        <target>Position</target>
+      </trans-unit>
+      <trans-unit id="tt_content.header_position.kicker.description" resname="tt_content.header_position.kicker.description" approved="yes">
+        <source>The kicker is part of the headline and is displayed as a chip above the headline.</source>
+        <target>Die Dachzeile ist Teil der Überschrift und wird als Chip über der Überschrift angezeigt.</target>
+      </trans-unit>
+      <trans-unit id="tt_content.header_position.kicker.label" resname="tt_content.header_position.kicker.label" approved="yes">
+        <source>Kicker</source>
+        <target>Dachzeile</target>
+      </trans-unit>
+      <trans-unit id="tt_content.header_style" resname="tt_content.header_style" approved="yes">
+        <source>Style</source>
+        <target>Style</target>
+      </trans-unit>
+      <trans-unit id="tt_content.header_style.default" resname="tt_content.header_style.default" approved="yes">
+        <source>Default</source>
+        <target>Standard</target>
+      </trans-unit>
+      <trans-unit id="tt_content.header_subpages" resname="tt_content.header_subpages" approved="yes">
+        <source>Headline layout</source>
+        <target>Überschriften Layout</target>
+      </trans-unit>
+      <trans-unit id="tt_content.header_subpages.description" resname="tt_content.header_subpages.description" approved="yes">
+        <source>Set the heading depth of the teaser. The default is “H2”.</source>
+        <target>Überschriftentiefe des Teasers festlegen. Standard ist "H2".</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_accessibility">
+        <source>Accessibility Settings</source>
+        <target>Barrierefreiheits-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_captions_settings">
+        <source>Caption Settings</source>
+        <target>Untertitel-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_config">
+        <source>Audio Configuration</source>
+        <target>Audio-Konfiguration</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_controls">
+        <source>Control Buttons</source>
+        <target>Steuerelemente-Buttons</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_playback">
+        <source>Playback Settings</source>
+        <target>Wiedergabe-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_transcript_settings">
+        <source>Transcript Settings</source>
+        <target>Transkript-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_accessibility">
+        <source>Accessibility Settings</source>
+        <target>Barrierefreiheits-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_audio_description">
+        <source>Audio Description</source>
+        <target>Audiodeskription</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_captions_settings">
+        <source>Caption Settings</source>
+        <target>Untertitel-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_config">
+        <source>Video Configuration</source>
+        <target>Video-Konfiguration</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_controls">
+        <source>Control Buttons</source>
+        <target>Steuerelemente-Buttons</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_playback">
+        <source>Playback Settings</source>
+        <target>Wiedergabe-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_sign_language">
+        <source>Sign Language Overlay</source>
+        <target>Gebärdensprache-Overlay</target>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_transcript_settings">
+        <source>Transcript Settings</source>
+        <target>Transkript-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio">
+        <source>Audio</source>
+        <target>Audio</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio_accessibility">
+        <source>Accessibility</source>
+        <target>Barrierefreiheit</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio_captions">
+        <source>Captions</source>
+        <target>Untertitel</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio_controls">
+        <source>Controls</source>
+        <target>Steuerelemente</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio_playback">
+        <source>Playback Options</source>
+        <target>Wiedergabe-Optionen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio_transcript">
+        <source>Transcript</source>
+        <target>Transkript</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video">
+        <source>Video</source>
+        <target>Video</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_accessibility">
+        <source>Accessibility</source>
+        <target>Barrierefreiheit</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_audio_description">
+        <source>Audio Description</source>
+        <target>Audiodeskription</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_captions">
+        <source>Captions</source>
+        <target>Untertitel</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_controls">
+        <source>Controls</source>
+        <target>Steuerelemente</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_playback">
+        <source>Playback Options</source>
+        <target>Wiedergabe-Optionen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_sign_language">
+        <source>Sign Language</source>
+        <target>Gebärdensprache</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_transcript">
+        <source>Transcript</source>
+        <target>Transkript</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_audio" resname="tt_content.tx_audio_audio" approved="yes">
+        <source>Audio (File)</source>
+        <target>Audio (Datei)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_audio">
+        <source>Audio (File)</source>
+        <target>Audio (Datei)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_autoplay">
+        <source>Autoplay</source>
+        <target>Automatische Wiedergabe</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_caption_file">
+        <source>Caption Files (VTT)</source>
+        <target>Untertitel-Dateien (VTT)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_caption_style_button">
+        <source>Show Caption Style Button</source>
+        <target>Untertitel-Stil-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_captions">
+        <source>Enable Captions</source>
+        <target>Untertitel aktivieren</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_captions_button">
+        <source>Show Captions Button</source>
+        <target>Untertitel-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_captions_default">
+        <source>Show Captions by Default</source>
+        <target>Untertitel standardmäßig anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_controls">
+        <source>Show Controls</source>
+        <target>Steuerelemente anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_keyboard">
+        <source>Enable Keyboard Shortcuts</source>
+        <target>Tastaturkürzel aktivieren</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_language">
+        <source>Player Language</source>
+        <target>Player-Sprache</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_loop">
+        <source>Loop</source>
+        <target>Endlosschleife</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_muted">
+        <source>Muted</source>
+        <target>Stummgeschaltet</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_playback_speed">
+        <source>Playback Speed</source>
+        <target>Wiedergabegeschwindigkeit</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_screen_reader">
+        <source>Enable Screen Reader Announcements</source>
+        <target>Screenreader-Ansagen aktivieren</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_speed_button">
+        <source>Show Speed Button</source>
+        <target>Geschwindigkeits-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_start_time">
+        <source>Start Time (seconds)</source>
+        <target>Startzeit (Sekunden)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_transcript">
+        <source>Enable Transcript</source>
+        <target>Transkript aktivieren</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_transcript_button">
+        <source>Show Transcript Button</source>
+        <target>Transkript-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_volume">
+        <source>Volume (0-1)</source>
+        <target>Lautstärke (0-1)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_volume_control">
+        <source>Show Volume Control</source>
+        <target>Lautstärkeregler anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link" resname="tt_content.tx_link" approved="yes">
+        <source>Link</source>
+        <target>Link</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout" resname="tt_content.tx_link_layout" approved="yes">
+        <source>Link layout</source>
+        <target>Link Layout</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.0" resname="tt_content.tx_link_layout.I.0" approved="yes">
+        <source>Primary button</source>
+        <target>Primärer Button</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.1" resname="tt_content.tx_link_layout.I.1" approved="yes">
+        <source>Secondary button</source>
+        <target>Sekundärer Button</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.2" resname="tt_content.tx_link_layout.I.2" approved="yes">
+        <source>Tertiary button</source>
+        <target>Tertärer Button</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.3" resname="tt_content.tx_link_layout.I.3" approved="yes">
+        <source>Quaternary button</source>
+        <target>Quartärer Button</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.4" resname="tt_content.tx_link_layout.I.4" approved="yes">
+        <source>Internal link</source>
+        <target>Interner Link</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.5" resname="tt_content.tx_link_layout.I.5" approved="yes">
+        <source>External link</source>
+        <target>Externer Link</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.6" resname="tt_content.tx_link_layout.I.6" approved="yes">
+        <source>Download</source>
+        <target>Download</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_position" resname="tt_content.tx_link_position" approved="yes">
+        <source>Link position</source>
+        <target>Link Position</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_position.I.0" resname="tt_content.tx_link_position.I.0" approved="yes">
+        <source>Middle</source>
+        <target>Mitte</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_position.I.1" resname="tt_content.tx_link_position.I.1" approved="yes">
+        <source>Left</source>
+        <target>Links</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_position.I.2" resname="tt_content.tx_link_position.I.2" approved="yes">
+        <source>Right</source>
+        <target>Rechts</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_switch" resname="tt_content.tx_link_switch" approved="yes">
+        <source>Show link in teaser</source>
+        <target>Link im Teaser anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_switch.description" resname="tt_content.tx_link_switch.description" approved="yes">
+        <source>When activated, an additional link text or button is displayed, which can be given various link or button styles. Default: Internal link “Read more”</source>
+        <target>Bei Aktivierung wird ein zusätzlicher Linktext oder Button angezeigt, der verschiedene Link- oder Button-Styles bekommen kann. Standard: Interner Link "Mehr lesen"</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_text" resname="tt_content.tx_link_text" approved="yes">
+        <source>Link text</source>
+        <target>Link Text</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_stage" resname="tt_content.tx_stage" approved="yes">
+        <source>Stage</source>
+        <target>Bühne</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video" resname="tt_content.tx_video" approved="yes">
+        <source>Video</source>
+        <target>Video</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video">
+        <source>Video</source>
+        <target>Video</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_audio_description_button">
+        <source>Show Audio Description Button</source>
+        <target>Audiodeskription-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_audio_description_src">
+        <source>Audio Described Version (Video File)</source>
+        <target>Audiodeskription-Version (Video-Datei)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_autoplay">
+        <source>Autoplay</source>
+        <target>Automatische Wiedergabe</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_caption" resname="tt_content.tx_video_caption" approved="yes">
+        <source>Caption</source>
+        <target>Untertitel</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_caption">
+        <source>Caption</source>
+        <target>Untertitel</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_caption_style_button">
+        <source>Show Caption Style Button</source>
+        <target>Untertitel-Stil-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_captions">
+        <source>Enable Captions</source>
+        <target>Untertitel aktivieren</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_captions_button">
+        <source>Show Captions Button</source>
+        <target>Untertitel-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_captions_default">
+        <source>Show Captions by Default</source>
+        <target>Untertitel standardmäßig anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_chapters_button">
+        <source>Show Chapters Button</source>
+        <target>Kapitel-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_controls">
+        <source>Show Controls</source>
+        <target>Steuerelemente anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_fullscreen_button">
+        <source>Show Fullscreen Button</source>
+        <target>Vollbild-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_keyboard">
+        <source>Enable Keyboard Shortcuts</source>
+        <target>Tastaturkürzel aktivieren</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_language">
+        <source>Player Language</source>
+        <target>Player-Sprache</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_loop">
+        <source>Loop</source>
+        <target>Endlosschleife</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_muted">
+        <source>Muted</source>
+        <target>Stummgeschaltet</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_pip_button">
+        <source>Show Picture-in-Picture Button</source>
+        <target>Bild-in-Bild-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_playback_speed">
+        <source>Playback Speed</source>
+        <target>Wiedergabegeschwindigkeit</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_poster_image" resname="tt_content.tx_video_poster_image" approved="yes">
+        <source>Poster Image</source>
+        <target>Hintergrundbild</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_quality_button">
+        <source>Show Quality Button</source>
+        <target>Qualitäts-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_screen_reader">
+        <source>Enable Screen Reader Announcements</source>
+        <target>Screenreader-Ansagen aktivieren</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_sign_language_button">
+        <source>Show Sign Language Button</source>
+        <target>Gebärdensprache-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_sign_language_position">
+        <source>Sign Language Overlay Position</source>
+        <target>Gebärdensprache-Overlay Position</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_sign_language_src">
+        <source>Sign Language Video (Video File)</source>
+        <target>Gebärdensprache-Video (Video-Datei)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_speed_button">
+        <source>Show Speed Button</source>
+        <target>Geschwindigkeits-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_start_time">
+        <source>Start Time (seconds)</source>
+        <target>Startzeit (Sekunden)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_transcript">
+        <source>Enable Transcript</source>
+        <target>Transkript aktivieren</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_transcript_button">
+        <source>Show Transcript Button</source>
+        <target>Transkript-Button anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_video" resname="tt_content.tx_video_video" approved="yes">
+        <source>Video (File)</source>
+        <target>Video (Datei)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_video">
+        <source>Video (File)</source>
+        <target>Video (Datei)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_videourl" resname="tt_content.tx_video_videourl" approved="yes">
+        <source>YouTube video url</source>
+        <target>YouTube Video URL</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_volume">
+        <source>Volume (0-1)</source>
+        <target>Lautstärke (0-1)</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_volume_control">
+        <source>Show Volume Control</source>
+        <target>Lautstärkeregler anzeigen</target>
+      </trans-unit>
+      <trans-unit id="typo3vitedemo_todolist" approved="yes">
+        <source>Vue: TodoList</source>
+        <target>Vue: TodoList</target>
+      </trans-unit>
+      <trans-unit id="typo3vitedemo_todolist.description" approved="yes">
+        <source>Interactive to-do list built with Vue 3. Add, complete, and manage tasks with filtering and session storage.</source>
+        <target>Interaktive To-Do-Liste, die mit Vue 3 erstellt wurde. Füge Aufgaben hinzu, erledige sie und verwalte sie mit Filterung und Session-Speicher.</target>
+      </trans-unit>
+      <trans-unit id="typo3vitedemo_todolist.name" approved="yes">
+        <source>Vue: TodoList</source>
+        <target>Vue: TodoList</target>
+      </trans-unit>
+      <trans-unit id="video.video_description" resname="video.video_description" approved="yes">
+        <source>Puts a local or external YouTube video on the page</source>
+        <target>Legt ein lokales Video oder ein externes YouTube Video an</target>
+      </trans-unit>
+      <trans-unit id="video.video_title" resname="video.video_title" approved="yes">
+        <source>Video</source>
+        <target>Video</target>
+      </trans-unit>
+      <trans-unit id="with_frame" resname="with_frame" approved="yes">
+        <source>With frame</source>
+        <target>Mit Rahmen</target>
+      </trans-unit>
+      <trans-unit id="without_frame" resname="without_frame" approved="yes">
+        <source>Without frame</source>
+        <target>Ohne Rahmen</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

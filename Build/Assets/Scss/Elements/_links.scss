@@ -1,0 +1,20 @@
+// links
+
+button,
+.btn,
+a {
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 1px solid var(--bs-body-color) !important;
+    outline-offset: 2px;
+
+    li & {
+      outline-offset: 0.5px;
+    }
+
+    .navbar-wrapper & {
+      outline-offset: 2px;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+mp_core {
+  content {
+    view {
+      # cat=MP Core: content elements/100_contentelement/001_partialRootPath; type=string; label=Partial Root Path: Path to partials
+      partialRootPath = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/
+      # cat=MP Core: content elements/100_contentelement/002_templateRootPath; type=string; label=Template Root Path: Path to templates
+      templateRootPath = EXT:mp_core/Resources/Private/Templates/Content/
+    }
+  }
+}
