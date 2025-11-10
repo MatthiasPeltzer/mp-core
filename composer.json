@@ -37,7 +37,7 @@
 	},
 	"homepage": "https://www.mpeltzer.de/",
 	"replace": {
-		"mp_core": "self.version"
+		"typo3-ter/mp-core": "self.version"
 	},
 	"require": {
     "php": ">=8.2",
