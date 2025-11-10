@@ -1,0 +1,44 @@
+[traverse(site("configuration"),"navType") == "1"]
+page {
+  includeCSS {
+    navigationPrimaryCss=EXT:mp_core/Resources/Public/StyleSheets/navigationPrimary.css
+  }
+  includeJSFooter {
+    navigationPrimaryJs=EXT:mp_core/Resources/Public/JavaScripts/navigationPrimary.js
+    navigationPrimaryJs {
+      type = module
+      async = 1
+    }
+  }
+}
+[global]
+
+[traverse(site("configuration"),"navType") == "2"]
+page {
+  includeCSS {
+    navigationSecondaryCss=EXT:mp_core/Resources/Public/StyleSheets/navigationSecondary.css
+  }
+  includeJSFooter {
+    navigationSecondaryJs=EXT:mp_core/Resources/Public/JavaScripts/navigationSecondary.js
+    navigationSecondaryJs {
+      type = module
+      async = 1
+    }
+  }
+}
+[global]
+
+[traverse(site("configuration"),"navType") == "3"]
+page {
+  includeCSS {
+    navigationTertiaryCss=EXT:mp_core/Resources/Public/StyleSheets/navigationTertiary.css
+  }
+  includeJSFooter {
+    navigationTertiaryJs=EXT:mp_core/Resources/Public/JavaScripts/navigationTertiary.js
+    navigationTertiaryJs {
+      type = module
+      async = 1
+    }
+  }
+}
+[global]

@@ -1,0 +1,57 @@
+mod.web_layout.BackendLayouts {
+  Article {
+    title = Article
+    icon = EXT:mp_core/Resources/Public/BackendLayouts/TwoCol.svg
+    config {
+      backend_layout {
+        colCount = 4
+        rowCount = 3
+        rows {
+          0 {
+            columns {
+              1 {
+                name = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:BackendLayouts.logos.top
+                colspan = 4
+                colPos = 4
+              }
+            }
+          }
+          1 {
+            columns {
+              1 {
+                name = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:BackendLayouts.top
+                colspan = 4
+                colPos = 0
+              }
+            }
+          }
+          2 {
+            columns {
+              1 {
+                name = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:BackendLayouts.main
+                colspan = 3
+                colPos = 1
+              }
+
+              2 {
+                name = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:BackendLayouts.supplement
+                colspan = 1
+                colPos = 2
+              }
+            }
+          }
+
+          3 {
+            columns {
+              1 {
+                name = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:BackendLayouts.bottom
+                colspan = 4
+                colPos = 3
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

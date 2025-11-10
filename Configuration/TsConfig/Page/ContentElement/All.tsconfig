@@ -1,0 +1,4 @@
+##########################
+#### CONTENT ELEMENTS ####
+##########################
+@import 'EXT:mp_core/Configuration/TsConfig/Page/ContentElement/Element/*.tsconfig'

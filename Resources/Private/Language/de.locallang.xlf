@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang.xlf" date="2025-07-22T08:00:00" product-name="mp_core">
+    <header/>
+    <body>
+      <trans-unit id="aside.print" resname="aside.print" approved="yes">
+        <source>Print</source>
+        <target>Drucken</target>
+      </trans-unit>
+      <trans-unit id="aside.printpage" resname="aside.printpage" approved="yes">
+        <source>Print page</source>
+        <target>Seite drucken</target>
+      </trans-unit>
+      <trans-unit id="aside.share" resname="aside.share" approved="yes">
+        <source>Share</source>
+        <target>Teilen</target>
+      </trans-unit>
+      <trans-unit id="aside.shareonbluesky" resname="aside.shareonbluesky" approved="yes">
+        <source>Share on Bluesky</source>
+        <target>Teile auf Bluesky</target>
+      </trans-unit>
+      <trans-unit id="aside.shareonfacebook" resname="aside.shareonfacebook" approved="yes">
+        <source>Share on Facebook</source>
+        <target>Teile auf Facebook</target>
+      </trans-unit>
+      <trans-unit id="aside.shareonlinkedin" resname="aside.shareonlinkedin" approved="yes">
+        <source>Share on LinkedIn</source>
+        <target>Teile auf LinkedIn</target>
+      </trans-unit>
+      <trans-unit id="aside.shareonmastodon" resname="aside.shareonmastodon" approved="yes">
+        <source>Share on Mastodon</source>
+        <target>Teile auf Mastodon</target>
+      </trans-unit>
+      <trans-unit id="aside.shareonreddit" resname="aside.shareonreddit" approved="yes">
+        <source>Share on Reddit</source>
+        <target>Teile auf Reddit</target>
+      </trans-unit>
+      <trans-unit id="aside.shareonwhatsapp" resname="aside.shareonwhatsapp" approved="yes">
+        <source>Share on Whatsapp</source>
+        <target>Teile mit Whatsapp</target>
+      </trans-unit>
+      <trans-unit id="aside.shareonxing" resname="aside.shareonxing" approved="yes">
+        <source>Share on Xing</source>
+        <target>Teile auf Xing</target>
+      </trans-unit>
+      <trans-unit id="aside.sharepage" resname="aside.sharepage" approved="yes">
+        <source>Share page</source>
+        <target>Seite teilen</target>
+      </trans-unit>
+      <trans-unit id="aside.socialmedia" resname="aside.socialmedia" approved="yes">
+        <source>Socialmedia</source>
+        <target>Soziale Medien</target>
+      </trans-unit>
+      <trans-unit id="audio.link" resname="audio.link" approved="yes">
+        <source>To activate the widget you need to click on the button. After activating the button, <![CDATA[<a href="https://soundcloud.com/pages/privacy" target="_blank" class="external-link" rel="noreferrer" title="Link opens in new window"><span class="icon" aria-hidden="true"></span>SoundCloud's privacy policy</a>]]> applies.</source>
+        <target>Zum Aktivieren des Widgets, musst Du auf die Schaltfläche klicken. Nach Aktivierung der Schaltfläche gilt <![CDATA[<a href="https://soundcloud.com/pages/privacy" target="_blank" class="external-link" rel="noreferrer" title="Link öffnet in neuem Fenster"><span class="icon" aria-hidden="true"></span>SoundCloud´s Datenschutzbestimmung</a>.]]></target>
+      </trans-unit>
+      <trans-unit id="audio.play" resname="audio.play" approved="yes">
+        <source>Play audio</source>
+        <target>Audio abspielen</target>
+      </trans-unit>
+      <trans-unit id="breadcrumb.headline" resname="breadcrumb.headline" approved="yes">
+        <source>You are here:</source>
+        <target>Du bist hier:</target>
+      </trans-unit>
+      <trans-unit id="config.allowedAudioDomains" resname="config.allowedAudioDomains" approved="yes">
+        <source>Allowed domains for external audio files: e.g. *.xyz.de, www.xyz.de, https://*.xyz.de</source>
+        <target>Erlaubte Domains zum Einbinden externer Audio-Dateien: z.B. *.xyz.de, www.xyz.de, https://*.xyz.de
+				</target>
+      </trans-unit>
+      <trans-unit id="config.allowedAudioDomains.list" resname="config.allowedAudioDomains.list" approved="yes">
+        <source>Allowed domains for external audio files:</source>
+        <target>Erlaubte Domains zum Einbinden externer Audio-Dateien:</target>
+      </trans-unit>
+      <trans-unit id="config.allowedVideoDomains" resname="config.allowedVideoDomains" approved="yes">
+        <source>Allowed domains for external videos: e.g. *.xyz.de, www.xyz.de, https://*.xyz.de</source>
+        <target>Erlaubte Domains zum Einbinden externer Videos: z.B. *.xyz.de, www.xyz.de, https://*.xyz.de</target>
+      </trans-unit>
+      <trans-unit id="config.allowedVideoDomains.list" resname="config.allowedVideoDomains.list" approved="yes">
+        <source>Allowed domains for external videos:</source>
+        <target>Erlaubte Domains zum Einbinden externer Videos:</target>
+      </trans-unit>
+      <trans-unit id="content.readmore" resname="content.readmore" approved="yes">
+        <source>Read more</source>
+        <target>Mehr lesen</target>
+      </trans-unit>
+      <trans-unit id="date.day" resname="date.day" approved="yes">
+        <source>%d</source>
+        <target>%d.</target>
+      </trans-unit>
+      <trans-unit id="date.dayfull" resname="date.dayfull" approved="yes">
+        <source>%A, %d, %H:%M</source>
+        <target>%A, %d., %H:%M Uhr</target>
+      </trans-unit>
+      <trans-unit id="date.daymonth" resname="date.daymonth" approved="yes">
+        <source>%d %b</source>
+        <target>%d. %b</target>
+      </trans-unit>
+      <trans-unit id="date.daymonthfull" resname="date.daymonthfull" approved="yes">
+        <source>%A, %d %B, %H:%M</source>
+        <target>%A, %d. %b, %H:%M Uhr</target>
+      </trans-unit>
+      <trans-unit id="date.daymonthyear" resname="date.daymonthyear" approved="yes">
+        <source>%d %b %Y</source>
+        <target>%d. %b %Y</target>
+      </trans-unit>
+      <trans-unit id="date.daymonthyearfull" resname="date.daymonthyearfull" approved="yes">
+        <source>%A, %d %B %Y, %H:%M</source>
+        <target>%A, %d. %B %Y, %H:%M Uhr</target>
+      </trans-unit>
+      <trans-unit id="date.month" resname="date.month" approved="yes">
+        <source>%b</source>
+        <target>%b</target>
+      </trans-unit>
+      <trans-unit id="date.time" resname="date.time" approved="yes">
+        <source>%H:%M</source>
+        <target>%H:%M Uhr</target>
+      </trans-unit>
+      <trans-unit id="date.year" resname="date.year" approved="yes">
+        <source>%Y</source>
+        <target>%Y</target>
+      </trans-unit>
+      <trans-unit id="element.pflichtfeld.properties.text" resname="element.pflichtfeld.properties.text" approved="yes">
+        <source>Required</source>
+        <target>Pflichtfeld</target>
+      </trans-unit>
+      <trans-unit id="footer.info" resname="supplement.aside" approved="yes">
+        <source>Further information</source>
+        <target>Weitere Informationen</target>
+      </trans-unit>
+      <trans-unit id="footer.metanav" resname="footer.metanav" approved="yes">
+        <source>Meta navigation</source>
+        <target>Metanavigation</target>
+      </trans-unit>
+      <trans-unit id="footer.socialmediafooter" resname="footer.socialmediafooter" approved="yes">
+        <source>Always up to date</source>
+        <target>Immer aktuell</target>
+      </trans-unit>
+      <trans-unit id="footer.socialmediaheader" resname="footer.socialmediaheader" approved="yes">
+        <source>Follow me at</source>
+        <target>Folge mir auf</target>
+      </trans-unit>
+      <trans-unit id="gallery.copyright.button" resname="gallery.copyright.button" approved="yes">
+        <source>Show/hide copyright text</source>
+        <target>Copyright-Text ein-/ausklappen</target>
+      </trans-unit>
+      <trans-unit id="header.area" resname="header.area" approved="yes">
+        <source>Navigation area</source>
+        <target>Navigationsbereich</target>
+      </trans-unit>
+      <trans-unit id="header.closeMenu" resname="header.closeMenu" approved="yes">
+        <source><![CDATA[<span class="visually-hidden">Close</span>]]> menu</source>
+        <target>Menü <![CDATA[<span class="visually-hidden"">schließen</span>]]></target>
+      </trans-unit>
+      <trans-unit id="header.closeMenuTitle" resname="header.closeMenuTitle" approved="yes">
+        <source>Close menu</source>
+        <target>Menü schließen</target>
+      </trans-unit>
+      <trans-unit id="header.closeMenuTitleClose" resname="header.closeMenuTitle" approved="yes">
+        <source>Close</source>
+        <target>Schließen</target>
+      </trans-unit>
+      <trans-unit id="header.jumpto" resname="header.jumpto" approved="yes">
+        <source>Jump directly to:</source>
+        <target>Springe direkt zum:</target>
+      </trans-unit>
+      <trans-unit id="header.jumptocontent" resname="header.jumptocontent" approved="yes">
+        <source>Jump to content</source>
+        <target>Zum Inhalt springen</target>
+      </trans-unit>
+      <trans-unit id="header.mainnavigation" resname="header.mainnavigation" approved="yes">
+        <source>Main navigation</source>
+        <target>Hauptnavigation</target>
+      </trans-unit>
+      <trans-unit id="header.openMenu" resname="header.openMenu" approved="yes">
+        <source><![CDATA[<span class="visually-hidden">Open</span>]]> menu</source>
+        <target>Menü <![CDATA[<span class="visually-hidden">öffnen</span>]]></target>
+      </trans-unit>
+      <trans-unit id="header.openMenuTitle" resname="header.openMenuTitle" approved="yes">
+        <source>Open menu</source>
+        <target>Menü öffnen</target>
+      </trans-unit>
+      <trans-unit id="header.submenuOpen" resname="header.submenuOpen" approved="yes">
+        <source>Open submenu</source>
+        <target>Untermenü öffnen</target>
+      </trans-unit>
+      <trans-unit id="header.switch" resname="header.switch" approved="yes">
+        <source>Light and dark color mode</source>
+        <target>Heller und dunkler Farbmodus</target>
+      </trans-unit>
+      <trans-unit id="header.text" resname="header.text" approved="yes">
+        <source>Link to Homepage</source>
+        <target>Zur Startseite</target>
+      </trans-unit>
+      <trans-unit id="header.text.aria" resname="header.text.aria" approved="yes">
+        <source>Link to Homepage - </source>
+        <target>Zur Startseite - </target>
+      </trans-unit>
+      <trans-unit id="innewwindow" resname="innewwindow" approved="yes">
+        <source>(New window)</source>
+        <target>(Neues Fenster)</target>
+      </trans-unit>
+      <trans-unit id="is_accessible" resname="is_accessible" approved="yes">
+        <source>(not accessible)</source>
+        <target>(nicht barrierefrei)</target>
+      </trans-unit>
+      <trans-unit id="is_accessible.0" resname="is_accessible.0" approved="yes">
+        <source>(not accessible)</source>
+        <target>(nicht barrierefrei)</target>
+      </trans-unit>
+      <trans-unit id="is_accessible.1" resname="is_accessible.1" approved="yes">
+        <source/>
+        <target/>
+      </trans-unit>
+      <trans-unit id="link.newwindow" resname="link.newwindow" approved="yes">
+        <source>External (New window)</source>
+        <target>Extern (Neues Fenster)</target>
+      </trans-unit>
+      <trans-unit id="meta.navigation" resname="meta.navigation" approved="yes">
+        <source>Service navigation and language</source>
+        <target>Service-Navigation und Sprache</target>
+      </trans-unit>
+      <trans-unit id="opens" resname="opens" approved="yes">
+        <source>External</source>
+        <target>Extern</target>
+      </trans-unit>
+      <trans-unit id="supplement.areamenu" resname="supplement.areamenu" approved="yes">
+        <source>Section navigation</source>
+        <target>Bereichsnavigation</target>
+      </trans-unit>
+      <trans-unit id="supplement.aside" resname="supplement.aside" approved="yes">
+        <source>Additional information</source>
+        <target>Zusatzinformationen</target>
+      </trans-unit>
+      <trans-unit id="toTop" resname="toTop" approved="yes">
+        <source>To top</source>
+        <target>Nach oben</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery" resname="tt_content.gallery" approved="yes">
+        <source>Gallery</source>
+        <target>Galerie</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery.entry" resname="tt_content.gallery.entry" approved="yes">
+        <source>Gallery entry</source>
+        <target>Galerieeintrag</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_close" resname="tt_content.gallery_close" approved="yes">
+        <source>Close</source>
+        <target>Schließen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_download" resname="tt_content.gallery_download" approved="yes">
+        <source>Download</source>
+        <target>Herunterladen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_download_now" resname="tt_content.gallery_download_now" approved="yes">
+        <source>Download</source>
+        <target>Herunterladen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_download_now.button" resname="tt_content.gallery_download_now.button" approved="yes">
+        <source>Show/hide download link</source>
+        <target>Herunterladen-Link ein-/ausklappen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_enlarge_picture" resname="tt_content.gallery_enlarge_picture" approved="yes">
+        <source>Opens image in enlarged view</source>
+        <target>Öffnet Bild in Großansicht</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_next" resname="tt_content.gallery_next" approved="yes">
+        <source>Previous image</source>
+        <target>Nächstes Bild</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_of" resname="tt_content.gallery_of" approved="yes">
+        <source>of</source>
+        <target>von</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_picture_description" resname="tt_content.gallery_picture_description" approved="yes">
+        <source>Description</source>
+        <target>Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_picture_longdescription" resname="tt_content.gallery_picture_longdescription" approved="yes">
+        <source>Long description</source>
+        <target>Langbeschreibung</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_previous" resname="tt_content.gallery_previous" approved="yes">
+        <source>Next image</source>
+        <target>Vorheriges Bild</target>
+      </trans-unit>
+      <trans-unit id="tt_content.images" resname="tt_content.images" approved="yes">
+        <source>images</source>
+        <target>Bilder</target>
+      </trans-unit>
+      <trans-unit id="videovimeo.link" resname="videovimeo.link" approved="yes">
+        <source>To activate the video you need to click on the button. After activating the button, <![CDATA[<a href="https://vimeo.com/privacy" target="_blank" class="external-link" rel="noreferrer" title="Link opens in new window"><span class="icon" aria-hidden="true"></span>Vimeos privacy policy</a>]]> applies.</source>
+        <target>Um das Video zu aktivieren, musst Du auf die Schaltfläche klicken. Nach Aktivierung der Schaltfläche gelten <![CDATA[<a href="https://vimeo.com/privacy" target="_blank" class="external-link" rel="noreferrer" title="Link öffnet in neuem Fenster"><span class="icon" aria-hidden="true"></span>Vimeos Datenschutzbestimmung</a>]]>.</target>
+      </trans-unit>
+      <trans-unit id="videovimeo.play" resname="videovimeo.play" approved="yes">
+        <source>Play video</source>
+        <target>Video abspielen</target>
+      </trans-unit>
+      <trans-unit id="videoyoutube.link" resname="videoyoutube.link" approved="yes">
+        <source>To activate the video you need to click on the button. After activating the button,					<![CDATA[<a href="https://policies.google.com/privacy?hl=en&gl=ZZ" target="_blank" class="external-link" rel="noreferrer" title="Link opens in new window"><span class="icon" aria-hidden="true"></span>Googles privacy policy</a>]]> applies.</source>
+        <target>Um das Video zu aktivieren, musst Du auf die Schaltfläche klicken. Nach Aktivierung der Schaltfläche gelten					<![CDATA[<a href="https://policies.google.com/privacy?hl=de&gl=ZZ" target="_blank" class="external-link" rel="noreferrer" title="Link öffnet in neuem Fenster"><span class="icon" aria-hidden="true"></span>Googles Datenschutzbestimmung</a>]]>.</target>
+      </trans-unit>
+      <trans-unit id="videoyoutube.play" resname="videoyoutube.play" approved="yes">
+        <source>Play video</source>
+        <target>Video abspielen</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

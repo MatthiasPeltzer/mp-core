@@ -1,0 +1,14 @@
+<html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<nav aria-label="{f:translate(key: 'header.mainnavigation', extensionName: 'mp_core')}" class="main-menu-layer dropdown flex-shrink-1 d-lg-none" id="main-menu">
+    <button class="navbar-toggler ms-auto" data-bs-auto-close="outside" data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent" data-bs-toggle="dropdown" id="main-menu-button" title="{f:translate(key: 'header.openMenuTitle', extensionName: 'mp_core')}" type="button">
+        <span class="line"></span> <span class="txt"><f:format.raw>{f:translate(key: 'header.openMenu', extensionName: 'mp_core')}</f:format.raw></span>
+    </button>
+    <div class="dropdown-menu" id="menu">
+        <div class="navbar-wrapper">
+            <f:render arguments="{menuMainMobile: menuMainMobile}" partial="Navigation/Secondary/NavMainMobileItem"/>
+        </div>
+    </div>
+</nav>
+
+</html>

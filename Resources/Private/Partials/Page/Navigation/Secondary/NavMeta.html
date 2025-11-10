@@ -1,0 +1,50 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<div class="col meta-desktop flex-grow-1">
+    <div class="meta-wrapper d-flex justify-content-end align-items-center">
+        <nav aria-label="{f:translate(key: 'meta.navigation', extensionName: 'mp_core')}" class="d-flex">
+            <ul class="metanav nav">
+                <f:render arguments="{_all}" partial="Navigation/NavLang"/>
+
+                <f:for as="mainItem" each="{metaNavTop}" iteration="i">
+                    <li class="nav-item {f:if(condition:mainItem.active, then:' active')}">
+                        <f:if condition="{mainItem.current}">
+                            <f:then>
+                                <f:link.page aria="{current: 'page'}" class="nav-link {f:if(condition:mainItem.active, then:' active')}" pageUid="{mainItem.data.uid}">
+                                    <f:spaceless>
+                                        <f:if condition="{mainItem.files.0}">
+                                            <mpc:svgInline src="fileadmin/{mainItem.files.0.properties.identifier}" width="16" height="16" class="nav-icon" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
+                                        </f:if>
+                                        <span class="text-decoration-underline">{mainItem.title}</span>
+                                    </f:spaceless>
+                                </f:link.page>
+                            </f:then>
+                            <f:else>
+                                <f:link.page class="nav-link fw-normal" pageUid="{mainItem.data.uid}">
+                                    <f:spaceless>
+                                        <f:if condition="{mainItem.files.0}">
+                                            <mpc:svgInline src="fileadmin/{mainItem.files.0.properties.identifier}" width="16" height="16" class="nav-icon" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
+                                        </f:if>
+                                        <span>{mainItem.title}</span>
+                                    </f:spaceless>
+                                </f:link.page>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:for>
+            </ul>
+        </nav>
+        <form class="custom-switch form-check form-switch">
+            <input checked class="form-check-input" id="themeSwitch" role="switch" type="checkbox">
+            <label class="form-check-label" for="themeSwitch"> <i aria-hidden="true" class="switch-icon sun"></i>
+                <i aria-hidden="true" class="switch-icon moon"></i>
+                <span class="visually-hidden">{f:translate(key: 'header.switch', extensionName: 'mp_core')}</span>
+            </label>
+        </form>
+    </div>
+</div>
+
+</html>

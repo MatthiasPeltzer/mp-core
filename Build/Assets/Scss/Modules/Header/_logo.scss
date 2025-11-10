@@ -1,0 +1,38 @@
+// header logo
+
+.logo {
+  align-items: center;
+  display: flex;
+  padding: 0 0 8px;
+
+  a {
+    align-items: center;
+    display: flex;
+  }
+}
+
+.header {
+  &-text {
+    @include font-size(48px);
+  }
+
+  &-image,
+  &-image-small {
+    img {
+      height: 48px;
+      width: 48px;
+    }
+  }
+
+  &-image {
+    .sticky & {
+      display: none !important;
+    }
+  }
+
+  &-image-small {
+    .sticky & {
+      display: block !important;
+    }
+  }
+}

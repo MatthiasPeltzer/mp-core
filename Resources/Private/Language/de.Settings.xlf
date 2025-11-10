@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/Settings.xlf" date="2013-09-19T09:11:39Z" product-name="mp_core">
+    <header/>
+    <body>
+      <trans-unit id="MPCore.description" resname="MPCore.description" approved="yes">
+        <source>General settings for MP Core extension</source>
+        <target>Allgemeine Einstellungen für die MP Core Extension</target>
+      </trans-unit>
+      <trans-unit id="MPCore.label" resname="MPCore.label" approved="yes">
+        <source>MP Core</source>
+        <target>MP Core</target>
+      </trans-unit>
+      <trans-unit id="MPCoreConfig.description" resname="MPCoreConfig.description" approved="yes">
+        <source>General configuration settings</source>
+        <target>Allgemeine Konfigurationseinstellungen</target>
+      </trans-unit>
+      <trans-unit id="MPCoreConfig.label" resname="MPCoreConfig.label" approved="yes">
+        <source>Configuration</source>
+        <target>Konfiguration</target>
+      </trans-unit>
+      <trans-unit id="MPCoreContainer.description" resname="MPCoreContainer.description" approved="yes">
+        <source>Configuration for container extension</source>
+        <target>Konfiguration für die Container-Extension</target>
+      </trans-unit>
+      <trans-unit id="MPCoreContainer.label" resname="MPCoreContainer.label" approved="yes">
+        <source>Container Settings</source>
+        <target>Container-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="MPCoreContent.description" resname="MPCoreContent.description" approved="yes">
+        <source>Settings for content elements and media</source>
+        <target>Einstellungen für Inhaltselemente und Medien</target>
+      </trans-unit>
+      <trans-unit id="MPCoreContent.label" resname="MPCoreContent.label" approved="yes">
+        <source>Content Elements</source>
+        <target>Inhaltselemente</target>
+      </trans-unit>
+      <trans-unit id="MPCoreDesign.description" resname="MPCoreDesign.description" approved="yes">
+        <source>Design tokens, colors, fonts, and breakpoints</source>
+        <target>Design-Tokens, Farben, Schriften und Breakpoints</target>
+      </trans-unit>
+      <trans-unit id="MPCoreDesign.label" resname="MPCoreDesign.label" approved="yes">
+        <source>Design &amp; Layout</source>
+        <target>Design &amp; Layout</target>
+      </trans-unit>
+      <trans-unit id="MPCoreForm.description" resname="MPCoreForm.description" approved="yes">
+        <source>Configuration for form extension</source>
+        <target>Konfiguration für die Formular-Extension</target>
+      </trans-unit>
+      <trans-unit id="MPCoreForm.label" resname="MPCoreForm.label" approved="yes">
+        <source>Form Settings</source>
+        <target>Formular-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="MPCoreMeta.description" resname="MPCoreMeta.description" approved="yes">
+        <source>Meta tag settings for HTML head</source>
+        <target>Meta-Tag-Einstellungen für den HTML-Head</target>
+      </trans-unit>
+      <trans-unit id="MPCoreMeta.label" resname="MPCoreMeta.label" approved="yes">
+        <source>Meta Tags</source>
+        <target>Meta-Tags</target>
+      </trans-unit>
+      <trans-unit id="MPCoreNavigation.description" resname="MPCoreNavigation.description" approved="yes">
+        <source>Navigation and menu settings</source>
+        <target>Navigations- und Menüeinstellungen</target>
+      </trans-unit>
+      <trans-unit id="MPCoreNavigation.label" resname="MPCoreNavigation.label" approved="yes">
+        <source>Navigation</source>
+        <target>Navigation</target>
+      </trans-unit>
+      <trans-unit id="MPCoreNews.description" resname="MPCoreNews.description" approved="yes">
+        <source>Configuration for news extension</source>
+        <target>Konfiguration für die News-Extension</target>
+      </trans-unit>
+      <trans-unit id="MPCoreNews.label" resname="MPCoreNews.label" approved="yes">
+        <source>News Settings</source>
+        <target>News-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="MPCorePerformance.description" resname="MPCorePerformance.description" approved="yes">
+        <source>Performance optimization settings</source>
+        <target>Performance-Optimierungseinstellungen</target>
+      </trans-unit>
+      <trans-unit id="MPCorePerformance.label" resname="MPCorePerformance.label" approved="yes">
+        <source>Performance</source>
+        <target>Performance</target>
+      </trans-unit>
+      <trans-unit id="MPCoreSEO.description" resname="MPCoreSEO.description" approved="yes">
+        <source>SEO and meta data configuration</source>
+        <target>SEO- und Meta-Daten-Konfiguration</target>
+      </trans-unit>
+      <trans-unit id="MPCoreSEO.label" resname="MPCoreSEO.label" approved="yes">
+        <source>SEO Settings</source>
+        <target>SEO-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="PIDs.description" resname="PIDs.description" approved="yes">
+        <source>All relevant page IDs can be set here.</source>
+        <target>Hier können alle relevanten Seiten-IDs eingestellt werden.</target>
+      </trans-unit>
+      <trans-unit id="PIDs.label" resname="PIDs.label" approved="yes">
+        <source>Page IDs</source>
+        <target>Seiten-IDs</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidCategories.form.description" resname="PIDs.pidCategories.form.description" approved="yes">
+        <source>Page ID of the categories folder</source>
+        <target>Seiten-ID des Kategorien-Ordners</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidCategories.form.label" resname="PIDs.pidCategories.form.label" approved="yes">
+        <source>Categories Page ID</source>
+        <target>Kategorien Seiten-ID</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidHome.form.description" resname="PIDs.pidHome.form.description" approved="yes">
+        <source>Page ID of the homepage</source>
+        <target>Seiten-ID der Startseite</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidHome.form.label" resname="PIDs.pidHome.form.label" approved="yes">
+        <source>Homepage Page ID</source>
+        <target>Startseiten-ID</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidLogosBannerTop.form.description" resname="PIDs.pidLogosBannerTop.form.description" approved="yes">
+        <source>Page ID of the additional logos or banners in the header area</source>
+        <target>Seiten-ID der zusätzlichen Logos oder Banner im Kopfbereich</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidLogosBannerTop.form.label" resname="PIDs.pidLogosBannerTop.form.label" approved="yes">
+        <source>Logos/Banner Page ID</source>
+        <target>Logos/Banner Seiten-ID</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMainNavMeta.form.description" resname="PIDs.pidMainNavMeta.form.description" approved="yes">
+        <source>Page ID of the meta navigation in the main navigation</source>
+        <target>Seiten-ID der Metanavigation in der Hauptnavigation</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMainNavMeta.form.label" resname="PIDs.pidMainNavMeta.form.label" approved="yes">
+        <source>Main Navigation Meta Page ID</source>
+        <target>Hauptnavigation Meta Seiten-ID</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMetaNavFooter.form.description" resname="PIDs.pidMetaNavFooter.form.description" approved="yes">
+        <source>Page ID of the meta navigation in the footer</source>
+        <target>Seiten-ID der Metanavigation im Footer</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMetaNavFooter.form.label" resname="PIDs.pidMetaNavFooter.form.label" approved="yes">
+        <source>Footer Meta Navigation Page ID</source>
+        <target>Footer-Metanavigation Seiten-ID</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMetaNavTop.form.description" resname="PIDs.pidMetaNavTop.form.description" approved="yes">
+        <source>Page ID of the meta navigation in the header</source>
+        <target>Seiten-ID der Metanavigation im Kopfbereich</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidMetaNavTop.form.label" resname="PIDs.pidMetaNavTop.form.label" approved="yes">
+        <source>Top Meta Navigation Page ID</source>
+        <target>Kopf-Metanavigation Seiten-ID</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidSupplement.form.description" resname="PIDs.pidSupplement.form.description" approved="yes">
+        <source>Page ID of the supplementary area for content under the submenu</source>
+        <target>Seiten-ID des Ergänzungsbereichs für Inhalte unter dem Submenü</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidSupplement.form.label" resname="PIDs.pidSupplement.form.label" approved="yes">
+        <source>Supplement Page ID</source>
+        <target>Ergänzungsbereich Seiten-ID</target>
+      </trans-unit>
+      <trans-unit id="config.absRefPrefix.form.description" resname="config.absRefPrefix.form.description" approved="yes">
+        <source>Absolute reference prefix (auto, /, or custom)</source>
+        <target>Absolutes Referenz-Präfix (auto, / oder benutzerdefiniert)</target>
+      </trans-unit>
+      <trans-unit id="config.absRefPrefix.form.label" resname="config.absRefPrefix.form.label" approved="yes">
+        <source>Absolute Reference Prefix</source>
+        <target>Absolutes Referenz-Präfix</target>
+      </trans-unit>
+      <trans-unit id="config.admPanel.form.description" resname="config.admPanel.form.description" approved="yes">
+        <source>Show admin panel in frontend</source>
+        <target>Admin-Panel im Frontend anzeigen</target>
+      </trans-unit>
+      <trans-unit id="config.admPanel.form.label" resname="config.admPanel.form.label" approved="yes">
+        <source>Show Admin Panel</source>
+        <target>Admin-Panel anzeigen</target>
+      </trans-unit>
+      <trans-unit id="config.debug.form.description" resname="config.debug.form.description" approved="yes">
+        <source>Enable debug mode in frontend</source>
+        <target>Debug-Modus im Frontend aktivieren</target>
+      </trans-unit>
+      <trans-unit id="config.debug.form.label" resname="config.debug.form.label" approved="yes">
+        <source>Enable Debug Mode</source>
+        <target>Debug-Modus aktivieren</target>
+      </trans-unit>
+      <trans-unit id="config.headerComment.form.description" resname="config.headerComment.form.description" approved="yes">
+        <source>Comment to add to HTML head</source>
+        <target>Kommentar für HTML-Head</target>
+      </trans-unit>
+      <trans-unit id="config.headerComment.form.label" resname="config.headerComment.form.label" approved="yes">
+        <source>HTML Header Comment</source>
+        <target>HTML-Header-Kommentar</target>
+      </trans-unit>
+      <trans-unit id="config.noCache.form.description" resname="config.noCache.form.description" approved="yes">
+        <source>Disable page cache</source>
+        <target>Seiten-Cache deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="config.noCache.form.label" resname="config.noCache.form.label" approved="yes">
+        <source>Disable Cache</source>
+        <target>Cache deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="config.removeDefaultJS.form.description" resname="config.removeDefaultJS.form.description" approved="yes">
+        <source>Remove default JavaScript (external, internal, or empty for none)</source>
+        <target>Standard-JavaScript entfernen (external, internal oder leer für keine)</target>
+      </trans-unit>
+      <trans-unit id="config.removeDefaultJS.form.label" resname="config.removeDefaultJS.form.label" approved="yes">
+        <source>Remove Default JavaScript</source>
+        <target>Standard-JavaScript entfernen</target>
+      </trans-unit>
+      <trans-unit id="config.spamProtectEmailAddresses.form.description" resname="config.spamProtectEmailAddresses.form.description" approved="yes">
+        <source>Enable spam protection for email addresses</source>
+        <target>Spam-Schutz für E-Mail-Adressen aktivieren</target>
+      </trans-unit>
+      <trans-unit id="config.spamProtectEmailAddresses.form.label" resname="config.spamProtectEmailAddresses.form.label" approved="yes">
+        <source>Spam Protect Email Addresses</source>
+        <target>Spam-Schutz für E-Mail-Adressen</target>
+      </trans-unit>
+      <trans-unit id="config.spamProtectEmailAddresses_atSubst.form.description" resname="config.spamProtectEmailAddresses_atSubst.form.description" approved="yes">
+        <source>Substitute for @ in email addresses</source>
+        <target>Ersatz für @ in E-Mail-Adressen</target>
+      </trans-unit>
+      <trans-unit id="config.spamProtectEmailAddresses_atSubst.form.label" resname="config.spamProtectEmailAddresses_atSubst.form.label" approved="yes">
+        <source>@ Substitute for Emails</source>
+        <target>@ Ersatz für E-Mails</target>
+      </trans-unit>
+      <trans-unit id="container.accordion.allowMultiple.form.description" resname="container.accordion.allowMultiple.form.description" approved="yes">
+        <source>Allow multiple accordion items to be open simultaneously</source>
+        <target>Mehrere Akkordeon-Elemente gleichzeitig geöffnet erlauben</target>
+      </trans-unit>
+      <trans-unit id="container.accordion.allowMultiple.form.label" resname="container.accordion.allowMultiple.form.label" approved="yes">
+        <source>Allow Multiple Open</source>
+        <target>Mehrere gleichzeitig öffnen</target>
+      </trans-unit>
+      <trans-unit id="container.accordion.enabled.form.description" resname="container.accordion.enabled.form.description" approved="yes">
+        <source>Enable accordion container support</source>
+        <target>Akkordeon-Container-Unterstützung aktivieren</target>
+      </trans-unit>
+      <trans-unit id="container.accordion.enabled.form.label" resname="container.accordion.enabled.form.label" approved="yes">
+        <source>Enable Accordion</source>
+        <target>Akkordeon aktivieren</target>
+      </trans-unit>
+      <trans-unit id="container.accordion.firstOpen.form.description" resname="container.accordion.firstOpen.form.description" approved="yes">
+        <source>Open first accordion item by default</source>
+        <target>Erstes Akkordeon-Element standardmäßig öffnen</target>
+      </trans-unit>
+      <trans-unit id="container.accordion.firstOpen.form.label" resname="container.accordion.firstOpen.form.label" approved="yes">
+        <source>First Item Open</source>
+        <target>Erstes Element geöffnet</target>
+      </trans-unit>
+      <trans-unit id="container.grid.defaultColumns.form.description" resname="container.grid.defaultColumns.form.description" approved="yes">
+        <source>Default number of columns in grid containers</source>
+        <target>Standard-Anzahl der Spalten in Grid-Containern</target>
+      </trans-unit>
+      <trans-unit id="container.grid.defaultColumns.form.label" resname="container.grid.defaultColumns.form.label" approved="yes">
+        <source>Default Columns</source>
+        <target>Standard-Spaltenanzahl</target>
+      </trans-unit>
+      <trans-unit id="container.grid.enabled.form.description" resname="container.grid.enabled.form.description" approved="yes">
+        <source>Enable grid container support</source>
+        <target>Grid-Container-Unterstützung aktivieren</target>
+      </trans-unit>
+      <trans-unit id="container.grid.enabled.form.label" resname="container.grid.enabled.form.label" approved="yes">
+        <source>Enable Grid Container</source>
+        <target>Grid-Container aktivieren</target>
+      </trans-unit>
+      <trans-unit id="container.grid.gutterSize.form.description" resname="container.grid.gutterSize.form.description" approved="yes">
+        <source>Default gutter size between columns (CSS value, e.g., 20px, 1rem)</source>
+        <target>Standard-Abstand zwischen Spalten (CSS-Wert, z.B. 20px, 1rem)</target>
+      </trans-unit>
+      <trans-unit id="container.grid.gutterSize.form.label" resname="container.grid.gutterSize.form.label" approved="yes">
+        <source>Gutter Size</source>
+        <target>Spaltenabstand</target>
+      </trans-unit>
+      <trans-unit id="container.grid.maxColumns.form.description" resname="container.grid.maxColumns.form.description" approved="yes">
+        <source>Maximum number of columns allowed</source>
+        <target>Maximal erlaubte Anzahl der Spalten</target>
+      </trans-unit>
+      <trans-unit id="container.grid.maxColumns.form.label" resname="container.grid.maxColumns.form.label" approved="yes">
+        <source>Maximum Columns</source>
+        <target>Maximale Spaltenanzahl</target>
+      </trans-unit>
+      <trans-unit id="container.tabs.enabled.form.description" resname="container.tabs.enabled.form.description" approved="yes">
+        <source>Enable tabs container support</source>
+        <target>Tabs-Container-Unterstützung aktivieren</target>
+      </trans-unit>
+      <trans-unit id="container.tabs.enabled.form.label" resname="container.tabs.enabled.form.label" approved="yes">
+        <source>Enable Tabs</source>
+        <target>Tabs aktivieren</target>
+      </trans-unit>
+      <trans-unit id="container.tabs.position.form.description" resname="container.tabs.position.form.description" approved="yes">
+        <source>Default tab position (top, bottom, left, right)</source>
+        <target>Standard-Tab-Position (top, bottom, left, right)</target>
+      </trans-unit>
+      <trans-unit id="container.tabs.position.form.label" resname="container.tabs.position.form.label" approved="yes">
+        <source>Tab Position</source>
+        <target>Tab-Position</target>
+      </trans-unit>
+      <trans-unit id="container.wrapper.maxWidth.form.description" resname="container.wrapper.maxWidth.form.description" approved="yes">
+        <source>Maximum width for container wrappers (CSS value)</source>
+        <target>Maximale Breite für Container-Wrapper (CSS-Wert)</target>
+      </trans-unit>
+      <trans-unit id="container.wrapper.maxWidth.form.label" resname="container.wrapper.maxWidth.form.label" approved="yes">
+        <source>Wrapper Maximum Width</source>
+        <target>Wrapper Maximale Breite</target>
+      </trans-unit>
+      <trans-unit id="container.wrapper.padding.form.description" resname="container.wrapper.padding.form.description" approved="yes">
+        <source>Default padding for container wrappers (CSS value)</source>
+        <target>Standard-Innenabstand für Container-Wrapper (CSS-Wert)</target>
+      </trans-unit>
+      <trans-unit id="container.wrapper.padding.form.label" resname="container.wrapper.padding.form.label" approved="yes">
+        <source>Wrapper Padding</source>
+        <target>Wrapper-Innenabstand</target>
+      </trans-unit>
+      <trans-unit id="content.defaultHeaderType.form.description" resname="content.defaultHeaderType.form.description" approved="yes">
+        <source>Default header type for content elements (1=h1, 2=h2, etc.)</source>
+        <target>Standard-Überschriftentyp für Inhaltselemente (1=h1, 2=h2, etc.)</target>
+      </trans-unit>
+      <trans-unit id="content.defaultHeaderType.form.label" resname="content.defaultHeaderType.form.label" approved="yes">
+        <source>Default Header Type</source>
+        <target>Standard-Überschriftentyp</target>
+      </trans-unit>
+      <trans-unit id="content.lightbox.cssClass.form.description" resname="content.lightbox.cssClass.form.description" approved="yes">
+        <source>CSS class for lightbox</source>
+        <target>CSS-Klasse für Lightbox</target>
+      </trans-unit>
+      <trans-unit id="content.lightbox.cssClass.form.label" resname="content.lightbox.cssClass.form.label" approved="yes">
+        <source>Lightbox CSS Class</source>
+        <target>Lightbox CSS-Klasse</target>
+      </trans-unit>
+      <trans-unit id="content.lightbox.enabled.form.description" resname="content.lightbox.enabled.form.description" approved="yes">
+        <source>Enable lightbox for images</source>
+        <target>Lightbox für Bilder aktivieren</target>
+      </trans-unit>
+      <trans-unit id="content.lightbox.enabled.form.label" resname="content.lightbox.enabled.form.label" approved="yes">
+        <source>Enable Lightbox</source>
+        <target>Lightbox aktivieren</target>
+      </trans-unit>
+      <trans-unit id="content.links.extTarget.form.description" resname="content.links.extTarget.form.description" approved="yes">
+        <source>Target for external links (_blank, _self, _top)</source>
+        <target>Ziel für externe Links (_blank, _self, _top)</target>
+      </trans-unit>
+      <trans-unit id="content.links.extTarget.form.label" resname="content.links.extTarget.form.label" approved="yes">
+        <source>External Link Target</source>
+        <target>Externe Links Ziel</target>
+      </trans-unit>
+      <trans-unit id="content.textmedia.maxWidth.form.description" resname="content.textmedia.maxWidth.form.description" approved="yes">
+        <source>Maximum width for text/media elements</source>
+        <target>Maximale Breite für Text/Medien-Elemente</target>
+      </trans-unit>
+      <trans-unit id="content.textmedia.maxWidth.form.label" resname="content.textmedia.maxWidth.form.label" approved="yes">
+        <source>Text/Media Maximum Width</source>
+        <target>Text/Media Maximale Breite</target>
+      </trans-unit>
+      <trans-unit id="content.textmedia.maxWidthInText.form.description" resname="content.textmedia.maxWidthInText.form.description" approved="yes">
+        <source>Maximum width for media in text</source>
+        <target>Maximale Breite für Medien im Text</target>
+      </trans-unit>
+      <trans-unit id="content.textmedia.maxWidthInText.form.label" resname="content.textmedia.maxWidthInText.form.label" approved="yes">
+        <source>Media in Text Maximum Width</source>
+        <target>Medien im Text Maximale Breite</target>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.desktop.form.description" resname="design.breakpoints.desktop.form.description" approved="yes">
+        <source>Desktop breakpoint in pixels</source>
+        <target>Desktop-Breakpoint in Pixeln</target>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.desktop.form.label" resname="design.breakpoints.desktop.form.label" approved="yes">
+        <source>Desktop Breakpoint</source>
+        <target>Desktop-Breakpoint</target>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.mobile.form.description" resname="design.breakpoints.mobile.form.description" approved="yes">
+        <source>Mobile breakpoint in pixels</source>
+        <target>Mobiler Breakpoint in Pixeln</target>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.mobile.form.label" resname="design.breakpoints.mobile.form.label" approved="yes">
+        <source>Mobile Breakpoint</source>
+        <target>Mobiler Breakpoint</target>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.tablet.form.description" resname="design.breakpoints.tablet.form.description" approved="yes">
+        <source>Tablet breakpoint in pixels</source>
+        <target>Tablet-Breakpoint in Pixeln</target>
+      </trans-unit>
+      <trans-unit id="design.breakpoints.tablet.form.label" resname="design.breakpoints.tablet.form.label" approved="yes">
+        <source>Tablet Breakpoint</source>
+        <target>Tablet-Breakpoint</target>
+      </trans-unit>
+      <trans-unit id="design.colors.primary.form.description" resname="design.colors.primary.form.description" approved="yes">
+        <source>Primary brand color</source>
+        <target>Primäre Markenfarbe</target>
+      </trans-unit>
+      <trans-unit id="design.colors.primary.form.label" resname="design.colors.primary.form.label" approved="yes">
+        <source>Primary Color</source>
+        <target>Primärfarbe</target>
+      </trans-unit>
+      <trans-unit id="design.colors.secondary.form.description" resname="design.colors.secondary.form.description" approved="yes">
+        <source>Secondary brand color</source>
+        <target>Sekundäre Markenfarbe</target>
+      </trans-unit>
+      <trans-unit id="design.colors.secondary.form.label" resname="design.colors.secondary.form.label" approved="yes">
+        <source>Secondary Color</source>
+        <target>Sekundärfarbe</target>
+      </trans-unit>
+      <trans-unit id="design.container.maxWidth.form.description" resname="design.container.maxWidth.form.description" approved="yes">
+        <source>Maximum container width in pixels</source>
+        <target>Maximale Container-Breite in Pixeln</target>
+      </trans-unit>
+      <trans-unit id="design.container.maxWidth.form.label" resname="design.container.maxWidth.form.label" approved="yes">
+        <source>Container Maximum Width</source>
+        <target>Container Maximale Breite</target>
+      </trans-unit>
+      <trans-unit id="design.fonts.heading.form.description" resname="design.fonts.heading.form.description" approved="yes">
+        <source>Heading font family</source>
+        <target>Überschriften-Schriftfamilie</target>
+      </trans-unit>
+      <trans-unit id="design.fonts.heading.form.label" resname="design.fonts.heading.form.label" approved="yes">
+        <source>Heading Font Family</source>
+        <target>Überschriften-Schriftart</target>
+      </trans-unit>
+      <trans-unit id="design.fonts.primary.form.description" resname="design.fonts.primary.form.description" approved="yes">
+        <source>Primary font family</source>
+        <target>Primäre Schriftfamilie</target>
+      </trans-unit>
+      <trans-unit id="design.fonts.primary.form.label" resname="design.fonts.primary.form.label" approved="yes">
+        <source>Primary Font Family</source>
+        <target>Primäre Schriftart</target>
+      </trans-unit>
+      <trans-unit id="form.confirmationPage.enabled.form.description" resname="form.confirmationPage.enabled.form.description" approved="yes">
+        <source>Show confirmation page after form submission</source>
+        <target>Bestätigungsseite nach Formularübermittlung anzeigen</target>
+      </trans-unit>
+      <trans-unit id="form.confirmationPage.enabled.form.label" resname="form.confirmationPage.enabled.form.label" approved="yes">
+        <source>Enable Confirmation Page</source>
+        <target>Bestätigungsseite aktivieren</target>
+      </trans-unit>
+      <trans-unit id="form.email.replyToEmail.form.description" resname="form.email.replyToEmail.form.description" approved="yes">
+        <source>Default reply-to email address</source>
+        <target>Standard-Antwort-E-Mail-Adresse</target>
+      </trans-unit>
+      <trans-unit id="form.email.replyToEmail.form.label" resname="form.email.replyToEmail.form.label" approved="yes">
+        <source>Reply-To Email Address</source>
+        <target>Antwort-E-Mail-Adresse</target>
+      </trans-unit>
+      <trans-unit id="form.email.senderEmail.form.description" resname="form.email.senderEmail.form.description" approved="yes">
+        <source>Default sender email address</source>
+        <target>Standard-Absender-E-Mail-Adresse</target>
+      </trans-unit>
+      <trans-unit id="form.email.senderEmail.form.label" resname="form.email.senderEmail.form.label" approved="yes">
+        <source>Email Sender Address</source>
+        <target>E-Mail Absenderadresse</target>
+      </trans-unit>
+      <trans-unit id="form.email.senderName.form.description" resname="form.email.senderName.form.description" approved="yes">
+        <source>Default sender name for form emails</source>
+        <target>Standard-Absendername für Formular-E-Mails</target>
+      </trans-unit>
+      <trans-unit id="form.email.senderName.form.label" resname="form.email.senderName.form.label" approved="yes">
+        <source>Email Sender Name</source>
+        <target>E-Mail Absendername</target>
+      </trans-unit>
+      <trans-unit id="form.honeypot.enabled.form.description" resname="form.honeypot.enabled.form.description" approved="yes">
+        <source>Enable honeypot spam protection</source>
+        <target>Honeypot-Spam-Schutz aktivieren</target>
+      </trans-unit>
+      <trans-unit id="form.honeypot.enabled.form.label" resname="form.honeypot.enabled.form.label" approved="yes">
+        <source>Enable Honeypot</source>
+        <target>Honeypot aktivieren</target>
+      </trans-unit>
+      <trans-unit id="form.requiredFieldMarker.form.description" resname="form.requiredFieldMarker.form.description" approved="yes">
+        <source>Marker for required fields (e.g., *)</source>
+        <target>Kennzeichnung für Pflichtfelder (z.B. *)</target>
+      </trans-unit>
+      <trans-unit id="form.requiredFieldMarker.form.label" resname="form.requiredFieldMarker.form.label" approved="yes">
+        <source>Required Field Marker</source>
+        <target>Pflichtfeld-Markierung</target>
+      </trans-unit>
+      <trans-unit id="form.storage.saveToDatabase.form.description" resname="form.storage.saveToDatabase.form.description" approved="yes">
+        <source>Save form submissions to database</source>
+        <target>Formularübermittlungen in Datenbank speichern</target>
+      </trans-unit>
+      <trans-unit id="form.storage.saveToDatabase.form.label" resname="form.storage.saveToDatabase.form.label" approved="yes">
+        <source>Save to Database</source>
+        <target>In Datenbank speichern</target>
+      </trans-unit>
+      <trans-unit id="form.storage.uploadFolder.form.description" resname="form.storage.uploadFolder.form.description" approved="yes">
+        <source>Folder for form file uploads (e.g., 1:/forms/)</source>
+        <target>Ordner für Formular-Datei-Uploads (z.B. 1:/forms/)</target>
+      </trans-unit>
+      <trans-unit id="form.storage.uploadFolder.form.label" resname="form.storage.uploadFolder.form.label" approved="yes">
+        <source>Upload Folder</source>
+        <target>Upload-Ordner</target>
+      </trans-unit>
+      <trans-unit id="form.validation.clientSide.form.description" resname="form.validation.clientSide.form.description" approved="yes">
+        <source>Enable client-side validation</source>
+        <target>Client-seitige Validierung aktivieren</target>
+      </trans-unit>
+      <trans-unit id="form.validation.clientSide.form.label" resname="form.validation.clientSide.form.label" approved="yes">
+        <source>Client-Side Validation</source>
+        <target>Client-seitige Validierung</target>
+      </trans-unit>
+      <trans-unit id="form.validation.showInlineErrors.form.description" resname="form.validation.showInlineErrors.form.description" approved="yes">
+        <source>Show validation errors inline with fields</source>
+        <target>Validierungsfehler inline bei Feldern anzeigen</target>
+      </trans-unit>
+      <trans-unit id="form.validation.showInlineErrors.form.label" resname="form.validation.showInlineErrors.form.label" approved="yes">
+        <source>Show Inline Errors</source>
+        <target>Inline-Fehler anzeigen</target>
+      </trans-unit>
+      <trans-unit id="meta.appleMobileWebAppCapable.form.description" resname="meta.appleMobileWebAppCapable.form.description" approved="yes">
+        <source>Apple mobile web app capable</source>
+        <target>Apple Mobile Web App fähig</target>
+      </trans-unit>
+      <trans-unit id="meta.appleMobileWebAppCapable.form.label" resname="meta.appleMobileWebAppCapable.form.label" approved="yes">
+        <source>Apple Mobile Web App Capable</source>
+        <target>Apple Mobile Web App Capable</target>
+      </trans-unit>
+      <trans-unit id="meta.compatible.form.description" resname="meta.compatible.form.description" approved="yes">
+        <source>IE compatibility mode</source>
+        <target>IE-Kompatibilitätsmodus</target>
+      </trans-unit>
+      <trans-unit id="meta.compatible.form.label" resname="meta.compatible.form.label" approved="yes">
+        <source>IE Compatibility Mode</source>
+        <target>IE-Kompatibilitätsmodus</target>
+      </trans-unit>
+      <trans-unit id="meta.google.form.description" resname="meta.google.form.description" approved="yes">
+        <source>Google meta tag content</source>
+        <target>Google Meta-Tag Inhalt</target>
+      </trans-unit>
+      <trans-unit id="meta.google.form.label" resname="meta.google.form.label" approved="yes">
+        <source>Google Meta Tag</source>
+        <target>Google Meta-Tag</target>
+      </trans-unit>
+      <trans-unit id="meta.googleSiteVerification.form.description" resname="meta.googleSiteVerification.form.description" approved="yes">
+        <source>Google Site Verification code</source>
+        <target>Google Site-Verifizierungscode</target>
+      </trans-unit>
+      <trans-unit id="meta.googleSiteVerification.form.label" resname="meta.googleSiteVerification.form.label" approved="yes">
+        <source>Google Site Verification</source>
+        <target>Google Site-Verifizierung</target>
+      </trans-unit>
+      <trans-unit id="meta.robots.form.description" resname="meta.robots.form.description" approved="yes">
+        <source>Robots meta tag content</source>
+        <target>Robots Meta-Tag Inhalt</target>
+      </trans-unit>
+      <trans-unit id="meta.robots.form.label" resname="meta.robots.form.label" approved="yes">
+        <source>Robots Meta Tag</source>
+        <target>Robots Meta-Tag</target>
+      </trans-unit>
+      <trans-unit id="meta.viewport.form.description" resname="meta.viewport.form.description" approved="yes">
+        <source>Viewport meta tag content</source>
+        <target>Viewport Meta-Tag Inhalt</target>
+      </trans-unit>
+      <trans-unit id="meta.viewport.form.label" resname="meta.viewport.form.label" approved="yes">
+        <source>Viewport Meta Tag</source>
+        <target>Viewport Meta-Tag</target>
+      </trans-unit>
+      <trans-unit id="navigation.breadcrumb.includeHome.form.description" resname="navigation.breadcrumb.includeHome.form.description" approved="yes">
+        <source>Include homepage in breadcrumb</source>
+        <target>Startseite im Breadcrumb einbeziehen</target>
+      </trans-unit>
+      <trans-unit id="navigation.breadcrumb.includeHome.form.label" resname="navigation.breadcrumb.includeHome.form.label" approved="yes">
+        <source>Include Home in Breadcrumb</source>
+        <target>Startseite im Breadcrumb</target>
+      </trans-unit>
+      <trans-unit id="navigation.enableBreadcrumb.form.description" resname="navigation.enableBreadcrumb.form.description" approved="yes">
+        <source>Show breadcrumb navigation</source>
+        <target>Breadcrumb-Navigation anzeigen</target>
+      </trans-unit>
+      <trans-unit id="navigation.enableBreadcrumb.form.label" resname="navigation.enableBreadcrumb.form.label" approved="yes">
+        <source>Enable Breadcrumb</source>
+        <target>Breadcrumb aktivieren</target>
+      </trans-unit>
+      <trans-unit id="navigation.maxDepth.form.description" resname="navigation.maxDepth.form.description" approved="yes">
+        <source>Maximum depth of navigation menu</source>
+        <target>Maximale Tiefe des Navigationsmenüs</target>
+      </trans-unit>
+      <trans-unit id="navigation.maxDepth.form.label" resname="navigation.maxDepth.form.label" approved="yes">
+        <source>Maximum Navigation Depth</source>
+        <target>Maximale Navigationstiefe</target>
+      </trans-unit>
+      <trans-unit id="navigation.showHiddenPages.form.description" resname="navigation.showHiddenPages.form.description" approved="yes">
+        <source>Show hidden pages in navigation</source>
+        <target>Versteckte Seiten in Navigation anzeigen</target>
+      </trans-unit>
+      <trans-unit id="navigation.showHiddenPages.form.label" resname="navigation.showHiddenPages.form.label" approved="yes">
+        <source>Show Hidden Pages</source>
+        <target>Versteckte Seiten anzeigen</target>
+      </trans-unit>
+      <trans-unit id="news.detail.enableComments.form.description" resname="news.detail.enableComments.form.description" approved="yes">
+        <source>Enable comments for news articles</source>
+        <target>Kommentare für News-Artikel aktivieren</target>
+      </trans-unit>
+      <trans-unit id="news.detail.enableComments.form.label" resname="news.detail.enableComments.form.label" approved="yes">
+        <source>Enable Comments</source>
+        <target>Kommentare aktivieren</target>
+      </trans-unit>
+      <trans-unit id="news.detail.relatedLimit.form.description" resname="news.detail.relatedLimit.form.description" approved="yes">
+        <source>Maximum number of related news items to show</source>
+        <target>Maximale Anzahl ähnlicher News-Einträge</target>
+      </trans-unit>
+      <trans-unit id="news.detail.relatedLimit.form.label" resname="news.detail.relatedLimit.form.label" approved="yes">
+        <source>Related News Limit</source>
+        <target>Anzahl ähnlicher News</target>
+      </trans-unit>
+      <trans-unit id="news.detail.showBackLink.form.description" resname="news.detail.showBackLink.form.description" approved="yes">
+        <source>Show back link to list in detail view</source>
+        <target>Zurück-Link zur Liste in Detailansicht anzeigen</target>
+      </trans-unit>
+      <trans-unit id="news.detail.showBackLink.form.label" resname="news.detail.showBackLink.form.label" approved="yes">
+        <source>Show Back Link</source>
+        <target>Zurück-Link anzeigen</target>
+      </trans-unit>
+      <trans-unit id="news.detail.showRelated.form.description" resname="news.detail.showRelated.form.description" approved="yes">
+        <source>Show related news in detail view</source>
+        <target>Ähnliche News in Detailansicht anzeigen</target>
+      </trans-unit>
+      <trans-unit id="news.detail.showRelated.form.label" resname="news.detail.showRelated.form.label" approved="yes">
+        <source>Show Related News</source>
+        <target>Ähnliche News anzeigen</target>
+      </trans-unit>
+      <trans-unit id="news.list.dateFormat.form.description" resname="news.list.dateFormat.form.description" approved="yes">
+        <source>Date format for news items (PHP date format)</source>
+        <target>Datumsformat für News-Einträge (PHP-Datumsformat)</target>
+      </trans-unit>
+      <trans-unit id="news.list.dateFormat.form.label" resname="news.list.dateFormat.form.label" approved="yes">
+        <source>Date Format</source>
+        <target>Datumsformat</target>
+      </trans-unit>
+      <trans-unit id="news.list.orderBy.form.description" resname="news.list.orderBy.form.description" approved="yes">
+        <source>Default sort field for news list</source>
+        <target>Standard-Sortierfeld für News-Liste</target>
+      </trans-unit>
+      <trans-unit id="news.list.orderBy.form.label" resname="news.list.orderBy.form.label" approved="yes">
+        <source>Order By Field</source>
+        <target>Sortierung nach Feld</target>
+      </trans-unit>
+      <trans-unit id="news.list.orderDirection.form.description" resname="news.list.orderDirection.form.description" approved="yes">
+        <source>Default sort direction for news list</source>
+        <target>Standard-Sortierrichtung für News-Liste</target>
+      </trans-unit>
+      <trans-unit id="news.list.orderDirection.form.label" resname="news.list.orderDirection.form.label" approved="yes">
+        <source>Order Direction</source>
+        <target>Sortierreihenfolge</target>
+      </trans-unit>
+      <trans-unit id="news.list.paginate.itemsPerPage.form.description" resname="news.list.paginate.itemsPerPage.form.description" approved="yes">
+        <source>Number of news items to display per page in list view</source>
+        <target>Anzahl der News-Einträge pro Seite in der Listenansicht</target>
+      </trans-unit>
+      <trans-unit id="news.list.paginate.itemsPerPage.form.label" resname="news.list.paginate.itemsPerPage.form.label" approved="yes">
+        <source>Items per Page</source>
+        <target>Einträge pro Seite</target>
+      </trans-unit>
+      <trans-unit id="news.list.showCategories.form.description" resname="news.list.showCategories.form.description" approved="yes">
+        <source>Show categories in news list</source>
+        <target>Kategorien in News-Liste anzeigen</target>
+      </trans-unit>
+      <trans-unit id="news.list.showCategories.form.label" resname="news.list.showCategories.form.label" approved="yes">
+        <source>Show Categories</source>
+        <target>Kategorien anzeigen</target>
+      </trans-unit>
+      <trans-unit id="news.list.showTags.form.description" resname="news.list.showTags.form.description" approved="yes">
+        <source>Show tags in news list</source>
+        <target>Tags in News-Liste anzeigen</target>
+      </trans-unit>
+      <trans-unit id="news.list.showTags.form.label" resname="news.list.showTags.form.label" approved="yes">
+        <source>Show Tags</source>
+        <target>Tags anzeigen</target>
+      </trans-unit>
+      <trans-unit id="news.media.maxHeight.form.description" resname="news.media.maxHeight.form.description" approved="yes">
+        <source>Maximum height for news images</source>
+        <target>Maximale Höhe für News-Bilder</target>
+      </trans-unit>
+      <trans-unit id="news.media.maxHeight.form.label" resname="news.media.maxHeight.form.label" approved="yes">
+        <source>News Image Maximum Height</source>
+        <target>News-Bild Maximale Höhe</target>
+      </trans-unit>
+      <trans-unit id="news.media.maxWidth.form.description" resname="news.media.maxWidth.form.description" approved="yes">
+        <source>Maximum width for news images</source>
+        <target>Maximale Breite für News-Bilder</target>
+      </trans-unit>
+      <trans-unit id="news.media.maxWidth.form.label" resname="news.media.maxWidth.form.label" approved="yes">
+        <source>News Image Maximum Width</source>
+        <target>News-Bild Maximale Breite</target>
+      </trans-unit>
+      <trans-unit id="performance.compressCss.form.description" resname="performance.compressCss.form.description" approved="yes">
+        <source>Compress CSS files</source>
+        <target>CSS-Dateien komprimieren</target>
+      </trans-unit>
+      <trans-unit id="performance.compressCss.form.label" resname="performance.compressCss.form.label" approved="yes">
+        <source>Compress CSS</source>
+        <target>CSS komprimieren</target>
+      </trans-unit>
+      <trans-unit id="performance.compressJs.form.description" resname="performance.compressJs.form.description" approved="yes">
+        <source>Compress JavaScript files</source>
+        <target>JavaScript-Dateien komprimieren</target>
+      </trans-unit>
+      <trans-unit id="performance.compressJs.form.label" resname="performance.compressJs.form.label" approved="yes">
+        <source>Compress JavaScript</source>
+        <target>JavaScript komprimieren</target>
+      </trans-unit>
+      <trans-unit id="performance.concatenateCss.form.description" resname="performance.concatenateCss.form.description" approved="yes">
+        <source>Concatenate CSS files</source>
+        <target>CSS-Dateien zusammenführen</target>
+      </trans-unit>
+      <trans-unit id="performance.concatenateCss.form.label" resname="performance.concatenateCss.form.label" approved="yes">
+        <source>Concatenate CSS</source>
+        <target>CSS zusammenführen</target>
+      </trans-unit>
+      <trans-unit id="performance.concatenateJs.form.description" resname="performance.concatenateJs.form.description" approved="yes">
+        <source>Concatenate JavaScript files</source>
+        <target>JavaScript-Dateien zusammenführen</target>
+      </trans-unit>
+      <trans-unit id="performance.concatenateJs.form.label" resname="performance.concatenateJs.form.label" approved="yes">
+        <source>Concatenate JavaScript</source>
+        <target>JavaScript zusammenführen</target>
+      </trans-unit>
+      <trans-unit id="performance.enableLazyLoading.form.description" resname="performance.enableLazyLoading.form.description" approved="yes">
+        <source>Enable lazy loading for images</source>
+        <target>Lazy Loading für Bilder aktivieren</target>
+      </trans-unit>
+      <trans-unit id="performance.enableLazyLoading.form.label" resname="performance.enableLazyLoading.form.label" approved="yes">
+        <source>Enable Lazy Loading</source>
+        <target>Lazy Loading aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.canonical.enabled.form.description" resname="seo.canonical.enabled.form.description" approved="yes">
+        <source>Enable canonical URL tags</source>
+        <target>Canonical URL-Tags aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.canonical.enabled.form.label" resname="seo.canonical.enabled.form.label" approved="yes">
+        <source>Enable Canonical URLs</source>
+        <target>Canonical URLs aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.meta.generateDescriptions.form.description" resname="seo.meta.generateDescriptions.form.description" approved="yes">
+        <source>Automatically generate meta descriptions from content</source>
+        <target>Meta-Beschreibungen automatisch aus Inhalt generieren</target>
+      </trans-unit>
+      <trans-unit id="seo.meta.generateDescriptions.form.label" resname="seo.meta.generateDescriptions.form.label" approved="yes">
+        <source>Generate Meta Descriptions</source>
+        <target>Meta-Beschreibungen generieren</target>
+      </trans-unit>
+      <trans-unit id="seo.meta.maxDescriptionLength.form.description" resname="seo.meta.maxDescriptionLength.form.description" approved="yes">
+        <source>Maximum length for meta descriptions</source>
+        <target>Maximale Länge für Meta-Beschreibungen</target>
+      </trans-unit>
+      <trans-unit id="seo.meta.maxDescriptionLength.form.label" resname="seo.meta.maxDescriptionLength.form.label" approved="yes">
+        <source>Max Description Length</source>
+        <target>Max. Beschreibungslänge</target>
+      </trans-unit>
+      <trans-unit id="seo.meta.maxTitleLength.form.description" resname="seo.meta.maxTitleLength.form.description" approved="yes">
+        <source>Maximum length for page titles</source>
+        <target>Maximale Länge für Seitentitel</target>
+      </trans-unit>
+      <trans-unit id="seo.meta.maxTitleLength.form.label" resname="seo.meta.maxTitleLength.form.label" approved="yes">
+        <source>Max Title Length</source>
+        <target>Max. Titellänge</target>
+      </trans-unit>
+      <trans-unit id="seo.meta.titleSeparator.form.description" resname="seo.meta.titleSeparator.form.description" approved="yes">
+        <source>Separator between page title and site name</source>
+        <target>Trennzeichen zwischen Seitentitel und Site-Name</target>
+      </trans-unit>
+      <trans-unit id="seo.meta.titleSeparator.form.label" resname="seo.meta.titleSeparator.form.label" approved="yes">
+        <source>Title Separator</source>
+        <target>Titel-Trennzeichen</target>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.defaultImage.form.description" resname="seo.openGraph.defaultImage.form.description" approved="yes">
+        <source>Default Open Graph image path (e.g., EXT:mp_core/Resources/Public/Images/og-default.jpg)</source>
+        <target>Standard Open Graph Bildpfad (z.B. EXT:mp_core/Resources/Public/Images/og-default.jpg)</target>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.defaultImage.form.label" resname="seo.openGraph.defaultImage.form.label" approved="yes">
+        <source>Default OG Image</source>
+        <target>Standard OG-Bild</target>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.enabled.form.description" resname="seo.openGraph.enabled.form.description" approved="yes">
+        <source>Enable Open Graph meta tags</source>
+        <target>Open Graph Meta-Tags aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.enabled.form.label" resname="seo.openGraph.enabled.form.label" approved="yes">
+        <source>Enable Open Graph</source>
+        <target>Open Graph aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.imageHeight.form.description" resname="seo.openGraph.imageHeight.form.description" approved="yes">
+        <source>Open Graph image height in pixels</source>
+        <target>Open Graph Bildhöhe in Pixeln</target>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.imageHeight.form.label" resname="seo.openGraph.imageHeight.form.label" approved="yes">
+        <source>OG Image Height</source>
+        <target>OG-Bild Höhe</target>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.imageWidth.form.description" resname="seo.openGraph.imageWidth.form.description" approved="yes">
+        <source>Open Graph image width in pixels</source>
+        <target>Open Graph Bildbreite in Pixeln</target>
+      </trans-unit>
+      <trans-unit id="seo.openGraph.imageWidth.form.label" resname="seo.openGraph.imageWidth.form.label" approved="yes">
+        <source>OG Image Width</source>
+        <target>OG-Bild Breite</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.enabled.form.description" resname="seo.schema.enabled.form.description" approved="yes">
+        <source>Enable Schema.org structured data</source>
+        <target>Schema.org strukturierte Daten aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.enabled.form.label" resname="seo.schema.enabled.form.label" approved="yes">
+        <source>Enable Schema.org</source>
+        <target>Schema.org aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.organizationType.form.description" resname="seo.schema.organizationType.form.description" approved="yes">
+        <source>Schema.org organization type (Organization, Corporation, LocalBusiness, etc.)</source>
+        <target>Schema.org Organisationstyp (Organization, Corporation, LocalBusiness, etc.)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.organizationType.form.label" resname="seo.schema.organizationType.form.label" approved="yes">
+        <source>Organization Type</source>
+        <target>Organisationstyp</target>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.enabled.form.description" resname="seo.sitemap.enabled.form.description" approved="yes">
+        <source>Enable XML sitemap generation</source>
+        <target>XML-Sitemap-Generierung aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.enabled.form.label" resname="seo.sitemap.enabled.form.label" approved="yes">
+        <source>Enable XML Sitemap</source>
+        <target>XML-Sitemap aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.excludeHiddenPages.form.description" resname="seo.sitemap.excludeHiddenPages.form.description" approved="yes">
+        <source>Exclude hidden pages from sitemap</source>
+        <target>Versteckte Seiten von Sitemap ausschließen</target>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.excludeHiddenPages.form.label" resname="seo.sitemap.excludeHiddenPages.form.label" approved="yes">
+        <source>Exclude Hidden Pages</source>
+        <target>Versteckte Seiten ausschließen</target>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.priority.form.description" resname="seo.sitemap.priority.form.description" approved="yes">
+        <source>Default priority for sitemap entries (0.0 to 1.0)</source>
+        <target>Standard-Priorität für Sitemap-Einträge (0.0 bis 1.0)</target>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.priority.form.label" resname="seo.sitemap.priority.form.label" approved="yes">
+        <source>Default Sitemap Priority</source>
+        <target>Standard Sitemap-Priorität</target>
+      </trans-unit>
+      <trans-unit id="seo.twitter.cardType.form.description" resname="seo.twitter.cardType.form.description" approved="yes">
+        <source>Twitter Card type (summary, summary_large_image, app, player)</source>
+        <target>Twitter Card Typ (summary, summary_large_image, app, player)</target>
+      </trans-unit>
+      <trans-unit id="seo.twitter.cardType.form.label" resname="seo.twitter.cardType.form.label" approved="yes">
+        <source>Twitter Card Type</source>
+        <target>Twitter Card-Typ</target>
+      </trans-unit>
+      <trans-unit id="seo.twitter.enabled.form.description" resname="seo.twitter.enabled.form.description" approved="yes">
+        <source>Enable Twitter Card meta tags</source>
+        <target>Twitter Card Meta-Tags aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.twitter.enabled.form.label" resname="seo.twitter.enabled.form.label" approved="yes">
+        <source>Enable Twitter Cards</source>
+        <target>Twitter Cards aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.twitter.site.form.description" resname="seo.twitter.site.form.description" approved="yes">
+        <source>Twitter username for the website (e.g., @username)</source>
+        <target>Twitter-Benutzername für die Website (z.B. @benutzername)</target>
+      </trans-unit>
+      <trans-unit id="seo.twitter.site.form.label" resname="seo.twitter.site.form.label" approved="yes">
+        <source>Twitter Site Username</source>
+        <target>Twitter Website-Benutzername</target>
+      </trans-unit>
+      <trans-unit id="templates.layoutRootPath.form.description" resname="templates.layoutRootPath.form.description" approved="yes">
+        <source>Path to Fluid layouts</source>
+        <target>Pfad zu Fluid-Layouts</target>
+      </trans-unit>
+      <trans-unit id="templates.layoutRootPath.form.label" resname="templates.layoutRootPath.form.label" approved="yes">
+        <source>Layout Root Path</source>
+        <target>Layout-Stammpfad</target>
+      </trans-unit>
+      <trans-unit id="templates.partialRootPath.form.description" resname="templates.partialRootPath.form.description" approved="yes">
+        <source>Path to Fluid partials</source>
+        <target>Pfad zu Fluid-Partials</target>
+      </trans-unit>
+      <trans-unit id="templates.partialRootPath.form.label" resname="templates.partialRootPath.form.label" approved="yes">
+        <source>Partial Root Path</source>
+        <target>Partial-Stammpfad</target>
+      </trans-unit>
+      <trans-unit id="templates.templateRootPath.form.description" resname="templates.templateRootPath.form.description" approved="yes">
+        <source>Path to Fluid templates</source>
+        <target>Pfad zu Fluid-Templates</target>
+      </trans-unit>
+      <trans-unit id="templates.templateRootPath.form.label" resname="templates.templateRootPath.form.label" approved="yes">
+        <source>Template Root Path</source>
+        <target>Template-Stammpfad</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

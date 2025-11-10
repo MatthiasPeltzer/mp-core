@@ -1,0 +1,336 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:variable name="file">{files.0}</f:variable>
+
+<div class="frame frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}{f:if(condition: data.gallery_textcolor, then: ' gallery-text-white')}{f:if(condition: data.gallery_bg, then: ' gallery-bg-dark')}" id="c{data.uid}">
+
+    <f:if condition="{data.header}">
+        <f:render arguments="{_all}" partial="Header/All"/>
+    </f:if>
+
+    <f:if condition="{data.bodytext}">
+        <div class="ce-bodytext pb-1">
+            <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.bodytext}</f:format.html>
+        </div>
+    </f:if>
+
+    <f:if condition="{files}">
+        <f:if condition="{data.gallery_layout} == 'gallery-single'">
+            <section aria-label="{data.header}" aria-roledescription="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery')}" class="gallery-image {data.gallery_layout} row list-unstyled" id="gallery-single-{data.uid}">
+                <div class="col-12 pb-3 pt-3">
+                    <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#" role="button" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
+                        <f:render arguments="{_all}" section="GallerySingle"/>
+                        <f:if condition="{files -> f:count()} > 1">
+                            <p class="count">{files -> f:count()} {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.images')}</p>
+                        </f:if>
+                    </a>
+                </div>
+            </section>
+        </f:if>
+
+        <f:if condition="{data.gallery_layout} == 'gallery-tiles'">
+            <ul class="gallery-image {data.gallery_layout} row list-unstyled" id="gallery-tiles-{data.uid}">
+                <f:for as="file" each="{files}" iteration="i">
+                    <li class="col-6 col-md-4 col-lg-3 pb-3 pt-3" data-count="{i.index}" aria-label="{i.cycle} von {i.total}">
+                        <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#" role="button" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
+                            <f:render arguments="{_all}" section="GalleryTiles"/>
+                        </a>
+                    </li>
+                </f:for>
+            </ul>
+        </f:if>
+
+        <f:if condition="{data.gallery_layout} == 'gallery-slider'">
+            <section aria-label="{data.header}" aria-roledescription="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery')}" class="swiper swiper-raw swiper-slide-col-{data.gallery_columns} swiper-gallery {data.gallery_layout}">
+                <ul class="swiper-wrapper gallery-image list-unstyled" id="gallery-slider-{data.uid}">
+                    <f:for as="file" each="{files}" iteration="i">
+                        <li class="swiper-slide" data-count="{i.index}" aria-label="{i.cycle} von {i.total}">
+                            <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#" role="button" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
+                                <f:render arguments="{_all}" section="GallerySlide"/>
+                            </a>
+                        </li>
+                    </f:for>
+                </ul>
+                <div class="swiper-navigation">
+                    <button class="swiper-button swiper-button-prev"></button>
+                    <div class="swiper-pagination"></div>
+                    <button class="swiper-button swiper-button-next"></button>
+                </div>
+            </section>
+        </f:if>
+
+        <f:if condition="{data.gallery_layout} == 'gallery-thumbs'">
+            <div class="swiper-container">
+                <section aria-label="{data.header}" aria-roledescription="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery')}" class="swiper topSwiper swiper-slide-col-1 swiper-gallery {data.gallery_layout}">
+                    <ul class="swiper-wrapper gallery-image list-unstyled" id="gallery-thumbs-{data.uid}">
+                        <f:for as="file" each="{files}" iteration="i">
+                            <li aria-label="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery.entry')}" aria-roledescription="{i.cycle} / {i.total}" class="swiper-slide" data-count="{i.index}">
+                                <f:render arguments="{_all}" section="GalleryThumb"/>
+                            </li>
+                        </f:for>
+                    </ul>
+                    <div class="swiper-navigation">
+                        <button class="swiper-button swiper-button-prev"></button>
+                        <div class="swiper-pagination"></div>
+                        <button class="swiper-button swiper-button-next"></button>
+                    </div>
+                </section>
+                <div class="swiper bottomSwiper swiper-slide-col-4 swiper-gallery {data.gallery_layout} pt-4">
+                    <ul class="swiper-wrapper gallery-image list-unstyled">
+                        <f:for as="file" each="{files}" iteration="i">
+                            <li class="swiper-slide" data-count="{i.index}">
+                                <f:render arguments="{_all}" section="GalleryThumbnail"/>
+                            </li>
+                        </f:for>
+                    </ul>
+                </div>
+                <f:if condition="{file.originalFile.properties.description} || {file.properties.description}">
+                    <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="modal-description-{data.uid}" tabindex="-1">
+                        <div class="modal-dialog modal-md modal-dialog-scrollable modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div class="container">
+                                        <div class="row g-0">
+                                            <div class="col-10 title">
+                                                <h2>{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_description')}</h2>
+                                            </div>
+                                            <div class="col-2 close text-end">
+                                                <button class="btn-close" data-bs-dismiss="modal" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}" type="button">
+                                                    <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <f:if condition="{file.properties.description}">
+                                        <f:then>
+                                            <f:format.html>{file.properties.description}</f:format.html>
+                                        </f:then>
+                                        <f:else>
+                                            <f:if condition="{file.originalFile.properties.description}">
+                                                <f:format.html>{file.originalFile.properties.description}</f:format.html>
+                                            </f:if>
+                                        </f:else>
+                                    </f:if>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </f:if>
+            </div>
+        </f:if>
+
+        <f:if condition="{data.gallery_layout} == 'gallery-single' || {data.gallery_layout} == 'gallery-tiles' || {data.gallery_layout} == 'gallery-slider'">
+            <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="galleryModal-{data.uid}" tabindex="-1">
+                <div class="modal-dialog modal-fullscreen" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="container">
+                                <div class="row g-0">
+                                    <div class="col-10 title">
+                                        <h3 class="modal-title h3" id="modalLabel-{data.uid}">{data.header}</h3>
+                                    </div>
+                                    <div class="col-2 close text-end">
+                                        <button class="btn-close" data-bs-dismiss="modal" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}" type="button">
+                                            <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="carousel carousel-dark slide carousel-fade" data-bs-interval="false" data-bs-pause="true" data-bs-ride="false" id="galleryCarousel-{data.uid}">
+                                <ul class="carousel-inner list-unstyled">
+                                    <f:for as="file" each="{files}" iteration="iterator">
+                                        <f:if condition="{iterator.index} == 0">
+                                            <f:then>
+                                                <li class="carousel-item active">
+                                                    <f:render arguments="{_all}" section="GalleryOriginal"/>
+                                                    <p class="carousel-iterator ">{iterator.cycle} {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_of')} {iterator.total}</p>
+                                                </li>
+                                            </f:then>
+                                            <f:else>
+                                                <li class="carousel-item">
+                                                    <f:render arguments="{_all}" section="GalleryOriginal"/>
+                                                    <p class="carousel-iterator ">{iterator.cycle} {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_of')} {iterator.total}</p>
+                                                </li>
+                                            </f:else>
+                                        </f:if>
+                                    </f:for>
+                                </ul>
+                            </div>
+                            <div class="modal-footer container">
+                                <nav aria-label="Galerie Navigation">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a class="carousel-control-prev" data-bs-slide="prev" href="#galleryCarousel-{data.uid}"
+                                               role="button"
+                                               title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_previous')}">
+                                                <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                                                <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_previous')}</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="carousel-control-next" data-bs-slide="next" href="#galleryCarousel-{data.uid}"
+                                               role="button"
+                                               title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_next')}">
+                                                <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                                                <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_next')}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </f:if>
+    </f:if>
+</div>
+
+<f:section name="GallerySingle">
+    <picture data-aspectratio-lg="16:9" data-aspectratio-md="16:9" data-aspectratio-sm="16:9" data-aspectratio-xl="16:9" data-aspectratio-xs="16:9">
+        <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-slide-to: '0', bs-target: '#galleryCarousel-0'}" decoding="async" fileExtension="webp" height="731c" image="{file}" loading="lazy" maxHeight="731" maxWidth="1300" width="1300c"/>
+    </picture>
+</f:section>
+
+<f:section name="GalleryTiles">
+    <picture data-aspectratio-lg="16:9" data-aspectratio-md="16:9" data-aspectratio-sm="16:9" data-aspectratio-xl="16:9" data-aspectratio-xs="16:9">
+        <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-slide-to: '{i.index}', bs-target: '#galleryCarousel-{data.uid}'}" decoding="async" fileExtension="webp" height="153c" image="{file}" loading="lazy" maxHeight="153" maxWidth="272" width="272c"/>
+    </picture>
+</f:section>
+
+<f:section name="GallerySlide">
+    <picture data-aspectratio-lg="16:9" data-aspectratio-md="16:9" data-aspectratio-sm="16:9" data-aspectratio-xl="16:9" data-aspectratio-xs="16:9">
+        <f:if condition="{data.gallery_columns} == '1'">
+            <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-slide-to: '{i.index}', bs-target: '#galleryCarousel-{data.uid}'}" decoding="async" fileExtension="webp" height="731c" image="{file}" loading="lazy" maxHeight="731" maxWidth="1300" width="1300c"/>
+        </f:if>
+        <f:if condition="{data.gallery_columns} == '2'">
+            <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-slide-to: '{i.index}', bs-target: '#galleryCarousel-{data.uid}'}" decoding="async" fileExtension="webp" height="366c" image="{file}" loading="lazy" maxHeight="366" maxWidth="650" width="650c"/>
+        </f:if>
+        <f:if condition="{data.gallery_columns} == '3' || {data.gallery_columns} == '4'">
+            <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-slide-to: '{i.index}', bs-target: '#galleryCarousel-{data.uid}'}" decoding="async" fileExtension="webp" height="310c" image="{file}" loading="lazy" maxHeight="310" maxWidth="551" width="551c"/>
+        </f:if>
+    </picture>
+</f:section>
+
+<f:section name="GalleryThumb">
+    <figure class="figure">
+        <picture data-aspectratio-lg="16:9" data-aspectratio-md="16:9" data-aspectratio-sm="16:9" data-aspectratio-xl="16:9" data-aspectratio-xs="16:9">
+            <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-slide-to: '{i.index}', bs-target: '#galleryCarousel-{data.uid}'}" decoding="async" fileExtension="webp" height="675c" loading="lazy" maxHeight="675c" maxWidth="1200c" src="{file.properties.uid}" treatIdAsReference="1" width="1200c"/>
+        </picture>
+        <f:if condition="{file.properties.caption}">
+            <f:then>
+                <figcaption class="figure-caption">
+                    <p class="caption container mb-0">{file.properties.caption}</p>
+                </figcaption>
+            </f:then>
+            <f:else>
+                <f:if condition="{file.originalFile.properties.caption}">
+                    <figcaption class="figure-caption">
+                        <p class="caption container mb-0">{file.originalFile.properties.caption}</p>
+                    </figcaption>
+                </f:if>
+            </f:else>
+        </f:if>
+    </figure>
+    <f:if condition="{file.originalFile.properties.copyright} || {file.properties.allow_download} || {file.originalFile.properties.description} || {file.properties.description}">
+        <ul class="image-buttons d-flex list-unstyled">
+            <f:if condition="{file.originalFile.properties.description} || {file.properties.description}">
+                <li>
+                    <button class="btn btn-image btn-info rounded" data-bs-target="#modal-description-{data.uid}" data-bs-toggle="modal" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_longdescription')}" type="button">
+                        <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_longdescription')}</span>
+                    </button>
+                </li>
+            </f:if>
+            <f:if condition="{file.properties.allow_download}">
+                <li class="btn-group dropstart">
+                    <button aria-expanded="false" class="btn btn-image btn-download rounded" data-bs-auto-close="outside" data-bs-toggle="dropdown" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now.button')}" type="button">
+                        <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now.button')}</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-download p-0 rounded">
+                        <f:link.file class="btn btn-image btn-download rounded" download="true" file="{file.originalFile}" filename="{file.originalFile.name}">{file.originalFile.size -> f:format.bytes()} ({file.originalFile.extension -> f:format.case(mode: 'upper')}) | {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now')}</f:link.file>
+                    </div>
+                </li>
+            </f:if>
+            <f:if condition="{file.originalFile.properties.copyright}">
+                <li class="btn-group dropstart">
+                    <button aria-expanded="false" class="btn btn-image btn-copyright rounded" data-bs-auto-close="outside" data-bs-toggle="dropdown" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}" type="button">
+                        <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-copyright p-0 rounded">
+                        <p>© {file.originalFile.properties.copyright}</p>
+                    </div>
+                </li>
+            </f:if>
+        </ul>
+    </f:if>
+</f:section>
+
+<f:section name="GalleryThumbnail">
+    <picture data-aspectratio-lg="16:9" data-aspectratio-md="16:9" data-aspectratio-sm="16:9" data-aspectratio-xl="16:9" data-aspectratio-xs="16:9">
+        <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-slide-to: '{i.index}', bs-target: '#galleryCarousel-{data.uid}'}" decoding="async" fileExtension="webp" height="225c" loading="lazy" maxHeight="225c" maxWidth="400c" src="{file.properties.uid}" treatIdAsReference="1" width="400c"/>
+    </picture>
+</f:section>
+
+<f:section name="GalleryOriginal">
+    <div class="image-wrapper-original image figure">
+        <figure class="image figure">
+            <picture>
+                <f:image class="figure-img img-fluid rounded" crop="false" decoding="async" fileExtension="webp" loading="lazy" maxWidth="1920" src="{file.uid}" treatIdAsReference="1"/>
+            </picture>
+            <f:if condition="{file.originalFile.properties.caption} || {file.properties.caption}">
+                <figcaption class="figure-caption">
+                    <f:if condition="{file.properties.caption}">
+                        <f:then>
+                            <p class="caption container mb-0">{file.properties.caption}</p>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{file.originalFile.properties.caption}">
+                                <p class="caption container mb-0">{file.originalFile.properties.caption}</p>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </figcaption>
+            </f:if>
+        </figure>
+        <f:if condition="{file.originalFile.properties.copyright} || {file.properties.allow_download}">
+            <ul class="image-buttons d-flex list-unstyled">
+                <f:if condition="{file.properties.allow_download}">
+                    <li class="btn-group dropstart">
+                        <button aria-expanded="false" class="btn btn-image btn-download rounded" data-bs-auto-close="outside" data-bs-toggle="dropdown" type="button">
+                            <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now.button')}</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-download p-0 rounded">
+                            <f:link.file class="btn btn-image btn-download rounded" download="true" file="{file.originalFile}" filename="{file.originalFile.name}">
+                                <span>{file.originalFile.size -> f:format.bytes()} ({file.originalFile.extension -> f:format.case(mode: 'upper')})</span> | {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now')}
+                            </f:link.file>
+                        </div>
+                    </li>
+                </f:if>
+                <f:if condition="{file.originalFile.properties.copyright}">
+                    <li class="btn-group dropstart">
+                        <button aria-expanded="false" class="btn btn-image btn-copyright rounded" data-bs-auto-close="outside" data-bs-toggle="dropdown" type="button">
+                            <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-copyright p-0 rounded">
+                            <p>© {file.originalFile.properties.copyright}</p>
+                        </div>
+                    </li>
+                </f:if>
+            </ul>
+        </f:if>
+        <a class="stretched-link" data-bs-slide="next" href="#galleryCarousel-{data.uid}" role="button" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_next')}">
+            <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_next')}</span>
+        </a>
+    </div>
+</f:section>
+
+<f:if condition="{data.gallery_layout} == 'gallery-slider' || {data.gallery_layout} == 'gallery-thumbs'">
+    <f:asset.script type="module" defer="defer" identifier="swiperJS" src="EXT:mp_core/Resources/Public/JavaScripts/swiper.js"/>
+    <f:asset.css href="EXT:mp_core/Resources/Public/StyleSheets/swiper.css" identifier="swiperCSS"/>
+</f:if>
+
+</html>

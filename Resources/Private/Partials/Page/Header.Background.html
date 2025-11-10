@@ -1,0 +1,20 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+    <f:variable name="logoBig">
+        <f:for as="logoBigVar" each="{site.configuration.languages}" iteration="langCount"><f:if condition="{langCount.index} == {data.sys_language_uid} && {logoBigVar.logoBig}"><f:if condition="{logoBigVar.logoSvg}"><f:then><mpc:svgInline src="{logoBigVar.logoBig}" class="bg-svg" additionalAttributes="{aria-hidden:'true'}"/></f:then><f:else><mpc:svgInline src="{logoBigVar.logoBig}" class="bg-svg" additionalAttributes="{aria-hidden:'true'}"/></f:else></f:if></f:if></f:for>
+    </f:variable>
+
+    <div class="header-bg-svg">
+        <f:if condition="{filesbg.0}">
+            <f:then>
+                <mpc:svgInline src="fileadmin/{filesbg.0.properties.identifier}" width="16" height="16" class="bg-svg" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
+            </f:then>
+            <f:else>
+                {logoBig -> f:format.raw()}
+            </f:else>
+        </f:if>
+    </div>
+</html>

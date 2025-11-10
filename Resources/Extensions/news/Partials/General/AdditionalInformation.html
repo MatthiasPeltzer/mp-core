@@ -1,0 +1,31 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="d-flex">
+    <f:comment><!-- date --></f:comment>
+    <time itemprop="datePublished" datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+        <f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date>
+    </time>
+
+    <f:comment><!-- author --></f:comment>
+    <f:if condition="{newsItem.author}">
+        <p class="label label-author">
+            <f:translate key="author" arguments="{0:newsItem.author}"/>
+        </p>
+        <span aria-hidden="true">|</span>
+    </f:if>
+
+    <f:comment><!-- category --></f:comment>
+    <f:if condition="{newsItem.firstCategory}">
+        <span aria-hidden="true">|</span>
+        <p class="label label-info">{newsItem.firstCategory.title}</p>
+    </f:if>
+
+    <f:if condition="{newsItem.tags}">
+        <span aria-hidden="true">|</span>
+        <p class="news-list-tags" itemprop="keywords">
+            <f:for each="{newsItem.tags}" as="tag">
+                <span class="label label-info">{tag.title}</span>
+            </f:for>
+        </p>
+    </f:if>
+</div>
+</html>

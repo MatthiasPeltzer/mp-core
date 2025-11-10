@@ -1,0 +1,26 @@
+{
+	"icon": {
+		"desktop": {
+			"regularIconTransformation": {
+				"type": "none"
+			},
+			"darkIconType": "none"
+		},
+		"touch": {
+			"transformation": {
+				"type": "none"
+			},
+			"appTitle": "mpeltzer"
+		},
+		"webAppManifest": {
+			"transformation": {
+				"type": "none"
+			},
+			"backgroundColor": "#333333",
+			"name": "mpeltzer.de",
+			"shortName": "mpeltzer",
+			"themeColor": "#333333"
+		}
+	},
+	"path": "/_assets/bf2f413e99e0cd34ae86e6c011aa5121/Favicons/"
+}

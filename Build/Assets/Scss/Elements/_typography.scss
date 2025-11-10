@@ -1,0 +1,48 @@
+// typography
+
+.bold {
+  font-weight: 700;
+}
+
+.em {
+  font-style: italic;
+}
+
+.ce-bodytext {
+  p {
+    a:not(.btn) {
+      line-height: 1.7;
+      text-decoration: underline dotted var(--bs-orange);
+      text-underline-offset: 7px;
+
+      html[data-bs-theme="light"] & {
+        text-decoration: underline dotted var(--bs-green);
+      }
+    }
+  }
+
+  li,
+  dt,
+  dd,
+  a {
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  hr {
+    border: 0 none;
+    color: inherit;
+    margin: 2rem 0;
+    opacity: 1;
+
+    &::after {
+      background: darkred;
+      content: '';
+      display: block;
+      height: 48px;
+      margin: 0 auto;
+      width: 16px;
+    }
+  }
+}

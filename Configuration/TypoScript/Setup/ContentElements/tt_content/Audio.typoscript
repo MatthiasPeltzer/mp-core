@@ -1,0 +1,50 @@
+tt_content {
+  audio = FLUIDTEMPLATE
+
+  audio {
+    partialRootPaths {
+      200 = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/
+    }
+
+    templateRootPaths {
+      200 = EXT:mp_core/Resources/Private/Templates/Content/
+    }
+
+    templateName = Audio
+
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      10 {
+        if.isTrue.field = image
+        references {
+          fieldName = image
+          table = tt_content
+        }
+
+        as = files
+      }
+
+      20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      20 {
+        if.isTrue.field = tx_audio_audio
+        references {
+          fieldName = tx_audio_audio
+          table = tt_content
+        }
+
+        as = audio
+      }
+
+      30 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      30 {
+        if.isTrue.field = tx_audio_caption_file
+        references {
+          fieldName = tx_audio_caption_file
+          table = tt_content
+        }
+
+        as = caption_files
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+// figures
+
+.figure {
+  display: inline-block;
+  position: relative;
+
+  &-caption {
+    .caption {
+      background-color: var(--bs-gray-900);
+      border-radius: 8px;
+      display: block;
+
+      @include font-size($fs-sm);
+      margin: -24px auto 0;
+      max-width: 80%;
+      padding: 16px;
+      position: relative;
+      text-align: center;
+
+      .textpic & {
+        margin-top: -18px;
+        padding: 8px;
+      }
+
+      html[data-bs-theme="light"] & {
+        background-color: var(--bs-gray-100);
+      }
+    }
+  }
+
+  .popup & {
+    display: block;
+  }
+}
+
+.count {
+  background-color: var(--bs-primary);
+  border-radius: 5px;
+  bottom: 5px;
+  color: var(--bs-white);
+  display: inline-block;
+
+  @include font-size($fs-sm);
+  font-weight: 500;
+  margin-bottom: 0;
+  padding: 3px 5px;
+  position: absolute;
+  right: 5px;
+}
+
+.image {
+  &-wrapper {
+    position: relative;
+
+    figure {
+      a {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.toplogo-container {
+  margin-top: 0;
+  transition: margin-top 0.2s ease-in-out;
+
+  &::after {
+    background-color: var(--bs-primary);
+    content: "";
+    display: block;
+    height: 2px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+    width: 100%;
+  }
+
+  .banner {
+    border-radius: unset;
+    margin-bottom: 8px;
+    position: relative;
+    top: -11px;
+
+    &::before {
+      border-radius: unset;
+    }
+  }
+
+  .image-wrapper {
+    flex-grow: 0;
+  }
+
+  .sticky & {
+    margin-top: -122px;
+  }
+}
+
+.outline {
+  outline: 2px solid var(--bs-body-color);
+  outline-offset: -2px;
+}

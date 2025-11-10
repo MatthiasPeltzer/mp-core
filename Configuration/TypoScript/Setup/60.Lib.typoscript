@@ -1,0 +1,186 @@
+lib {
+  pageurl = TEXT
+  pageurl.data = getIndpEnv:TYPO3_REQUEST_URL
+
+  pageid = TEXT
+  pageid.data = page:uid
+
+  math = TEXT
+  math {
+    current = 1
+    prioriCalc = 1
+  }
+
+  search = TEXT
+  search.value = {$config.pids.Search}
+
+  parseFunc_RTE {
+    externalBlocks {
+      table {
+        stdWrap {
+          HTMLparser = 1
+          wrap = <div class="table-responsive">|</div>
+
+          HTMLparser {
+            tags {
+              table {
+                fixAttrib {
+                  class {
+                    default = table table-striped table-hover
+                    always = 1
+                    list = table table-striped table-hover
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    tags {
+      a {
+        postCObject = COA
+        postCObject {
+          10 = FILES
+          10 {
+            if {
+              equals = t3://file
+              value {
+                data = parameters:href
+                stdWrap.substring = 0,9
+              }
+            }
+
+            files {
+              // variant 2 to grab file uid
+              data = parameters:href
+              // replace string before uid
+              split {
+                token.char = 61
+                returnKey = 1
+              }
+            }
+
+            renderObj = COA
+            renderObj.stdWrap.noTrimWrap = | | |
+            renderObj {
+              5 = CASE
+              5 {
+                key.data = file:current:extension
+                pdf = CASE
+                pdf {
+                  key.data = file:current:is_accessible
+                  1 = TEXT
+                  1 {
+                    data = LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:is_accessible.1
+                  }
+
+                  default = TEXT
+                  default {
+                    data = LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:is_accessible.0
+                  }
+                }
+
+                default = TEXT
+                default {
+                  value =
+                }
+
+                stdWrap.noTrimWrap = | | |
+                stdWrap.required = 1
+              }
+
+              10 = COA
+              10.stdWrap.noTrimWrap = | [|] |
+              10 {
+                10 = TEXT
+                10 {
+                  data = file:current:extension
+                  stdWrap.case = upper
+                  stdWrap.noTrimWrap = ||, |
+                }
+
+                30 = TEXT
+                30 {
+                  data = file:current:size
+                  insertData = 1
+                  bytes = 1
+                  bytes.labels = "B|KB|MB|GB"
+                }
+              }
+            }
+          }
+        }
+
+        // add default title and e.g: download attribute
+        typolink.ATagParams.stdWrap.outerWrap.cObject = COA
+        typolink.ATagParams.stdWrap.outerWrap.cObject {
+          10 = FILES
+          10 {
+            if {
+              equals = t3://file
+              value {
+                data = parameters:href
+                stdWrap.substring = 0,9
+              }
+            }
+
+            files {
+              // variant 2 to grab file uid
+              data = parameters:href
+              // split by =  and return second value
+              split {
+                token.char = 61
+                returnKey = 1
+              }
+            }
+
+            renderObj = COA
+            renderObj {
+              // add title, if not set
+              10 = TEXT
+              10 {
+                noTrimWrap = | title="Download: |" |
+                data = file:current:download_name // file:current:name
+                stdWrap {
+                  dataWrap = |.{file:current:extension}
+                  dataWrap.if.isTrue.data = file:current:download_name
+                }
+              }
+
+              // add download name or other attributes
+              20 = TEXT
+              20 {
+                noTrimWrap = | download="|" |
+                data = file:current:download_name // file:current:name
+                stdWrap {
+                  dataWrap = |.{file:current:extension}
+                  dataWrap.if.isTrue.data = file:current:download_name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  # Remove wrapping p
+  parseFunc_RTE_noEncapsLines < .parseFunc_RTE
+  parseFunc_RTE_noEncapsLines.nonTypoTagStdWrap.encapsLines >
+
+  parseFunc {
+    externalBlocks := addToList(li)
+    externalBlocks {
+      li.stdWrap.parseFunc < lib.parseFunc_RTE_noEncapsLines
+      li.stdWrap.parseFunc {
+        tags {
+          a < lib.parseFunc_RTE.tags.a
+        }
+      }
+    }
+  }
+}
+
+module.tx_dddeepl.settings.apiKey = a7ac8ead-48d3-4d50-91b8-31d39a66025e:fx

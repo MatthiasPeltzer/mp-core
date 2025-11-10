@@ -1,0 +1,32 @@
+// Mixins: Reusable styles for socialmedia icons
+@mixin icon-style($name, $color) {
+  .icon-#{$name} {
+    mask-image: url("#{$icon-path}icon-#{$name}.svg");
+
+    @media (forced-colors: active) {
+      background-image: url("#{$icon-path}icon-#{$name}.svg");
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: $color;
+
+    .icon-#{$name} {
+      background-color: $color;
+      mask-image: url("#{$icon-path}icon-#{$name}.svg");
+    }
+  }
+}
+
+// Mixins: Reusable styles for icons
+@mixin apply-icon-style($icon-name) {
+  &::before {
+    mask-image: url("#{$icon-base-path}#{$icon-name}.svg");
+
+    @media (forced-colors: active) {
+      background-image: url("#{$icon-base-path}#{$icon-name}.svg");
+    }
+  }
+}

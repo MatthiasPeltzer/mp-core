@@ -1,0 +1,21 @@
+<html
+    xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:layout name="Preview"/>
+
+<f:section name="Header">
+    <be:link.editRecord uid="{data.uid}" table="{data.mainType}">{data.header}</be:link.editRecord>
+</f:section>
+
+<f:section name="Content">
+    <be:link.editRecord uid="{data.uid}" table="{data.mainType}">
+        <dl class="d-flex flex-column flex-wrap">
+            <f:for each="{data.dl_definitionlist_item}" as="item">
+                <dt class="flex-shrink-1">{item.text}</dt>
+                <dd class="w-100">{item.textarea -> f:format.stripTags()}</dd>
+            </f:for>
+        </dl>
+    </be:link.editRecord>
+</f:section>

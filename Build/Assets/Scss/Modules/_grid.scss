@@ -1,0 +1,46 @@
+.grid {
+  &-fullsize {
+    margin: 0 calc(-50vw + 50%);
+  }
+
+  &-bgimage {
+    .bgcolor-1,
+    .bgcolor-2,
+    .bgcolor-3,
+    .bgcolor-4,
+    .bgcolor-5,
+    .bgcolor-6 {
+      &::before {
+        opacity: .85;
+      }
+    }
+  }
+
+  &-cols {
+    margin-bottom: 32px;
+    margin-top: 80px;
+  }
+
+  &-bg {
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    margin: 0 -12px;
+    position: absolute;
+    top: 0;
+    width: calc(100% + 24px);
+    z-index: -1;
+
+    &::before {
+      border-radius: 0 !important;
+    }
+  }
+}
+
+.frame-type-ce_grid {
+  .row-cols-1 > .col {
+    margin-bottom: 32px;
+  }
+}

@@ -1,0 +1,131 @@
+categories:
+  MPCoreSEO:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreSEO.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreSEO.description'
+
+settings:
+  # Meta Tags Settings
+  seo.meta.generateDescriptions:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.generateDescriptions.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.generateDescriptions.form.description'
+    category: MPCoreSEO
+    type: bool
+    default: true
+  
+  seo.meta.maxDescriptionLength:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.maxDescriptionLength.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.maxDescriptionLength.form.description'
+    category: MPCoreSEO
+    type: int
+    default: 160
+  
+  seo.meta.maxTitleLength:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.maxTitleLength.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.maxTitleLength.form.description'
+    category: MPCoreSEO
+    type: int
+    default: 60
+  
+  seo.meta.titleSeparator:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.titleSeparator.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.titleSeparator.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ' | '
+  
+  # Open Graph Settings
+  seo.openGraph.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.openGraph.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.openGraph.enabled.form.description'
+    category: MPCoreSEO
+    type: bool
+    default: true
+  
+  seo.openGraph.defaultImage:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.openGraph.defaultImage.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.openGraph.defaultImage.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+  
+  seo.openGraph.imageWidth:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.openGraph.imageWidth.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.openGraph.imageWidth.form.description'
+    category: MPCoreSEO
+    type: int
+    default: 1200
+  
+  seo.openGraph.imageHeight:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.openGraph.imageHeight.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.openGraph.imageHeight.form.description'
+    category: MPCoreSEO
+    type: int
+    default: 630
+  
+  # Twitter Card Settings
+  seo.twitter.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.twitter.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.twitter.enabled.form.description'
+    category: MPCoreSEO
+    type: bool
+    default: true
+  
+  seo.twitter.cardType:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.twitter.cardType.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.twitter.cardType.form.description'
+    category: MPCoreSEO
+    type: string
+    default: 'summary_large_image'
+  
+  seo.twitter.site:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.twitter.site.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.twitter.site.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+  
+  # Sitemap Settings
+  seo.sitemap.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.sitemap.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.sitemap.enabled.form.description'
+    category: MPCoreSEO
+    type: bool
+    default: true
+  
+  seo.sitemap.excludeHiddenPages:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.sitemap.excludeHiddenPages.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.sitemap.excludeHiddenPages.form.description'
+    category: MPCoreSEO
+    type: bool
+    default: true
+  
+  seo.sitemap.priority:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.sitemap.priority.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.sitemap.priority.form.description'
+    category: MPCoreSEO
+    type: string
+    default: '0.5'
+  
+  # Canonical URL Settings
+  seo.canonical.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.canonical.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.canonical.enabled.form.description'
+    category: MPCoreSEO
+    type: bool
+    default: true
+  
+  # Schema.org Settings
+  seo.schema.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.enabled.form.description'
+    category: MPCoreSEO
+    type: bool
+    default: true
+  
+  seo.schema.organizationType:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.organizationType.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.organizationType.form.description'
+    category: MPCoreSEO
+    type: string
+    default: 'Organization'
+

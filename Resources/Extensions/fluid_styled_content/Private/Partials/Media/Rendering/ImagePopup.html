@@ -1,0 +1,51 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="Modal-{file.uid}" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="container">
+                    <div class="row g-0">
+                        <div class="col-10 title">
+                            <h3 class="modal-title h3" id="modalLabel-{file.uid}">{file.alternative}</h3>
+                        </div>
+                        <div class="col-2 close text-end">
+                            <button class="btn-close" data-bs-dismiss="modal" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}" type="button">
+                                <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row g-0">
+                        <figure class="image figure">
+                            <picture>
+                                <f:image class="figure-img img-fluid rounded" crop="false" decoding="async" fileExtension="webp" image="{file}" loading="lazy" maxWidth="1920"/>
+                            </picture>
+                            <f:if condition="{column.media.description} || {column.media.originalFile.properties.caption} || {column.media.originalFile.properties.copyright}">
+                                <figcaption class="image-caption">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <f:if condition="{column.media.description}">
+                                                    <span class="description">{column.media.description} </span>
+                                                </f:if>
+                                                <f:if condition="{column.media.originalFile.properties.copyright}">
+                                                    <span class="copyright">© {column.media.originalFile.properties.copyright}</span>
+                                                </f:if>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </f:if>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

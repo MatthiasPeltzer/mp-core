@@ -1,0 +1,16 @@
+services:
+  _defaults:
+    public: false
+    autowire: true
+    autoconfigure: true
+
+  Mpc\MpCore\ViewHelpers\:
+    resource: '../Classes/ViewHelpers/*'
+    public: true
+
+  Mpc\MpCore\:
+    resource: '../Classes/*'
+    exclude: '../Classes/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+  Mpc\MpCore\UserFunc\ColorPickerValueItems:
+    public: true

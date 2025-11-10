@@ -1,0 +1,42 @@
+<html data-namespace-typo3-fluid="true" lang="en" xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:if condition="{data.imagewidth}">
+    <f:then>
+        <f:alias map="{mpc:format.json.decode(json: file.properties.crop)}">
+            <picture data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+                <source media="(min-width: 1220px)" srcset="{f:uri.image(image: file, cropVariant: 'default', maxWidth: dimensions.width, fileExtension: 'webp')}" type="image/webp">
+                <source media="(min-width: 992px)" srcset="{f:uri.image(image: file, cropVariant: 'large', maxWidth: dimensions.width, fileExtension: 'webp')}" type="image/webp">
+                <source media="(min-width: 768px)" srcset="{f:uri.image(image: file, cropVariant: 'medium', maxWidth: 688, fileExtension: 'webp')}" type="image/webp">
+                <source media="(min-width: 576px)" srcset="{f:uri.image(image: file, cropVariant: 'xsmall', maxWidth: 543, fileExtension: 'webp')}" type="image/webp">
+                <source media="(min-width: 0)" srcset="{f:uri.image(image: file, cropVariant: 'xsmall', maxWidth: 543, fileExtension: 'webp')}" type="image/webp">
+                <f:if condition="{data.image_zoom}">
+                    <f:then>
+                        <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-target: '#Carousel-{data.uid}'}" decoding="async" fileExtension="webp" image="{file}" loading="lazy" maxWidth="{dimensions.width}"/>
+                    </f:then>
+                    <f:else>
+                        <f:image class="figure-img img-fluid rounded" cropVariant="default" decoding="async" fileExtension="webp" image="{file}" loading="lazy" maxWidth="{dimensions.width}"/>
+                    </f:else>
+                </f:if>
+            </picture>
+        </f:alias>
+    </f:then>
+    <f:else>
+        <f:alias map="{mpc:format.json.decode(json: file.properties.crop)}">
+            <picture data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+                <source media="(min-width: 1220px)" srcset="{f:uri.image(image: file, cropVariant: 'default', maxWidth: 1920, fileExtension: 'webp')}" type="image/webp">
+                <source media="(min-width: 992px)" srcset="{f:uri.image(image: file, cropVariant: 'large', maxWidth: 1220, fileExtension: 'webp')}" type="image/webp">
+                <source media="(min-width: 768px)" srcset="{f:uri.image(image: file, cropVariant: 'medium', maxWidth: 992, fileExtension: 'webp')}" type="image/webp">
+                <source media="(min-width: 576px)" srcset="{f:uri.image(image: file, cropVariant: 'small', maxWidth: 768, fileExtension: 'webp')}" type="image/webp">
+                <source media="(min-width: 0)" srcset="{f:uri.image(image: file, cropVariant: 'xsmall', maxWidth: 576, fileExtension: 'webp')}" type="image/webp">
+                <f:if condition="{data.image_zoom}">
+                    <f:then>
+                        <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-target: '#Carousel-{data.uid}'}" decoding="async" fileExtension="webp" image="{file}" loading="lazy" maxWidth="1920"/>
+                    </f:then>
+                    <f:else>
+                        <f:image class="figure-img img-fluid rounded" cropVariant="default" decoding="async" fileExtension="webp" image="{file}" loading="lazy" maxWidth="1920"/>
+                    </f:else>
+                </f:if>
+            </picture>
+        </f:alias>
+    </f:else>
+</f:if>
+</html>

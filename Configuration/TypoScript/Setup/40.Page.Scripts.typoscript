@@ -1,0 +1,14 @@
+page {
+  includeJSFooter {
+    bootstrap = EXT:mp_core/Resources/Public/JavaScripts/bootstrap.js
+    bootstrap {
+      type = module
+      async = 1
+    }
+    screen = EXT:mp_core/Resources/Public/JavaScripts/screen.js
+    screen {
+      type = module
+      async = 1
+    }
+  }
+}

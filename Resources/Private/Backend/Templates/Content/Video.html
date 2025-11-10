@@ -1,0 +1,14 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:if condition="{bodytext}">
+    <f:sanitize.html>{bodytext}</f:sanitize.html>
+</f:if>
+<f:if condition="{tx_video_caption}">
+    <p><b>{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:hasCaption')}</b></p>
+</f:if>
+<f:if condition="{tx_video_video}">
+    <p><b>Name:</b> {record.tx_video_video.0.name}</p>
+</f:if>
+<f:if condition="{record.image.0}">
+    <f:image class="figure-img img-fluid" cropVariant="default" image="{record.image.0}" fileExtension="webp" maxWidth="64" treatIdAsReference="1"/>
+</f:if>
+</html>

@@ -1,0 +1,17 @@
+# =============================================================================
+# DEPRECATED: This file is deprecated as of MP Core with Site Sets support
+# =============================================================================
+# Page TSconfig has been moved to: Configuration/Sets/mp-core/page.tsconfig
+# 
+# This file is kept for backwards compatibility and can be removed once you've
+# migrated to the site sets system.
+#
+# Site Sets Guide: Documentation/Site-Set.md
+# =============================================================================
+
+@import 'EXT:mp_core/Configuration/TsConfig/Page/ContentElement/All.tsconfig'
+@import 'EXT:mp_core/Configuration/TsConfig/Page/Mod/WebLayout/BackendLayouts.tsconfig'
+@import 'EXT:mp_core/Configuration/TsConfig/Page/RTE.tsconfig'
+@import 'EXT:mp_core/Configuration/TsConfig/Page/TCADefaults.tsconfig'
+@import 'EXT:mp_core/Configuration/TsConfig/Page/TCEMAIN.tsconfig'
+@import 'EXT:mp_core/Configuration/TsConfig/Page/TCEFORM.tsconfig'

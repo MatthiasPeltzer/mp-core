@@ -1,0 +1,223 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:variable name="logoBig">
+    <f:for as="logoBigVar" each="{site.configuration.languages}" iteration="langCount"><f:if condition="{langCount.index} == {data.sys_language_uid} && {logoBigVar.logoBig}"><f:if condition="{logoBigVar.logoSvg}"><f:then><mpc:svgInline src="{logoBigVar.logoBig}" class="logo-svg" additionalAttributes="{aria-hidden:'true'}"/></f:then><f:else><f:image src="{logoBigVar.logoBig}" treatIdAsReference="1" /></f:else></f:if></f:if></f:for>
+</f:variable>
+
+<f:variable name="logoSmall">
+    <f:for as="logoBigVar" each="{site.configuration.languages}" iteration="langCount"><f:if condition="{langCount.index} == {data.sys_language_uid} && {logoBigVar.logoSmall}"><f:if condition="{logoBigVar.logoSvg}"><f:then><mpc:svgInline src="{logoBigVar.logoSmall}" class="logo-svg" additionalAttributes="{aria-hidden:'true'}"/></f:then><f:else><f:image src="{logoBigVar.logoSmall}" treatIdAsReference="1" /></f:else></f:if></f:if></f:for>
+</f:variable>
+
+<f:variable name="logoText">
+    <f:for as="logoTextVar" each="{site.configuration.languages}" iteration="langCount"><f:if condition="{langCount.index} == {data.sys_language_uid} && {logoTextVar.logoText}"><f:if condition="{logoTextVar.logoTextHidden} != 1"><f:then><span class="header-text">{logoTextVar.logoText}</span></f:then><f:else><span class="visually-hidden">{logoTextVar.logoText}</span></f:else></f:if></f:if></f:for>
+</f:variable>
+
+<f:variable name="websiteTitle">
+    <f:for as="websiteTitleVar" each="{site.configuration.languages}" iteration="langCount"><f:if condition="{langCount.index} == {data.sys_language_uid} && {websiteTitleVar.websiteTitle}">{websiteTitleVar.websiteTitle}</f:if></f:for>
+</f:variable>
+
+<f:if condition="{site.configuration.navType} == 1">
+    <div class="col logo-wrapper text-end flex-grow-0 ms-auto ms-lg-0">
+        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.pageid')} == {site.rootPageId}">
+            <f:then>
+                <div class="logo mb-0 lh-1">
+                    <f:if condition="{logoBig}">
+                        <f:then>
+                            <span class="header-image d-none d-md-block">{logoBig -> f:format.raw()}</span>
+                        </f:then>
+                        <f:else>
+                            <span class="header-image d-none d-md-block"><f:image src="{site.configuration.logoBig}" treatIdAsReference="1" /></span>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{logoSmall}">
+                        <f:then>
+                            <span class="header-image-small d-block d-md-none">{logoSmall -> f:format.raw()}</span>
+                        </f:then>
+                        <f:else>
+                            <span class="header-image-small d-block d-md-none"><f:image src="{site.configuration.logoSmall}" treatIdAsReference="1" /></span>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{logoText}">
+                        <f:then>
+                            {logoText -> f:format.raw()}
+                        </f:then>
+                        <f:else>
+                            {site.configuration.logoText -> f:format.raw()}
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="logo mb-0 lh-1">
+                    <f:if condition="{logoBig} || {logoSmall} || {logoText}">
+                        <f:link.page pageUid="{site.rootPageId}" title="{f:translate(key: 'header.text.aria', extensionName: 'mp_core')} {f:if(condition: '{websiteTitle}', then: '{websiteTitle -> f:format.raw()}', else: '{site.identifier}')}">
+                            <f:if condition="{logoBig}">
+                                <f:then>
+                                    <span class="header-image d-none d-md-block">{logoBig -> f:format.raw()}</span>
+                                </f:then>
+                                <f:else>
+                                    <span class="header-image d-none d-md-block"><f:image src="{site.configuration.logoBig}" treatIdAsReference="1" /></span>
+                                </f:else>
+                            </f:if>
+                            <f:if condition="{logoSmall}">
+                                <f:then>
+                                    <span class="header-image-small d-block d-md-none">{logoSmall -> f:format.raw()}</span>
+                                </f:then>
+                                <f:else>
+                                    <span class="header-image-small d-block d-md-none"><f:image src="{site.configuration.logoSmall}" treatIdAsReference="1" /></span>
+                                </f:else>
+                            </f:if>
+                            <f:if condition="{logoText}">
+                                <f:then>
+                                    {logoText -> f:format.raw()}
+                                </f:then>
+                                <f:else>
+                                    {site.configuration.logoText -> f:format.raw()}
+                                </f:else>
+                            </f:if>
+                        </f:link.page>
+                    </f:if>
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+</f:if>
+
+<f:if condition="{site.configuration.navType} == 2">
+    <div class="col logo-wrapper text-start flex-grow-0 ms-auto ms-lg-0">
+        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.pageid')} == {site.rootPageId}">
+            <f:then>
+                <div class="logo mb-0 lh-1">
+                    <f:if condition="{logoBig}">
+                        <f:then>
+                            <span class="header-image d-none d-md-block">{logoBig -> f:format.raw()}</span>
+                        </f:then>
+                        <f:else>
+                            <span class="header-image d-none d-md-block"><f:image src="{site.configuration.logoBig}" treatIdAsReference="1" /></span>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{logoSmall}">
+                        <f:then>
+                            <span class="header-image-small d-block d-md-none">{logoSmall -> f:format.raw()}</span>
+                        </f:then>
+                        <f:else>
+                            <span class="header-image-small d-block d-md-none"><f:image src="{site.configuration.logoSmall}" treatIdAsReference="1" /></span>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{logoText}">
+                        <f:then>
+                            <span class="header-text">{logoText -> f:format.raw()}</span>
+                        </f:then>
+                        <f:else>
+                            <span class="header-text">{site.configuration.logoText -> f:format.raw()}</span>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="logo mb-0 lh-1">
+                    <f:if condition="{logoBig} || {logoSmall} || {logoText}">
+                        <f:link.page pageUid="{site.rootPageId}" title="{f:translate(key: 'header.text.aria', extensionName: 'mp_core')} {websiteTitle -> f:format.raw()}">
+                            <f:if condition="{logoBig}">
+                                <f:then>
+                                    <span class="header-image d-none d-md-block">{logoBig -> f:format.raw()}</span>
+                                </f:then>
+                                <f:else>
+                                    <span class="header-image d-none d-md-block"><f:image src="{site.configuration.logoBig}" treatIdAsReference="1" /></span>
+                                </f:else>
+                            </f:if>
+                            <f:if condition="{logoSmall}">
+                                <f:then>
+                                    <span class="header-image-small d-block d-md-none">{logoSmall -> f:format.raw()}</span>
+                                </f:then>
+                                <f:else>
+                                    <span class="header-image-small d-block d-md-none"><f:image src="{site.configuration.logoSmall}" treatIdAsReference="1" /></span>
+                                </f:else>
+                            </f:if>
+                            <f:if condition="{logoText}">
+                                <f:then>
+                                    <span class="header-text">{logoText -> f:format.raw()}</span>
+                                </f:then>
+                                <f:else>
+                                    <span class="header-text">{site.configuration.logoText -> f:format.raw()}</span>
+                                </f:else>
+                            </f:if>
+                        </f:link.page>
+                    </f:if>
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+</f:if>
+
+<f:if condition="{site.configuration.navType} == 3">
+    <div class="col logo-wrapper text-start flex-grow-0 me-auto ms-lg-0">
+        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.pageid')} == {site.rootPageId}">
+            <f:then>
+                <div class="logo mb-0 lh-1">
+                    <f:if condition="{logoBig}">
+                        <f:then>
+                            <span class="header-image d-none d-md-block">{logoBig -> f:format.raw()}</span>
+                        </f:then>
+                        <f:else>
+                            <span class="header-image d-none d-md-block"><f:image src="{site.configuration.logoBig}" treatIdAsReference="1" /></span>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{logoSmall}">
+                        <f:then>
+                            <span class="header-image-small d-block d-md-none">{logoSmall -> f:format.raw()}</span>
+                        </f:then>
+                        <f:else>
+                            <span class="header-image-small d-block d-md-none"><f:image src="{site.configuration.logoSmall}" treatIdAsReference="1" /></span>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{logoText}">
+                        <f:then>
+                            <span class="header-text">{logoText -> f:format.raw()}</span>
+                        </f:then>
+                        <f:else>
+                            <span class="header-text">{site.configuration.logoText -> f:format.raw()}</span>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="logo mb-0 lh-1">
+                    <f:if condition="{logoBig} || {logoSmall} || {logoText}">
+                        <f:link.page pageUid="{site.rootPageId}" title="{f:translate(key: 'header.text.aria', extensionName: 'mp_core')} {websiteTitle -> f:format.raw()}">
+                            <f:if condition="{logoBig}">
+                                <f:then>
+                                    <span class="header-image d-none d-md-block">{logoBig -> f:format.raw()}</span>
+                                </f:then>
+                                <f:else>
+                                    <span class="header-image d-none d-md-block"><f:image src="{site.configuration.logoBig}" treatIdAsReference="1" /></span>
+                                </f:else>
+                            </f:if>
+                            <f:if condition="{logoSmall}">
+                                <f:then>
+                                    <span class="header-image-small d-block d-md-none">{logoSmall -> f:format.raw()}</span>
+                                </f:then>
+                                <f:else>
+                                    <span class="header-image-small d-block d-md-none"><f:image src="{site.configuration.logoSmall}" treatIdAsReference="1" /></span>
+                                </f:else>
+                            </f:if>
+                            <f:if condition="{logoText}">
+                                <f:then>
+                                    <span class="header-text">{logoText -> f:format.raw()}</span>
+                                </f:then>
+                                <f:else>
+                                    <span class="header-text">{site.configuration.logoText -> f:format.raw()}</span>
+                                </f:else>
+                            </f:if>
+                        </f:link.page>
+                    </f:if>
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+</f:if>
+
+</html>

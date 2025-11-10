@@ -1,0 +1,111 @@
+// share
+$icon-path: "../Images/Icons/";
+$social-networks: (
+  facebook: #3b5998,
+  x: #000,
+  instagram: #aa2fbb,
+  threads: #181818,
+  mastodon: #2b90d9,
+  bluesky: #1185fe,
+  tiktok: #fe2c55,
+  tumblr: #7c5cff,
+  reddit: #ff2e2e,
+  linkedin: #0073b1,
+  xing: #0698a0,
+  youtube: #f00,
+  vimeo: #00aacf,
+  spotify: #117a37,
+  bandcamp: #42a0bd,
+  soundcloud: #f50,
+  pinterest: #e60023,
+  whatsapp: #5cbe4a,
+  signal: #3b45Fd,
+  telegram: #28a7e8,
+  discord: #5865f2,
+  print: #000,
+);
+
+.share {
+  margin-bottom: 0;
+
+  .footer & {
+    justify-content: center;
+  }
+
+  .col {
+    border-radius: 50%;
+    flex: 0 1 0;
+    height: 60px;
+    margin: 16px;
+    width: 60px;
+
+    .footer & {
+      height: 70px;
+      width: 70px;
+    }
+
+    .icon-share {
+      background-color: var(--bs-white);
+      border-radius: 50%;
+      display: block;
+      height: 56px;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 24px;
+      position: relative;
+      width: 56px;
+
+      @media (forced-colors: active) {
+        background-color: transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 24px;
+        mask: none !important;
+
+        .footer & {
+          background-size: 40px;
+        }
+      }
+
+      .footer & {
+        height: 66px;
+        mask-size: 32px;
+        width: 66px;
+      }
+    }
+
+    > a {
+      background-color: var(--bs-gray-800);
+      border: 2px solid var(--bs-gray-800);
+      border-radius: 50%;
+      box-sizing: border-box;
+      color: var(--bs-white);
+      display: block;
+      height: 60px;
+      position: relative;
+      text-decoration: none;
+      transition: all .2s ease-in-out;
+      width: 60px;
+
+      .footer & {
+        height: 70px;
+        width: 70px;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: var(--bs-white);
+        outline-offset: 2px;
+      }
+    }
+  }
+
+  @each $name, $color in $social-networks {
+    .#{$name} {
+      > a {
+        @include icon-style($name, $color);
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<html data-namespace-typo3-fluid="true" xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:link.typolink parameter="{file.link}" title="{file.link.title}">
+    <f:alias map="{mpc:format.json.decode(json: file.properties.crop)}">
+        <picture data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+            <source media="(min-width: 1220px)" srcset="{f:uri.image(image: file, cropVariant: 'default', maxWidth: 1920, fileExtension: 'webp')}" type="image/webp">
+            <source media="(min-width: 992px)" srcset="{f:uri.image(image: file, cropVariant: 'large', maxWidth: 1220, fileExtension: 'webp')}" type="image/webp">
+            <source media="(min-width: 768px)" srcset="{f:uri.image(image: file, cropVariant: 'medium', maxWidth: 992, fileExtension: 'webp')}" type="image/webp">
+            <source media="(min-width: 576px)" srcset="{f:uri.image(image: file, cropVariant: 'small', maxWidth: 768, fileExtension: 'webp')}" type="image/webp">
+            <source media="(min-width: 0)" srcset="{f:uri.image(image: file, cropVariant: 'xsmall', maxWidth: 576, fileExtension: 'webp')}" type="image/webp">
+            <f:image class="figure-img img-fluid" cropVariant="default" fileExtension="webp" image="{file}" maxWidth="1920"/>
+        </picture>
+    </f:alias>
+</f:link.typolink>
+
+</html>

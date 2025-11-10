@@ -1,0 +1,69 @@
+// banner
+
+.banner {
+  position: relative;
+
+  &-image {
+    display: none;
+
+    @include media-breakpoint-up(sm) {
+      display: block;
+    }
+  }
+
+  &-link {
+    @include font-size(18px);
+    font-weight: 500;
+
+    &:hover,
+    &:focus,
+    &:active {
+      outline-offset: -2px;
+      text-decoration: underline;
+    }
+
+    &[target="_blank"] {
+      .banner-text {
+        &::after {
+          mask-image: url("@assets/Images/Icons/icon-arrow-up-right-circle.svg");
+
+          @media (forced-colors: active) {
+            background-image: url("@assets/Images/Icons/icon-arrow-up-right-circle.svg");
+          }
+        }
+      }
+    }
+  }
+
+  &-text {
+    padding-right: 36px !important;
+    position: relative;
+
+    &::after {
+      background-color: var(--bs-body-color);
+      content: "";
+      display: block;
+      height: 24px;
+      mask-image: url("@assets/Images/Icons/icon-arrow-right-circle.svg");
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 24px;
+      position: absolute;
+      right: 2px;
+      top: 6px;
+      width: 24px;
+
+      @media (forced-colors: active) {
+        background-image: url("@assets/Images/Icons/icon-arrow-right-circle.svg");
+        background-position: right 0;
+        background-repeat: no-repeat;
+        background-size: 24px;
+        mask: none !important;
+      }
+    }
+  }
+
+  .col-12.col-lg-8.col-xl-9 & {
+    margin: 0;
+  }
+}

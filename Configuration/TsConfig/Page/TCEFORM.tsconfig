@@ -1,0 +1,416 @@
+#################
+#### TCEFORM ####
+#################
+TCEFORM {
+  #--------------
+  #    Pages
+  #--------------
+  pages {
+    layout {
+      removeItems = 1, 2, 3, 4
+      altLabels {
+        0 = Standard
+      }
+    }
+  }
+
+  #--------------
+  #    Content
+  #--------------
+  tt_content {
+    header_layout {
+      altLabels {
+        0 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.0
+        1 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.1
+        2 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.2
+        3 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.3
+        4 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.4
+        5 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.5
+      }
+
+      removeItems = 0
+
+      addItems {
+        6 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.6
+        7 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.7
+        8 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.8
+        9 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.9
+        10 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.10
+        11 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.11
+        12 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:header_layout.12
+      }
+    }
+
+    CType {
+      # removeItems = bullets, div, form_formframework, header, html, image, list, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages, menu_subpages, shortcut, table, text, textmedia, textpic, uploads
+      removeItems = bullets, menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, textmedia, table
+    }
+
+    layout {
+      removeItems = 3
+      addItems {
+
+      }
+
+      altLabels {
+        0 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:layout.0
+        1 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:layout.1
+        2 = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:layout.2
+      }
+    }
+
+    frame_class {
+      disabled = 1
+      #removeItems = indent, indent-left, indent-right, none, ruler-before, ruler-after
+      addItems {
+        #text-2-columns = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:frame_class.text-2-columns
+      }
+
+      altLabels {
+
+      }
+    }
+
+    linkToTop {
+      disabled = 1
+    }
+
+    header_link {
+      types {
+        menu_subpages {
+          disabled = 1
+        }
+      }
+    }
+
+    date {
+      types {
+        menu_subpages {
+          disabled = 1
+        }
+      }
+    }
+
+    tx_header_inside {
+      types {
+        ce_container {
+          disabled = 1
+        }
+
+        ce_grid {
+          disabled = 1
+        }
+
+        ce_accordion {
+          disabled = 1
+        }
+
+        ce_tabs {
+          disabled = 1
+        }
+
+        ce_slider {
+          disabled = 1
+        }
+
+        video {
+          disabled = 1
+        }
+
+        audio {
+          disabled = 1
+        }
+
+        stage {
+          disabled = 0
+        }
+
+        gallery {
+          disabled = 1
+        }
+
+        singleteaser {
+          disabled = 1
+        }
+
+        uploads {
+          disabled = 1
+        }
+
+        menu_subpages {
+          disabled = 1
+        }
+      }
+    }
+
+    imagecols {
+      removeItems = 4,6,7,8
+      altLabels {
+        5 = Auto
+      }
+
+      default = 1
+    }
+
+    imageorient {
+      types {
+        textmedia {
+          removeItems = 1,2,9,10,17,18,25,26
+        }
+
+        textpic {
+          removeItems = 1,2,9,10
+        }
+
+        video {
+          removeItems = 1,2,9,10,17,18,25,26
+        }
+      }
+    }
+
+    imageborder {
+      disabled = 1
+    }
+
+    media {
+      config {
+        appearance {
+          fileUploadAllowed = 0
+        }
+      }
+    }
+  }
+
+  ## Default Image cropping
+  sys_file_reference.crop.config.cropVariants {
+    default {
+      title = xLarge (> 1140)
+      selectedRatio = NaN
+      allowedAspectRatios {
+        NaN {
+          title = Free
+          value = 0.0
+        }
+
+        21:9 {
+          title = 21:9
+          value = 2.3333333
+        }
+
+        16:9 {
+          title = 16:9
+          value = 1.7777777
+        }
+
+        16:5 {
+          title = 16:5
+          value = 3.2
+        }
+
+        16:3 {
+          title = 16:3
+          value = 5.3333333
+        }
+
+        4:3 {
+          title = 4:3
+          value = 1.3333333
+        }
+
+        3:2 {
+          title = 3:2
+          value = 1.5
+        }
+
+        1:1 {
+          title = 1:1
+          value = 1
+        }
+      }
+    }
+
+    large {
+      title = Large (> 960)
+      selectedRatio = NaN
+      allowedAspectRatios {
+        NaN {
+          title = Free
+          value = 0.0
+        }
+
+        21:9 {
+          title = 21:9
+          value = 2.3333333
+        }
+
+        16:9 {
+          title = 16:9
+          value = 1.7777777
+        }
+
+        16:5 {
+          title = 16:5
+          value = 3.2
+        }
+
+        16:3 {
+          title = 16:3
+          value = 5.3333333
+        }
+
+        4:3 {
+          title = 4:3
+          value = 1.3333333
+        }
+
+        3:2 {
+          title = 3:2
+          value = 1.5
+        }
+
+        1:1 {
+          title = 1:1
+          value = 1
+        }
+      }
+    }
+
+    medium {
+      title = Medium (> 720)
+      selectedRatio = NaN
+      allowedAspectRatios {
+        NaN {
+          title = Free
+          value = 0.0
+        }
+
+        21:9 {
+          title = 21:9
+          value = 2.3333333
+        }
+
+        16:9 {
+          title = 16:9
+          value = 1.7777777
+        }
+
+        16:5 {
+          title = 16:5
+          value = 3.2
+        }
+
+        16:3 {
+          title = 16:3
+          value = 5.3333333
+        }
+
+        4:3 {
+          title = 4:3
+          value = 1.3333333
+        }
+
+        3:2 {
+          title = 3:2
+          value = 1.5
+        }
+
+        1:1 {
+          title = 1:1
+          value = 1
+        }
+      }
+    }
+
+    small {
+      title = Small (> 540)
+      selectedRatio = NaN
+      allowedAspectRatios {
+        NaN {
+          title = Free
+          value = 0.0
+        }
+
+        21:9 {
+          title = 21:9
+          value = 2.3333333
+        }
+
+        16:9 {
+          title = 16:9
+          value = 1.7777777
+        }
+
+        16:5 {
+          title = 16:5
+          value = 3.2
+        }
+
+        16:3 {
+          title = 16:3
+          value = 5.3333333
+        }
+
+        4:3 {
+          title = 4:3
+          value = 1.3333333
+        }
+
+        3:2 {
+          title = 3:2
+          value = 1.5
+        }
+
+        1:1 {
+          title = 1:1
+          value = 1
+        }
+      }
+    }
+
+    xsmall {
+      title = xSmall (> 0)
+      selectedRatio = NaN
+      allowedAspectRatios {
+        NaN {
+          title = Free
+          value = 0.0
+        }
+
+        21:9 {
+          title = 21:9
+          value = 2.3333333
+        }
+
+        16:9 {
+          title = 16:9
+          value = 1.7777777
+        }
+
+        16:5 {
+          title = 16:5
+          value = 3.2
+        }
+
+        16:3 {
+          title = 16:3
+          value = 5.3333333
+        }
+
+        4:3 {
+          title = 4:3
+          value = 1.3333333
+        }
+
+        3:2 {
+          title = 3:2
+          value = 1.5
+        }
+
+        1:1 {
+          title = 1:1
+          value = 1
+        }
+      }
+    }
+  }
+}

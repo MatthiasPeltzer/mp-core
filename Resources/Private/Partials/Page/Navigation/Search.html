@@ -1,0 +1,24 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<button aria-controls="search" aria-expanded="false" class="first-nav first-nav-btn btn-search-nav" data-bs-auto-close="outside" data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent" data-bs-toggle="dropdown" id="solr-button" title="Suche" type="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="nav-icon" aria-hidden="true">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
+    </svg>
+    <span>Suche</span>
+</button>
+<div class="dropdown-menu main-menu-desktop" id="search" data-bs-popper="static">
+    <div class="container tx-solr-search-form">
+        <form accept-charset="utf-8" action="/suche" data-suggest="/suche?type=7384" data-suggest-header="Top Treffer" id="tx-solr-search-form-pi-results-top" method="get">
+            <div class="input-group">
+                <label class="visually-hidden" for="solr-main">Suchbegriff(e) eingeben</label>
+                <input class="tx-solr-q js-solr-q form-control dropdown-item  tx-solr-suggest tx-solr-suggest-focus" id="solr-main" maxlength="300" name="tx_solr[q]" type="text" value="" autocomplete="off" aria-expanded="false" aria-autocomplete="list" style="position: relative;" aria-controls="solr-auto-suggest"><ul id="solr-auto-suggest" class="autocomplete-container" role="listbox" tabindex="0" style="display: none;"></ul>
+                <button class="btn btn-primary tx-solr-submit" title="Suchen" type="submit">
+                    <span>Suchen</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

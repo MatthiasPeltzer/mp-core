@@ -1,0 +1,151 @@
+// general
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transform: none !important;
+    transition-property: none !important;
+  }
+}
+
+html {
+  scroll-padding-top: 100px;
+}
+
+.main-wrapper,
+.header-wrapper-bg {
+  &::after {
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 3px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.header-wrapper-bg {
+  &::after {
+    background-image: linear-gradient(to right, transparent 0%, var(--bs-primary) 50%);
+  }
+}
+
+.main-wrapper {
+  overflow: hidden;
+  position: relative;
+
+  .main-container {
+    position: relative;
+  }
+
+  &::after {
+    background-image: linear-gradient(to left, transparent 0%, var(--bs-primary) 50%);
+    inset: auto auto 0 0;
+    transform: none;
+  }
+
+  .top-container,
+  .top-wrapper,
+  .footer > .container {
+    margin: 0 auto;
+    max-width: 1920px;
+  }
+}
+
+.bgcolor-1,
+.bgcolor-2,
+.bgcolor-3,
+.bgcolor-4,
+.bgcolor-5,
+.bgcolor-6,
+.bgcolor-7,
+.bgcolor-8 {
+  &::before {
+    border-radius: var(--bs-border-radius);
+    content: "";
+    height: calc(100% + 1px);
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+
+    html[data-bs-theme="light"] & {
+      filter: invert(1);
+    }
+  }
+
+  &.teaser-content::before {
+    opacity: .5;
+  }
+}
+
+.bgcolor-1 {
+  &::before {
+    background-color: var(--bs-color-1);
+  }
+}
+
+.bgcolor-2 {
+  &::before {
+    background-color: var(--bs-color-2);
+  }
+}
+
+.bgcolor-3 {
+  &::before {
+    background-color: var(--bs-color-3);
+  }
+}
+
+.bgcolor-4 {
+  &::before {
+    background-color: var(--bs-color-4);
+  }
+}
+
+.bgcolor-5 {
+  &::before {
+    background-color: var(--bs-color-5);
+  }
+}
+
+.bgcolor-6 {
+  &::before {
+    background-color: var(--bs-color-6);
+  }
+}
+
+.bgcolor-7 {
+  &::before {
+    background-color: var(--bs-color-7);
+  }
+}
+
+.bgcolor-8 {
+  &::before {
+    background-color: var(--bs-color-8);
+  }
+}
+
+.metanav .nav-link {
+  font-weight: 400;
+  margin-right: 0;
+
+  .nav-icon {
+    @include media-breakpoint-up(sm) {
+      margin-right: 5px;
+    }
+  }
+}
+
+.nav-icon {
+  font-weight: 400;
+  height: 20px;
+  margin-right: 5px;
+  position: relative;
+  top: -2px;
+  width: 20px;
+}

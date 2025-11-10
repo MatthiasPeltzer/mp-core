@@ -1,0 +1,25 @@
+#############
+#### RTE ####
+#############
+RTE {
+  default {
+    preset = default
+    proc {
+      HTMLparser_rte {
+        tags {
+          b.remap = strong
+          i.remap = em
+          s.remap = del
+        }
+      }
+
+      HTMLparser_db {
+        tags {
+          b.remap = strong
+          i.remap = em
+          s.remap = del
+        }
+      }
+    }
+  }
+}

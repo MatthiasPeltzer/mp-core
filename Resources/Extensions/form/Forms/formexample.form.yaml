@@ -1,0 +1,479 @@
+renderingOptions:
+  submitButtonLabel: Absenden
+identifier: Beispiel
+label: Beispiel
+type: Form
+prototypeName: standard
+finishers:
+  - options:
+      subject: 'E-Mail von mpeltzer.de: {text-1} {name}'
+      senderAddress: '{email-1}'
+      senderName: '{name}'
+      attachUploads: true
+      translation:
+        language: default
+      recipients:
+        mail@mpeltzer.de: mpeltzer.de
+      addHtmlPart: true
+      replyToRecipients:
+        mail@mpeltzer.de: ''
+    identifier: EmailToReceiver
+  - options:
+      pageUid: '53'
+      additionalParameters: ''
+    identifier: Redirect
+renderables:
+  - renderingOptions:
+      previousButtonLabel: 'Vorherige Seite'
+      nextButtonLabel: 'Nächste Seite'
+    identifier: page-1
+    label: Kontaktformular
+    type: Page
+    renderables:
+      - label: Inhaltselement
+        properties:
+          contentElementUid: '355'
+        type: ContentElement
+        identifier: contentelement-2
+      - type: GridRow
+        identifier: gridrow-1
+        label: Name
+        renderables:
+          - properties:
+              options:
+                Herr: Herr
+                Frau: Frau
+                Diverse: Diverse
+              prependOptionLabel: 'Keine Angabe'
+              fluidAdditionalAttributes:
+                required: required
+                autocomplete: honorific-prefix
+              validationErrorMessages:
+                - code: 1221560910
+                  message: 'Bitte eine Option wählen'
+                - code: 1221560718
+                  message: 'Bitte eine Option wählen'
+                - code: 1347992400
+                  message: 'Bitte eine Option wählen'
+                - code: 1347992453
+                  message: 'Bitte eine Option wählen'
+              gridColumnClassAutoConfiguration:
+                viewPorts:
+                  xxl:
+                    numbersOfColumnsToUse: '12'
+                  xl:
+                    numbersOfColumnsToUse: '12'
+                  lg:
+                    numbersOfColumnsToUse: '12'
+                  md:
+                    numbersOfColumnsToUse: '12'
+                  sm:
+                    numbersOfColumnsToUse: '12'
+                  xs:
+                    numbersOfColumnsToUse: '12'
+            type: SingleSelect
+            identifier: singleselect-1
+            label: Anrede
+            validators:
+              - identifier: NotEmpty
+          - defaultValue: ''
+            type: Text
+            identifier: text-1
+            label: Vorname
+            properties:
+              fluidAdditionalAttributes:
+                required: required
+                placeholder: Vorname
+                autocomplete: given-name
+              validationErrorMessages:
+                - code: 1221560910
+                  message: 'Bitte gib Deinen Vornamen ein'
+                - code: 1221560718
+                  message: 'Bitte gib Deinen Vornamen ein'
+                - code: 1347992400
+                  message: 'Bitte gib Deinen Vornamen ein'
+                - code: 1347992453
+                  message: 'Bitte gib Deinen Vornamen ein'
+              gridColumnClassAutoConfiguration:
+                viewPorts:
+                  sm:
+                    numbersOfColumnsToUse: '12'
+                  lg:
+                    numbersOfColumnsToUse: '6'
+                  md:
+                    numbersOfColumnsToUse: '6'
+                  xs:
+                    numbersOfColumnsToUse: '12'
+            validators:
+              - identifier: NotEmpty
+          - defaultValue: ''
+            identifier: name
+            label: Nachname
+            type: Text
+            properties:
+              fluidAdditionalAttributes:
+                required: required
+                placeholder: Nachname
+                autocomplete: family-name
+              validationErrorMessages:
+                - code: 1221560910
+                  message: 'Bitte gib Deinen Nachnamen ein'
+                - code: 1221560718
+                  message: 'Bitte gib Deinen Nachnamen ein'
+                - code: 1347992400
+                  message: 'Bitte gib Deinen Nachnamen ein'
+                - code: 1347992453
+                  message: 'Bitte gib Deinen Nachnamen ein'
+              gridColumnClassAutoConfiguration:
+                viewPorts:
+                  sm:
+                    numbersOfColumnsToUse: '12'
+                  lg:
+                    numbersOfColumnsToUse: '6'
+                  md:
+                    numbersOfColumnsToUse: '6'
+                  xs:
+                    numbersOfColumnsToUse: '12'
+            validators:
+              - identifier: NotEmpty
+      - type: Fieldset
+        identifier: fieldset-1
+        label: Adresse
+        renderables:
+          - defaultValue: ''
+            type: Text
+            identifier: text-3
+            label: 'Straße und Hausnummer'
+            properties:
+              fluidAdditionalAttributes:
+                autocomplete: address-line1
+          - type: GridRow
+            identifier: gridrow-2
+            label: 'PLZ und Stadt'
+            renderables:
+              - defaultValue: ''
+                type: Text
+                identifier: text-4
+                label: Postleitzahl
+                properties:
+                  fluidAdditionalAttributes:
+                    autocomplete: postal-code
+                  gridColumnClassAutoConfiguration:
+                    viewPorts:
+                      xxl:
+                        numbersOfColumnsToUse: '3'
+                      xl:
+                        numbersOfColumnsToUse: '3'
+                      lg:
+                        numbersOfColumnsToUse: '3'
+                      md:
+                        numbersOfColumnsToUse: '12'
+                      sm:
+                        numbersOfColumnsToUse: '12'
+                      xs:
+                        numbersOfColumnsToUse: '12'
+                validators:
+                  - identifier: Integer
+              - defaultValue: ''
+                type: Text
+                identifier: text-5
+                label: Stadt
+                properties:
+                  fluidAdditionalAttributes:
+                    autocomplete: address-level2
+                  gridColumnClassAutoConfiguration:
+                    viewPorts:
+                      xxl:
+                        numbersOfColumnsToUse: '9'
+                      xl:
+                        numbersOfColumnsToUse: '9'
+                      lg:
+                        numbersOfColumnsToUse: '9'
+                      md:
+                        numbersOfColumnsToUse: '12'
+                      sm:
+                        numbersOfColumnsToUse: '12'
+                      xs:
+                        numbersOfColumnsToUse: '12'
+          - properties:
+              prioritizedCountries:
+                - DE
+              fluidAdditionalAttributes:
+                autocomplete: country-name
+            type: CountrySelect
+            identifier: countryselect-1
+            label: Länderauswahl
+      - defaultValue: ''
+        type: Email
+        identifier: email-1
+        label: 'E-Mail Adresse'
+        properties:
+          fluidAdditionalAttributes:
+            autocomplete: email
+            required: required
+        validators:
+          - identifier: EmailAddress
+          - identifier: NotEmpty
+      - defaultValue: ''
+        type: Telephone
+        identifier: telephone-1
+        label: Telefonnummer
+        properties:
+          fluidAdditionalAttributes:
+            autocomplete: tel
+      - defaultValue: ''
+        type: Url
+        identifier: url-1
+        label: Homepage
+        properties:
+          fluidAdditionalAttributes:
+            autocomplete: url
+      - properties:
+          options:
+            'Einfach so': 'Einfach so'
+            Musik: Musik
+            TYPO3: TYPO3
+          validationErrorMessages:
+            - code: 1221560910
+              message: 'Bitte wähle ein Betreff'
+            - code: 1221560718
+              message: 'Bitte wähle ein Betreff'
+            - code: 1347992400
+              message: 'Bitte wähle ein Betreff'
+            - code: 1347992453
+              message: 'Bitte wähle ein Betreff'
+            - code: 1475002976
+              message: 'Bitte wähle höchstens ein Betreff aus'
+            - code: 1475002994
+              message: 'Bitte wähle höchstens ein Betreff aus'
+          fluidAdditionalAttributes:
+            autocomplete: 'off'
+          gridColumnClassAutoConfiguration:
+            viewPorts:
+              xxl:
+                numbersOfColumnsToUse: '12'
+              xl:
+                numbersOfColumnsToUse: '12'
+              lg:
+                numbersOfColumnsToUse: '12'
+              md:
+                numbersOfColumnsToUse: '12'
+              sm:
+                numbersOfColumnsToUse: '12'
+              xs:
+                numbersOfColumnsToUse: '12'
+        type: MultiCheckbox
+        identifier: multicheckbox-1
+        label: Betreff
+        validators:
+          - identifier: NotEmpty
+          - options:
+              minimum: '1'
+              maximum: '1'
+            identifier: Count
+      - defaultValue: ''
+        identifier: message
+        label: Nachricht
+        type: Textarea
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+            minlength: '10'
+            maxlength: '2000'
+            placeholder: Nachricht
+            autocomplete: 'off'
+          validationErrorMessages:
+            - code: 1221560910
+              message: 'Bitte gebe eine Nachricht ein (min. 10 Zeichen, max. 2000 Zeichen)'
+            - code: 1221560718
+              message: 'Bitte gebe eine Nachricht ein (min. 10 Zeichen, max. 2000 Zeichen)'
+            - code: 1347992400
+              message: 'Bitte gebe eine Nachricht ein (min. 10 Zeichen, max. 2000 Zeichen)'
+            - code: 1347992453
+              message: 'Bitte gebe eine Nachricht ein (min. 10 Zeichen, max. 2000 Zeichen)'
+            - code: 1238110957
+              message: 'Du musst mindestens 10 und höchstens 2000 Zeichen eingeben.'
+            - code: 1269883975
+              message: 'Du musst mindestens 10 und höchstens 2000 Zeichen eingeben.'
+            - code: 1428504122
+              message: 'Du musst mindestens 10 und höchstens 2000 Zeichen eingeben.'
+            - code: 1238108068
+              message: 'Du musst mindestens 10 und höchstens 2000 Zeichen eingeben.'
+            - code: 1238108069
+              message: 'Du musst mindestens 10 und höchstens 2000 Zeichen eingeben.'
+        validators:
+          - identifier: NotEmpty
+          - options:
+              minimum: '10'
+              maximum: '2000'
+            identifier: StringLength
+      - type: Fieldset
+        identifier: fieldset-2
+        label: Passwort
+        renderables:
+          - properties:
+              confirmationLabel: Bestätigung
+              fluidAdditionalAttributes:
+                autocomplete: new-password
+            type: AdvancedPassword
+            identifier: advancedpassword-1
+            label: 'Sichereres Passwort'
+      - properties:
+          saveToFileMount: '1:/user_upload/'
+          allowedMimeTypes:
+            - image/jpeg
+            - image/png
+          fluidAdditionalAttributes:
+            required: required
+            autocomplete: photo
+          validationErrorMessages:
+            - code: 1221560910
+              message: 'Bitte ein Bild anhängen'
+            - code: 1221560718
+              message: 'Bitte ein Bild anhängen'
+            - code: 1347992400
+              message: 'Bitte ein Bild anhängen'
+            - code: 1347992453
+              message: 'Bitte ein Bild anhängen'
+          elementDescription: 'jpg oder png bis 10 MB'
+        type: ImageUpload
+        identifier: imageupload-1
+        label: Bildupload
+        validators:
+          - identifier: NotEmpty
+          - options:
+              minimum: 0B
+              maximum: 10M
+            identifier: FileSize
+      - type: Fieldset
+        identifier: fieldset-3
+        label: 'Auswhal Optionen'
+        renderables:
+          - properties:
+              options:
+                Erstens: Erstens
+                Zweitens: Zweitens
+                Dittens: Dittens
+                Viertens: Viertens
+              fluidAdditionalAttributes:
+                required: required
+                autocomplete: 'off'
+              validationErrorMessages:
+                - code: 1221560910
+                  message: 'Bitte eine Option wählen'
+                - code: 1221560718
+                  message: 'Bitte eine Option wählen'
+                - code: 1347992400
+                  message: 'Bitte eine Option wählen'
+                - code: 1347992453
+                  message: 'Bitte eine Option wählen'
+            type: RadioButton
+            identifier: radiobutton-1
+            label: Auswahlknopf
+            validators:
+              - identifier: NotEmpty
+      - properties:
+          options:
+            Erstens: Erstens
+            Zweitens: Zweitens
+            Drittens: Drittens
+            Viertens: Viertens
+            Fünftens: Fünftens
+          fluidAdditionalAttributes:
+            required: required
+            autocomplete: 'off'
+          validationErrorMessages:
+            - code: 1221560910
+              message: 'Bitte eine Option wählen'
+            - code: 1221560718
+              message: 'Bitte eine Option wählen'
+            - code: 1347992400
+              message: 'Bitte eine Option wählen'
+            - code: 1347992453
+              message: 'Bitte eine Option wählen'
+        type: MultiSelect
+        identifier: multiselect-1
+        label: Mehrfachauswahl
+        validators:
+          - identifier: NotEmpty
+      - properties:
+          saveToFileMount: '1:/user_upload/'
+          allowedMimeTypes:
+            - application/pdf
+          fluidAdditionalAttributes:
+            required: required
+            autocomplete: 'off'
+          validationErrorMessages:
+            - code: 1221560910
+              message: 'Bitte eine PDF-Datei anhängen'
+            - code: 1221560718
+              message: 'Bitte eine PDF-Datei anhängen'
+            - code: 1347992400
+              message: 'Bitte eine PDF-Datei anhängen'
+            - code: 1347992453
+              message: 'Bitte eine PDF-Datei anhängen'
+          elementDescription: 'Nur PDF erlaubt bis 10 MB'
+        type: FileUpload
+        identifier: fileupload-1
+        label: Dateiupload
+        validators:
+          - identifier: NotEmpty
+          - options:
+              minimum: 0B
+              maximum: 10M
+            identifier: FileSize
+      - defaultValue: ''
+        type: Text
+        identifier: text-2
+        label: 'Sicherheitsabfrage gegen Spam'
+        properties:
+          elementDescription: 'Bitte schreibe das Wort "Musik" in das Feld.'
+          fluidAdditionalAttributes:
+            required: required
+            placeholder: 'Sicherheitsabfrage gegen Spam'
+          validationErrorMessages:
+            - code: 1221560910
+              message: 'Bitte Wort eintragen'
+            - code: 1221560718
+              message: 'Bitte Wort eintragen'
+            - code: 1347992400
+              message: 'Bitte Wort eintragen'
+            - code: 1347992453
+              message: 'Bitte Wort eintragen'
+            - code: 1221565130
+              message: 'Bitte das richtige Wort eintragen'
+        validators:
+          - options:
+              regularExpression: /^Musik$/i
+            identifier: RegularExpression
+          - identifier: NotEmpty
+      - type: Checkbox
+        identifier: checkbox-1
+        label: 'Mit der Weiterleitung meiner o. g. Daten an den Betreiber der Seite mpeltzer.de bin ich einverstanden. Soweit ich besondere Arten personenbezogener Daten (§ 3 Abs. 9 BDSG) übermittele, bezieht sich meine Einwilligung ausdrücklich auch auf diese Daten.'
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+            autocomplete: 'off'
+          validationErrorMessages:
+            - code: 1221560910
+              message: 'Bitte stimme der Datenverarbeitung zu!'
+            - code: 1221560718
+              message: 'Bitte stimme der Datenverarbeitung zu!'
+            - code: 1347992400
+              message: 'Bitte stimme der Datenverarbeitung zu!'
+            - code: 1347992453
+              message: 'Bitte stimme der Datenverarbeitung zu!'
+          elementDescription: ''
+        validators:
+          - identifier: NotEmpty
+      - label: Inhaltselement
+        properties:
+          contentElementUid: '258'
+        type: ContentElement
+        identifier: contentelement-1
+  - renderingOptions:
+      previousButtonLabel: 'Vorherige Seite'
+      nextButtonLabel: 'Nächste Seite'
+    identifier: summarypage
+    label: Zusammenfassung
+    type: SummaryPage

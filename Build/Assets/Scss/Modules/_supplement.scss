@@ -1,0 +1,13 @@
+// supplement
+
+.supplement-wrapper {
+  .ce-bodytext {
+    background: linear-gradient(to bottom, transparent 0%, var(--bs-secondary-bg-subtle) 100%);
+    border-radius: var(--bs-border-radius);
+    padding: 16px;
+
+    html[data-bs-theme="light"] & {
+      background: linear-gradient(to bottom, transparent 0%, var(--bs-secondary-bg-subtle) 100%);
+    }
+  }
+}

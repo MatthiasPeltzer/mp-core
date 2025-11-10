@@ -1,0 +1,320 @@
+categories:
+  MPCore:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCore.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCore.description'
+  MPCoreContent:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreContent.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreContent.description'
+  MPCoreConfig:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreConfig.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreConfig.description'
+  MPCoreDesign:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreDesign.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreDesign.description'
+  MPCorePerformance:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCorePerformance.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCorePerformance.description'
+  MPCoreNavigation:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreNavigation.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreNavigation.description'
+  MPCoreMeta:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreMeta.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreMeta.description'
+settings:
+  # Page ID Settings
+  PIDs.pidHome:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidHome.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidHome.form.description'
+    category: MPCore
+    type: int
+    default: 1
+  PIDs.pidMetaNavTop:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidMetaNavTop.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidMetaNavTop.form.description'
+    category: MPCore
+    type: int
+    default: 66
+  PIDs.pidMetaNavFooter:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidMetaNavFooter.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidMetaNavFooter.form.description'
+    category: MPCore
+    type: int
+    default: 25
+  PIDs.pidMainNavMeta:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidMainNavMeta.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidMainNavMeta.form.description'
+    category: MPCore
+    type: int
+    default: 25
+  PIDs.pidCategories:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidCategories.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidCategories.form.description'
+    category: MPCore
+    type: int
+    default: 251
+  PIDs.pidLogosBannerTop:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidLogosBannerTop.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidLogosBannerTop.form.description'
+    category: MPCore
+    type: int
+    default: 391
+  PIDs.pidSupplement:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidSupplement.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidSupplement.form.description'
+    category: MPCore
+    type: int
+    default: 24
+  
+  # Content Element Settings
+  content.textmedia.maxWidth:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.textmedia.maxWidth.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.textmedia.maxWidth.form.description'
+    category: MPCoreContent
+    type: int
+    default: 1200
+  content.textmedia.maxWidthInText:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.textmedia.maxWidthInText.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.textmedia.maxWidthInText.form.description'
+    category: MPCoreContent
+    type: int
+    default: 600
+  content.lightbox.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.lightbox.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.lightbox.enabled.form.description'
+    category: MPCoreContent
+    type: bool
+    default: true
+  content.lightbox.cssClass:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.lightbox.cssClass.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.lightbox.cssClass.form.description'
+    category: MPCoreContent
+    type: string
+    default: 'lightbox'
+  content.defaultHeaderType:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.defaultHeaderType.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.defaultHeaderType.form.description'
+    category: MPCoreContent
+    type: int
+    default: 2
+  content.links.extTarget:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.links.extTarget.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.links.extTarget.form.description'
+    category: MPCoreContent
+    type: string
+    default: '_blank'
+  
+  # Configuration Settings
+  config.admPanel:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.admPanel.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.admPanel.form.description'
+    category: MPCoreConfig
+    type: bool
+    default: false
+  config.debug:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.debug.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.debug.form.description'
+    category: MPCoreConfig
+    type: bool
+    default: false
+  config.noCache:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.noCache.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.noCache.form.description'
+    category: MPCoreConfig
+    type: bool
+    default: false
+  config.removeDefaultJS:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.removeDefaultJS.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.removeDefaultJS.form.description'
+    category: MPCoreConfig
+    type: string
+    default: 'external'
+  config.spamProtectEmailAddresses:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.spamProtectEmailAddresses.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.spamProtectEmailAddresses.form.description'
+    category: MPCoreConfig
+    type: bool
+    default: true
+  config.spamProtectEmailAddresses_atSubst:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.spamProtectEmailAddresses_atSubst.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.spamProtectEmailAddresses_atSubst.form.description'
+    category: MPCoreConfig
+    type: string
+    default: '[at]'
+  config.absRefPrefix:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.absRefPrefix.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.absRefPrefix.form.description'
+    category: MPCoreConfig
+    type: string
+    default: 'auto'
+  config.headerComment:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.headerComment.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.headerComment.form.description'
+    category: MPCoreConfig
+    type: string
+    default: ''
+  
+  # Performance Settings
+  performance.compressJs:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.compressJs.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.compressJs.form.description'
+    category: MPCorePerformance
+    type: bool
+    default: false
+  performance.compressCss:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.compressCss.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.compressCss.form.description'
+    category: MPCorePerformance
+    type: bool
+    default: false
+  performance.concatenateJs:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.concatenateJs.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.concatenateJs.form.description'
+    category: MPCorePerformance
+    type: bool
+    default: false
+  performance.concatenateCss:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.concatenateCss.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.concatenateCss.form.description'
+    category: MPCorePerformance
+    type: bool
+    default: false
+  performance.enableLazyLoading:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.enableLazyLoading.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.enableLazyLoading.form.description'
+    category: MPCorePerformance
+    type: bool
+    default: true
+  
+  # Design/Style Settings
+  design.colors.primary:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.colors.primary.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.colors.primary.form.description'
+    category: MPCoreDesign
+    type: string
+    default: '#0066cc'
+  design.colors.secondary:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.colors.secondary.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.colors.secondary.form.description'
+    category: MPCoreDesign
+    type: string
+    default: '#ff6600'
+  design.fonts.primary:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.fonts.primary.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.fonts.primary.form.description'
+    category: MPCoreDesign
+    type: string
+    default: 'Open Sans, sans-serif'
+  design.fonts.heading:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.fonts.heading.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.fonts.heading.form.description'
+    category: MPCoreDesign
+    type: string
+    default: 'Turret Road, sans-serif'
+  design.breakpoints.mobile:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.mobile.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.mobile.form.description'
+    category: MPCoreDesign
+    type: int
+    default: 768
+  design.breakpoints.tablet:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.tablet.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.tablet.form.description'
+    category: MPCoreDesign
+    type: int
+    default: 1024
+  design.breakpoints.desktop:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.desktop.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.desktop.form.description'
+    category: MPCoreDesign
+    type: int
+    default: 1440
+  design.container.maxWidth:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.container.maxWidth.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.container.maxWidth.form.description'
+    category: MPCoreDesign
+    type: string
+    default: '1200px'
+  
+  # Navigation Settings
+  navigation.maxDepth:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.maxDepth.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.maxDepth.form.description'
+    category: MPCoreNavigation
+    type: int
+    default: 3
+  navigation.showHiddenPages:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.showHiddenPages.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.showHiddenPages.form.description'
+    category: MPCoreNavigation
+    type: bool
+    default: false
+  navigation.enableBreadcrumb:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.enableBreadcrumb.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.enableBreadcrumb.form.description'
+    category: MPCoreNavigation
+    type: bool
+    default: true
+  navigation.breadcrumb.includeHome:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.breadcrumb.includeHome.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.breadcrumb.includeHome.form.description'
+    category: MPCoreNavigation
+    type: bool
+    default: true
+  
+  # Meta Data Settings
+  meta.viewport:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.viewport.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.viewport.form.description'
+    category: MPCoreMeta
+    type: string
+    default: 'width=device-width, initial-scale=1'
+  meta.robots:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.robots.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.robots.form.description'
+    category: MPCoreMeta
+    type: string
+    default: 'index,follow'
+  meta.appleMobileWebAppCapable:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.appleMobileWebAppCapable.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.appleMobileWebAppCapable.form.description'
+    category: MPCoreMeta
+    type: string
+    default: 'no'
+  meta.compatible:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.compatible.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.compatible.form.description'
+    category: MPCoreMeta
+    type: string
+    default: 'IE=edge'
+  meta.google:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.google.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.google.form.description'
+    category: MPCoreMeta
+    type: string
+    default: 'notranslate'
+  meta.googleSiteVerification:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.googleSiteVerification.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.googleSiteVerification.form.description'
+    category: MPCoreMeta
+    type: string
+    default: ''
+  
+  # Template Paths
+  templates.layoutRootPath:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.layoutRootPath.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.layoutRootPath.form.description'
+    category: MPCore
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Layouts/'
+  templates.partialRootPath:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.partialRootPath.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.partialRootPath.form.description'
+    category: MPCore
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Partials/'
+  templates.templateRootPath:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.templateRootPath.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.templateRootPath.form.description'
+    category: MPCore
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Templates/'

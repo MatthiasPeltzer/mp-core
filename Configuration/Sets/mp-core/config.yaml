@@ -1,0 +1,7 @@
+name: mpc/mp-core
+label: MP Core [Template]
+dependencies:
+  - typo3/fluid-styled-content
+settings:
+  definitions: settings.definitions.yaml
+  defaults: settings.yaml

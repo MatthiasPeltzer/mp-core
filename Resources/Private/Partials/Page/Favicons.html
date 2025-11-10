@@ -1,0 +1,40 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:if condition="{site.configuration.favicon-48x48-png} || {site.configuration.favicon-96x96-png} || {site.configuration.faviconIco} || {site.configuration.faviconSvg} || {site.configuration.apple-touch-icon} || {site.configuration.webmanifest}">
+    <f:then>
+        <f:if condition="{site.configuration.favicon-96x96-png}">
+            <link href="{f:uri.image(src: '{site.configuration.favicon-96x96-png}')}" rel="icon" sizes="96x96" type="image/png"/>
+        </f:if>
+        <f:if condition="{site.configuration.faviconIco}">
+            <link href="{f:uri.image(src: '{site.configuration.faviconIco}')}" rel="shortcut icon"/>
+        </f:if>
+        <f:if condition="{site.configuration.faviconSvg}">
+            <link href="{f:uri.image(src: '{site.configuration.faviconSvg}')}" rel="icon" type="image/svg+xml"/>
+        </f:if>
+        <f:if condition="{site.configuration.apple-touch-icon}">
+            <link href="{f:uri.image(src: '{site.configuration.apple-touch-icon}')}" rel="apple-touch-icon" sizes="180x180"/>
+        </f:if>
+        <f:if condition="{site.configuration.webmanifest}">
+            <link href="{f:uri.image(src: '{site.configuration.webmanifest}')}" rel="manifest"/>
+        </f:if>
+    </f:then>
+    <f:else>
+        <link href="{f:uri.image(src: 'EXT:mp_core/Resources/Public/Favicons/favicon-96x96.png')}" rel="icon" sizes="96x96" type="image/png"/>
+        <link href="{f:uri.image(src: 'EXT:mp_core/Resources/Public/Favicons/favicon.ico')}" rel="shortcut icon"/>
+        <link href="{f:uri.image(src: 'EXT:mp_core/Resources/Public/Favicons/favicon.svg')}" rel="icon" type="image/svg+xml"/>
+        <link href="{f:uri.image(src: 'EXT:mp_core/Resources/Public/Favicons/apple-touch-icon.png')}" rel="apple-touch-icon" sizes="180x180"/>
+        <link href="{f:uri.image(src: 'EXT:mp_core/Resources/Public/Favicons/site.webmanifest')}" rel="manifest"/>
+    </f:else>
+</f:if>
+<f:if condition="{data.keywords}">
+    <meta content="{data.keywords}" name="keywords">
+</f:if>
+<f:if condition="{data.lastUpdated}">
+    <meta content="{f:format.date(format: '%Y-%m-%d, %R', date: data.lastUpdated)}" name="last-modified">
+</f:if>
+<f:if condition="{data.author}">
+    <meta content="{data.author}" name="author">
+</f:if>
+<f:if condition="{data.author_email}">
+    <meta content="{data.author_email}" name="email">
+</f:if>
+</html>

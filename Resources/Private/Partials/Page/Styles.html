@@ -1,0 +1,24 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:if condition="{site.configuration.color-toggle}">
+    <f:asset.css identifier="additionalStyles" priority="true">
+        <f:format.raw>:root {</f:format.raw>
+            {f:if(condition: site.configuration.color-1, then: '--bs-color-1: {site.configuration.color-1};')}
+            {f:if(condition: site.configuration.color-2, then: '--bs-color-2: {site.configuration.color-2};')}
+            {f:if(condition: site.configuration.color-3, then: '--bs-color-3: {site.configuration.color-3};')}
+            {f:if(condition: site.configuration.color-4, then: '--bs-color-4: {site.configuration.color-4};')}
+            {f:if(condition: site.configuration.color-5, then: '--bs-color-5: {site.configuration.color-5};')}
+            {f:if(condition: site.configuration.color-6, then: '--bs-color-6: {site.configuration.color-6};')}
+            {f:if(condition: site.configuration.color-7, then: '--bs-color-7: {site.configuration.color-7};')}
+            {f:if(condition: site.configuration.color-8, then: '--bs-color-8: {site.configuration.color-8};')}
+            {f:if(condition: site.configuration.color-primary, then: '--bs-primary: {site.configuration.color-primary};')}
+            {f:if(condition: site.configuration.color-secondary, then: '--bs-secondary: {site.configuration.color-secondary};')}
+            {f:if(condition: site.configuration.color-secondary-rgba, then: '--bs-secondary-rgba: {site.configuration.color-secondary-rgba};')}
+            {f:if(condition: site.configuration.color-tertiary, then: '--bs-tertiary: {site.configuration.color-tertiary};')}
+            {f:if(condition: site.configuration.color-quaternary, then: '--bs-quaternary: {site.configuration.color-quaternary};')}
+            {f:if(condition: site.configuration.styles, then: '{site.configuration.styles}')}
+        <f:format.raw>}</f:format.raw>
+    </f:asset.css>
+</f:if>
+
+</html>

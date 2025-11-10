@@ -1,0 +1,8 @@
+page {
+  includeCSS {
+    bootstrap = EXT:mp_core/Resources/Public/StyleSheets/bootstrap.css
+    screen = EXT:mp_core/Resources/Public/StyleSheets/screen.css
+    print = EXT:mp_core/Resources/Public/StyleSheets/print.css
+    print.media = print
+  }
+}

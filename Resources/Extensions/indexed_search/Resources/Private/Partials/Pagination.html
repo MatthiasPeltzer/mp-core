@@ -1,0 +1,42 @@
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+>
+
+<f:if condition="{pagination}">
+    <ul class="tx-indexedsearch-browsebox mb-3">
+        <f:if condition="{pagination.previousPageNumber}">
+            <li class="tx-indexedsearch-browselist-next">
+                <a class="tx-indexedsearch-page-selector" data-free-index-uid="{freeIndexUid}" data-pointer="{pagination.previousPageNumber - 1}" data-prefix="tx_indexedsearch" href="#">
+                    <f:translate key="displayResults.previous"/>
+                </a>
+            </li>
+        </f:if>
+
+        <f:for as="pageNumber" each="{pagination.allPageNumbers}">
+            <f:variable name="pageLabel" value="{f:translate(key: 'displayResults.page')} {pageNumber}"/>
+            <f:if condition="{pageNumber} == {searchParams.pointer + 1}">
+                <f:then>
+                    <li>
+                        <strong><a aria-current="page" class="tx-indexedsearch-page-selector" data-free-index-uid="{freeIndexUid}" data-pointer="{pageNumber - 1}" data-prefix="tx_indexedsearch" href="#">{pageLabel}</a></strong>
+                    </li>
+                </f:then>
+                <f:else>
+                    <li>
+                        <a class="tx-indexedsearch-page-selector" data-free-index-uid="{freeIndexUid}" data-pointer="{pageNumber - 1}" data-prefix="tx_indexedsearch" href="#">{pageLabel}</a>
+                    </li>
+                </f:else>
+            </f:if>
+        </f:for>
+
+        <f:if condition="{pagination.nextPageNumber}">
+            <li class="tx-indexedsearch-browselist-next">
+                <a class="tx-indexedsearch-page-selector" data-free-index-uid="{freeIndexUid}" data-pointer="{pagination.nextPageNumber - 1}" data-prefix="tx_indexedsearch" href="#">
+                    <f:translate key="displayResults.next"/>
+                </a>
+            </li>
+        </f:if>
+    </ul>
+</f:if>
+
+</html>

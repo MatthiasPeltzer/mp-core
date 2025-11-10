@@ -1,0 +1,101 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:if condition="{mainNav}">
+    <nav aria-label="{f:translate(key: 'header.mainnavigation', extensionName: 'mp_core')}" class="col main-menu-layer dropdown flex-grow-0" id="main-menu">
+        <button aria-controls="menu" aria-expanded="false" class="navbar-toggler" data-bs-auto-close="outside"
+                data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent"
+                data-bs-toggle="dropdown" id="main-menu-button"
+                title="{f:translate(key: 'header.openMenuTitle', extensionName: 'mp_core')}" type="button">
+            <span class="line"></span> <span class="txt"><f:format.raw>{f:translate(key: 'header.openMenu', extensionName: 'mp_core')}</f:format.raw></span>
+        </button>
+        <div class="dropdown-menu" id="menu">
+            <div class="navbar-wrapper">
+                <div class="meta-mobile" id="meta-mobile"></div>
+                <div class="main-nav-wrapper">
+                    <div class="container">
+                        <ul class="main-menu list-unstyled row" id="mainNav">
+                            <f:for as="mainItem" each="{mainNav}">
+                                <li class="col-12 col-md-6 col-xl-3">
+                                    <f:if condition="{mainItem.current}">
+                                        <f:then>
+                                            <f:link.typolink
+                                                parameter="{mainItem.link}"
+                                                target="{mainItem.data.target}"
+                                                title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+                                                class="first-child gradient-line-after dropdown-item{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainChild.data.target, then:' external-link')}"
+                                                additionalAttributes="{'aria-current': 'page'}">
+                                                <f:if condition="{mainItem.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+                                                {mainItem.title}
+                                            </f:link.typolink>
+                                        </f:then>
+                                        <f:else>
+                                            <f:link.typolink
+                                                parameter="{mainItem.link}"
+                                                target="{mainItem.data.target}"
+                                                title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+                                                class="first-child gradient-line-after dropdown-item{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.data.target, then:' external-link')}">
+                                                <f:if condition="{mainItem.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+                                                {mainItem.title}
+                                            </f:link.typolink>
+                                        </f:else>
+                                    </f:if>
+                                    <f:if condition="{mainItem.children}">
+                                        <ul class="list-unstyled" id="mainNav-{mainItem.data.uid}">
+                                            <f:for as="mainChild" each="{mainItem.children}">
+                                                <f:render arguments="{mainChild: mainChild}" section="submenu"/>
+                                            </f:for>
+                                        </ul>
+                                    </f:if>
+                                </li>
+                            </f:for>
+                        </ul>
+                    </div>
+                </div>
+                <f:render arguments="{mainNavMeta: mainNavMeta}" partial="Navigation/Primary/NavMainMeta"/>
+            </div>
+        </div>
+    </nav>
+</f:if>
+
+<f:section name="submenu">
+    <li>
+        <f:if condition="{mainChild.current}">
+            <f:then>
+                <f:link.typolink
+                    parameter="{mainChild.link}"
+                    target="{mainChild.data.target}"
+                    class="sub dropdown-item{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.data.target, then:' external-link')}"
+                    title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+                    additionalAttributes="{'aria-current': 'page'}">
+                    <f:if condition="{mainChild.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+                    {mainChild.title}
+                </f:link.typolink>
+            </f:then>
+            <f:else>
+                <f:link.typolink
+                    parameter="{mainChild.link}"
+                    target="{mainChild.data.target}"
+                    class="sub dropdown-item{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.data.target, then:' external-link')}"
+                    title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}">
+                    <f:if condition="{mainChild.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+                    {mainChild.title}
+                </f:link.typolink>
+            </f:else>
+        </f:if>
+        <f:if condition="{mainChild.children}">
+            <button aria-controls="menu-{mainChild.data.uid}" aria-expanded="false" class="btn-open collapsed dropdown-item" data-bs-target="#menu-{mainChild.data.uid}" data-bs-toggle="collapse" type="button">
+                <span class="visually-hidden">{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}</span>
+            </button>
+            <ul class="list-unstyled collapse" id="menu-{mainChild.data.uid}">
+                <f:for as="mainChild" each="{mainChild.children}">
+                    <f:render arguments="{mainChild: mainChild}" section="submenu"/>
+                </f:for>
+            </ul>
+        </f:if>
+    </li>
+</f:section>
+
+</html>

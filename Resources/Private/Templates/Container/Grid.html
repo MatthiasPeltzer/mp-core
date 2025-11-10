@@ -1,0 +1,30 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Container" />
+
+<f:section name="Main">
+    <f:if condition="{children_101}">
+        <f:if condition="{data.grid_type} == 'ul'">
+            <f:then>
+                <ul class="row row-cols-1{f:if(condition: '{data.grid_columns} > 1', then: ' row-cols-md-2 row-cols-lg-{data.grid_columns}')} list-unstyled">
+                    <f:for each="{children_101}" as="child">
+                        <li class="col">
+                            <f:format.raw>{child.renderedContent}</f:format.raw>
+                        </li>
+                    </f:for>
+                </ul>
+            </f:then>
+            <f:else>
+                <div class="row row-cols-1{f:if(condition: '{data.grid_columns} > 1', then: ' row-cols-md-2 row-cols-lg-{data.grid_columns}')}">
+                    <f:for each="{children_101}" as="child">
+                        <div class="col">
+                            <f:format.raw>{child.renderedContent}</f:format.raw>
+                        </div>
+                    </f:for>
+                </div>
+            </f:else>
+        </f:if>
+    </f:if>
+</f:section>
+
+</html>

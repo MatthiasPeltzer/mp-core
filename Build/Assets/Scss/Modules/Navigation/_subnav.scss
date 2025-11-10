@@ -1,0 +1,43 @@
+// sub nav
+
+#subnav {
+  margin-bottom: 32px;
+
+  .nav-item {
+    background-color: var(--bs-gray-900);
+    border-radius: 4px;
+
+    html[data-bs-theme="light"] & {
+      background-color: var(--bs-gray-200);
+    }
+
+    .nav-link {
+      text-underline-position: under;
+
+      &.active {
+        font-weight: 700;
+        text-shadow: var(--bs-gray-300) 1px 4px 4px;
+        transition: text-shadow 0.15s ease-in-out;
+
+        &:hover,
+        &:focus,
+        &:active {
+          text-shadow: none;
+        }
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        border-radius: 4px;
+        outline-offset: -3px;
+      }
+    }
+
+    .nav-item {
+      .nav-item {
+        padding-left: 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+// Variables: Definition of all global values
+$icon-base-path: "../Images/Icons/";
+$icon-default-size: 18px;
+$icon-default-offset: 3px;
+
+// Map: Assignment of classes to icons
+$icon-mapping: (
+  "audio": "icon-audio",
+  "chart": "icon-chart",
+  "download": "icon-download",
+  "email": "icon-email",
+  "external-link": "icon-external",
+  "external-link-new": "icon-external",
+  "gallery": "icon-gallery",
+  "glossary": "icon-glossary",
+  "icon-link": "icon-link",
+  "internal-link": "icon-internal",
+  "internal-link-new": "icon-internal",
+  "legal": "icon-law",
+  "list-scroll": "icon-scroll",
+  "phone": "icon-phone",
+  "press": "icon-internal",
+  "public": "icon-public",
+  "video": "icon-play"
+);
+
+// Dynamic generation of icon classes
+@each $class, $icon in $icon-mapping {
+  a.#{$class} .icon {
+    display: inline;
+
+    @include apply-icon-style($icon);
+  }
+}
+
+// Base styles: General styles for icons
+a {
+  .icon {
+    display: none;
+    margin-right: 8px;
+    padding-left: 22px;
+    position: relative;
+
+    &::before {
+      background-color: var(--bs-body-color);
+      content: "";
+      display: block;
+      height: 19px;
+      left: $icon-default-offset;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: $icon-default-size;
+      position: absolute;
+      top: 1px;
+      width: 19px;
+
+      @media (forced-colors: active) {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: $icon-default-size;
+        mask: none !important;
+      }
+    }
+  }
+}
+
+// Specific rule for all a tags in .list-scroll
+ul.list-scroll a .icon {
+  display: inline;
+
+  @include apply-icon-style("icon-scroll");
+}

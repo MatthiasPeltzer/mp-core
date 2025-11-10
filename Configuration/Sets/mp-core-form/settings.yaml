@@ -1,0 +1,15 @@
+# Form Extension Settings
+form.honeypot.enabled: true
+form.confirmationPage.enabled: true
+form.requiredFieldMarker: '*'
+
+form.email.senderName: 'Website Contact Form'
+form.email.senderEmail: 'noreply@example.com'
+form.email.replyToEmail: 'info@example.com'
+
+form.validation.clientSide: true
+form.validation.showInlineErrors: true
+
+form.storage.saveToDatabase: false
+form.storage.uploadFolder: '1:/forms/'
+

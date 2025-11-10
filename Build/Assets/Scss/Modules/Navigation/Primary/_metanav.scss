@@ -1,0 +1,86 @@
+// meta nav
+
+.main-meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  padding: 16px 0;
+
+  .meta-item {
+    padding: 0 16px;
+  }
+
+  @include media-breakpoint-down(md) {
+    .meta-item {
+      margin-bottom: 16px;
+    }
+  }
+
+  &-wrapper {
+    background: $gray-900;
+
+    html[data-bs-theme="light"] & {
+      background: $gray-200;
+    }
+  }
+}
+
+.meta {
+  &-desktop {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+  }
+
+  &-mobile {
+    display: block;
+    padding: 16px 16px 0;
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+}
+
+.metanav {
+  flex-wrap: nowrap;
+  margin-right: 16px;
+
+  .nav-item {
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  .nav-link {
+    @include media-breakpoint-down(sm) {
+      padding: 8px;
+
+      > svg + span {
+        @include visually-hidden;
+      }
+    }
+
+    &.de,
+    &.en,
+    &.fr {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 24px;
+      padding: 20px 24px;
+    }
+
+    &.de {
+      background-image: url("@assets/Images/Icons/Flags/de.svg");
+    }
+
+    &.en {
+      background-image: url("@assets/Images/Icons/Flags/gb.svg");
+    }
+
+    &.fr {
+      background-image: url("@assets/Images/Icons/Flags/fr.svg");
+    }
+  }
+}

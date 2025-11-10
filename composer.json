@@ -1,0 +1,54 @@
+{
+	"name": "mpc/mp-core",
+	"description": "MPC Distribution Package",
+	"license": [
+		"GPL-3.0-or-later"
+	],
+  "type": "typo3-cms-extension",
+	"authors": [
+		{
+			"name": "Matthias Peltzer",
+			"email": "mail@mpeltzer.de",
+			"homepage": "https://www.mpeltzer.de/",
+			"role": "Developer"
+		}
+	],
+  "autoload": {
+		"psr-4": {
+			"Mpc\\MpCore\\": "Classes/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Mpc\\MpCore\\": "Tests/"
+		}
+	},
+	"config": {
+		"vendor-dir": "../default.instance/vendor",
+		"bin-dir": "../default.instance/bin"
+	},
+
+	"extra": {
+		"typo3/cms": {
+			"cms-package-dir": "{$vendor-dir}/typo3/cms",
+			"web-dir": "../default.instance",
+			"extension-key": "mp_core"
+		}
+	},
+	"homepage": "https://www.mpeltzer.de/",
+	"replace": {
+		"mp_core": "self.version"
+	},
+	"require": {
+		"typo3/cms-core": "^13.4",
+		"typo3/cms-filemetadata": "^13.4.0",
+		"typo3/cms-form": "^13.4.0",
+		"typo3/cms-seo": "^13.4.0"
+	},
+	"scripts": {
+		"post-autoload-dump": [
+			"mkdir -p ../default.instance/typo3conf/ext/",
+			"[ -L ../default.instance/typo3conf/ext/mp_core ] || ln -snvf ../../../dir-project ../default.instance/typo3conf/ext/mp_core"
+		]
+	}
+}

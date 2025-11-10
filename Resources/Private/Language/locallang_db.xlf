@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang_db.xlf" date="2022-12-01T09:48:17" product-name="mp_core">
+    <header/>
+    <body>
+      <trans-unit id="BackendLayouts.bottom" resname="BackendLayouts.bottom">
+        <source>Bottom</source>
+      </trans-unit>
+      <trans-unit id="BackendLayouts.logos.top" resname="BackendLayouts.logos.top">
+        <source>Logos/Banner top</source>
+      </trans-unit>
+      <trans-unit id="BackendLayouts.main" resname="BackendLayouts.main">
+        <source>Main content</source>
+      </trans-unit>
+      <trans-unit id="BackendLayouts.supplement" resname="BackendLayouts.supplement">
+        <source>Supplement</source>
+      </trans-unit>
+      <trans-unit id="BackendLayouts.top" resname="BackendLayouts.top">
+        <source>Top (full width)</source>
+      </trans-unit>
+      <trans-unit id="accordion.description" resname="accordion.description">
+        <source>The content elements are accessible in an accordion</source>
+      </trans-unit>
+      <trans-unit id="accordion.description.onload" resname="accordion.description.onload">
+        <source>Open a specific accordion tile when loading</source>
+      </trans-unit>
+      <trans-unit id="accordion.description.onloadall" resname="accordion.description.onloadall">
+        <source>Close accordions when an accordion element is selected / Accordions stay open</source>
+      </trans-unit>
+      <trans-unit id="accordion.description.open" resname="accordion.description.open">
+        <source>Choose the accordion tile, wich should be opened</source>
+      </trans-unit>
+      <trans-unit id="accordion.label.onload" resname="accordion.label.onload">
+        <source>On load</source>
+      </trans-unit>
+      <trans-unit id="accordion.label.onloadall" resname="accordion.label.onloadall">
+        <source>Accordion toggle</source>
+      </trans-unit>
+      <trans-unit id="accordion.label.open" resname="accordion.label.open">
+        <source>Accordion tile</source>
+      </trans-unit>
+      <trans-unit id="accordion.title" resname="accordion.title">
+        <source>Accordion</source>
+      </trans-unit>
+      <trans-unit id="audio.audio_description" resname="audio.audio_description">
+        <source>Puts a local or external audio on the page</source>
+      </trans-unit>
+      <trans-unit id="audio.audio_title" resname="audio.audio_title">
+        <source>Audio</source>
+      </trans-unit>
+      <trans-unit id="banner.description" resname="banner.description">
+        <source>Adds a banner element with optional image, link and background color</source>
+      </trans-unit>
+      <trans-unit id="banner.title" resname="banner.title">
+        <source>Banner</source>
+      </trans-unit>
+      <trans-unit id="container.description" resname="container.description">
+        <source>Container covering the entire page or screen width</source>
+      </trans-unit>
+      <trans-unit id="container.title" resname="container.title">
+        <source>Page container</source>
+      </trans-unit>
+      <trans-unit id="gallery.description" resname="gallery.description">
+        <source>Inserts a gallery element as a single image preview, tiles or slider</source>
+      </trans-unit>
+      <trans-unit id="gallery.title" resname="gallery.title">
+        <source>Gallery</source>
+      </trans-unit>
+      <trans-unit id="grid.bg.bgcolor" resname="grid.bg.bgcolor">
+        <source>Backgroud color</source>
+      </trans-unit>
+      <trans-unit id="grid.bg.bgcolor.description" resname="grid.bg.bgcolor.description">
+        <source>Set a backgroundcolor</source>
+      </trans-unit>
+      <trans-unit id="grid.bg.bgfullsize" resname="grid.bg.bgfullsize">
+        <source>Grid Ausdehnung</source>
+      </trans-unit>
+      <trans-unit id="grid.bg.bgfullsize.description" resname="grid.bg.bgfullsize.description">
+        <source>Drag grid container across the entire width</source>
+      </trans-unit>
+      <trans-unit id="grid.bg.container" resname="grid.bg.container">
+        <source>Container</source>
+      </trans-unit>
+      <trans-unit id="grid.bg.container.description" resname="grid.bg.container.description">
+        <source>Turns off the container wrapper</source>
+      </trans-unit>
+      <trans-unit id="grid.bg.light" resname="grid.bg.light">
+        <source>Grid font-color</source>
+      </trans-unit>
+      <trans-unit id="grid.bg.light.description" resname="grid.bg.light.description">
+        <source>Switch font-color from dark to light</source>
+      </trans-unit>
+      <trans-unit id="grid.bgimage.container" resname="grid.bgimage.container">
+        <source>Background image</source>
+      </trans-unit>
+      <trans-unit id="grid.bgimage.container.description" resname="grid.bgimage.container.description">
+        <source>Add a background image to the container.</source>
+      </trans-unit>
+      <trans-unit id="grid.columns" resname="grid.columns">
+        <source>Grid Columns</source>
+      </trans-unit>
+      <trans-unit id="grid.columns.description" resname="grid.columns.description">
+        <source>Choose how many columns the grid will be divided into</source>
+      </trans-unit>
+      <trans-unit id="grid.columns.fourcol" resname="grid.columns.fourcol">
+        <source>Four columns</source>
+      </trans-unit>
+      <trans-unit id="grid.columns.onecol" resname="grid.columns.onecol">
+        <source>One column</source>
+      </trans-unit>
+      <trans-unit id="grid.columns.threecol" resname="grid.columns.threecol">
+        <source>Three columns</source>
+      </trans-unit>
+      <trans-unit id="grid.columns.twocol" resname="grid.columns.twocol">
+        <source>Two columns</source>
+      </trans-unit>
+      <trans-unit id="grid.description" resname="grid.description">
+        <source>Create a grid with any number of elements.</source>
+      </trans-unit>
+      <trans-unit id="grid.elements" resname="grid.elements">
+        <source>Grid elements</source>
+      </trans-unit>
+      <trans-unit id="grid.grid_icon_switch" resname="grid.grid_icon_switch">
+        <source>Move out element</source>
+      </trans-unit>
+      <trans-unit id="grid.grid_icon_switch.description" resname="grid.grid_icon_switch.description">
+        <source>Move out, add padding to element and add optional icon</source>
+      </trans-unit>
+      <trans-unit id="grid.icon" resname="grid.bgimage">
+        <source>Container Icon</source>
+      </trans-unit>
+      <trans-unit id="grid.icon.description" resname="grid.bgimage.description">
+        <source>Insert icon at the top left of the container</source>
+      </trans-unit>
+      <trans-unit id="grid.parallax" resname="grid.bgimage.container">
+        <source>Parallax animation</source>
+      </trans-unit>
+      <trans-unit id="grid.parallax.description" resname="grid.bgimage.container.description">
+        <source>Add a parallax animation to the background image.</source>
+      </trans-unit>
+      <trans-unit id="grid.slider.type" resname="grid.slider.type">
+        <source>Slider type</source>
+      </trans-unit>
+      <trans-unit id="grid.slider.type.description" resname="grid.slider.type.description">
+        <source>Slide or Fade (Fade only in one column)</source>
+      </trans-unit>
+      <trans-unit id="grid.title" resname="grid.title">
+        <source>Grid</source>
+      </trans-unit>
+      <trans-unit id="grid.type" resname="grid.type">
+        <source>Grid type</source>
+      </trans-unit>
+      <trans-unit id="grid.type.container" resname="grid.type.container">
+        <source>Container</source>
+      </trans-unit>
+      <trans-unit id="grid.type.description" resname="grid.type.description">
+        <source>Choose whether elements are in a list or in containers</source>
+      </trans-unit>
+      <trans-unit id="grid.type.list" resname="grid.type.list">
+        <source>List</source>
+      </trans-unit>
+      <trans-unit id="hasCaption" resname="hasCaption">
+        <source>Has editorial caption</source>
+      </trans-unit>
+      <trans-unit id="header_layout.0" resname="header_layout.0">
+        <source>Default</source>
+      </trans-unit>
+      <trans-unit id="header_layout.1" resname="header_layout.1">
+        <source>H1</source>
+      </trans-unit>
+      <trans-unit id="header_layout.10" resname="header_layout.10">
+        <source>H4 - Hidden (SR only)</source>
+      </trans-unit>
+      <trans-unit id="header_layout.11" resname="header_layout.11">
+        <source>H5 - Hidden (SR only)</source>
+      </trans-unit>
+      <trans-unit id="header_layout.12" resname="header_layout.12">
+        <source>H6 - Hidden (SR only)</source>
+      </trans-unit>
+      <trans-unit id="header_layout.2" resname="header_layout.2">
+        <source>H2 - Default</source>
+      </trans-unit>
+      <trans-unit id="header_layout.3" resname="header_layout.3">
+        <source>H3</source>
+      </trans-unit>
+      <trans-unit id="header_layout.4" resname="header_layout.4">
+        <source>H4</source>
+      </trans-unit>
+      <trans-unit id="header_layout.5" resname="header_layout.5">
+        <source>H5</source>
+      </trans-unit>
+      <trans-unit id="header_layout.6" resname="header_layout.6">
+        <source>H6</source>
+      </trans-unit>
+      <trans-unit id="header_layout.7" resname="header_layout.7">
+        <source>H1 - Hidden (SR only)</source>
+      </trans-unit>
+      <trans-unit id="header_layout.8" resname="header_layout.8">
+        <source>H2 - Hidden (SR only)</source>
+      </trans-unit>
+      <trans-unit id="header_layout.9" resname="header_layout.9">
+        <source>H3 - Hidden (SR only)</source>
+      </trans-unit>
+      <trans-unit id="layout.0" resname="layout.0">
+        <source>Normal box (default)</source>
+      </trans-unit>
+      <trans-unit id="layout.1" resname="layout.1">
+        <source>Element indentation (col-8)</source>
+      </trans-unit>
+      <trans-unit id="layout.2" resname="layout.2">
+        <source>Element indentation (col-10)</source>
+      </trans-unit>
+      <trans-unit id="linkicon.description" resname="linkicon.description">
+        <source>Link Icon for the page navigation, e.g. for accessible link.</source>
+      </trans-unit>
+      <trans-unit id="linkicon.label" resname="linkicon.label">
+        <source>Link icon</source>
+      </trans-unit>
+      <trans-unit id="pages.Breadcrumb" resname="pages.Breadcrumb">
+        <source>Breadcrumb</source>
+      </trans-unit>
+      <trans-unit id="pages.Breadcrumb.description" resname="pages.Breadcrumb.description">
+        <source>Remove breadcrumb</source>
+      </trans-unit>
+      <trans-unit id="pages.HeaderContainer" resname="pages.HeaderContainer.description">
+        <source>Header</source>
+      </trans-unit>
+      <trans-unit id="pages.HeaderContainer.description" resname="pages.HeaderContainer.description">
+        <source>Remove header</source>
+      </trans-unit>
+      <trans-unit id="pages.MainCategory.description" resname="pages.MainCategory.description">
+        <source>Only one main category can be selected and will be displayed alone or next to the date.</source>
+      </trans-unit>
+      <trans-unit id="pages.MainCategory.label" resname="pages.MainCategory.label">
+        <source>Main category</source>
+      </trans-unit>
+      <trans-unit id="pages.NewsletterBox" resname="pages.NewsletterBox">
+        <source>Newsletter Box</source>
+      </trans-unit>
+      <trans-unit id="pages.NewsletterBox.description" resname="pages.NewsletterBox.description">
+        <source>Remove newsletter box</source>
+      </trans-unit>
+      <trans-unit id="pages.SocialmediaBar" resname="pages.SocialmediaBar">
+        <source>Socialmedia Bar</source>
+      </trans-unit>
+      <trans-unit id="pages.SocialmediaBar.description" resname="pages.SocialmediaBar.description">
+        <source>Remove socialmedia bar</source>
+      </trans-unit>
+      <trans-unit id="pages.TeaserDescription" resname="pages.TeaserDescription.description">
+        <source>Teaser short text</source>
+      </trans-unit>
+      <trans-unit id="pages.TeaserDescription.description" resname="pages.TeaserDescription.description">
+        <source>Short text that can be displayed in teasers to this page</source>
+      </trans-unit>
+      <trans-unit id="singleteaser.description" resname="singleteaser.description">
+        <source>Adds a teaser with headline, image, text and link element</source>
+      </trans-unit>
+      <trans-unit id="singleteaser.title" resname="singleteaser.title">
+        <source>Single teaser</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.apple-touch-icon" resname="site.configuration.apple-touch-icon">
+        <source>Apple Touch Icon (PNG)</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.bandcamp.label" resname="site.configuration.bandcamp.label">
+        <source>Bandcamp</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.bluesky.label" resname="site.configuration.bluesky.label">
+        <source>Bluesky</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-0" resname="site.configuration.color-0">
+        <source>Choose background color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-1" resname="site.configuration.color-1">
+        <source>First color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-1.description" resname="site.configuration.color-1.description">
+        <source>Specify the first color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-1.label" resname="site.configuration.color-1.label">
+        <source>First Color identifier</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-1.label.description" resname="site.configuration.color-1.label.description">
+        <source>Specify the name for the first color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-2" resname="site.configuration.color-2">
+        <source>Second color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-2.description" resname="site.configuration.color-2.description">
+        <source>Specify the second color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-2.label" resname="site.configuration.color-2.label">
+        <source>Second Color identifier</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-2.label.description" resname="site.configuration.color-2.label.description">
+        <source>Specify the name for the second color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-3" resname="site.configuration.color-3">
+        <source>Third color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-3.description" resname="site.configuration.color-3.description">
+        <source>Specify the third color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-3.label" resname="site.configuration.color-3.label">
+        <source>Third color identifier</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-3.label.description" resname="site.configuration.color-3.label.description">
+        <source>Specify the name for the third color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-4" resname="site.configuration.color-4">
+        <source>Fourth color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-4.description" resname="site.configuration.color-4.description">
+        <source>Specify the fourth color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-4.label" resname="site.configuration.color-4.label">
+        <source>Fourth color identifier</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-4.label.description" resname="site.configuration.color-4.label.description">
+        <source>Specify the name for the fourth color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-5" resname="site.configuration.color-5">
+        <source>Fifth color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-5.description" resname="site.configuration.color-5.description">
+        <source>Specify the fifth color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-5.label" resname="site.configuration.color-5.label">
+        <source>Fifth color identifier</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-5.label.description" resname="site.configuration.color-5.label.description">
+        <source>Specify the name for the fifth color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-6" resname="site.configuration.color-6">
+        <source>Sixth color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-6.description" resname="site.configuration.color-6.description">
+        <source>Specify the sixth color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-6.label" resname="site.configuration.color-6.label">
+        <source>Sixth color identifier</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-6.label.description" resname="site.configuration.color-6.label.description">
+        <source>Specify the name for the sixth color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-7" resname="site.configuration.color-7">
+        <source>Seventh color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-7.description" resname="site.configuration.color-7.description">
+        <source>Specify the seventh color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-7.label" resname="site.configuration.color-7.label">
+        <source>Seventh color identifier</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-7.label.description" resname="site.configuration.color-7.label.description">
+        <source>Specify the name for the seventh color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-8" resname="site.configuration.color-8">
+        <source>Eighth color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-8.description" resname="site.configuration.color-8.description">
+        <source>Specify the eighth color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-8.label" resname="site.configuration.color-8.label">
+        <source>Eighth color identifier</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-8.label.description" resname="site.configuration.color-8.label.description">
+        <source>Specify the name for the eighth color in the selection field here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-primary.description" resname="site.configuration.color-primary.description">
+        <source>Set the primary page color here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-primary.label" resname="site.configuration.color-primary.label">
+        <source>Primary Color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-quaternary.description" resname="site.configuration.color-quaternary.description">
+        <source>Set the quaternary page color here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-quaternary.label" resname="site.configuration.color-quaternary.label">
+        <source>Quaternary Color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-secondary-rgba.description" resname="site.configuration.color-secondary-rgba.description">
+        <source>Set the secondary page color here. You should also set a transparency value here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-secondary-rgba.label" resname="site.configuration.color-secondary-rgba.label">
+        <source>Secondary Color RGBA</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-secondary.description" resname="site.configuration.color-secondary.description">
+        <source>Set the secondary page color here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-secondary.label" resname="site.configuration.color-secondary.label">
+        <source>Secondary color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-tertiary.description" resname="site.configuration.color-tertiary.description">
+        <source>Set the tertiary page color here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-tertiary.label" resname="site.configuration.color-tertiary.label">
+        <source>Tertiary Color</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-toggle" resname="site.configuration.color-toggle">
+        <source>Turn on color selector</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.color-toggle.description" resname="site.configuration.color-toggle.description">
+        <source>This selection switch activates all colors below it. If it is turned off, no color is passed on to the frontend. When it is turned on, only the filled colors are passed on.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.colorsAndStyles" resname="site.configuration.colorsAndStyles">
+        <source>Colors and styles</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.copyrightText.description" resname="site.configuration.copyrightText.description">
+        <source>In the footer, the copyright notice is displayed with a © sign and the current year.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.copyrightText.label" resname="site.configuration.copyrightText.label">
+        <source>Copyright notice</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.customization" resname="site.configuration.customization">
+        <source>Customization</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.apple-touch-icon" resname="site.configuration.description.apple-touch-icon">
+        <source>The PNG file has to be square in 180x180 pixel. Filename must be 'apple-touch-icon.png'.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.favicon-48x48-png" resname="site.configuration.description.favicon-48x48-png">
+        <source>The PNG file has to be square in 48x48 pixel. Filename must be 'favicon-48x48.png'.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.favicon-96x96-png" resname="site.configuration.description.favicon-96x96-png">
+        <source>The PNG file has to be square in 48x48 pixel. Filename must be 'favicon-96x96.png'.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.faviconIco" resname="site.configuration.description.faviconIco">
+        <source>The classic Ico file must be square and have a size of 48x48 pixels. Filename must be 'favicon.ico'.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.faviconSvg" resname="site.configuration.description.faviconSvg">
+        <source>The SVG touch icon must be square and have a size of 512x512 pixels. Filename must be 'favicon.svg'.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.web-app-manifest-192x192" resname="site.configuration.description.web-app-manifest-192x192">
+        <source>The PNG file has to be square in 192x192 pixel. Filename must be 'web-app-manifest-192x192.png'.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.web-app-manifest-512x512" resname="site.configuration.description.web-app-manifest-512x512">
+        <source>The PNG file has to be square in 512x512 pixel. Filename must be 'web-app-manifest-512x512.png'.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.description.webmanifest" resname="site.configuration.description.webmanifest">
+        <source>The Webmanifest file must first be customized according to your preferences. The file name must be “site.webmanifest”.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.discord.label" resname="site.configuration.discord.label">
+        <source>Discord</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.facebook.label" resname="site.configuration.facebook.label">
+        <source>Facebook</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.favicon-48x48-png" resname="site.configuration.favicon-48x48-png">
+        <source>Favicon 48x48 PNG</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.favicon-96x96-png" resname="site.configuration.favicon-96x96-png">
+        <source>Favicon 96x96 PNG</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.faviconIco" resname="site.configuration.faviconIco">
+        <source>Favicon Icon (ICO)</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.faviconSvg" resname="site.configuration.faviconSvg">
+        <source>Favicon SVG</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.favicons" resname="site.configuration.favicons">
+        <source>Favicons</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.instagram.label" resname="site.configuration.instagram.label">
+        <source>Instagram</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.linkedin.label" resname="site.configuration.linkedin.label">
+        <source>LinkedIn</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoBig.description" resname="site.configuration.logoBig.description">
+        <source>The general standard logo</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoBig.label" resname="site.configuration.logoBig.label">
+        <source>Big logo</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoSmall.description" resname="site.configuration.logoSmall.description">
+        <source>Logo for mobile and sticky header view</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoSmall.label" resname="site.configuration.logoSmall.label">
+        <source>Small Logo</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoSvg.description" resname="site.configuration.logoSvg.description">
+        <source>Logo is in SVG format</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoSvg.label" resname="site.configuration.logoSvg.label">
+        <source>SVG Logo</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoText.description" resname="site.configuration.logoText.description">
+        <source>The text or claim to the right of the logo</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoText.label" resname="site.configuration.logoText.label">
+        <source>Logo text</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoTextHidden.description" resname="site.configuration.logoTextHidden.description">
+        <source>Hide the logo text</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logoTextHidden.label" resname="site.configuration.logoTextHidden.label">
+        <source>Logo text</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.logos.title" resname="site.configuration.logos.title">
+        <source>Logos</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.mastodon.label" resname="site.configuration.mastodon.label">
+        <source>Mastodon</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.navType" resname="site.configuration.navType">
+        <source>Navigation type</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.navType.0" resname="site.configuration.navType.0">
+        <source>Primary navigation</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.navType.1" resname="site.configuration.navType.1">
+        <source>Secondary navigation</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.navType.2" resname="site.configuration.navType.2">
+        <source>Tertiary navigation</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.navType.description" resname="site.configuration.navType.description">
+        <source>Customise the page navigation type here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.pinterest.label" resname="site.configuration.pinterest.label">
+        <source>Pinterest</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.reddit.label" resname="site.configuration.reddit.label">
+        <source>Reddit</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.search.description" resname="site.configuration.search.description">
+        <source>Use search on the website. Adds a search field next to the main navigation.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.search.label" resname="site.configuration.search.label">
+        <source>Use search</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.signal.label" resname="site.configuration.signal.label">
+        <source>Signal</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.socialMediaSwitch.description" resname="site.configuration.socialMediaSwitch.description">
+        <source>Toggle the social media bar in the footer on or off.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.socialMediaSwitch.label" resname="site.configuration.socialMediaSwitch.label">
+        <source>Social media on/off switch</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.socialMediaTitle.title" resname="site.configuration.socialMedia.title">
+        <source>SocialMedia</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.soundcloud.label" resname="site.configuration.soundcloud.label">
+        <source>Soundcloud</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.spotify.label" resname="site.configuration.spotify.label">
+        <source>Spotify</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.styles" resname="site.configuration.styles">
+        <source>Edit styles</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.styles.description" resname="site.configuration.styles.description">
+        <source>You can make further individual CSS adjustments here. However, you should do this with caution.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.subnav.description" resname="site.configuration.subnav.description">
+        <source>Adds a column with subnavigation to the article template.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.subnav.label" resname="site.configuration.subnav.label">
+        <source>Use subnav</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.subnavOrder.description" resname="site.configuration.subnavOrder.description">
+        <source>Arrange subnavigation on the left (off) or right (on).</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.subnavOrder.label" resname="site.configuration.subnavOrder.label">
+        <source>Arrange subnavigation</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.telegram.label" resname="site.configuration.telegram.label">
+        <source>Telegram</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.threads.label" resname="site.configuration.threads.label">
+        <source>Threads</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.tiktok.label" resname="site.configuration.tiktok.label">
+        <source>TikTok</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.tumblr.label" resname="site.configuration.tumblr.label">
+        <source>Tumblr</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.vimeo.label" resname="site.configuration.vimeo.label">
+        <source>Vimeo</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.web-app-manifest-192x192" resname="site.configuration.web-app-manifest-192x192">
+        <source>Web App Manifest 192x192 PNG</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.web-app-manifest-512x512" resname="site.configuration.web-app-manifest-512x512">
+        <source>Web App Manifest 512x512 PNG</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.webmanifest" resname="site.configuration.webmanifest">
+        <source>Site Webmanifest</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.whatsapp.label" resname="site.configuration.whatsapp.label">
+        <source>Whatsapp</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.x.label" resname="site.configuration.x.label">
+        <source>X</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.xing.label" resname="site.configuration.xing.label">
+        <source>Xing</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.youtube.label" resname="site.configuration.youtube.label">
+        <source>YouTube</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.youtube.label" resname="site.configuration.youtube.label">
+        <source>YouTube</source>
+      </trans-unit>
+      <trans-unit id="slider.description" resname="slider.description">
+        <source>Container element for Slider</source>
+      </trans-unit>
+      <trans-unit id="slider.title" resname="slider.title">
+        <source>Slideshow</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_bg" resname="stage.tx_stage_bg">
+        <source>Stage background</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_bgcolor" resname="stage.tx_stage_bgcolor">
+        <source>Stage font and link color</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_bgcolor.I.0" resname="stage.tx_stage_bgcolor.I.0">
+        <source>Bright</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_bgcolor.I.1" resname="stage.tx_stage_bgcolor.I.1">
+        <source>Dark</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_bgcolor.description" resname="stage.tx_stage_bgcolor.description">
+        <source>Change font and link color from light to dark.</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_description" resname="stage.tx_stage_description">
+        <source>Inserts a stage module</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_file" resname="stage.tx_stage_file">
+        <source>Stage Image</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position" resname="stage.tx_stage_position">
+        <source>Stage text position</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position.I.0" resname="stage.tx_stage_position.I.0">
+        <source>Default</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position.I.1" resname="stage.tx_stage_position.I.1">
+        <source>Top</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position.I.2" resname="stage.tx_stage_position.I.2">
+        <source>Centered</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position.I.3" resname="stage.tx_stage_position.I.3">
+        <source>Bottom</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_position.description" resname="stage.tx_stage_position.description">
+        <source>Vertical stage text position</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_salutation.I.0" resname="stage.tx_stage_salutation.I.0">
+        <source>Hide</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_salutation.I.1" resname="stage.tx_stage_salutation.I.1">
+        <source>Show</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_switch" resname="stage.tx_stage_switch">
+        <source>Stage Type</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_switch_image" resname="stage.tx_stage_switch_image">
+        <source>Stage with image</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_switch_video" resname="stage.tx_stage_switch_video">
+        <source>Stage with video</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_textcolor.I.0" resname="stage.tx_stage_textcolor.I.0">
+        <source>Black</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_textcolor.I.1" resname="stage.tx_stage_textcolor.I.1">
+        <source>White</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_title" resname="stage.tx_stage_title">
+        <source>Stage</source>
+      </trans-unit>
+      <trans-unit id="stage.tx_stage_video" resname="stage.tx_stage_video">
+        <source>Stage Video</source>
+      </trans-unit>
+      <trans-unit id="sys_file_metadata.is_accessible.description" resname="sys_file_metadata.is_accessible.description">
+        <source>Please activate this option if the file (PDF) is accessible.</source>
+      </trans-unit>
+      <trans-unit id="sys_file_metadata.is_accessible.label" resname="sys_file_metadata.is_accessible.label">
+        <source>File is accessible</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.allow_download" resname="sys_file_reference.allow_download">
+        <source>Allow download</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.outline" resname="sys_file_reference.outline">
+        <source>Show Outline</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.tx_lang_code" resname="sys_file_reference.tx_lang_code">
+        <source>Language Code (srclang)</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.tx_track_kind" resname="sys_file_reference.tx_track_kind">
+        <source>Track Type (kind)</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.tx_track_kind.captions" resname="sys_file_reference.tx_track_kind.captions">
+        <source>Captions</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.tx_track_kind.subtitles" resname="sys_file_reference.tx_track_kind.subtitles">
+        <source>Subtitles</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.tx_track_kind.descriptions" resname="sys_file_reference.tx_track_kind.descriptions">
+        <source>Descriptions</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.tx_track_kind.chapters" resname="sys_file_reference.tx_track_kind.chapters">
+        <source>Chapters</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.tx_track_kind.metadata" resname="sys_file_reference.tx_track_kind.metadata">
+        <source>Metadata</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.palette.vttFilePalette" resname="sys_file_reference.palette.vttFilePalette">
+        <source>VTT File Settings</source>
+      </trans-unit>
+      <trans-unit id="sys_file_reference.tx_quality_label" resname="sys_file_reference.tx_quality_label">
+        <source>Quality Label</source>
+      </trans-unit>
+      <trans-unit id="tabs.description" resname="tabs.description">
+        <source>The content elements are accessible through tabs</source>
+      </trans-unit>
+      <trans-unit id="tabs.description.onload" resname="tabs.description.onload">
+        <source>Open a specific tab when loading</source>
+      </trans-unit>
+      <trans-unit id="tabs.label.onload" resname="tabs.label.onload">
+        <source>On load</source>
+      </trans-unit>
+      <trans-unit id="tabs.title" resname="tabs.title">
+        <source>Tabs</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.audio" resname="tt_content.CType.audio">
+        <source>Audio</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.div._gallery_" resname="tt_content.CType.div._gallery_">
+        <source>Gallery</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.div._images_" resname="tt_content.CType.div._images_">
+        <source>Pictures</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.div.video" resname="tt_content.CType.div.video">
+        <source>Multimedia</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.gallery" resname="tt_content.CType.gallery">
+        <source>Gallery</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.stage" resname="tt_content.CType.stage">
+        <source>Stage</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.video" resname="tt_content.CType.video">
+        <source>Video</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_columns" resname="tt_content.gallery_columns">
+        <source>Gallery columns</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_columns.description" resname="tt_content.gallery_columns.description">
+        <source>Select the number of columns the grid will be divided into.</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout" resname="tt_content.gallery_layout">
+        <source>Gallery layout</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout.I.0" resname="tt_content.gallery_layout.I.0">
+        <source>Single</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout.I.1" resname="tt_content.gallery_layout.I.1">
+        <source>Tiles</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout.I.2" resname="tt_content.gallery_layout.I.2">
+        <source>Slider</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout.I.3" resname="tt_content.gallery_layout.I.3">
+        <source>Thumbs</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_layout.description" resname="tt_content.gallery_layout.description">
+        <source>Single image, tiles or slider</source>
+      </trans-unit>
+      <trans-unit id="tt_content.header_position.inside" resname="tt_content.header_position.inside">
+        <source>Inside bodytext</source>
+      </trans-unit>
+      <trans-unit id="tt_content.header_position.inside.label" resname="tt_content.header_position.inside.label">
+        <source>Position</source>
+      </trans-unit>
+      <trans-unit id="tt_content.header_position.kicker.description" resname="tt_content.header_position.kicker.description">
+        <source>The kicker is part of the headline and is displayed as a chip above the headline.</source>
+      </trans-unit>
+      <trans-unit id="tt_content.header_position.kicker.label" resname="tt_content.header_position.kicker.label">
+        <source>Kicker</source>
+      </trans-unit>
+      <trans-unit id="tt_content.header_style" resname="tt_content.header_style">
+        <source>Style</source>
+      </trans-unit>
+      <trans-unit id="tt_content.header_style.default" resname="tt_content.header_style.default">
+        <source>Default</source>
+      </trans-unit>
+      <trans-unit id="tt_content.header_subpages" resname="tt_content.header_subpages">
+        <source>Headline layout</source>
+      </trans-unit>
+      <trans-unit id="tt_content.header_subpages.description" resname="tt_content.header_subpages.description">
+        <source>Set the heading depth of the teaser. The default is “H2”.</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_audio" resname="tt_content.tx_audio_audio">
+        <source>Audio (File)</source>
+      </trans-unit>
+      <!-- Audio Playback Options -->
+      <trans-unit id="tt_content.tx_audio_autoplay" resname="tt_content.tx_audio_autoplay">
+        <source>Autoplay</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_loop" resname="tt_content.tx_audio_loop">
+        <source>Loop</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_muted" resname="tt_content.tx_audio_muted">
+        <source>Muted</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_volume" resname="tt_content.tx_audio_volume">
+        <source>Volume (0-1)</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_playback_speed" resname="tt_content.tx_audio_playback_speed">
+        <source>Playback Speed</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_start_time" resname="tt_content.tx_audio_start_time">
+        <source>Start Time (seconds)</source>
+      </trans-unit>
+      <!-- Audio Controls -->
+      <trans-unit id="tt_content.tx_audio_controls" resname="tt_content.tx_audio_controls">
+        <source>Show Controls</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_speed_button" resname="tt_content.tx_audio_speed_button">
+        <source>Show Speed Button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_volume_control" resname="tt_content.tx_audio_volume_control">
+        <source>Show Volume Control</source>
+      </trans-unit>
+      <!-- Audio Caption Options -->
+      <trans-unit id="tt_content.tx_audio_captions" resname="tt_content.tx_audio_captions">
+        <source>Enable Captions</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_captions_default" resname="tt_content.tx_audio_captions_default">
+        <source>Show Captions by Default</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_captions_button" resname="tt_content.tx_audio_captions_button">
+        <source>Show Captions Button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_caption_style_button" resname="tt_content.tx_audio_caption_style_button">
+        <source>Show Caption Style Button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_caption_file" resname="tt_content.tx_audio_caption_file">
+        <source>Caption Files (VTT)</source>
+      </trans-unit>
+      <!-- Audio Transcript -->
+      <trans-unit id="tt_content.tx_audio_transcript" resname="tt_content.tx_audio_transcript">
+        <source>Enable Transcript</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_transcript_button" resname="tt_content.tx_audio_transcript_button">
+        <source>Show Transcript Button</source>
+      </trans-unit>
+      <!-- Audio Accessibility -->
+      <trans-unit id="tt_content.tx_audio_keyboard" resname="tt_content.tx_audio_keyboard">
+        <source>Enable Keyboard Shortcuts</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_screen_reader" resname="tt_content.tx_audio_screen_reader">
+        <source>Enable Screen Reader Announcements</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_audio_language" resname="tt_content.tx_audio_language">
+        <source>Player Language</source>
+      </trans-unit>
+      <!-- Audio Tabs -->
+      <trans-unit id="tt_content.tabs.audio" resname="tt_content.tabs.audio">
+        <source>Audio</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio_playback" resname="tt_content.tabs.audio_playback">
+        <source>Playback Options</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio_controls" resname="tt_content.tabs.audio_controls">
+        <source>Controls</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio_captions" resname="tt_content.tabs.audio_captions">
+        <source>Captions</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio_transcript" resname="tt_content.tabs.audio_transcript">
+        <source>Transcript</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.audio_accessibility" resname="tt_content.tabs.audio_accessibility">
+        <source>Accessibility</source>
+      </trans-unit>
+      <!-- Audio Palettes -->
+      <trans-unit id="tt_content.palettes.audio_config" resname="tt_content.palettes.audio_config">
+        <source>Audio Configuration</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_playback" resname="tt_content.palettes.audio_playback">
+        <source>Playback Settings</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_controls" resname="tt_content.palettes.audio_controls">
+        <source>Control Buttons</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_captions_settings" resname="tt_content.palettes.audio_captions_settings">
+        <source>Caption Settings</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_transcript_settings" resname="tt_content.palettes.audio_transcript_settings">
+        <source>Transcript Settings</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.audio_accessibility" resname="tt_content.palettes.audio_accessibility">
+        <source>Accessibility Settings</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link" resname="tt_content.tx_link">
+        <source>Link</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout" resname="tt_content.tx_link_layout">
+        <source>Link layout</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.0" resname="tt_content.tx_link_layout.I.0">
+        <source>Primary button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.1" resname="tt_content.tx_link_layout.I.1">
+        <source>Secondary button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.2" resname="tt_content.tx_link_layout.I.2">
+        <source>Tertiary button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.3" resname="tt_content.tx_link_layout.I.3">
+        <source>Quaternary button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.4" resname="tt_content.tx_link_layout.I.4">
+        <source>Internal link</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.5" resname="tt_content.tx_link_layout.I.5">
+        <source>External link</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_layout.I.6" resname="tt_content.tx_link_layout.I.6">
+        <source>Download</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_position" resname="tt_content.tx_link_position">
+        <source>Link position</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_position.I.0" resname="tt_content.tx_link_position.I.0">
+        <source>Middle</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_position.I.1" resname="tt_content.tx_link_position.I.1">
+        <source>Left</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_position.I.2" resname="tt_content.tx_link_position.I.2">
+        <source>Right</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_switch" resname="tt_content.tx_link_switch">
+        <source>Show link in teaser</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_switch.description" resname="tt_content.tx_link_switch.description">
+        <source>When activated, an additional link text or button is displayed, which can be given various link or button styles. Default: Internal link “Read more”</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_text" resname="tt_content.tx_link_text">
+        <source>Link text</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_stage" resname="tt_content.tx_stage">
+        <source>Stage</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video" resname="tt_content.tx_video">
+        <source>Video</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_caption" resname="tt_content.tx_video_caption">
+        <source>Caption</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_poster_image" resname="tt_content.tx_video_poster_image">
+        <source>Poster Image</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_video" resname="tt_content.tx_video_video">
+        <source>Video (File)</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_videourl" resname="tt_content.tx_video_videourl">
+        <source>YouTube video url</source>
+      </trans-unit>
+      <!-- Video Playback Options -->
+      <trans-unit id="tt_content.tx_video_autoplay" resname="tt_content.tx_video_autoplay">
+        <source>Autoplay</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_loop" resname="tt_content.tx_video_loop">
+        <source>Loop</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_muted" resname="tt_content.tx_video_muted">
+        <source>Muted</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_volume" resname="tt_content.tx_video_volume">
+        <source>Volume (0-1)</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_playback_speed" resname="tt_content.tx_video_playback_speed">
+        <source>Playback Speed</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_start_time" resname="tt_content.tx_video_start_time">
+        <source>Start Time (seconds)</source>
+      </trans-unit>
+      <!-- Video Controls -->
+      <trans-unit id="tt_content.tx_video_controls" resname="tt_content.tx_video_controls">
+        <source>Show Controls</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_speed_button" resname="tt_content.tx_video_speed_button">
+        <source>Show Speed Button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_volume_control" resname="tt_content.tx_video_volume_control">
+        <source>Show Volume Control</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_fullscreen_button" resname="tt_content.tx_video_fullscreen_button">
+        <source>Show Fullscreen Button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_pip_button" resname="tt_content.tx_video_pip_button">
+        <source>Show Picture-in-Picture Button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_chapters_button" resname="tt_content.tx_video_chapters_button">
+        <source>Show Chapters Button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_quality_button" resname="tt_content.tx_video_quality_button">
+        <source>Show Quality Button</source>
+      </trans-unit>
+      <!-- Video Caption Options -->
+      <trans-unit id="tt_content.tx_video_captions" resname="tt_content.tx_video_captions">
+        <source>Enable Captions</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_captions_default" resname="tt_content.tx_video_captions_default">
+        <source>Show Captions by Default</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_captions_button" resname="tt_content.tx_video_captions_button">
+        <source>Show Captions Button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_caption_style_button" resname="tt_content.tx_video_caption_style_button">
+        <source>Show Caption Style Button</source>
+      </trans-unit>
+      <!-- Video Transcript -->
+      <trans-unit id="tt_content.tx_video_transcript" resname="tt_content.tx_video_transcript">
+        <source>Enable Transcript</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_transcript_button" resname="tt_content.tx_video_transcript_button">
+        <source>Show Transcript Button</source>
+      </trans-unit>
+      <!-- Video Audio Description -->
+      <trans-unit id="tt_content.tx_video_audio_description_src" resname="tt_content.tx_video_audio_description_src">
+        <source>Audio Described Version (Video File)</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_audio_description_button" resname="tt_content.tx_video_audio_description_button">
+        <source>Show Audio Description Button</source>
+      </trans-unit>
+      <!-- Video Sign Language -->
+      <trans-unit id="tt_content.tx_video_sign_language_src" resname="tt_content.tx_video_sign_language_src">
+        <source>Sign Language Video (Video File)</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_sign_language_button" resname="tt_content.tx_video_sign_language_button">
+        <source>Show Sign Language Button</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_sign_language_position" resname="tt_content.tx_video_sign_language_position">
+        <source>Sign Language Overlay Position</source>
+      </trans-unit>
+      <!-- Video Accessibility -->
+      <trans-unit id="tt_content.tx_video_keyboard" resname="tt_content.tx_video_keyboard">
+        <source>Enable Keyboard Shortcuts</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_screen_reader" resname="tt_content.tx_video_screen_reader">
+        <source>Enable Screen Reader Announcements</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_video_language" resname="tt_content.tx_video_language">
+        <source>Player Language</source>
+      </trans-unit>
+      <!-- Video Tabs -->
+      <trans-unit id="tt_content.tabs.video" resname="tt_content.tabs.video">
+        <source>Video</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_playback" resname="tt_content.tabs.video_playback">
+        <source>Playback Options</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_controls" resname="tt_content.tabs.video_controls">
+        <source>Controls</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_captions" resname="tt_content.tabs.video_captions">
+        <source>Captions</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_transcript" resname="tt_content.tabs.video_transcript">
+        <source>Transcript</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_audio_description" resname="tt_content.tabs.video_audio_description">
+        <source>Audio Description</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_sign_language" resname="tt_content.tabs.video_sign_language">
+        <source>Sign Language</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tabs.video_accessibility" resname="tt_content.tabs.video_accessibility">
+        <source>Accessibility</source>
+      </trans-unit>
+      <!-- Video Palettes -->
+      <trans-unit id="tt_content.palettes.video_config" resname="tt_content.palettes.video_config">
+        <source>Video Configuration</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_playback" resname="tt_content.palettes.video_playback">
+        <source>Playback Settings</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_controls" resname="tt_content.palettes.video_controls">
+        <source>Control Buttons</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_captions_settings" resname="tt_content.palettes.video_captions_settings">
+        <source>Caption Settings</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_transcript_settings" resname="tt_content.palettes.video_transcript_settings">
+        <source>Transcript Settings</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_audio_description" resname="tt_content.palettes.video_audio_description">
+        <source>Audio Description</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_sign_language" resname="tt_content.palettes.video_sign_language">
+        <source>Sign Language Overlay</source>
+      </trans-unit>
+      <trans-unit id="tt_content.palettes.video_accessibility" resname="tt_content.palettes.video_accessibility">
+        <source>Accessibility Settings</source>
+      </trans-unit>
+      <trans-unit id="video.video_description" resname="video.video_description">
+        <source>Puts a local or external YouTube video on the page</source>
+      </trans-unit>
+      <trans-unit id="video.video_title" resname="video.video_title">
+        <source>Video</source>
+      </trans-unit>
+      <trans-unit id="with_frame" resname="with_frame">
+        <source>With frame</source>
+      </trans-unit>
+      <trans-unit id="without_frame" resname="without_frame">
+        <source>Without frame</source>
+      </trans-unit>
+      <!-- Vue TodoList Plugin -->
+      <trans-unit id="typo3vitedemo_todolist">
+        <source>Vue: TodoList</source>
+      </trans-unit>
+      <trans-unit id="typo3vitedemo_todolist.name">
+        <source>Vue: TodoList</source>
+      </trans-unit>
+      <trans-unit id="typo3vitedemo_todolist.description">
+        <source>Interactive to-do list built with Vue 3. Add, complete, and manage tasks with filtering and session storage.</source>
+      </trans-unit>
+      <!-- FlexForm Labels -->
+      <trans-unit id="flexform.todolist.tab.settings">
+        <source>TodoList Settings</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.settings">
+        <source>General Settings</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.appearance">
+        <source>Appearance</source>
+      </trans-unit>
+      <!-- Feature Toggles -->
+      <trans-unit id="flexform.todolist.showDeleteButton">
+        <source>Show Delete Button</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showDeleteButton.enable">
+        <source>Enable delete button for individual tasks</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showFilter">
+        <source>Show Filter Buttons</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showFilter.enable">
+        <source>Enable filter buttons (All/Active/Completed)</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showClearCompleted">
+        <source>Show Clear Completed Button</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.showClearCompleted.enable">
+        <source>Enable button to clear all completed tasks</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.maxItems">
+        <source>Maximum Items</source>
+      </trans-unit>
+      <!-- Pre-populated Items -->
+      <trans-unit id="flexform.todolist.predefinedItems">
+        <source>Pre-populated Tasks</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.predefinedItems.description">
+        <source>Enter one task per line. These tasks will appear when the to-do list is first loaded (if session storage is empty).</source>
+      </trans-unit>
+      <!-- Appearance -->
+      <trans-unit id="flexform.todolist.cardTitle">
+        <source>Card Title</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme">
+        <source>Color Scheme</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme.primary">
+        <source>Primary (Blue)</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme.success">
+        <source>Success (Green)</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme.info">
+        <source>Info (Cyan)</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme.warning">
+        <source>Warning (Yellow)</source>
+      </trans-unit>
+      <trans-unit id="flexform.todolist.colorScheme.danger">
+        <source>Danger (Red)</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

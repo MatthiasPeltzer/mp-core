@@ -1,0 +1,22 @@
+@include font-face("Turretroad", "../Fonts/turretroad-bold-webfont", 700, normal, woff2, swap);
+@include font-face("OpenSans", "../Fonts/opensans-regular-webfont", 400, normal, woff2, swap);
+@include font-face("OpenSans", "../Fonts/opensans-italic-webfont", 400, italic, woff2, swap);
+@include font-face("OpenSans", "../Fonts/opensans-bold-webfont", 700, normal, woff2, swap);
+@include font-face("OpenSans", "../Fonts/opensans-bolditalic-webfont", 700, italic, woff2, swap);
+
+%turretroad {
+  font-family: Turretroad, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+%opensansweb {
+  font-family: OpenSans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+// mixins for including in @media contexts
+@mixin turretroad {
+  font-family: Turretroad, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@mixin opensansweb {
+  font-family: OpenSans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

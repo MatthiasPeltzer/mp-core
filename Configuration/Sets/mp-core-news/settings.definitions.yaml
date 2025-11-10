@@ -1,0 +1,93 @@
+categories:
+  MPCoreNews:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreNews.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreNews.description'
+
+settings:
+  # News List Settings
+  news.list.paginate.itemsPerPage:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.paginate.itemsPerPage.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.paginate.itemsPerPage.form.description'
+    category: MPCoreNews
+    type: int
+    default: 10
+  
+  news.list.orderBy:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.orderBy.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.orderBy.form.description'
+    category: MPCoreNews
+    type: string
+    default: 'datetime'
+  
+  news.list.orderDirection:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.orderDirection.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.orderDirection.form.description'
+    category: MPCoreNews
+    type: string
+    default: 'desc'
+  
+  news.list.dateFormat:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.dateFormat.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.dateFormat.form.description'
+    category: MPCoreNews
+    type: string
+    default: 'd.m.Y'
+  
+  news.list.showCategories:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.showCategories.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.showCategories.form.description'
+    category: MPCoreNews
+    type: bool
+    default: true
+  
+  news.list.showTags:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.showTags.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.list.showTags.form.description'
+    category: MPCoreNews
+    type: bool
+    default: true
+  
+  # News Detail Settings
+  news.detail.showBackLink:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.detail.showBackLink.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.detail.showBackLink.form.description'
+    category: MPCoreNews
+    type: bool
+    default: true
+  
+  news.detail.showRelated:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.detail.showRelated.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.detail.showRelated.form.description'
+    category: MPCoreNews
+    type: bool
+    default: true
+  
+  news.detail.relatedLimit:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.detail.relatedLimit.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.detail.relatedLimit.form.description'
+    category: MPCoreNews
+    type: int
+    default: 3
+  
+  news.detail.enableComments:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.detail.enableComments.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.detail.enableComments.form.description'
+    category: MPCoreNews
+    type: bool
+    default: false
+  
+  # News Image Settings
+  news.media.maxWidth:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.media.maxWidth.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.media.maxWidth.form.description'
+    category: MPCoreNews
+    type: int
+    default: 1200
+  
+  news.media.maxHeight:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.media.maxHeight.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:news.media.maxHeight.form.description'
+    category: MPCoreNews
+    type: int
+    default: 800
+

@@ -1,0 +1,25 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<article class="d-flex align-content-start teaser bg{data.grid_bgcolor}{f:if(condition:'{data.imageorient} == 0', then:' textpic topcenter flex-wrap')}{f:if(condition:'{data.imageorient} == 25', then:' textpic nexttotext-right d-md-flex')}{f:if(condition:'{data.imageorient} == 26', then:' textpic nexttotext-left d-lg-flex')} frame frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}" id="c{data.uid}">
+    <div class="order-1 teaser-content ce-bodytext{f:if(condition: newsItem.istopnews, then: ' topnews')}">
+        <f:if condition="{data.header}">
+            <f:render arguments="{_all}" partial="Header/All"/>
+        </f:if>
+        <f:if condition="{data.bodytext}">
+            <f:format.html>{data.bodytext}</f:format.html>
+        </f:if>
+        <f:if condition="{data.tx_link_text} && {data.tx_link_switch}">
+            <p class="{data.tx_link_layout} teaser-link">
+                <span class="icon"></span>
+                <span>{data.tx_link_text}</span>
+            </p>
+        </f:if>
+    </div>
+    <div class="order-0 ce-gallery">
+        <f:if condition="{files}">
+            <f:for as="file" each="{files}">
+                <f:render arguments="{_all}" partial="Media/Rendering/ImageTeaser"/>
+            </f:for>
+        </f:if>
+    </div>
+</article>
+</html>

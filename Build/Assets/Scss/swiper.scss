@@ -1,0 +1,14 @@
+// Mixins
+@import "Mixins/mixins";
+// Configuration
+@import "Base/font-sizes";
+@import "~bootstrap/scss/functions";
+@import "Base/Bootstrap/custom-variables";
+@import "~bootstrap/scss/variables";
+@import "Base/Bootstrap/custom-variables-dark";
+@import "~bootstrap/scss/variables-dark";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+// Templates
+@import "Modules/Swiper/swiper";

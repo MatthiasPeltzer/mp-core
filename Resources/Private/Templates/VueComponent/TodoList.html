@@ -1,0 +1,24 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="VueComponent" />
+
+<f:section name="Main">
+  <div class="vue-component-wrapper">
+      <div
+          data-container="vue"
+          data-component="TodoList"
+          data-show-delete="{settings.settings.showDeleteButton}"
+          data-show-filter="{settings.settings.showFilter}"
+          data-show-clear="{settings.settings.showClearCompleted}"
+          data-max-items="{settings.settings.maxItems}"
+          data-card-title="{settings.settings.cardTitle}"
+          data-color-scheme="{settings.settings.colorScheme}"
+          data-predefined-items="{settings.settings.predefinedItems}"
+      ></div>
+  </div>
+  <f:asset.css identifier="vueCSS" href="EXT:mp_core/Resources/Public/StyleSheets/vue.css"/>
+  <f:asset.script additionalAttributes="{'type': 'module'}" async="async" identifier="vueJS" src="EXT:mp_core/Resources/Public/JavaScripts/vue.js"/>
+</f:section>
+
+</html>
+

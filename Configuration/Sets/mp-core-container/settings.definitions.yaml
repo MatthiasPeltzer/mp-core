@@ -1,0 +1,87 @@
+categories:
+  MPCoreContainer:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreContainer.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreContainer.description'
+
+settings:
+  # Container Grid Settings
+  container.grid.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.grid.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.grid.enabled.form.description'
+    category: MPCoreContainer
+    type: bool
+    default: true
+  
+  container.grid.defaultColumns:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.grid.defaultColumns.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.grid.defaultColumns.form.description'
+    category: MPCoreContainer
+    type: int
+    default: 2
+  
+  container.grid.maxColumns:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.grid.maxColumns.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.grid.maxColumns.form.description'
+    category: MPCoreContainer
+    type: int
+    default: 4
+  
+  container.grid.gutterSize:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.grid.gutterSize.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.grid.gutterSize.form.description'
+    category: MPCoreContainer
+    type: string
+    default: '20px'
+  
+  # Container Accordion Settings
+  container.accordion.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.accordion.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.accordion.enabled.form.description'
+    category: MPCoreContainer
+    type: bool
+    default: true
+  
+  container.accordion.allowMultiple:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.accordion.allowMultiple.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.accordion.allowMultiple.form.description'
+    category: MPCoreContainer
+    type: bool
+    default: false
+  
+  container.accordion.firstOpen:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.accordion.firstOpen.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.accordion.firstOpen.form.description'
+    category: MPCoreContainer
+    type: bool
+    default: true
+  
+  # Container Tab Settings
+  container.tabs.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.tabs.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.tabs.enabled.form.description'
+    category: MPCoreContainer
+    type: bool
+    default: true
+  
+  container.tabs.position:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.tabs.position.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.tabs.position.form.description'
+    category: MPCoreContainer
+    type: string
+    default: 'top'
+  
+  # Container Wrapper Settings
+  container.wrapper.maxWidth:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.wrapper.maxWidth.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.wrapper.maxWidth.form.description'
+    category: MPCoreContainer
+    type: string
+    default: '1200px'
+  
+  container.wrapper.padding:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.wrapper.padding.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:container.wrapper.padding.form.description'
+    category: MPCoreContainer
+    type: string
+    default: '15px'
+

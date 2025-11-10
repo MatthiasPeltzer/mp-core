@@ -1,0 +1,38 @@
+<html data-namespace-typo3-fluid="true" lang="en" xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
+
+<n:excludeDisplayedNews newsItem="{newsItem}"/>
+
+<li class="news-list-item">
+    <article class="row teaser pt-2 pb-2">
+        <div class="col-12 col-md-8 order-1 pt-0{f:if(condition: newsItem.istopnews, then: ' topnews')}">
+            <header>
+                <h2 class="lh-1"><span>{newsItem.title}</span></h2>
+                <f:render arguments="{settings:settings,newsItem:newsItem}" partial="General/AdditionalInformation"/>
+            </header>
+            <n:removeMediaTags>
+                <f:if condition="{newsItem.teaser}">
+                    <f:then>
+                        {newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}
+                    </f:then>
+                    <f:else>
+                        {newsItem.bodytext -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}
+                    </f:else>
+                </f:if>
+            </n:removeMediaTags>
+            <n:link class="internal-link stretched-link teaser-link" newsItem="{newsItem}" settings="{settings}">
+                <span class="icon"></span> <span aria-hidden="true"><f:translate key="more-link"/><span class="visually-hidden">:</span></span>
+                <span class="visually-hidden">{newsItem.title}</span>
+            </n:link>
+        </div>
+        <f:if condition="{newsItem.mediaPreviews}">
+            <div class="col-12 col-md-4 order-0">
+                <f:alias map="{mpc:format.json.decode(json: newsItem.mediaPreviews.0.originalResource.properties.crop)}">
+                    <picture data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+                        <f:image alt="{newsItem.mediaPreviews.0.originalResource.originalFile.properties.alternative}" class="figure-img img-fluid rounded" cropVariant="default" decoding="async" fileExtension="webp" height="{f:if(condition: settings.list.media.image.maxHeight, then: settings.list.media.image.maxHeight, else:'')}" loading="lazy" maxWidth="{settings.list.media.image.maxWidth}" src="{newsItem.mediaPreviews.0.originalResource.properties.uid}" treatIdAsReference="1" width="{f:if(condition: settings.list.media.image.maxWidth, then: settings.list.media.image.maxWidth, else: settings.list.media.image.width)}"/>
+                    </picture>
+                </f:alias>
+            </div>
+        </f:if>
+    </article>
+</li>
+</html>

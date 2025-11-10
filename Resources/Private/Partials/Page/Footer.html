@@ -1,0 +1,39 @@
+<html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:variable name="langVar">
+    <f:for as="langText" each="{site.configuration.languages}" iteration="langCount">
+        <f:if condition="{langCount.index} == {data.sys_language_uid} && {langText.copyrightText}">
+            {langText.copyrightText}
+        </f:if>
+    </f:for>
+</f:variable>
+
+<footer class="footer pt-4 pb-4" aria-label="{f:translate(key: 'footer.info', extensionName: 'mp_core')}">
+    <div class="container">
+        <f:if condition="{site.configuration.socialMediaSwitch} == 1">
+            <f:render arguments="{_all}" partial="Footer.SocialMedia"/>
+            <hr aria-hidden="true">
+        </f:if>
+        <f:render arguments="{metaNavFooter: metaNavFooter}" partial="Navigation/MetaNavFooter"/>
+        <f:if condition="{copyright}">
+            <p class="copyright text-center pt-3 pb-3">
+                <f:if condition="{langVar -> f:format.trim()} != ''">
+                    <f:then>
+                        © {langVar} {copyright}
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{site.configuration.copyrightText}">
+                            <f:then>
+                                © {site.configuration.copyrightText} {copyright}
+                            </f:then>
+                            <f:else>
+                                © {site.configuration.websiteTitle} {copyright}
+                            </f:else>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </p>
+        </f:if>
+    </div>
+</footer>
+</html>

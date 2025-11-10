@@ -1,0 +1,75 @@
+mod.wizards.newContentElement.wizardItems.common {
+  elements {
+    singleteaser {
+      iconIdentifier = tx_singleteaser
+      title = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:singleteaser.title
+      description = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:singleteaser.description
+      tt_content_defValues {
+        CType = singleteaser
+      }
+    }
+  }
+
+  show := addToList(singleteaser)
+}
+
+TCEFORM {
+  tt_content {
+    tx_link_layout {
+      types {
+        singleteaser {
+          disabled = 0
+        }
+      }
+    }
+
+    tx_link_position {
+      types {
+        singleteaser {
+          disabled = 0
+        }
+      }
+    }
+
+    tx_header_style {
+      types {
+        singleteaser {
+          disabled = 0
+        }
+      }
+    }
+
+    frame_class {
+      types {
+        singleteaser {
+          disabled = 1
+        }
+      }
+    }
+
+    tx_header_inside {
+      types {
+        singleteaser {
+          disabled = 1
+        }
+      }
+    }
+
+    header_position {
+      types {
+        singleteaser {
+          disabled = 0
+        }
+      }
+    }
+
+    imageorient {
+      types {
+        singleteaser {
+          #remove 25 and 26 to get the left right option
+          removeItems = 1,2,8,9,10,17,18
+        }
+      }
+    }
+  }
+}

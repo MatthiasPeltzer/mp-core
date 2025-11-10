@@ -1,0 +1,7 @@
+mod.web_layout {
+  tt_content {
+    preview {
+      video = EXT:mp_core/Resources/Private/Backend/Templates/Content/Video.html
+    }
+  }
+}

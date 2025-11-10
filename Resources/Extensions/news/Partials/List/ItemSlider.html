@@ -1,0 +1,80 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<n:excludeDisplayedNews newsItem="{newsItem}"/>
+
+<f:if condition="{iterator.total} > 1">
+    <f:then>
+        <li class="news-list-item">
+    </f:then>
+    <f:else>
+        <div class="news-list-item">
+    </f:else>
+</f:if>
+<article class="news-inner{f:if(condition: newsItem.istopnews, then: ' topnews')}">
+    <div class="news-inner-wrapper row">
+        <f:if condition="{newsItem.istopnews}">
+            <f:then>
+                <div class="box">
+                    <div class="ribbon"><span>Topp</span></div>
+                </div>
+            </f:then>
+        </f:if>
+        <div class="col-md-5">
+            <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                <f:if condition="{newsItem.mediaPreviews}">
+                    <f:then>
+                        <f:alias map="{mpc:format.json.decode(json: newsItem.mediaPreviews.0.originalResource.properties.crop)}">
+                            <picture data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
+                                <f:image src="{newsItem.mediaPreviews.0.originalResource.properties.uid}" maxWidth="575" cropVariant="default" fileExtension="webp" treatIdAsReference="1" class="figure-img img-fluid rounded" loading="lazy" decoding="async"/>
+                            </picture>
+                        </f:alias>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{settings.displayDummyIfNoMedia}">
+                            <f:image class="img-dummy figure-img img-fluid rounded" src="{settings.list.media.dummyImage}" alt="{mediaElement.originalResource.title}" fileExtension="webp" maxWidth="{settings.list.media.image.maxWidth}" maxHeight="{settings.list.media.image.maxHeight}"/>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </n:link>
+        </div>
+
+        <div class="col-md-7">
+            <div class="news-bg">
+                <h2>
+                    <n:link newsItem="{newsItem}" settings="{settings}">
+                        {newsItem.title}
+                    </n:link>
+                </h2>
+
+                <p class="lead">
+                    <n:removeMediaTags>
+                        <f:if condition="{newsItem.teaser}">
+                            <f:then>
+                                {newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.raw()}
+                            </f:then>
+                            <f:else>
+                                {newsItem.bodytext -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.raw()}
+                            </f:else>
+                        </f:if>
+                    </n:removeMediaTags>
+                </p>
+
+                <n:link newsItem="{newsItem}" settings="{settings}" class="internal-link" title="{newsItem.title}">
+                    <f:translate key="more-link"/>
+                </n:link>
+            </div>
+        </div>
+    </div>
+</article>
+<f:if condition="{iterator.total} > 1">
+    <f:then>
+        </li>
+    </f:then>
+    <f:else>
+        </div>
+    </f:else>
+</f:if>
+</html>

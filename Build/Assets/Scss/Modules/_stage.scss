@@ -1,0 +1,129 @@
+// stage
+
+.stage {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+
+  &-image {
+    order: 0;
+    width: 100%;
+
+    img {
+      max-width: none;
+      width: 100%;
+    }
+  }
+
+  &-link {
+    margin-top: revert;
+  }
+
+  &-content-wrapper {
+    align-items: center;
+    display: flex;
+    order: 1;
+    padding: 32px 16px;
+    position: relative;
+
+    @include media-breakpoint-up(sm) {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    .stage-top & {
+      align-items: flex-start;
+    }
+
+    .stage-middle & {
+      align-items: center;
+    }
+
+    .stage-bottom & {
+      align-items: flex-end;
+    }
+
+    &.btn-left {
+      justify-content: flex-start;
+    }
+
+    &.btn-center {
+      justify-content: center;
+    }
+
+    &.btn-right {
+      justify-content: flex-end;
+    }
+  }
+
+  &-content {
+    border-radius: var(--bs-border-radius);
+    box-shadow: rgb(0 0 0 / 25%) 0 4px 8px -2px, rgb(0 0 0 / 8%) 0 0 0 1px;
+    height: auto;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+
+    &.teaser-active {
+      box-shadow: none;
+      outline: none;
+
+      .teaser-content {
+        box-shadow: rgb(9 30 66 / 25%) 0 4px 8px -2px, rgb(9 30 66 / 8%) 0 0 0 1px;
+        outline: 1px solid var(--bs-body-color);
+        outline-offset: -1px;
+      }
+    }
+
+    .teaser-content {
+      border-radius: var(--bs-border-radius);
+      display: inline-block;
+      max-width: none;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        span {
+          background-color: var(--bs-primary);
+          background-image: linear-gradient(0deg, var(--bs-primary) 40%, transparent 0);
+          border-radius: var(--bs-border-radius);
+          color: var(--bs-white);
+          display: inline;
+          padding: 4px 8px;
+
+          @include font-size(48px);
+        }
+      }
+
+      .lead {
+        border-radius: var(--bs-border-radius);
+        color: var(--bs-body-color);
+        display: inline;
+        padding: 4px 8px;
+      }
+
+      + .stage-link {
+        margin-bottom: -56px !important;
+      }
+    }
+  }
+
+  .overlay {
+    background: linear-gradient(to bottom, transparent 0%, var(--bs-body-bg) 100%);
+    bottom: -1px;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+}

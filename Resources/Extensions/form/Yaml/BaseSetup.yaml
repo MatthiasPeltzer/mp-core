@@ -1,0 +1,56 @@
+TYPO3:
+  CMS:
+    Form:
+      persistenceManager:
+        allowedFileMounts:
+          10: '1:/form_definitions/'
+          20: '2:/formupload/'
+        allowedExtensionPaths:
+          10: 'EXT:mp_core/Resources/Extensions/form/Forms/'
+        allowSaveToExtensionPaths: true
+        allowDeleteFromExtensionPaths: true
+      prototypes:
+        standard:
+          finishersDefinition:
+            EmailToReceiver:
+              options:
+                templateRootPaths:
+                  101: 'EXT:mp_core/Resources/Extensions/form/Frontend/Templates/Finishers/Email/'
+            EmailToSender:
+              options:
+                templateRootPaths:
+                  101: 'EXT:mp_core/Resources/Extensions/form/Frontend/Templates/Finishers/Email/'
+          formElementsDefinition:
+            FileUpload:
+              formEditor:
+                predefinedDefaults:
+                  properties:
+                    saveToFileMount: '2:/formupload/'
+                editors:
+                  400:
+                    selectOptions:
+                      10:
+                        value: '2:/formupload/'
+                        label: '2:/formupload/'
+              properties:
+                saveToFileMount: '2:/formupload/'
+            ImageUpload:
+              formEditor:
+                predefinedDefaults:
+                  properties:
+                    saveToFileMount: '2:/formupload/'
+                editors:
+                  400:
+                    selectOptions:
+                      10:
+                        value: '2:/formupload/'
+                        label: '2:/formupload/'
+            Form:
+              renderingOptions:
+                templateVariant: version2
+                templateRootPaths:
+                  200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Templates/'
+                partialRootPaths:
+                  200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Partials/'
+                layoutRootPaths:
+                  200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Layouts/'

@@ -1,0 +1,93 @@
+// headlines
+
+.header-text {
+  @extend %turretroad;
+  letter-spacing: -2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  position: relative;
+  text-shadow: var(--bs-secondary) 1px 1px 1px;
+  top: -1px;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  @extend %turretroad;
+  letter-spacing: -2px;
+
+  .ce-uploads & {
+    @extend %opensansweb;
+    @include font-size($fs-md);
+    letter-spacing: normal;
+  }
+
+  &.accordion-header {
+    @include font-size($fs-3xl);
+
+    a {
+      @include font-size($fs-3xl);
+    }
+  }
+}
+
+.h4,
+.h5,
+.h6 {
+  @extend %opensansweb;
+  letter-spacing: normal;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
+  > span:not(.kicker) {
+    display: block;
+    width: 100%;
+  }
+
+  .supplement & {
+    @extend %opensansweb;
+    letter-spacing: normal;
+  }
+}
+
+.kicker {
+  @extend %opensansweb;
+  background-color: var(--bs-primary);
+  border-radius: 20px;
+  color: var(--bs-white);
+  display: inline-block;
+
+  @include font-size($fs-xs-plus);
+  font-weight: 700;
+  letter-spacing: normal;
+  line-height: 1;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+}
+
+.main-category {
+  border-radius: var(--bs-border-radius);
+  display: inline-block;
+  left: -10px;
+  padding: 4px 8px;
+  position: relative;
+  top: -6px;
+}

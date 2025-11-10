@@ -1,0 +1,4 @@
+**/*.html
+**/*.php
+Build/Assets/Scss/Base/Bootstrap/Original/_variables.scss
+Build/Assets/Scss/Base/Bootstrap/Original/_variables-dark.scss

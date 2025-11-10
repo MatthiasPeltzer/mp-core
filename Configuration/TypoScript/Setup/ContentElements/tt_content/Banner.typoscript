@@ -1,0 +1,28 @@
+tt_content {
+  banner = FLUIDTEMPLATE
+
+  banner {
+    partialRootPaths {
+      200 = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/
+    }
+
+    templateRootPaths {
+      200 = EXT:mp_core/Resources/Private/Templates/Content/
+    }
+
+    templateName = Banner
+
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      10 {
+        if.isTrue.field = image
+        references {
+          fieldName = image
+          table = tt_content
+        }
+
+        as = files
+      }
+    }
+  }
+}

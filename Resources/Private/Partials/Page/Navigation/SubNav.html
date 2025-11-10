@@ -1,0 +1,82 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:if condition="{menuSub}">
+    <nav aria-label="{f:translate(key: 'supplement.areamenu', extensionName: 'mp_core')}" class="d-none d-lg-block">
+        <ul class="nav flex-column hidden-md-down" id="subnav">
+            <f:for as="mainItem" each="{menuSub}" iteration="i">
+                <li class="nav-item mb-1">
+                    <f:if condition="{mainItem.current}">
+                        <f:then>
+                            <f:link.typolink
+                                parameter="{mainItem.link}"
+                                target="{mainItem.data.target}"
+                                title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+                                class="nav-link{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.hasSubpages, then:' sub')}{f:if(condition: mainItem.data.target, then:' external-link')}"
+                                additionalAttributes="{'aria-current': 'page'}">
+                                <f:if condition="{mainItem.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+                                {mainItem.title}
+                            </f:link.typolink>
+                        </f:then>
+                        <f:else>
+                            <f:link.typolink
+                                parameter="{mainItem.link}"
+                                target="{mainItem.data.target}"
+                                title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+                                class="nav-link{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.hasSubpages, then:' sub')}{f:if(condition: mainItem.data.target, then:' external-link')}">
+                                <f:if condition="{mainItem.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+                                {mainItem.title}
+                            </f:link.typolink>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{mainItem.children} && {mainItem.active}">
+                        <ul class="nav flex-column ps-2">
+                            <f:for as="mainChild" each="{mainItem.children}">
+                                <f:render arguments="{mainChild: mainChild}" section="submenu"/>
+                            </f:for>
+                        </ul>
+                    </f:if>
+                </li>
+            </f:for>
+        </ul>
+    </nav>
+</f:if>
+
+<f:section name="submenu">
+    <li class="nav-item">
+        <f:if condition="{mainChild.current}">
+            <f:then>
+                <f:link.typolink
+                    parameter="{mainChild.link}"
+                    target="{mainChild.data.target}"
+                    title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+                    class="nav-link{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.hasSubpages, then:' sub')}{f:if(condition: mainChild.data.target, then:' external-link')}"
+                    additionalAttributes="{'aria-current': 'page'}">
+                    <f:if condition="{mainChild.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+                    {mainChild.title}
+                </f:link.typolink>
+            </f:then>
+            <f:else>
+                <f:link.typolink
+                    parameter="{mainChild.link}"
+                    target="{mainChild.data.target}"
+                    title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+                    class="nav-link{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.hasSubpages, then:' sub')}{f:if(condition: mainChild.data.target, then:' external-link')}">
+                    <f:if condition="{mainChild.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+                    {mainChild.title}
+                </f:link.typolink>
+            </f:else>
+        </f:if>
+        <f:if condition="{mainChild.children}">
+            <ul class="list-unstyled ps-3">
+                <f:for as="mainChild" each="{mainChild.children}" iteration="i">
+                    <f:render arguments="{mainChild: mainChild}" section="submenu"/>
+                </f:for>
+            </ul>
+        </f:if>
+    </li>
+</f:section>
+
+</html>
