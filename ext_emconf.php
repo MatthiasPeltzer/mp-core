@@ -9,9 +9,14 @@ $EM_CONF[$_EXTKEY] = [
     'constraints' => [
         'depends' => [
             'typo3' => '13.4.0 - 14.4.99',
+            'b13/container' => '3.1',
+            'friendsoftypo3/content-blocks' => '1.3',
         ],
         'conflicts' => [],
-        'suggests' => [],
+        'suggests' => [
+            'georgringer/news' => '13.0',
+            'georgringer/numbered-pagination' => '2.1',
+        ],
     ],
     'autoload' => [
         'psr-4' => [
