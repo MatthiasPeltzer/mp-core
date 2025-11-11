@@ -1,8 +1,44 @@
 <f:spaceless>
-    <f:variable name="appName"
-                value="{f:if(condition: site.configuration.pwaName, then: site.configuration.pwaName, else: site.title)}"/>
-    <f:variable name="appShortName"
-                value="{f:if(condition: site.configuration.pwaShortName, then: site.configuration.pwaShortName, else: appName)}"/>
+    <f:if condition="{site.configuration.pwaName}">
+        <f:then>
+            <f:variable name="resolvedAppName" value="{site.configuration.pwaName}"/>
+        </f:then>
+        <f:else>
+            <f:if condition="{site.title}">
+                <f:then>
+                    <f:variable name="resolvedAppName" value="{site.title}"/>
+                </f:then>
+                <f:else>
+                    <f:if condition="{site.languages.0.websiteTitle}">
+                        <f:then>
+                            <f:variable name="resolvedAppName" value="{site.languages.0.websiteTitle}"/>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{site.languages.0.navigationTitle}">
+                                <f:then>
+                                    <f:variable name="resolvedAppName" value="{site.languages.0.navigationTitle}"/>
+                                </f:then>
+                                <f:else>
+                                    <f:variable name="resolvedAppName" value="{site.identifier}"/>
+                                </f:else>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+    <f:variable name="appName" value="{resolvedAppName}"/>
+
+    <f:if condition="{site.configuration.pwaShortName}">
+        <f:then>
+            <f:variable name="resolvedAppShortName" value="{site.configuration.pwaShortName}"/>
+        </f:then>
+        <f:else>
+            <f:variable name="resolvedAppShortName" value="{appName}"/>
+        </f:else>
+    </f:if>
+    <f:variable name="appShortName" value="{resolvedAppShortName}"/>
     <f:variable name="icon192" value="{f:uri.image(src: 'EXT:mpc_sitepackage/Resources/Public/Favicons/web-app-manifest-192x192.png')}"/>
     <f:variable name="icon512" value="{f:uri.image(src: 'EXT:mpc_sitepackage/Resources/Public/Favicons/web-app-manifest-512x512.png')}"/>
 
