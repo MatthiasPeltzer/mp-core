@@ -12,3 +12,25 @@ page {
     }
   }
 }
+
+manifest = PAGE
+manifest {
+  typeNum = 8412
+
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-Type: application/manifest+json
+    no_cache = 1
+  }
+
+  10 = FLUIDTEMPLATE
+  10 {
+    file = EXT:mp_core/Resources/Private/Partials/Page/Manifest.html
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
+      10 {
+        as = site
+      }
+    }
+  }
+}
