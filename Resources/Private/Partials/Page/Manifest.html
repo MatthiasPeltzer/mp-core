@@ -1,0 +1,27 @@
+<f:spaceless>
+    <f:variable name="appName"
+                value="{f:if(condition: site.configuration.pwaName, then: site.configuration.pwaName, else: site.title)}"/>
+    <f:variable name="appShortName"
+                value="{f:if(condition: site.configuration.pwaShortName, then: site.configuration.pwaShortName, else: appName)}"/>
+    <f:variable name="icon192" value="{f:uri.image(src: 'EXT:mpc_sitepackage/Resources/Public/Favicons/web-app-manifest-192x192.png')}"/>
+    <f:variable name="icon512" value="{f:uri.image(src: 'EXT:mpc_sitepackage/Resources/Public/Favicons/web-app-manifest-512x512.png')}"/>
+
+    <f:variable name="manifest"
+                value="{
+                    name: appName,
+                    short_name: appShortName,
+                    start_url: '/',
+                    scope: '/',
+                    theme_color: '#333333',
+                    background_color: '#333333',
+                    display: 'standalone',
+                    icons: {
+                        0: {src: icon192, sizes: '192x192', type: 'image/png', purpose: 'any'},
+                        1: {src: icon512, sizes: '512x512', type: 'image/png', purpose: 'any'},
+                        2: {src: icon192, sizes: '192x192', type: 'image/png', purpose: 'maskable'},
+                        3: {src: icon512, sizes: '512x512', type: 'image/png', purpose: 'maskable'}
+                    }
+                }"/>
+
+    <f:format.raw>{f:format.json(value: manifest)}</f:format.raw>
+</f:spaceless>

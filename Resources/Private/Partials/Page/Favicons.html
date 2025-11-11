@@ -14,7 +14,12 @@
             <link href="{f:uri.image(src: '{site.configuration.apple-touch-icon}')}" rel="apple-touch-icon" sizes="180x180"/>
         </f:if>
         <f:if condition="{site.configuration.webmanifest}">
-            <link href="{f:uri.image(src: '{site.configuration.webmanifest}')}" rel="manifest"/>
+            <f:then>
+                <link href="{f:uri.image(src: '{site.configuration.webmanifest}')}" rel="manifest"/>
+            </f:then>
+            <f:else>
+                <link href="{f:uri.page(pageType: 8412)}" rel="manifest"/>
+            </f:else>
         </f:if>
     </f:then>
     <f:else>
@@ -22,7 +27,7 @@
         <link href="{f:uri.image(src: 'EXT:mp_core/Resources/Public/Favicons/favicon.ico')}" rel="shortcut icon"/>
         <link href="{f:uri.image(src: 'EXT:mp_core/Resources/Public/Favicons/favicon.svg')}" rel="icon" type="image/svg+xml"/>
         <link href="{f:uri.image(src: 'EXT:mp_core/Resources/Public/Favicons/apple-touch-icon.png')}" rel="apple-touch-icon" sizes="180x180"/>
-        <link href="{f:uri.image(src: 'EXT:mp_core/Resources/Public/Favicons/site.webmanifest')}" rel="manifest"/>
+        <link href="{f:uri.page(pageType: 8412)}" rel="manifest"/>
     </f:else>
 </f:if>
 <f:if condition="{data.keywords}">
