@@ -182,5 +182,3 @@ lib {
     }
   }
 }
-
-module.tx_dddeepl.settings.apiKey = a7ac8ead-48d3-4d50-91b8-31d39a66025e:fx
