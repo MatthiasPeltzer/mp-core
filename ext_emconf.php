@@ -30,5 +30,5 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'Matthias Peltzer',
     'author_email' => 'mail@mpeltzer.de',
     'author_company' => 'private',
-    'version' => '1.0.4',
+    'version' => '1.0.5',
 ];
