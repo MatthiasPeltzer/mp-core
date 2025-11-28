@@ -5,7 +5,7 @@ declare(strict_types=1);
 use B13\Container\Tca\ContainerConfiguration;
 use B13\Container\Tca\Registry;
 use Mpc\MpCore\UserFunc\ColorPickerValueItems;
-use TYPO3\CMS\Core\Resource\File;
+use TYPO3\CMS\Core\Resource\FileType;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -16,7 +16,7 @@ defined('TYPO3') or die('Access denied.');
      * Register grids
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        new ContainerConfiguration(
+        (new ContainerConfiguration(
             'ce_grid',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.description',
@@ -28,7 +28,7 @@ defined('TYPO3') or die('Access denied.');
                     ],
                 ],
             ]
-        )
+        ))
         ->setIcon('tx_grid')
         ->setSaveAndCloseInNewContentElementWizard(true)
     );
@@ -150,27 +150,27 @@ defined('TYPO3') or die('Access denied.');
                                 --palette--;;imageoverlayPalette,
                                 --palette--;;filePalette',
                         ],
-                        File::FILETYPE_TEXT => [
+                        FileType::TEXT->value => [
                             'showitem' => '
                                 --palette--;;imageoverlayPalette,
                                 --palette--;;filePalette',
                         ],
-                        File::FILETYPE_IMAGE => [
+                        FileType::IMAGE->value => [
                             'showitem' => '
                                 --palette--;;imageoverlayPalette,
                                 --palette--;;filePalette',
                         ],
-                        File::FILETYPE_AUDIO => [
+                        FileType::AUDIO->value => [
                             'showitem' => '
                                 --palette--;;audioOverlayPalette,
                                 --palette--;;filePalette',
                         ],
-                        File::FILETYPE_VIDEO => [
+                        FileType::VIDEO->value => [
                             'showitem' => '
                                 --palette--;;videoOverlayPalette,
                                 --palette--;;filePalette',
                         ],
-                        File::FILETYPE_APPLICATION => [
+                        FileType::APPLICATION->value => [
                             'showitem' => '
                                 --palette--;;imageoverlayPalette,
                                 --palette--;;filePalette',
@@ -318,13 +318,16 @@ defined('TYPO3') or die('Access denied.');
 
     $gridPalettes = [
         'grid_config' => [
-            'showitem' => 'grid_type,grid_columns', 'canNotCollapse' => 1,
+            'showitem' => 'grid_type,grid_columns',
+            'canNotCollapse' => 1,
         ],
         'grid_bg' => [
-            'showitem' => 'grid_bgcolor,grid_light,grid_icon_switch,--linebreak--,grid_icon,--linebreak--,grid_bgimage,--linebreak--,grid_parallax', 'canNotCollapse' => 1,
+            'showitem' => 'grid_bgcolor,grid_light,grid_icon_switch,--linebreak--,grid_icon,--linebreak--,grid_bgimage,--linebreak--,grid_parallax',
+            'canNotCollapse' => 1,
         ],
         'grid_container_pallet' => [
-            'showitem' => 'grid_bgfullsize,grid_container', 'canNotCollapse' => 1,
+            'showitem' => 'grid_bgfullsize,grid_container',
+            'canNotCollapse' => 1,
         ],
     ];
 

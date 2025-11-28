@@ -14,7 +14,7 @@ defined('TYPO3') || die();
      * Register Slider
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        new ContainerConfiguration(
+        (new ContainerConfiguration(
             'ce_slider',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.description',
@@ -26,7 +26,7 @@ defined('TYPO3') || die();
                     ],
                 ],
             ]
-        )
+        ))
             ->setIcon('tx_slider')
             ->setSaveAndCloseInNewContentElementWizard(true)
     );
@@ -58,7 +58,8 @@ defined('TYPO3') || die();
 
     $sliderPalettes = [
         'slider_config' => [
-            'showitem' => 'slider_type,grid_columns', 'canNotCollapse' => 1,
+            'showitem' => 'slider_type,grid_columns',
+            'canNotCollapse' => 1,
         ],
     ];
 

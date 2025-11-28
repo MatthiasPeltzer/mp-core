@@ -14,7 +14,7 @@ defined('TYPO3') or die('Access denied.');
      * Register accordion
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        new ContainerConfiguration(
+        (new ContainerConfiguration(
             'ce_accordion',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.description',
@@ -27,7 +27,7 @@ defined('TYPO3') or die('Access denied.');
                     ],
                 ],
             ]
-        )
+        ))
         ->setIcon('tx_accordion')
         ->setSaveAndCloseInNewContentElementWizard(true)
     );

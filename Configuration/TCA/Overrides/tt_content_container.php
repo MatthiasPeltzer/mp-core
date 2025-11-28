@@ -13,7 +13,7 @@ defined('TYPO3') or die('Access denied.');
      * Register container
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        new ContainerConfiguration(
+        (new ContainerConfiguration(
             'ce_container',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:container.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:container.description',
@@ -25,7 +25,7 @@ defined('TYPO3') or die('Access denied.');
                     ],
                 ],
             ]
-        )
+        ))
         ->setIcon('tx_container')
         ->setSaveAndCloseInNewContentElementWizard(false)
     );

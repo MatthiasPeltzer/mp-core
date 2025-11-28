@@ -1,5 +1,5 @@
 const totop = document.querySelector('.totop');
-const bg = document.querySelector('.bg');
+const bg = document.querySelector('.totop .bg');
 
 let ticking = false;
 

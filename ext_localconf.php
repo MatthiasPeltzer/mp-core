@@ -11,7 +11,6 @@ use Mpc\MpCore\Resource\OnlineMedia\Helpers\GenericExternalAudioHelper;
 use Mpc\MpCore\Resource\OnlineMedia\Helpers\GenericExternalVideoHelper;
 use Mpc\MpCore\Resource\Rendering\GenericExternalAudioRenderer;
 use Mpc\MpCore\Resource\Rendering\GenericExternalVideoRenderer;
-use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Resource\Rendering\RendererRegistry;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -60,10 +59,6 @@ $rendererRegistry->registerRendererClass(GenericExternalVideoRenderer::class);
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['FileInfo']['fileExtensionToMimeType'][$extVideoFileExtension] = 'video/generic';
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'] .= ',' . $extVideoFileExtension;
 
-/** @var IconRegistry $iconRegistry */
-$iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
-$iconRegistry->registerFileExtension($extVideoFileExtension, 'mimetypes-media-video');
-
 $extAudioFileExtension = 'externalaudio';
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fal']['onlineMediaHelpers'][$extAudioFileExtension] = GenericExternalAudioHelper::class;
@@ -74,10 +69,6 @@ $rendererRegistry->registerRendererClass(GenericExternalAudioRenderer::class);
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['FileInfo']['fileExtensionToMimeType'][$extAudioFileExtension] = 'audio/generic';
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'] .= ',' . $extAudioFileExtension;
-
-/** @var IconRegistry $iconRegistry */
-$iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
-$iconRegistry->registerFileExtension($extAudioFileExtension, 'mimetypes-media-audio');
 
 /***************
  * Add default RTE and RTE/Backend CSS configuration for the template package

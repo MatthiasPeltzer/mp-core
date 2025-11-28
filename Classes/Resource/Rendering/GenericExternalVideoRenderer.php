@@ -14,3 +14,5 @@ class GenericExternalVideoRenderer extends VideoTagRenderer
         return $file->getMimeType() === 'video/generic' || $file->getExtension() === 'externalvideo';
     }
 }
+
+

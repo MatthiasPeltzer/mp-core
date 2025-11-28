@@ -153,7 +153,8 @@ defined('TYPO3') || die();
 
     $linkPalettes = [
         'link_config' => [
-            'showitem' => 'tx_link,tx_link_position,--linebreak--,tx_link_switch,--linebreak--,tx_link_text,tx_link_layout', 'canNotCollapse' => 1,
+            'showitem' => 'tx_link,tx_link_position,--linebreak--,tx_link_switch,--linebreak--,tx_link_text,tx_link_layout',
+            'canNotCollapse' => 1,
         ],
     ];
 
@@ -173,13 +174,6 @@ defined('TYPO3') || die();
 
 // Register icon for the CType in list view
     $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['mpcore_todolist'] = 'typo3-vite-demo-todolist';
-
-// Add FlexForm field to pi_flexform column for this CType
-    ExtensionManagementUtility::addPiFlexFormValue(
-        '*',
-        'FILE:EXT:mp_core/Configuration/FlexForms/TodoList.xml',
-        'mpcore_todolist'
-    );
 
 // Define showitem for the plugin CType
     $GLOBALS['TCA']['tt_content']['types']['mpcore_todolist'] = [
@@ -201,6 +195,15 @@ defined('TYPO3') || die();
             rowDescription,
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
     ',
+        'columnsOverrides' => [
+            'pi_flexform' => [
+                'config' => [
+                    'ds' => [
+                        'default' => 'FILE:EXT:mp_core/Configuration/FlexForms/TodoList.xml',
+                    ],
+                ],
+            ],
+        ],
     ];
 
 

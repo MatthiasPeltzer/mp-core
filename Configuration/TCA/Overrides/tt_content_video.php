@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use TYPO3\CMS\Core\Resource\FileType;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die();
@@ -54,7 +55,7 @@ defined('TYPO3') || die();
                                 ],
                             ],
                             'types' => [
-                                \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                                FileType::TEXT->value => [
                                     'showitem' => '
                                         --palette--;;vttFilePalette,
                                         --palette--;;filePalette'
@@ -106,7 +107,7 @@ defined('TYPO3') || die();
                                 ],
                             ],
                             'types' => [
-                                \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                                FileType::VIDEO->value => [
                                     'showitem' => 'tx_quality_label,--palette--;;filePalette',
                                 ],
                                 '0' => [
@@ -348,7 +349,7 @@ defined('TYPO3') || die();
                         ],
                     ],
                     'types' => [
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                        FileType::VIDEO->value => [
                             'showitem' => 'tx_quality_label,--palette--;;filePalette',
                         ],
                         '0' => [
@@ -403,7 +404,7 @@ defined('TYPO3') || die();
                         ],
                     ],
                     'types' => [
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                        FileType::VIDEO->value => [
                             'showitem' => 'tx_quality_label,--palette--;;filePalette',
                         ],
                         '0' => [
@@ -507,10 +508,10 @@ defined('TYPO3') || die();
     $GLOBALS['TCA']['tt_content']['palettes'] += $videoPalettes;
 
     $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
-        'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.video',
-        'video',
-        'tx_video',
-        'default',
+        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.video',
+        'value' => 'video',
+        'icon' => 'tx_video',
+        'group' => 'default',
     ];
 
     $tempVideoTypes = [
@@ -568,8 +569,12 @@ defined('TYPO3') || die();
                     ],
                 'showitem' => '
                     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,header_kicker,header,
-                        --palette--;;header_config,subheader,bodytext,
+                        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
+                        header_kicker,
+                        header,
+                        --palette--;;header_config,
+                        subheader,
+                        bodytext,
                     --div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tabs.video,
                         --palette--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.palettes.video_config;video_config,
                     --div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tabs.video_playback,
@@ -595,8 +600,9 @@ defined('TYPO3') || die();
                         --palette--;;hidden,
                         --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
                     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
-                    --div--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category,categories,
-                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,rowDescription,
+                        categories,
+                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+                        rowDescription,
                     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended',
             ],
     ];

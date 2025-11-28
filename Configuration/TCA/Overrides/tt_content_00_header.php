@@ -162,7 +162,8 @@ defined('TYPO3') || die();
 
     $headerPalettes = [
         'header_config' => [
-            'showitem' => 'header_layout,header_position,tx_header_style,tx_header_inside', 'canNotCollapse' => 1,
+            'showitem' => 'header_layout,header_position,tx_header_style,tx_header_inside',
+            'canNotCollapse' => 1,
         ],
     ];
 
