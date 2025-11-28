@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\UserFunc;
 
+use TYPO3\CMS\Core\Attribute\AsAllowedCallable;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Site\Entity\SiteInterface;
 
@@ -12,6 +13,7 @@ class ColorPickerValueItems
     /**
      * @param array<string,mixed> $config
      */
+    #[AsAllowedCallable]
     public function getItems(array &$config): void
     {
         /** @var SiteInterface $site */

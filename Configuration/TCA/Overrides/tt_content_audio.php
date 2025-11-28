@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use TYPO3\CMS\Core\Resource\FileType;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die();
@@ -51,7 +52,7 @@ defined('TYPO3') || die();
                                 ],
                             ],
                             'types' => [
-                                \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                                FileType::AUDIO->value => [
                                     'showitem' => 'tx_quality_label,--palette--;;filePalette',
                                 ],
                                 '0' => [
@@ -261,7 +262,7 @@ defined('TYPO3') || die();
                         ],
                     ],
                     'types' => [
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                        FileType::TEXT->value => [
                             'showitem' => '
                                 --palette--;;vttFilePalette,
                                 --palette--;;filePalette'
@@ -353,10 +354,10 @@ defined('TYPO3') || die();
     $GLOBALS['TCA']['tt_content']['palettes'] += $audioPalettes;
 
     $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
-        'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.audio',
-        'audio',
-        'tx_audio',
-        'default',
+        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.audio',
+        'value' => 'audio',
+        'icon' => 'tx_audio',
+        'group' => 'default',
     ];
 
     $tempAudioTypes = [
@@ -419,8 +420,12 @@ defined('TYPO3') || die();
                     ],
                 'showitem' => '
                     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,header,
-                        --palette--;;header_config,subheader,bodytext,
+                        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
+                        header_kicker,
+                        header,
+                        --palette--;;header_config,
+                        subheader,
+                        bodytext,
                     --div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tabs.audio,
                         --palette--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.palettes.audio_config;audio_config,
                     --div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tabs.audio_playback,
@@ -442,8 +447,9 @@ defined('TYPO3') || die();
                         --palette--;;hidden,
                         --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
                     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
-                    --div--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category,categories,
-                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,rowDescription,
+                        categories,
+                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+                        rowDescription,
                     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended',
             ],
     ];

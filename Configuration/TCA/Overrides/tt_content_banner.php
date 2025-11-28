@@ -9,20 +9,17 @@ defined('TYPO3') || die();
 (static function (): void {
     $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['banner'] = 'tx_banner';
 
-    ExtensionManagementUtility::addTcaSelectItem(
-        'tt_content',
-        'CType',
-        [
-            'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:banner.title',
-            'banner',
-            'tx_banner',
-            'default',
-        ]
-    );
+    $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
+        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:banner.title',
+        'value' => 'banner',
+        'icon' => 'tx_banner',
+        'group' => 'default',
+    ];
 
     $imageBannerPalettes = [
         'image_banner_config' => [
-            'showitem' => 'image,--linebreak--', 'canNotCollapse' => 1,
+            'showitem' => 'image,--linebreak--',
+            'canNotCollapse' => 1,
         ],
     ];
 
@@ -81,21 +78,26 @@ defined('TYPO3') || die();
                             ],
                     ],
                 'showitem' => '
-        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,header,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
+            header,
         --div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:banner.title,
-            --palette--;;image_banner_config, grid_bgcolor, grid_light,
+            --palette--;;image_banner_config,
+            grid_bgcolor,
+            grid_light,
             --palette--;;link_config,
         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
-        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;
-        frames,
-        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
-        --palette--;;language,
+            --palette--;;language,
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
-        --palette--;;hidden,
-        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
-        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,rowDescription,
+            --palette--;;hidden,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
+            categories,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+            rowDescription,
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended',
             ],
     ];

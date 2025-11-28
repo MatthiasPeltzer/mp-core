@@ -9,12 +9,10 @@
 		"watch": "vite build --mode development --watch",
 		"eslint": "eslint .",
 		"eslint.fix": "eslint --fix .",
-		"eslint.junit": "eslint -f junit -o reports/eslintreport.junit.xml Assets/**/*.js",
+		"eslint.report": "eslint -f json -o reports/eslintreport.json Assets/**/*.js",
 		"stylelint": "stylelint Assets/Scss/**/*.scss",
 		"stylelint.fix": "stylelint Assets/Scss/**/*.scss --fix",
-		"stylelint.json": "stylelint --config stylelint.config.js -f json -o reports/stylelintreport.json Assets/Scss/**/*.scss",
-		"stylelint.junit": "stylelint --config stylelint.config.js --custom-formatter node_modules/stylelint-checkstyle-reporter/dist/stylelint-checkstyle-reporter.mjs -o reports/stylelintreport.junit.xml Assets/Scss/**/*.scss",
-		"stylelint.verbose": "stylelint --config stylelint.config.js -f verbose -o reports/stylelintreport.verbose.txt Assets/Scss/**/*.scss"
+		"stylelint.report": "stylelint --config stylelint.config.js -f json -o reports/stylelintreport.json Assets/Scss/**/*.scss"
 	},
 	"author": "Matthias Peltzer",
 	"license": "GPL-3.0-or-later",
@@ -24,7 +22,7 @@
 		"jarallax": "^2.2.1",
 		"swiper": "^12.0.3",
 		"vidply": "^1.0.20",
-		"vue": "^3.5.24"
+		"vue": "^3.5.25"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.39.1",
@@ -32,14 +30,12 @@
 		"@vitejs/plugin-vue": "^6.0.2",
 		"autoprefixer": "^10.4.22",
 		"eslint": "^9.39.1",
-		"eslint-formatter-junit": "^9.0.1",
 		"globals": "^16.5.0",
 		"postcss": "^8.5.6",
 		"postcss-preset-env": "^10.4.0",
 		"postcss-pxtorem": "^6.1.0",
 		"sass": "1.94.2",
-		"stylelint": "^16.25.0",
-		"stylelint-checkstyle-reporter": "^1.1.1",
+		"stylelint": "^16.26.0",
 		"stylelint-config-recommended": "^17.0.0",
 		"stylelint-config-recommended-scss": "^16.0.2",
 		"stylelint-config-standard": "^39.0.1",

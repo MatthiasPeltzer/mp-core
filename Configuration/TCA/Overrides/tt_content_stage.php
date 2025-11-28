@@ -105,18 +105,20 @@ defined('TYPO3') || die();
     ExtensionManagementUtility::addTCAcolumns('tt_content', $tempStageColumns);
 
     $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
-        'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.stage',
-        'stage',
-        'tx_stage',
-        'default',
+        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.stage',
+        'value' => 'stage',
+        'icon' => 'tx_stage',
+        'group' => 'default',
     ];
 
     $stagePositionPalettes = [
         'stageposition_config' => [
-            'showitem' => 'tx_stage_position, grid_bgcolor, tx_stage_bgcolor', 'canNotCollapse' => 1,
+            'showitem' => 'tx_stage_position, grid_bgcolor, tx_stage_bgcolor',
+            'canNotCollapse' => 1,
         ],
         'stagefile_config' => [
-            'showitem' => 'tx_stage_switch,--linebreak--, tx_stage_video,--linebreak--,image,--linebreak--,video,--linebreak--,bodytext', 'canNotCollapse' => 1,
+            'showitem' => 'tx_stage_switch,--linebreak--, tx_stage_video,--linebreak--,image,--linebreak--,video,--linebreak--,bodytext',
+            'canNotCollapse' => 1,
         ],
     ];
 
@@ -176,8 +178,12 @@ defined('TYPO3') || die();
                     ],
                 'showitem' => '
               --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                  --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general, date;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:date_formlabel, header_kicker,header,
-                  --palette--;;header_config,subheader,
+                  --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
+                  date;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:date_formlabel,
+                  header_kicker,
+                  header,
+                  --palette--;;header_config,
+                  subheader,
               --div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.stage,
                   --palette--;;stagefile_config,
                   --palette--;;stageposition_config,
@@ -190,7 +196,10 @@ defined('TYPO3') || die();
               --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
                   --palette--;;hidden,
                   --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
-              --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,rowDescription,
+              --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
+                  categories,
+              --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+                  rowDescription,
               --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended',
             ],
     ];

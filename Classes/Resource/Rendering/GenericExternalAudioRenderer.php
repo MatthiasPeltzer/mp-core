@@ -14,3 +14,5 @@ class GenericExternalAudioRenderer extends AudioTagRenderer
         return $file->getMimeType() === 'audio/generic' || $file->getExtension() === 'externalaudio';
     }
 }
+
+

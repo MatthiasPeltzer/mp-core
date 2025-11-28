@@ -85,20 +85,21 @@ defined('TYPO3') || die();
     ExtensionManagementUtility::addTCAcolumns('tt_content', $tempGalleryColumns);
 
     $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
-        'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.div._gallery_',
-        '--div--',
+        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.div._gallery_',
+        'value' => '--div--',
     ];
 
     $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
-        'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.gallery',
-        'gallery',
-        'tx_gallery',
-        'default',
+        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.gallery',
+        'value' => 'gallery',
+        'icon' => 'tx_gallery',
+        'group' => 'default',
     ];
 
     $galleryPositionPalettes = [
         'galleryposition_config' => [
-            'showitem' => 'gallery_layout,gallery_columns', 'canNotCollapse' => 1,
+            'showitem' => 'gallery_layout,gallery_columns',
+            'canNotCollapse' => 1,
         ],
     ];
 
@@ -151,23 +152,28 @@ defined('TYPO3') || die();
                     ],
                 'showitem' => '
                   --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                      --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,header_kicker,header,
-                      --palette--;;header_config,subheader,bodytext,
+                      --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
+                      header_kicker,
+                      header,
+                      --palette--;;header_config,
+                      subheader,
+                      bodytext,
                   --div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.gallery,
-                      --palette--;;galleryposition_config,image,
+                      --palette--;;galleryposition_config,
+                      image,
                   --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
                       --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
                       --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,
                   --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
                       --palette--;;language,
-                  --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
-                      --palette--;;hidden,
-                      --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
-                  --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
-                  --div--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category,categories,
-                  --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,rowDescription,
-                  --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended
-              ',
+                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+                        --palette--;;hidden,
+                        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
+                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
+                        categories,
+                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+                        rowDescription,
+                    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended',
             ],
     ];
 
