@@ -13,9 +13,6 @@ import './code/jarallax.js';
 import './code/resizeListener.js';
 import './code/openAccordionAndTabs.js';
 import './code/teaserLink.js';
-import './code/player-youtube.js';
-import './code/player-vimeo.js';
-import './code/player-soundcloud.js';
 import './code/i18nLinkHelper.js';
 import './code/main.js';
 

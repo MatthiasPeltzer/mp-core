@@ -7,11 +7,6 @@
  * LICENSE file that was distributed with this source code.
  */
 
-use Mpc\MpCore\Resource\OnlineMedia\Helpers\GenericExternalAudioHelper;
-use Mpc\MpCore\Resource\OnlineMedia\Helpers\GenericExternalVideoHelper;
-use Mpc\MpCore\Resource\Rendering\GenericExternalAudioRenderer;
-use Mpc\MpCore\Resource\Rendering\GenericExternalVideoRenderer;
-use TYPO3\CMS\Core\Resource\Rendering\RendererRegistry;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -44,31 +39,6 @@ if (ExtensionManagementUtility::isLoaded('form')) {
         }
     '));
 }
-
-/***************
- * Add external video & audio support
- */
-$extVideoFileExtension = 'externalvideo';
-
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['fal']['onlineMediaHelpers'][$extVideoFileExtension] = GenericExternalVideoHelper::class;
-
-/** @var RendererRegistry $rendererRegistry */
-$rendererRegistry = GeneralUtility::makeInstance(RendererRegistry::class);
-$rendererRegistry->registerRendererClass(GenericExternalVideoRenderer::class);
-
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['FileInfo']['fileExtensionToMimeType'][$extVideoFileExtension] = 'video/generic';
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'] .= ',' . $extVideoFileExtension;
-
-$extAudioFileExtension = 'externalaudio';
-
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['fal']['onlineMediaHelpers'][$extAudioFileExtension] = GenericExternalAudioHelper::class;
-
-/** @var RendererRegistry $rendererRegistry */
-$rendererRegistry = GeneralUtility::makeInstance(RendererRegistry::class);
-$rendererRegistry->registerRendererClass(GenericExternalAudioRenderer::class);
-
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['FileInfo']['fileExtensionToMimeType'][$extAudioFileExtension] = 'audio/generic';
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'] .= ',' . $extAudioFileExtension;
 
 /***************
  * Add default RTE and RTE/Backend CSS configuration for the template package
