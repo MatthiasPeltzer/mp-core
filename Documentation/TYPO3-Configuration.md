@@ -395,7 +395,6 @@ page {
   includeCSS {
     bootstrap = EXT:mp_core/Resources/Public/StyleSheets/bootstrap.css
     screen = EXT:mp_core/Resources/Public/StyleSheets/screen.css
-    vidply = EXT:mp_core/Resources/Public/StyleSheets/vidply.css
   }
 }
 ```
@@ -406,7 +405,6 @@ page {
   includeJSFooter {
     bootstrap = EXT:mp_core/Resources/Public/JavaScripts/bootstrap.js
     screen = EXT:mp_core/Resources/Public/JavaScripts/screen.js
-    vidply = EXT:mp_core/Resources/Public/JavaScripts/vidply.js
   }
 }
 ```

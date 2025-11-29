@@ -45,8 +45,6 @@ Each content element has its own TCA file in `Configuration/TCA/Overrides/`:
 
 ### Media Elements
 
-- **Audio** (`tt_content_audio.php`) - VidPly audio player with captions, transcripts, quality selection, and full accessibility features
-- **Video** (`tt_content_video.php`) - VidPly video player with captions, chapters, audio descriptions, sign language overlay, and accessibility features
 - **Gallery** (`tt_content_gallery.php`) - Image galleries with responsive layouts and lightbox support
 
 ### Layout Elements

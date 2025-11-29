@@ -25,16 +25,12 @@ Documentation hub for the MP Core TYPO3 13.4 site package.
 - [TYPO3 Configuration](TYPO3-Configuration.md) — Site Sets, Site Settings, TypoScript
 - [TCA Overview](TCA-Overview.md) — Content element fields, palettes, FlexForms
 
-### Special Features
-- [VidPly Integration](Vidply.md) — Accessible media player configuration
-
 ## External Resources
 
 - [TYPO3 Documentation](https://docs.typo3.org/)
 - [Bootstrap 5 Documentation](https://getbootstrap.com/docs/5.3/)
 - [Vue.js 3 Documentation](https://vuejs.org/)
 - [Vite Documentation](https://vitejs.dev/)
-- [VidPly Documentation](https://github.com/MatthiasPeltzer/vidply)
 
 ---
 

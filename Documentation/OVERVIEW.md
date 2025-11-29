@@ -24,28 +24,13 @@ Comprehensive guide to all features, components, and capabilities of the MP Core
 - **PostCSS** - Autoprefixer and px-to-rem conversion
 - **ESLint 9** & **Stylelint 16** - Code quality enforcement
 
-### 2. Accessible Media Player (VidPly 1.0.10)
-
-WCAG 2.1 AA compliant audio and video player with:
-- Multi-quality source selection
-- WebVTT captions and subtitles
-- Interactive transcripts
-- Audio descriptions
-- Sign language overlay
-- Keyboard navigation
-- Screen reader support
-- Customizable playback controls
-- HLS streaming support
-
-### 3. Content Elements
+### 2. Content Elements
 
 #### Media Elements
-- **Audio** - VidPly-powered audio player with playlists
-- **Video** - VidPly-powered video player with advanced features
 - **Gallery** - Responsive image galleries with lightbox
 
 #### Layout Elements
-- **Stage** - Hero sections with image/video backgrounds
+- **Stage** - Hero sections with image backgrounds
 - **Banner** - Customizable banner sections
 - **Single Teaser** - Content teasers with images and links
 
@@ -63,7 +48,7 @@ WCAG 2.1 AA compliant audio and video player with:
 #### Content Blocks
 - **Definition List** - Structured definition lists
 
-### 4. Site Sets (TYPO3 13.4+)
+### 3. Site Sets (TYPO3 13.4+)
 
 Modular configuration system with five sets:
 
@@ -73,7 +58,7 @@ Modular configuration system with five sets:
 4. **mpc/mp-core-form** - Form framework configuration
 5. **mpc/mp-core-seo** - SEO optimization settings
 
-### 5. Site Settings
+### 4. Site Settings
 
 Backend-editable configuration categories:
 
@@ -89,7 +74,7 @@ Backend-editable configuration categories:
 - **Form** - Email, validation, storage, honeypot
 - **SEO** - Open Graph, Twitter Cards, sitemap, canonical URLs
 
-### 6. Enhanced TCA
+### 5. Enhanced TCA
 
 #### Page Enhancements
 - Feature toggles (newsletter, social media, breadcrumb, header container, highlight)
@@ -107,7 +92,7 @@ Backend-editable configuration categories:
 - Extended header configuration
 - Custom palettes for consistent field grouping
 
-### 7. Extension Integrations
+### 6. Extension Integrations
 
 #### Fluid Styled Content
 - Custom templates for all content elements
@@ -136,7 +121,7 @@ Backend-editable configuration categories:
 - Schema.org markup
 - XML sitemap generation
 
-### 8. Custom PHP Classes
+### 7. Custom PHP Classes
 
 #### ViewHelpers
 - **SvgInlineViewHelper** - Inline SVG rendering with attributes
@@ -146,20 +131,13 @@ Backend-editable configuration categories:
 - **ColorPickerValueItems** - Dynamic color picker from site config
 
 #### Backend
-- **FilesControlContainer** - Enhanced file field container with domain validation
+- **FilesControlContainer** - Enhanced file field container
 
-#### Resource Helpers
-- **GenericExternalAudioHelper** - External audio source support
-- **GenericExternalVideoHelper** - External video source support
-- **GenericExternalAudioRenderer** - Audio rendering
-- **GenericExternalVideoRenderer** - Video rendering
-
-### 9. JavaScript Modules
+### 8. JavaScript Modules
 
 #### Entry Bundles
 - `bootstrap.js` - Bootstrap framework
 - `screen.js` - Main frontend functionality
-- `vidply.js` - VidPly player
 - `vue.js` - Vue components
 - `swiper.js` - Swiper carousels
 - `navigationPrimary/Secondary/Tertiary.js` - Navigation levels
@@ -173,7 +151,6 @@ Backend-editable configuration categories:
 - Back-to-top with progress
 - Modal galleries
 - Jarallax parallax
-- GDPR-friendly external players (YouTube, Vimeo, SoundCloud)
 - Pagination
 - Accordion/tabs deep linking
 - Teaser hover states
@@ -181,7 +158,7 @@ Backend-editable configuration categories:
 #### Vue Components
 - TodoList - Interactive todo list with localStorage
 
-### 10. SCSS Architecture (ITCSS)
+### 9. SCSS Architecture (ITCSS)
 
 Organized in layers:
 1. **Settings** - Variables, fonts, colors
@@ -195,22 +172,19 @@ Organized in layers:
 Includes:
 - Bootstrap 5 customization (light & dark themes)
 - Custom font integration (Open Sans, Turret Road)
-- VidPly theming
 - Responsive breakpoints
 - CSS logical properties for RTL support
 
-### 11. Backend Features
+### 10. Backend Features
 
 - Custom backend layouts with preview SVGs
 - CKEditor preset with custom styles
 - Backend CSS for consistent editing experience
 - Color picker integration with site configuration
-- Enhanced file upload with domain validation
 - FlexForm for Vue components
 
-### 12. Accessibility Features
+### 11. Accessibility Features
 
-- WCAG 2.1 AA compliant media player
 - Keyboard navigation support
 - Screen reader announcements
 - ARIA labels and roles
@@ -219,7 +193,7 @@ Includes:
 - High contrast mode support (forced-colors)
 - Semantic HTML structure
 
-### 13. Performance Optimizations
+### 12. Performance Optimizations
 
 - Vite-optimized asset bundling
 - Code splitting
@@ -230,7 +204,7 @@ Includes:
 - Async script loading
 - Font subsetting (WOFF2)
 
-### 14. Developer Experience
+### 13. Developer Experience
 
 - Hot Module Replacement (HMR) with Vite
 - ESLint with modern config
@@ -320,15 +294,11 @@ mp_core/
 - [TYPO3 Configuration](TYPO3-Configuration.md) - Site Sets, Settings, TypoScript
 - [TCA Overview](TCA-Overview.md) - Content element configuration
 
-### Special Features
-- [VidPly Integration](Vidply.md)
-
 ### External Resources
 - [TYPO3 Documentation](https://docs.typo3.org/)
 - [Bootstrap Documentation](https://getbootstrap.com/docs/)
 - [Vue.js Documentation](https://vuejs.org/)
 - [Vite Documentation](https://vitejs.dev/)
-- [VidPly Documentation](https://github.com/MatthiasPeltzer/vidply)
 
 ---
 

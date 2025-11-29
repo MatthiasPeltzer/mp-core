@@ -21,7 +21,6 @@ Located in `Build/Assets/Scripts/`:
 |--------|---------|
 | `bootstrap.js` | Bootstrap framework initialization |
 | `screen.js` | Main frontend functionality (sticky header, theme, Swiper, etc.) |
-| `vidply.js` | VidPly media player integration |
 | `vue.js` | Vue.js 3 components (TodoList, etc.) |
 | `swiper.js` | Swiper carousel initialization |
 | `navigationPrimary.js` | Primary navigation behavior |
@@ -54,11 +53,6 @@ Located in `Build/Assets/Scripts/code/`:
 - **`Navigation/Primary.js`** - Primary navigation logic
 - **`Navigation/Secondary.js`** - Secondary navigation logic
 - **`Navigation/Tertiary.js`** - Tertiary navigation logic
-
-#### Media Players
-- **`player-soundcloud.js`** - GDPR-friendly SoundCloud lazy-loading
-- **`player-vimeo.js`** - GDPR-friendly Vimeo lazy-loading
-- **`player-youtube.js`** - GDPR-friendly YouTube lazy-loading
 
 #### Layout Helpers
 - **`moveHeaderDate.js`** - DOM manipulation for date elements
@@ -245,7 +239,6 @@ Scss/
 │   └── _fsc.scss
 ├── bootstrap.scss                  # Bootstrap entry
 ├── screen.scss                     # Main frontend bundle
-├── vidply.scss                     # VidPly player theme
 ├── navigationPrimary.scss          # Primary nav styles
 ├── navigationSecondary.scss        # Secondary nav styles
 ├── navigationTertiary.scss         # Tertiary nav styles

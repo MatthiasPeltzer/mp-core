@@ -22,7 +22,6 @@ Complete guide to the frontend build system, asset pipeline, and project structu
 - **Stylelint 16** - CSS/SCSS linting
 - **Swiper 12** - Touch sliders
 - **Jarallax 2** - Parallax scrolling
-- **VidPly 1.0.10** - Accessible media player
 
 ---
 
@@ -139,7 +138,6 @@ Entry points are defined in `Build/vite.config.js`:
 const entryPoints = {
   bootstrap: resolve(__dirname, 'Assets/Scripts/bootstrap.js'),
   screen: resolve(__dirname, 'Assets/Scripts/screen.js'),
-  vidply: resolve(__dirname, 'Assets/Scripts/vidply.js'),
   vue: resolve(__dirname, 'Assets/Scripts/vue.js'),
   swiper: resolve(__dirname, 'Assets/Scripts/swiper.js'),
   navigationPrimary: resolve(__dirname, 'Assets/Scripts/navigationPrimary.js'),
@@ -321,9 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- JavaScript -->
 <f:asset.script identifier="screen" src="EXT:mp_core/Resources/Public/JavaScripts/screen.js" />
-
-<!-- Async JavaScript -->
-<f:asset.script async="async" identifier="vidply" src="EXT:mp_core/Resources/Public/JavaScripts/vidply.js" />
 ```
 
 ### TypoScript Asset Includes

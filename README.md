@@ -4,7 +4,7 @@ MP Core delivers a Bootstrap- and Vue-powered site package for TYPO3 13.4, inclu
 
 - Prebuilt content modules (stage, banner, media, galleries, Vue todo list) with Fluid templates.
 - Optional Site Sets for containers, news, forms, and SEO that plug into TYPO3 Site Settings.
-- Frontend build pipeline based on Vite, SCSS, PostCSS, ESLint, Stylelint, Swiper, Jarallax, and VidPly.
+- Frontend build pipeline based on Vite, SCSS, PostCSS, ESLint, Stylelint, Swiper, and Jarallax.
 
 ## Requirements
 - TYPO3 `^13.4`
