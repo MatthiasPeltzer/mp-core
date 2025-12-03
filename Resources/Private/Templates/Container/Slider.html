@@ -1,6 +1,6 @@
 <html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
-<f:layout name="Default"/>
+<f:layout name="Container"/>
 
 <f:section name="Main">
     <f:if condition="{children_101}">
@@ -16,7 +16,7 @@
             </f:else>
         </f:if>
 
-        <f:asset.script type="module" defer="defer" identifier="swiperJS" src="EXT:mp_core/Resources/Public/JavaScripts/swiper.js"/>
+        <f:asset.script defer="defer" identifier="swiperJS" src="EXT:mp_core/Resources/Public/JavaScripts/swiper.js" type="module"/>
         <f:asset.css href="EXT:mp_core/Resources/Public/StyleSheets/swiper.css" identifier="swiperCSS"/>
     </f:if>
 </f:section>
