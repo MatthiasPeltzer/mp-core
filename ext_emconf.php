@@ -18,7 +18,7 @@ $EM_CONF[$_EXTKEY] = [
     'category' => 'templates',
     'constraints' => [
         'depends' => [
-            'typo3' => '13.4.0-14.4.99',
+            'typo3' => '13.4.0-14.3.99',
         ],
         'conflicts' => [],
         'suggests' => [],
@@ -30,5 +30,5 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'Matthias Peltzer',
     'author_email' => 'mail@mpeltzer.de',
     'author_company' => 'private',
-    'version' => '1.0.13',
+    'version' => '1.0.14',
 ];
