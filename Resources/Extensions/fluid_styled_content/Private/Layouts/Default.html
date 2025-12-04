@@ -1,8 +1,8 @@
 <html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 <f:if condition="{data.frame_class} != none">
   <f:then>
-    <div id="c{data.uid}"
-         class="frame frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.grid_bgfullsize, then: ' grid-fullsize')}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}">
+    <div class="frame frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.grid_bgfullsize, then: ' grid-fullsize')}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}"
+         id="c{data.uid}">
       <f:if condition="{data._LOCALIZED_UID}">
         <a id="c{data._LOCALIZED_UID}"></a>
       </f:if>
@@ -20,7 +20,6 @@
         <f:render arguments="{_all}" partial="DropIn/After/All"/>
       </f:render>
     </div>
-
   </f:then>
   <f:else>
     <a id="c{data.uid}"></a>
