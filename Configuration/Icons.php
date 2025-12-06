@@ -45,6 +45,10 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:mp_core/Resources/Public/Icons/Tabs.svg',
     ],
+    'tx_container' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:mp_core/Resources/Public/Icons/Container.svg',
+    ],
     'typo3-vite-demo-todolist' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:mp_core/Resources/Public/Icons/TodoList.svg',
