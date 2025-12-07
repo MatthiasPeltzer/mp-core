@@ -73,6 +73,8 @@ defined('TYPO3') or die('Access denied.');
             ],
             'exclude' => '0',
             'onChange' => 'reload',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.type.label',
         ],
         'container_headline' => [
@@ -115,6 +117,8 @@ defined('TYPO3') or die('Access denied.');
             ],
             'displayCond' => 'FIELD:container_accordion_type:=:1',
             'exclude' => 1,
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.header_style',
         ],
         'container_accordion_toggle' => [
@@ -122,6 +126,8 @@ defined('TYPO3') or die('Access denied.');
             'onChange' => 'reload',
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.label.onload',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.description.onload',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -151,6 +157,9 @@ defined('TYPO3') or die('Access denied.');
                     'step' => 1,
                     'width' => 200,
                 ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
             'displayCond' => 'FIELD:container_accordion_toggle:=:1',
         ],
@@ -158,6 +167,8 @@ defined('TYPO3') or die('Access denied.');
             'exclude' => 1,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.label.onloadall',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.description.onloadall',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',

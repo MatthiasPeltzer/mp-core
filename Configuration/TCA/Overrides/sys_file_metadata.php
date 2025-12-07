@@ -12,6 +12,8 @@ defined('TYPO3') || die();
             'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_metadata.is_accessible.label',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_metadata.is_accessible.description',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'renderType' => 'checkboxToggle',
                 'type' => 'check',

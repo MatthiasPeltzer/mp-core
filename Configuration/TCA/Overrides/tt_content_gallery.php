@@ -39,6 +39,9 @@ defined('TYPO3') || die();
                             ],
                         'renderType' => 'selectSingle',
                         'type' => 'select',
+                        'behaviour' => [
+                            'allowLanguageSynchronization' => true,
+                        ],
                     ],
                 'exclude' => '0',
                 'onChange' => 'reload',
@@ -74,6 +77,9 @@ defined('TYPO3') || die();
                             ],
                         'renderType' => 'selectSingle',
                         'type' => 'select',
+                        'behaviour' => [
+                            'allowLanguageSynchronization' => true,
+                        ],
                     ],
                 'exclude' => '1',
                 'displayCond' => 'FIELD:gallery_layout:=:gallery-slider',

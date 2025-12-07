@@ -12,6 +12,8 @@ defined('TYPO3') || die();
             'exclude' => 1,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:pages.NewsletterBox',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:pages.NewsletterBox.description',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -29,6 +31,8 @@ defined('TYPO3') || die();
             'exclude' => 1,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:pages.SocialmediaBar',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:pages.SocialmediaBar.description',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -46,6 +50,8 @@ defined('TYPO3') || die();
             'exclude' => 1,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:pages.Breadcrumb',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:pages.Breadcrumb.description',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -63,6 +69,8 @@ defined('TYPO3') || die();
             'exclude' => 1,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:pages.HeaderContainer',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:pages.HeaderContainer.description',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -94,6 +102,9 @@ defined('TYPO3') || die();
                 'minitems' => 0,
                 'maxitems' => 1,
                 'allowed' => 'svg',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
                 'overrideChildTca' => [
                     'columns' => [
                         'description' => [
@@ -141,6 +152,8 @@ defined('TYPO3') || die();
         'link_icon_background' => [
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:linkicon.background.label',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:linkicon.background.description',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',

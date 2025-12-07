@@ -11,6 +11,8 @@ defined('TYPO3') || die();
         'tx_header_inside' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.header_position.inside.label',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -75,6 +77,9 @@ defined('TYPO3') || die();
                     ],
                 'renderType' => 'selectSingle',
                 'type' => 'select',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
             'exclude' => 1,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.header_style',
@@ -116,6 +121,9 @@ defined('TYPO3') || die();
                     ],
                 'renderType' => 'selectSingle',
                 'type' => 'select',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
             'exclude' => 1,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.header_subpages',
@@ -144,6 +152,9 @@ defined('TYPO3') || die();
                 'type' => 'input',
                 'size' => 50,
                 'max' => 255,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
     ];
