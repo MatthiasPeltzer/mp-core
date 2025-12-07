@@ -28,37 +28,6 @@ defined('TYPO3') || die();
                 'default' => 0,
             ],
         ],
-        'tx_lang_code' => [
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.tx_lang_code',
-            'config' => [
-                'type' => 'input',
-                'size' => 10,
-                'max' => 10,
-                'eval' => 'trim',
-                'placeholder' => 'de',
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
-            ],
-        ],
-        'tx_track_kind' => [
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.tx_track_kind',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.tx_track_kind.captions', 'captions'],
-                    ['LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.tx_track_kind.subtitles', 'subtitles'],
-                    ['LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.tx_track_kind.descriptions', 'descriptions'],
-                    ['LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.tx_track_kind.chapters', 'chapters'],
-                    ['LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.tx_track_kind.metadata', 'metadata'],
-                ],
-                'default' => 'captions',
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
-            ],
-        ],
         'tx_quality_label' => [
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.tx_quality_label',
             'config' => [
@@ -89,10 +58,4 @@ defined('TYPO3') || die();
         'caption',
         'after:title'
     );
-    
-    // Define palette for VTT files
-    $GLOBALS['TCA']['sys_file_reference']['palettes']['vttFilePalette'] = [
-        'showitem' => 'title,--linebreak--,tx_lang_code,tx_track_kind',
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.palette.vttFilePalette',
-    ];
 })();

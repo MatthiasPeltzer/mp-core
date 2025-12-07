@@ -711,30 +711,6 @@
       <trans-unit id="sys_file_reference.outline" resname="sys_file_reference.outline">
         <source>Show Outline</source>
       </trans-unit>
-      <trans-unit id="sys_file_reference.tx_lang_code" resname="sys_file_reference.tx_lang_code">
-        <source>Language Code (srclang)</source>
-      </trans-unit>
-      <trans-unit id="sys_file_reference.tx_track_kind" resname="sys_file_reference.tx_track_kind">
-        <source>Track Type (kind)</source>
-      </trans-unit>
-      <trans-unit id="sys_file_reference.tx_track_kind.captions" resname="sys_file_reference.tx_track_kind.captions">
-        <source>Captions</source>
-      </trans-unit>
-      <trans-unit id="sys_file_reference.tx_track_kind.subtitles" resname="sys_file_reference.tx_track_kind.subtitles">
-        <source>Subtitles</source>
-      </trans-unit>
-      <trans-unit id="sys_file_reference.tx_track_kind.descriptions" resname="sys_file_reference.tx_track_kind.descriptions">
-        <source>Descriptions</source>
-      </trans-unit>
-      <trans-unit id="sys_file_reference.tx_track_kind.chapters" resname="sys_file_reference.tx_track_kind.chapters">
-        <source>Chapters</source>
-      </trans-unit>
-      <trans-unit id="sys_file_reference.tx_track_kind.metadata" resname="sys_file_reference.tx_track_kind.metadata">
-        <source>Metadata</source>
-      </trans-unit>
-      <trans-unit id="sys_file_reference.palette.vttFilePalette" resname="sys_file_reference.palette.vttFilePalette">
-        <source>VTT File Settings</source>
-      </trans-unit>
       <trans-unit id="sys_file_reference.tx_quality_label" resname="sys_file_reference.tx_quality_label">
         <source>Quality Label</source>
       </trans-unit>
