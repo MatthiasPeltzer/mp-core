@@ -52,6 +52,9 @@ defined('TYPO3') or die('Access denied.');
                         ],
                     'renderType' => 'selectSingle',
                     'type' => 'select',
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => true,
+                    ],
                 ],
             'exclude' => '0',
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.type',
@@ -85,6 +88,9 @@ defined('TYPO3') or die('Access denied.');
                         ],
                     'renderType' => 'selectSingle',
                     'type' => 'select',
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => true,
+                    ],
                 ],
             'exclude' => '1',
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.columns',
@@ -98,6 +104,9 @@ defined('TYPO3') or die('Access denied.');
                 'renderType' => 'selectSingle',
                 'items' => [],
                 'itemsProcFunc' => ColorPickerValueItems::class . '->getItems',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
         'grid_icon' => [
@@ -112,6 +121,9 @@ defined('TYPO3') or die('Access denied.');
                 'appearance' => [
                     'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
                     'showPossibleLocalizationRecords' => true,
+                ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
                 ],
                 // custom configuration for displaying fields in the overlay/reference table
                 // to use the imageoverlayPalette instead of the basicoverlayPalette
@@ -184,6 +196,8 @@ defined('TYPO3') or die('Access denied.');
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.grid_icon_switch',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.grid_icon_switch.description',
             'onChange' => 'reload',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -201,6 +215,8 @@ defined('TYPO3') or die('Access denied.');
             'exclude' => '0',
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.light',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.light.description',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -218,6 +234,8 @@ defined('TYPO3') or die('Access denied.');
             'exclude' => '0',
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.parallax',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.parallax.description',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -236,6 +254,8 @@ defined('TYPO3') or die('Access denied.');
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.bgfullsize',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.bgfullsize.description',
             'displayCond' => 'FIELD:grid_icon_switch:=:0',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -254,6 +274,8 @@ defined('TYPO3') or die('Access denied.');
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.container',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.container.description',
             'displayCond' => 'FIELD:grid_icon_switch:=:0',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -279,6 +301,9 @@ defined('TYPO3') or die('Access denied.');
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
                         'showPossibleLocalizationRecords' => true,
+                    ],
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => true,
                     ],
                     // custom configuration for displaying fields in the overlay/reference table
                     // to use the imageoverlayPalette instead of the basicoverlayPalette

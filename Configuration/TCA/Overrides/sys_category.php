@@ -13,7 +13,10 @@ defined('TYPO3') || die();
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:pages.MainCategory.description',
             'type' => 'category',
             'relationship' => 'oneToOne',
-            'foreign_table' => 'sys_category'
+            'foreign_table' => 'sys_category',
+            'behaviour' => [
+                'allowLanguageSynchronization' => true,
+            ],
         ]
     ];
     ExtensionManagementUtility::addToAllTCAtypes('pages', 'mainCategory, categories','', 'before:categories');

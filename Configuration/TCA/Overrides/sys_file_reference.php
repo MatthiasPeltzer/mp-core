@@ -10,6 +10,8 @@ defined('TYPO3') || die();
     $newColumns = [
         'outline' => [
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.outline',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'renderType' => 'checkboxToggle',
                 'type' => 'check',
@@ -18,6 +20,8 @@ defined('TYPO3') || die();
         ],
         'allow_download' => [
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.allow_download',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'renderType' => 'checkboxToggle',
                 'type' => 'check',
@@ -32,6 +36,9 @@ defined('TYPO3') || die();
                 'max' => 10,
                 'eval' => 'trim',
                 'placeholder' => 'de',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
         'tx_track_kind' => [
@@ -47,6 +54,9 @@ defined('TYPO3') || die();
                     ['LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:sys_file_reference.tx_track_kind.metadata', 'metadata'],
                 ],
                 'default' => 'captions',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
         'tx_quality_label' => [
@@ -57,6 +67,9 @@ defined('TYPO3') || die();
                 'max' => 50,
                 'eval' => 'trim',
                 'placeholder' => '1080p, 720p, High, Low',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
     ];

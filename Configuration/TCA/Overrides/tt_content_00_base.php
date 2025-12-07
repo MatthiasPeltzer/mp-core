@@ -14,6 +14,8 @@ defined('TYPO3') || die();
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_switch',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_switch.description',
             'onChange' => 'reload',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -45,6 +47,9 @@ defined('TYPO3') || die();
                             'link' => [
                                 'icon' => 'actions-wizard-link',
                             ],
+                        ],
+                        'behaviour' => [
+                            'allowLanguageSynchronization' => true,
                         ],
                     ],
                 'exclude' => '0',
@@ -99,6 +104,9 @@ defined('TYPO3') || die();
                             ],
                         'renderType' => 'selectSingle',
                         'type' => 'select',
+                        'behaviour' => [
+                            'allowLanguageSynchronization' => true,
+                        ],
                     ],
                 'displayCond' => 'FIELD:tx_link_switch:=:1',
                 'exclude' => '0',
@@ -110,6 +118,9 @@ defined('TYPO3') || die();
                     [
                         'eval' => 'trim',
                         'type' => 'input',
+                        'behaviour' => [
+                            'allowLanguageSynchronization' => true,
+                        ],
                     ],
                 'displayCond' => 'FIELD:tx_link_switch:=:1',
                 'exclude' => '0',
@@ -144,6 +155,9 @@ defined('TYPO3') || die();
                             ],
                         'renderType' => 'selectSingle',
                         'type' => 'select',
+                        'behaviour' => [
+                            'allowLanguageSynchronization' => true,
+                        ],
                     ],
                 'exclude' => '0',
                 'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_position',

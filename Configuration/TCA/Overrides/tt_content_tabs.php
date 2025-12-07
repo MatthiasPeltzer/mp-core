@@ -68,6 +68,9 @@ defined('TYPO3') or die('Access denied.');
                     'step' => 1,
                     'width' => 200,
                 ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ],
         ],
     ];

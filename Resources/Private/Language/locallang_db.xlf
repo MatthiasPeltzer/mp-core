@@ -42,6 +42,15 @@
       <trans-unit id="accordion.title" resname="accordion.title">
         <source>Accordion</source>
       </trans-unit>
+      <trans-unit id="accordion.type.label" resname="accordion.type.label">
+        <source>Type</source>
+      </trans-unit>
+      <trans-unit id="accordion.type.bootstrap" resname="accordion.type.bootstrap">
+        <source>Bootstrap Accordion</source>
+      </trans-unit>
+      <trans-unit id="accordion.type.native" resname="accordion.type.native">
+        <source>Native Detail Accordion</source>
+      </trans-unit>
       <trans-unit id="audio.audio_description" resname="audio.audio_description">
         <source>Puts a local or external audio on the page</source>
       </trans-unit>
@@ -614,6 +623,15 @@
       </trans-unit>
       <trans-unit id="slider.title" resname="slider.title">
         <source>Slideshow</source>
+      </trans-unit>
+      <trans-unit id="slider.elements" resname="slider.elements">
+        <source>Slider elements</source>
+      </trans-unit>
+      <trans-unit id="slider.type.slide" resname="slider.type.slide">
+        <source>Slide</source>
+      </trans-unit>
+      <trans-unit id="slider.type.fade" resname="slider.type.fade">
+        <source>Fade</source>
       </trans-unit>
       <trans-unit id="stage.tx_stage_bg" resname="stage.tx_stage_bg">
         <source>Stage background</source>

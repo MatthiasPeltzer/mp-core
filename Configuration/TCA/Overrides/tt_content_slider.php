@@ -50,6 +50,9 @@ defined('TYPO3') || die();
                         ],
                     'renderType' => 'selectSingle',
                     'type' => 'select',
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => true,
+                    ],
                 ],
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.slider.type',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.slider.type.description',

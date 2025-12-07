@@ -30,6 +30,9 @@ defined('TYPO3') || die();
                             ],
                         'renderType' => 'selectSingle',
                         'type' => 'select',
+                        'behaviour' => [
+                            'allowLanguageSynchronization' => true,
+                        ],
                     ],
                 'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:stage.tx_stage_switch',
             ],
@@ -41,6 +44,9 @@ defined('TYPO3') || die();
                         'allowed' => 'mp4,webm,ogg',
                         'maxitems' => 1,
                         'minitems' => 0,
+                        'behaviour' => [
+                            'allowLanguageSynchronization' => true,
+                        ],
                     ],
                 'displayCond' => 'FIELD:tx_stage_switch:=:1',
                 'exclude' => '1',
@@ -75,6 +81,9 @@ defined('TYPO3') || die();
                             ],
                         'renderType' => 'selectSingle',
                         'type' => 'select',
+                        'behaviour' => [
+                            'allowLanguageSynchronization' => true,
+                        ],
                     ],
                 'exclude' => '0',
                 'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:stage.tx_stage_position',
@@ -82,6 +91,8 @@ defined('TYPO3') || die();
             ],
         'tx_stage_bgcolor' =>
             [
+                'l10n_mode' => 'exclude',
+                'l10n_display' => 'defaultAsReadonly',
                 'config' =>
                     [
                         'items' =>
