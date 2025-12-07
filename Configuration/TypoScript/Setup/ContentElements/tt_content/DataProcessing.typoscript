@@ -24,6 +24,12 @@ page {
         expandAll = 0
         levels = 6
         as = menuSub
+        dataProcessing {
+          10 = files
+          10 {
+            references.fieldName = link_icon
+          }
+        }
       }
 
       40 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
@@ -119,6 +125,12 @@ page {
           levels = 4
           includeSpacer = 1
           as = mainNav
+          dataProcessing {
+            10 = files
+            10 {
+              references.fieldName = link_icon
+            }
+          }
         }
       }
     }
@@ -136,6 +148,12 @@ page {
           levels = 4
           includeSpacer = 1
           as = menuMainDesktop
+          dataProcessing {
+            10 = files
+            10 {
+              references.fieldName = link_icon
+            }
+          }
         }
 
         120 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
@@ -145,6 +163,12 @@ page {
           levels = 4
           includeSpacer = 1
           as = menuMainMobile
+          dataProcessing {
+            10 = files
+            10 {
+              references.fieldName = link_icon
+            }
+          }
         }
       }
     }
@@ -162,6 +186,12 @@ page {
           levels = 4
           includeSpacer = 1
           as = menuMainDesktop
+          dataProcessing {
+            10 = files
+            10 {
+              references.fieldName = link_icon
+            }
+          }
         }
 
         120 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
@@ -171,6 +201,12 @@ page {
           levels = 4
           includeSpacer = 1
           as = menuMainMobile
+          dataProcessing {
+            10 = files
+            10 {
+              references.fieldName = link_icon
+            }
+          }
         }
       }
     }
