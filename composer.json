@@ -2,7 +2,7 @@
 	"name": "mpc/mp-core",
 	"description": "MPC Distribution Package",
 	"license": [
-		"GPL-3.0-or-later"
+		"GPL-2.0-or-later"
 	],
   "type": "typo3-cms-extension",
 	"authors": [
