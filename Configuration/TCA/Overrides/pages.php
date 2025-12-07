@@ -137,8 +137,17 @@ defined('TYPO3') || die();
                 ],
             ],
         ],
+
+        'link_icon_background' => [
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:linkicon.background.label',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:linkicon.background.description',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+            ],
+        ],
     ];
     ExtensionManagementUtility::addTCAcolumns('pages', $visibleoptions);
     ExtensionManagementUtility::addFieldsToPalette('pages', 'layout', '--linebreak--,newsletter,socialmedia,breadcrumb,headercontainer', 'after:newUntil');
-    ExtensionManagementUtility::addFieldsToPalette('pages', 'media', '--linebreak--,teaser_description,link_icon', 'after:media');
+    ExtensionManagementUtility::addFieldsToPalette('pages', 'media', '--linebreak--,teaser_description,link_icon,--linebreak--,link_icon_background', 'after:media');
 })();

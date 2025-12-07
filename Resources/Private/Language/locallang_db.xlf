@@ -216,6 +216,12 @@
       <trans-unit id="linkicon.label" resname="linkicon.label">
         <source>Link icon</source>
       </trans-unit>
+      <trans-unit id="linkicon.background.description" resname="linkicon.background.description">
+        <source>Display the link icon as the background image in the main container of the page.</source>
+      </trans-unit>
+      <trans-unit id="linkicon.background.label" resname="linkicon.background.label">
+        <source>Link icon as background</source>
+      </trans-unit>
       <trans-unit id="pages.Breadcrumb" resname="pages.Breadcrumb">
         <source>Breadcrumb</source>
       </trans-unit>
