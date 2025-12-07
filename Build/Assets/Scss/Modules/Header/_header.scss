@@ -75,23 +75,21 @@
 }
 
 .header-bg-svg {
-  height: 100%;
   margin: 0 calc(-50vw + 50%);
   overflow: visible;
-  position: absolute;
-  width: 100vw;
+  position: relative;
   z-index: -1;
 }
 
 .bg-svg {
-  bottom: -20vh;
   height: 420px;
   left: 0;
   margin: 0 auto;
   max-width: 100%;
-  opacity: .3;
+  opacity: 0.1;
   position: absolute;
   right: 0;
+  top: 0;
   width: 420px;
 
   @include media-breakpoint-up(sm) {
