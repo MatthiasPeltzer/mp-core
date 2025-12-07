@@ -420,6 +420,14 @@
         <source>Link icon</source>
         <target>Link-Symbol</target>
       </trans-unit>
+      <trans-unit id="linkicon.background.description" resname="linkicon.background.description" approved="yes">
+        <source>Display the link icon as the background image in the main container of the page.</source>
+        <target>Das Link-Symbol als Hintergrundbild im Hauptcontainer der Seite anzeigen.</target>
+      </trans-unit>
+      <trans-unit id="linkicon.background.label" resname="linkicon.background.label" approved="yes">
+        <source>Link icon as background</source>
+        <target>Link-Symbol als Hintergrundbild</target>
+      </trans-unit>
       <trans-unit id="pages.Breadcrumb" resname="pages.Breadcrumb" approved="yes">
         <source>Breadcrumb</source>
         <target>Breadcrumb</target>

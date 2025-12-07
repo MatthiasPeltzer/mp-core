@@ -1,7 +1,7 @@
 <html data-namespace-typo3-fluid="true" lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
-      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers">
 
 <f:if condition="{menuSub}">
     <nav aria-label="{f:translate(key: 'supplement.areamenu', extensionName: 'mp_core')}" class="d-none d-lg-block">
@@ -11,23 +11,41 @@
                     <f:if condition="{mainItem.current}">
                         <f:then>
                             <f:link.typolink
+                                additionalAttributes="{'aria-current': 'page'}"
+                                class="nav-link{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.hasSubpages, then:' sub')}{f:if(condition: mainItem.data.target, then:' external-link')}"
                                 parameter="{mainItem.link}"
                                 target="{mainItem.data.target}"
-                                title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
-                                class="nav-link{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.hasSubpages, then:' sub')}{f:if(condition: mainItem.data.target, then:' external-link')}"
-                                additionalAttributes="{'aria-current': 'page'}">
-                                <f:if condition="{mainItem.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
-                                {mainItem.title}
+                                title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}">
+                              <f:spaceless>
+                                <f:if condition="{mainItem.files.0}">
+                                  <f:then>
+                                    <mpc:svgInline additionalAttributes="{aria-hidden:'true'}" class="nav-icon" height="16" src="fileadmin/{mainItem.files.0.properties.identifier}" viewBox="0 0 16 16" width="16"/>
+                                  </f:then>
+                                  <f:else>
+                                    <f:if condition="{mainItem.data.target}"><span aria-hidden="true" class="icon"></span></f:if>
+                                  </f:else>
+                                </f:if>
+                                <span class="text-decoration-underline">{mainItem.title}</span>
+                              </f:spaceless>
                             </f:link.typolink>
                         </f:then>
                         <f:else>
                             <f:link.typolink
+                                class="nav-link{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.hasSubpages, then:' sub')}{f:if(condition: mainItem.data.target, then:' external-link')}"
                                 parameter="{mainItem.link}"
                                 target="{mainItem.data.target}"
-                                title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
-                                class="nav-link{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.hasSubpages, then:' sub')}{f:if(condition: mainItem.data.target, then:' external-link')}">
-                                <f:if condition="{mainItem.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
-                                {mainItem.title}
+                                title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}">
+                              <f:spaceless>
+                                <f:if condition="{mainItem.files.0}">
+                                  <f:then>
+                                    <mpc:svgInline additionalAttributes="{aria-hidden:'true'}" class="nav-icon" height="16" src="fileadmin/{mainItem.files.0.properties.identifier}" viewBox="0 0 16 16" width="16"/>
+                                  </f:then>
+                                  <f:else>
+                                    <f:if condition="{mainItem.data.target}"><span aria-hidden="true" class="icon"></span></f:if>
+                                  </f:else>
+                                </f:if>
+                                <span>{mainItem.title}</span>
+                              </f:spaceless>
                             </f:link.typolink>
                         </f:else>
                     </f:if>
@@ -49,23 +67,41 @@
         <f:if condition="{mainChild.current}">
             <f:then>
                 <f:link.typolink
+                    additionalAttributes="{'aria-current': 'page'}"
+                    class="nav-link{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.hasSubpages, then:' sub')}{f:if(condition: mainChild.data.target, then:' external-link')}"
                     parameter="{mainChild.link}"
                     target="{mainChild.data.target}"
-                    title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
-                    class="nav-link{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.hasSubpages, then:' sub')}{f:if(condition: mainChild.data.target, then:' external-link')}"
-                    additionalAttributes="{'aria-current': 'page'}">
-                    <f:if condition="{mainChild.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
-                    {mainChild.title}
+                    title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}">
+                  <f:spaceless>
+                    <f:if condition="{mainChild.files.0}">
+                      <f:then>
+                        <mpc:svgInline additionalAttributes="{aria-hidden:'true'}" class="nav-icon" height="16" src="fileadmin/{mainChild.files.0.properties.identifier}" viewBox="0 0 16 16" width="16"/>
+                      </f:then>
+                      <f:else>
+                        <f:if condition="{mainChild.data.target}"><span aria-hidden="true" class="icon"></span></f:if>
+                      </f:else>
+                    </f:if>
+                    <span class="text-decoration-underline">{mainChild.title}</span>
+                  </f:spaceless>
                 </f:link.typolink>
             </f:then>
             <f:else>
                 <f:link.typolink
+                    class="nav-link{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.hasSubpages, then:' sub')}{f:if(condition: mainChild.data.target, then:' external-link')}"
                     parameter="{mainChild.link}"
                     target="{mainChild.data.target}"
-                    title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
-                    class="nav-link{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.hasSubpages, then:' sub')}{f:if(condition: mainChild.data.target, then:' external-link')}">
-                    <f:if condition="{mainChild.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
-                    {mainChild.title}
+                    title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}">
+                  <f:spaceless>
+                    <f:if condition="{mainChild.files.0}">
+                      <f:then>
+                        <mpc:svgInline additionalAttributes="{aria-hidden:'true'}" class="nav-icon" height="16" src="fileadmin/{mainChild.files.0.properties.identifier}" viewBox="0 0 16 16" width="16"/>
+                      </f:then>
+                      <f:else>
+                        <f:if condition="{mainChild.data.target}"><span aria-hidden="true" class="icon"></span></f:if>
+                      </f:else>
+                    </f:if>
+                    <span>{mainChild.title}</span>
+                  </f:spaceless>
                 </f:link.typolink>
             </f:else>
         </f:if>
