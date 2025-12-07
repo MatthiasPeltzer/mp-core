@@ -35,7 +35,7 @@
 			"extension-key": "mp_core"
 		}
 	},
-	"homepage": "https://www.mpeltzer.de/",
+	"homepage": "https://github.com/MatthiasPeltzer/mp-core",
 	"replace": {
 		"typo3-ter/mp-core": "self.version"
 	},
