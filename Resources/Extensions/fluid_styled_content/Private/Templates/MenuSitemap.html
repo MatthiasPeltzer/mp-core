@@ -11,11 +11,13 @@
         <div class="ce-bodytext">
             <ul>
                 <f:for each="{menu}" as="page">
-                    <li>
-                        <a href="{page.link}" {f:if(condition: page.target, then: ' target="{page.target}"')}{f:if(condition: page.current, then: ' aria-current="page"')}>
-                        <span>{page.title}</span></a>
-                        <f:render section="Menu" arguments="{menu: page.children}"/>
-                    </li>
+                    <f:if condition="{page.data.doktype} != 3">
+                        <li>
+                            <a href="{page.link}" {f:if(condition: page.target, then: ' target="{page.target}"')}{f:if(condition: page.current, then: ' aria-current="page"')}>
+                            <span>{page.title}</span></a>
+                            <f:render section="Menu" arguments="{menu: page.children}"/>
+                        </li>
+                    </f:if>
                 </f:for>
             </ul>
         </div>
