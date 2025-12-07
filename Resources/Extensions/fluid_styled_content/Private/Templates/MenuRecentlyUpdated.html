@@ -9,6 +9,7 @@
         <div class="paginated-list">
             <ul class="list-unstyled row row-cols-1 row-cols-md-2 row-cols-lg-{data.grid_columns}">
                 <f:for as="page" each="{menu}" iteration="iterator">
+                    <f:if condition="{page.data.doktype} != 3">
                     <li class="{f:if(condition:'{iterator.isFirst}', then:'first')}{f:if(condition:'{iterator.isLast}', then:' last')} mb-4">
                         <article class="d-flex align-content-start bg{data.grid_bgcolor} flex-wrap teaser{f:if(condition:'{data.imageorient} == 0', then:' textpic topcenter')}{f:if(condition:'{data.imageorient} == 25', then:' textpic nexttotext-right d-md-flex')}{f:if(condition:'{data.imageorient} == 26', then:' textpic nexttotext-left d-lg-flex')} frame frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}">
                             <div class="order-1 teaser-content ce-bodytext{f:if(condition: newsItem.istopnews, then: ' topnews')}{f:if(condition: data.grid_light, then: ' grid-light', else: ' grid-dark')}">
@@ -96,6 +97,7 @@
                             </div>
                         </article>
                     </li>
+                    </f:if>
                 </f:for>
             </ul>
             <div class="pagination-controls"></div>
