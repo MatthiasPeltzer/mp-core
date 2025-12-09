@@ -68,14 +68,6 @@
         <source>Native Detail Accordion</source>
         <target>Natives Detail-Akkordeon</target>
       </trans-unit>
-      <trans-unit id="audio.audio_description" resname="audio.audio_description" approved="yes">
-        <source>Puts a local or external audio on the page</source>
-        <target>Legt ein lokales Audio oder ein externes Audio an</target>
-      </trans-unit>
-      <trans-unit id="audio.audio_title" resname="audio.audio_title" approved="yes">
-        <source>Audio</source>
-        <target>Audio</target>
-      </trans-unit>
       <trans-unit id="banner.description" resname="banner.description" approved="yes">
         <source>Adds a banner element with optional image, link and background color</source>
         <target>Fügt ein Banner Element mit optionalem Bild, Link und Hintergrundfarbe hinzu</target>
@@ -412,14 +404,6 @@
         <source>Element indentation (col-10)</source>
         <target>Element Einrückung (col-10)</target>
       </trans-unit>
-      <trans-unit id="linkicon.description" resname="linkicon.description" approved="yes">
-        <source>Link Icon for the page navigation, e.g. for accessible link.</source>
-        <target>Link-Symbol für die Seitennavigation, z. B. für barrierefreie Links.</target>
-      </trans-unit>
-      <trans-unit id="linkicon.label" resname="linkicon.label" approved="yes">
-        <source>Link icon</source>
-        <target>Link-Symbol</target>
-      </trans-unit>
       <trans-unit id="linkicon.background.description" resname="linkicon.background.description" approved="yes">
         <source>Display the link icon as the background image in the main container of the page.</source>
         <target>Das Link-Symbol als Hintergrundbild im Hauptcontainer der Seite anzeigen.</target>
@@ -427,6 +411,14 @@
       <trans-unit id="linkicon.background.label" resname="linkicon.background.label" approved="yes">
         <source>Link icon as background</source>
         <target>Link-Symbol als Hintergrundbild</target>
+      </trans-unit>
+      <trans-unit id="linkicon.description" resname="linkicon.description" approved="yes">
+        <source>Link Icon for the page navigation, e.g. for accessible link.</source>
+        <target>Link-Symbol für die Seitennavigation, z. B. für barrierefreie Links.</target>
+      </trans-unit>
+      <trans-unit id="linkicon.label" resname="linkicon.label" approved="yes">
+        <source>Link icon</source>
+        <target>Link-Symbol</target>
       </trans-unit>
       <trans-unit id="pages.Breadcrumb" resname="pages.Breadcrumb" approved="yes">
         <source>Breadcrumb</source>
@@ -1066,6 +1058,10 @@
         <source>Show Outline</source>
         <target>Outline anzeigen</target>
       </trans-unit>
+      <trans-unit id="sys_file_reference.tx_quality_label" resname="sys_file_reference.tx_quality_label" approved="yes">
+        <source>Quality Label</source>
+        <target>Qualitätslabel</target>
+      </trans-unit>
       <trans-unit id="tabs.description" resname="tabs.description" approved="yes">
         <source>The content elements are accessible through tabs</source>
         <target>Die Inhaltselemente sind über Tabs zugänglich</target>
@@ -1081,10 +1077,6 @@
       <trans-unit id="tabs.title" resname="tabs.title" approved="yes">
         <source>Tabs</source>
         <target>Tabs</target>
-      </trans-unit>
-      <trans-unit id="tt_content.CType.audio" resname="tt_content.CType.audio" approved="yes">
-        <source>Audio</source>
-        <target>Audio</target>
       </trans-unit>
       <trans-unit id="tt_content.CType.div._gallery_" resname="tt_content.CType.div._gallery_" approved="yes">
         <source>Gallery</source>
@@ -1105,10 +1097,6 @@
       <trans-unit id="tt_content.CType.stage" resname="tt_content.CType.stage" approved="yes">
         <source>Stage</source>
         <target>Bühne</target>
-      </trans-unit>
-      <trans-unit id="tt_content.CType.video" resname="tt_content.CType.video" approved="yes">
-        <source>Video</source>
-        <target>Video</target>
       </trans-unit>
       <trans-unit id="tt_content.gallery_columns" resname="tt_content.gallery_columns" approved="yes">
         <source>Gallery columns</source>
@@ -1173,202 +1161,6 @@
       <trans-unit id="tt_content.header_subpages.description" resname="tt_content.header_subpages.description" approved="yes">
         <source>Set the heading depth of the teaser. The default is “H2”.</source>
         <target>Überschriftentiefe des Teasers festlegen. Standard ist "H2".</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.audio_accessibility">
-        <source>Accessibility Settings</source>
-        <target>Barrierefreiheits-Einstellungen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.audio_captions_settings">
-        <source>Caption Settings</source>
-        <target>Untertitel-Einstellungen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.audio_config">
-        <source>Audio Configuration</source>
-        <target>Audio-Konfiguration</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.audio_controls">
-        <source>Control Buttons</source>
-        <target>Steuerelemente-Buttons</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.audio_playback">
-        <source>Playback Settings</source>
-        <target>Wiedergabe-Einstellungen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.audio_transcript_settings">
-        <source>Transcript Settings</source>
-        <target>Transkript-Einstellungen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.video_accessibility">
-        <source>Accessibility Settings</source>
-        <target>Barrierefreiheits-Einstellungen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.video_audio_description">
-        <source>Audio Description</source>
-        <target>Audiodeskription</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.video_captions_settings">
-        <source>Caption Settings</source>
-        <target>Untertitel-Einstellungen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.video_config">
-        <source>Video Configuration</source>
-        <target>Video-Konfiguration</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.video_controls">
-        <source>Control Buttons</source>
-        <target>Steuerelemente-Buttons</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.video_playback">
-        <source>Playback Settings</source>
-        <target>Wiedergabe-Einstellungen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.video_sign_language">
-        <source>Sign Language Overlay</source>
-        <target>Gebärdensprache-Overlay</target>
-      </trans-unit>
-      <trans-unit id="tt_content.palettes.video_transcript_settings">
-        <source>Transcript Settings</source>
-        <target>Transkript-Einstellungen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.audio">
-        <source>Audio</source>
-        <target>Audio</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.audio_accessibility">
-        <source>Accessibility</source>
-        <target>Barrierefreiheit</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.audio_captions">
-        <source>Captions</source>
-        <target>Untertitel</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.audio_controls">
-        <source>Controls</source>
-        <target>Steuerelemente</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.audio_playback">
-        <source>Playback Options</source>
-        <target>Wiedergabe-Optionen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.audio_transcript">
-        <source>Transcript</source>
-        <target>Transkript</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.video">
-        <source>Video</source>
-        <target>Video</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.video_accessibility">
-        <source>Accessibility</source>
-        <target>Barrierefreiheit</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.video_audio_description">
-        <source>Audio Description</source>
-        <target>Audiodeskription</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.video_captions">
-        <source>Captions</source>
-        <target>Untertitel</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.video_controls">
-        <source>Controls</source>
-        <target>Steuerelemente</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.video_playback">
-        <source>Playback Options</source>
-        <target>Wiedergabe-Optionen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.video_sign_language">
-        <source>Sign Language</source>
-        <target>Gebärdensprache</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tabs.video_transcript">
-        <source>Transcript</source>
-        <target>Transkript</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_audio" resname="tt_content.tx_audio_audio" approved="yes">
-        <source>Audio (File)</source>
-        <target>Audio (Datei)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_audio">
-        <source>Audio (File)</source>
-        <target>Audio (Datei)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_autoplay">
-        <source>Autoplay</source>
-        <target>Automatische Wiedergabe</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_caption_file">
-        <source>Caption Files (VTT)</source>
-        <target>Untertitel-Dateien (VTT)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_caption_style_button">
-        <source>Show Caption Style Button</source>
-        <target>Untertitel-Stil-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_captions">
-        <source>Enable Captions</source>
-        <target>Untertitel aktivieren</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_captions_button">
-        <source>Show Captions Button</source>
-        <target>Untertitel-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_captions_default">
-        <source>Show Captions by Default</source>
-        <target>Untertitel standardmäßig anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_controls">
-        <source>Show Controls</source>
-        <target>Steuerelemente anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_keyboard">
-        <source>Enable Keyboard Shortcuts</source>
-        <target>Tastaturkürzel aktivieren</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_language">
-        <source>Player Language</source>
-        <target>Player-Sprache</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_loop">
-        <source>Loop</source>
-        <target>Endlosschleife</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_muted">
-        <source>Muted</source>
-        <target>Stummgeschaltet</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_playback_speed">
-        <source>Playback Speed</source>
-        <target>Wiedergabegeschwindigkeit</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_screen_reader">
-        <source>Enable Screen Reader Announcements</source>
-        <target>Screenreader-Ansagen aktivieren</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_speed_button">
-        <source>Show Speed Button</source>
-        <target>Geschwindigkeits-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_start_time">
-        <source>Start Time (seconds)</source>
-        <target>Startzeit (Sekunden)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_transcript">
-        <source>Enable Transcript</source>
-        <target>Transkript aktivieren</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_transcript_button">
-        <source>Show Transcript Button</source>
-        <target>Transkript-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_volume">
-        <source>Volume (0-1)</source>
-        <target>Lautstärke (0-1)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_audio_volume_control">
-        <source>Show Volume Control</source>
-        <target>Lautstärkeregler anzeigen</target>
       </trans-unit>
       <trans-unit id="tt_content.tx_link" resname="tt_content.tx_link" approved="yes">
         <source>Link</source>
@@ -1438,146 +1230,6 @@
         <source>Stage</source>
         <target>Bühne</target>
       </trans-unit>
-      <trans-unit id="tt_content.tx_video" resname="tt_content.tx_video" approved="yes">
-        <source>Video</source>
-        <target>Video</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video">
-        <source>Video</source>
-        <target>Video</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_audio_description_button">
-        <source>Show Audio Description Button</source>
-        <target>Audiodeskription-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_audio_description_src">
-        <source>Audio Described Version (Video File)</source>
-        <target>Audiodeskription-Version (Video-Datei)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_autoplay">
-        <source>Autoplay</source>
-        <target>Automatische Wiedergabe</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_caption" resname="tt_content.tx_video_caption" approved="yes">
-        <source>Caption</source>
-        <target>Untertitel</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_caption">
-        <source>Caption</source>
-        <target>Untertitel</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_caption_style_button">
-        <source>Show Caption Style Button</source>
-        <target>Untertitel-Stil-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_captions">
-        <source>Enable Captions</source>
-        <target>Untertitel aktivieren</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_captions_button">
-        <source>Show Captions Button</source>
-        <target>Untertitel-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_captions_default">
-        <source>Show Captions by Default</source>
-        <target>Untertitel standardmäßig anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_chapters_button">
-        <source>Show Chapters Button</source>
-        <target>Kapitel-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_controls">
-        <source>Show Controls</source>
-        <target>Steuerelemente anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_fullscreen_button">
-        <source>Show Fullscreen Button</source>
-        <target>Vollbild-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_keyboard">
-        <source>Enable Keyboard Shortcuts</source>
-        <target>Tastaturkürzel aktivieren</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_language">
-        <source>Player Language</source>
-        <target>Player-Sprache</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_loop">
-        <source>Loop</source>
-        <target>Endlosschleife</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_muted">
-        <source>Muted</source>
-        <target>Stummgeschaltet</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_pip_button">
-        <source>Show Picture-in-Picture Button</source>
-        <target>Bild-in-Bild-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_playback_speed">
-        <source>Playback Speed</source>
-        <target>Wiedergabegeschwindigkeit</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_poster_image" resname="tt_content.tx_video_poster_image" approved="yes">
-        <source>Poster Image</source>
-        <target>Hintergrundbild</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_quality_button">
-        <source>Show Quality Button</source>
-        <target>Qualitäts-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_screen_reader">
-        <source>Enable Screen Reader Announcements</source>
-        <target>Screenreader-Ansagen aktivieren</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_sign_language_button">
-        <source>Show Sign Language Button</source>
-        <target>Gebärdensprache-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_sign_language_position">
-        <source>Sign Language Overlay Position</source>
-        <target>Gebärdensprache-Overlay Position</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_sign_language_src">
-        <source>Sign Language Video (Video File)</source>
-        <target>Gebärdensprache-Video (Video-Datei)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_speed_button">
-        <source>Show Speed Button</source>
-        <target>Geschwindigkeits-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_start_time">
-        <source>Start Time (seconds)</source>
-        <target>Startzeit (Sekunden)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_transcript">
-        <source>Enable Transcript</source>
-        <target>Transkript aktivieren</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_transcript_button">
-        <source>Show Transcript Button</source>
-        <target>Transkript-Button anzeigen</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_video" resname="tt_content.tx_video_video" approved="yes">
-        <source>Video (File)</source>
-        <target>Video (Datei)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_video">
-        <source>Video (File)</source>
-        <target>Video (Datei)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_videourl" resname="tt_content.tx_video_videourl" approved="yes">
-        <source>YouTube video url</source>
-        <target>YouTube Video URL</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_volume">
-        <source>Volume (0-1)</source>
-        <target>Lautstärke (0-1)</target>
-      </trans-unit>
-      <trans-unit id="tt_content.tx_video_volume_control">
-        <source>Show Volume Control</source>
-        <target>Lautstärkeregler anzeigen</target>
-      </trans-unit>
       <trans-unit id="typo3vitedemo_todolist" approved="yes">
         <source>Vue: TodoList</source>
         <target>Vue: TodoList</target>
@@ -1589,14 +1241,6 @@
       <trans-unit id="typo3vitedemo_todolist.name" approved="yes">
         <source>Vue: TodoList</source>
         <target>Vue: TodoList</target>
-      </trans-unit>
-      <trans-unit id="video.video_description" resname="video.video_description" approved="yes">
-        <source>Puts a local or external YouTube video on the page</source>
-        <target>Legt ein lokales Video oder ein externes YouTube Video an</target>
-      </trans-unit>
-      <trans-unit id="video.video_title" resname="video.video_title" approved="yes">
-        <source>Video</source>
-        <target>Video</target>
       </trans-unit>
       <trans-unit id="with_frame" resname="with_frame" approved="yes">
         <source>With frame</source>

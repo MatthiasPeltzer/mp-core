@@ -39,12 +39,6 @@
       <trans-unit id="aside.socialmedia" resname="aside.socialmedia">
         <source>Socialmedia</source>
       </trans-unit>
-      <trans-unit id="audio.link" resname="audio.link">
-        <source>To activate the widget you need to click on the button. After activating the button, <![CDATA[<a href="https://soundcloud.com/pages/privacy" target="_blank" class="external-link" rel="noreferrer" title="Link opens in new window"><span class="icon" aria-hidden="true"></span>SoundCloud's privacy policy</a>]]> applies.</source>
-      </trans-unit>
-      <trans-unit id="audio.play" resname="audio.play">
-        <source>Play audio</source>
-      </trans-unit>
       <trans-unit id="breadcrumb.headline" resname="breadcrumb.headline">
         <source>You are here:</source>
       </trans-unit>
@@ -215,18 +209,6 @@
       </trans-unit>
       <trans-unit id="tt_content.images" resname="tt_content.images">
         <source>images</source>
-      </trans-unit>
-      <trans-unit id="videovimeo.link" resname="videovimeo.link">
-        <source>To activate the video you need to click on the button. After activating the button, <![CDATA[<a href="https://vimeo.com/privacy" target="_blank" class="external-link" rel="noreferrer" title="Link opens in new window"><span class="icon" aria-hidden="true"></span>Vimeos privacy policy</a>]]> applies.</source>
-      </trans-unit>
-      <trans-unit id="videovimeo.play" resname="videovimeo.play">
-        <source>Play video</source>
-      </trans-unit>
-      <trans-unit id="videoyoutube.link" resname="videoyoutube.link">
-        <source>To activate the video you need to click on the button. After activating the button,	<![CDATA[<a href="https://policies.google.com/privacy?hl=en&gl=ZZ" target="_blank" class="external-link" rel="noreferrer" title="Link opens in new window"><span class="icon" aria-hidden="true"></span>Googles privacy policy</a>]]> applies.</source>
-      </trans-unit>
-      <trans-unit id="videoyoutube.play" resname="videoyoutube.play">
-        <source>Play video</source>
       </trans-unit>
     </body>
   </file>

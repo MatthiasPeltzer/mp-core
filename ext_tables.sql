@@ -28,8 +28,7 @@ CREATE TABLE sys_file_reference
 	allow_download   tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	caption          varchar(1024)       DEFAULT ''  NOT NULL,
 	longdesc         varchar(1024)       DEFAULT ''  NOT NULL,
-	outline          tinyint(1) unsigned DEFAULT '0' NOT NULL,
-	tx_quality_label varchar(50)         DEFAULT ''  NOT NULL
+	outline          tinyint(1) unsigned DEFAULT '0' NOT NULL
 );
 
 #
