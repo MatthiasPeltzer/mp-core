@@ -33,7 +33,7 @@ export default defineConfig(({mode}) => {
       preprocessorOptions: {
         scss: {
           api: 'modern-compiler',
-          silenceDeprecations: ['color-functions', 'global-builtin', 'import'],
+          silenceDeprecations: ['if-function', 'color-functions', 'global-builtin', 'import'],
         }
       },
       devSourcemap: isDev
@@ -94,7 +94,7 @@ export default defineConfig(({mode}) => {
         }
       },
 
-      // Adjust chunk size warning limit if needed
+      // Adjust the chunk size warning limit if needed
       chunkSizeWarningLimit: 1000
     },
 
