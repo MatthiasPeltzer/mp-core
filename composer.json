@@ -1,6 +1,6 @@
 {
 	"name": "mpc/mp-core",
-	"description": "MPC Distribution Package",
+	"description": "Core TYPO3 CMS extension providing base templates, styling, container, content blocks and backend configurations",
 	"license": [
 		"GPL-2.0-or-later"
 	],
@@ -48,7 +48,8 @@
 	},
   "suggest": {
     "georgringer/news": "^13.0 || ^14.0",
-    "georgringer/numbered-pagination": "^2.1"
+    "georgringer/numbered-pagination": "^2.1",
+    "mpc/mpc-vidply": "^1.0"
   },
 	"scripts": {
 		"post-autoload-dump": [
