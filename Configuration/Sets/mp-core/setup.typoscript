@@ -2,7 +2,6 @@
 @import 'EXT:mp_core/Configuration/TypoScript/Setup/Page/*.typoscript'
 @import 'EXT:mp_core/Configuration/TypoScript/Setup/*.typoscript'
 @import 'EXT:mp_core/Configuration/Extensions/setup.typoscript'
-@import 'EXT:mp_core/Configuration/TypoScript/Setup/ContentElements/tt_content/Audio.typoscript'
 @import 'EXT:mp_core/Configuration/TypoScript/Setup/ContentElements/tt_content/Banner.typoscript'
 @import 'EXT:mp_core/Configuration/TypoScript/Setup/ContentElements/tt_content/DataProcessing.typoscript'
 @import 'EXT:mp_core/Configuration/TypoScript/Setup/ContentElements/tt_content/Gallery.typoscript'
@@ -10,5 +9,4 @@
 @import 'EXT:mp_core/Configuration/TypoScript/Setup/ContentElements/tt_content/Singleteaser.typoscript'
 @import 'EXT:mp_core/Configuration/TypoScript/Setup/ContentElements/tt_content/Stage.typoscript'
 @import 'EXT:mp_core/Configuration/TypoScript/Setup/ContentElements/tt_content/tt_content.typoscript'
-@import 'EXT:mp_core/Configuration/TypoScript/Setup/ContentElements/tt_content/Video.typoscript'
 @import 'EXT:mp_core/Configuration/TypoScript/VueComponents.typoscript'
