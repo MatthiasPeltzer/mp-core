@@ -13,6 +13,15 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// Handle print functionality using event delegation
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('.js-print');
+  if (el) {
+    e.preventDefault();
+    window.print();
+  }
+});
+
 // Focus on the first invalid input element, if it exists
 const invalidElement = document.querySelector('.is-invalid');
 if (invalidElement) {
