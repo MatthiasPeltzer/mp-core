@@ -18,11 +18,11 @@ config {
   cache_period = 43200
   sendCacheHeaders = 1
   intTarget =
-  extTarget =
+  extTarget = _blank
   disablePrefixComment = 1
   index_enable = 1
   index_externals = 1
-  index_metatags = 0
+  index_metatags = 1
   headerComment = {$config.headerComment}
   prefixLocalAnchors = all
   simulateStaticDocuments = 0
@@ -31,6 +31,7 @@ config {
     attributes {
       class = no-js
       data-bs-theme = dark
+      data-theme-keybind = 1
     }
   }
 
