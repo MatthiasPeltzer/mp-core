@@ -16,7 +16,7 @@ Complete guide to the frontend build system, asset pipeline, and project structu
 - **Vite 7.2** - Build tool and dev server with HMR
 - **Vue.js 3.5** - Interactive components
 - **Bootstrap 5.3.8** - UI framework
-- **Sass 1.93** - CSS preprocessing
+- **Sass 1.96** - CSS preprocessing
 - **PostCSS** - Autoprefixer, pxtorem
 - **ESLint 9** - JavaScript linting
 - **Stylelint 16** - CSS/SCSS linting
@@ -223,65 +223,15 @@ Build/Assets/Static/Favicons/favicon.ico
 
 ## Vue.js Components
 
-### Creating a Component
+Vue.js 3 components are built with Vite and output to `Resources/Public/JavaScripts/`.
 
-1. Create component file:
+**Quick steps:**
+1. Create `.vue` file in `Build/Assets/Scripts/components/`
+2. Create entry point JS file
+3. Register in `vite.config.js`
+4. Include via `<f:asset.script>` in Fluid
 
-```vue
-<!-- Build/Assets/Scripts/components/MyComponent.vue -->
-<template>
-  <div class="my-component">
-    <h2>{{ title }}</h2>
-    <button @click="handleClick">Click me</button>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'MyComponent',
-  data() {
-    return {
-      title: 'Hello Vue'
-    };
-  },
-  methods: {
-    handleClick() {
-      console.log('Clicked!');
-    }
-  }
-};
-</script>
-
-<style scoped>
-.my-component {
-  padding: 1rem;
-}
-</style>
-```
-
-2. Create entry point:
-
-```javascript
-// Build/Assets/Scripts/mycomponent.js
-import { createApp } from 'vue';
-import MyComponent from './components/MyComponent.vue';
-
-document.addEventListener('DOMContentLoaded', () => {
-  const element = document.getElementById('my-component');
-  if (element) {
-    createApp(MyComponent).mount(element);
-  }
-});
-```
-
-3. Add to `vite.config.js` and build
-
-4. Include in Fluid template:
-
-```html
-<div id="my-component"></div>
-<f:asset.script identifier="mycomponent" src="EXT:mp_core/Resources/Public/JavaScripts/mycomponent.js" />
-```
+→ **See [Frontend Development](Frontend-Development.md#vuejs-components)** for detailed examples and best practices.
 
 ---
 

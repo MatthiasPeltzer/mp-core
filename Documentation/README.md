@@ -6,15 +6,12 @@ Documentation hub for the MP Core TYPO3 13.4 site package.
 
 ## Getting Started
 
-- **[Installation & Quick Start](../README.md)** - Get up and running in minutes
-- **[Complete Feature Overview](OVERVIEW.md)** - Comprehensive guide to all capabilities
+- **[Installation & Quick Start](../README.md)** — Get up and running in minutes
+- **[Complete Feature Overview](OVERVIEW.md)** — Comprehensive guide to all capabilities
 
 ---
 
 ## Documentation Index
-
-### Overview
-- **[Complete Feature Overview](OVERVIEW.md)** — Comprehensive guide to all features and capabilities
 
 ### Frontend Development
 - [Frontend Guide](Frontend-Guide.md) — Build system, Vite configuration, project structure
