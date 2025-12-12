@@ -23,5 +23,5 @@ npm run build
 Detailed setup and feature documentation lives in `Documentation/README.md`. Start there for Site Set configuration, content element guides, and frontend workflow notes.
 
 ## License & Support
-- GPL-3.0-or-later — see `LICENSE`
+- GPL-2.0-or-later — see `LICENSE`
 - Author: Matthias Peltzer (`mail@mpeltzer.de`, https://www.mpeltzer.de/)

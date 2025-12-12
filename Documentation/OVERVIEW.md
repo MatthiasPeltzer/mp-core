@@ -2,14 +2,7 @@
 
 Comprehensive guide to all features, components, and capabilities of the MP Core TYPO3 extension.
 
----
-
-## System Requirements
-
-- **TYPO3**: ^13.4
-- **PHP**: ≥8.2 (tested with 8.2 and 8.3)
-- **Node.js**: ≥20 (Node 22 recommended)
-- **npm**: ≥10
+**Requirements:** TYPO3 ^13.4 · PHP ≥8.2 · Node.js ≥20 · npm ≥10 — See [README](../README.md) for installation.
 
 ---
 
@@ -20,7 +13,7 @@ Comprehensive guide to all features, components, and capabilities of the MP Core
 - **Vite 7.2** - Lightning-fast build tool with HMR
 - **Bootstrap 5.3.8** - Responsive UI framework with custom theming
 - **Vue.js 3.5** - Progressive framework for interactive components
-- **Sass 1.93** - Advanced CSS preprocessing with ITCSS architecture
+- **Sass 1.96** - Advanced CSS preprocessing with ITCSS architecture
 - **PostCSS** - Autoprefixer and px-to-rem conversion
 - **ESLint 9** & **Stylelint 16** - Code quality enforcement
 
@@ -219,63 +212,18 @@ Includes:
 
 ## File Structure
 
-```
-mp_core/
-├── Build/                          # Frontend build system
-│   ├── Assets/                     # Source files
-│   │   ├── Fonts/                  # Web fonts
-│   │   ├── Images/                 # Source images
-│   │   ├── Scripts/                # JavaScript/Vue
-│   │   ├── Scss/                   # SCSS files
-│   │   └── Static/                 # Static files (copied as-is)
-│   ├── node_modules/               # npm dependencies
-│   ├── package.json                # npm configuration
-│   ├── vite.config.js              # Vite configuration
-│   ├── eslint.config.js            # ESLint configuration
-│   └── stylelint.config.js         # Stylelint configuration
-├── Classes/                        # PHP classes
-│   ├── Backend/                    # Backend classes
-│   ├── Exception/                  # Custom exceptions
-│   ├── Resource/                   # FAL helpers
-│   ├── UserFunc/                   # TCA user functions
-│   └── ViewHelpers/                # Fluid ViewHelpers
-├── Configuration/                  # TYPO3 configuration
-│   ├── Extensions/                 # Extension overrides
-│   ├── FlexForms/                  # FlexForm definitions
-│   ├── RTE/                        # CKEditor configuration
-│   ├── Sets/                       # Site Sets
-│   ├── SiteConfiguration/          # Site config overrides
-│   ├── TCA/                        # TCA definitions
-│   ├── TsConfig/                   # TSconfig
-│   ├── TypoScript/                 # TypoScript
-│   ├── Icons.php                   # Icon registry
-│   ├── JavaScriptModules.php       # Backend JS modules
-│   └── Services.yaml               # Dependency injection
-├── ContentBlocks/                  # Content Blocks
-│   └── ContentElements/            # Content Block elements
-├── Documentation/                  # Extension documentation
-├── Resources/                      # Templates and assets
-│   ├── Extensions/                 # Extension template overrides
-│   ├── Private/                    # Fluid templates
-│   │   ├── Backend/                # Backend templates
-│   │   ├── Language/               # Translation files
-│   │   ├── Layouts/                # Fluid layouts
-│   │   ├── Partials/               # Fluid partials
-│   │   └── Templates/              # Fluid templates
-│   └── Public/                     # Compiled assets
-│       ├── BackendLayouts/         # Backend layout previews
-│       ├── Favicons/               # Favicon files
-│       ├── Fonts/                  # Compiled fonts
-│       ├── Icons/                  # Compiled icons
-│       ├── Images/                 # Compiled images
-│       ├── JavaScripts/            # Compiled JS
-│       └── StyleSheets/            # Compiled CSS
-├── composer.json                   # Composer configuration
-├── ext_emconf.php                  # Extension metadata
-├── ext_localconf.php               # Extension configuration
-├── ext_tables.sql                  # Database schema
-└── README.md                       # Quick start guide
-```
+For detailed directory structure and file organization, see **[Frontend Guide → Project Structure](Frontend-Guide.md#project-structure)**.
+
+**Key directories:**
+
+| Directory | Purpose |
+|-----------|---------|
+| `Build/` | Frontend build system (Vite, source assets) |
+| `Classes/` | PHP classes (ViewHelpers, UserFunc, Backend) |
+| `Configuration/` | TYPO3 config (TCA, TypoScript, Site Sets, FlexForms) |
+| `ContentBlocks/` | Content Block definitions |
+| `Resources/Private/` | Fluid templates, partials, layouts, translations |
+| `Resources/Public/` | Compiled assets (JS, CSS, fonts, images) |
 
 ---
 

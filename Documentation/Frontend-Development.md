@@ -353,16 +353,16 @@ npm run watch
 
 ```scss
 // Build/Assets/Scss/Modules/_mycomponent.scss
-.c-mycomponent {
+.mycomponent {
   padding: 1rem;
   background-color: var(--bs-light);
   
-  &__title {
+  .title {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
   }
   
-  &__content {
+  .content {
     color: var(--bs-body-color);
   }
   
@@ -404,7 +404,6 @@ npm run watch
 ### SCSS
 
 - **ITCSS layers** - Respect the specificity hierarchy
-- **BEM naming** - Use `.c-component__element--modifier`
 - **CSS variables** - For theming and dynamic values
 - **Logical properties** - `margin-inline-start` for RTL support
 - **Max nesting** - Keep to 3 levels maximum
@@ -425,19 +424,6 @@ npm run watch
 ---
 
 ## Code Examples
-
-### Debounced Resize Handler
-
-```javascript
-import { debounce } from './Utils/domUtils.js';
-
-const handleResize = debounce(() => {
-  const width = window.innerWidth;
-  console.log('Window resized to:', width);
-}, 250);
-
-window.addEventListener('resize', handleResize);
-```
 
 ### Bootstrap Dropdown Integration
 
@@ -473,24 +459,24 @@ themeToggle?.addEventListener('click', () => {
 ### Responsive SCSS Component
 
 ```scss
-.c-card {
+.card-custom {
   padding: 1rem;
   background: var(--bs-white);
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
-  &__image {
+  .card-image {
     width: 100%;
     height: auto;
     border-radius: 0.5rem 0.5rem 0 0;
   }
   
-  &__title {
+  .card-title {
     font-size: 1.25rem;
     margin-block-end: 0.5rem;
   }
   
-  &__content {
+  .card-content {
     color: var(--bs-secondary-color);
   }
   
@@ -498,7 +484,7 @@ themeToggle?.addEventListener('click', () => {
   @media (min-width: 768px) {
     padding: 1.5rem;
     
-    &__title {
+    .card-title {
       font-size: 1.5rem;
     }
   }
