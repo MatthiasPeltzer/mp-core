@@ -35,6 +35,8 @@ defined('TYPO3') || die();
 
     $headerStyle = [
         'tx_header_style' => [
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'items' =>
                     [
@@ -77,9 +79,6 @@ defined('TYPO3') || die();
                     ],
                 'renderType' => 'selectSingle',
                 'type' => 'select',
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
             ],
             'exclude' => 1,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.header_style',

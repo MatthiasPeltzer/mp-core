@@ -118,9 +118,6 @@ defined('TYPO3') || die();
                     [
                         'eval' => 'trim',
                         'type' => 'input',
-                        'behaviour' => [
-                            'allowLanguageSynchronization' => true,
-                        ],
                     ],
                 'displayCond' => 'FIELD:tx_link_switch:=:1',
                 'exclude' => '0',
