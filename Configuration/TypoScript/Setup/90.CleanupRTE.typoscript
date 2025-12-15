@@ -1,0 +1,13 @@
+# Strip CKEditor 5's data-list-item-id attribute from list items in content elements
+# This attribute is added since CKEditor 5 v45.1.1
+# See: https://ckeditor.com/docs/ckeditor5/latest/features/lists/lists.html#editor-output-configuration
+
+# Post-process content elements to strip data-list-item-id attributes
+tt_content.stdWrap.replacement {
+  100 {
+    search = / data-list-item-id="[^"]*"/
+    replace =
+    useRegExp = 1
+  }
+}
+

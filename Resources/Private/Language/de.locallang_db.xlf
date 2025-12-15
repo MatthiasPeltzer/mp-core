@@ -1180,7 +1180,7 @@
       </trans-unit>
       <trans-unit id="tt_content.tx_link_layout.I.2" resname="tt_content.tx_link_layout.I.2" approved="yes">
         <source>Tertiary button</source>
-        <target>Tertärer Button</target>
+        <target>Tertiärer Button</target>
       </trans-unit>
       <trans-unit id="tt_content.tx_link_layout.I.3" resname="tt_content.tx_link_layout.I.3" approved="yes">
         <source>Quaternary button</source>

@@ -31,6 +31,14 @@ TCEFORM {
       }
     }
 
+    tx_link_switch {
+      types {
+        banner {
+          disabled = 1
+        }
+      }
+    }
+
     tx_header_style {
       types {
         banner {
