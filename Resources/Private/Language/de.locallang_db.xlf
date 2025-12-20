@@ -213,8 +213,93 @@
         <target>Raster Spalten</target>
       </trans-unit>
       <trans-unit id="grid.columns.description" resname="grid.columns.description" approved="yes">
-        <source>Choose how many columns the grid will be divided into</source>
-        <target>Wähle, in wie viele Spalten das Raster aufgeteilt wird</target>
+        <source>Choose how many columns the grid will be divided into (max 4)</source>
+        <target>Wähle, in wie viele Spalten das Raster aufgeteilt wird (max. 4)</target>
+      </trans-unit>
+      <trans-unit id="grid.gutter" resname="grid.gutter" approved="yes">
+        <source>Gutter (spacing)</source>
+        <target>Abstand (Gutter)</target>
+      </trans-unit>
+      <trans-unit id="grid.gutter.description" resname="grid.gutter.description" approved="yes">
+        <source>Bootstrap gutter utility (g-*) for horizontal + vertical spacing.</source>
+        <target>Bootstrap-Gutter-Utility (g-*) für horizontalen und vertikalen Abstand.</target>
+      </trans-unit>
+      <trans-unit id="grid.gutter.default" resname="grid.gutter.default" approved="yes">
+        <source>Default</source>
+        <target>Standard</target>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint" resname="grid.breakpoint" approved="yes">
+        <source>Breakpoint</source>
+        <target>Breakpoint</target>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.description" resname="grid.breakpoint.description" approved="yes">
+        <source>Viewport breakpoint at which the grid switches from stacked (1 column) to the configured column layout.</source>
+        <target>Viewport-Breakpoint, ab dem das Raster von gestapelt (1 Spalte) auf das konfigurierte Spaltenlayout umschaltet.</target>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.md" resname="grid.breakpoint.md" approved="yes">
+        <source>md (≥768px)</source>
+        <target>md (≥768px)</target>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.lg" resname="grid.breakpoint.lg" approved="yes">
+        <source>lg (≥992px)</source>
+        <target>lg (≥992px)</target>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.xl" resname="grid.breakpoint.xl" approved="yes">
+        <source>xl (≥1200px)</source>
+        <target>xl (≥1200px)</target>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.xxl" resname="grid.breakpoint.xxl" approved="yes">
+        <source>xxl (≥1400px)</source>
+        <target>xxl (≥1400px)</target>
+      </trans-unit>
+      <!-- gx/gy removed: we only use g-* -->
+      <trans-unit id="grid.colwidth.auto" resname="grid.colwidth.auto" approved="yes">
+        <source>Auto (equal width)</source>
+        <target>Auto (gleich breit)</target>
+      </trans-unit>
+      <trans-unit id="grid.col.description" resname="grid.col.description" approved="yes">
+        <source>Optional Bootstrap column width (col-*). If set, it overrides the default column width for this column position.</source>
+        <target>Optionale Bootstrap-Spaltenbreite (col-*). Wenn gesetzt, überschreibt sie die Standardbreite für diese Spaltenposition.</target>
+      </trans-unit>
+      <trans-unit id="grid.col1" resname="grid.col1" approved="yes">
+        <source>Column 1 width</source>
+        <target>Spalte 1 Breite</target>
+      </trans-unit>
+      <trans-unit id="grid.col2" resname="grid.col2" approved="yes">
+        <source>Column 2 width</source>
+        <target>Spalte 2 Breite</target>
+      </trans-unit>
+      <trans-unit id="grid.col3" resname="grid.col3" approved="yes">
+        <source>Column 3 width</source>
+        <target>Spalte 3 Breite</target>
+      </trans-unit>
+      <trans-unit id="grid.col4" resname="grid.col4" approved="yes">
+        <source>Column 4 width</source>
+        <target>Spalte 4 Breite</target>
+      </trans-unit>
+      <trans-unit id="grid.offset.none" resname="grid.offset.none" approved="yes">
+        <source>No offset</source>
+        <target>Kein Offset</target>
+      </trans-unit>
+      <trans-unit id="grid.offset.description" resname="grid.offset.description" approved="yes">
+        <source>Optional Bootstrap offset class (offset-{breakpoint}-*). Offsets are applied from the selected breakpoint and up.</source>
+        <target>Optionale Bootstrap-Offset-Klasse (offset-{breakpoint}-*). Offsets werden ab dem gewählten Breakpoint und größer angewendet.</target>
+      </trans-unit>
+      <trans-unit id="grid.offset1" resname="grid.offset1" approved="yes">
+        <source>Column 1 offset</source>
+        <target>Spalte 1 Offset</target>
+      </trans-unit>
+      <trans-unit id="grid.offset2" resname="grid.offset2" approved="yes">
+        <source>Column 2 offset</source>
+        <target>Spalte 2 Offset</target>
+      </trans-unit>
+      <trans-unit id="grid.offset3" resname="grid.offset3" approved="yes">
+        <source>Column 3 offset</source>
+        <target>Spalte 3 Offset</target>
+      </trans-unit>
+      <trans-unit id="grid.offset4" resname="grid.offset4" approved="yes">
+        <source>Column 4 offset</source>
+        <target>Spalte 4 Offset</target>
       </trans-unit>
       <trans-unit id="grid.columns.fourcol" resname="grid.columns.fourcol" approved="yes">
         <source>Four columns</source>
