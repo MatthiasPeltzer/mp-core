@@ -38,7 +38,6 @@ details:not(.extbase-debugger-tree) {
 
   summary {
     @extend %summary-base;
-    @extend %turretroad;
 
     &::after {
       background-color: var(--bs-body-color);

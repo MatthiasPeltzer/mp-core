@@ -210,7 +210,7 @@
 
   h1,
   .h1 {
-    @extend %turretroad;
+    @extend %opensansweb;
     color: var(--typo3-text-color-base);
 
     @include font-size($fs-6xl);
@@ -223,7 +223,7 @@
 
   h2,
   .h2 {
-    @extend %turretroad;
+    @extend %opensansweb;
     color: var(--typo3-text-color-base);
 
     @include font-size($fs-3xl);
@@ -236,7 +236,7 @@
 
   h3,
   .h3 {
-    @extend %turretroad;
+    @extend %opensansweb;
     color: var(--typo3-text-color-base);
 
     @include font-size($fs-xl);
