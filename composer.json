@@ -1,8 +1,10 @@
 {
   "name": "mpc/mp-core",
   "description": "Core TYPO3 CMS extension providing base templates, styling, container, content blocks and backend configurations",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
   "type": "typo3-cms-extension",
-  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Matthias Peltzer",
@@ -11,7 +13,32 @@
       "role": "Developer"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Mpc\\MpCore\\": "Classes/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mpc\\MpCore\\": "Tests/"
+    }
+  },
+  "config": {
+    "vendor-dir": "../default.instance/vendor",
+    "bin-dir": "../default.instance/bin"
+  },
+
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": "../default.instance",
+      "extension-key": "mp_core"
+    }
+  },
   "homepage": "https://github.com/MatthiasPeltzer/mp-core",
+  "replace": {
+    "typo3-ter/mp-core": "self.version"
+  },
   "require": {
     "php": ">=8.2",
     "typo3/cms-core": "^13.4 || ^14.0",
@@ -21,18 +48,14 @@
   "suggest": {
     "b13/container": "^3.1",
     "friendsoftypo3/content-blocks": "^1.3 || ^2.0",
-    "georgringer/news": "^14.0",
+    "georgringer/news": "^13.0 || ^14.0",
     "georgringer/numbered-pagination": "^2.1",
     "mpc/mpc-vidply": "^1.0"
   },
-  "autoload": {
-    "psr-4": {
-      "Mpc\\MpCore\\": "Classes/"
-    }
-  },
-  "extra": {
-    "typo3/cms": {
-      "extension-key": "mp_core"
-    }
+  "scripts": {
+    "post-autoload-dump": [
+      "mkdir -p ../default.instance/typo3conf/ext/",
+      "[ -L ../default.instance/typo3conf/ext/mp_core ] || ln -snvf ../../../dir-project ../default.instance/typo3conf/ext/mp_core"
+    ]
   }
 }
