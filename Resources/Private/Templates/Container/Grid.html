@@ -4,22 +4,70 @@
 
 <f:section name="Main">
     <f:if condition="{children_101}">
+        <f:variable name="bp" value="{f:if(condition: '{data.grid_breakpoint}', then: '{data.grid_breakpoint}', else: 'xl')}" />
+        <f:variable name="hasCustomLayout"
+                    value="{data.grid_col1} || {data.grid_col2} || {data.grid_col3} || {data.grid_col4} || {data.grid_offset1} || {data.grid_offset2} || {data.grid_offset3} || {data.grid_offset4}" />
+        <f:variable name="rowClasses">
+            row
+            row-cols-1
+            {f:if(condition: '!{hasCustomLayout}', then: ' row-cols-{bp}-{f:if(condition: \'{data.grid_columns}\', then: \'{data.grid_columns}\', else: \'1\')}')}
+            {f:if(condition: '{data.grid_gutter} != \'\'', then: ' g-{data.grid_gutter}')}
+        </f:variable>
+
+        <f:variable name="colIndex" value="1" />
+
         <f:if condition="{data.grid_type} == 'ul'">
             <f:then>
-                <ul class="row row-cols-1{f:if(condition: '{data.grid_columns} > 1', then: ' row-cols-md-2 row-cols-lg-{data.grid_columns}')} list-unstyled">
-                    <f:for each="{children_101}" as="child">
-                        <li class="col">
+                <ul class="{rowClasses} list-unstyled">
+                    <f:for each="{children_101}" as="child" iteration="it">
+                        <f:switch expression="{colIndex}">
+                            <f:case value="1"><f:variable name="colSize" value="{data.grid_col1}" /><f:variable name="colOffset" value="{data.grid_offset1}" /></f:case>
+                            <f:case value="2"><f:variable name="colSize" value="{data.grid_col2}" /><f:variable name="colOffset" value="{data.grid_offset2}" /></f:case>
+                            <f:case value="3"><f:variable name="colSize" value="{data.grid_col3}" /><f:variable name="colOffset" value="{data.grid_offset3}" /></f:case>
+                            <f:case value="4"><f:variable name="colSize" value="{data.grid_col4}" /><f:variable name="colOffset" value="{data.grid_offset4}" /></f:case>
+                            <f:defaultCase><f:variable name="colSize" value="" /></f:defaultCase>
+                        </f:switch>
+
+                        <f:variable name="colBaseClass"
+                                    value="{f:if(condition: '{colSize} != \'\'', then: 'col-12 col-{bp}-{colSize}', else: '{f:if(condition: \'{hasCustomLayout}\', then: \'col-12 col-{bp}\', else: \'col\')}')}" />
+                        <f:variable name="colClass"
+                                    value="{colBaseClass}{f:if(condition: '{colOffset} != \'\'', then: ' offset-{bp}-{colOffset}')}" />
+
+                        <li class="{colClass}">
                             <f:format.raw>{child.renderedContent}</f:format.raw>
                         </li>
+
+                        <f:if condition="{colIndex} == {data.grid_columns}">
+                            <f:then><f:variable name="colIndex" value="1" /></f:then>
+                            <f:else><f:variable name="colIndex" value="{colIndex + 1}" /></f:else>
+                        </f:if>
                     </f:for>
                 </ul>
             </f:then>
             <f:else>
-                <div class="row row-cols-1{f:if(condition: '{data.grid_columns} > 1', then: ' row-cols-md-2 row-cols-lg-{data.grid_columns}')}">
-                    <f:for each="{children_101}" as="child">
-                        <div class="col">
+                <div class="{rowClasses}">
+                    <f:for each="{children_101}" as="child" iteration="it">
+                        <f:switch expression="{colIndex}">
+                            <f:case value="1"><f:variable name="colSize" value="{data.grid_col1}" /><f:variable name="colOffset" value="{data.grid_offset1}" /></f:case>
+                            <f:case value="2"><f:variable name="colSize" value="{data.grid_col2}" /><f:variable name="colOffset" value="{data.grid_offset2}" /></f:case>
+                            <f:case value="3"><f:variable name="colSize" value="{data.grid_col3}" /><f:variable name="colOffset" value="{data.grid_offset3}" /></f:case>
+                            <f:case value="4"><f:variable name="colSize" value="{data.grid_col4}" /><f:variable name="colOffset" value="{data.grid_offset4}" /></f:case>
+                            <f:defaultCase><f:variable name="colSize" value="" /></f:defaultCase>
+                        </f:switch>
+
+                        <f:variable name="colBaseClass"
+                                    value="{f:if(condition: '{colSize} != \'\'', then: 'col-12 col-{bp}-{colSize}', else: '{f:if(condition: \'{hasCustomLayout}\', then: \'col-12 col-{bp}\', else: \'col\')}')}" />
+                        <f:variable name="colClass"
+                                    value="{colBaseClass}{f:if(condition: '{colOffset} != \'\'', then: ' offset-{bp}-{colOffset}')}" />
+
+                        <div class="{colClass}">
                             <f:format.raw>{child.renderedContent}</f:format.raw>
                         </div>
+
+                        <f:if condition="{colIndex} == {data.grid_columns}">
+                            <f:then><f:variable name="colIndex" value="1" /></f:then>
+                            <f:else><f:variable name="colIndex" value="{colIndex + 1}" /></f:else>
+                        </f:if>
                     </f:for>
                 </div>
             </f:else>

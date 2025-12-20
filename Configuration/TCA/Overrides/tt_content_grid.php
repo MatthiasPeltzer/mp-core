@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 use B13\Container\Tca\ContainerConfiguration;
 use B13\Container\Tca\Registry;
-use Mpc\MpCore\UserFunc\ColorPickerValueItems;
-use TYPO3\CMS\Core\Resource\FileType;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -16,7 +14,7 @@ defined('TYPO3') or die('Access denied.');
      * Register grids
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        (new ContainerConfiguration(
+        new ContainerConfiguration(
             'ce_grid',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.description',
@@ -28,10 +26,68 @@ defined('TYPO3') or die('Access denied.');
                     ],
                 ],
             ]
-        ))
+        )
         ->setIcon('tx_grid')
         ->setSaveAndCloseInNewContentElementWizard(true)
     );
+
+    $gutterItems = [
+        [
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.gutter.default',
+            'value' => '',
+        ],
+        ['label' => '0', 'value' => '0'],
+        ['label' => '1', 'value' => '1'],
+        ['label' => '2', 'value' => '2'],
+        ['label' => '3', 'value' => '3'],
+        ['label' => '4', 'value' => '4'],
+        ['label' => '5', 'value' => '5'],
+    ];
+
+    $breakpointItems = [
+        [
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.breakpoint.xl',
+            'value' => 'xl',
+        ],
+        [
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.breakpoint.md',
+            'value' => 'md',
+        ],
+        [
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.breakpoint.lg',
+            'value' => 'lg',
+        ],
+        [
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.breakpoint.xxl',
+            'value' => 'xxl',
+        ],
+    ];
+
+    $colWidthItems = [
+        [
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.colwidth.auto',
+            'value' => '',
+        ],
+    ];
+    for ($i = 1; $i <= 12; $i++) {
+        $colWidthItems[] = [
+            'label' => 'col-' . $i . ' (' . $i . '/12)',
+            'value' => (string)$i,
+        ];
+    }
+
+    $offsetItems = [
+        [
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset.none',
+            'value' => '',
+        ],
+    ];
+    for ($i = 1; $i <= 11; $i++) {
+        $offsetItems[] = [
+            'label' => 'offset-' . $i,
+            'value' => (string)$i,
+        ];
+    }
 
     $grid = [
         'grid_type' => [
@@ -88,6 +144,7 @@ defined('TYPO3') or die('Access denied.');
                         ],
                     'renderType' => 'selectSingle',
                     'type' => 'select',
+                    'onChange' => 'reload',
                     'behaviour' => [
                         'allowLanguageSynchronization' => true,
                     ],
@@ -96,262 +153,148 @@ defined('TYPO3') or die('Access denied.');
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.columns',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.columns.description',
         ],
-        'grid_bgcolor' => [
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.bgcolor',
-            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.bgcolor.description',
+        'grid_breakpoint' => [
+            'exclude' => '1',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.breakpoint',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.breakpoint.description',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => [],
-                'itemsProcFunc' => ColorPickerValueItems::class . '->getItems',
+                'items' => $breakpointItems,
+                'default' => 'xl',
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
             ],
         ],
-        'grid_icon' => [
+        'grid_gutter' => [
             'exclude' => '1',
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.icon',
-            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.icon.description',
-            'displayCond' => 'FIELD:grid_icon_switch:=:1',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.gutter',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.gutter.description',
             'config' => [
-                'type' => 'file',
-                'allowed' => 'png,jpg,jpeg,gif,svg,webp',
-                'maxitems' => 1,
-                'appearance' => [
-                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
-                    'showPossibleLocalizationRecords' => true,
-                ],
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => $gutterItems,
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-                // custom configuration for displaying fields in the overlay/reference table
-                // to use the imageoverlayPalette instead of the basicoverlayPalette
-                'overrideChildTca' => [
-                    'columns' => [
-                        'description' => [
-                            'config' => [
-                                'type' => 'passthrough',
-                            ],
-                        ],
-                        'link' => [
-                            'config' => [
-                                'type' => 'passthrough',
-                            ],
-                        ],
-                        'title' => [
-                            'config' => [
-                                'type' => 'passthrough',
-                            ],
-                        ],
-                        'outline' => [
-                            'config' => [
-                                'renderType' => 'passthrough',
-                                'type' => 'passthrough',
-                            ],
-                        ],
-                        'caption' => [
-                            'config' => [
-                                'type' => 'passthrough',
-                            ],
-                        ],
-                    ],
-                    'types' => [
-                        '0' => [
-                            'showitem' => '
-                                --palette--;;imageoverlayPalette,
-                                --palette--;;filePalette',
-                        ],
-                        FileType::TEXT->value => [
-                            'showitem' => '
-                                --palette--;;imageoverlayPalette,
-                                --palette--;;filePalette',
-                        ],
-                        FileType::IMAGE->value => [
-                            'showitem' => '
-                                --palette--;;imageoverlayPalette,
-                                --palette--;;filePalette',
-                        ],
-                        FileType::AUDIO->value => [
-                            'showitem' => '
-                                --palette--;;audioOverlayPalette,
-                                --palette--;;filePalette',
-                        ],
-                        FileType::VIDEO->value => [
-                            'showitem' => '
-                                --palette--;;videoOverlayPalette,
-                                --palette--;;filePalette',
-                        ],
-                        FileType::APPLICATION->value => [
-                            'showitem' => '
-                                --palette--;;imageoverlayPalette,
-                                --palette--;;filePalette',
-                        ],
-                    ],
-                ],
             ],
         ],
-        'grid_icon_switch' => [
-            'exclude' => '0',
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.grid_icon_switch',
-            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.grid_icon_switch.description',
-            'onChange' => 'reload',
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.grid_icon_switch',
-                        'labelChecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-                        'labelUnchecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.disabled',
-                    ],
-                ],
-                'default' => '0',
-            ],
-        ],
-        'grid_light' => [
-            'exclude' => '0',
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.light',
-            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.light.description',
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.light',
-                        'labelChecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-                        'labelUnchecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.disabled',
-                    ],
-                ],
-                'default' => '0',
-            ],
-        ],
-        'grid_parallax' => [
-            'exclude' => '0',
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.parallax',
-            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.parallax.description',
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.parallax',
-                        'labelChecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-                        'labelUnchecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.disabled',
-                    ],
-                ],
-                'default' => '0',
-            ],
-        ],
-        'grid_bgfullsize' => [
-            'exclude' => '0',
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.bgfullsize',
-            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.bgfullsize.description',
-            'displayCond' => 'FIELD:grid_icon_switch:=:0',
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.bgfullsize',
-                        'labelChecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-                        'labelUnchecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.disabled',
-                    ],
-                ],
-                'default' => '0',
-            ],
-        ],
-        'grid_container' => [
-            'exclude' => '0',
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.container',
-            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.container.description',
-            'displayCond' => 'FIELD:grid_icon_switch:=:0',
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.container',
-                        'labelChecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-                        'labelUnchecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.disabled',
-                    ],
-                ],
-                'default' => '0',
-            ],
-        ],
-        'grid_bgimage' => [
+        'grid_col1' => [
             'exclude' => '1',
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bgimage.container',
-            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bgimage.container.description',
-            'config' =>
-                [
-                    'type' => 'file',
-                    'allowed' => 'png,jpg,jpeg,gif,svg,webp',
-                    'maxitems' => '1',
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
-                        'showPossibleLocalizationRecords' => true,
-                    ],
-                    'behaviour' => [
-                        'allowLanguageSynchronization' => true,
-                    ],
-                    // custom configuration for displaying fields in the overlay/reference table
-                    // to use the imageoverlayPalette instead of the basicoverlayPalette
-                    'overrideChildTca' => [
-                        'columns' => [
-                            'description' => [
-                                'config' => [
-                                    'type' => 'passthrough',
-                                ],
-                            ],
-                            'link' => [
-                                'config' => [
-                                    'type' => 'passthrough',
-                                ],
-                            ],
-                            'title' => [
-                                'config' => [
-                                    'type' => 'passthrough',
-                                ],
-                            ],
-                            'outline' => [
-                                'config' => [
-                                    'renderType' => 'passthrough',
-                                    'type' => 'passthrough',
-                                ],
-                            ],
-                            'caption' => [
-                                'config' => [
-                                    'type' => 'passthrough',
-                                ],
-                            ],
-                        ],
-                    ],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col1',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col.description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => $colWidthItems,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
                 ],
+            ],
+        ],
+        'grid_offset1' => [
+            'exclude' => '1',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset1',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset.description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => $offsetItems,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
+        'grid_col2' => [
+            'exclude' => '1',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col2',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col.description',
+            'displayCond' => 'FIELD:grid_columns:>=:2',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => $colWidthItems,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
+        'grid_offset2' => [
+            'exclude' => '1',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset2',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset.description',
+            'displayCond' => 'FIELD:grid_columns:>=:2',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => $offsetItems,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
+        'grid_col3' => [
+            'exclude' => '1',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col3',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col.description',
+            'displayCond' => 'FIELD:grid_columns:>=:3',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => $colWidthItems,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
+        'grid_offset3' => [
+            'exclude' => '1',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset3',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset.description',
+            'displayCond' => 'FIELD:grid_columns:>=:3',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => $offsetItems,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
+        'grid_col4' => [
+            'exclude' => '1',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col4',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col.description',
+            'displayCond' => 'FIELD:grid_columns:>=:4',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => $colWidthItems,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
+        'grid_offset4' => [
+            'exclude' => '1',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset4',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset.description',
+            'displayCond' => 'FIELD:grid_columns:>=:4',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => $offsetItems,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
         ],
     ];
 
     $gridPalettes = [
         'grid_config' => [
-            'showitem' => 'grid_type,grid_columns',
-            'canNotCollapse' => 1,
-        ],
-        'grid_bg' => [
-            'showitem' => 'grid_bgcolor,grid_light,grid_icon_switch,--linebreak--,grid_icon,--linebreak--,grid_bgimage,--linebreak--,grid_parallax',
-            'canNotCollapse' => 1,
-        ],
-        'grid_container_pallet' => [
-            'showitem' => 'grid_bgfullsize,grid_container',
+            'showitem' => 'grid_type,grid_columns,grid_breakpoint,--linebreak--,grid_col1,grid_offset1,--linebreak--,grid_col2,grid_offset2,--linebreak--,grid_col3,grid_offset3,--linebreak--,grid_col4,grid_offset4,--linebreak--,grid_gutter',
             'canNotCollapse' => 1,
         ],
     ];
@@ -364,9 +307,10 @@ defined('TYPO3') or die('Access denied.');
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,header_kicker,header,
             --palette--;;header_config,subheader,
         --div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.title,
-            --palette--;;grid_config,grid_container,
+            --palette--;;grid_config,
+            --palette--;;grid_container_pallet,
         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
-            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames_ce_grid,
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
             --palette--;;language,
@@ -378,6 +322,12 @@ defined('TYPO3') or die('Access denied.');
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,rowDescription,
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended;'
     ;
+
+    // For ce_grid we only need spacing controls (no "layout" select, no other frame options).
+    // Define an explicit palette to avoid fragile string manipulation.
+    $GLOBALS['TCA']['tt_content']['palettes']['frames_ce_grid'] = [
+        'showitem' => 'space_before_class,space_after_class',
+    ];
 
     ExtensionManagementUtility::addTCAcolumns(
         'tt_content',

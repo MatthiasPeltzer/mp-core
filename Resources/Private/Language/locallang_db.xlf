@@ -165,7 +165,71 @@
         <source>Grid Columns</source>
       </trans-unit>
       <trans-unit id="grid.columns.description" resname="grid.columns.description">
-        <source>Choose how many columns the grid will be divided into</source>
+        <source>Choose how many columns the grid will be divided into (max 4)</source>
+      </trans-unit>
+      <trans-unit id="grid.gutter" resname="grid.gutter">
+        <source>Gutter (spacing)</source>
+      </trans-unit>
+      <trans-unit id="grid.gutter.description" resname="grid.gutter.description">
+        <source>Bootstrap gutter utility (g-*) for horizontal + vertical spacing.</source>
+      </trans-unit>
+      <trans-unit id="grid.gutter.default" resname="grid.gutter.default">
+        <source>Default</source>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint" resname="grid.breakpoint">
+        <source>Breakpoint</source>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.description" resname="grid.breakpoint.description">
+        <source>Viewport breakpoint at which the grid switches from stacked (1 column) to the configured column layout.</source>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.md" resname="grid.breakpoint.md">
+        <source>md (≥768px)</source>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.lg" resname="grid.breakpoint.lg">
+        <source>lg (≥992px)</source>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.xl" resname="grid.breakpoint.xl">
+        <source>xl (≥1200px)</source>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.xxl" resname="grid.breakpoint.xxl">
+        <source>xxl (≥1400px)</source>
+      </trans-unit>
+      <!-- gx/gy removed: we only use g-* -->
+      <trans-unit id="grid.colwidth.auto" resname="grid.colwidth.auto">
+        <source>Auto (equal width)</source>
+      </trans-unit>
+      <trans-unit id="grid.col.description" resname="grid.col.description">
+        <source>Optional Bootstrap column width (col-*). If set, it overrides the default column width for this column position.</source>
+      </trans-unit>
+      <trans-unit id="grid.col1" resname="grid.col1">
+        <source>Column 1 width</source>
+      </trans-unit>
+      <trans-unit id="grid.col2" resname="grid.col2">
+        <source>Column 2 width</source>
+      </trans-unit>
+      <trans-unit id="grid.col3" resname="grid.col3">
+        <source>Column 3 width</source>
+      </trans-unit>
+      <trans-unit id="grid.col4" resname="grid.col4">
+        <source>Column 4 width</source>
+      </trans-unit>
+      <trans-unit id="grid.offset.none" resname="grid.offset.none">
+        <source>No offset</source>
+      </trans-unit>
+      <trans-unit id="grid.offset.description" resname="grid.offset.description">
+        <source>Optional Bootstrap offset class (offset-{breakpoint}-*). Offsets are applied from the selected breakpoint and up.</source>
+      </trans-unit>
+      <trans-unit id="grid.offset1" resname="grid.offset1">
+        <source>Column 1 offset</source>
+      </trans-unit>
+      <trans-unit id="grid.offset2" resname="grid.offset2">
+        <source>Column 2 offset</source>
+      </trans-unit>
+      <trans-unit id="grid.offset3" resname="grid.offset3">
+        <source>Column 3 offset</source>
+      </trans-unit>
+      <trans-unit id="grid.offset4" resname="grid.offset4">
+        <source>Column 4 offset</source>
       </trans-unit>
       <trans-unit id="grid.columns.fourcol" resname="grid.columns.fourcol">
         <source>Four columns</source>
