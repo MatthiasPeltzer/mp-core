@@ -29,7 +29,7 @@
                         </f:switch>
 
                         <f:variable name="colBaseClass"
-                                    value="{f:if(condition: '{colSize} != \'\'', then: 'col-12 col-{bp}-{colSize}', else: '{f:if(condition: \'{hasCustomLayout}\', then: \'col-12 col-{bp}\', else: \'col\')}')}" />
+                                    value="{f:if(condition: '{colSize} != \'\'', then: 'col-12 col-{bp}-{colSize} mb-4', else: '{f:if(condition: \'{hasCustomLayout}\', then: \'col-12 col-{bp} mb-4\', else: \'col mb-4\')}')}" />
                         <f:variable name="colClass"
                                     value="{colBaseClass}{f:if(condition: '{colOffset} != \'\'', then: ' offset-{bp}-{colOffset}')}" />
 
@@ -56,7 +56,7 @@
                         </f:switch>
 
                         <f:variable name="colBaseClass"
-                                    value="{f:if(condition: '{colSize} != \'\'', then: 'col-12 col-{bp}-{colSize}', else: '{f:if(condition: \'{hasCustomLayout}\', then: \'col-12 col-{bp}\', else: \'col\')}')}" />
+                                    value="{f:if(condition: '{colSize} != \'\'', then: 'col-12 col-{bp}-{colSize} mb-4', else: '{f:if(condition: \'{hasCustomLayout}\', then: \'col-12 col-{bp} mb-4\', else: \'col mb-4\')}')}" />
                         <f:variable name="colClass"
                                     value="{colBaseClass}{f:if(condition: '{colOffset} != \'\'', then: ' offset-{bp}-{colOffset}')}" />
 
