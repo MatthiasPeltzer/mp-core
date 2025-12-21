@@ -209,9 +209,8 @@ defined('TYPO3') || die();
         'columnsOverrides' => [
             'pi_flexform' => [
                 'config' => [
-                    'ds' => [
-                        'default' => 'FILE:EXT:mp_core/Configuration/FlexForms/TodoList.xml',
-                    ],
+                    'type' => 'flex',
+                    'ds' => 'FILE:EXT:mp_core/Configuration/FlexForms/TodoList.xml',
                 ],
             ],
         ],
