@@ -6,14 +6,13 @@ namespace Mpc\MpCore\ViewHelpers;
 
 use Closure;
 use DOMDocument;
+use DOMElement;
 use Mpc\MpCore\Exception\FileException;
-use SimpleXMLElement;
 use Throwable;
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Service\ImageService;
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -29,9 +28,14 @@ class SvgInlineViewHelper extends AbstractViewHelper
     protected $escapeOutput = false;
 
     /**
-     * @param array $arguments
-     * @param Closure $renderChildrenClosure
-     * @param RenderingContextInterface $renderingContext
+     * Request-local cache for already parsed SVGs.
+     * Keyed by a hash of file contents + normalized attributes.
+     *
+     * @var array<string,string>
+     */
+    private static array $inlineSvgCache = [];
+
+    /**
      * @return string
      * @SuppressWarnings(PHPMD)
      * @throws FileException
@@ -47,15 +51,15 @@ class SvgInlineViewHelper extends AbstractViewHelper
         }
 
         $attributes = [
-                'id' => $arguments['id'],
-                'class' => $arguments['class'],
-                'width' => $arguments['width'],
-                'height' => $arguments['height'],
-                'viewBox' => $arguments['viewBox'],
-                'data' => $arguments['data'],
-            ] + $arguments['additionalAttributes'];
+            'id' => $arguments['id'],
+            'class' => $arguments['class'],
+            'width' => $arguments['width'],
+            'height' => $arguments['height'],
+            'viewBox' => $arguments['viewBox'],
+            'data' => $arguments['data'],
+        ] + $arguments['additionalAttributes'];
 
-        return $this->getInlineSvg($svgContent, $attributes);
+        return $this->getInlineSvgCached($svgContent, $attributes);
     }
 
     /**
@@ -84,38 +88,84 @@ class SvgInlineViewHelper extends AbstractViewHelper
         return $image;
     }
 
-    protected static function getInlineSvg(string $svgContent, array $attributes = []): string
+    protected static function getInlineSvgCached(string $svgContent, array $attributes = []): string
     {
-        $svgElement = simplexml_load_string($svgContent);
-        if ($svgElement instanceof SimpleXMLElement === false) {
-            return '';
+        $normalizedAttributes = self::normalizeAttributes($attributes);
+        $cacheKey = sha1($svgContent . '|' . serialize($normalizedAttributes));
+        if (isset(self::$inlineSvgCache[$cacheKey])) {
+            return self::$inlineSvgCache[$cacheKey];
         }
-        $domXml = dom_import_simplexml($svgElement);
-        if ($domXml->ownerDocument instanceof DOMDocument === false) {
-            return '';
-        }
-        foreach (self::updateAttributes($attributes) as $attributeKey => $attributeValue) {
-            if ($attributeValue !== null) {
-                $domXml->setAttribute($attributeKey, htmlspecialchars((string)$attributeValue));
-            }
-        }
-        return (string)$domXml->ownerDocument->saveXML($domXml->ownerDocument->documentElement);
+
+        $rendered = self::renderInlineSvg($svgContent, $normalizedAttributes);
+        self::$inlineSvgCache[$cacheKey] = $rendered;
+        return $rendered;
     }
 
-    protected static function updateAttributes(array $attributes): array
+    /**
+     * @return array<string,scalar|null>
+     */
+    protected static function normalizeAttributes(array $attributes): array
     {
-        if ($attributes['id'] !== null) {
-            $attributes['id'] = htmlspecialchars(trim((string)$attributes['id']));
+        // Normalize common attributes
+        foreach (['id', 'class', 'width', 'height', 'viewBox'] as $key) {
+            if (!array_key_exists($key, $attributes)) {
+                continue;
+            }
+            $value = $attributes[$key];
+            if ($value === null) {
+                continue;
+            }
+            $value = trim((string)$value);
+            $attributes[$key] = $value === '' ? null : $value;
         }
 
-        if (is_array($attributes['data'])) {
+        // Expand data-attributes
+        if (isset($attributes['data']) && is_array($attributes['data'])) {
             foreach ($attributes['data'] as $attributeDataKey => $attributeDataValue) {
-                $attributes['data-' . (string)$attributeDataKey] = htmlspecialchars((string)$attributeDataValue);
+                $dataKey = (string)$attributeDataKey;
+                // Keep it simple: only allow common HTML attribute characters
+                $dataKey = preg_replace('/[^a-zA-Z0-9_-]/', '', $dataKey) ?? '';
+                if ($dataKey === '') {
+                    continue;
+                }
+                $attributes['data-' . $dataKey] = $attributeDataValue === null ? null : (string)$attributeDataValue;
             }
             unset($attributes['data']);
         }
 
         return $attributes;
+    }
+
+    /**
+     * @param array<string,scalar|null> $attributes
+     */
+    protected static function renderInlineSvg(string $svgContent, array $attributes): string
+    {
+        $dom = new DOMDocument();
+        $dom->preserveWhiteSpace = false;
+
+        $previousUseInternalErrors = libxml_use_internal_errors(true);
+        try {
+            $loaded = $dom->loadXML($svgContent, LIBXML_NONET | LIBXML_NOERROR | LIBXML_NOWARNING);
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($previousUseInternalErrors);
+        }
+
+        if (!$loaded || !$dom->documentElement instanceof DOMElement) {
+            return '';
+        }
+
+        // Ensure we only manipulate the root element (expected to be <svg>)
+        $root = $dom->documentElement;
+        foreach ($attributes as $attributeKey => $attributeValue) {
+            if ($attributeValue === null) {
+                continue;
+            }
+            $root->setAttribute((string)$attributeKey, (string)$attributeValue);
+        }
+
+        return (string)$dom->saveXML($root);
     }
 
     public function initializeArguments(): void

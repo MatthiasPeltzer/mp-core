@@ -8,7 +8,6 @@
  */
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 defined('TYPO3') or die('Access denied.');
 
@@ -44,5 +43,5 @@ if (ExtensionManagementUtility::isLoaded('form')) {
  * Add default RTE and RTE/Backend CSS configuration for the template package
  */
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['default'] = 'EXT:mp_core/Configuration/RTE/Default.yaml';
-$GLOBALS['TYPO3_CONF_VARS']['BE']['stylesheets']['mp_core'] = 'EXT:mp_core/Resources/Public/StyleSheets/backend.css';
-$GLOBALS['TYPO3_CONF_VARS']['BE']['stylesheets']['mp_core'] = 'EXT:mp_core/Resources/Public/StyleSheets/ckeditor.css';
+$GLOBALS['TYPO3_CONF_VARS']['BE']['stylesheets']['mp_core_backend'] = 'EXT:mp_core/Resources/Public/StyleSheets/backend.css';
+$GLOBALS['TYPO3_CONF_VARS']['BE']['stylesheets']['mp_core_ckeditor'] = 'EXT:mp_core/Resources/Public/StyleSheets/ckeditor.css';

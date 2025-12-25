@@ -71,7 +71,9 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
         }
         
         if ($bodytext !== '') {
-            $preview .= htmlspecialchars(mb_substr(strip_tags($bodytext), 0, 200)) . '...';
+            $plain = trim(strip_tags((string)$bodytext));
+            $excerpt = mb_substr($plain, 0, 200);
+            $preview .= htmlspecialchars($excerpt) . (mb_strlen($plain) > 200 ? '…' : '');
         }
         
         return $preview ?: '[No preview available]';
@@ -84,14 +86,20 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
     {
         $fileRepository = GeneralUtility::makeInstance(FileRepository::class);
         $images = '';
+        $maxImages = 1;
         
         // Try to get file references from the 'image' field
         if (!empty($record['uid'])) {
             try {
                 $fileReferences = $fileRepository->findByRelation('tt_content', 'image', $record['uid']);
                 
+                $renderedCount = 0;
                 foreach ($fileReferences as $fileReference) {
                     if ($fileReference instanceof FileReference) {
+                        if ($renderedCount >= $maxImages) {
+                            break;
+                        }
+
                         $file = $fileReference->getOriginalFile();
                         
                         // Generate thumbnail
@@ -109,6 +117,7 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
                             $images .= '<img src="' . htmlspecialchars($processedImage->getPublicUrl() ?? '') . '" '
                                 . 'alt="' . htmlspecialchars($fileReference->getAlternative() ?: $fileReference->getName()) . '" '
                                 . 'style="max-width:150px;max-height:150px;margin-right:10px;" />';
+                            $renderedCount++;
                         } catch (\Throwable $e) {
                             // Skip this image if processing fails
                         }
