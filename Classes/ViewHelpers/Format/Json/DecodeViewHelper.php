@@ -39,16 +39,14 @@ class DecodeViewHelper extends AbstractViewHelper
     {
         $json = $this->arguments['json'];
 
-        if ($json === '' || $json === null) {
-            return '';
+        if ($json === '') {
+            return [];
         }
 
-        $decodedValue = json_decode($json, true);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new Exception('The provided argument is invalid JSON.', 1358440054);
+        try {
+            return json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            throw new Exception('The provided argument is invalid JSON.', 1358440054, $e);
         }
-
-        return $decodedValue;
     }
 }

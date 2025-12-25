@@ -55,23 +55,6 @@
         <source>You are here:</source>
         <target>Du bist hier:</target>
       </trans-unit>
-      <trans-unit id="config.allowedAudioDomains" resname="config.allowedAudioDomains" approved="yes">
-        <source>Allowed domains for external audio files: e.g. *.xyz.de, www.xyz.de, https://*.xyz.de</source>
-        <target>Erlaubte Domains zum Einbinden externer Audio-Dateien: z.B. *.xyz.de, www.xyz.de, https://*.xyz.de
-				</target>
-      </trans-unit>
-      <trans-unit id="config.allowedAudioDomains.list" resname="config.allowedAudioDomains.list" approved="yes">
-        <source>Allowed domains for external audio files:</source>
-        <target>Erlaubte Domains zum Einbinden externer Audio-Dateien:</target>
-      </trans-unit>
-      <trans-unit id="config.allowedVideoDomains" resname="config.allowedVideoDomains" approved="yes">
-        <source>Allowed domains for external videos: e.g. *.xyz.de, www.xyz.de, https://*.xyz.de</source>
-        <target>Erlaubte Domains zum Einbinden externer Videos: z.B. *.xyz.de, www.xyz.de, https://*.xyz.de</target>
-      </trans-unit>
-      <trans-unit id="config.allowedVideoDomains.list" resname="config.allowedVideoDomains.list" approved="yes">
-        <source>Allowed domains for external videos:</source>
-        <target>Erlaubte Domains zum Einbinden externer Videos:</target>
-      </trans-unit>
       <trans-unit id="content.readmore" resname="content.readmore" approved="yes">
         <source>Read more</source>
         <target>Mehr lesen</target>

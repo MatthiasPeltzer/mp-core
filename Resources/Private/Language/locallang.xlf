@@ -42,18 +42,6 @@
       <trans-unit id="breadcrumb.headline" resname="breadcrumb.headline">
         <source>You are here:</source>
       </trans-unit>
-      <trans-unit id="config.allowedAudioDomains" resname="config.allowedAudioDomains">
-        <source>Allowed domains for external audio files: e.g. *.xyz.de, www.xyz.de, https://*.xyz.de</source>
-      </trans-unit>
-      <trans-unit id="config.allowedAudioDomains.list" resname="config.allowedAudioDomains.list">
-        <source>Allowed domains for external audio files:</source>
-      </trans-unit>
-      <trans-unit id="config.allowedVideoDomains" resname="config.allowedVideoDomains">
-        <source>Allowed domains for external videos: e.g. *.xyz.de, www.xyz.de, https://*.xyz.de</source>
-      </trans-unit>
-      <trans-unit id="config.allowedVideoDomains.list" resname="config.allowedVideoDomains.list">
-        <source>Allowed domains for external videos:</source>
-      </trans-unit>
       <trans-unit id="content.readmore" resname="content.readmore">
         <source>Read more</source>
       </trans-unit>

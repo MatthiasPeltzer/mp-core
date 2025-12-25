@@ -15,8 +15,3 @@ services:
   Mpc\MpCore\UserFunc\ColorPickerValueItems:
     public: true
 
-  Mpc\MpCore\EventListener\RegisterIconsEventListener:
-    tags:
-      - name: event.listener
-        identifier: 'mpc/mp-core/register-icons'
-        event: TYPO3\CMS\Core\Core\Event\BootCompletedEvent

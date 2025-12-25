@@ -38,9 +38,11 @@ class ColorPickerValueItems
         );
 
         foreach ($colors as $key => $color) {
-            $label = $color;
-            if (isset($configuration['label-color-' . substr($key, -1)]) && $configuration['label-color-' . substr($key, -1)] !== '') {
-                $label = $configuration['label-color-' . substr($key, -1)];
+            $label = (string)$color;
+            $index = substr((string)$key, strlen('color-'));
+            $labelKey = 'label-color-' . $index;
+            if (isset($configuration[$labelKey]) && $configuration[$labelKey] !== '') {
+                $label = (string)$configuration[$labelKey];
             }
 
             $items[] = [$label, $key];
