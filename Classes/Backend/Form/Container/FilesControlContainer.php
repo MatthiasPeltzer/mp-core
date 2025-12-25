@@ -24,6 +24,6 @@ final class FilesControlContainer extends CoreFilesControlContainer
             $fieldInformation
         );
 
-        return parent::render();
-    }
+    return parent::render();
+}
 }
