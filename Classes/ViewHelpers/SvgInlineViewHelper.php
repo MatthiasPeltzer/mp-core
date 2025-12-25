@@ -51,13 +51,13 @@ class SvgInlineViewHelper extends AbstractViewHelper
         }
 
         $attributes = [
-            'id' => $arguments['id'],
-            'class' => $arguments['class'],
-            'width' => $arguments['width'],
-            'height' => $arguments['height'],
-            'viewBox' => $arguments['viewBox'],
-            'data' => $arguments['data'],
-        ] + $arguments['additionalAttributes'];
+                'id' => $arguments['id'],
+                'class' => $arguments['class'],
+                'width' => $arguments['width'],
+                'height' => $arguments['height'],
+                'viewBox' => $arguments['viewBox'],
+                'data' => $arguments['data'],
+            ] + $arguments['additionalAttributes'];
 
         return $this->getInlineSvgCached($svgContent, $attributes);
     }
@@ -99,7 +99,7 @@ class SvgInlineViewHelper extends AbstractViewHelper
         $rendered = self::renderInlineSvg($svgContent, $normalizedAttributes);
         self::$inlineSvgCache[$cacheKey] = $rendered;
         return $rendered;
-    }
+            }
 
     /**
      * @return array<string,scalar|null>
