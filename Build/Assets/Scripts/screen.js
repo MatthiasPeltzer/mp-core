@@ -4,6 +4,7 @@
  * Including customized default javascript parts
  */
 import './code/nav-toggle.js';
+import './code/moveMeta.js';
 import './code/moveHeaderDate.js';
 import './code/sticky.js';
 import './code/theme.js';
