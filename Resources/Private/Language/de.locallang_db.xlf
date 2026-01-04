@@ -208,26 +208,6 @@
         <source>Add a background image to the container.</source>
         <target>Ein Hintergrundbild dem Container hinzufügen.</target>
       </trans-unit>
-      <trans-unit id="grid.columns" resname="grid.columns" approved="yes">
-        <source>Grid Columns</source>
-        <target>Raster Spalten</target>
-      </trans-unit>
-      <trans-unit id="grid.columns.description" resname="grid.columns.description" approved="yes">
-        <source>Choose how many columns the grid will be divided into (max 4)</source>
-        <target>Wähle, in wie viele Spalten das Raster aufgeteilt wird (max. 4)</target>
-      </trans-unit>
-      <trans-unit id="grid.gutter" resname="grid.gutter" approved="yes">
-        <source>Gutter (spacing)</source>
-        <target>Abstand (Gutter)</target>
-      </trans-unit>
-      <trans-unit id="grid.gutter.description" resname="grid.gutter.description" approved="yes">
-        <source>Bootstrap gutter utility (g-*) for horizontal + vertical spacing.</source>
-        <target>Bootstrap-Gutter-Utility (g-*) für horizontalen und vertikalen Abstand.</target>
-      </trans-unit>
-      <trans-unit id="grid.gutter.default" resname="grid.gutter.default" approved="yes">
-        <source>Default</source>
-        <target>Standard</target>
-      </trans-unit>
       <trans-unit id="grid.breakpoint" resname="grid.breakpoint" approved="yes">
         <source>Breakpoint</source>
         <target>Breakpoint</target>
@@ -236,13 +216,13 @@
         <source>Viewport breakpoint at which the grid switches from stacked (1 column) to the configured column layout.</source>
         <target>Viewport-Breakpoint, ab dem das Raster von gestapelt (1 Spalte) auf das konfigurierte Spaltenlayout umschaltet.</target>
       </trans-unit>
-      <trans-unit id="grid.breakpoint.md" resname="grid.breakpoint.md" approved="yes">
-        <source>md (≥768px)</source>
-        <target>md (≥768px)</target>
-      </trans-unit>
       <trans-unit id="grid.breakpoint.lg" resname="grid.breakpoint.lg" approved="yes">
         <source>lg (≥992px)</source>
         <target>lg (≥992px)</target>
+      </trans-unit>
+      <trans-unit id="grid.breakpoint.md" resname="grid.breakpoint.md" approved="yes">
+        <source>md (≥768px)</source>
+        <target>md (≥768px)</target>
       </trans-unit>
       <trans-unit id="grid.breakpoint.xl" resname="grid.breakpoint.xl" approved="yes">
         <source>xl (≥1200px)</source>
@@ -251,11 +231,6 @@
       <trans-unit id="grid.breakpoint.xxl" resname="grid.breakpoint.xxl" approved="yes">
         <source>xxl (≥1400px)</source>
         <target>xxl (≥1400px)</target>
-      </trans-unit>
-      <!-- gx/gy removed: we only use g-* -->
-      <trans-unit id="grid.colwidth.auto" resname="grid.colwidth.auto" approved="yes">
-        <source>Auto (equal width)</source>
-        <target>Auto (gleich breit)</target>
       </trans-unit>
       <trans-unit id="grid.col.description" resname="grid.col.description" approved="yes">
         <source>Optional Bootstrap column width (col-*). If set, it overrides the default column width for this column position.</source>
@@ -277,29 +252,13 @@
         <source>Column 4 width</source>
         <target>Spalte 4 Breite</target>
       </trans-unit>
-      <trans-unit id="grid.offset.none" resname="grid.offset.none" approved="yes">
-        <source>No offset</source>
-        <target>Kein Offset</target>
+      <trans-unit id="grid.columns" resname="grid.columns" approved="yes">
+        <source>Grid Columns</source>
+        <target>Raster Spalten</target>
       </trans-unit>
-      <trans-unit id="grid.offset.description" resname="grid.offset.description" approved="yes">
-        <source>Optional Bootstrap offset class (offset-{breakpoint}-*). Offsets are applied from the selected breakpoint and up.</source>
-        <target>Optionale Bootstrap-Offset-Klasse (offset-{breakpoint}-*). Offsets werden ab dem gewählten Breakpoint und größer angewendet.</target>
-      </trans-unit>
-      <trans-unit id="grid.offset1" resname="grid.offset1" approved="yes">
-        <source>Column 1 offset</source>
-        <target>Spalte 1 Offset</target>
-      </trans-unit>
-      <trans-unit id="grid.offset2" resname="grid.offset2" approved="yes">
-        <source>Column 2 offset</source>
-        <target>Spalte 2 Offset</target>
-      </trans-unit>
-      <trans-unit id="grid.offset3" resname="grid.offset3" approved="yes">
-        <source>Column 3 offset</source>
-        <target>Spalte 3 Offset</target>
-      </trans-unit>
-      <trans-unit id="grid.offset4" resname="grid.offset4" approved="yes">
-        <source>Column 4 offset</source>
-        <target>Spalte 4 Offset</target>
+      <trans-unit id="grid.columns.description" resname="grid.columns.description" approved="yes">
+        <source>Choose how many columns the grid will be divided into (max 4)</source>
+        <target>Wähle, in wie viele Spalten das Raster aufgeteilt wird (max. 4)</target>
       </trans-unit>
       <trans-unit id="grid.columns.fourcol" resname="grid.columns.fourcol" approved="yes">
         <source>Four columns</source>
@@ -317,6 +276,10 @@
         <source>Two columns</source>
         <target>Zwei Spalten</target>
       </trans-unit>
+      <trans-unit id="grid.colwidth.auto" resname="grid.colwidth.auto" approved="yes">
+        <source>Auto (equal width)</source>
+        <target>Auto (gleich breit)</target>
+      </trans-unit>
       <trans-unit id="grid.description" resname="grid.description" approved="yes">
         <source>Create a grid with any number of elements.</source>
         <target>Erstelle ein Raster mit einer beliebigen Anzahl von Elementen.</target>
@@ -333,6 +296,18 @@
         <source>Move out, add padding to element and add optional icon</source>
         <target>Element ausrücken und abstand hinzufügen und optionales Icon hinzufügen</target>
       </trans-unit>
+      <trans-unit id="grid.gutter" resname="grid.gutter" approved="yes">
+        <source>Gutter (spacing)</source>
+        <target>Abstand (Gutter)</target>
+      </trans-unit>
+      <trans-unit id="grid.gutter.default" resname="grid.gutter.default" approved="yes">
+        <source>Default</source>
+        <target>Standard</target>
+      </trans-unit>
+      <trans-unit id="grid.gutter.description" resname="grid.gutter.description" approved="yes">
+        <source>Bootstrap gutter utility (g-*) for horizontal + vertical spacing.</source>
+        <target>Bootstrap-Gutter-Utility (g-*) für horizontalen und vertikalen Abstand.</target>
+      </trans-unit>
       <trans-unit id="grid.icon" resname="grid.bgimage" approved="yes">
         <source>Container Icon</source>
         <target>Container Icon (Bild)</target>
@@ -340,6 +315,30 @@
       <trans-unit id="grid.icon.description" resname="grid.bgimage.description" approved="yes">
         <source>Insert icon at the top left of the container</source>
         <target>Icon oben links am Container einfügen</target>
+      </trans-unit>
+      <trans-unit id="grid.offset.description" resname="grid.offset.description" approved="yes">
+        <source>Optional Bootstrap offset class (offset-{breakpoint}-*). Offsets are applied from the selected breakpoint and up.</source>
+        <target>Optionale Bootstrap-Offset-Klasse (offset-{breakpoint}-*). Offsets werden ab dem gewählten Breakpoint und größer angewendet.</target>
+      </trans-unit>
+      <trans-unit id="grid.offset.none" resname="grid.offset.none" approved="yes">
+        <source>No offset</source>
+        <target>Kein Offset</target>
+      </trans-unit>
+      <trans-unit id="grid.offset1" resname="grid.offset1" approved="yes">
+        <source>Column 1 offset</source>
+        <target>Spalte 1 Offset</target>
+      </trans-unit>
+      <trans-unit id="grid.offset2" resname="grid.offset2" approved="yes">
+        <source>Column 2 offset</source>
+        <target>Spalte 2 Offset</target>
+      </trans-unit>
+      <trans-unit id="grid.offset3" resname="grid.offset3" approved="yes">
+        <source>Column 3 offset</source>
+        <target>Spalte 3 Offset</target>
+      </trans-unit>
+      <trans-unit id="grid.offset4" resname="grid.offset4" approved="yes">
+        <source>Column 4 offset</source>
+        <target>Spalte 4 Offset</target>
       </trans-unit>
       <trans-unit id="grid.parallax" resname="grid.bgimage.container" approved="yes">
         <source>Parallax animation</source>
