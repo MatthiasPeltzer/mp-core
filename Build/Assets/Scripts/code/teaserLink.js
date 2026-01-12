@@ -1,18 +1,24 @@
-const ElTeaserLink = document.querySelectorAll('.teaser-link');
+/**
+ * Teaser Link Module
+ * Adds visual feedback to teaser cards on hover/focus
+ */
 
-// Function to toggle the 'teaser-active' class
-function toggleTeaserClass(event, add) {
+const teaserLinks = document.querySelectorAll('.teaser-link');
+
+/**
+ * Toggles the active class on the parent teaser element
+ * @param {Event} event - The triggering event
+ * @param {boolean} isActive - Whether to add or remove the active class
+ */
+function toggleTeaserClass(event, isActive) {
   const teaser = event.target.closest('.teaser');
-  if (teaser) {
-    teaser.classList.toggle('teaser-active', add);
-  }
+  teaser?.classList.toggle('teaser-active', isActive);
 }
 
-// Attach event listeners
-ElTeaserLink.forEach(element => {
-  element.addEventListener('mouseover', event => toggleTeaserClass(event, true));
-  element.addEventListener('mouseout', event => toggleTeaserClass(event, false));
-  element.addEventListener('focusin', event => toggleTeaserClass(event, true));
-  element.addEventListener('focusout', event => toggleTeaserClass(event, false));
+// Attach event listeners using event delegation pattern
+teaserLinks.forEach(element => {
+  element.addEventListener('mouseover', e => toggleTeaserClass(e, true));
+  element.addEventListener('mouseout', e => toggleTeaserClass(e, false));
+  element.addEventListener('focusin', e => toggleTeaserClass(e, true));
+  element.addEventListener('focusout', e => toggleTeaserClass(e, false));
 });
-

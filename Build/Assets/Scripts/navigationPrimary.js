@@ -1,11 +1,7 @@
-// NavigationPrimary.js
-
 /**
- * Including customized default javascript parts
+ * Primary Navigation Entry Point
+ * Mobile navigation with Bootstrap collapse submenus
  */
+
 import './code/Navigation/Primary/navigation.js';
-
-/**
- * Include stylesheets
- */
 import '../Scss/navigationPrimary.scss';

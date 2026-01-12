@@ -1,9 +1,12 @@
-import {jarallax} from 'jarallax';
+/**
+ * Parallax Effects Module
+ * Initializes jarallax for parallax scrolling effects
+ */
 
-// Select all elements with the class 'grid-parallax'
+import { jarallax } from 'jarallax';
+
 const parallaxElements = document.querySelectorAll('.grid-parallax');
 
-// Initialize jarallax if there are any elements found
 if (parallaxElements.length) {
   jarallax(parallaxElements, {
     speed: 0.5,

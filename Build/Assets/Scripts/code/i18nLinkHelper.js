@@ -1,9 +1,20 @@
-// Enhance links with accessibility i18n
-import {i18n} from './i18n.js';
-import {debounce} from './Utils/domUtils.js';
+/**
+ * Accessibility Link Helper Module
+ * Enhances links with screen reader text based on link type
+ * Observes DOM changes to handle dynamically added content
+ */
 
-// Map of class names to i18n keys
-const linkClassToKey = new Map([
+import { i18n } from './i18n.js';
+import { debounce } from './Utils/domUtils.js';
+
+// =============================================================================
+// CONFIGURATION
+// =============================================================================
+
+/**
+ * Map of camelCase class names to i18n keys
+ */
+const CLASS_TO_KEY = new Map([
   ['audio', 'audio'],
   ['chart', 'chart'],
   ['download', 'download'],
@@ -23,8 +34,10 @@ const linkClassToKey = new Map([
   ['video', 'video']
 ]);
 
-// Support common kebab-case class aliases
-const classAliasToKey = new Map([
+/**
+ * Map of kebab-case class aliases to i18n keys
+ */
+const ALIAS_TO_KEY = new Map([
   ['external-link', 'externalLink'],
   ['external-link-new', 'externalLinkNew'],
   ['internal-link', 'internalLink'],
@@ -34,25 +47,42 @@ const classAliasToKey = new Map([
   ['download', 'download']
 ]);
 
+// =============================================================================
+// HELPER FUNCTIONS
+// =============================================================================
+
+/**
+ * Checks if a link points to an external origin
+ * @param {HTMLAnchorElement} link - Link element to check
+ * @returns {boolean} Whether link is external
+ */
 function isExternal(link) {
-  const href = link.getAttribute('href') || '';
+  const href = link.getAttribute('href');
   if (!href) return false;
+
   try {
     const url = new URL(href, document.baseURI);
-    return !!(url.origin && window.location && url.origin !== window.location.origin);
+    return url.origin !== window.location.origin;
   } catch {
     return false;
   }
 }
 
+/**
+ * Adds or updates hidden span for screen readers
+ * @param {HTMLElement} linkElement - Link to enhance
+ * @param {string} text - Text for screen readers
+ */
 function ensureHiddenSpan(linkElement, text) {
   if (!linkElement) return;
-  // Avoid duplicating if already present with same text
+
   const existing = linkElement.querySelector('span.visually-hidden[data-i18n-helper="true"]');
+  
   if (existing) {
     existing.textContent = text;
     return;
   }
+
   const span = document.createElement('span');
   span.className = 'visually-hidden';
   span.setAttribute('data-i18n-helper', 'true');
@@ -60,60 +90,68 @@ function ensureHiddenSpan(linkElement, text) {
   linkElement.prepend(span);
 }
 
+/**
+ * Gets the i18n key for a link based on its classes
+ * @param {HTMLAnchorElement} link - Link to check
+ * @returns {string|null} Matched i18n key or null
+ */
+function getMatchedKey(link) {
+  // Check camelCase classes
+  for (const [className, key] of CLASS_TO_KEY) {
+    if (link.classList.contains(className) && i18n[key]) {
+      return key;
+    }
+  }
+
+  // Check kebab-case aliases
+  for (const cls of link.classList) {
+    const aliasKey = ALIAS_TO_KEY.get(cls);
+    if (aliasKey && i18n[aliasKey]) {
+      return aliasKey;
+    }
+  }
+
+  return null;
+}
+
+// =============================================================================
+// MAIN ENHANCEMENT FUNCTION
+// =============================================================================
+
+/**
+ * Enhances links with accessibility text
+ * @param {HTMLElement|Document} root - Root element to search within
+ */
 function enhanceLinksAccessibility(root = document) {
   const links = [];
-  // Include root if it's an anchor element
-  if (root && root.nodeType === 1 && root.matches && root.matches('a')) {
+
+  // Include root if it's an anchor
+  if (root?.nodeType === 1 && root.matches?.('a')) {
     links.push(root);
   }
+
   // Include all descendant anchors
-  if (root && root.querySelectorAll) {
+  if (root?.querySelectorAll) {
     links.push(...root.querySelectorAll('a'));
   }
 
-  links.forEach((link) => {
-    // Determine primary class that maps to i18n (classes only)
-    let matchedKey = null;
-    // Exact camelCase classes
-    for (const [className, key] of linkClassToKey.entries()) {
-      if (link.classList.contains(className) && i18n[key]) {
-        matchedKey = key;
-        break;
-      }
-    }
-    // Kebab-case aliases
-    if (!matchedKey) {
-      for (const cls of link.classList) {
-        const aliasKey = classAliasToKey.get(cls);
-        if (aliasKey && i18n[aliasKey]) {
-          matchedKey = aliasKey;
-          break;
-        }
-      }
-    }
-
+  links.forEach(link => {
+    const matchedKey = getMatchedKey(link);
     const isBlank = link.getAttribute('target') === '_blank';
     const external = isExternal(link);
 
-    // Build final helper text
-    let helperText = null;
-    // Never annotate internal links at all
-    if (matchedKey === 'internalLink' || matchedKey === 'internalLinkNew' || (!matchedKey && !external)) {
-      helperText = null;
-    } else {
-      // Base text from class, if present and not internal
-      if (matchedKey) {
-        helperText = i18n[matchedKey];
-      }
-      // Append new-window only for external _blank links
-      if (isBlank && external) {
-        if (matchedKey === 'externalLinkNew') {
-          helperText = i18n.externalLinkNew;
-        } else if (matchedKey === 'externalLink') {
-          helperText = `${i18n.externalLink} (${i18n.newWindow})`;
-        } else {
-          helperText = `${i18n.externalLink} (${i18n.newWindow})`;
-        }
+    // Skip internal links entirely
+    if (matchedKey === 'internalLink' || matchedKey === 'internalLinkNew') return;
+    if (!matchedKey && !external) return;
+
+    let helperText = matchedKey ? i18n[matchedKey] : null;
+
+    // Handle external _blank links
+    if (isBlank && external) {
+      if (matchedKey === 'externalLinkNew') {
+        helperText = i18n.externalLinkNew;
+      } else {
+        helperText = `${i18n.externalLink} (${i18n.newWindow})`;
       }
     }
 
@@ -123,29 +161,44 @@ function enhanceLinksAccessibility(root = document) {
   });
 }
 
-// Run on DOMContentLoaded
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => enhanceLinksAccessibility());
-} else {
+// =============================================================================
+// INITIALIZATION
+// =============================================================================
+
+function init() {
   enhanceLinksAccessibility();
 }
 
-// Observe DOM changes to handle dynamically added links
-const startObserver = () => {
+// Run on DOMContentLoaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+// =============================================================================
+// MUTATION OBSERVER
+// =============================================================================
+
+/**
+ * Starts observing DOM for dynamically added links
+ */
+function startObserver() {
   if (!('MutationObserver' in window)) return;
-  const observer = new MutationObserver(
-    debounce((mutations) => {
-      mutations.forEach((mutation) => {
-        mutation.addedNodes.forEach((node) => {
-          if (node && (node.nodeType === 1 || node.nodeType === 9)) {
-            enhanceLinksAccessibility(node);
-          }
-        });
+
+  const handleMutations = debounce(mutations => {
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node?.nodeType === 1 || node?.nodeType === 9) {
+          enhanceLinksAccessibility(node);
+        }
       });
-    }, 100)
-  );
-  observer.observe(document.body, {childList: true, subtree: true});
-};
+    });
+  }, 100);
+
+  const observer = new MutationObserver(handleMutations);
+  observer.observe(document.body, { childList: true, subtree: true });
+}
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', startObserver);

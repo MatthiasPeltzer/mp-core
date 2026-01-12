@@ -1,73 +1,102 @@
-const html = document.documentElement;
-const mediaQueryColorDark = window.matchMedia('(prefers-color-scheme: dark)');
+/**
+ * Theme Switcher Module
+ * Manages light/dark theme switching with localStorage persistence
+ * Respects system preference when no stored preference exists
+ */
 
+// =============================================================================
+// CONFIGURATION
+// =============================================================================
+
+const html = document.documentElement;
+const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+// =============================================================================
+// CORE FUNCTIONS
+// =============================================================================
+
+/**
+ * Gets all theme switch elements
+ * @returns {HTMLElement[]} Array of switch elements
+ */
 function getThemeSwitches() {
   return Array.from(document.querySelectorAll('#themeSwitch'));
 }
 
+/**
+ * Sets the current theme
+ * @param {string} theme - 'light' or 'dark'
+ */
 function setTheme(theme) {
   html.setAttribute('data-bs-theme', theme);
   localStorage.setItem('theme', `theme-${theme}`);
-  getThemeSwitches().forEach((el) => {
+  
+  getThemeSwitches().forEach(el => {
     el.checked = theme === 'dark';
   });
 }
 
-function mediaQueryColorDarkListener(e) {
-  const theme = e.matches ? 'dark' : 'light';
-  setTheme(theme);
+/**
+ * Handles system preference changes
+ * @param {MediaQueryListEvent} e - Media query change event
+ */
+function handleSystemPreferenceChange(e) {
+  setTheme(e.matches ? 'dark' : 'light');
 }
 
-// Apply stored or system theme immediately (no dependency on the switch existing)
+// =============================================================================
+// INITIALIZATION
+// =============================================================================
+
+// Apply stored or system theme immediately
 const storedTheme = localStorage.getItem('theme');
+
 if (storedTheme) {
   setTheme(storedTheme.includes('dark') ? 'dark' : 'light');
 } else {
-  mediaQueryColorDark.addEventListener('change', mediaQueryColorDarkListener);
-  mediaQueryColorDarkListener(mediaQueryColorDark);
+  mediaQueryDark.addEventListener('change', handleSystemPreferenceChange);
+  handleSystemPreferenceChange(mediaQueryDark);
 }
 
+/**
+ * Initializes theme switch elements
+ * Safe to call multiple times (uses data attribute to prevent double-binding)
+ */
 function initThemeSwitch() {
   const switches = getThemeSwitches();
-  if (!switches.length) {
-    return;
-  }
+  if (!switches.length) return;
 
-  switches.forEach((switchTheme) => {
-    if (switchTheme.dataset.themeInitialized === '1') {
-      return;
-    }
-    switchTheme.dataset.themeInitialized = '1';
+  switches.forEach(switchEl => {
+    if (switchEl.dataset.themeInitialized === '1') return;
+    switchEl.dataset.themeInitialized = '1';
 
-    switchTheme.addEventListener('change', () => {
-      const newTheme = switchTheme.checked ? 'dark' : 'light';
-      setTheme(newTheme);
+    switchEl.addEventListener('change', () => {
+      setTheme(switchEl.checked ? 'dark' : 'light');
     });
   });
 
-  // Handle Enter key for form-check-input (bind once to document)
-  if (!document.documentElement.dataset.themeKeybind) {
-    document.documentElement.dataset.themeKeybind = '1';
+  // Keyboard support for Enter key (bind once)
+  if (!html.dataset.themeKeybind) {
+    html.dataset.themeKeybind = '1';
+    
     const formCheckInput = document.querySelector('.form-check-input');
-    if (formCheckInput) {
-      formCheckInput.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          formCheckInput.nextElementSibling?.click();
-        }
-      });
-    }
+    formCheckInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        formCheckInput.nextElementSibling?.click();
+      }
+    });
   }
 }
 
-// init on load; safe if element not present
+// Initialize on DOM ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initThemeSwitch);
 } else {
   initThemeSwitch();
 }
 
-// expose for re-init after DOM restore
+// Expose for re-initialization after DOM restore
 if (typeof window !== 'undefined') {
   window.mpcInitThemeSwitch = initThemeSwitch;
 }

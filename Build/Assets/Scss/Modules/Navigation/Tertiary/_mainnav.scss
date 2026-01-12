@@ -42,6 +42,20 @@
       white-space: normal;
     }
 
+    // Desktop submenu button rotation for all levels
+    .dropdown-item-button {
+      svg {
+        transform: rotate(0deg);
+        transition: transform .1s ease-in-out;
+      }
+
+      &:not(.collapsed) {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
     .container {
       background-color: transparent;
       position: relative;

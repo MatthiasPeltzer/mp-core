@@ -1,11 +1,7 @@
-// NavigationTertiary.js
-
 /**
- * Including customized default javascript parts
+ * Tertiary Navigation Entry Point
+ * Desktop and mobile navigation with Bootstrap dropdowns and collapses
  */
+
 import './code/Navigation/Tertiary/navigation.js';
-
-/**
- * Include stylesheets
- */
 import '../Scss/navigationTertiary.scss';

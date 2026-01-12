@@ -1,9 +1,9 @@
-// bootstrap.js
-
 /**
- * Import just what you need out of bootstrap libs
+ * Bootstrap Entry Point
+ * Imports only the Bootstrap components we need
  */
 
+// Bootstrap components
 import 'bootstrap/js/dist/base-component.js';
 // import 'bootstrap/js/dist/alert.js';
 import 'bootstrap/js/dist/button.js';
@@ -17,7 +17,6 @@ import 'bootstrap/js/dist/modal.js';
 import 'bootstrap/js/dist/tab.js';
 // import 'bootstrap/js/dist/toast.js';
 // import 'bootstrap/js/dist/tooltip.js';
-/**
- * Include stylesheets
- */
+
+// Stylesheets
 import '../Scss/bootstrap.scss';

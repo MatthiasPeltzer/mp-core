@@ -1,35 +1,49 @@
-// Cache the HTML element
-const htmlElement = document.querySelector('html');
+/**
+ * Main JavaScript Entry Point
+ * Core functionality and global event handlers
+ */
 
-// Remove no-js class and add js class to the HTML element
-htmlElement.classList.replace('no-js', 'js');
+// =============================================================================
+// INITIALIZATION
+// =============================================================================
 
-// Handle popup window functionality using event delegation
+// Replace no-js class with js class for CSS hooks
+document.documentElement.classList.replace('no-js', 'js');
+
+// =============================================================================
+// GLOBAL EVENT HANDLERS
+// =============================================================================
+
+/**
+ * Handle popup window links
+ * Opens links with .popup-window class in a new popup window
+ */
 document.addEventListener('click', (e) => {
-  const el = e.target.closest('.popup-window');
-  if (el) {
+  const popupLink = e.target.closest('.popup-window');
+  if (popupLink) {
     e.preventDefault();
-    window.open(el.getAttribute('href'), '', 'width=600,height=600');
+    window.open(popupLink.getAttribute('href'), '', 'width=600,height=600');
   }
 });
 
-// Handle print functionality using event delegation
+/**
+ * Handle print button clicks
+ * Triggers print dialog when .js-print elements are clicked
+ */
 document.addEventListener('click', (e) => {
-  const el = e.target.closest('.js-print');
-  if (el) {
+  const printButton = e.target.closest('.js-print');
+  if (printButton) {
     e.preventDefault();
     window.print();
   }
 });
 
-// Focus on the first invalid input element, if it exists
-const invalidElement = document.querySelector('.is-invalid');
-if (invalidElement) {
-  invalidElement.focus();
-}
+// =============================================================================
+// AUTO-FOCUS FUNCTIONALITY
+// =============================================================================
 
-// Check whether the search box exists and set the focus to the search field
-const searchBox = document.getElementById('tx-indexedsearch-searchbox-sword');
-if (searchBox) {
-  searchBox.focus();
-}
+// Focus on first invalid input for better form UX
+document.querySelector('.is-invalid')?.focus();
+
+// Focus on search box if present
+document.getElementById('tx-indexedsearch-searchbox-sword')?.focus();

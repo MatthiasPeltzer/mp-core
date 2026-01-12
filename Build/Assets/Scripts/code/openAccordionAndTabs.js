@@ -1,48 +1,90 @@
-function handleElement(hash, type) {
+/**
+ * Accordion & Tabs URL Hash Handler
+ * Opens accordion/tab items based on URL hash and handles scroll-to links
+ */
+
+// =============================================================================
+// CONFIGURATION
+// =============================================================================
+
+const SELECTORS = {
+  accordion: (id) => `[data-bs-target="#accordion-${id}"]`,
+  tabs: (id) => `[data-bs-target="#tab-content-${id}"]`,
+  scrollList: '.list-scroll',
+  scrollLink: 'li a'
+};
+
+// =============================================================================
+// CORE FUNCTIONS
+// =============================================================================
+
+/**
+ * Opens an accordion or tab element by hash
+ * @param {string} hash - URL hash (e.g., '#c123')
+ * @param {string} type - Element type ('accordion' or 'tabs')
+ */
+function openElement(hash, type) {
   if (!hash) return;
 
-  const idArr = hash.split('#c');
-  const selector = type === 'accordion'
-    ? `[data-bs-target="#accordion-${idArr[1]}"]`
-    : `[data-bs-target="#tab-content-${idArr[1]}"]`;
+  const idParts = hash.split('#c');
+  if (idParts.length < 2) return;
 
-  const anchorLink = document.querySelector(selector);
-  if (anchorLink) {
-    anchorLink.click();
-    anchorLink.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'nearest'});
-    anchorLink.focus();
+  const id = idParts[1];
+  const selector = type === 'accordion' 
+    ? SELECTORS.accordion(id) 
+    : SELECTORS.tabs(id);
+
+  const trigger = document.querySelector(selector);
+  if (trigger) {
+    trigger.click();
+    trigger.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    trigger.focus();
   }
 }
 
+/**
+ * Initializes hash handling on page load
+ * @param {string} type - Element type ('accordion' or 'tabs')
+ */
 function initOnLoad(type) {
   if (window.location.hash) {
-    handleElement(window.location.hash, type);
+    openElement(window.location.hash, type);
   }
 }
 
-function initOnClick(type, containerSelector, linkSelector) {
-  const container = document.querySelector(containerSelector);
-  if (container) {
-    container.addEventListener('click', (event) => {
-      const target = event.target.closest(linkSelector);
-      if (target) {
-        event.preventDefault();
-        handleElement(target.hash, type);
-      }
-    });
-  }
+/**
+ * Initializes click handling for scroll-to links
+ * @param {string} type - Element type ('accordion' or 'tabs')
+ */
+function initOnClick(type) {
+  const container = document.querySelector(SELECTORS.scrollList);
+  if (!container) return;
+
+  container.addEventListener('click', (event) => {
+    const link = event.target.closest(SELECTORS.scrollLink);
+    if (link) {
+      event.preventDefault();
+      openElement(link.hash, type);
+    }
+  });
 }
 
-function initAccordionAndTabs() {
+// =============================================================================
+// INITIALIZATION
+// =============================================================================
+
+function init() {
+  // Initialize accordion handling if accordions exist
   if (document.querySelector('.accordion')) {
     initOnLoad('accordion');
-    initOnClick('accordion', '.list-scroll', 'li a');
+    initOnClick('accordion');
   }
 
+  // Initialize tab handling if tabs exist
   if (document.querySelector('.nav-tabs')) {
     initOnLoad('tabs');
-    initOnClick('tabs', '.list-scroll', 'li a');
+    initOnClick('tabs');
   }
 }
 
-window.addEventListener('load', initAccordionAndTabs);
+window.addEventListener('load', init);
