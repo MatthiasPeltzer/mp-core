@@ -1,37 +1,62 @@
-const body = document.querySelector('body');
+/**
+ * Sticky Header Module
+ * Adds/removes sticky class based on scroll position
+ * and adjusts body padding to compensate for fixed header
+ */
+
+// =============================================================================
+// INITIALIZATION
+// =============================================================================
+
+const body = document.body;
 const header = document.querySelector('.header-wrapper-bg');
-let headerHeight = header.offsetHeight;
 
-// Add sticky class on scroll based on header height
-window.addEventListener('scroll', () => {
-  const scrollSticky = window.scrollY;
-  if (scrollSticky > headerHeight) {
-    body.classList.add('sticky');
-  } else {
-    body.classList.remove('sticky');
-  }
-});
+// Exit early if header doesn't exist
+if (!header) {
+  console.warn('Sticky: .header-wrapper-bg not found');
+} else {
+  let headerHeight = header.offsetHeight;
 
-// Function to update body padding based on header height and screen width
-function updatePadding() {
-  headerHeight = header.offsetHeight;
-  body.style.paddingTop = headerHeight / 16 + 'rem';
-}
+  // =============================================================================
+  // SCROLL HANDLING
+  // =============================================================================
 
-// Handle resize and media queries
-function resizePadding() {
-  const mediaQuery = window.matchMedia('(min-width: 62rem)');
-
-  // Listener to update padding on media query change
-  function mediaQueryListener() {
-    setTimeout(updatePadding, 50); // Debounce the padding update slightly
+  /**
+   * Adds/removes sticky class based on scroll position
+   */
+  function handleScroll() {
+    body.classList.toggle('sticky', window.scrollY > headerHeight);
   }
 
-  // Initial call and listener attachment
-  mediaQueryListener(); // On load
-  mediaQuery.addEventListener('change', mediaQueryListener); // On change
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+  // =============================================================================
+  // RESPONSIVE PADDING
+  // =============================================================================
+
+  /**
+   * Updates body padding based on current header height
+   */
+  function updatePadding() {
+    headerHeight = header.offsetHeight;
+    body.style.paddingTop = `${headerHeight / 16}rem`;
+  }
+
+  /**
+   * Initializes responsive padding behavior
+   */
+  function initResponsivePadding() {
+    const mediaQuery = window.matchMedia('(min-width: 62rem)');
+
+    const handleMediaChange = () => {
+      // Debounce slightly to ensure layout is complete
+      setTimeout(updatePadding, 50);
+    };
+
+    // Initial call and listener
+    handleMediaChange();
+    mediaQuery.addEventListener('change', handleMediaChange);
+  }
+
+  initResponsivePadding();
 }
-
-// Call on page load
-resizePadding();
-

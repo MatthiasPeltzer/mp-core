@@ -1,80 +1,117 @@
+/**
+ * Navigation Toggle Module
+ * Manages DOM detachment/reattachment of mobile/desktop navigation
+ * for performance optimization across breakpoints
+ */
+
 (function () {
-    if (!document.getElementById('main-menu-list')) {
-        return;
+  if (!document.getElementById('main-menu-list')) return;
+
+  // =============================================================================
+  // CONFIGURATION
+  // =============================================================================
+
+  const mqLg = window.matchMedia('(min-width: 62rem)');
+
+  const navCache = {
+    mobile: { el: null, placeholder: null, parent: null },
+    desktop: { el: null, placeholder: null, parent: null }
+  };
+
+  // =============================================================================
+  // CACHE MANAGEMENT
+  // =============================================================================
+
+  /**
+   * Initializes navigation element cache
+   * Creates placeholders for DOM manipulation
+   */
+  function initNavCache() {
+    if (!navCache.mobile.el) {
+      const mobile = document.getElementById('main-menu');
+      if (mobile) {
+        navCache.mobile.el = mobile;
+        navCache.mobile.parent = mobile.parentNode;
+        navCache.mobile.placeholder = document.createComment('placeholder-main-menu');
+      }
     }
 
-    const mqLg = window.matchMedia('(min-width: 62rem)');
-
-    const navCache = {
-        mobile: {el: null, placeholder: null, parent: null},
-        desktop: {el: null, placeholder: null, parent: null}
-    };
-
-    function initNavCache() {
-        if (!navCache.mobile.el) {
-            const m = document.getElementById('main-menu');
-            if (m) {
-                navCache.mobile.el = m;
-                navCache.mobile.parent = m.parentNode;
-                navCache.mobile.placeholder = document.createComment('placeholder-main-menu');
-            }
-        }
-        if (!navCache.desktop.el) {
-            const d = document.querySelector('nav.mainnav-desktop');
-            if (d) {
-                navCache.desktop.el = d;
-                navCache.desktop.parent = d.parentNode;
-                navCache.desktop.placeholder = document.createComment('placeholder-mainnav-desktop');
-            }
-        }
+    if (!navCache.desktop.el) {
+      const desktop = document.querySelector('nav.mainnav-desktop');
+      if (desktop) {
+        navCache.desktop.el = desktop;
+        navCache.desktop.parent = desktop.parentNode;
+        navCache.desktop.placeholder = document.createComment('placeholder-mainnav-desktop');
+      }
     }
+  }
 
-    function detachNode(cache) {
-        if (!cache || !cache.el || !cache.parent) return;
-        if (cache.el.parentNode) {
-            cache.parent.insertBefore(cache.placeholder, cache.el);
-            cache.parent.removeChild(cache.el);
-        }
+  // =============================================================================
+  // DOM OPERATIONS
+  // =============================================================================
+
+  /**
+   * Detaches an element from the DOM, leaving a placeholder
+   * @param {Object} cache - Cache object with el, parent, placeholder
+   */
+  function detachNode(cache) {
+    if (!cache?.el?.parentNode || !cache.parent) return;
+
+    cache.parent.insertBefore(cache.placeholder, cache.el);
+    cache.parent.removeChild(cache.el);
+  }
+
+  /**
+   * Restores an element to the DOM, replacing its placeholder
+   * @param {Object} cache - Cache object with el, placeholder
+   */
+  function restoreNode(cache) {
+    if (!cache?.el || cache.el.parentNode) return;
+    if (!cache.placeholder?.parentNode) return;
+
+    cache.placeholder.parentNode.replaceChild(cache.el, cache.placeholder);
+  }
+
+  // =============================================================================
+  // BREAKPOINT HANDLING
+  // =============================================================================
+
+  /**
+   * Handles breakpoint changes by swapping navigation elements
+   * @param {MediaQueryList|MediaQueryListEvent} e - Media query state
+   */
+  function handleBreakpoint(e) {
+    initNavCache();
+
+    if (e.matches) {
+      // >= lg: Show desktop, hide mobile
+      restoreNode(navCache.desktop);
+      detachNode(navCache.mobile);
+    } else {
+      // < lg: Show mobile, hide desktop
+      restoreNode(navCache.mobile);
+      detachNode(navCache.desktop);
     }
+  }
 
-    function restoreNode(cache) {
-        if (!cache || !cache.el) return;
-        if (!cache.el.parentNode && cache.placeholder && cache.placeholder.parentNode) {
-            cache.placeholder.parentNode.replaceChild(cache.el, cache.placeholder);
-        }
+  // =============================================================================
+  // INITIALIZATION
+  // =============================================================================
+
+  // Initial setup after page load
+  window.addEventListener('load', () => {
+    handleBreakpoint(mqLg);
+  });
+
+  // Re-initialize mobile nav when entering mobile breakpoint
+  mqLg.addEventListener('change', (e) => {
+    handleBreakpoint(e);
+
+    if (!e.matches) {
+      // Call re-initialization functions if available
+      window.mpcInitMainNav?.();
+      window.mpcInitMainNavigationMobile?.();
+      window.mpcInitThemeSwitch?.();
     }
-
-    function handle(e) {
-        initNavCache();
-        if (e.matches) {
-            // ≥ lg: show desktop, hide mobile
-            restoreNode(navCache.desktop);
-            detachNode(navCache.mobile);
-        } else {
-            // < lg: show mobile, hide desktop
-            restoreNode(navCache.mobile);
-            detachNode(navCache.desktop);
-        }
-    }
-
-    // run first pass after page load so other initializers can bind
-    window.addEventListener('load', function () {
-        handle(mqLg);
-    });
-
-    // on breakpoint change, re-init mobile nav when entering < lg
-    mqLg.addEventListener('change', function (e) {
-        handle(e);
-        if (!e.matches) {
-            if (typeof window.mpcInitMainNav === 'function') {
-                window.mpcInitMainNav();
-            }
-            if (typeof window.mpcInitMainNavigationMobile === 'function') {
-                window.mpcInitMainNavigationMobile();
-            }
-            if (typeof window.mpcInitThemeSwitch === 'function') {
-                window.mpcInitThemeSwitch();
-            }
-        }
-    });
+  });
 })();

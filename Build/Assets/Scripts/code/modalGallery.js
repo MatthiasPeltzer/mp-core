@@ -1,26 +1,27 @@
-import {debounce} from './Utils/domUtils.js';
+/**
+ * Modal Gallery Module
+ * Adjusts image sizes within modals/carousels for optimal viewing
+ */
 
-function modalGallery() {
-  const carouselItems = document.querySelectorAll('.carousel-item img, .modal-body img');
+import { debounce } from './Utils/domUtils.js';
 
-  function updateImageSizes() {
-    const windowHeight = window.innerHeight * 0.75;
-    carouselItems.forEach(img => {
-      img.style.maxHeight = `${windowHeight}px`;
-      img.style.width = 'auto';
-    });
-  }
-
-  // debounce is now imported from utils
-
-  // Set initial sizes
-  updateImageSizes();
-
-  // Update sizes on window resize with debounce
-  window.addEventListener('resize', debounce(updateImageSizes, 100));
+/**
+ * Updates image maximum heights based on viewport
+ */
+function updateImageSizes() {
+  const maxHeight = window.innerHeight * 0.75;
+  
+  document.querySelectorAll('.carousel-item img, .modal-body img').forEach(img => {
+    img.style.maxHeight = `${maxHeight}px`;
+    img.style.width = 'auto';
+  });
 }
 
-// Initialize modalGallery if modal-content is present
+// Initialize if modal content exists
 if (document.querySelector('.modal-content')) {
-  modalGallery();
+  // Set initial sizes
+  updateImageSizes();
+  
+  // Update on resize with debounce
+  window.addEventListener('resize', debounce(updateImageSizes, 100));
 }

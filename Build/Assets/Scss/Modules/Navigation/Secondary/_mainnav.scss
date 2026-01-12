@@ -524,6 +524,19 @@
     }
   }
 
+  // Ensure button rotation works at all nested levels
+  // This addresses specificity issues with deeply nested collapse buttons
+  [data-bs-toggle="collapse"] {
+    &::after {
+      transform: rotate(0deg);
+      transition: transform .1s ease-in-out;
+    }
+
+    &.collapsed::after {
+      transform: rotate(180deg);
+    }
+  }
+
   .first-child {
     @include font-size(18px);
     background-color: transparent;

@@ -1,119 +1,142 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const itemsPerPage = 10; // Anzahl der Elemente pro Seite
+/**
+ * Pagination Module
+ * Client-side pagination for list elements
+ * Creates paginated views with Previous/Next controls
+ */
 
-  const lists = document.querySelectorAll(".paginated-list");
+// =============================================================================
+// CONFIGURATION
+// =============================================================================
 
-  lists.forEach((listContainer) => {
-    const itemList = listContainer.querySelector("ul");
-    const paginationControls = listContainer.querySelector(".pagination-controls");
-    const items = Array.from(itemList.children);
+const CONFIG = {
+  itemsPerPage: 10,
+  containerSelector: '.paginated-list',
+  listSelector: 'ul',
+  controlsSelector: '.pagination-controls'
+};
 
-    let currentPage = 1;
-    const totalPages = Math.ceil(items.length / itemsPerPage);
+// =============================================================================
+// PAGINATION LOGIC
+// =============================================================================
 
-    // Funktion zum Rendern einer Seite
-    function renderPage(page, focusFirstItem = false) {
-      const start = (page - 1) * itemsPerPage;
-      const end = start + itemsPerPage;
+/**
+ * Creates and manages pagination for a list container
+ * @param {HTMLElement} listContainer - Container element with list and controls
+ */
+function createPagination(listContainer) {
+  const itemList = listContainer.querySelector(CONFIG.listSelector);
+  const paginationControls = listContainer.querySelector(CONFIG.controlsSelector);
+  
+  if (!itemList || !paginationControls) return;
 
-      // Zeigt nur die relevanten Listenelemente an
-      items.forEach((item, index) => {
-        item.style.display = index >= start && index < end ? "block" : "none";
+  const items = Array.from(itemList.children);
+  const totalPages = Math.ceil(items.length / CONFIG.itemsPerPage);
+  let currentPage = 1;
+
+  /**
+   * Renders items for the specified page
+   * @param {number} page - Page number to render
+   * @param {boolean} focusFirstItem - Whether to focus first item after render
+   */
+  function renderPage(page, focusFirstItem = false) {
+    const start = (page - 1) * CONFIG.itemsPerPage;
+    const end = start + CONFIG.itemsPerPage;
+
+    // Show only items for current page
+    items.forEach((item, index) => {
+      item.style.display = (index >= start && index < end) ? 'block' : 'none';
+    });
+
+    // Focus first visible link if requested
+    if (focusFirstItem && items[start]) {
+      const link = items[start].querySelector('a');
+      link?.focus();
+    }
+
+    renderControls(page);
+  }
+
+  /**
+   * Creates a pagination button
+   * @param {string} text - Button text
+   * @param {boolean} disabled - Whether button is disabled
+   * @param {Function} onClick - Click handler
+   * @returns {HTMLElement} List item with button
+   */
+  function createButton(text, disabled, onClick) {
+    const listItem = document.createElement('li');
+    listItem.className = 'page-item';
+    if (disabled) listItem.classList.add('disabled');
+
+    const button = document.createElement('button');
+    button.className = 'page-link';
+    button.textContent = text;
+    button.disabled = disabled;
+    button.addEventListener('click', onClick);
+
+    listItem.appendChild(button);
+    return listItem;
+  }
+
+  /**
+   * Renders pagination controls
+   * @param {number} page - Current page number
+   */
+  function renderControls(page) {
+    paginationControls.innerHTML = '';
+
+    if (totalPages <= 1) return;
+
+    const paginationList = document.createElement('ul');
+    paginationList.className = 'pagination';
+
+    // Previous button
+    paginationList.appendChild(
+      createButton('Previous', page === 1, () => {
+        if (page > 1) {
+          currentPage--;
+          renderPage(currentPage, true);
+        }
+      })
+    );
+
+    // Page number buttons
+    for (let i = 1; i <= totalPages; i++) {
+      const isCurrentPage = i === page;
+      const pageItem = createButton(String(i), isCurrentPage, () => {
+        currentPage = i;
+        renderPage(currentPage, true);
       });
 
-      // Falls erforderlich, Fokus auf den ersten Link im ersten sichtbaren Listenelement setzen
-      if (focusFirstItem) {
-        const firstVisibleItem = items[start];
-        if (firstVisibleItem) {
-          const link = firstVisibleItem.querySelector("a");
-          if (link) {
-            link.focus();
-          }
-        }
+      if (isCurrentPage) {
+        pageItem.classList.add('active');
+        pageItem.setAttribute('aria-current', 'page');
       }
 
-      renderPaginationControls(page);
+      paginationList.appendChild(pageItem);
     }
 
-    // Funktion zur Erstellung der Paginierungs-Steuerelemente
-    function renderPaginationControls(page) {
-      paginationControls.innerHTML = ""; // Alte Buttons entfernen
-
-      if (totalPages > 1) {
-        const paginationList = document.createElement("ul");
-        paginationList.className = "pagination";
-
-        // "Seite zurück"-Button
-        const prevItem = document.createElement("li");
-        prevItem.className = "page-item";
-        if (page === 1) {
-          prevItem.classList.add("disabled");
+    // Next button
+    paginationList.appendChild(
+      createButton('Next', page === totalPages, () => {
+        if (page < totalPages) {
+          currentPage++;
+          renderPage(currentPage, true);
         }
-        const prevButton = document.createElement("button");
-        prevButton.className = "page-link";
-        prevButton.textContent = "Previous";
-        prevButton.disabled = page === 1;
-        prevButton.addEventListener("click", () => {
-          if (page > 1) {
-            currentPage--;
-            renderPage(currentPage, true);
-          }
-        });
-        prevItem.appendChild(prevButton);
-        paginationList.appendChild(prevItem);
+      })
+    );
 
-        // Seiten-Buttons
-        for (let i = 1; i <= totalPages; i++) {
-          const listItem = document.createElement("li");
-          listItem.className = "page-item";
+    paginationControls.appendChild(paginationList);
+  }
 
-          if (i === page) {
-            listItem.classList.add("active");
-            listItem.setAttribute("aria-current", "page");
-          }
+  // Initialize first page
+  renderPage(currentPage, false);
+}
 
-          const button = document.createElement("button");
-          button.textContent = "" + i;
-          button.className = "page-link";
-          button.disabled = i === page;
+// =============================================================================
+// INITIALIZATION
+// =============================================================================
 
-          if (button.disabled) {
-            listItem.classList.add("disabled");
-          }
-
-          button.addEventListener("click", () => {
-            currentPage = i;
-            renderPage(currentPage, true);
-          });
-
-          listItem.appendChild(button);
-          paginationList.appendChild(listItem);
-        }
-
-        // "Seite vor"-Button
-        const nextItem = document.createElement("li");
-        nextItem.className = "page-item";
-        if (page === totalPages) {
-          nextItem.classList.add("disabled");
-        }
-        const nextButton = document.createElement("button");
-        nextButton.className = "page-link";
-        nextButton.textContent = "Next";
-        nextButton.disabled = page === totalPages;
-        nextButton.addEventListener("click", () => {
-          if (page < totalPages) {
-            currentPage++;
-            renderPage(currentPage, true);
-          }
-        });
-        nextItem.appendChild(nextButton);
-        paginationList.appendChild(nextItem);
-
-        paginationControls.appendChild(paginationList);
-      }
-    }
-
-    // Initiale Anzeige der ersten Seite ohne Fokussetzung
-    renderPage(currentPage, false);
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll(CONFIG.containerSelector).forEach(createPagination);
 });

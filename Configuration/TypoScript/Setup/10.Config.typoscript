@@ -51,7 +51,7 @@ plugin {
       compressInlineJs = 0
     }
     tinysource {
-      enable = 1
+      enable = 0
       body {
         stripComments = 1
         preventStripOfSearchComment = 1

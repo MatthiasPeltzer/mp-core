@@ -1,13 +1,7 @@
-// NavigationSecondary.js
-
 /**
- * Including customized default javascript parts
+ * Secondary Navigation Entry Point
+ * Imports the consolidated navigation module and styles
  */
-import './code/Navigation/Secondary/navigation-desktop.js';
-import './code/Navigation/Secondary/navigation-mobile.js';
-import './code/Navigation/Secondary/navigation-resize.js';
 
-/**
- * Include stylesheets
- */
+import './code/Navigation/Secondary/navigation.js';
 import '../Scss/navigationSecondary.scss';

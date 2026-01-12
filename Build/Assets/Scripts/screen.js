@@ -1,8 +1,9 @@
-// screen.js
-
 /**
- * Including customized default javascript parts
+ * Screen Entry Point
+ * Main JavaScript bundle for screen display
  */
+
+// Core functionality
 import './code/nav-toggle.js';
 import './code/moveMeta.js';
 import './code/moveHeaderDate.js';
@@ -17,7 +18,5 @@ import './code/teaserLink.js';
 import './code/i18nLinkHelper.js';
 import './code/main.js';
 
-/**
- * Include stylesheets
- */
+// Stylesheets
 import '../Scss/screen.scss';

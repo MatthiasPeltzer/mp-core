@@ -1,9 +1,12 @@
 /**
- * Including own javascript parts
+ * Swiper Entry Point
+ * Slider/carousel functionality with accessibility support
  */
+
+// Swiper initialization
 import './code/Swiper/swiper-initialisation.js';
 
-// Import base CSS and only the CSS parts we need
+// Swiper CSS
 import 'swiper/css';
 import 'swiper/css/a11y';
 import 'swiper/css/effect-fade';
@@ -13,7 +16,5 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
 
-/**
- * Include stylesheet parts from packages or own
- */
+// Custom styles
 import '../Scss/swiper.scss';
