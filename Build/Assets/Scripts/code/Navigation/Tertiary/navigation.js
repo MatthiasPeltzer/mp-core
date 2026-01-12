@@ -270,24 +270,60 @@ function initMobileNavigation() {
 // RESPONSIVE BEHAVIOR
 // =============================================================================
 
+/**
+ * Closes all open mobile menus
+ */
+function closeMobileMenus() {
+  const mainMenu = document.getElementById('main-menu');
+  const navbarToggler = document.querySelector('.navbar-toggler');
+  
+  // If mobile menu is open, close it by clicking the toggler
+  if (mainMenu?.classList.contains('show') && navbarToggler) {
+    navbarToggler.click();
+  }
+  
+  // Also close any open collapse submenus in mobile
+  document.querySelectorAll(`${CONFIG.mobile.container} .collapse.show`).forEach(menu => {
+    const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
+    if (button && !button.classList.contains('collapsed')) {
+      button.click();
+    }
+  });
+}
+
+/**
+ * Closes all open desktop menus
+ */
+function closeDesktopMenus() {
+  // Close first-level dropdown buttons
+  document.querySelectorAll('.first-nav-button.show, .mainnav-desktop .dropdown-toggle.show').forEach(button => {
+    button.click();
+  });
+  
+  // Close any open collapse submenus in desktop
+  document.querySelectorAll(`${CONFIG.desktop.container} .collapse.show`).forEach(menu => {
+    const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
+    if (button && !button.classList.contains('collapsed')) {
+      button.click();
+    }
+  });
+}
+
 function initResponsiveBehavior() {
   const mediaQuery = window.matchMedia(CONFIG.breakpoint);
   const body = document.body;
   const headerWrapper = document.querySelector('.header-wrapper');
 
-  const handleResize = () => {
-    const navbarToggler = document.querySelector('.navbar-toggler.show');
-    const firstNavShow = document.querySelector('.first-nav.show');
-
-    // Close open menus when switching between breakpoints
-    if (mediaQuery.matches) {
-      // Switching to desktop: close mobile menu first
-      navbarToggler?.click();
-      firstNavShow?.click();
+  const handleBreakpointChange = (event) => {
+    // Only act on actual breakpoint changes, not initial load
+    if (!event) return;
+    
+    if (event.matches) {
+      // Switching TO desktop: close mobile menus
+      closeMobileMenus();
     } else {
-      // Switching to mobile: close desktop menu first
-      firstNavShow?.click();
-      navbarToggler?.click();
+      // Switching TO mobile: close desktop menus
+      closeDesktopMenus();
     }
 
     // Reset body state
@@ -295,8 +331,7 @@ function initResponsiveBehavior() {
     headerWrapper?.classList.remove('active-nav');
   };
 
-  mediaQuery.addEventListener('change', handleResize);
-  handleResize(); // Run on init
+  mediaQuery.addEventListener('change', handleBreakpointChange);
 }
 
 // =============================================================================
