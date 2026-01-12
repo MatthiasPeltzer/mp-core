@@ -324,32 +324,68 @@ function initMobileNavigation() {
 // =============================================================================
 
 /**
+ * Closes all open mobile menus
+ */
+function closeMobileMenus() {
+  const mainMenu = document.getElementById('main-menu');
+  const navbarToggler = document.querySelector('.navbar-toggler');
+  
+  // If mobile menu is open, close it by clicking the toggler
+  if (mainMenu?.classList.contains('show') && navbarToggler) {
+    navbarToggler.click();
+  }
+  
+  // Also close any open collapse submenus in mobile
+  document.querySelectorAll(`${CONFIG.mobile.container} .collapse.show`).forEach(menu => {
+    const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
+    if (button && !button.classList.contains('collapsed')) {
+      button.click();
+    }
+  });
+}
+
+/**
+ * Closes all open desktop menus
+ */
+function closeDesktopMenus() {
+  // Close first-level dropdown buttons
+  document.querySelectorAll('.first-nav-button.show, .first-nav-btn.show, #nav-desktop .dropdown-toggle.show').forEach(button => {
+    button.click();
+  });
+  
+  // Close any open collapse submenus in desktop
+  document.querySelectorAll(`${CONFIG.desktop.container} .collapse.show`).forEach(menu => {
+    const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
+    if (button && !button.classList.contains('collapsed')) {
+      button.click();
+    }
+  });
+}
+
+/**
  * Handles breakpoint changes - closes open menus
  */
 function initResponsiveBehavior() {
   const mediaQuery = window.matchMedia(CONFIG.breakpoint);
   const body = document.body;
 
-  const handleResize = () => {
-    const navbarToggler = document.querySelector('.navbar-toggler.show');
-    const firstNavShow = document.querySelector('.first-nav.show');
-
-    if (mediaQuery.matches) {
-      // Switching to desktop
-      navbarToggler?.click();
-      firstNavShow?.click();
+  const handleBreakpointChange = (event) => {
+    // Only act on actual breakpoint changes, not initial load
+    if (!event) return;
+    
+    if (event.matches) {
+      // Switching TO desktop: close mobile menus
+      closeMobileMenus();
     } else {
-      // Switching to mobile
-      firstNavShow?.click();
-      navbarToggler?.click();
+      // Switching TO mobile: close desktop menus
+      closeDesktopMenus();
     }
 
     body.classList.remove('active-nav-body');
     headerWrapper?.classList.remove('active-nav');
   };
 
-  mediaQuery.addEventListener('change', handleResize);
-  handleResize();
+  mediaQuery.addEventListener('change', handleBreakpointChange);
 }
 
 // =============================================================================
