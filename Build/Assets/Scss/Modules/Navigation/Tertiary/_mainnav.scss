@@ -46,7 +46,8 @@
     .dropdown-item-button {
       svg {
         transform: rotate(0deg);
-        transition: transform .1s ease-in-out;
+        // Smooth icon rotation with subtle bounce
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
 
       &:not(.collapsed) {
@@ -77,6 +78,7 @@
           &:focus,
           &:active {
             background-color: rgb(34 34 34 / 2%) !important;
+            outline-offset: -6px !important;
           }
 
           &[data-bs-toggle="collapse"] {
@@ -94,7 +96,7 @@
               font-weight: 500;
 
               &::before {
-                background-color: var(--bs-body-color) !important;
+                background-color: var(--bs-gray-500) !important;
                 height: 2px !important;
               }
             }
@@ -103,7 +105,6 @@
 
         ul {
           background-image: linear-gradient(to top, transparent 0%, var(--bs-body-color) 1000%);
-          height: 70vh !important;
           left: 33.7%;
           position: absolute;
           top: 0;
@@ -127,7 +128,6 @@
 
             ul {
               background-image: linear-gradient(to top, transparent 0%, var(--bs-body-color) 500%);
-              height: 70vh !important;
               left: 100%;
               top: 0;
               width: calc(100% - 23px);
@@ -186,7 +186,9 @@
         height: 22px;
         position: relative;
         top: 1px;
-        transition: all .1s ease-in-out;
+        // Smooth icon rotation with subtle bounce
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+        top 0.15s ease;
         width: 22px;
       }
 
@@ -218,7 +220,7 @@
     text-decoration: underline;
 
     &::before {
-      background-color: var(--bs-body-color) !important;
+      background-color: var(--bs-gray-500) !important;
       height: 2px !important;
     }
   }
@@ -356,7 +358,12 @@
     &:focus,
     &:active {
       color: var(--bs-body-color);
+      outline-offset: -2px;
       text-decoration: underline;
+    }
+
+    + .dropdown-item-button {
+      top: 16px;
     }
   }
 
@@ -375,31 +382,43 @@
       min-width: 25%;
     }
 
-    a {
+    // Border line on li - stretches full width including under buttons
+    &::before {
+      background-color: var(--bs-gray-700);
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 1px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
+
+    // Active/expanded state - thicker line
+    &:has(> a[aria-expanded="true"]),
+    &:has(> a.act.hassub) {
       &::before {
-        background-color: $gray-100;
-        bottom: 0;
-        content: '';
-        display: block;
-        height: 1px;
-        left: 0;
-        position: absolute;
-        width: 100%;
-      }
-
-      &[aria-expanded="true"],
-      &.act.hassub {
-        font-weight: 500;
-
-        &::before {
-          background-color: var(--bs-body-color) !important;
-          height: 2px !important;
-        }
+        background-color: var(--bs-gray-500);
+        height: 2px;
       }
     }
   }
 
   ul {
+    // Top border for first item in each submenu
+    li:first-child::after {
+      background-color: var(--bs-gray-700);
+      content: '';
+      display: block;
+      height: 1px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+
     li {
       .dropdown-item-button {
         right: 0;
@@ -423,11 +442,6 @@
           li {
             a {
               padding-left: 24px;
-
-              &::before {
-                background-color: $gray-200 !important;
-                height: 1px !important;
-              }
             }
 
             ul {
@@ -475,6 +489,7 @@
     &:active {
       background-color: transparent;
       color: var(--bs-body-color);
+      outline-offset: -2px;
       text-decoration: underline;
     }
   }
@@ -489,7 +504,7 @@
     text-decoration: underline;
 
     &::before {
-      background-color: var(--bs-body-color) !important;
+      background-color: var(--bs-gray-500) !important;
       height: 2px !important;
     }
   }
@@ -509,7 +524,8 @@
   svg {
     height: 22px;
     transform: rotate(0deg);
-    transition: all .1s ease-in-out;
+    // Smooth icon rotation with subtle bounce
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     width: 22px;
   }
 
@@ -521,5 +537,150 @@
 
   &::before {
     display: none !important;
+  }
+}
+
+// =============================================================================
+// MODERN SUBMENU ANIMATIONS & EFFECTS
+// =============================================================================
+
+// Smooth collapse transitions (no flicker)
+.main-menu .collapse {
+  // Smooth fade animation
+  &:not(.show):not(.collapsing) {
+    opacity: 0;
+  }
+
+  &.collapsing {
+    opacity: 0.7;
+    transition: height 0.2s ease-out, opacity 0.15s ease-out;
+  }
+
+  &.show {
+    opacity: 1;
+    transition: opacity 0.15s ease-out;
+
+    // Subtle slide-in for items (no opacity animation to avoid flicker)
+    > li {
+      animation: navSlideIn 0.15s ease-out forwards;
+
+      @for $i from 1 through 15 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.015}s;
+        }
+      }
+    }
+  }
+}
+
+// Keyframes for subtle item entrance (transform only, no opacity)
+@keyframes navSlideIn {
+  from {
+    transform: translateX(-2px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+// Smooth hover effects on menu items
+.main-menu li a,
+.main-menu li button {
+  outline-offset: -1px;
+  transition: background-color 0.15s ease,
+  transform 0.15s ease,
+  box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateX(1px);
+  }
+
+  &:active {
+    transform: translateX(1px);
+  }
+}
+
+// Modern focus states
+.main-menu a:focus-visible,
+.main-menu button:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--bs-primary);
+  outline-offset: -2px;
+}
+
+// Subtle depth shadows for nested menus
+.main-menu ul.collapse.show {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 8%),
+  0 2px 4px -2px rgb(0 0 0 / 6%);
+}
+
+.main-menu ul ul.collapse.show {
+  box-shadow: 0 8px 12px -3px rgb(0 0 0 / 10%),
+  0 4px 6px -4px rgb(0 0 0 / 8%);
+}
+
+// Glassmorphism for nested submenus (mobile)
+.main-menu ul ul {
+  backdrop-filter: blur(8px);
+  border-radius: 6px;
+
+  @supports not (backdrop-filter: blur(8px)) {
+    backdrop-filter: none;
+  }
+}
+
+// Desktop flyout modern effects
+.mainnav-desktop .main-menu-desktop {
+  .container ul {
+    // Smooth panel appearance
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.2s ease-out,
+    transform 0.2s ease-out;
+
+    &.show {
+      opacity: 1;
+      transform: translateX(0);
+
+      // Desktop items - no opacity animation, just subtle slide
+      > li {
+        animation: navSlideIn 0.15s ease-out forwards;
+
+        @for $i from 1 through 15 {
+          &:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.02}s;
+          }
+        }
+      }
+    }
+
+    // Nested panels slide from left
+    ul {
+      opacity: 0;
+      transform: translateX(-15px);
+
+      &.show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  // Hover effects for desktop items
+  .container li a,
+  .container li button {
+    transition: background-color 0.15s ease,
+    transform 0.1s ease;
+
+    &:hover {
+      transform: translateX(2px);
+    }
+  }
+
+  // Subtle shadows for desktop panels
+  .container ul.show {
+    box-shadow: -4px 0 15px -5px rgb(0 0 0 / 15%),
+    0 4px 10px -5px rgb(0 0 0 / 10%);
   }
 }
