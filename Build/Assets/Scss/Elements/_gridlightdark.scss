@@ -47,8 +47,4 @@
       background-image: linear-gradient(0deg, var(--bs-yellow) 40%, transparent 0) !important;
     }
   }
-
-  &-dark {
-    @include grid-colors(var(--bs-body-color));
-  }
 }

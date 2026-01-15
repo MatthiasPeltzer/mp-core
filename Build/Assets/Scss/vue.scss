@@ -1,0 +1,193 @@
+// Vue-specific styles
+// This file is imported in vue.js to ensure CSS variables are available
+// SINGLE SOURCE OF TRUTH for all Swiper styles used by Vue components
+
+// =============================================================================
+// SWIPER CSS VARIABLES
+// =============================================================================
+
+:root {
+  --swiper-navigation-color: var(--bs-body-color, #fff);
+  --swiper-navigation-size: 44px;
+  --swiper-pagination-bottom: auto;
+  --swiper-pagination-bullet-height: 20px;
+  --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.7);
+  --swiper-pagination-bullet-width: 20px;
+  --swiper-pagination-color: var(--bs-body-color, #fff);
+  --swiper-theme-color: var(--bs-primary);
+}
+
+html[data-bs-theme="light"] {
+  --swiper-pagination-bullet-inactive-color: rgba(0, 0, 0, 0.7);
+}
+
+// =============================================================================
+// SWIPER CONTAINER & WRAPPER
+// =============================================================================
+
+.swiper {
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+
+  &-pagination {
+    z-index: 0;
+  }
+}
+
+.swiper-wrapper {
+  margin: 3px;
+}
+
+.swiper-slide {
+  height: auto;
+  right: 2px;
+
+  > div {
+    height: 100%;
+  }
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  .teaser {
+    height: 100%;
+    margin: 2px;
+  }
+}
+
+.swiper-autoheight,
+.swiper-autoheight .swiper-slide {
+  height: 100%;
+}
+
+// =============================================================================
+// NAVIGATION BUTTONS
+// =============================================================================
+
+.swiper-button-prev,
+.swiper-button-next {
+  align-items: center;
+  background-color: var(--bs-primary);
+  border: 2px solid var(--bs-body-color, #fff);
+  border-radius: 50%;
+  color: var(--bs-white, #fff);
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  height: 44px;
+  justify-content: center;
+  margin-top: 0 !important;
+  position: static;
+  top: auto !important;
+  transition: all 0.3s ease;
+  width: 44px;
+  z-index: 1;
+
+  // Hide Swiper's default arrows when we have SVG icons
+  &::after {
+    display: none;
+  }
+
+  &.swiper-button-disabled {
+    cursor: auto;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .swiper-navigation-icon {
+    height: 50%;
+    width: auto;
+  }
+}
+
+// Rotate prev button icon to point left
+.swiper-button-prev .swiper-navigation-icon {
+  transform: rotate(180deg);
+}
+
+// =============================================================================
+// NAVIGATION CONTAINER
+// =============================================================================
+
+.swiper-navigation {
+  align-items: center;
+  display: flex;
+  gap: 160px;
+  height: 44px;
+  justify-content: center;
+  margin: 16px 0;
+  padding: 0;
+}
+
+// =============================================================================
+// SLIDE STATES & EFFECTS
+// =============================================================================
+
+// Ensure active/adjacent slides have proper pointer events
+.swiper-slide-active,
+.swiper-slide-prev,
+.swiper-slide-next {
+  pointer-events: auto;
+}
+
+// Fade effect - ensure transitions complete properly
+.swiper-fade .swiper-slide {
+  pointer-events: none;
+  transition-property: opacity;
+
+  &.swiper-slide-active {
+    pointer-events: auto;
+  }
+}
+
+// =============================================================================
+// GALLERY THUMBS
+// =============================================================================
+
+.gallery-thumbs .swiper-wrapper {
+  margin: 0;
+}
+
+// Thumb slide states (both li and div)
+.swiper-thumbs li,
+.gallery-thumb-slide {
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+
+  &:hover,
+  &.swiper-slide-thumb-active {
+    opacity: 1;
+  }
+}
+
+.gallery-thumb-content img {
+  border-radius: 4px;
+  height: auto;
+  width: 100%;
+}
+
+// =============================================================================
+// VUE COMPONENT WRAPPERS
+// =============================================================================
+
+// Shared wrapper styles for both SwiperSlider and GallerySwiper
+.swiper-vue-wrapper,
+.gallery-swiper-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+// Gallery thumbs strip
+.gallery-thumbs-strip {
+  margin-top: 1rem;
+  width: 100%;
+}

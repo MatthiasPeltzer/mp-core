@@ -41,49 +41,73 @@
         </f:if>
 
         <f:if condition="{data.gallery_layout} == 'gallery-slider'">
-            <section aria-label="{data.header}" aria-roledescription="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery')}" class="swiper swiper-raw swiper-slide-col-{data.gallery_columns} swiper-gallery {data.gallery_layout}">
-                <ul class="swiper-wrapper gallery-image list-unstyled" id="gallery-slider-{data.uid}">
-                    <f:for as="file" each="{files}" iteration="i">
-                        <li class="swiper-slide" data-count="{i.index}" aria-label="{i.cycle} von {i.total}">
-                            <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#" role="button" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
-                                <f:render arguments="{_all}" section="GallerySlide"/>
-                            </a>
-                        </li>
-                    </f:for>
-                </ul>
-                <div class="swiper-navigation">
-                    <button class="swiper-button swiper-button-prev"></button>
-                    <div class="swiper-pagination"></div>
-                    <button class="swiper-button swiper-button-next"></button>
-                </div>
+            <f:asset.css identifier="vueCSS" href="EXT:mp_core/Resources/Public/StyleSheets/vue.css"/>
+            <f:asset.script additionalAttributes="{'type': 'module'}" async="async" identifier="vueJS" src="EXT:mp_core/Resources/Public/JavaScripts/vue.js"/>
+            <section
+                aria-label="{data.header}"
+                aria-roledescription="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery')}"
+                class="swiper-gallery {data.gallery_layout}"
+                data-container="vue"
+                data-component="GallerySwiper"
+                data-gallery-id="gallery-{data.uid}"
+                data-layout="slider"
+                data-columns="{data.gallery_columns}"
+                data-space-between="{f:if(condition: data.gallery_space_between, then: data.gallery_space_between, else: '10')}"
+                data-loop="{f:if(condition: data.gallery_loop, then: '1', else: '0')}"
+                data-speed="{f:if(condition: data.gallery_speed, then: data.gallery_speed, else: '300')}"
+                data-navigation-enabled="{f:if(condition: data.gallery_navigation_enabled, then: '1', else: '0')}"
+                data-pagination-enabled="{f:if(condition: data.gallery_pagination_enabled, then: '1', else: '0')}"
+                data-pagination-type="{f:if(condition: data.gallery_pagination_type, then: data.gallery_pagination_type, else: 'bullets')}"
+                data-pagination-clickable="{f:if(condition: data.gallery_pagination_clickable, then: '1', else: '0')}"
+                data-pagination-dynamic-bullets="{f:if(condition: data.gallery_pagination_dynamic_bullets, then: '1', else: '0')}"
+                data-autoplay-enabled="{f:if(condition: data.gallery_autoplay_enabled, then: '1', else: '0')}"
+                data-autoplay-delay="{f:if(condition: data.gallery_autoplay_delay, then: data.gallery_autoplay_delay, else: '3000')}"
+            >
+                <f:for as="file" each="{files}" iteration="i">
+                    <div class="gallery-slide-content" data-count="{i.index}">
+                        <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#" role="button" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
+                            <f:render arguments="{_all}" section="GallerySlide"/>
+                        </a>
+                    </div>
+                </f:for>
             </section>
         </f:if>
 
         <f:if condition="{data.gallery_layout} == 'gallery-thumbs'">
+            <f:asset.css identifier="vueCSS" href="EXT:mp_core/Resources/Public/StyleSheets/vue.css"/>
+            <f:asset.script additionalAttributes="{'type': 'module'}" async="async" identifier="vueJS" src="EXT:mp_core/Resources/Public/JavaScripts/vue.js"/>
             <div class="swiper-container">
-                <section aria-label="{data.header}" aria-roledescription="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery')}" class="swiper topSwiper swiper-slide-col-1 swiper-gallery {data.gallery_layout}">
-                    <ul class="swiper-wrapper gallery-image list-unstyled" id="gallery-thumbs-{data.uid}">
-                        <f:for as="file" each="{files}" iteration="i">
-                            <li aria-label="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery.entry')}" aria-roledescription="{i.cycle} / {i.total}" class="swiper-slide" data-count="{i.index}">
+                <section
+                    aria-label="{data.header}"
+                    aria-roledescription="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery')}"
+                    class="swiper-gallery {data.gallery_layout}"
+                    data-container="vue"
+                    data-component="GallerySwiper"
+                    data-gallery-id="gallery-{data.uid}"
+                    data-layout="thumbs"
+                    data-columns="1"
+                    data-space-between="{f:if(condition: data.gallery_space_between, then: data.gallery_space_between, else: '10')}"
+                    data-loop="{f:if(condition: data.gallery_loop, then: '1', else: '0')}"
+                    data-speed="{f:if(condition: data.gallery_speed, then: data.gallery_speed, else: '300')}"
+                    data-navigation-enabled="{f:if(condition: data.gallery_navigation_enabled, then: '1', else: '0')}"
+                    data-pagination-enabled="{f:if(condition: data.gallery_pagination_enabled, then: '1', else: '0')}"
+                    data-pagination-type="{f:if(condition: data.gallery_pagination_type, then: data.gallery_pagination_type, else: 'bullets')}"
+                    data-pagination-clickable="{f:if(condition: data.gallery_pagination_clickable, then: '1', else: '0')}"
+                    data-pagination-dynamic-bullets="{f:if(condition: data.gallery_pagination_dynamic_bullets, then: '1', else: '0')}"
+                    data-thumbs-per-view="{f:if(condition: data.gallery_thumbs_per_view, then: data.gallery_thumbs_per_view, else: '4')}"
+                    data-thumbs-space-between="{f:if(condition: data.gallery_thumbs_space_between, then: data.gallery_thumbs_space_between, else: '10')}"
+                >
+                    <f:for as="file" each="{files}" iteration="i">
+                        <div class="gallery-slide-content" data-count="{i.index}">
+                            <div class="gallery-main-content">
                                 <f:render arguments="{_all}" section="GalleryThumb"/>
-                            </li>
-                        </f:for>
-                    </ul>
-                    <div class="swiper-navigation">
-                        <button class="swiper-button swiper-button-prev"></button>
-                        <div class="swiper-pagination"></div>
-                        <button class="swiper-button swiper-button-next"></button>
-                    </div>
-                </section>
-                <div class="swiper bottomSwiper swiper-slide-col-4 swiper-gallery {data.gallery_layout} pt-4">
-                    <ul class="swiper-wrapper gallery-image list-unstyled">
-                        <f:for as="file" each="{files}" iteration="i">
-                            <li class="swiper-slide" data-count="{i.index}">
+                            </div>
+                            <template class="gallery-thumbnail-template">
                                 <f:render arguments="{_all}" section="GalleryThumbnail"/>
-                            </li>
-                        </f:for>
-                    </ul>
-                </div>
+                            </template>
+                        </div>
+                    </f:for>
+                </section>
                 <f:if condition="{file.originalFile.properties.description} || {file.properties.description}">
                     <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="modal-description-{data.uid}" tabindex="-1">
                         <div class="modal-dialog modal-md modal-dialog-scrollable modal-dialog-centered" role="document">
@@ -327,10 +351,5 @@
         </a>
     </div>
 </f:section>
-
-<f:if condition="{data.gallery_layout} == 'gallery-slider' || {data.gallery_layout} == 'gallery-thumbs'">
-    <f:asset.script type="module" defer="defer" identifier="swiperJS" src="EXT:mp_core/Resources/Public/JavaScripts/swiper.js"/>
-    <f:asset.css href="EXT:mp_core/Resources/Public/StyleSheets/swiper.css" identifier="swiperCSS"/>
-</f:if>
 
 </html>

@@ -8,10 +8,10 @@ import vue from '@vitejs/plugin-vue';
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 // Define all entry points
+// Note: Swiper is now integrated into Vue component (vue.js) - no separate entry point needed
 const entryPoints = {
   bootstrap: resolve(__dirname, 'Assets/Scripts/bootstrap.js'),
   screen: resolve(__dirname, 'Assets/Scripts/screen.js'),
-  swiper: resolve(__dirname, 'Assets/Scripts/swiper.js'),
   navigationPrimary: resolve(__dirname, 'Assets/Scripts/navigationPrimary.js'),
   navigationSecondary: resolve(__dirname, 'Assets/Scripts/navigationSecondary.js'),
   navigationTertiary: resolve(__dirname, 'Assets/Scripts/navigationTertiary.js'),
