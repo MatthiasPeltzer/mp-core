@@ -3,6 +3,7 @@
   <file source-language="en" target-language="de" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang_db.xlf" date="2025-01-26T12:00:00" product-name="mp_core">
     <header/>
     <body>
+      <!-- Gallery Swiper Options -->
       <trans-unit id="BackendLayouts.bottom" resname="BackendLayouts.bottom" approved="yes">
         <source>Bottom</source>
         <target>Unten</target>
@@ -160,9 +161,121 @@
         <source>TodoList Settings</source>
         <target>TodoList-Einstellungen</target>
       </trans-unit>
+      <trans-unit id="gallery.autoplay_delay" resname="gallery.autoplay_delay" approved="yes">
+        <source>Autoplay delay</source>
+        <target>Autoplay-Verzögerung</target>
+      </trans-unit>
+      <trans-unit id="gallery.autoplay_delay.description" resname="gallery.autoplay_delay.description" approved="yes">
+        <source>Time between slides in milliseconds</source>
+        <target>Zeit zwischen den Slides in Millisekunden</target>
+      </trans-unit>
+      <trans-unit id="gallery.autoplay_enabled" resname="gallery.autoplay_enabled" approved="yes">
+        <source>Enable autoplay</source>
+        <target>Autoplay aktivieren</target>
+      </trans-unit>
+      <trans-unit id="gallery.autoplay_enabled.description" resname="gallery.autoplay_enabled.description" approved="yes">
+        <source>Automatically advance slides</source>
+        <target>Automatisch zum nächsten Slide wechseln</target>
+      </trans-unit>
       <trans-unit id="gallery.description" resname="gallery.description" approved="yes">
         <source>Inserts a gallery element as a single image preview, tiles or slider</source>
         <target>Fügt ein Galerieelement als Einzelbild Vorschau, Kacheln oder Slider ein</target>
+      </trans-unit>
+      <trans-unit id="gallery.loop" resname="gallery.loop" approved="yes">
+        <source>Loop</source>
+        <target>Endlosschleife</target>
+      </trans-unit>
+      <trans-unit id="gallery.loop.description" resname="gallery.loop.description" approved="yes">
+        <source>Enable infinite loop mode</source>
+        <target>Endlosschleife aktivieren</target>
+      </trans-unit>
+      <trans-unit id="gallery.navigation_enabled" resname="gallery.navigation_enabled" approved="yes">
+        <source>Show navigation</source>
+        <target>Navigation anzeigen</target>
+      </trans-unit>
+      <trans-unit id="gallery.navigation_enabled.description" resname="gallery.navigation_enabled.description" approved="yes">
+        <source>Display prev/next navigation buttons</source>
+        <target>Zurück/Weiter-Buttons anzeigen</target>
+      </trans-unit>
+      <trans-unit id="gallery.pagination_clickable" resname="gallery.pagination_clickable" approved="yes">
+        <source>Clickable pagination</source>
+        <target>Klickbare Paginierung</target>
+      </trans-unit>
+      <trans-unit id="gallery.pagination_clickable.description" resname="gallery.pagination_clickable.description" approved="yes">
+        <source>Allow clicking pagination to navigate</source>
+        <target>Ermöglicht Navigation durch Klicken auf die Paginierung</target>
+      </trans-unit>
+      <trans-unit id="gallery.pagination_dynamic_bullets" resname="gallery.pagination_dynamic_bullets" approved="yes">
+        <source>Dynamic bullets</source>
+        <target>Dynamische Punkte</target>
+      </trans-unit>
+      <trans-unit id="gallery.pagination_dynamic_bullets.description" resname="gallery.pagination_dynamic_bullets.description" approved="yes">
+        <source>Show only a limited number of bullets</source>
+        <target>Zeigt nur eine begrenzte Anzahl von Punkten an</target>
+      </trans-unit>
+      <trans-unit id="gallery.pagination_enabled" resname="gallery.pagination_enabled" approved="yes">
+        <source>Show pagination</source>
+        <target>Paginierung anzeigen</target>
+      </trans-unit>
+      <trans-unit id="gallery.pagination_enabled.description" resname="gallery.pagination_enabled.description" approved="yes">
+        <source>Display pagination (bullets, fraction or progressbar)</source>
+        <target>Paginierung anzeigen (Punkte, Bruch oder Fortschrittsbalken)</target>
+      </trans-unit>
+      <trans-unit id="gallery.pagination_type" resname="gallery.pagination_type" approved="yes">
+        <source>Pagination type</source>
+        <target>Paginierungstyp</target>
+      </trans-unit>
+      <trans-unit id="gallery.pagination_type.description" resname="gallery.pagination_type.description" approved="yes">
+        <source>Choose pagination style</source>
+        <target>Paginierungsstil wählen</target>
+      </trans-unit>
+      <trans-unit id="gallery.space_between" resname="gallery.space_between" approved="yes">
+        <source>Space between slides</source>
+        <target>Abstand zwischen Slides</target>
+      </trans-unit>
+      <trans-unit id="gallery.space_between.description" resname="gallery.space_between.description" approved="yes">
+        <source>Distance between slides in pixels</source>
+        <target>Abstand zwischen den Slides in Pixel</target>
+      </trans-unit>
+      <trans-unit id="gallery.speed" resname="gallery.speed" approved="yes">
+        <source>Animation speed</source>
+        <target>Animationsgeschwindigkeit</target>
+      </trans-unit>
+      <trans-unit id="gallery.speed.description" resname="gallery.speed.description" approved="yes">
+        <source>Duration of transition between slides in milliseconds</source>
+        <target>Dauer des Übergangs zwischen Slides in Millisekunden</target>
+      </trans-unit>
+      <trans-unit id="gallery.swiper_autoplay" resname="gallery.swiper_autoplay" approved="yes">
+        <source>Autoplay</source>
+        <target>Autoplay</target>
+      </trans-unit>
+      <trans-unit id="gallery.swiper_basic" resname="gallery.swiper_basic" approved="yes">
+        <source>Slider Settings</source>
+        <target>Slider-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="gallery.swiper_navigation" resname="gallery.swiper_navigation" approved="yes">
+        <source>Navigation &amp; Pagination</source>
+        <target>Navigation &amp; Paginierung</target>
+      </trans-unit>
+      <trans-unit id="gallery.swiper_thumbs" resname="gallery.swiper_thumbs" approved="yes">
+        <source>Thumbnails</source>
+        <target>Vorschaubilder</target>
+      </trans-unit>
+      <trans-unit id="gallery.thumbs_per_view" resname="gallery.thumbs_per_view" approved="yes">
+        <source>Thumbnails per view</source>
+        <target>Vorschaubilder pro Ansicht</target>
+      </trans-unit>
+      <trans-unit id="gallery.thumbs_per_view.description" resname="gallery.thumbs_per_view.description" approved="yes">
+        <source>Number of visible thumbnails</source>
+        <target>Anzahl der sichtbaren Vorschaubilder</target>
+      </trans-unit>
+      <trans-unit id="gallery.thumbs_space_between" resname="gallery.thumbs_space_between" approved="yes">
+        <source>Space between thumbnails</source>
+        <target>Abstand zwischen Vorschaubildern</target>
+      </trans-unit>
+      <trans-unit id="gallery.thumbs_space_between.description" resname="gallery.thumbs_space_between.description" approved="yes">
+        <source>Distance between thumbnails in pixels</source>
+        <target>Abstand zwischen den Vorschaubildern in Pixel</target>
       </trans-unit>
       <trans-unit id="gallery.title" resname="gallery.title" approved="yes">
         <source>Gallery</source>
@@ -1022,21 +1135,189 @@
         <source>YouTube</source>
         <target>YouTube</target>
       </trans-unit>
+      <trans-unit id="slider.autoplay_delay" resname="slider.autoplay_delay" approved="yes">
+        <source>Autoplay delay</source>
+        <target>Autoplay-Verzögerung</target>
+      </trans-unit>
+      <trans-unit id="slider.autoplay_delay.description" resname="slider.autoplay_delay.description" approved="yes">
+        <source>Delay between transitions in milliseconds</source>
+        <target>Verzögerung zwischen Übergängen in Millisekunden</target>
+      </trans-unit>
+      <trans-unit id="slider.autoplay_disable_on_interaction" resname="slider.autoplay_disable_on_interaction" approved="yes">
+        <source>Disable autoplay on interaction</source>
+        <target>Autoplay bei Interaktion deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="slider.autoplay_disable_on_interaction.description" resname="slider.autoplay_disable_on_interaction.description" approved="yes">
+        <source>Stop autoplay when user interacts with slider</source>
+        <target>Autoplay stoppen, wenn Benutzer mit Slider interagiert</target>
+      </trans-unit>
+      <trans-unit id="slider.autoplay_enabled" resname="slider.autoplay_enabled" approved="yes">
+        <source>Enable autoplay</source>
+        <target>Automatische Wiedergabe aktivieren</target>
+      </trans-unit>
+      <trans-unit id="slider.autoplay_enabled.description" resname="slider.autoplay_enabled.description" approved="yes">
+        <source>Automatically advance to the next slide</source>
+        <target>Automatisch zum nächsten Slide wechseln</target>
+      </trans-unit>
+      <trans-unit id="slider.breakpoints" resname="slider.breakpoints" approved="yes">
+        <source>Responsive breakpoints</source>
+        <target>Responsive Breakpoints</target>
+      </trans-unit>
+      <trans-unit id="slider.breakpoints.description" resname="slider.breakpoints.description" approved="yes">
+        <source>JSON configuration for responsive breakpoints (e.g., {"576": {"slidesPerView": 2}, "992": {"slidesPerView": 3}})</source>
+        <target>JSON-Konfiguration für responsive Breakpoints (z.B., {"576": {"slidesPerView": 2}, "992": {"slidesPerView": 3}})</target>
+      </trans-unit>
       <trans-unit id="slider.description" resname="slider.description" approved="yes">
         <source>Container element for Slider</source>
         <target>Container für Slider</target>
+      </trans-unit>
+      <trans-unit id="slider.free_mode_enabled" resname="slider.free_mode_enabled" approved="yes">
+        <source>Free mode</source>
+        <target>Freier Modus</target>
+      </trans-unit>
+      <trans-unit id="slider.free_mode_enabled.description" resname="slider.free_mode_enabled.description" approved="yes">
+        <source>Enable free mode scrolling without snapping</source>
+        <target>Freies Scrollen ohne Einrasten aktivieren</target>
+      </trans-unit>
+      <trans-unit id="slider.keyboard_enabled" resname="slider.keyboard_enabled" approved="yes">
+        <source>Keyboard navigation</source>
+        <target>Tastatur-Navigation</target>
+      </trans-unit>
+      <trans-unit id="slider.keyboard_enabled.description" resname="slider.keyboard_enabled.description" approved="yes">
+        <source>Enable arrow key navigation</source>
+        <target>Pfeiltasten-Navigation aktivieren</target>
+      </trans-unit>
+      <trans-unit id="slider.loop" resname="slider.loop" approved="yes">
+        <source>Loop</source>
+        <target>Schleife</target>
+      </trans-unit>
+      <trans-unit id="slider.loop.description" resname="slider.loop.description" approved="yes">
+        <source>Enable continuous loop mode</source>
+        <target>Endlosschleife aktivieren</target>
+      </trans-unit>
+      <trans-unit id="slider.mousewheel_enabled" resname="slider.mousewheel_enabled" approved="yes">
+        <source>Mousewheel navigation</source>
+        <target>Mausrad-Navigation</target>
+      </trans-unit>
+      <trans-unit id="slider.mousewheel_enabled.description" resname="slider.mousewheel_enabled.description" approved="yes">
+        <source>Enable mousewheel scrolling</source>
+        <target>Mausrad-Scrolling aktivieren</target>
+      </trans-unit>
+      <trans-unit id="slider.navigation_enabled" resname="slider.navigation_enabled" approved="yes">
+        <source>Show navigation buttons</source>
+        <target>Navigations-Buttons anzeigen</target>
+      </trans-unit>
+      <trans-unit id="slider.navigation_enabled.description" resname="slider.navigation_enabled.description" approved="yes">
+        <source>Display previous/next navigation buttons</source>
+        <target>Vorherige/Nächste Navigations-Buttons anzeigen</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_clickable" resname="slider.pagination_clickable" approved="yes">
+        <source>Clickable pagination</source>
+        <target>Klickbare Paginierung</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_clickable.description" resname="slider.pagination_clickable.description" approved="yes">
+        <source>Allow clicking pagination to navigate</source>
+        <target>Klicken auf Paginierung zum Navigieren erlauben</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_dynamic_bullets" resname="slider.pagination_dynamic_bullets" approved="yes">
+        <source>Dynamic bullets</source>
+        <target>Dynamische Punkte</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_dynamic_bullets.description" resname="slider.pagination_dynamic_bullets.description" approved="yes">
+        <source>Show only a limited number of bullets</source>
+        <target>Nur eine begrenzte Anzahl von Punkten anzeigen</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_enabled" resname="slider.pagination_enabled" approved="yes">
+        <source>Show pagination</source>
+        <target>Paginierung anzeigen</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_enabled.description" resname="slider.pagination_enabled.description" approved="yes">
+        <source>Display pagination indicators</source>
+        <target>Paginierungs-Indikatoren anzeigen</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_type" resname="slider.pagination_type" approved="yes">
+        <source>Pagination type</source>
+        <target>Paginierungs-Typ</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_type.bullets" resname="slider.pagination_type.bullets" approved="yes">
+        <source>Bullets</source>
+        <target>Punkte</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_type.description" resname="slider.pagination_type.description" approved="yes">
+        <source>Type of pagination indicator</source>
+        <target>Art des Paginierungs-Indikators</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_type.fraction" resname="slider.pagination_type.fraction" approved="yes">
+        <source>Fraction</source>
+        <target>Bruchzahl</target>
+      </trans-unit>
+      <trans-unit id="slider.pagination_type.progressbar" resname="slider.pagination_type.progressbar" approved="yes">
+        <source>Progress bar</source>
+        <target>Fortschrittsbalken</target>
+      </trans-unit>
+      <trans-unit id="slider.slides_per_view" resname="slider.slides_per_view" approved="yes">
+        <source>Slides per view</source>
+        <target>Slides pro Ansicht</target>
+      </trans-unit>
+      <trans-unit id="slider.slides_per_view.description" resname="slider.slides_per_view.description" approved="yes">
+        <source>Number of slides visible at the same time</source>
+        <target>Anzahl der gleichzeitig sichtbaren Slides</target>
+      </trans-unit>
+      <trans-unit id="slider.space_between" resname="slider.space_between" approved="yes">
+        <source>Space between slides</source>
+        <target>Abstand zwischen Slides</target>
+      </trans-unit>
+      <trans-unit id="slider.space_between.description" resname="slider.space_between.description" approved="yes">
+        <source>Distance between slides in pixels</source>
+        <target>Abstand zwischen Slides in Pixeln</target>
+      </trans-unit>
+      <trans-unit id="slider.speed" resname="slider.speed" approved="yes">
+        <source>Transition speed</source>
+        <target>Übergangsgeschwindigkeit</target>
+      </trans-unit>
+      <trans-unit id="slider.speed.description" resname="slider.speed.description" approved="yes">
+        <source>Duration of transition between slides in milliseconds</source>
+        <target>Dauer des Übergangs zwischen Slides in Millisekunden</target>
       </trans-unit>
       <trans-unit id="slider.title" resname="slider.title" approved="yes">
         <source>Slideshow</source>
         <target>Slideshow</target>
       </trans-unit>
+      <trans-unit id="slider.type.cards" resname="slider.type.cards" approved="yes">
+        <source>Cards</source>
+        <target>Karten</target>
+      </trans-unit>
+      <trans-unit id="slider.type.coverflow" resname="slider.type.coverflow" approved="yes">
+        <source>Coverflow</source>
+        <target>Coverflow</target>
+      </trans-unit>
+      <trans-unit id="slider.type.creative" resname="slider.type.creative" approved="yes">
+        <source>Creative</source>
+        <target>Kreativ</target>
+      </trans-unit>
+      <trans-unit id="slider.type.cube" resname="slider.type.cube" approved="yes">
+        <source>Cube</source>
+        <target>Würfel</target>
+      </trans-unit>
       <trans-unit id="slider.type.fade" resname="slider.type.fade" approved="yes">
         <source>Fade</source>
         <target>Fade</target>
       </trans-unit>
+      <trans-unit id="slider.type.flip" resname="slider.type.flip" approved="yes">
+        <source>Flip</source>
+        <target>Flip</target>
+      </trans-unit>
       <trans-unit id="slider.type.slide" resname="slider.type.slide" approved="yes">
         <source>Slide</source>
         <target>Slide</target>
+      </trans-unit>
+      <trans-unit id="slider.zoom_enabled" resname="slider.zoom_enabled" approved="yes">
+        <source>Zoom</source>
+        <target>Zoom</target>
+      </trans-unit>
+      <trans-unit id="slider.zoom_enabled.description" resname="slider.zoom_enabled.description" approved="yes">
+        <source>Enable zoom on double tap/touch</source>
+        <target>Zoom bei Doppeltippen/Berührung aktivieren</target>
       </trans-unit>
       <trans-unit id="stage.tx_stage_bg" resname="stage.tx_stage_bg" approved="yes">
         <source>Stage background</source>

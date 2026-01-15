@@ -11,8 +11,10 @@
  *      data-color-scheme="primary"></div>
  */
 
-import { createApp } from 'vue';
+import {createApp} from 'vue';
 import TodoList from '@components/TodoList.vue';
+import SwiperSlider from '@components/SwiperSlider.vue';
+import GallerySwiper from '@components/GallerySwiper.vue';
 
 // =============================================================================
 // CONFIGURATION
@@ -22,7 +24,9 @@ import TodoList from '@components/TodoList.vue';
  * Component registry - add new Vue components here
  */
 const components = {
-  TodoList
+  TodoList,
+  SwiperSlider,
+  GallerySwiper
 };
 
 // =============================================================================
@@ -46,10 +50,43 @@ function initializeVueComponents() {
     const component = components[componentName];
 
     if (component) {
+      // For SwiperSlider, we need to preserve the slide content before Vue replaces it
+      if (componentName === 'SwiperSlider') {
+        const slideElements = element.querySelectorAll('.swiper-slide-content');
+        if (slideElements.length > 0) {
+          const slidesData = Array.from(slideElements).map((el, index) => ({
+            id: index,
+            content: el.innerHTML
+          }));
+          element.setAttribute('data-slides-data', JSON.stringify(slidesData));
+        }
+      }
+
+      // For GallerySwiper, preserve gallery slide content and thumbnails
+      if (componentName === 'GallerySwiper') {
+        const slideElements = element.querySelectorAll('.gallery-slide-content');
+        if (slideElements.length > 0) {
+          const slidesData = Array.from(slideElements).map((el, index) => {
+            // Extract main content (from .gallery-main-content or fallback to entire innerHTML)
+            const mainContentEl = el.querySelector('.gallery-main-content');
+            const content = mainContentEl ? mainContentEl.innerHTML : el.innerHTML;
+
+            // Extract thumbnail from template element (if present)
+            const thumbnailTemplate = el.querySelector('.gallery-thumbnail-template');
+            const thumbnail = thumbnailTemplate ? thumbnailTemplate.innerHTML : content;
+
+            return {
+              id: index,
+              content: content.trim(),
+              thumbnail: thumbnail.trim()
+            };
+          });
+          element.setAttribute('data-slides-data', JSON.stringify(slidesData));
+        }
+      }
+
       const app = createApp(component);
       app.mount(element);
-      // eslint-disable-next-line no-console
-      console.log(`Vue component "${componentName}" mounted successfully`);
     } else {
       // eslint-disable-next-line no-console
       console.warn(
@@ -70,4 +107,4 @@ if (typeof window !== 'undefined') {
 }
 
 // Export for manual initialization
-export { createApp, components };
+export {createApp, components};

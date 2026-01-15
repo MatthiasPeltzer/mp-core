@@ -63,12 +63,14 @@
   &-content {
     border-radius: var(--bs-border-radius);
     box-shadow: rgb(0 0 0 / 25%) 0 4px 8px -2px, rgb(0 0 0 / 8%) 0 0 0 1px;
-    height: auto;
+    height: auto !important;
     padding: 0;
     position: relative;
     z-index: 2;
 
-    &.teaser-active {
+    &:has(.teaser-link:hover),
+    &:has(.teaser-link:focus),
+    &:has(.teaser-link:active) {
       box-shadow: none;
       outline: none;
 
@@ -76,7 +78,12 @@
         box-shadow: rgb(9 30 66 / 25%) 0 4px 8px -2px, rgb(9 30 66 / 8%) 0 0 0 1px;
         outline: 1px solid var(--bs-body-color);
         outline-offset: -1px;
+        position: relative;
       }
+    }
+
+    .teaser {
+      height: auto !important;
     }
 
     .teaser-content {
@@ -100,6 +107,10 @@
 
           @include font-size(48px);
         }
+      }
+
+      p {
+        margin-bottom: 0 !important;
       }
 
       .lead {

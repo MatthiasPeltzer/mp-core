@@ -16,34 +16,50 @@
             </f:else>
         </f:if>
 
-        <f:asset.script defer="defer" identifier="swiperJS" src="EXT:mp_core/Resources/Public/JavaScripts/swiper.js" type="module"/>
-        <f:asset.css href="EXT:mp_core/Resources/Public/StyleSheets/swiper.css" identifier="swiperCSS"/>
+        <f:asset.css identifier="vueCSS" href="EXT:mp_core/Resources/Public/StyleSheets/vue.css"/>
+        <f:asset.script additionalAttributes="{'type': 'module'}" async="async" identifier="vueJS" src="EXT:mp_core/Resources/Public/JavaScripts/vue.js"/>
     </f:if>
 </f:section>
 
 <f:section name="Slider">
-    <div class="swiper swiper-raw swiper-{data.slider_type}-col-{data.grid_columns}">
-        <ul class="slider swiper-wrapper list-unstyled">
-            <f:if condition="{children_101}">
-                <f:for as="child" each="{children_101}">
-                    <li class="swiper-slide swiper-slide">
-                        <f:format.raw>{child.renderedContent}</f:format.raw>
-                    </li>
-                </f:for>
-            </f:if>
-        </ul>
-
-        <f:if condition="{data.slider_autoplay} == '1'">
-            <div class="autoplay">
-                <button class="swiper-start"><span>Start</span></button>
-                <button class="swiper-stop active"><span>Pause</span></button>
-            </div>
+    <div
+        data-container="vue"
+        data-component="SwiperSlider"
+        data-slider-id="slider-{data.uid}"
+        data-effect="{data.slider_type}"
+        data-slides-per-view="{data.slider_slides_per_view -> f:if(condition: '{data.slider_slides_per_view}', then: '{data.slider_slides_per_view}', else: '{data.grid_columns}')}"
+        data-space-between="{data.slider_space_between -> f:if(condition: '{data.slider_space_between}', then: '{data.slider_space_between}', else: '0')}"
+        data-loop="{data.slider_loop}"
+        data-speed="{data.slider_speed -> f:if(condition: '{data.slider_speed}', then: '{data.slider_speed}', else: '300')}"
+        data-autoplay-enabled="{data.slider_autoplay_enabled}"
+        data-autoplay-delay="{data.slider_autoplay_delay -> f:if(condition: '{data.slider_autoplay_delay}', then: '{data.slider_autoplay_delay}', else: '3000')}"
+        data-autoplay-disable-on-interaction="{data.slider_autoplay_disable_on_interaction -> f:if(condition: '{data.slider_autoplay_disable_on_interaction}', then: '1', else: '0')}"
+        data-navigation-enabled="{data.slider_navigation_enabled -> f:if(condition: '{data.slider_navigation_enabled}', then: '1', else: '0')}"
+        data-pagination-enabled="{data.slider_pagination_enabled -> f:if(condition: '{data.slider_pagination_enabled}', then: '1', else: '0')}"
+        data-pagination-type="{data.slider_pagination_type -> f:if(condition: '{data.slider_pagination_type}', then: '{data.slider_pagination_type}', else: 'bullets')}"
+        data-pagination-clickable="{data.slider_pagination_clickable}"
+        data-pagination-dynamic-bullets="{data.slider_pagination_dynamic_bullets}"
+        data-keyboard-enabled="{data.slider_keyboard_enabled -> f:if(condition: '{data.slider_keyboard_enabled}', then: '1', else: '0')}"
+        data-mousewheel-enabled="{data.slider_mousewheel_enabled}"
+        data-free-mode-enabled="{data.slider_free_mode_enabled}"
+        data-zoom-enabled="{data.slider_zoom_enabled}"
+        data-breakpoints="{data.slider_breakpoints}"
+        class="swiper-vue-container"
+    >
+        <!-- Slide content - will be extracted by Vue component -->
+        <f:if condition="{children_101}">
+            <f:for as="child" each="{children_101}">
+                <div class="swiper-slide-content">
+                    <f:format.raw>{child.renderedContent}</f:format.raw>
+                </div>
+            </f:for>
         </f:if>
 
+        <!-- Navigation buttons -->
         <div class="swiper-navigation">
-            <button class="swiper-button swiper-button-prev"></button>
-            <div class="swiper-pagination"></div>
-            <button class="swiper-button swiper-button-next"></button>
+            <button class="swiper-button swiper-button-prev" data-slider-id="slider-{data.uid}" aria-label="Previous slide"></button>
+            <div class="swiper-pagination" data-slider-id="slider-{data.uid}"></div>
+            <button class="swiper-button swiper-button-next" data-slider-id="slider-{data.uid}" aria-label="Next slide"></button>
         </div>
     </div>
 </f:section>
