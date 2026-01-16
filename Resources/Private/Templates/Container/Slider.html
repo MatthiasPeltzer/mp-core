@@ -27,7 +27,7 @@
         data-component="SwiperSlider"
         data-slider-id="slider-{data.uid}"
         data-effect="{data.slider_type}"
-        data-slides-per-view="{data.slider_slides_per_view -> f:if(condition: '{data.slider_slides_per_view}', then: '{data.slider_slides_per_view}', else: '{data.grid_columns}')}"
+        data-slides-per-view="{data.slider_slides_per_view}"
         data-space-between="{data.slider_space_between -> f:if(condition: '{data.slider_space_between}', then: '{data.slider_space_between}', else: '0')}"
         data-loop="{data.slider_loop}"
         data-speed="{data.slider_speed -> f:if(condition: '{data.slider_speed}', then: '{data.slider_speed}', else: '300')}"
