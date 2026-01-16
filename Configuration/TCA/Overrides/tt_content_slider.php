@@ -241,7 +241,7 @@ defined('TYPO3') || die();
 
     $sliderPalettes = [
         'slider_config' => [
-            'showitem' => 'slider_type,grid_columns,slider_slides_per_view,slider_space_between,slider_loop,slider_speed',
+            'showitem' => 'slider_type,slider_slides_per_view,slider_space_between,slider_loop,slider_speed',
             'canNotCollapse' => 1,
         ],
         'slider_autoplay' => [

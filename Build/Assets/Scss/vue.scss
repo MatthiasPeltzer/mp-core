@@ -55,7 +55,6 @@ html[data-bs-theme="light"] {
 
   .teaser {
     height: 100%;
-    margin: 2px;
   }
 }
 
@@ -152,6 +151,12 @@ html[data-bs-theme="light"] {
   margin: 0;
 }
 
+.swiper-gallery {
+  .swiper-wrapper {
+    margin: 5px;
+  }
+}
+
 // Thumb slide states (both li and div)
 .swiper-thumbs li,
 .gallery-thumb-slide {
@@ -184,6 +189,22 @@ html[data-bs-theme="light"] {
   overflow: hidden;
   position: relative;
   width: 100%;
+}
+
+.gallery-swiper-wrapper {
+  .swiper {
+    padding-right: 8px;
+  }
+}
+
+.swiper-vue-wrapper {
+  padding: 1px 1px 2px 3px;
+
+  .swiper-slide {
+    > div {
+      margin-right: 2px;
+    }
+  }
 }
 
 // Gallery thumbs strip
