@@ -19,6 +19,15 @@ import {
   Scrollbar,
   Zoom
 } from 'swiper/modules';
+import {
+  prevSlideMessage,
+  nextSlideMessage,
+  firstSlideMessage,
+  lastSlideMessage,
+  paginationBulletMessage,
+  slideLabelMessage,
+  itemRoleDescriptionMessage
+} from '../code/i18n.js';
 
 // Swiper CSS is imported in vue.js entry point (swiper/css/bundle)
 // This ensures all Swiper CSS is bundled into vue.css
@@ -227,6 +236,21 @@ const scrollbarConfig = computed(() => {
 });
 
 // =============================================================================
+// A11Y CONFIGURATION (with i18n translations)
+// =============================================================================
+
+const a11yConfig = computed(() => ({
+  enabled: true,
+  prevSlideMessage: prevSlideMessage,
+  nextSlideMessage: nextSlideMessage,
+  firstSlideMessage: firstSlideMessage,
+  lastSlideMessage: lastSlideMessage,
+  paginationBulletMessage: paginationBulletMessage,
+  slideLabelMessage: slideLabelMessage,
+  itemRoleDescriptionMessage: itemRoleDescriptionMessage
+}));
+
+// =============================================================================
 // LIFECYCLE
 // =============================================================================
 
@@ -339,6 +363,7 @@ const slideNext = () => {
     <swiper
       v-if="slides.length"
       :modules="modules"
+      :a11y="a11yConfig"
       :effect="config.effect"
       :slides-per-view="config.slidesPerView"
       :space-between="config.spaceBetween"
@@ -405,7 +430,7 @@ const slideNext = () => {
         type="button"
         class="swiper-button swiper-button-prev"
         :data-slider-id="config.sliderId || 'default'"
-        aria-label="Previous slide"
+        :aria-label="prevSlideMessage"
         @click.prevent.stop="slidePrev"
       >
         <svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -426,7 +451,7 @@ const slideNext = () => {
         type="button"
         class="swiper-button swiper-button-next"
         :data-slider-id="config.sliderId || 'default'"
-        aria-label="Next slide"
+        :aria-label="nextSlideMessage"
         @click.prevent.stop="slideNext"
       >
         <svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
