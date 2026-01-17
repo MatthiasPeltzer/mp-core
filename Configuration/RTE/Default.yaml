@@ -98,6 +98,7 @@ editor:
         - link
         - bulletedList
         - numberedList
+        - definitionList
         - '|'
         - outdent
         - indent
@@ -136,6 +137,13 @@ editor:
         - tableCellProperties
         - toggleTableCaption
 
+    # List Properties - enables style selection, start index, and reversed order
+    list:
+      properties:
+        styles: true
+        startIndex: true
+        reversed: true
+
     language:
       ui: 'de'
       textPartLanguage:
@@ -152,6 +160,9 @@ editor:
         - figcaption
         - i
         - em
+        - dl
+        - dt
+        - dd
 
     justifyClasses:
       - text-left
@@ -174,6 +185,17 @@ editor:
     importModules:
       - { module: '@ckeditor/ckeditor5-word-count', exports: ['WordCount'] }
       - { module: '@ckeditor/ckeditor5-language', exports: ['TextPartLanguage'] }
+      # List Properties - enables advanced list options (styles, start index, reversed)
+      - { module: '@ckeditor/ckeditor5-list', exports: ['ListProperties'] }
+      # Definition List Plugin
+      - { module: '@mpc/mp-core/ckeditor/definition-list.js', exports: ['DefinitionList'] }
+
+    # Allow definition list HTML elements through General HTML Support
+    htmlSupport:
+      allow:
+        - { name: 'dl', classes: true }
+        - { name: 'dt', classes: true }
+        - { name: 'dd', classes: true }
 
 buttons:
   link:
