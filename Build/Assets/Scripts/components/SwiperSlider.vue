@@ -168,7 +168,7 @@ const modules = computed(() => {
   const activeModules = [A11y]; // Always include A11y for accessibility
 
   if (config.value.autoplayEnabled) activeModules.push(Autoplay);
-  // Navigation handled manually via @click handlers - don't use Swiper's Navigation module
+  if (config.value.navigationEnabled) activeModules.push(Navigation);
   if (config.value.paginationEnabled) activeModules.push(Pagination);
   if (config.value.scrollbarEnabled) activeModules.push(Scrollbar);
   if (config.value.keyboardEnabled) activeModules.push(Keyboard);
@@ -375,7 +375,7 @@ const slideNext = () => {
         disableOnInteraction: config.autoplayDisableOnInteraction,
         pauseOnMouseEnter: config.autoplayPauseOnMouseEnter
       } : false"
-      :navigation="false"
+      :navigation="navigationConfig"
       :pagination="paginationSelectorConfig"
       :scrollbar="scrollbarConfig"
       :keyboard="config.keyboardEnabled ? { enabled: true } : false"
