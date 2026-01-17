@@ -95,11 +95,21 @@ const modules = computed(() => {
   if (config.value.autoplayEnabled) {
     mods.push(Autoplay);
   }
-  // Navigation handled manually via @click handlers
+  if (config.value.navigationEnabled) {
+    mods.push(Navigation);
+  }
   return mods;
 });
 
 const thumbsModules = [A11y, FreeMode];
+
+const navigationConfig = computed(() => {
+  if (!config.value.navigationEnabled) return false;
+  return {
+    nextEl: `.swiper-button-next[data-gallery-id="${config.value.galleryId}"]`,
+    prevEl: `.swiper-button-prev[data-gallery-id="${config.value.galleryId}"]`
+  };
+});
 
 const paginationConfig = computed(() => {
   if (!config.value.paginationEnabled) return false;
@@ -281,7 +291,7 @@ const isReady = computed(() => {
         :speed="config.speed"
         :loop="config.loop"
         :keyboard="{ enabled: true }"
-        :navigation="false"
+        :navigation="navigationConfig"
         :pagination="paginationConfig"
         :thumbs="{ swiper: thumbsSwiper }"
         @swiper="onMainSwiper"
@@ -309,7 +319,7 @@ const isReady = computed(() => {
         :speed="config.speed"
         :loop="config.loop"
         :keyboard="{ enabled: true }"
-        :navigation="false"
+        :navigation="navigationConfig"
         :pagination="paginationConfig"
         :autoplay="autoplayConfig"
         :breakpoints="mainBreakpoints"
