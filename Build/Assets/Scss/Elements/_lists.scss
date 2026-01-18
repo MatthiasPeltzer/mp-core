@@ -17,44 +17,62 @@ ul {
 
   .ce-bodytext {
     ul {
+      margin-bottom: 32px;
       padding-left: 24px;
 
       &[style="list-style-type:square;"] {
         list-style-image: url("@assets/Images/Icons/icon-square-fill.svg");
+
+        ul {
+          list-style-image: url("@assets/Images/Icons/icon-square.svg");
+        }
+      }
+
+      &[style="list-style-type:disc;"] {
+        list-style-image: url("@assets/Images/Icons/icon-circle-fill.svg");
+
+        ul {
+          list-style-image: url("@assets/Images/Icons/icon-circle.svg");
+        }
+      }
+
+      &[style="list-style-type:circle;"] {
+        list-style-image: url("@assets/Images/Icons/icon-circle.svg");
+
+        ul {
+          list-style-image: url("@assets/Images/Icons/icon-circle-fill.svg");
+        }
       }
 
       li {
         margin-bottom: 12px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
 
       ul {
-        margin-bottom: 8px;
-        margin-top: 8px;
-
-        &[style="list-style-type:square;"] {
-          list-style-image: url("@assets/Images/Icons/icon-square.svg");
-        }
+        margin-bottom: 12px;
+        margin-top: 12px;
 
         li {
-          margin-bottom: 8px;
+          margin-bottom: 12px;
         }
       }
     }
 
     ol {
-      list-style-position: inside;
       margin-bottom: 32px;
-      padding-left: 0;
+      padding-left: 24px;
 
       ol {
-        margin-bottom: 8px;
-        margin-top: 8px;
+        margin-bottom: 12px;
+        margin-top: 12px;
       }
 
       li {
-        @include font-size($fs-sm-plus);
-        margin-bottom: 8px;
-        padding-left: 16px;
+        margin-bottom: 12px;
 
         &:last-child {
           margin-bottom: 0;
