@@ -44,6 +44,8 @@ lib {
       }
     }
 
+    nonTypoTagStdWrap.encapsLines.nonWrappedTag >
+
     externalBlocks {
       pre {
         stdWrap {

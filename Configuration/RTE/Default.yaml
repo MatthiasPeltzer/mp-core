@@ -111,11 +111,6 @@ editor:
         - removeFormat
         - '|'
         - insertTable
-        - tableColumn
-        - tableRow
-        - mergeTableCells
-        - TableProperties
-        - TableCellProperties
         - '|'
         - superscript
         - subscript
@@ -136,6 +131,10 @@ editor:
         - tableProperties
         - tableCellProperties
         - toggleTableCaption
+
+      tableCaption: {
+        useCaptionElement: true
+      }
 
     # List Properties - enables style selection, start index, and reversed order
     list:
