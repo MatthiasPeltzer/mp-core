@@ -3,14 +3,12 @@
   .icon-#{$name} {
     mask-image: url("#{$icon-path}icon-#{$name}.svg");
 
-    @media (forced-colors: active) {
+    @include forced-colors {
       background-image: url("#{$icon-path}icon-#{$name}.svg");
     }
   }
 
-  &:hover,
-  &:focus,
-  &:active {
+  @include on-interact {
     border-color: $color;
 
     .icon-#{$name} {
@@ -25,8 +23,29 @@
   &::before {
     mask-image: url("#{$icon-base-path}#{$icon-name}.svg");
 
-    @media (forced-colors: active) {
+    @include forced-colors {
       background-image: url("#{$icon-base-path}#{$icon-name}.svg");
     }
   }
+}
+
+// Mixin for masked icons with forced-colors accessibility fallback
+@mixin masked-icon($icon-url, $size: 24px) {
+  background-color: var(--bs-body-color);
+  content: '';
+  display: block;
+  height: $size;
+  mask-image: url($icon-url);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: $size;
+  position: absolute;
+  width: $size;
+
+  /* stylelint-disable no-invalid-position-declaration */
+  @include forced-colors {
+    background: transparent url($icon-url) center / $size no-repeat;
+    mask: none !important;
+  }
+  /* stylelint-enable no-invalid-position-declaration */
 }

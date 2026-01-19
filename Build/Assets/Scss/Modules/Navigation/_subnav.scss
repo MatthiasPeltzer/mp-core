@@ -7,7 +7,7 @@
     background-color: var(--bs-gray-900);
     border-radius: 4px;
 
-    html[data-bs-theme="light"] & {
+    @include light-theme {
       background-color: var(--bs-gray-200);
     }
 
@@ -19,16 +19,12 @@
         text-shadow: var(--bs-gray-300) 1px 4px 4px;
         transition: text-shadow 0.15s ease-in-out;
 
-        &:hover,
-        &:focus,
-        &:active {
+        @include on-interact {
           text-shadow: none;
         }
       }
 
-      &:hover,
-      &:focus,
-      &:active {
+      @include on-interact {
         border-radius: 4px;
         outline-offset: -3px;
       }

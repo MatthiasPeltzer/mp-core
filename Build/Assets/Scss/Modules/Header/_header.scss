@@ -55,7 +55,7 @@
   position: fixed;
   z-index: 1;
 
-  html[data-bs-theme="light"] & {
+  @include light-theme {
     background: rgb(255 255 255 / 95%);
     color: rgb(0 0 0 / 90%);
   }

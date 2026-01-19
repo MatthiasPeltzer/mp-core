@@ -15,9 +15,7 @@
     background-color: var(--bs-primary);
     border-color: var(--bs-body-color);
 
-    &:hover,
-    &:focus,
-    &:active {
+    @include on-interact {
       background-color: var(--bs-primary);
       border-color: var(--bs-body-color);
     }
@@ -71,7 +69,7 @@
         top: 0;
         width: 32px;
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-position: center;
           background-repeat: no-repeat;
           background-size: 20px;
@@ -87,9 +85,7 @@
       }
 
       &.show,
-      &:hover,
-      &:focus,
-      &:active {
+      &:is(:hover, :focus, :active) {
         background-color: var(--bs-primary) !important;
         border-color: var(--bs-primary) !important;
         color: var(--bs-white) !important;
@@ -123,9 +119,7 @@
         padding: 8px 16px 8px 40px;
         width: auto;
 
-        &:hover,
-        &:focus,
-        &:active {
+        @include on-interact {
           text-decoration: underline;
         }
 
@@ -144,9 +138,7 @@
         text-align: left;
         width: auto;
 
-        &:hover,
-        &:focus,
-        &:active {
+        @include on-interact {
           text-decoration: underline;
         }
       }
@@ -160,7 +152,7 @@
       &::after {
         mask-image: url("@assets/Images/Icons/icon-copyright.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-copyright.svg");
         }
       }
@@ -180,7 +172,7 @@
       &::after {
         mask-image: url("@assets/Images/Icons/icon-download-circle.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-download-circle.svg");
         }
       }
@@ -190,7 +182,7 @@
       &::after {
         mask-image: url("@assets/Images/Icons/icon-info.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-info.svg");
         }
       }
@@ -200,7 +192,7 @@
       &::after {
         mask-image: url("@assets/Images/Icons/icon-zoom-in.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-zoom-in.svg");
         }
       }
@@ -214,7 +206,7 @@
         &::after {
           mask-image: url("@assets/Images/Icons/icon-close.svg");
 
-          @media (forced-colors: active) {
+          @include forced-colors {
             background-image: url("@assets/Images/Icons/icon-close.svg");
           }
         }
@@ -233,7 +225,7 @@
     position: relative;
     width: 40px;
 
-    @media (forced-colors: active) {
+    @include forced-colors {
       background-color: currentcolor;
     }
 
@@ -253,7 +245,7 @@
       transition: all .2s ease-in-out;
       width: 30px;
 
-      @media (forced-colors: active) {
+      @include forced-colors {
         color: currentcolor;
       }
     }
@@ -268,9 +260,7 @@
       width: 20px;
     }
 
-    &:hover,
-    &:focus,
-    &:active {
+    @include on-interact {
       box-shadow: none;
     }
 
@@ -305,7 +295,7 @@
         top: 12px;
         width: auto;
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-color: var(--bs-black);
         }
       }
@@ -325,7 +315,7 @@
   top: 3px;
   width: 29px;
 
-  @media (forced-colors: active) {
+  @include forced-colors {
     background: url("@assets/Images/Icons/icon-square-fill-white.svg") no-repeat center;
     background-size: 20px;
   }
@@ -343,14 +333,12 @@
     width: 27px;
     z-index: 1;
 
-    html[data-bs-theme="light"] & {
+    @include light-theme {
       background-color: var(--bs-body-bg);
     }
   }
 
-  &:hover,
-  &:focus,
-  &:active {
+  @include on-interact {
     background-color: $gray-900;
   }
 
@@ -365,9 +353,7 @@
       mask: url("@assets/Images/Icons/icon-plus.svg") no-repeat center;
     }
 
-    &:hover,
-    &:focus,
-    &:active {
+    @include on-interact {
       background-color: var(--bs-primary);
     }
   }

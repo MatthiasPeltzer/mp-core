@@ -12,9 +12,7 @@
   }
 
   &-link {
-    &:hover,
-    &:focus,
-    &:active {
+    @include on-interact {
       outline: none !important;
     }
   }
@@ -45,7 +43,7 @@
       display: inline;
       transition: background-size .4s ease;
 
-      html[data-bs-theme="dark"] & {
+      @include dark-theme {
         background-image: linear-gradient(0deg, var(--bs-primary) 40%, transparent 0);
       }
     }

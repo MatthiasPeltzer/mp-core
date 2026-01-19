@@ -15,7 +15,7 @@
       text-decoration: underline dotted var(--bs-orange);
       text-underline-offset: 7px;
 
-      html[data-bs-theme="light"] & {
+      @include light-theme {
         text-decoration: underline dotted var(--bs-green);
       }
     }

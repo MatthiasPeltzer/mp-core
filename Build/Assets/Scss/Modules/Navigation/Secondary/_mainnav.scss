@@ -1,4 +1,15 @@
-// mainnav desktop
+// =============================================================================
+// SECONDARY MAINNAV - Variant-specific styles
+// Base styles are in ../navigation-base.scss
+// =============================================================================
+
+// Use shared transition variable
+$transition-bounce: $nav-transition-bounce;
+
+// -----------------------------------------------------------------------------
+// DESKTOP NAVIGATION
+// -----------------------------------------------------------------------------
+
 #nav-desktop {
   margin-top: 0;
   max-width: 100%;
@@ -53,6 +64,43 @@
       background-image: linear-gradient(to top, var(--bs-body-bg) 0%, var(--bs-gray-dark) 100%);
       position: relative;
 
+      // Smooth panel appearance for desktop flyout
+      ul {
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: opacity 0.2s ease-out,
+          transform 0.2s ease-out;
+
+        &.show {
+          box-shadow: -4px 0 15px -5px rgb(0 0 0 / 15%),
+            0 4px 10px -5px rgb(0 0 0 / 10%);
+          opacity: 1;
+          transform: translateX(0);
+
+          // Desktop items - no opacity animation, just subtle slide
+          > li {
+            animation: nav-slide-in 0.15s ease-out forwards;
+
+            @for $i from 1 through 15 {
+              &:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.02}s;
+              }
+            }
+          }
+        }
+
+        // Nested panels slide from left
+        ul {
+          opacity: 0;
+          transform: translateX(-15px);
+
+          &.show {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      }
+
       .btn-close {
         background: var(--bs-body-color);
         border-radius: 50%;
@@ -63,13 +111,11 @@
         position: absolute;
         top: 23px;
 
-        &:hover,
-        &:focus,
-        &:active {
+        @include on-interact {
           outline: 1px solid var(--bs-body-color) !important;
         }
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-color: transparent;
           background-image: url("@assets/Images/Icons/icon-close.svg");
           background-position: center;
@@ -106,7 +152,7 @@
             position: relative;
             transition: background-size .4s ease;
 
-            html[data-bs-theme="light"] & {
+            @include light-theme {
               background-image: linear-gradient(0deg, rgb(0 0 0 / 20%) 30%, transparent 0);
             }
 
@@ -125,7 +171,7 @@
               transition: right .4s ease-in-out;
               width: 40px;
 
-              @media (forced-colors: active) {
+              @include forced-colors {
                 background-color: transparent;
                 background-image: url("@assets/Images/Icons/icon-internal-tall.svg");
                 background-position: center;
@@ -140,9 +186,7 @@
             width: calc(100% + 40px);
           }
 
-          &:hover,
-          &:focus,
-          &:active {
+          @include on-interact {
             span {
               background-size: 100% 100%;
 
@@ -170,10 +214,10 @@
           background-color: transparent;
           outline-offset: -3px !important;
           padding: 18px 40px;
+          transition: background-color 0.15s ease,
+            transform 0.1s ease;
 
-          &:hover,
-          &:focus,
-          &:active {
+          @include on-interact {
             background-color: rgb(34 34 34 / 2%) !important;
           }
 
@@ -200,7 +244,7 @@
                 top: 13px;
                 width: 40px;
 
-                @media (forced-colors: active) {
+                @include forced-colors {
                   background-image: url("@assets/Images/Icons/icon-internal-tall.svg");
                   background-position: center;
                   background-repeat: no-repeat;
@@ -221,11 +265,10 @@
               position: absolute;
               right: 8px;
               top: 33%;
-              // Smooth icon rotation with subtle bounce
-              transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+              transition: $transition-bounce;
               width: 24px;
 
-              @media (forced-colors: active) {
+              @include forced-colors {
                 background-image: url("@assets/Images/Icons/icon-chevron-left.svg");
                 background-position: center;
                 background-repeat: no-repeat;
@@ -269,9 +312,7 @@
               padding: 18px 40px;
               width: 99.8%;
 
-              &:hover,
-              &:focus,
-              &:active {
+              @include on-interact {
                 background-color: rgb(34 34 34 / 5%) !important;
               }
             }
@@ -287,9 +328,7 @@
                 a {
                   background-color: transparent;
 
-                  &:hover,
-                  &:focus,
-                  &:active {
+                  @include on-interact {
                     background-color: rgb(34 34 34 / 8%) !important;
                   }
                 }
@@ -320,21 +359,15 @@
 
     &[aria-expanded="true"],
     &.act,
-    &:hover,
-    &:focus,
-    &:active {
+    &:is(:hover, :focus, :active) {
       text-decoration: underline 5px var(--bs-body-color);
       text-underline-offset: -2px;
       text-underline-position: under;
     }
   }
 
-  .container li a.current,
-  .container li button.current,
-  .container li ul li a.current,
-  .container li ul li button.current,
-  .container li ul li ul li a.current,
-  .container li ul li ul li button.current {
+  // Current state - applies to all nested levels
+  .container li :is(a, button).current {
     font-weight: 500;
     text-decoration: underline;
 
@@ -344,20 +377,8 @@
     }
   }
 
-  .container li:not(.shortcut) a.act,
-  .container li:not(.shortcut) button.act {
-    background-color: rgb(34 34 34 / 5%) !important;
-    text-decoration: underline;
-  }
-
-  .container li ul li:not(.shortcut) a.act,
-  .container li ul li:not(.shortcut) button.act {
-    background-color: rgb(34 34 34 / 5%) !important;
-    text-decoration: underline;
-  }
-
-  .container li ul li ul li:not(.shortcut) a.act,
-  .container li ul li ul li:not(.shortcut) button.act {
+  // Active state - applies to all nested levels
+  .container li:not(.shortcut) :is(a, button).act {
     background-color: rgb(34 34 34 / 5%) !important;
     text-decoration: underline;
   }
@@ -365,97 +386,17 @@
   .container li:not(.shortcut) button.act {
     margin-top: 2px;
   }
-
-  .container li ul li:not(.shortcut) button.act {
-    margin-top: 2px;
-  }
-
-  .container li ul li ul li:not(.shortcut) button.act {
-    margin-top: 2px;
-  }
 }
 
-// mainnav
-
-.nav-more {
-  left: -12px;
-  position: relative;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  padding: 0;
-}
-
-.navbar .container {
-  display: block;
-  width: 100%;
-}
-
-.navbar-collapse {
-  height: auto !important;
-  left: 0;
-  opacity: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  transition: opacity .1s ease-in-out;
-  width: 100%;
-  z-index: 1;
-
-  &.collapsing {
-    opacity: 0;
-    overflow: visible;
-    z-index: 1;
-  }
-
-  &.show {
-    opacity: 1;
-  }
-}
+// -----------------------------------------------------------------------------
+// MOBILE NAVIGATION (Secondary variant)
+// -----------------------------------------------------------------------------
 
 .navbar-wrapper {
   background-color: var(--bs-quaternary);
-  position: relative;
-}
-
-.main-nav-wrapper {
-  padding: 32px 0;
-  position: relative;
-  z-index: 1;
-
-  @include media-breakpoint-up(lg) {
-    padding: 64px 0 79px;
-  }
-
-  > .container {
-    padding: 0 16px;
-  }
 }
 
 .main-menu {
-  align-items: flex-start !important;
-
-  &-layer {
-    position: static;
-
-    @include media-breakpoint-down(md) {
-      flex: 0 1 0;
-    }
-
-    > .dropdown-menu {
-      border: 0 none;
-      border-radius: 0;
-      margin: 0;
-      padding: 0;
-      right: 0;
-      top: 101%;
-    }
-  }
-
   button,
   a[role="button"] {
     background-color: var(--bs-tertiary);
@@ -481,7 +422,7 @@
         top: 0;
         width: 24px;
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-color: transparent;
           background-image: url("@assets/Images/Icons/icon-internal.svg");
           background-position: center;
@@ -502,11 +443,10 @@
       mask-size: 24px;
       position: absolute;
       right: 8px;
-      // Smooth icon rotation with subtle bounce
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: $transition-bounce;
       width: 24px;
 
-      @media (forced-colors: active) {
+      @include forced-colors {
         background-color: transparent;
         background-image: url("@assets/Images/Icons/icon-chevron-up.svg");
         background-position: center;
@@ -524,12 +464,10 @@
   }
 
   // Ensure button rotation works at all nested levels
-  // This addresses specificity issues with deeply nested collapse buttons
   [data-bs-toggle="collapse"] {
     &::after {
       transform: rotate(0deg);
-      // Smooth icon rotation with subtle bounce
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: $transition-bounce;
     }
 
     &.collapsed::after {
@@ -549,9 +487,7 @@
     position: relative;
     text-transform: uppercase;
 
-    &:hover,
-    &:focus,
-    &:active {
+    @include on-interact {
       color: var(--bs-body-color);
       outline-offset: -2px;
       text-decoration: underline;
@@ -560,7 +496,6 @@
 
   li {
     min-width: 100%;
-    position: relative;
     z-index: 2;
 
     @include media-breakpoint-up(lg) {
@@ -571,7 +506,7 @@
       min-width: 25%;
     }
 
-    // Border line on li - stretches full width including under buttons
+    // Border line on li
     &::before {
       background-color: var(--bs-gray-700);
       bottom: 0;
@@ -618,8 +553,15 @@
       }
     }
 
+    // Nested submenu styling
     ul {
+      backdrop-filter: blur(8px);
+      border-radius: 6px;
       position: relative;
+
+      @supports not (backdrop-filter: blur(8px)) {
+        backdrop-filter: none;
+      }
 
       &::after {
         background-color: var(--bs-gray-900);
@@ -631,7 +573,7 @@
         width: 100%;
         z-index: 0;
 
-        html[data-bs-theme="light"] & {
+        @include light-theme {
           background-color: var(--bs-gray-200);
         }
       }
@@ -647,7 +589,7 @@
             background-color: var(--bs-gray-800);
             z-index: 1;
 
-            html[data-bs-theme="light"] & {
+            @include light-theme {
               background-color: var(--bs-gray-100);
             }
           }
@@ -658,20 +600,14 @@
               padding-left: 24px;
             }
 
-            ul {
-              li {
-                button,
-                a {
-                  padding-left: 32px;
-                }
+            ul li {
+              button,
+              a {
+                padding-left: 32px;
+              }
 
-                ul {
-                  li {
-                    a {
-                      padding-left: 48px;
-                    }
-                  }
-                }
+              ul li a {
+                padding-left: 48px;
               }
             }
           }
@@ -681,195 +617,27 @@
   }
 
   .sub {
-    color: var(--bs-body-color);
-    display: block;
-
     @include font-size($fs-md);
-    font-weight: 400;
     margin-bottom: 0;
     outline-offset: -2px;
     padding-bottom: 16px;
     padding-top: 16px;
-    position: relative;
-    text-decoration: none;
-    white-space: normal;
     width: 100%;
 
     + .btn-open {
       top: 0;
     }
 
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: transparent;
-      color: var(--bs-body-color);
+    @include on-interact {
       outline-offset: -2px;
       text-decoration: underline;
     }
   }
 
-  .act {
-    color: var(--bs-body-color);
-    text-decoration: underline;
-  }
-
   .current {
-    font-weight: 500;
-    text-decoration: underline;
-
     &::before {
       background-color: var(--bs-gray-500) !important;
       height: 2px !important;
     }
-  }
-}
-
-// =============================================================================
-// MODERN SUBMENU ANIMATIONS & EFFECTS
-// =============================================================================
-
-// Smooth collapse transitions (no flicker)
-.main-menu .collapse {
-  // Smooth fade animation
-  &:not(.show):not(.collapsing) {
-    opacity: 0;
-  }
-
-  &.collapsing {
-    opacity: 0.7;
-    transition: height 0.2s ease-out, opacity 0.15s ease-out;
-  }
-
-  &.show {
-    opacity: 1;
-    transition: opacity 0.15s ease-out;
-
-    // Subtle slide-in for items (no opacity animation to avoid flicker)
-    > li {
-      animation: navSlideIn 0.15s ease-out forwards;
-
-      @for $i from 1 through 15 {
-        &:nth-child(#{$i}) {
-          animation-delay: #{$i * 0.015}s;
-        }
-      }
-    }
-  }
-}
-
-// Keyframes for subtle item entrance (transform only, no opacity)
-@keyframes navSlideIn {
-  from {
-    transform: translateX(-2px);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-
-// Smooth hover effects on menu items
-.main-menu li a,
-.main-menu li button {
-  transition: background-color 0.15s ease,
-  transform 0.15s ease,
-  box-shadow 0.15s ease;
-
-  &:hover {
-    transform: translateX(1px);
-  }
-
-  &:active {
-    transform: translateX(1px);
-  }
-}
-
-// Modern focus states
-.main-menu a:focus-visible,
-.main-menu button:focus-visible {
-  border-radius: 4px;
-  outline: 2px solid var(--bs-primary);
-  outline-offset: -2px;
-}
-
-// Subtle depth shadows for nested menus
-.main-menu ul.collapse.show {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 8%),
-  0 2px 4px -2px rgb(0 0 0 / 6%);
-}
-
-.main-menu ul ul.collapse.show {
-  box-shadow: 0 8px 12px -3px rgb(0 0 0 / 10%),
-  0 4px 6px -4px rgb(0 0 0 / 8%);
-}
-
-// Glassmorphism for nested submenus (mobile)
-.main-menu ul ul {
-  backdrop-filter: blur(8px);
-  border-radius: 6px;
-
-  @supports not (backdrop-filter: blur(8px)) {
-    backdrop-filter: none;
-  }
-}
-
-// Smoother icon rotation with bounce effect
-.main-menu [data-bs-toggle="collapse"]::after {
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-// Desktop flyout modern effects
-.mainnav-desktop .main-menu-desktop {
-  .container ul {
-    // Smooth panel appearance
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: opacity 0.2s ease-out,
-    transform 0.2s ease-out;
-
-    &.show {
-      opacity: 1;
-      transform: translateX(0);
-
-      // Desktop items - no opacity animation, just subtle slide
-      > li {
-        animation: navSlideIn 0.15s ease-out forwards;
-
-        @for $i from 1 through 15 {
-          &:nth-child(#{$i}) {
-            animation-delay: #{$i * 0.02}s;
-          }
-        }
-      }
-    }
-
-    // Nested panels slide from left
-    ul {
-      opacity: 0;
-      transform: translateX(-15px);
-
-      &.show {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-  }
-
-  // Hover effects for desktop items
-  .container li a,
-  .container li button {
-    transition: background-color 0.15s ease,
-    transform 0.1s ease;
-
-    &:hover {
-      transform: translateX(4px);
-    }
-  }
-
-  // Subtle shadows for desktop panels
-  .container ul.show {
-    box-shadow: -4px 0 15px -5px rgb(0 0 0 / 15%),
-    0 4px 10px -5px rgb(0 0 0 / 10%);
   }
 }

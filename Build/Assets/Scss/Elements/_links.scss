@@ -3,9 +3,7 @@
 button,
 .btn,
 a {
-  &:hover,
-  &:focus,
-  &:active {
+  @include on-interact {
     outline: 1px solid var(--bs-body-color) !important;
     outline-offset: 2px;
 

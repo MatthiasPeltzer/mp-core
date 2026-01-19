@@ -15,7 +15,7 @@
       padding-bottom: 6px;
       padding-top: 6px;
 
-      html[data-bs-theme="light"] & {
+      @include light-theme {
         background-color: var(--bs-gray-100);
       }
     }
@@ -37,7 +37,7 @@
     padding-bottom: 6px;
     padding-top: 6px;
 
-    html[data-bs-theme="light"] & {
+    @include light-theme {
       background-color: var(--bs-gray-100);
     }
 
@@ -73,7 +73,7 @@
   }
 
   &-backdrop {
-    html[data-bs-theme="light"] & {
+    @include light-theme {
       background-color: var(--bs-body-color);
     }
   }

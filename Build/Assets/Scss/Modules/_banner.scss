@@ -15,9 +15,7 @@
     @include font-size(18px);
     font-weight: 500;
 
-    &:hover,
-    &:focus,
-    &:active {
+    @include on-interact {
       outline-offset: -2px;
       text-decoration: underline;
     }
@@ -27,7 +25,7 @@
         &::after {
           mask-image: url("@assets/Images/Icons/icon-arrow-up-right-circle.svg");
 
-          @media (forced-colors: active) {
+          @include forced-colors {
             background-image: url("@assets/Images/Icons/icon-arrow-up-right-circle.svg");
           }
         }
@@ -53,7 +51,7 @@
       top: 6px;
       width: 24px;
 
-      @media (forced-colors: active) {
+      @include forced-colors {
         background-image: url("@assets/Images/Icons/icon-arrow-right-circle.svg");
         background-position: right 0;
         background-repeat: no-repeat;

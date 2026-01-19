@@ -52,7 +52,7 @@
       width: 50px;
       z-index: 1;
 
-      @media (forced-colors: active) {
+      @include forced-colors {
         background: currentcolor url("@assets/Images/Icons/icon-chevron-up.svg") no-repeat center;
         background-size: 24px;
         mask: none !important;

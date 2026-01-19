@@ -11,14 +11,14 @@
   --swiper-navigation-size: 44px;
   --swiper-pagination-bottom: auto;
   --swiper-pagination-bullet-height: 20px;
-  --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.7);
+  --swiper-pagination-bullet-inactive-color: rgb(255 255 255 / 70%);
   --swiper-pagination-bullet-width: 20px;
   --swiper-pagination-color: var(--bs-body-color, #fff);
   --swiper-theme-color: var(--bs-primary);
 }
 
 html[data-bs-theme="light"] {
-  --swiper-pagination-bullet-inactive-color: rgba(0, 0, 0, 0.7);
+  --swiper-pagination-bullet-inactive-color: rgb(0 0 0 / 70%);
 }
 
 // =============================================================================
@@ -69,32 +69,16 @@ html[data-bs-theme="light"] {
 
 .swiper-button-prev,
 .swiper-button-next {
-  align-items: center;
   background-color: var(--bs-primary);
   border: 2px solid var(--bs-body-color, #fff);
   border-radius: 50%;
-  color: var(--bs-white, #fff);
-  cursor: pointer;
-  display: flex;
-  flex-shrink: 0;
-  height: 44px;
-  justify-content: center;
-  margin-top: 0 !important;
-  position: static;
   top: auto !important;
+
   transition: all 0.3s ease;
-  width: 44px;
-  z-index: 1;
 
   // Hide Swiper's default arrows when we have SVG icons
   &::after {
     display: none;
-  }
-
-  &.swiper-button-disabled {
-    cursor: auto;
-    opacity: 0.35;
-    pointer-events: none;
   }
 
   .swiper-navigation-icon {
@@ -115,11 +99,20 @@ html[data-bs-theme="light"] {
 .swiper-navigation {
   align-items: center;
   display: flex;
-  gap: 160px;
   height: 44px;
   justify-content: center;
   margin: 16px 0;
   padding: 0;
+
+  &:has(.swiper-pagination-bullets-dynamic),
+  &:has(.swiper-pagination-fraction) {
+    gap: 160px;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: static;
+    }
+  }
 }
 
 // =============================================================================
@@ -164,7 +157,7 @@ html[data-bs-theme="light"] {
   opacity: 0.4;
   transition: opacity 0.3s ease;
 
-  &:hover,
+  &:is(:hover, :focus, :active),
   &.swiper-slide-thumb-active {
     opacity: 1;
   }
