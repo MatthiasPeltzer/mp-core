@@ -1,8 +1,11 @@
-// MetaNav
+// Shared base styles
+@import "../navigation-base";
+@import "../metanav-base";
+// MetaNav (Secondary-specific overrides)
 @import "metanav";
 // Breadcrumb
 @import "../breadcrumb";
-// Mainnav
+// Mainnav (Secondary-specific)
 @import "mainnav";
 // Subnav
 @import "../subnav";

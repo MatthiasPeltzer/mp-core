@@ -6,7 +6,7 @@
     border-radius: var(--bs-border-radius);
     padding: 16px;
 
-    html[data-bs-theme="light"] & {
+    @include light-theme {
       background: linear-gradient(to bottom, transparent 0%, var(--bs-secondary-bg-subtle) 100%);
     }
   }

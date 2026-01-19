@@ -1,0 +1,100 @@
+// =============================================================================
+// UTILITY MIXINS
+// Common patterns used across the codebase
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// INTERACTIVE STATES
+// Shorthand for :is(:hover, :focus, :active) pattern
+// -----------------------------------------------------------------------------
+// Usage:
+//   .btn {
+//     @include on-interact {
+//       background-color: red;
+//     }
+//   }
+// Outputs:
+//   .btn:is(:hover, :focus, :active) { background-color: red; }
+
+@mixin on-interact {
+  &:is(:hover, :focus, :active) {
+    @content;
+  }
+}
+
+// Alias for backwards compatibility / preference
+@mixin interactive-states {
+  &:is(:hover, :focus, :active) {
+    @content;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FOCUS VISIBLE
+// Modern focus state for keyboard navigation only
+// -----------------------------------------------------------------------------
+
+@mixin on-focus-visible {
+  &:focus-visible {
+    @content;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// THEME VARIANTS
+// Shorthand for light/dark theme overrides
+// -----------------------------------------------------------------------------
+
+@mixin light-theme {
+  html[data-bs-theme="light"] & {
+    @content;
+  }
+}
+
+@mixin dark-theme {
+  html[data-bs-theme="dark"] & {
+    @content;
+  }
+}
+
+// Root-level theme variants (for :root or html selectors)
+@mixin light-theme-root {
+  html[data-bs-theme="light"] {
+    @content;
+  }
+}
+
+@mixin dark-theme-root {
+  html[data-bs-theme="dark"] {
+    @content;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FORCED COLORS (Accessibility)
+// High contrast mode / Windows High Contrast
+// -----------------------------------------------------------------------------
+
+@mixin forced-colors {
+  @media (forced-colors: active) {
+    @content;
+  }
+}
+
+// Shorthand for icon with forced-colors fallback
+@mixin icon-with-fallback($icon-url, $size: 24px) {
+  background-color: var(--bs-body-color);
+  mask-image: url($icon-url);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: $size;
+
+  @include forced-colors {
+    background-color: transparent;
+    background-image: url($icon-url);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: $size;
+    mask: none !important;
+  }
+}

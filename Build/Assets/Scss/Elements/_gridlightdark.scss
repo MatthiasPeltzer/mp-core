@@ -16,9 +16,7 @@
   }
 
   a {
-    &:hover,
-    &:focus,
-    &:active {
+    @include on-interact {
       outline-color: $color;
     }
   }

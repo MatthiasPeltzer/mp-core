@@ -6,7 +6,7 @@
     color: var(--bs-body-color);
     font-weight: 700;
 
-    html[data-bs-theme="light"] & {
+    @include light-theme {
       background-color: var(--bs-gray-200);
     }
   }

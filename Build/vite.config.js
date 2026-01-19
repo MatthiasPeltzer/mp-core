@@ -34,9 +34,10 @@ export default defineConfig(({mode}) => {
         scss: {
           api: 'modern-compiler',
           silenceDeprecations: ['if-function', 'color-functions', 'global-builtin', 'import'],
+          sourcemap: isDev ? 'inline' : false // SCSS sourcemaps
         }
       },
-      devSourcemap: isDev
+      devSourcemap: true // Dev server CSS sourcemaps
     },
 
     plugins: [
@@ -62,7 +63,8 @@ export default defineConfig(({mode}) => {
     build: {
       outDir: resolve(__dirname, '../Resources/Public'),
       emptyOutDir: true,
-      sourcemap: isDev ? true : false,
+      sourcemap: isDev ? true : false, // Both JS and CSS sourcemaps in dev
+      minify: !isDev, // Don't minify in dev mode for readable output
       manifest: false,
       assetsInlineLimit: 0, // Don't inline any assets, always emit files
 
@@ -71,6 +73,8 @@ export default defineConfig(({mode}) => {
         output: {
           entryFileNames: 'JavaScripts/[name].js',
           chunkFileNames: 'JavaScripts/[name].js',
+          // JS sourcemaps go alongside JS files
+          sourcemapFileNames: 'JavaScripts/[name].js.map',
           assetFileNames: (assetInfo) => {
             // CSS files go to StyleSheets/
             if (assetInfo.name.endsWith('.css')) {

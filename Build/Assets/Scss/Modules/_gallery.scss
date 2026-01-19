@@ -53,7 +53,7 @@ a.popup {
     mask-size: 20px;
     z-index: 2;
 
-    @media (forced-colors: active) {
+    @include forced-colors {
       background: currentcolor url("@assets/Images/Icons/icon-gallery.svg") no-repeat center;
       background-size: 20px;
       mask: none;
@@ -68,9 +68,7 @@ a.popup {
     }
   }
 
-  &:hover,
-  &:focus,
-  &:active {
+  @include on-interact {
     &::before,
     &::after {
       transform: translateY(-4px);

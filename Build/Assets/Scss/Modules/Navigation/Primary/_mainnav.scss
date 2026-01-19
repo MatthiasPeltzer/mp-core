@@ -1,45 +1,13 @@
-// main nav
+// =============================================================================
+// PRIMARY MAINNAV - Variant-specific styles
+// Base styles are in ../navigation-base.scss
+// =============================================================================
 
-.navbar {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  padding: 0;
-}
-
-.navbar .container {
-  display: block;
-  width: 100%;
-}
-
-.navbar-collapse {
-  height: auto !important;
-  left: 0;
-  opacity: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  transition: opacity .1s ease-in-out;
-  width: 100%;
-  z-index: 1;
-
-  &.collapsing {
-    opacity: 0;
-    overflow: visible;
-    z-index: 1;
-  }
-
-  &.show {
-    opacity: 1;
-  }
-}
-
+// Primary-specific navbar wrapper
 .navbar-wrapper {
   background-color: var(--bs-body-bg);
-  position: relative;
 
-  html[data-bs-theme="light"] & {
+  @include light-theme {
     background-color: var(--bs-gray-100);
   }
 
@@ -52,38 +20,15 @@
   }
 }
 
+// Primary-specific main nav wrapper
 .main-nav-wrapper {
   padding: 64px 0 79px;
-  position: relative;
-  z-index: 1;
-
-  > .container {
-    padding: 0 16px;
-  }
 }
 
+// Primary-specific main menu styles
 .main-menu {
-  align-items: flex-start !important;
-
   .dropdown-item {
     text-underline-position: under;
-  }
-
-  &-layer {
-    position: static;
-
-    @include media-breakpoint-down(md) {
-      flex: 0 1 0;
-    }
-
-    > .dropdown-menu {
-      border: 0 none;
-      border-radius: 0;
-      margin: 0;
-      padding: 0;
-      right: 0;
-      top: 101%;
-    }
   }
 
   .first-child {
@@ -96,75 +41,40 @@
 
     @include font-size(22px);
 
-    &:hover,
-    &:focus,
-    &:active {
+    @include on-interact {
       color: var(--bs-body-color);
       text-decoration: none;
     }
   }
 
-  li {
-    position: relative;
-  }
-
   ul {
     margin-bottom: 16px;
 
-    ul {
-      li {
-        .sub {
-          @include font-size($fs-sm);
-          padding-left: 8px;
-        }
+    // Nested level indentation
+    ul li .sub {
+      @include font-size($fs-sm);
+      padding-left: 8px;
+    }
 
-        ul {
-          li {
-            .sub {
-              @include font-size($fs-xs-plus);
-              padding-left: 10px;
-            }
+    ul ul li .sub {
+      @include font-size($fs-xs-plus);
+      padding-left: 10px;
+    }
 
-            ul {
-              li {
-                .sub {
-                  padding-left: 16px;
-                }
+    ul ul ul li .sub {
+      padding-left: 16px;
+    }
 
-                ul {
-                  li {
-                    .sub {
-                      padding-left: 24px;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    ul ul ul ul li .sub {
+      padding-left: 24px;
     }
   }
 
   .sub {
-    color: var(--bs-body-color);
-    display: block;
-
     @include font-size($fs-sm-plus);
-    font-weight: 400;
     margin: 5px 40px 5px 0;
     padding: 5px 0;
-    position: relative;
-    text-decoration: none;
-    white-space: normal;
     width: calc(100% - 40px);
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: transparent;
-      color: var(--bs-body-color);
-    }
   }
 
   .active {
@@ -172,9 +82,7 @@
     text-shadow: var(--bs-gray-300) 1px 4px 4px;
     transition: text-shadow 0.15s ease-in-out;
 
-    &:hover,
-    &:focus,
-    &:active {
+    @include on-interact {
       text-shadow: none;
     }
   }

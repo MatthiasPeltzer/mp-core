@@ -36,7 +36,7 @@ blockquote {
 
   @include blockquote-icon($blockquote-border-color);
 
-  html[data-bs-theme="light"] & {
+  @include light-theme {
     background-color: $blockquote-bg-light;
   }
 

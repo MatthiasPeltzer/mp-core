@@ -95,7 +95,7 @@ ul {
 .description-list {
   margin-bottom: 16px;
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     column-gap: 12px;
     display: grid;
     grid-template-columns: max-content 1fr;

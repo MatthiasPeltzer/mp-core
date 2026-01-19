@@ -149,7 +149,7 @@
       mask-size: 18px !important;
       width: 24px;
 
-      @media (forced-colors: active) {
+      @include forced-colors {
         background: url("@assets/Images/Icons/icon-clock.svg") no-repeat center;
         background-size: 24px;
         mask: none;

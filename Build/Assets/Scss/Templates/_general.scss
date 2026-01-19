@@ -72,7 +72,7 @@ html {
     width: 100%;
     z-index: -1;
 
-    html[data-bs-theme="light"] & {
+    @include light-theme {
       filter: invert(1);
     }
   }

@@ -1,14 +1,14 @@
 // breadcrumb
 
 .breadcrumb {
-  html[data-bs-theme="light"] & {
+  @include light-theme {
     background-color: var(--bs-gray-100);
   }
 
   &-wrapper {
     background-color: var(--bs-gray-800);
 
-    html[data-bs-theme="light"] & {
+    @include light-theme {
       background-color: var(--bs-gray-100);
     }
   }
@@ -17,9 +17,7 @@
     color: var(--bs-body-color);
     padding: 4px;
 
-    &:hover,
-    &:focus,
-    &:active {
+    @include on-interact {
       outline-offset: 0;
     }
   }
@@ -42,7 +40,7 @@
           mask-size: 18px !important;
           width: 24px;
 
-          @media (forced-colors: active) {
+          @include forced-colors {
             background: url("@assets/Images/Icons/icon-house-fill.svg") no-repeat center;
             background-size: 24px;
             mask: none;
@@ -59,7 +57,7 @@
       mask-size: 14px !important;
       width: 24px;
 
-      @media (forced-colors: active) {
+      @include forced-colors {
         background: url("@assets/Images/Icons/icon-chevron-right.svg") no-repeat center;
         background-size: 14px;
         mask: none;

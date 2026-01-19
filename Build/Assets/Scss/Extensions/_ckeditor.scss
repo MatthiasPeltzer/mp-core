@@ -48,7 +48,7 @@
         top: 3px;
         width: 18px;
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-position: center;
           background-repeat: no-repeat;
           background-size: 18px;
@@ -63,7 +63,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-internal.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-internal.svg");
         }
       }
@@ -74,7 +74,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-external.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-external.svg");
         }
       }
@@ -84,7 +84,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-download.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-download.svg");
         }
       }
@@ -94,7 +94,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-email.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-email.svg");
         }
       }
@@ -104,7 +104,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-phone.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-phone.svg");
         }
       }
@@ -114,7 +114,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-audio.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-audio.svg");
         }
       }
@@ -124,7 +124,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-play.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-play.svg");
         }
       }
@@ -134,7 +134,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-glossary.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-glossary.svg");
         }
       }
@@ -144,7 +144,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-public.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-public.svg");
         }
       }
@@ -154,7 +154,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-law.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-law.svg");
         }
       }
@@ -164,7 +164,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-gallery.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-gallery.svg");
         }
       }
@@ -174,7 +174,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-chart.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-chart.svg");
         }
       }
@@ -184,7 +184,7 @@
       &::before {
         mask-image: url("@assets/Images/Icons/icon-scroll.svg");
 
-        @media (forced-colors: active) {
+        @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-scroll.svg");
         }
       }
@@ -409,7 +409,7 @@
         width: 50px;
       }
 
-      html[data-bs-theme="light"] & {
+      @include light-theme {
         background-color: $gray-100;
         background-size: 50px;
       }
@@ -473,7 +473,7 @@
           color: var(--bs-white);
           font-weight: 700;
 
-          html[data-bs-theme="light"] & {
+          @include light-theme {
             color: var(--bs-black);
           }
         }
@@ -529,7 +529,7 @@
     .ck-definition-list {
       margin-bottom: 16px;
 
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         column-gap: 12px;
         display: grid;
         grid-template-columns: max-content 1fr;
@@ -661,4 +661,3 @@
     }
   }
 }
-

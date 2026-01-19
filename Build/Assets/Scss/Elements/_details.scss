@@ -32,7 +32,7 @@ details:not(.extbase-debugger-tree) {
 
   @include transition(max-height, .35s, ease-in-out);
 
-  html[data-bs-theme="light"] & {
+  @include light-theme {
     background-color: var(--bs-gray-100);
   }
 
@@ -54,7 +54,7 @@ details:not(.extbase-debugger-tree) {
 
       @include transition(rotate, .35s, ease-in-out);
 
-      @media (forced-colors: active) {
+      @include forced-colors {
         background: currentcolor url("@assets/Images/Icons/icon-chevron-up.svg") no-repeat center;
         background-size: $icon-size;
         mask: none;

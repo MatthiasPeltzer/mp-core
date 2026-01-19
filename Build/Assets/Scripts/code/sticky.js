@@ -13,6 +13,7 @@ const header = document.querySelector('.header-wrapper-bg');
 
 // Exit early if header doesn't exist
 if (!header) {
+  // eslint-disable-next-line no-console
   console.warn('Sticky: .header-wrapper-bg not found');
 } else {
   let headerHeight = header.offsetHeight;
@@ -28,7 +29,7 @@ if (!header) {
     body.classList.toggle('sticky', window.scrollY > headerHeight);
   }
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('scroll', handleScroll, {passive: true});
 
   // =============================================================================
   // RESPONSIVE PADDING

@@ -55,7 +55,7 @@ $social-networks: (
       position: relative;
       width: 56px;
 
-      @media (forced-colors: active) {
+      @include forced-colors {
         background-color: transparent;
         background-position: center;
         background-repeat: no-repeat;
@@ -92,9 +92,7 @@ $social-networks: (
         width: 70px;
       }
 
-      &:hover,
-      &:focus,
-      &:active {
+      @include on-interact {
         background-color: var(--bs-white);
         outline-offset: 2px;
       }
