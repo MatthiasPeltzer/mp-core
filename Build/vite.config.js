@@ -1,7 +1,6 @@
 import {defineConfig} from 'vite';
 import {resolve} from 'path';
 import {fileURLToPath} from 'url';
-import stylelint from 'vite-plugin-stylelint';
 import eslint from '@nabla/vite-plugin-eslint';
 import vue from '@vitejs/plugin-vue';
 
@@ -50,20 +49,13 @@ export default defineConfig(({mode}) => {
           fix: true,
           cache: true
         }
-      }),
-
-      // Stylelint integration
-      stylelint({
-        fix: true,
-        include: ['Assets/Scss/**/*.{css,scss,sass}'],
-        emitErrorAsWarning: isDev
       })
     ].filter(Boolean),
 
     build: {
       outDir: resolve(__dirname, '../Resources/Public'),
       emptyOutDir: true,
-      sourcemap: isDev ? true : false, // Both JS and CSS sourcemaps in dev
+      sourcemap: isDev, // Both JS and CSS sourcemaps in dev
       minify: !isDev, // Don't minify in dev mode for readable output
       manifest: false,
       assetsInlineLimit: 0, // Don't inline any assets, always emit files

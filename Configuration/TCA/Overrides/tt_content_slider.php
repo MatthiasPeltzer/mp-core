@@ -84,9 +84,7 @@ defined('TYPO3') || die();
         ],
         'slider_slides_per_view' => [
             'config' => [
-                'type' => 'input',
-                'size' => 5,
-                'eval' => 'int',
+                'type' => 'number',
                 'default' => 1,
             ],
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.slides_per_view',
@@ -94,9 +92,7 @@ defined('TYPO3') || die();
         ],
         'slider_space_between' => [
             'config' => [
-                'type' => 'input',
-                'size' => 5,
-                'eval' => 'int',
+                'type' => 'number',
                 'default' => 0,
             ],
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.space_between',
@@ -112,9 +108,7 @@ defined('TYPO3') || die();
         ],
         'slider_speed' => [
             'config' => [
-                'type' => 'input',
-                'size' => 5,
-                'eval' => 'int',
+                'type' => 'number',
                 'default' => 300,
             ],
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.speed',
@@ -130,9 +124,7 @@ defined('TYPO3') || die();
         ],
         'slider_autoplay_delay' => [
             'config' => [
-                'type' => 'input',
-                'size' => 5,
-                'eval' => 'int',
+                'type' => 'number',
                 'default' => 3000,
             ],
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.autoplay_delay',
