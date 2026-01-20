@@ -3,6 +3,7 @@
 .modal {
   &-title {
     @include font-size($fs-md);
+
     font-weight: 400;
     letter-spacing: normal !important;
     margin-bottom: 0;

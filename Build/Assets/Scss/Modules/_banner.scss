@@ -13,6 +13,7 @@
 
   &-link {
     @include font-size(18px);
+
     font-weight: 500;
 
     @include on-interact {

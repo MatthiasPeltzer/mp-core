@@ -304,6 +304,7 @@
 
   .first-child {
     @include font-size($fs-md);
+
     background-color: transparent;
     color: var(--bs-body-color);
     display: block;
@@ -419,6 +420,7 @@
 
   .sub {
     @include font-size($fs-md);
+
     margin-bottom: 0;
     outline-offset: -2px;
     padding-bottom: 16px;

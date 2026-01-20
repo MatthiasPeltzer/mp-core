@@ -7,10 +7,7 @@ $carousel-bg-light: var(--bs-gray-100);
 
 @mixin position-absolute($top: null, $right: null, $bottom: null, $left: null) {
   position: absolute;
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
+  inset: $top $right $bottom $left;
 }
 
 @mixin flex-center {
@@ -58,6 +55,7 @@ $carousel-bg-light: var(--bs-gray-100);
 
 .carousel-iterator {
   @include position-absolute(null, null, -69px, null);
+
   color: $carousel-body-color;
   display: block;
   font-weight: 400;
@@ -68,6 +66,7 @@ $carousel-bg-light: var(--bs-gray-100);
 .carousel-imagetitle {
   @include font-size(14px);
   @include position-absolute(null, null, 0, null);
+
   background-color: $carousel-bg-dark;
   color: $carousel-body-color;
   display: block;
@@ -84,6 +83,7 @@ $carousel-bg-light: var(--bs-gray-100);
 .carousel-control-prev,
 .carousel-control-next {
   @include flex-center;
+
   background-color: var(--bs-primary);
   border-radius: 50%;
 }

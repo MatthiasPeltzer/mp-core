@@ -477,6 +477,7 @@ $transition-bounce: $nav-transition-bounce;
 
   .first-child {
     @include font-size(18px);
+
     background-color: transparent;
     color: var(--bs-body-color);
     display: block;
@@ -618,6 +619,7 @@ $transition-bounce: $nav-transition-bounce;
 
   .sub {
     @include font-size($fs-md);
+
     margin-bottom: 0;
     outline-offset: -2px;
     padding-bottom: 16px;
