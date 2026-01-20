@@ -95,11 +95,13 @@
 
     p.lead {
       @include font-size($fs-lg);
+
       margin-bottom: 16px;
     }
 
     p:not(.lead, .date, .kicker) {
       @include font-size($fs-md);
+
       margin-bottom: 24px;
     }
   }
