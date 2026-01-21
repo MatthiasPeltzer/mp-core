@@ -90,6 +90,14 @@ defined('TYPO3') || die();
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.slides_per_view',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.slides_per_view.description',
         ],
+        'slider_slides_per_group' => [
+            'config' => [
+                'type' => 'number',
+                'default' => 1,
+            ],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.slides_per_group',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.slides_per_group.description',
+        ],
         'slider_space_between' => [
             'config' => [
                 'type' => 'number',
@@ -233,7 +241,7 @@ defined('TYPO3') || die();
 
     $sliderPalettes = [
         'slider_config' => [
-            'showitem' => 'slider_type,slider_slides_per_view,slider_space_between,slider_loop,slider_speed',
+            'showitem' => 'slider_type,slider_slides_per_view,slider_slides_per_group,slider_space_between,slider_loop,slider_speed',
             'canNotCollapse' => 1,
         ],
         'slider_autoplay' => [
