@@ -84,6 +84,12 @@ html[data-bs-theme="light"] {
     height: 50%;
     width: auto;
   }
+
+  svg {
+    path {
+      fill: #fff;
+    }
+  }
 }
 
 // Rotate prev button icon to point left
