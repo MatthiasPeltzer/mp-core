@@ -100,11 +100,27 @@ function parseBool(value) {
 
 /**
  * Parse number from string or return number
+ * Also handles special 'auto' value for slidesPerView
  */
 function parseNumber(value, defaultValue = 0) {
   if (typeof value === 'number') return value;
   if (typeof value === 'string') {
+    // Handle 'auto' as a special case (used by Swiper for slidesPerView)
+    if (value.toLowerCase() === 'auto') return 'auto';
     const parsed = parseInt(value, 10);
+    return isNaN(parsed) ? defaultValue : parsed;
+  }
+  return defaultValue;
+}
+
+/**
+ * Parse slidesPerView which can be a number or 'auto'
+ */
+function parseSlidesPerView(value, defaultValue = 1) {
+  if (typeof value === 'number') return value;
+  if (typeof value === 'string') {
+    if (value.toLowerCase() === 'auto') return 'auto';
+    const parsed = parseFloat(value); // Use parseFloat to support decimals like 1.5
     return isNaN(parsed) ? defaultValue : parsed;
   }
   return defaultValue;
@@ -120,11 +136,20 @@ function loadConfig(container) {
   // Read all data attributes
   const dataAttrs = container.dataset;
   
+  // Parse slidesPerView first as slidesPerGroup may depend on it
+  const slidesPerView = parseSlidesPerView(dataAttrs.slidesPerView, 1);
+  
+  // slidesPerGroup defaults to 1, but can be explicitly set
+  // This ensures when slidesPerView=1, only 1 slide moves at a time
+  const slidesPerGroup = dataAttrs.slidesPerGroup 
+    ? parseNumber(dataAttrs.slidesPerGroup, 1)
+    : 1; // Always default to 1 to ensure predictable navigation
+  
   config.value = {
     effect: dataAttrs.effect || 'slide',
-    slidesPerView: parseNumber(dataAttrs.slidesPerView, 1),
+    slidesPerView: slidesPerView,
     spaceBetween: parseNumber(dataAttrs.spaceBetween, 0),
-    slidesPerGroup: parseNumber(dataAttrs.slidesPerGroup, 1),
+    slidesPerGroup: slidesPerGroup,
     loop: parseBool(dataAttrs.loop),
     speed: parseNumber(dataAttrs.speed, 300),
     autoplayEnabled: parseBool(dataAttrs.autoplayEnabled),
@@ -195,7 +220,20 @@ const modules = computed(() => {
 const breakpoints = computed(() => {
   if (!config.value.breakpoints) return undefined;
   try {
-    return JSON.parse(config.value.breakpoints);
+    const parsed = JSON.parse(config.value.breakpoints);
+    
+    // Ensure each breakpoint has slidesPerGroup set to 1 if slidesPerView is set
+    // but slidesPerGroup is not explicitly defined
+    // This prevents the issue where slidesPerView changes but slidesPerGroup doesn't
+    Object.keys(parsed).forEach(key => {
+      const bp = parsed[key];
+      if (bp.slidesPerView !== undefined && bp.slidesPerGroup === undefined) {
+        // Default to 1 slide per group for predictable navigation
+        bp.slidesPerGroup = 1;
+      }
+    });
+    
+    return parsed;
   } catch (e) {
     return undefined;
   }
@@ -344,18 +382,8 @@ const onTransitionEnd = () => {
   // Transition end handler - helps ensure fade effect animations complete properly
 };
 
-// Manual navigation handlers
-const slidePrev = () => {
-  if (swiperRef.value) {
-    swiperRef.value.slidePrev();
-  }
-};
-
-const slideNext = () => {
-  if (swiperRef.value) {
-    swiperRef.value.slideNext();
-  }
-};
+// Note: Navigation is handled by Swiper's Navigation module via CSS selectors
+// No manual slidePrev/slideNext handlers needed - Swiper handles button clicks automatically
 </script>
 
 <template>
@@ -431,7 +459,6 @@ const slideNext = () => {
         class="swiper-button swiper-button-prev"
         :data-slider-id="config.sliderId || 'default'"
         :aria-label="prevSlideMessage"
-        @click.prevent.stop="slidePrev"
       >
         <svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"/>
@@ -452,7 +479,6 @@ const slideNext = () => {
         class="swiper-button swiper-button-next"
         :data-slider-id="config.sliderId || 'default'"
         :aria-label="nextSlideMessage"
-        @click.prevent.stop="slideNext"
       >
         <svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"/>

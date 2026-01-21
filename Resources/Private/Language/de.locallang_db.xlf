@@ -1255,6 +1255,14 @@
         <source>Progress bar</source>
         <target>Fortschrittsbalken</target>
       </trans-unit>
+      <trans-unit id="slider.slides_per_group" resname="slider.slides_per_group" approved="yes">
+        <source>Slides per group</source>
+        <target>Slides pro Gruppe</target>
+      </trans-unit>
+      <trans-unit id="slider.slides_per_group.description" resname="slider.slides_per_group.description" approved="yes">
+        <source>Number of slides to move when navigating (default: 1)</source>
+        <target>Anzahl der Slides, die beim Navigieren bewegt werden (Standard: 1)</target>
+      </trans-unit>
       <trans-unit id="slider.slides_per_view" resname="slider.slides_per_view" approved="yes">
         <source>Slides per view</source>
         <target>Slides pro Ansicht</target>

@@ -907,6 +907,12 @@
       <trans-unit id="slider.pagination_type.progressbar" resname="slider.pagination_type.progressbar">
         <source>Progress bar</source>
       </trans-unit>
+      <trans-unit id="slider.slides_per_group" resname="slider.slides_per_group">
+        <source>Slides per group</source>
+      </trans-unit>
+      <trans-unit id="slider.slides_per_group.description" resname="slider.slides_per_group.description">
+        <source>Number of slides to move when navigating (default: 1)</source>
+      </trans-unit>
       <trans-unit id="slider.slides_per_view" resname="slider.slides_per_view">
         <source>Slides per view</source>
       </trans-unit>
