@@ -132,12 +132,12 @@
 // -----------------------------------------------------------------------------
 
 // Reusable transition for bounce effect
-$nav-transition-bounce: transform 0.25s cubic-bezier(0, 1.56, 0.64, 1);
+$nav-transition-bounce: transform 0.5s cubic-bezier(0, 1.56, 0.64, 1);
 
 // Keyframes for subtle item entrance (transform only, no opacity)
 @keyframes nav-slide-in {
   from {
-    transform: translateX(-2px);
+    transform: translateX(-5px);
   }
 
   to {
@@ -161,14 +161,9 @@ $nav-transition-bounce: transform 0.25s cubic-bezier(0, 1.56, 0.64, 1);
     opacity: 1;
     transition: opacity 0.15s ease-out;
 
-    // Subtle slide-in for items (no opacity animation to avoid flicker)
-    > li {
-      animation: nav-slide-in 0.15s ease-out forwards;
-
-      @for $i from 1 through 15 {
-        &:nth-child(#{$i}) {
-          animation-delay: #{$i * 0.015}s;
-        }
+    @for $i from 1 through 15 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.015}s;
       }
     }
   }
@@ -176,8 +171,7 @@ $nav-transition-bounce: transform 0.25s cubic-bezier(0, 1.56, 0.64, 1);
 
 // Smooth hover effects on menu items
 .main-menu li :is(a, button) {
-  transition: background-color 0.15s ease,
-    box-shadow 0.15s ease;
+  transition: background-color 0.15s ease
 }
 
 // Modern focus states
@@ -185,15 +179,4 @@ $nav-transition-bounce: transform 0.25s cubic-bezier(0, 1.56, 0.64, 1);
   border-radius: 4px;
   outline: 2px solid var(--bs-primary);
   outline-offset: -2px;
-}
-
-// Subtle depth shadows for nested menus
-.main-menu ul.collapse.show {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 8%),
-  0 2px 4px -2px rgb(0 0 0 / 6%);
-}
-
-.main-menu ul ul.collapse.show {
-  box-shadow: 0 8px 12px -3px rgb(0 0 0 / 10%),
-  0 4px 6px -4px rgb(0 0 0 / 8%);
 }

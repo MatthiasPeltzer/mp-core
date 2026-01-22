@@ -11,7 +11,8 @@ import {
 import {
   toggleNavState,
   closeOtherSubmenus,
-  openCurrentPageParents
+  openCurrentPageParents,
+  scrollToCurrentElement
 } from '../../Utils/domUtils.js';
 
 import {
@@ -92,6 +93,11 @@ function initPrimaryNavigation() {
   dropdown.addEventListener('show.bs.dropdown', () => {
     toggleNavState(true, body, headerWrapper, navbarToggler, navbarTogglerText, 
                    openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
+  });
+
+  dropdown.addEventListener('shown.bs.dropdown', () => {
+    // Scroll to current page element after navigation is fully visible
+    scrollToCurrentElement(CONFIG.container);
   });
   
   dropdown.addEventListener('hide.bs.dropdown', () => {
