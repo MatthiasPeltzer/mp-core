@@ -38,23 +38,23 @@ export function debounce(func, wait = 100) {
  * @param {string} closeNav - Button text for open state
  */
 export function toggleNavState(
-  isShow, 
-  body, 
-  headerWrapper, 
-  navbarToggler, 
-  navbarTogglerText, 
-  openTitle, 
-  closeTitle, 
-  openNav, 
+  isShow,
+  body,
+  headerWrapper,
+  navbarToggler,
+  navbarTogglerText,
+  openTitle,
+  closeTitle,
+  openNav,
   closeNav
 ) {
   body.classList.toggle('active-nav-body', isShow);
   headerWrapper?.classList.toggle('active-nav', isShow);
-  
+
   if (navbarToggler) {
     navbarToggler.setAttribute('title', isShow ? closeTitle : openTitle);
   }
-  
+
   if (navbarTogglerText) {
     navbarTogglerText.textContent = isShow ? closeNav : openNav;
   }
@@ -80,10 +80,10 @@ export function handleDropdownVisibility(element, showCallback, hideCallback) {
  */
 export function toggleAriaLabelAndTitle(element, openLabel, closeLabel) {
   if (!element) return;
-  
+
   const currentLabel = element.getAttribute('aria-label') || element.getAttribute('title');
   const newLabel = currentLabel === openLabel ? closeLabel : openLabel;
-  
+
   element.setAttribute('aria-label', newLabel);
   element.setAttribute('title', newLabel);
 }
@@ -93,18 +93,21 @@ export function toggleAriaLabelAndTitle(element, openLabel, closeLabel) {
 // =============================================================================
 
 /**
- * Opens parent submenus for menu items with aria-current="page"
+ * Opens parent submenus for current page menu items
+ * Looks for elements with aria-current="page" or .current class
  * Provides navigation context by showing the current page's location
+ * Only opens parent collapses, not child collapses controlled by the current element
  * @param {string} menuSelector - CSS selector for menu containers (default: '.collapse')
  * @param {string} openText - Text to display when submenu is open (default: 'Close Submenu')
  */
 export function openCurrentPageParents(menuSelector = '.collapse', openText = 'Close Submenu') {
-  const currentPageElements = document.querySelectorAll('[aria-current="page"]');
-  
+  // Find current elements - prioritize aria-current, then fallback to .current class
+  const currentPageElements = document.querySelectorAll('[aria-current="page"], .current');
+
   currentPageElements.forEach(currentElement => {
     const parentsToOpen = [];
     let parent = currentElement.parentElement;
-    
+
     // Traverse up the DOM tree to find all parent submenus
     while (parent) {
       if (parent.matches(menuSelector)) {
@@ -112,18 +115,18 @@ export function openCurrentPageParents(menuSelector = '.collapse', openText = 'C
       }
       parent = parent.parentElement;
     }
-    
-    // Open all parent submenus
+
+    // Open all parent submenus (but not child submenus controlled by the current element)
     parentsToOpen.forEach(menu => {
       menu.classList.add('show');
-      
+
       // Find and update the corresponding button
       const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
       if (button) {
         button.classList.remove('collapsed');
         button.setAttribute('aria-expanded', 'true');
         button.setAttribute('title', openText);
-        
+
         const buttonText = button.querySelector('.visually-hidden');
         if (buttonText) {
           buttonText.textContent = openText;
@@ -131,6 +134,38 @@ export function openCurrentPageParents(menuSelector = '.collapse', openText = 'C
       }
     });
   });
+}
+
+/**
+ * Focuses and scrolls to the current page element in the navigation
+ * Looks for elements with aria-current="page" or .current class
+ * @param {string} containerSelector - CSS selector for the navigation container
+ * @param {Object} options - Scroll options
+ * @param {string} options.behavior - Scroll behavior ('smooth' or 'instant', default: 'smooth')
+ * @param {string} options.block - Vertical alignment ('center', 'start', 'end', 'nearest', default: 'center')
+ */
+export function scrollToCurrentElement(containerSelector, options = {}) {
+  const {behavior = 'smooth', block = 'center'} = options;
+  const container = document.querySelector(containerSelector);
+
+  if (!container) return;
+
+  // Find the current element - prioritize aria-current, then fallback to .current class
+  const currentElement = container.querySelector('[aria-current="page"]')
+    || container.querySelector('.current');
+
+  if (currentElement) {
+    // Make element focusable if it isn't already
+    if (!currentElement.hasAttribute('tabindex') && !currentElement.matches('a, button, input, select, textarea')) {
+      currentElement.setAttribute('tabindex', '-1');
+    }
+
+    // Focus the element (this also scrolls it into view in most browsers)
+    currentElement.focus({preventScroll: true});
+
+    // Ensure it's scrolled into view with the desired positioning
+    currentElement.scrollIntoView({behavior, block});
+  }
 }
 
 /**
@@ -142,7 +177,7 @@ export function openCurrentPageParents(menuSelector = '.collapse', openText = 'C
 function getMenuLevel(menu, menuSelector) {
   let level = 0;
   let current = menu;
-  
+
   while (current?.parentElement) {
     const parentMenu = current.parentElement.closest(menuSelector);
     if (parentMenu) {
@@ -152,7 +187,7 @@ function getMenuLevel(menu, menuSelector) {
       break;
     }
   }
-  
+
   return level;
 }
 
@@ -165,34 +200,34 @@ function getMenuLevel(menu, menuSelector) {
  */
 export function closeOtherSubmenus(targetButton, buttonSelector = '.btn-open', menuSelector = '.collapse') {
   if (!targetButton) return;
-  
+
   const targetMenuId = targetButton.getAttribute('data-bs-target');
   const targetMenu = document.querySelector(targetMenuId);
-  
+
   if (!targetMenu) return;
-  
+
   const targetLevel = getMenuLevel(targetMenu, menuSelector);
-  
+
   // Close all open menus at the same level or deeper
   document.querySelectorAll(`${menuSelector}.show`).forEach(menu => {
     const menuLevel = getMenuLevel(menu, menuSelector);
     const menuId = `#${menu.id}`;
-    
+
     if (menuLevel >= targetLevel && menuId !== targetMenuId) {
       menu.classList.remove('show');
-      
+
       // Also close any child menus
       menu.querySelectorAll(`${menuSelector}.show`).forEach(childMenu => {
         childMenu.classList.remove('show');
       });
     }
   });
-  
+
   // Update button states for all affected buttons
   document.querySelectorAll(buttonSelector).forEach(button => {
     const buttonMenuId = button.getAttribute('data-bs-target');
     const buttonMenu = document.querySelector(buttonMenuId);
-    
+
     if (buttonMenu) {
       const isOpen = buttonMenu.classList.contains('show');
       button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');

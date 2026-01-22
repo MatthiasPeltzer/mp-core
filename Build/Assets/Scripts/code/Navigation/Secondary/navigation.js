@@ -17,7 +17,8 @@ import {
 
 import {
   closeOtherSubmenus,
-  openCurrentPageParents
+  openCurrentPageParents,
+  scrollToCurrentElement
 } from '../../Utils/domUtils.js';
 
 // =============================================================================
@@ -132,6 +133,8 @@ function initDesktopNavigation() {
     if (!event.target.closest(CONFIG.desktop.container)) return;
     syncActiveNavClasses();
     updateDesktopButtonTitles();
+    // Scroll to current page element after navigation is visible
+    scrollToCurrentElement(CONFIG.desktop.container);
   });
 
   document.addEventListener('hidden.bs.dropdown', (event) => {
@@ -234,6 +237,8 @@ function handleMobileDropdown(event, isOpening) {
   setTimeout(() => {
     if (isOpening) {
       document.body.classList.add('active-nav-body');
+      // Scroll to current page element after navigation is visible
+      scrollToCurrentElement(CONFIG.mobile.container);
     } else {
       // Only remove if no dropdown is still open
       const anyOpen = document.querySelector(`${CONFIG.mobile.dropdownSelector}.show`);

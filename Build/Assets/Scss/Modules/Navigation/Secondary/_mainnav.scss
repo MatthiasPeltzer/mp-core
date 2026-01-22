@@ -62,18 +62,23 @@ $transition-bounce: $nav-transition-bounce;
 
     .container {
       background-image: linear-gradient(to top, var(--bs-body-bg) 0%, var(--bs-gray-dark) 100%);
+      padding: 0;
       position: relative;
+
+      @include light-theme {
+        background-image: linear-gradient(to top, var(--bs-body-bg) 0%, var(--bs-gray-100) 100%);
+      }
 
       // Smooth panel appearance for desktop flyout
       ul {
         opacity: 0;
         transform: translateX(-10px);
         transition: opacity 0.2s ease-out,
-          transform 0.2s ease-out;
+        transform 0.2s ease-out;
 
         &.show {
           box-shadow: -4px 0 15px -5px rgb(0 0 0 / 15%),
-            0 4px 10px -5px rgb(0 0 0 / 10%);
+          0 4px 10px -5px rgb(0 0 0 / 10%);
           opacity: 1;
           transform: translateX(0);
 
@@ -215,7 +220,7 @@ $transition-bounce: $nav-transition-bounce;
           outline-offset: -3px !important;
           padding: 18px 40px;
           transition: background-color 0.15s ease,
-            transform 0.1s ease;
+          transform 0.1s ease;
 
           @include on-interact {
             background-color: rgb(34 34 34 / 2%) !important;
@@ -297,11 +302,15 @@ $transition-bounce: $nav-transition-bounce;
 
         ul {
           background-image: linear-gradient(to top, var(--bs-body-bg) 0%, var(--bs-gray-800) 100%);
-          left: 33.7%;
+          left: 33.333%;
           position: absolute;
           top: 0;
           transition: none !important;
           width: 33.6%;
+
+          @include light-theme {
+            background-image: linear-gradient(to top, var(--bs-body-bg) 0%, var(--bs-gray-200) 100%);
+          }
 
           li {
             width: 100%;
@@ -318,10 +327,14 @@ $transition-bounce: $nav-transition-bounce;
             }
 
             ul {
-              background-image: linear-gradient(to top, var(--bs-body-bg) 0%, var(--bs-gray-700) 100%);
+              background-image: linear-gradient(to top, var(--bs-body-bg) 0%, var(--bs-gray-800) 100%);
               left: 100%;
               top: 0;
               width: calc(100% - 12.8px);
+
+              @include light-theme {
+                background-image: linear-gradient(to top, var(--bs-body-bg) 0%, var(--bs-gray-200) 100%);
+              }
 
               li {
                 button,

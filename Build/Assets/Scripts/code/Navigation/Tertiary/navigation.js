@@ -20,7 +20,8 @@ import {
   handleDropdownVisibility,
   toggleNavState,
   closeOtherSubmenus,
-  openCurrentPageParents
+  openCurrentPageParents,
+  scrollToCurrentElement
 } from '../../Utils/domUtils.js';
 
 // =============================================================================
@@ -196,6 +197,8 @@ function initDesktopNavigation() {
       () => setTimeout(() => {
         body.classList.add('active-nav-body');
         headerWrapper?.classList.add('active-nav');
+        // Scroll to current page element after navigation is visible
+        scrollToCurrentElement(CONFIG.desktop.container);
       }, 0),
       () => {
         body.classList.remove('active-nav-body');
@@ -233,8 +236,12 @@ function initMobileNavigation() {
   // Handle main mobile menu visibility
   handleDropdownVisibility(
     dropdown,
-    () => toggleNavState(true, body, headerWrapper, navbarToggler, navbarTogglerText, 
-                         openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage),
+    () => {
+      toggleNavState(true, body, headerWrapper, navbarToggler, navbarTogglerText, 
+                     openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
+      // Scroll to current page element after navigation is visible
+      setTimeout(() => scrollToCurrentElement(CONFIG.mobile.container), 0);
+    },
     () => toggleNavState(false, body, headerWrapper, navbarToggler, navbarTogglerText, 
                          openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage)
   );

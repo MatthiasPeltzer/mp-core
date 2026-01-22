@@ -72,7 +72,7 @@
         opacity: 0;
         transform: translateX(-10px);
         transition: opacity 0.2s ease-out,
-          transform 0.2s ease-out;
+        transform 0.2s ease-out;
 
         &.show {
           opacity: 1;
@@ -95,7 +95,7 @@
 
           &.show {
             box-shadow: -4px 0 15px -5px rgb(0 0 0 / 15%),
-              0 4px 10px -5px rgb(0 0 0 / 10%);
+            0 4px 10px -5px rgb(0 0 0 / 10%);
             opacity: 1;
             transform: translateX(0);
           }
@@ -115,8 +115,8 @@
           background-color: transparent;
           outline-offset: -3px !important;
           padding: 18px 40px;
-          transition: background-color 0.15s ease,
-            transform 0.1s ease;
+          transition: background-color 0.5s ease,
+          transform 0.5s ease;
 
           @include on-interact {
             background-color: rgb(34 34 34 / 2%) !important;
@@ -124,7 +124,7 @@
           }
 
           &[data-bs-toggle="collapse"] {
-            padding-right: 30px !important;
+            padding-right: 0 !important;
             position: relative;
 
             + ul > li.shortcut:first-child > a {
@@ -223,7 +223,7 @@
         position: relative;
         top: 1px;
         transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-          top 0.15s ease;
+        top 0.15s ease;
         width: 22px;
       }
 
@@ -386,11 +386,11 @@
     }
 
     ul {
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(16px);
       border-radius: 6px;
       position: relative;
 
-      @supports not (backdrop-filter: blur(8px)) {
+      @supports not (backdrop-filter: blur(16px)) {
         backdrop-filter: none;
       }
 

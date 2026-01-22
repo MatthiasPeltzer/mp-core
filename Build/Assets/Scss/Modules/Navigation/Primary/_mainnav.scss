@@ -60,15 +60,15 @@
     ul ul li .sub {
       @include font-size($fs-xs-plus);
 
-      padding-left: 10px;
+      padding-left: 20px;
     }
 
     ul ul ul li .sub {
-      padding-left: 16px;
+      padding-left: 24px;
     }
 
     ul ul ul ul li .sub {
-      padding-left: 24px;
+      padding-left: 32px;
     }
   }
 
