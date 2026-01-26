@@ -210,3 +210,19 @@ html[data-bs-theme="light"] {
   margin-top: 1rem;
   width: 100%;
 }
+
+.no-js {
+  .swiper-vue-container {
+    .swiper-slide-content {
+      display: none;
+
+      &:first-child {
+        display: block;
+      }
+    }
+
+    .swiper-button {
+      display: none;
+    }
+  }
+}
