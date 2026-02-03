@@ -543,6 +543,12 @@
       <trans-unit id="seo.canonical.enabled.form.label" resname="seo.canonical.enabled.form.label">
         <source>Enable Canonical URLs</source>
       </trans-unit>
+      <trans-unit id="seo.meta.defaultDescription.form.description" resname="seo.meta.defaultDescription.form.description">
+        <source>Default meta description used when page has no description or abstract</source>
+      </trans-unit>
+      <trans-unit id="seo.meta.defaultDescription.form.label" resname="seo.meta.defaultDescription.form.label">
+        <source>Default Meta Description</source>
+      </trans-unit>
       <trans-unit id="seo.meta.generateDescriptions.form.description" resname="seo.meta.generateDescriptions.form.description">
         <source>Automatically generate meta descriptions from content</source>
       </trans-unit>

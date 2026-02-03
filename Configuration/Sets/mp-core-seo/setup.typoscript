@@ -1,2 +1,534 @@
 @import 'EXT:mp_core/Configuration/Extensions/seo/Configuration/TypoScript/XmlSitemap/setup.typoscript'
 
+#######################
+#### SEO META TAGS ####
+#######################
+
+page {
+  meta {
+    # Description: page.description → page.abstract → site default
+    description {
+      cObject = COA
+      cObject {
+        10 = TEXT
+        10 {
+          data = page:description
+          required = 1
+        }
+
+        20 = TEXT
+        20 {
+          if.isFalse.data = page:description
+          data = page:abstract
+          required = 1
+        }
+
+        30 = TEXT
+        30 {
+          if {
+            isFalse.data = page:description
+            and {
+              isFalse.data = page:abstract
+            }
+          }
+          data = site:settings.seo.meta.defaultDescription // site:websiteTitle
+        }
+
+        stdWrap {
+          crop = 160|...|1
+          stripHtml = 1
+        }
+      }
+    }
+
+    # Keywords from page
+    keywords {
+      cObject = TEXT
+      cObject {
+        data = page:keywords
+        required = 1
+      }
+    }
+
+    # Open Graph Tags
+    og:title {
+      attribute = property
+      cObject = COA
+      cObject {
+        10 = TEXT
+        10 {
+          data = page:seo_title
+          required = 1
+        }
+
+        20 = TEXT
+        20 {
+          if.isFalse.data = page:seo_title
+          data = page:title
+        }
+      }
+    }
+
+    og:description {
+      attribute = property
+      cObject = COA
+      cObject {
+        10 = TEXT
+        10 {
+          data = page:description
+          required = 1
+        }
+
+        20 = TEXT
+        20 {
+          if.isFalse.data = page:description
+          data = page:abstract
+          required = 1
+        }
+
+        30 = TEXT
+        30 {
+          if {
+            isFalse.data = page:description
+            and {
+              isFalse.data = page:abstract
+            }
+          }
+          data = site:settings.seo.meta.defaultDescription // site:websiteTitle
+        }
+
+        stdWrap {
+          crop = 160|...|1
+          stripHtml = 1
+        }
+      }
+    }
+
+    og:image {
+      attribute = property
+      cObject = COA
+      cObject {
+        # Priority 1: og_image field from page
+        10 = FILES
+        10 {
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = og_image
+          }
+          maxItems = 1
+          renderObj = IMG_RESOURCE
+          renderObj {
+            file {
+              import.data = file:current:uid
+              treatIdAsReference = 1
+              width = {$page.meta.og.image.width}c
+              height = {$page.meta.og.image.height}c
+            }
+            stdWrap.typolink {
+              parameter.data = TSFE:lastImgResourceInfo|3
+              returnLast = url
+              forceAbsoluteUrl = 1
+            }
+          }
+          stdWrap.required = 1
+        }
+
+        # Priority 2: First media element from page
+        20 = FILES
+        20 {
+          if.isFalse.field = og_image
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = media
+          }
+          maxItems = 1
+          renderObj = IMG_RESOURCE
+          renderObj {
+            file {
+              import.data = file:current:uid
+              treatIdAsReference = 1
+              width = {$page.meta.og.image.width}c
+              height = {$page.meta.og.image.height}c
+            }
+            stdWrap.typolink {
+              parameter.data = TSFE:lastImgResourceInfo|3
+              returnLast = url
+              forceAbsoluteUrl = 1
+            }
+          }
+          stdWrap.required = 1
+        }
+
+        # Priority 3: Default fallback image from site settings
+        30 = IMG_RESOURCE
+        30 {
+          file {
+            import.data = site:settings.seo.openGraph.defaultImage
+            width = {$page.meta.og.image.width}c
+            height = {$page.meta.og.image.height}c
+          }
+          stdWrap {
+            required = 1
+            typolink {
+              parameter.data = TSFE:lastImgResourceInfo|3
+              returnLast = url
+              forceAbsoluteUrl = 1
+            }
+          }
+        }
+      }
+    }
+
+    og:image:width {
+      attribute = property
+      value = {$page.meta.og.image.width}
+    }
+
+    og:image:height {
+      attribute = property
+      value = {$page.meta.og.image.height}
+    }
+
+    og:image:alt {
+      attribute = property
+      cObject = COA
+      cObject {
+        10 = FILES
+        10 {
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = og_image
+          }
+          maxItems = 1
+          renderObj = TEXT
+          renderObj.data = file:current:alternative // file:current:title // file:current:name
+          stdWrap.required = 1
+        }
+
+        20 = FILES
+        20 {
+          if.isFalse.field = og_image
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = media
+          }
+          maxItems = 1
+          renderObj = TEXT
+          renderObj.data = file:current:alternative // file:current:title // file:current:name
+          stdWrap.required = 1
+        }
+
+        30 = TEXT
+        30 {
+          data = page:title
+        }
+      }
+    }
+
+    og:type {
+      attribute = property
+      value = website
+    }
+
+    og:site_name {
+      attribute = property
+      data = site:websiteTitle
+    }
+
+    og:url {
+      attribute = property
+      cObject = TEXT
+      cObject {
+        typolink {
+          parameter.data = page:uid
+          returnLast = url
+          forceAbsoluteUrl = 1
+        }
+      }
+    }
+
+    og:locale {
+      attribute = property
+      cObject = TEXT
+      cObject {
+        data = sitelanguage:locale:full
+        replacement {
+          10 {
+            search = -
+            replace = _
+          }
+        }
+      }
+    }
+
+    # Twitter Card Tags
+    twitter:card {
+      value = summary_large_image
+    }
+
+    twitter:title {
+      cObject = COA
+      cObject {
+        10 = TEXT
+        10 {
+          data = page:twitter_title
+          required = 1
+        }
+
+        20 = TEXT
+        20 {
+          if.isFalse.data = page:twitter_title
+          data = page:seo_title
+          required = 1
+        }
+
+        30 = TEXT
+        30 {
+          if {
+            isFalse.data = page:twitter_title
+            and {
+              isFalse.data = page:seo_title
+            }
+          }
+          data = page:title
+        }
+      }
+    }
+
+    twitter:description {
+      cObject = COA
+      cObject {
+        10 = TEXT
+        10 {
+          data = page:twitter_description
+          required = 1
+        }
+
+        20 = TEXT
+        20 {
+          if.isFalse.data = page:twitter_description
+          data = page:description
+          required = 1
+        }
+
+        30 = TEXT
+        30 {
+          if {
+            isFalse.data = page:twitter_description
+            and {
+              isFalse.data = page:description
+            }
+          }
+          data = page:abstract
+          required = 1
+        }
+
+        40 = TEXT
+        40 {
+          if {
+            isFalse.data = page:twitter_description
+            and {
+              isFalse.data = page:description
+              and {
+                isFalse.data = page:abstract
+              }
+            }
+          }
+          data = site:settings.seo.meta.defaultDescription // site:websiteTitle
+        }
+
+        stdWrap {
+          crop = 160|...|1
+          stripHtml = 1
+        }
+      }
+    }
+
+    twitter:image {
+      cObject = COA
+      cObject {
+        # Priority 1: twitter_image field from page
+        10 = FILES
+        10 {
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = twitter_image
+          }
+          maxItems = 1
+          renderObj = IMG_RESOURCE
+          renderObj {
+            file {
+              import.data = file:current:uid
+              treatIdAsReference = 1
+              width = {$page.meta.og.image.width}c
+              height = {$page.meta.og.image.height}c
+            }
+            stdWrap.typolink {
+              parameter.data = TSFE:lastImgResourceInfo|3
+              returnLast = url
+              forceAbsoluteUrl = 1
+            }
+          }
+          stdWrap.required = 1
+        }
+
+        # Priority 2: og_image field
+        20 = FILES
+        20 {
+          if.isFalse.field = twitter_image
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = og_image
+          }
+          maxItems = 1
+          renderObj = IMG_RESOURCE
+          renderObj {
+            file {
+              import.data = file:current:uid
+              treatIdAsReference = 1
+              width = {$page.meta.og.image.width}c
+              height = {$page.meta.og.image.height}c
+            }
+            stdWrap.typolink {
+              parameter.data = TSFE:lastImgResourceInfo|3
+              returnLast = url
+              forceAbsoluteUrl = 1
+            }
+          }
+          stdWrap.required = 1
+        }
+
+        # Priority 3: First media element
+        30 = FILES
+        30 {
+          if {
+            isFalse.field = twitter_image
+            and {
+              isFalse.field = og_image
+            }
+          }
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = media
+          }
+          maxItems = 1
+          renderObj = IMG_RESOURCE
+          renderObj {
+            file {
+              import.data = file:current:uid
+              treatIdAsReference = 1
+              width = {$page.meta.og.image.width}c
+              height = {$page.meta.og.image.height}c
+            }
+            stdWrap.typolink {
+              parameter.data = TSFE:lastImgResourceInfo|3
+              returnLast = url
+              forceAbsoluteUrl = 1
+            }
+          }
+          stdWrap.required = 1
+        }
+
+        # Priority 4: Default fallback image
+        40 = IMG_RESOURCE
+        40 {
+          file {
+            import.data = site:settings.seo.openGraph.defaultImage
+            width = {$page.meta.og.image.width}c
+            height = {$page.meta.og.image.height}c
+          }
+          stdWrap {
+            required = 1
+            typolink {
+              parameter.data = TSFE:lastImgResourceInfo|3
+              returnLast = url
+              forceAbsoluteUrl = 1
+            }
+          }
+        }
+      }
+    }
+
+    twitter:image:alt {
+      cObject = COA
+      cObject {
+        10 = FILES
+        10 {
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = twitter_image
+          }
+          maxItems = 1
+          renderObj = TEXT
+          renderObj.data = file:current:alternative // file:current:title // file:current:name
+          stdWrap.required = 1
+        }
+
+        20 = FILES
+        20 {
+          if.isFalse.field = twitter_image
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = og_image
+          }
+          maxItems = 1
+          renderObj = TEXT
+          renderObj.data = file:current:alternative // file:current:title // file:current:name
+          stdWrap.required = 1
+        }
+
+        30 = FILES
+        30 {
+          if {
+            isFalse.field = twitter_image
+            and {
+              isFalse.field = og_image
+            }
+          }
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = media
+          }
+          maxItems = 1
+          renderObj = TEXT
+          renderObj.data = file:current:alternative // file:current:title // file:current:name
+          stdWrap.required = 1
+        }
+
+        40 = TEXT
+        40 {
+          data = page:title
+        }
+      }
+    }
+
+    twitter:site {
+      data = site:settings.seo.twitter.site
+      if.isTrue.data = site:settings.seo.twitter.site
+    }
+  }
+
+  # Canonical URL
+  headerData {
+    1000 = TEXT
+    1000 {
+      typolink {
+        parameter.data = page:uid
+        returnLast = url
+        forceAbsoluteUrl = 1
+      }
+      wrap = <link rel="canonical" href="|">
+    }
+  }
+}
+

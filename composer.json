@@ -28,7 +28,6 @@
     "vendor-dir": "../default.instance/vendor",
     "bin-dir": "../default.instance/bin"
   },
-
   "extra": {
     "typo3/cms": {
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
