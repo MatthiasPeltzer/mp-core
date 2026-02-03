@@ -169,24 +169,80 @@ page {
           stdWrap.required = 1
         }
 
-        # Priority 3: Default fallback image from site settings
-        30 = TEXT
+        # Priority 3: Content images OR default fallback
+        # Only renders if og_image AND media are both empty
+        # First tries content element images, then falls back to default
+        30 = COA
         30 {
-          typolink {
-            parameter {
-              cObject = IMG_RESOURCE
-              cObject {
-                file {
-                  import.data = site:settings.seo.openGraph.defaultImage
-                  width = {$page.meta.og.image.width}c
-                  height = {$page.meta.og.image.height}c
+          if {
+            isFalse.field = og_image
+            and {
+              isFalse.field = media
+            }
+          }
+
+          # Try content element images first
+          10 = CONTENT
+          10 {
+            table = tt_content
+            select {
+              pidInList.data = page:uid
+              where = CType IN ('textmedia','textpic','image') AND deleted=0 AND hidden=0
+              orderBy = sorting
+              max = 1
+            }
+            renderObj = FILES
+            renderObj {
+              references {
+                table = tt_content
+                uid.field = uid
+                fieldName = image
+              }
+              maxItems = 1
+              renderObj = TEXT
+              renderObj {
+                typolink {
+                  parameter {
+                    cObject = IMG_RESOURCE
+                    cObject {
+                      file {
+                        import.data = file:current:uid
+                        treatIdAsReference = 1
+                        width = {$page.meta.og.image.width}c
+                        height = {$page.meta.og.image.height}c
+                      }
+                    }
+                  }
+                  returnLast = url
+                  forceAbsoluteUrl = 1
                 }
               }
             }
-            returnLast = url
-            forceAbsoluteUrl = 1
           }
-          required = 1
+
+          # Use ifEmpty to fall back to default image
+          stdWrap {
+            ifEmpty {
+              cObject = TEXT
+              cObject {
+                typolink {
+                  parameter {
+                    cObject = IMG_RESOURCE
+                    cObject {
+                      file {
+                        import.data = site:settings.seo.openGraph.defaultImage
+                        import.ifEmpty = EXT:mp_core/Resources/Public/Images/og-default.jpg
+                        width = {$page.meta.og.image.width}c
+                        height = {$page.meta.og.image.height}c
+                      }
+                    }
+                  }
+                  returnLast = url
+                  forceAbsoluteUrl = 1
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -411,24 +467,82 @@ page {
           stdWrap.required = 1
         }
 
-        # Priority 4: Default fallback image
-        40 = TEXT
+        # Priority 4: Content images OR default fallback
+        # Only renders if twitter_image, og_image AND media are all empty
+        40 = COA
         40 {
-          typolink {
-            parameter {
-              cObject = IMG_RESOURCE
-              cObject {
-                file {
-                  import.data = site:settings.seo.openGraph.defaultImage
-                  width = {$page.meta.og.image.width}c
-                  height = {$page.meta.og.image.height}c
+          if {
+            isFalse.field = twitter_image
+            and {
+              isFalse.field = og_image
+              and {
+                isFalse.field = media
+              }
+            }
+          }
+
+          # Try content element images first
+          10 = CONTENT
+          10 {
+            table = tt_content
+            select {
+              pidInList.data = page:uid
+              where = CType IN ('textmedia','textpic','image') AND deleted=0 AND hidden=0
+              orderBy = sorting
+              max = 1
+            }
+            renderObj = FILES
+            renderObj {
+              references {
+                table = tt_content
+                uid.field = uid
+                fieldName = image
+              }
+              maxItems = 1
+              renderObj = TEXT
+              renderObj {
+                typolink {
+                  parameter {
+                    cObject = IMG_RESOURCE
+                    cObject {
+                      file {
+                        import.data = file:current:uid
+                        treatIdAsReference = 1
+                        width = {$page.meta.og.image.width}c
+                        height = {$page.meta.og.image.height}c
+                      }
+                    }
+                  }
+                  returnLast = url
+                  forceAbsoluteUrl = 1
                 }
               }
             }
-            returnLast = url
-            forceAbsoluteUrl = 1
           }
-          required = 1
+
+          # Use ifEmpty to fall back to default image
+          stdWrap {
+            ifEmpty {
+              cObject = TEXT
+              cObject {
+                typolink {
+                  parameter {
+                    cObject = IMG_RESOURCE
+                    cObject {
+                      file {
+                        import.data = site:settings.seo.openGraph.defaultImage
+                        import.ifEmpty = EXT:mp_core/Resources/Public/Images/og-default.jpg
+                        width = {$page.meta.og.image.width}c
+                        height = {$page.meta.og.image.height}c
+                      }
+                    }
+                  }
+                  returnLast = url
+                  forceAbsoluteUrl = 1
+                }
+              }
+            }
+          }
         }
       }
     }
