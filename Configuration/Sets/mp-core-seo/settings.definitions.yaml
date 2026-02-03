@@ -5,6 +5,13 @@ categories:
 
 settings:
   # Meta Tags Settings
+  seo.meta.defaultDescription:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.defaultDescription.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.defaultDescription.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
   seo.meta.generateDescriptions:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.generateDescriptions.form.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.meta.generateDescriptions.form.description'

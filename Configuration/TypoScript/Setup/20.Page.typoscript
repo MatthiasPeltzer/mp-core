@@ -125,21 +125,17 @@ page {
   }
 
   meta {
-    viewport = {$page.meta.viewport}
-    robots = {$page.meta.robots}
-    apple-mobile-web-app-capable = {$page.meta.apple-mobile-web-app-capable}
+    viewport.data = site:settings.meta.viewport // {$page.meta.viewport}
+    robots.data = site:settings.meta.robots // {$page.meta.robots}
+    apple-mobile-web-app-capable.data = site:settings.meta.appleMobileWebAppCapable // {$page.meta.apple-mobile-web-app-capable}
 
-    X-UA-Compatible = {$page.meta.compatible}
-    X-UA-Compatible {
-      attribute = http-equiv
-    }
+    X-UA-Compatible.data = site:settings.meta.compatible // {$page.meta.compatible}
+    X-UA-Compatible.attribute = http-equiv
 
     # Google
-    google = {$page.meta.google}
-    google-site-verification = {$page.meta.google-site-verification}
+    google.data = site:settings.meta.google // {$page.meta.google}
+    google-site-verification.data = site:settings.meta.googleSiteVerification // {$page.meta.google-site-verification}
 
-    apple-mobile-web-app-title {
-      data = site:websiteTitle
-    }
+    apple-mobile-web-app-title.data = site:websiteTitle
   }
 }

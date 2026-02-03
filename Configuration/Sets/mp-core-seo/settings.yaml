@@ -1,4 +1,5 @@
 # SEO Extension Settings
+seo.meta.defaultDescription: ''
 seo.meta.generateDescriptions: true
 seo.meta.maxDescriptionLength: 160
 seo.meta.maxTitleLength: 60

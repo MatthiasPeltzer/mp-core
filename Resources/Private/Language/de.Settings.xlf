@@ -723,6 +723,14 @@
         <source>Enable Canonical URLs</source>
         <target>Canonical URLs aktivieren</target>
       </trans-unit>
+      <trans-unit id="seo.meta.defaultDescription.form.description" resname="seo.meta.defaultDescription.form.description" approved="yes">
+        <source>Default meta description used when page has no description or abstract</source>
+        <target>Standard-Meta-Beschreibung, wenn die Seite keine Beschreibung oder Zusammenfassung hat</target>
+      </trans-unit>
+      <trans-unit id="seo.meta.defaultDescription.form.label" resname="seo.meta.defaultDescription.form.label" approved="yes">
+        <source>Default Meta Description</source>
+        <target>Standard-Meta-Beschreibung</target>
+      </trans-unit>
       <trans-unit id="seo.meta.generateDescriptions.form.description" resname="seo.meta.generateDescriptions.form.description" approved="yes">
         <source>Automatically generate meta descriptions from content</source>
         <target>Meta-Beschreibungen automatisch aus Inhalt generieren</target>
