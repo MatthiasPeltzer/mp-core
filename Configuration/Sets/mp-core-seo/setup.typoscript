@@ -125,10 +125,10 @@ page {
               width = {$page.meta.og.image.width}c
               height = {$page.meta.og.image.height}c
             }
-            stdWrap.typolink {
-              parameter.data = TSFE:lastImgResourceInfo|3
-              returnLast = url
-              forceAbsoluteUrl = 1
+            stdWrap {
+              prepend = TEXT
+              prepend.data = getIndpEnv:TYPO3_REQUEST_HOST
+              prepend.noTrimWrap = ||/|
             }
           }
           stdWrap.required = 1
@@ -152,10 +152,10 @@ page {
               width = {$page.meta.og.image.width}c
               height = {$page.meta.og.image.height}c
             }
-            stdWrap.typolink {
-              parameter.data = TSFE:lastImgResourceInfo|3
-              returnLast = url
-              forceAbsoluteUrl = 1
+            stdWrap {
+              prepend = TEXT
+              prepend.data = getIndpEnv:TYPO3_REQUEST_HOST
+              prepend.noTrimWrap = ||/|
             }
           }
           stdWrap.required = 1
@@ -171,11 +171,9 @@ page {
           }
           stdWrap {
             required = 1
-            typolink {
-              parameter.data = TSFE:lastImgResourceInfo|3
-              returnLast = url
-              forceAbsoluteUrl = 1
-            }
+            prepend = TEXT
+            prepend.data = getIndpEnv:TYPO3_REQUEST_HOST
+            prepend.noTrimWrap = ||/|
           }
         }
       }
@@ -368,10 +366,10 @@ page {
               width = {$page.meta.og.image.width}c
               height = {$page.meta.og.image.height}c
             }
-            stdWrap.typolink {
-              parameter.data = TSFE:lastImgResourceInfo|3
-              returnLast = url
-              forceAbsoluteUrl = 1
+            stdWrap {
+              prepend = TEXT
+              prepend.data = getIndpEnv:TYPO3_REQUEST_HOST
+              prepend.noTrimWrap = ||/|
             }
           }
           stdWrap.required = 1
@@ -395,10 +393,10 @@ page {
               width = {$page.meta.og.image.width}c
               height = {$page.meta.og.image.height}c
             }
-            stdWrap.typolink {
-              parameter.data = TSFE:lastImgResourceInfo|3
-              returnLast = url
-              forceAbsoluteUrl = 1
+            stdWrap {
+              prepend = TEXT
+              prepend.data = getIndpEnv:TYPO3_REQUEST_HOST
+              prepend.noTrimWrap = ||/|
             }
           }
           stdWrap.required = 1
@@ -427,10 +425,10 @@ page {
               width = {$page.meta.og.image.width}c
               height = {$page.meta.og.image.height}c
             }
-            stdWrap.typolink {
-              parameter.data = TSFE:lastImgResourceInfo|3
-              returnLast = url
-              forceAbsoluteUrl = 1
+            stdWrap {
+              prepend = TEXT
+              prepend.data = getIndpEnv:TYPO3_REQUEST_HOST
+              prepend.noTrimWrap = ||/|
             }
           }
           stdWrap.required = 1
@@ -446,11 +444,9 @@ page {
           }
           stdWrap {
             required = 1
-            typolink {
-              parameter.data = TSFE:lastImgResourceInfo|3
-              returnLast = url
-              forceAbsoluteUrl = 1
-            }
+            prepend = TEXT
+            prepend.data = getIndpEnv:TYPO3_REQUEST_HOST
+            prepend.noTrimWrap = ||/|
           }
         }
       }
