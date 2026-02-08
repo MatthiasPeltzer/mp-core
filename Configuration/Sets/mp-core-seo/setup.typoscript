@@ -108,39 +108,13 @@ page {
       attribute = property
       cObject = COA
       cObject {
-        # Priority 1: og_image field from page
+        # NOTE: When og_image is set in page properties, the TYPO3 core
+        # MetaTagGenerator handles og:image with proper URL, dimensions, and alt.
+        # This COA only provides fallback images for pages without og_image.
+
+        # Priority 1: First media element from page (only when og_image is not set)
         10 = FILES
         10 {
-          references {
-            table = pages
-            uid.data = page:uid
-            fieldName = og_image
-          }
-          maxItems = 1
-          renderObj = TEXT
-          renderObj {
-            typolink {
-              parameter {
-                cObject = IMG_RESOURCE
-                cObject {
-                  file {
-                    import.data = file:current:uid
-                    treatIdAsReference = 1
-                    width = {$page.meta.og.image.width}c
-                    height = {$page.meta.og.image.height}c
-                  }
-                }
-              }
-              returnLast = url
-              forceAbsoluteUrl = 1
-            }
-          }
-          stdWrap.required = 1
-        }
-
-        # Priority 2: First media element from page
-        20 = FILES
-        20 {
           if.isFalse.field = og_image
           references {
             table = pages
@@ -148,32 +122,23 @@ page {
             fieldName = media
           }
           maxItems = 1
-          renderObj = TEXT
+          renderObj = IMG_RESOURCE
           renderObj {
-            typolink {
-              parameter {
-                cObject = IMG_RESOURCE
-                cObject {
-                  file {
-                    import.data = file:current:uid
-                    treatIdAsReference = 1
-                    width = {$page.meta.og.image.width}c
-                    height = {$page.meta.og.image.height}c
-                  }
-                }
-              }
-              returnLast = url
-              forceAbsoluteUrl = 1
+            file {
+              import.data = file:current:uid
+              treatIdAsReference = 1
+              width = {$page.meta.og.image.width}c
+              height = {$page.meta.og.image.height}c
             }
+            stdWrap.dataWrap = {site:base}|
           }
           stdWrap.required = 1
         }
 
-        # Priority 3: Content images OR default fallback
+        # Priority 2: Content images OR default fallback
         # Only renders if og_image AND media are both empty
-        # First tries content element images, then falls back to default
-        30 = COA
-        30 {
+        20 = COA
+        20 {
           if {
             isFalse.field = og_image
             and {
@@ -199,23 +164,15 @@ page {
                 fieldName = image
               }
               maxItems = 1
-              renderObj = TEXT
+              renderObj = IMG_RESOURCE
               renderObj {
-                typolink {
-                  parameter {
-                    cObject = IMG_RESOURCE
-                    cObject {
-                      file {
-                        import.data = file:current:uid
-                        treatIdAsReference = 1
-                        width = {$page.meta.og.image.width}c
-                        height = {$page.meta.og.image.height}c
-                      }
-                    }
-                  }
-                  returnLast = url
-                  forceAbsoluteUrl = 1
+                file {
+                  import.data = file:current:uid
+                  treatIdAsReference = 1
+                  width = {$page.meta.og.image.width}c
+                  height = {$page.meta.og.image.height}c
                 }
+                stdWrap.dataWrap = {site:base}|
               }
             }
           }
@@ -223,23 +180,15 @@ page {
           # Use ifEmpty to fall back to default image
           stdWrap {
             ifEmpty {
-              cObject = TEXT
+              cObject = IMG_RESOURCE
               cObject {
-                typolink {
-                  parameter {
-                    cObject = IMG_RESOURCE
-                    cObject {
-                      file {
-                        import.data = site:settings.seo.openGraph.defaultImage
-                        import.ifEmpty = EXT:mp_core/Resources/Public/Images/og-default.jpg
-                        width = {$page.meta.og.image.width}c
-                        height = {$page.meta.og.image.height}c
-                      }
-                    }
-                  }
-                  returnLast = url
-                  forceAbsoluteUrl = 1
+                file {
+                  import.data = site:settings.seo.openGraph.defaultImage
+                  import.ifEmpty = EXT:mp_core/Resources/Public/Images/og-default.jpg
+                  width = {$page.meta.og.image.width}c
+                  height = {$page.meta.og.image.height}c
                 }
+                stdWrap.dataWrap = {site:base}|
               }
             }
           }
@@ -370,39 +319,12 @@ page {
     twitter:image {
       cObject = COA
       cObject {
-        # Priority 1: twitter_image field from page
+        # NOTE: When twitter_image is set in page properties, the TYPO3 core
+        # MetaTagGenerator handles twitter:image. This COA only provides fallbacks.
+
+        # Priority 1: og_image field (when twitter_image is not set)
         10 = FILES
         10 {
-          references {
-            table = pages
-            uid.data = page:uid
-            fieldName = twitter_image
-          }
-          maxItems = 1
-          renderObj = TEXT
-          renderObj {
-            typolink {
-              parameter {
-                cObject = IMG_RESOURCE
-                cObject {
-                  file {
-                    import.data = file:current:uid
-                    treatIdAsReference = 1
-                    width = {$page.meta.og.image.width}c
-                    height = {$page.meta.og.image.height}c
-                  }
-                }
-              }
-              returnLast = url
-              forceAbsoluteUrl = 1
-            }
-          }
-          stdWrap.required = 1
-        }
-
-        # Priority 2: og_image field
-        20 = FILES
-        20 {
           if.isFalse.field = twitter_image
           references {
             table = pages
@@ -410,30 +332,22 @@ page {
             fieldName = og_image
           }
           maxItems = 1
-          renderObj = TEXT
+          renderObj = IMG_RESOURCE
           renderObj {
-            typolink {
-              parameter {
-                cObject = IMG_RESOURCE
-                cObject {
-                  file {
-                    import.data = file:current:uid
-                    treatIdAsReference = 1
-                    width = {$page.meta.og.image.width}c
-                    height = {$page.meta.og.image.height}c
-                  }
-                }
-              }
-              returnLast = url
-              forceAbsoluteUrl = 1
+            file {
+              import.data = file:current:uid
+              treatIdAsReference = 1
+              width = {$page.meta.og.image.width}c
+              height = {$page.meta.og.image.height}c
             }
+            stdWrap.dataWrap = {site:base}|
           }
           stdWrap.required = 1
         }
 
-        # Priority 3: First media element
-        30 = FILES
-        30 {
+        # Priority 2: First media element
+        20 = FILES
+        20 {
           if {
             isFalse.field = twitter_image
             and {
@@ -446,31 +360,23 @@ page {
             fieldName = media
           }
           maxItems = 1
-          renderObj = TEXT
+          renderObj = IMG_RESOURCE
           renderObj {
-            typolink {
-              parameter {
-                cObject = IMG_RESOURCE
-                cObject {
-                  file {
-                    import.data = file:current:uid
-                    treatIdAsReference = 1
-                    width = {$page.meta.og.image.width}c
-                    height = {$page.meta.og.image.height}c
-                  }
-                }
-              }
-              returnLast = url
-              forceAbsoluteUrl = 1
+            file {
+              import.data = file:current:uid
+              treatIdAsReference = 1
+              width = {$page.meta.og.image.width}c
+              height = {$page.meta.og.image.height}c
             }
+            stdWrap.dataWrap = {site:base}|
           }
           stdWrap.required = 1
         }
 
-        # Priority 4: Content images OR default fallback
+        # Priority 3: Content images OR default fallback
         # Only renders if twitter_image, og_image AND media are all empty
-        40 = COA
-        40 {
+        30 = COA
+        30 {
           if {
             isFalse.field = twitter_image
             and {
@@ -499,23 +405,15 @@ page {
                 fieldName = image
               }
               maxItems = 1
-              renderObj = TEXT
+              renderObj = IMG_RESOURCE
               renderObj {
-                typolink {
-                  parameter {
-                    cObject = IMG_RESOURCE
-                    cObject {
-                      file {
-                        import.data = file:current:uid
-                        treatIdAsReference = 1
-                        width = {$page.meta.og.image.width}c
-                        height = {$page.meta.og.image.height}c
-                      }
-                    }
-                  }
-                  returnLast = url
-                  forceAbsoluteUrl = 1
+                file {
+                  import.data = file:current:uid
+                  treatIdAsReference = 1
+                  width = {$page.meta.og.image.width}c
+                  height = {$page.meta.og.image.height}c
                 }
+                stdWrap.dataWrap = {site:base}|
               }
             }
           }
@@ -523,23 +421,15 @@ page {
           # Use ifEmpty to fall back to default image
           stdWrap {
             ifEmpty {
-              cObject = TEXT
+              cObject = IMG_RESOURCE
               cObject {
-                typolink {
-                  parameter {
-                    cObject = IMG_RESOURCE
-                    cObject {
-                      file {
-                        import.data = site:settings.seo.openGraph.defaultImage
-                        import.ifEmpty = EXT:mp_core/Resources/Public/Images/og-default.jpg
-                        width = {$page.meta.og.image.width}c
-                        height = {$page.meta.og.image.height}c
-                      }
-                    }
-                  }
-                  returnLast = url
-                  forceAbsoluteUrl = 1
+                file {
+                  import.data = site:settings.seo.openGraph.defaultImage
+                  import.ifEmpty = EXT:mp_core/Resources/Public/Images/og-default.jpg
+                  width = {$page.meta.og.image.width}c
+                  height = {$page.meta.og.image.height}c
                 }
+                stdWrap.dataWrap = {site:base}|
               }
             }
           }
@@ -551,134 +441,99 @@ page {
       data = site:settings.seo.twitter.site
       if.isTrue.data = site:settings.seo.twitter.site
     }
-  }
 
-  # Canonical URL and additional OG/Twitter meta tags
-  headerData {
-    # og:image:width
-    1001 = TEXT
-    1001 {
+    # OG image dimensions - only for fallback images
+    # (core MetaTagGenerator handles dimensions when og_image is set)
+    og:image:width {
+      attribute = property
       value = {$page.meta.og.image.width}
-      wrap = <meta property="og:image:width" content="|">
+      if.isFalse.field = og_image
     }
 
-    # og:image:height
-    1002 = TEXT
-    1002 {
+    og:image:height {
+      attribute = property
       value = {$page.meta.og.image.height}
-      wrap = <meta property="og:image:height" content="|">
+      if.isFalse.field = og_image
     }
 
-    # og:image:alt - with fallback chain
-    1003 = COA
-    1003 {
-      10 = FILES
-      10 {
-        references {
-          table = pages
-          uid.data = page:uid
-          fieldName = og_image
-        }
-        maxItems = 1
-        renderObj = TEXT
-        renderObj {
-          data = file:current:alternative // file:current:title // file:current:name
-          htmlSpecialChars = 1
-        }
-        stdWrap.required = 1
-      }
-
-      20 = FILES
-      20 {
-        if.isFalse.field = og_image
-        references {
-          table = pages
-          uid.data = page:uid
-          fieldName = media
-        }
-        maxItems = 1
-        renderObj = TEXT
-        renderObj {
-          data = file:current:alternative // file:current:title // file:current:name
-          htmlSpecialChars = 1
-        }
-        stdWrap.required = 1
-      }
-
-      30 = TEXT
-      30 {
-        data = page:title
-        htmlSpecialChars = 1
-      }
-
-      stdWrap.wrap = <meta property="og:image:alt" content="|">
-    }
-
-    # twitter:image:alt - with fallback chain
-    1004 = COA
-    1004 {
-      10 = FILES
-      10 {
-        references {
-          table = pages
-          uid.data = page:uid
-          fieldName = twitter_image
-        }
-        maxItems = 1
-        renderObj = TEXT
-        renderObj {
-          data = file:current:alternative // file:current:title // file:current:name
-          htmlSpecialChars = 1
-        }
-        stdWrap.required = 1
-      }
-
-      20 = FILES
-      20 {
-        if.isFalse.field = twitter_image
-        references {
-          table = pages
-          uid.data = page:uid
-          fieldName = og_image
-        }
-        maxItems = 1
-        renderObj = TEXT
-        renderObj {
-          data = file:current:alternative // file:current:title // file:current:name
-          htmlSpecialChars = 1
-        }
-        stdWrap.required = 1
-      }
-
-      30 = FILES
-      30 {
-        if {
-          isFalse.field = twitter_image
-          and {
-            isFalse.field = og_image
+    # og:image:alt - only for fallback images
+    # (core MetaTagGenerator handles alt text when og_image is set)
+    og:image:alt {
+      attribute = property
+      if.isFalse.field = og_image
+      cObject = COA
+      cObject {
+        10 = FILES
+        10 {
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = media
           }
+          maxItems = 1
+          renderObj = TEXT
+          renderObj {
+            data = file:current:alternative // file:current:title
+            htmlSpecialChars = 1
+          }
+          stdWrap.required = 1
         }
-        references {
-          table = pages
-          uid.data = page:uid
-          fieldName = media
-        }
-        maxItems = 1
-        renderObj = TEXT
-        renderObj {
-          data = file:current:alternative // file:current:title // file:current:name
+
+        # Fallback to page title when no file alt text is available
+        stdWrap.ifEmpty.cObject = TEXT
+        stdWrap.ifEmpty.cObject {
+          data = page:title
           htmlSpecialChars = 1
         }
-        stdWrap.required = 1
       }
+    }
 
-      40 = TEXT
-      40 {
-        data = page:title
-        htmlSpecialChars = 1
+    # twitter:image:alt - only for fallback images
+    # (core MetaTagGenerator handles alt text when twitter_image is set)
+    twitter:image:alt {
+      if.isFalse.field = twitter_image
+      cObject = COA
+      cObject {
+        10 = FILES
+        10 {
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = og_image
+          }
+          maxItems = 1
+          renderObj = TEXT
+          renderObj {
+            data = file:current:alternative // file:current:title
+            htmlSpecialChars = 1
+          }
+          stdWrap.required = 1
+        }
+
+        20 = FILES
+        20 {
+          if.isFalse.field = og_image
+          references {
+            table = pages
+            uid.data = page:uid
+            fieldName = media
+          }
+          maxItems = 1
+          renderObj = TEXT
+          renderObj {
+            data = file:current:alternative // file:current:title
+            htmlSpecialChars = 1
+          }
+          stdWrap.required = 1
+        }
+
+        # Fallback to page title when no file alt text is available
+        stdWrap.ifEmpty.cObject = TEXT
+        stdWrap.ifEmpty.cObject {
+          data = page:title
+          htmlSpecialChars = 1
+        }
       }
-
-      stdWrap.wrap = <meta name="twitter:image:alt" content="|">
     }
   }
 }
