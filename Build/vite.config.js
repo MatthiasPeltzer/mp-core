@@ -1,7 +1,6 @@
 import {defineConfig} from 'vite';
 import {resolve} from 'path';
 import {fileURLToPath} from 'url';
-import eslint from '@nabla/vite-plugin-eslint';
 import vue from '@vitejs/plugin-vue';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
@@ -41,15 +40,7 @@ export default defineConfig(({mode}) => {
 
     plugins: [
       // Vue 3 support
-      vue(),
-
-      // ESLint integration (only in dev for better performance)
-      isDev && eslint({
-        eslintOptions: {
-          fix: true,
-          cache: true
-        }
-      })
+      vue()
     ].filter(Boolean),
 
     build: {

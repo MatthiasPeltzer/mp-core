@@ -20,12 +20,32 @@ page {
     10 {
       special = browse
       special {
-        items = prev|next
+        items = prev
       }
 
       1 = TMENU
       1.NO {
-        allWrap = <link rel="prev" href="|"> |*| <link rel="next" href="|">
+        allWrap = <link rel="prev" href="|">
+        doNotLinkIt = 1
+        stdWrap {
+          typolink {
+            parameter.data = field:uid
+            returnLast = url
+          }
+        }
+      }
+    }
+
+    20 = HMENU
+    20 {
+      special = browse
+      special {
+        items = next
+      }
+
+      1 = TMENU
+      1.NO {
+        allWrap = <link rel="next" href="|">
         doNotLinkIt = 1
         stdWrap {
           typolink {
