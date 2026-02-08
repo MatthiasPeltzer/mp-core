@@ -680,17 +680,6 @@ page {
 
       stdWrap.wrap = <meta name="twitter:image:alt" content="|">
     }
-
-    # Canonical URL
-    1000 = TEXT
-    1000 {
-      typolink {
-        parameter.data = page:uid
-        returnLast = url
-        forceAbsoluteUrl = 1
-      }
-      wrap = <link rel="canonical" href="|">
-    }
   }
 }
 
