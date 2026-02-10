@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang_rte.xlf" date="2026-02-10T12:00:00" product-name="mp_core">
+    <header/>
+    <body>
+      <!-- Heading Options -->
+      <trans-unit id="heading.paragraph" resname="heading.paragraph" approved="yes">
+        <source>Paragraph</source>
+        <target>Absatz</target>
+      </trans-unit>
+      <trans-unit id="heading.h1" resname="heading.h1" approved="yes">
+        <source>Heading 1</source>
+        <target>Überschrift 1</target>
+      </trans-unit>
+      <trans-unit id="heading.h2" resname="heading.h2" approved="yes">
+        <source>Heading 2</source>
+        <target>Überschrift 2</target>
+      </trans-unit>
+      <trans-unit id="heading.h3" resname="heading.h3" approved="yes">
+        <source>Heading 3</source>
+        <target>Überschrift 3</target>
+      </trans-unit>
+      <trans-unit id="heading.h4" resname="heading.h4" approved="yes">
+        <source>Heading 4</source>
+        <target>Überschrift 4</target>
+      </trans-unit>
+      <trans-unit id="heading.h5" resname="heading.h5" approved="yes">
+        <source>Heading 5</source>
+        <target>Überschrift 5</target>
+      </trans-unit>
+      <trans-unit id="heading.h6" resname="heading.h6" approved="yes">
+        <source>Heading 6</source>
+        <target>Überschrift 6</target>
+      </trans-unit>
+
+      <!-- Paragraph Styles -->
+      <trans-unit id="style.paragraph.kicker" resname="style.paragraph.kicker" approved="yes">
+        <source>Paragraph: Kicker</source>
+        <target>Absatz: Dachzeile</target>
+      </trans-unit>
+      <trans-unit id="style.paragraph.subheader" resname="style.paragraph.subheader" approved="yes">
+        <source>Paragraph: Subheader</source>
+        <target>Absatz: Unterüberschrift</target>
+      </trans-unit>
+      <trans-unit id="style.blockquote.quote" resname="style.blockquote.quote" approved="yes">
+        <source>Blockquote: Quote</source>
+        <target>Zitat: Zitat</target>
+      </trans-unit>
+
+      <!-- Button Styles -->
+      <trans-unit id="style.button.primary" resname="style.button.primary" approved="yes">
+        <source>Button: Primary</source>
+        <target>Schaltfläche: Primär</target>
+      </trans-unit>
+      <trans-unit id="style.button.secondary" resname="style.button.secondary" approved="yes">
+        <source>Button: Secondary</source>
+        <target>Schaltfläche: Sekundär</target>
+      </trans-unit>
+      <trans-unit id="style.button.tertiary" resname="style.button.tertiary" approved="yes">
+        <source>Button: Tertiary</source>
+        <target>Schaltfläche: Tertiär</target>
+      </trans-unit>
+
+      <!-- List Styles -->
+      <trans-unit id="style.list.unstyled" resname="style.list.unstyled" approved="yes">
+        <source>List: Unstyled</source>
+        <target>Liste: Ohne Stil</target>
+      </trans-unit>
+      <trans-unit id="style.list.scroll" resname="style.list.scroll" approved="yes">
+        <source>List: Scroll</source>
+        <target>Liste: Scrollbar</target>
+      </trans-unit>
+
+      <!-- Headline Size Variations H2 -->
+      <trans-unit id="style.headline.h2_to_h1" resname="style.headline.h2_to_h1" approved="yes">
+        <source>Headline 2 > 1</source>
+        <target>Überschrift 2 > 1</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h2_to_h3" resname="style.headline.h2_to_h3" approved="yes">
+        <source>Headline 2 > 3</source>
+        <target>Überschrift 2 > 3</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h2_to_h4" resname="style.headline.h2_to_h4" approved="yes">
+        <source>Headline 2 > 4</source>
+        <target>Überschrift 2 > 4</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h2_to_h5" resname="style.headline.h2_to_h5" approved="yes">
+        <source>Headline 2 > 5</source>
+        <target>Überschrift 2 > 5</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h2_to_h6" resname="style.headline.h2_to_h6" approved="yes">
+        <source>Headline 2 > 6</source>
+        <target>Überschrift 2 > 6</target>
+      </trans-unit>
+
+      <!-- Headline Size Variations H3 -->
+      <trans-unit id="style.headline.h3_to_h1" resname="style.headline.h3_to_h1" approved="yes">
+        <source>Headline 3 > 1</source>
+        <target>Überschrift 3 > 1</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h3_to_h2" resname="style.headline.h3_to_h2" approved="yes">
+        <source>Headline 3 > 2</source>
+        <target>Überschrift 3 > 2</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h3_to_h4" resname="style.headline.h3_to_h4" approved="yes">
+        <source>Headline 3 > 4</source>
+        <target>Überschrift 3 > 4</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h3_to_h5" resname="style.headline.h3_to_h5" approved="yes">
+        <source>Headline 3 > 5</source>
+        <target>Überschrift 3 > 5</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h3_to_h6" resname="style.headline.h3_to_h6" approved="yes">
+        <source>Headline 3 > 6</source>
+        <target>Überschrift 3 > 6</target>
+      </trans-unit>
+
+      <!-- Headline Size Variations H4 -->
+      <trans-unit id="style.headline.h4_to_h1" resname="style.headline.h4_to_h1" approved="yes">
+        <source>Headline 4 > 1</source>
+        <target>Überschrift 4 > 1</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h4_to_h2" resname="style.headline.h4_to_h2" approved="yes">
+        <source>Headline 4 > 2</source>
+        <target>Überschrift 4 > 2</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h4_to_h3" resname="style.headline.h4_to_h3" approved="yes">
+        <source>Headline 4 > 3</source>
+        <target>Überschrift 4 > 3</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h4_to_h5" resname="style.headline.h4_to_h5" approved="yes">
+        <source>Headline 4 > 5</source>
+        <target>Überschrift 4 > 5</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h4_to_h6" resname="style.headline.h4_to_h6" approved="yes">
+        <source>Headline 4 > 6</source>
+        <target>Überschrift 4 > 6</target>
+      </trans-unit>
+
+      <!-- Headline Size Variations H5 -->
+      <trans-unit id="style.headline.h5_to_h1" resname="style.headline.h5_to_h1" approved="yes">
+        <source>Headline 5 > 1</source>
+        <target>Überschrift 5 > 1</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h5_to_h2" resname="style.headline.h5_to_h2" approved="yes">
+        <source>Headline 5 > 2</source>
+        <target>Überschrift 5 > 2</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h5_to_h3" resname="style.headline.h5_to_h3" approved="yes">
+        <source>Headline 5 > 3</source>
+        <target>Überschrift 5 > 3</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h5_to_h4" resname="style.headline.h5_to_h4" approved="yes">
+        <source>Headline 5 > 4</source>
+        <target>Überschrift 5 > 4</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h5_to_h6" resname="style.headline.h5_to_h6" approved="yes">
+        <source>Headline 5 > 6</source>
+        <target>Überschrift 5 > 6</target>
+      </trans-unit>
+
+      <!-- Headline Size Variations H6 -->
+      <trans-unit id="style.headline.h6_to_h1" resname="style.headline.h6_to_h1" approved="yes">
+        <source>Headline 6 > 1</source>
+        <target>Überschrift 6 > 1</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h6_to_h2" resname="style.headline.h6_to_h2" approved="yes">
+        <source>Headline 6 > 2</source>
+        <target>Überschrift 6 > 2</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h6_to_h3" resname="style.headline.h6_to_h3" approved="yes">
+        <source>Headline 6 > 3</source>
+        <target>Überschrift 6 > 3</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h6_to_h4" resname="style.headline.h6_to_h4" approved="yes">
+        <source>Headline 6 > 4</source>
+        <target>Überschrift 6 > 4</target>
+      </trans-unit>
+      <trans-unit id="style.headline.h6_to_h5" resname="style.headline.h6_to_h5" approved="yes">
+        <source>Headline 6 > 5</source>
+        <target>Überschrift 6 > 5</target>
+      </trans-unit>
+
+      <!-- Link Styles -->
+      <trans-unit id="style.link.internal" resname="style.link.internal" approved="yes">
+        <source>Link: Internal</source>
+        <target>Link: Intern</target>
+      </trans-unit>
+      <trans-unit id="style.link.external" resname="style.link.external" approved="yes">
+        <source>Link: External</source>
+        <target>Link: Extern</target>
+      </trans-unit>
+      <trans-unit id="style.link.download" resname="style.link.download" approved="yes">
+        <source>Link: Download</source>
+        <target>Link: Download</target>
+      </trans-unit>
+      <trans-unit id="style.link.email" resname="style.link.email" approved="yes">
+        <source>Link: Email</source>
+        <target>Link: E-Mail</target>
+      </trans-unit>
+      <trans-unit id="style.link.phone" resname="style.link.phone" approved="yes">
+        <source>Link: Phone</source>
+        <target>Link: Telefon</target>
+      </trans-unit>
+      <trans-unit id="style.link.audio" resname="style.link.audio" approved="yes">
+        <source>Link: Audio</source>
+        <target>Link: Audio</target>
+      </trans-unit>
+      <trans-unit id="style.link.video" resname="style.link.video" approved="yes">
+        <source>Link: Video</source>
+        <target>Link: Video</target>
+      </trans-unit>
+      <trans-unit id="style.link.glossary" resname="style.link.glossary" approved="yes">
+        <source>Link: Glossary</source>
+        <target>Link: Glossar</target>
+      </trans-unit>
+      <trans-unit id="style.link.public" resname="style.link.public" approved="yes">
+        <source>Link: Public</source>
+        <target>Link: Öffentlich</target>
+      </trans-unit>
+      <trans-unit id="style.link.legal" resname="style.link.legal" approved="yes">
+        <source>Link: Legal</source>
+        <target>Link: Rechtliches</target>
+      </trans-unit>
+      <trans-unit id="style.link.gallery" resname="style.link.gallery" approved="yes">
+        <source>Link: Gallery</source>
+        <target>Link: Galerie</target>
+      </trans-unit>
+      <trans-unit id="style.link.chart" resname="style.link.chart" approved="yes">
+        <source>Link: Chart</source>
+        <target>Link: Diagramm</target>
+      </trans-unit>
+
+      <!-- Text Styles -->
+      <trans-unit id="style.text.lowercase" resname="style.text.lowercase" approved="yes">
+        <source>Text: Lowercased</source>
+        <target>Text: Kleinbuchstaben</target>
+      </trans-unit>
+      <trans-unit id="style.text.uppercase" resname="style.text.uppercase" approved="yes">
+        <source>Text: Uppercased</source>
+        <target>Text: Großbuchstaben</target>
+      </trans-unit>
+      <trans-unit id="style.text.capitalize" resname="style.text.capitalize" approved="yes">
+        <source>Text: Capitalized</source>
+        <target>Text: Großgeschrieben</target>
+      </trans-unit>
+      <trans-unit id="style.text.bold" resname="style.text.bold" approved="yes">
+        <source>Text: Bold</source>
+        <target>Text: Fett</target>
+      </trans-unit>
+      <trans-unit id="style.text.small" resname="style.text.small" approved="yes">
+        <source>Text: Small</source>
+        <target>Text: Klein</target>
+      </trans-unit>
+      <trans-unit id="style.text.emphasize" resname="style.text.emphasize" approved="yes">
+        <source>Text: Emphasize</source>
+        <target>Text: Hervorgehoben</target>
+      </trans-unit>
+      <trans-unit id="style.text.hidden" resname="style.text.hidden" approved="yes">
+        <source>Text: Hidden</source>
+        <target>Text: Versteckt</target>
+      </trans-unit>
+      <trans-unit id="style.text.nowrap" resname="style.text.nowrap" approved="yes">
+        <source>Text: No Wrap</source>
+        <target>Text: Kein Umbruch</target>
+      </trans-unit>
+
+      <!-- Language Options -->
+      <trans-unit id="language.german" resname="language.german" approved="yes">
+        <source>German</source>
+        <target>Deutsch</target>
+      </trans-unit>
+      <trans-unit id="language.english" resname="language.english" approved="yes">
+        <source>English</source>
+        <target>Englisch</target>
+      </trans-unit>
+      <trans-unit id="language.french" resname="language.french" approved="yes">
+        <source>French</source>
+        <target>Französisch</target>
+      </trans-unit>
+
+      <!-- Definition List Plugin -->
+      <trans-unit id="definitionList.title" resname="definitionList.title" approved="yes">
+        <source>Definition List</source>
+        <target>Definitionsliste</target>
+      </trans-unit>
+      <trans-unit id="definitionList.insert" resname="definitionList.insert" approved="yes">
+        <source>Insert Definition List</source>
+        <target>Definitionsliste einfügen</target>
+      </trans-unit>
+      <trans-unit id="definitionList.addTerm" resname="definitionList.addTerm" approved="yes">
+        <source>Add Term (dt)</source>
+        <target>Begriff hinzufügen (dt)</target>
+      </trans-unit>
+      <trans-unit id="definitionList.addDescription" resname="definitionList.addDescription" approved="yes">
+        <source>Add Description (dd)</source>
+        <target>Beschreibung hinzufügen (dd)</target>
+      </trans-unit>
+      <trans-unit id="definitionList.remove" resname="definitionList.remove" approved="yes">
+        <source>Remove Definition List</source>
+        <target>Definitionsliste entfernen</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

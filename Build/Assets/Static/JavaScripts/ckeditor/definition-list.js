@@ -356,21 +356,29 @@ class DefinitionListUI extends Plugin {
     return 'DefinitionListUI';
   }
 
+  /**
+   * Get label from config or use fallback with translation function
+   */
+  _getLabel(key, fallback) {
+    const config = this.editor.config.get('definitionList') || {};
+    const labels = config.labels || {};
+    return labels[key] || this.editor.t(fallback);
+  }
+
   init() {
     const editor = this.editor;
-    const t = editor.t;
 
     // Register the main dropdown button
     editor.ui.componentFactory.add('definitionList', locale => {
       const dropdownView = createDropdown(locale);
       const items = new Collection();
 
-      // Add dropdown items
+      // Add dropdown items with configurable labels
       items.add({
         type: 'button',
         model: new ViewModel({
           id: 'insertDefinitionList',
-          label: t('Insert Definition List'),
+          label: this._getLabel('insert', 'Insert Definition List'),
           withText: true
         })
       });
@@ -379,7 +387,7 @@ class DefinitionListUI extends Plugin {
         type: 'button',
         model: new ViewModel({
           id: 'insertDefinitionTerm',
-          label: t('Add Term (dt)'),
+          label: this._getLabel('addTerm', 'Add Term (dt)'),
           withText: true
         })
       });
@@ -388,7 +396,7 @@ class DefinitionListUI extends Plugin {
         type: 'button',
         model: new ViewModel({
           id: 'insertDefinitionDescription',
-          label: t('Add Description (dd)'),
+          label: this._getLabel('addDescription', 'Add Description (dd)'),
           withText: true
         })
       });
@@ -401,16 +409,16 @@ class DefinitionListUI extends Plugin {
         type: 'button',
         model: new ViewModel({
           id: 'removeDefinitionList',
-          label: t('Remove Definition List'),
+          label: this._getLabel('remove', 'Remove Definition List'),
           withText: true
         })
       });
 
       addListToDropdown(dropdownView, items);
 
-      // Configure dropdown button
+      // Configure dropdown button with configurable label
       dropdownView.buttonView.set({
-        label: t('Definition List'),
+        label: this._getLabel('title', 'Definition List'),
         icon: definitionListIcon,
         tooltip: true
       });
@@ -433,7 +441,7 @@ class DefinitionListUI extends Plugin {
     });
 
     // Register individual buttons for keyboard shortcuts or alternative UI
-    this._registerButton('insertDefinitionList', t('Insert Definition List'), definitionListIcon);
+    this._registerButton('insertDefinitionList', this._getLabel('insert', 'Insert Definition List'), definitionListIcon);
   }
 
   _registerButton(commandName, label, icon) {
@@ -477,4 +485,3 @@ export class DefinitionList extends Plugin {
 
 // Export for TYPO3 module system
 export default DefinitionList;
-
