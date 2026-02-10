@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang_rte.xlf" date="2026-02-10T12:00:00" product-name="mp_core">
+    <header/>
+    <body>
+      <!-- Heading Options -->
+      <trans-unit id="heading.paragraph" resname="heading.paragraph">
+        <source>Paragraph</source>
+      </trans-unit>
+      <trans-unit id="heading.h1" resname="heading.h1">
+        <source>Heading 1</source>
+      </trans-unit>
+      <trans-unit id="heading.h2" resname="heading.h2">
+        <source>Heading 2</source>
+      </trans-unit>
+      <trans-unit id="heading.h3" resname="heading.h3">
+        <source>Heading 3</source>
+      </trans-unit>
+      <trans-unit id="heading.h4" resname="heading.h4">
+        <source>Heading 4</source>
+      </trans-unit>
+      <trans-unit id="heading.h5" resname="heading.h5">
+        <source>Heading 5</source>
+      </trans-unit>
+      <trans-unit id="heading.h6" resname="heading.h6">
+        <source>Heading 6</source>
+      </trans-unit>
+
+      <!-- Paragraph Styles -->
+      <trans-unit id="style.paragraph.kicker" resname="style.paragraph.kicker">
+        <source>Paragraph: Kicker</source>
+      </trans-unit>
+      <trans-unit id="style.paragraph.subheader" resname="style.paragraph.subheader">
+        <source>Paragraph: Subheader</source>
+      </trans-unit>
+      <trans-unit id="style.blockquote.quote" resname="style.blockquote.quote">
+        <source>Blockquote: Quote</source>
+      </trans-unit>
+
+      <!-- Button Styles -->
+      <trans-unit id="style.button.primary" resname="style.button.primary">
+        <source>Button: Primary</source>
+      </trans-unit>
+      <trans-unit id="style.button.secondary" resname="style.button.secondary">
+        <source>Button: Secondary</source>
+      </trans-unit>
+      <trans-unit id="style.button.tertiary" resname="style.button.tertiary">
+        <source>Button: Tertiary</source>
+      </trans-unit>
+
+      <!-- List Styles -->
+      <trans-unit id="style.list.unstyled" resname="style.list.unstyled">
+        <source>List: Unstyled</source>
+      </trans-unit>
+      <trans-unit id="style.list.scroll" resname="style.list.scroll">
+        <source>List: Scroll</source>
+      </trans-unit>
+
+      <!-- Headline Size Variations H2 -->
+      <trans-unit id="style.headline.h2_to_h1" resname="style.headline.h2_to_h1">
+        <source>Headline 2 > 1</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h2_to_h3" resname="style.headline.h2_to_h3">
+        <source>Headline 2 > 3</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h2_to_h4" resname="style.headline.h2_to_h4">
+        <source>Headline 2 > 4</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h2_to_h5" resname="style.headline.h2_to_h5">
+        <source>Headline 2 > 5</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h2_to_h6" resname="style.headline.h2_to_h6">
+        <source>Headline 2 > 6</source>
+      </trans-unit>
+
+      <!-- Headline Size Variations H3 -->
+      <trans-unit id="style.headline.h3_to_h1" resname="style.headline.h3_to_h1">
+        <source>Headline 3 > 1</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h3_to_h2" resname="style.headline.h3_to_h2">
+        <source>Headline 3 > 2</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h3_to_h4" resname="style.headline.h3_to_h4">
+        <source>Headline 3 > 4</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h3_to_h5" resname="style.headline.h3_to_h5">
+        <source>Headline 3 > 5</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h3_to_h6" resname="style.headline.h3_to_h6">
+        <source>Headline 3 > 6</source>
+      </trans-unit>
+
+      <!-- Headline Size Variations H4 -->
+      <trans-unit id="style.headline.h4_to_h1" resname="style.headline.h4_to_h1">
+        <source>Headline 4 > 1</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h4_to_h2" resname="style.headline.h4_to_h2">
+        <source>Headline 4 > 2</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h4_to_h3" resname="style.headline.h4_to_h3">
+        <source>Headline 4 > 3</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h4_to_h5" resname="style.headline.h4_to_h5">
+        <source>Headline 4 > 5</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h4_to_h6" resname="style.headline.h4_to_h6">
+        <source>Headline 4 > 6</source>
+      </trans-unit>
+
+      <!-- Headline Size Variations H5 -->
+      <trans-unit id="style.headline.h5_to_h1" resname="style.headline.h5_to_h1">
+        <source>Headline 5 > 1</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h5_to_h2" resname="style.headline.h5_to_h2">
+        <source>Headline 5 > 2</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h5_to_h3" resname="style.headline.h5_to_h3">
+        <source>Headline 5 > 3</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h5_to_h4" resname="style.headline.h5_to_h4">
+        <source>Headline 5 > 4</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h5_to_h6" resname="style.headline.h5_to_h6">
+        <source>Headline 5 > 6</source>
+      </trans-unit>
+
+      <!-- Headline Size Variations H6 -->
+      <trans-unit id="style.headline.h6_to_h1" resname="style.headline.h6_to_h1">
+        <source>Headline 6 > 1</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h6_to_h2" resname="style.headline.h6_to_h2">
+        <source>Headline 6 > 2</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h6_to_h3" resname="style.headline.h6_to_h3">
+        <source>Headline 6 > 3</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h6_to_h4" resname="style.headline.h6_to_h4">
+        <source>Headline 6 > 4</source>
+      </trans-unit>
+      <trans-unit id="style.headline.h6_to_h5" resname="style.headline.h6_to_h5">
+        <source>Headline 6 > 5</source>
+      </trans-unit>
+
+      <!-- Link Styles -->
+      <trans-unit id="style.link.internal" resname="style.link.internal">
+        <source>Link: Internal</source>
+      </trans-unit>
+      <trans-unit id="style.link.external" resname="style.link.external">
+        <source>Link: External</source>
+      </trans-unit>
+      <trans-unit id="style.link.download" resname="style.link.download">
+        <source>Link: Download</source>
+      </trans-unit>
+      <trans-unit id="style.link.email" resname="style.link.email">
+        <source>Link: Email</source>
+      </trans-unit>
+      <trans-unit id="style.link.phone" resname="style.link.phone">
+        <source>Link: Phone</source>
+      </trans-unit>
+      <trans-unit id="style.link.audio" resname="style.link.audio">
+        <source>Link: Audio</source>
+      </trans-unit>
+      <trans-unit id="style.link.video" resname="style.link.video">
+        <source>Link: Video</source>
+      </trans-unit>
+      <trans-unit id="style.link.glossary" resname="style.link.glossary">
+        <source>Link: Glossary</source>
+      </trans-unit>
+      <trans-unit id="style.link.public" resname="style.link.public">
+        <source>Link: Public</source>
+      </trans-unit>
+      <trans-unit id="style.link.legal" resname="style.link.legal">
+        <source>Link: Legal</source>
+      </trans-unit>
+      <trans-unit id="style.link.gallery" resname="style.link.gallery">
+        <source>Link: Gallery</source>
+      </trans-unit>
+      <trans-unit id="style.link.chart" resname="style.link.chart">
+        <source>Link: Chart</source>
+      </trans-unit>
+
+      <!-- Text Styles -->
+      <trans-unit id="style.text.lowercase" resname="style.text.lowercase">
+        <source>Text: Lowercased</source>
+      </trans-unit>
+      <trans-unit id="style.text.uppercase" resname="style.text.uppercase">
+        <source>Text: Uppercased</source>
+      </trans-unit>
+      <trans-unit id="style.text.capitalize" resname="style.text.capitalize">
+        <source>Text: Capitalized</source>
+      </trans-unit>
+      <trans-unit id="style.text.bold" resname="style.text.bold">
+        <source>Text: Bold</source>
+      </trans-unit>
+      <trans-unit id="style.text.small" resname="style.text.small">
+        <source>Text: Small</source>
+      </trans-unit>
+      <trans-unit id="style.text.emphasize" resname="style.text.emphasize">
+        <source>Text: Emphasize</source>
+      </trans-unit>
+      <trans-unit id="style.text.hidden" resname="style.text.hidden">
+        <source>Text: Hidden</source>
+      </trans-unit>
+      <trans-unit id="style.text.nowrap" resname="style.text.nowrap">
+        <source>Text: No Wrap</source>
+      </trans-unit>
+
+      <!-- Language Options -->
+      <trans-unit id="language.german" resname="language.german">
+        <source>German</source>
+      </trans-unit>
+      <trans-unit id="language.english" resname="language.english">
+        <source>English</source>
+      </trans-unit>
+      <trans-unit id="language.french" resname="language.french">
+        <source>French</source>
+      </trans-unit>
+
+      <!-- Definition List Plugin -->
+      <trans-unit id="definitionList.title" resname="definitionList.title">
+        <source>Definition List</source>
+      </trans-unit>
+      <trans-unit id="definitionList.insert" resname="definitionList.insert">
+        <source>Insert Definition List</source>
+      </trans-unit>
+      <trans-unit id="definitionList.addTerm" resname="definitionList.addTerm">
+        <source>Add Term (dt)</source>
+      </trans-unit>
+      <trans-unit id="definitionList.addDescription" resname="definitionList.addDescription">
+        <source>Add Description (dd)</source>
+      </trans-unit>
+      <trans-unit id="definitionList.remove" resname="definitionList.remove">
+        <source>Remove Definition List</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
