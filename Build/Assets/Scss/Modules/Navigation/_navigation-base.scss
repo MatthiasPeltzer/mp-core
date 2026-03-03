@@ -175,6 +175,12 @@ $nav-transition-bounce: transform 0.5s cubic-bezier(0, 1.56, 0.64, 1);
 }
 
 // Modern focus states
+// Remove default focus outline (prevents iOS touch focus ring on swipe)
+.main-menu :is(a, button):focus {
+  outline: none;
+}
+
+// Only show focus ring for keyboard navigation (not touch/click)
 .main-menu :is(a, button):focus-visible {
   border-radius: 4px;
   outline: 2px solid var(--bs-primary);
