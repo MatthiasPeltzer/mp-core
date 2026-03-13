@@ -15,7 +15,7 @@ use TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer;
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\FileRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Resource\ProcessedFile;
 
 /**
  * Custom content preview renderer to handle TYPO3 v14 compatibility issues
@@ -23,6 +23,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
 {
+    public function __construct(
+        private readonly FileRepository $fileRepository,
+    ) {}
+
     /**
      * Override the main rendering method to catch and handle exceptions
      * from file reference issues
@@ -84,14 +88,12 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
      */
     protected function renderImages(array $record): string
     {
-        $fileRepository = GeneralUtility::makeInstance(FileRepository::class);
         $images = '';
         $maxImages = 1;
         
-        // Try to get file references from the 'image' field
         if (!empty($record['uid'])) {
             try {
-                $fileReferences = $fileRepository->findByRelation('tt_content', 'image', $record['uid']);
+                $fileReferences = $this->fileRepository->findByRelation('tt_content', 'image', $record['uid']);
                 
                 $renderedCount = 0;
                 foreach ($fileReferences as $fileReference) {
@@ -110,7 +112,7 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
                         
                         try {
                             $processedImage = $file->process(
-                                \TYPO3\CMS\Core\Resource\ProcessedFile::CONTEXT_IMAGECROPSCALEMASK,
+                                ProcessedFile::CONTEXT_IMAGECROPSCALEMASK,
                                 $processingInstructions
                             );
                             

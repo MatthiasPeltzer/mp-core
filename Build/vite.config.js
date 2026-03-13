@@ -55,27 +55,21 @@ export default defineConfig(({mode}) => {
         input: entryPoints,
         output: {
           entryFileNames: 'JavaScripts/[name].js',
-          chunkFileNames: 'JavaScripts/[name].js',
-          // JS sourcemaps go alongside JS files
-          sourcemapFileNames: 'JavaScripts/[name].js.map',
+          chunkFileNames: 'JavaScripts/[name]-[hash].js',
           assetFileNames: (assetInfo) => {
-            // CSS files go to StyleSheets/
-            if (assetInfo.name.endsWith('.css')) {
+            const name = assetInfo.names?.[0] ?? assetInfo.name ?? '';
+            if (name.endsWith('.css')) {
               return 'StyleSheets/[name][extname]';
             }
-            // Fonts
-            if (/\.(woff2?|ttf|eot)$/.test(assetInfo.name)) {
+            if (/\.(woff2?|ttf|eot)$/.test(name)) {
               return 'Fonts/[name][extname]';
             }
-            // Images
-            if (/\.(png|jpe?g|gif|webp|avif)$/.test(assetInfo.name)) {
+            if (/\.(png|jpe?g|gif|webp|avif)$/.test(name)) {
               return 'Images/[name][extname]';
             }
-            // SVG Icons
-            if (/\.svg$/.test(assetInfo.name)) {
+            if (/\.svg$/.test(name)) {
               return 'Icons/[name][extname]';
             }
-            // Default
             return '[name][extname]';
           }
         }

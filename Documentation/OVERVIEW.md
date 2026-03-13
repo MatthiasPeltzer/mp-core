@@ -1,258 +1,63 @@
-# MP Core - Complete Feature Overview
+# MP Core - Feature Overview
 
-Comprehensive guide to all features, components, and capabilities of the MP Core TYPO3 extension.
-
-**Requirements:** TYPO3 ^13.4 · PHP ≥8.2 · Node.js ≥20 · npm ≥10 — See [README](../README.md) for installation.
+TYPO3 ^13.4 | PHP >=8.2 | Node.js >=20 -- See [README](../README.md) for installation.
 
 ---
 
-## Core Features
+## Content Elements
 
-### 1. Modern Frontend Stack
-
-- **Vite 7.2** - Lightning-fast build tool with HMR
-- **Bootstrap 5.3.8** - Responsive UI framework with custom theming
-- **Vue.js 3.5** - Progressive framework for interactive components
-- **Sass 1.96** - Advanced CSS preprocessing with ITCSS architecture
-- **PostCSS** - Autoprefixer and px-to-rem conversion
-- **ESLint 9** & **Stylelint 16** - Code quality enforcement
-
-### 2. Content Elements
-
-#### Media Elements
 - **Gallery** - Responsive image galleries with lightbox
-
-#### Layout Elements
-- **Stage** - Hero sections with image backgrounds
+- **Stage** - Hero sections with image/video backgrounds
 - **Banner** - Customizable banner sections
 - **Single Teaser** - Content teasers with images and links
-
-#### Container Elements (b13/container)
-- **Accordion** - Collapsible content sections
-- **Tabs** - Tabbed content panels
-- **Slider** - Swiper-powered carousels
-- **Grid** - Flexible grid layouts
-- **Container** - Generic content wrapper
-
-#### Interactive Elements
-- **TodoList** - Vue.js 3 todo list with localStorage
+- **Accordion** - Collapsible content sections (b13/container)
+- **Tabs** - Tabbed content panels (b13/container)
+- **Slider** - Swiper-powered carousels (b13/container)
+- **Grid** - Flexible column layouts (b13/container)
+- **Container** - Generic content wrapper (b13/container)
+- **TodoList** - Vue.js 3 interactive todo with localStorage
 - **Menu Subpages** - Enhanced subpage menus
+- **Definition List** - Structured definition lists (Content Block)
 
-#### Content Blocks
-- **Definition List** - Structured definition lists
+## Site Sets
 
-### 3. Site Sets (TYPO3 13.4+)
+1. `mpc/mp-core` (required) - Core functionality
+2. `mpc/mp-core-container` - Container element configuration
+3. `mpc/mp-core-news` - News extension integration
+4. `mpc/mp-core-form` - Form framework configuration
+5. `mpc/mp-core-seo` - SEO optimization settings
 
-Modular configuration system with five sets:
+## Frontend Stack
 
-1. **mpc/mp-core** (required) - Core functionality
-2. **mpc/mp-core-container** - Container element configuration
-3. **mpc/mp-core-news** - News extension integration
-4. **mpc/mp-core-form** - Form framework configuration
-5. **mpc/mp-core-seo** - SEO optimization settings
+- Vite 7.2, Bootstrap 5.3.8, Vue.js 3.5, Sass 1.96, PostCSS, ESLint 9, Stylelint 16, Swiper 12, Jarallax 2
+- ITCSS-based SCSS architecture with light/dark themes
+- Code splitting, tree shaking, lazy loading, WOFF2 font subsetting
 
-### 4. Site Settings
+## PHP Classes
 
-Backend-editable configuration categories:
-
-- **PIDs** - Page IDs for navigation, categories, supplements
-- **Content** - Text/media settings, lightbox, headers, links
-- **Config** - Admin panel, debug, cache, spam protection
-- **Performance** - JS/CSS compression, concatenation, lazy loading
-- **Design** - Colors, fonts, breakpoints, container widths
-- **Navigation** - Menu depth, breadcrumbs, hidden pages
-- **Meta** - Viewport, robots, Google verification
-- **Container** - Grid, accordion, tabs, slider settings
-- **News** - Pagination, ordering, categories, media
-- **Form** - Email, validation, storage, honeypot
-- **SEO** - Open Graph, Twitter Cards, sitemap, canonical URLs
-
-### 5. Enhanced TCA
-
-#### Page Enhancements
-- Feature toggles (newsletter, social media, breadcrumb, header container, highlight)
-- Teaser description field
-- Category title field
-- Main category relation
-
-#### File Metadata
-- Accessibility flag (`is_accessible`)
-- RTE-enabled description
-- Enhanced file reference fields (outline, allow_download, caption, language code, track kind, quality label)
-
-#### Content Element Additions
-- Global link wizard with layout options
-- Extended header configuration
-- Custom palettes for consistent field grouping
-
-### 6. Extension Integrations
-
-#### Fluid Styled Content
-- Custom templates for all content elements
-- Bootstrap 5 styling
-- Responsive image rendering
-
-#### EXT:news
-- List and detail view templates
-- Category and tag rendering
-- Pagination support
-- Custom date formats
-
-#### EXT:form
-- Bootstrap-styled form elements
-- Custom layouts and templates
-- YAML configuration
-- Validation styling
-
-#### EXT:indexed_search
-- Search form and results templates
-- Bootstrap styling
-
-#### EXT:seo
-- Open Graph meta tags
-- Twitter Card support
-- Schema.org markup
-- XML sitemap generation
-
-### 7. Custom PHP Classes
-
-#### ViewHelpers
 - **SvgInlineViewHelper** - Inline SVG rendering with attributes
-- **Json\DecodeViewHelper** - JSON decoding in Fluid
-
-#### UserFunc
-- **ColorPickerValueItems** - Dynamic color picker from site config
-
-#### Backend
+- **Json\DecodeViewHelper** - JSON decoding in Fluid templates
+- **ColorPickerValueItems** - Dynamic color picker from site configuration
 - **FilesControlContainer** - Enhanced file field container
+- **CustomContentPreviewRenderer** - Backend preview with v14 fallback
 
-### 8. JavaScript Modules
+## Extension Integrations
 
-#### Entry Bundles
-- `bootstrap.js` - Bootstrap framework
-- `screen.js` - Main frontend functionality
-- `vue.js` - Vue components
-- `swiper.js` - Swiper carousels
-- `navigationPrimary/Secondary/Tertiary.js` - Navigation levels
-- `print.js` - Print styles
-- `backend.js` - Backend styles
-- `ckeditor.js` - CKEditor styles
+- **fluid_styled_content** - Bootstrap 5 styled content rendering
+- **EXT:news** - List/detail views, categories, pagination
+- **EXT:form** - Bootstrap forms, YAML configuration
+- **EXT:indexed_search** - Bootstrap search results
+- **EXT:seo** - Open Graph, Twitter Cards, Schema.org, XML sitemap
 
-#### Feature Modules
-- Theme switcher (dark mode)
-- Sticky header
-- Back-to-top with progress
-- Modal galleries
-- Jarallax parallax
-- Pagination
-- Accordion/tabs deep linking
-- Teaser hover states
+## Accessibility
 
-#### Vue Components
-- TodoList - Interactive todo list with localStorage
-
-### 9. SCSS Architecture (ITCSS)
-
-Organized in layers:
-1. **Settings** - Variables, fonts, colors
-2. **Tools** - Mixins and functions
-3. **Generic** - Reset, normalize
-4. **Elements** - Base HTML elements
-5. **Objects** - Layout patterns
-6. **Components** - UI modules
-7. **Utilities** - Helper classes
-
-Includes:
-- Bootstrap 5 customization (light & dark themes)
-- Custom font integration (Open Sans, Turret Road)
-- Responsive breakpoints
-- CSS logical properties for RTL support
-
-### 10. Backend Features
-
-- Custom backend layouts with preview SVGs
-- CKEditor preset with custom styles
-- Backend CSS for consistent editing experience
-- Color picker integration with site configuration
-- FlexForm for Vue components
-
-### 11. Accessibility Features
-
-- Keyboard navigation support
-- Screen reader announcements
-- ARIA labels and roles
-- Skip links
-- Focus management
-- High contrast mode support (forced-colors)
-- Semantic HTML structure
-
-### 12. Performance Optimizations
-
-- Vite-optimized asset bundling
-- Code splitting
-- Tree shaking
-- CSS/JS minification
-- Image optimization
-- Lazy loading support
-- Async script loading
-- Font subsetting (WOFF2)
-
-### 13. Developer Experience
-
-- Hot Module Replacement (HMR) with Vite
-- ESLint with modern config
-- Stylelint with SCSS support
-- Source maps in development
-- Watch mode for continuous builds
-- Consistent code formatting
-- Modular architecture
-- Clear separation of concerns
+- Keyboard navigation, screen reader announcements, ARIA labels/roles
+- Skip links, focus management, high contrast mode (forced-colors)
 
 ---
 
-## File Structure
+## Documentation
 
-For detailed directory structure and file organization, see **[Frontend Guide → Project Structure](Frontend-Guide.md#project-structure)**.
-
-**Key directories:**
-
-| Directory | Purpose |
-|-----------|---------|
-| `Build/` | Frontend build system (Vite, source assets) |
-| `Classes/` | PHP classes (ViewHelpers, UserFunc, Backend) |
-| `Configuration/` | TYPO3 config (TCA, TypoScript, Site Sets, FlexForms) |
-| `ContentBlocks/` | Content Block definitions |
-| `Resources/Private/` | Fluid templates, partials, layouts, translations |
-| `Resources/Public/` | Compiled assets (JS, CSS, fonts, images) |
-
----
-
-## Quick Links
-
-### Getting Started
-- [README](../README.md) - Quick start guide
-- [Installation Guide](README.md#installation) - Detailed setup
-
-### Frontend Development
-- [Frontend Guide](Frontend-Guide.md) - Build system and project structure
-- [Frontend Development](Frontend-Development.md) - JavaScript and SCSS architecture
-- [Favicons](Favicons.md) - Favicon generation
-
-### TYPO3 Configuration
-- [TYPO3 Configuration](TYPO3-Configuration.md) - Site Sets, Settings, TypoScript
-- [TCA Overview](TCA-Overview.md) - Content element configuration
-
-### External Resources
-- [TYPO3 Documentation](https://docs.typo3.org/)
-- [Bootstrap Documentation](https://getbootstrap.com/docs/)
-- [Vue.js Documentation](https://vuejs.org/)
-- [Vite Documentation](https://vitejs.dev/)
-
----
-
-**Version**: 1.0.0
-**TYPO3**: 13.4+
-**PHP**: ≥8.2
-**License**: GPL-3.0-or-later
-**Author**: Matthias Peltzer
-
+- [Frontend](Frontend.md) - Build system, JS/SCSS architecture
+- [Configuration](Configuration.md) - Site Sets, TypoScript, TCA
+- [Favicons](Favicons.md) - Favicon generation pipeline

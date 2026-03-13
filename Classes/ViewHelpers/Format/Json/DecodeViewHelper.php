@@ -8,33 +8,22 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
 
 /**
- * Class DecodeViewHelper
+ * Decodes a JSON string into a PHP array.
+ *
+ * Note: Output escaping is disabled because this ViewHelper returns an array.
+ * Consumers MUST escape individual values when rendering them in HTML.
  */
 class DecodeViewHelper extends AbstractViewHelper
 {
-    /**
-     * @var bool
-     */
     protected $escapeOutput = false;
 
-    /**
-     * @var bool
-     */
     protected $escapeChildren = false;
 
-    /**
-     * Initialize arguments.
-     */
     public function initializeArguments(): void
     {
         $this->registerArgument('json', 'string', 'The JSON string to decode', true);
     }
 
-    /**
-     * Render method.
-     *
-     * @return mixed
-     */
     public function render(): mixed
     {
         $json = $this->arguments['json'];

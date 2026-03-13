@@ -18,10 +18,11 @@ class ColorPickerValueItems
     {
         /** @var SiteInterface $site */
         $site = $config['site'];
+        $languageService = $this->getLanguageService();
         $items = [
             [
-                $this->getLanguageService()->sL('LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-0'),
-                '',
+                'label' => $languageService->sL('LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-0'),
+                'value' => '',
             ],
         ];
         if (!method_exists($site, 'getConfiguration')) {
@@ -33,7 +34,7 @@ class ColorPickerValueItems
 
         $colors = array_filter(
             $configuration,
-            function ($item, $key) { return (int)preg_match('/^color-[0-9]+$/', $key) > 0 && $item !== ''; },
+            fn(mixed $item, string $key): bool => preg_match('/^color-\d+$/', $key) === 1 && $item !== '',
             ARRAY_FILTER_USE_BOTH
         );
 
@@ -45,16 +46,13 @@ class ColorPickerValueItems
                 $label = (string)$configuration[$labelKey];
             }
 
-            $items[] = [$label, $key];
+            $items[] = ['label' => $label, 'value' => $key];
         }
 
         $config['items'] = $items;
     }
 
-    /**
-     * @codeCoverageIgnore
-     */
-    public function getLanguageService(): LanguageService
+    private function getLanguageService(): LanguageService
     {
         return $GLOBALS['LANG'];
     }

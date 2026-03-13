@@ -8,11 +8,12 @@ use Exception;
 
 class FileException extends Exception
 {
-    protected array $context;
-
-    public function __construct(string $message, int $code = 0, array $context = [], ?Exception $previous = null)
-    {
-        $this->context = $context;
+    public function __construct(
+        string $message,
+        int $code = 0,
+        private readonly array $context = [],
+        ?\Throwable $previous = null,
+    ) {
         parent::__construct($message, $code, $previous);
     }
 
