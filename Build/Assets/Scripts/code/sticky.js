@@ -1,7 +1,12 @@
 /**
  * Sticky Header Module
- * Adds/removes sticky class based on scroll position
- * and adjusts body padding to compensate for fixed header
+ *
+ * When a .toplogo-container exists (banner / extra logos above the nav),
+ * a progressive negative margin hides the toplogo pixel-by-pixel as the
+ * user scrolls, keeping the navigation pinned at the viewport top.
+ *
+ * The .sticky class is still toggled for cosmetic CSS changes (logo swap,
+ * meta-nav hide, etc.) once the toplogo is fully scrolled out.
  */
 
 // =============================================================================
@@ -16,17 +21,24 @@ if (!header) {
   // eslint-disable-next-line no-console
   console.warn('Sticky: .header-wrapper-bg not found');
 } else {
+  const toplogo = header.querySelector('.toplogo-container');
   let headerHeight = header.offsetHeight;
+  let toplogoHeight = toplogo ? toplogo.offsetHeight : 0;
 
   // =============================================================================
   // SCROLL HANDLING
   // =============================================================================
 
-  /**
-   * Adds/removes sticky class based on scroll position
-   */
   function handleScroll() {
-    body.classList.toggle('sticky', window.scrollY > headerHeight);
+    const scrollY = window.scrollY;
+
+    if (toplogo && toplogoHeight > 0) {
+      const offset = Math.min(scrollY, toplogoHeight);
+      toplogo.style.marginTop = `${-offset}px`;
+      body.classList.toggle('sticky', scrollY >= toplogoHeight);
+    } else {
+      body.classList.toggle('sticky', scrollY > headerHeight);
+    }
   }
 
   window.addEventListener('scroll', handleScroll, {passive: true});
@@ -35,12 +47,19 @@ if (!header) {
   // RESPONSIVE PADDING
   // =============================================================================
 
+  function measureToplogo() {
+    if (toplogo) {
+      toplogoHeight = toplogo.offsetHeight;
+    }
+  }
+
   /**
    * Updates body padding based on current header height
    */
   function updatePadding() {
     headerHeight = header.offsetHeight;
     body.style.paddingTop = `${headerHeight / 16}rem`;
+    measureToplogo();
   }
 
   /**
@@ -60,4 +79,9 @@ if (!header) {
   }
 
   initResponsivePadding();
+
+  // Re-measure after late-loading content (images, fonts) settles
+  if (toplogo) {
+    new ResizeObserver(() => measureToplogo()).observe(toplogo);
+  }
 }

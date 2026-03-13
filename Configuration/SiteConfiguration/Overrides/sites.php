@@ -5,147 +5,76 @@ declare(strict_types=1);
 defined('TYPO3') || die();
 
 (static function (): void {
-    $GLOBALS['SiteConfiguration']['site']['columns']['search'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.search.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.search.description',
-        'config' => [
-            'renderType' => 'checkboxToggle',
-            'type' => 'check',
-            'default' => 0,
-        ],
-    ];
+    $lll = 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.';
 
-    $GLOBALS['SiteConfiguration']['site']['columns']['subnav'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.subnav.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.subnav.description',
-        'config' => [
-            'renderType' => 'checkboxToggle',
-            'type' => 'check',
-            'default' => 0,
-        ],
-    ];
+    // --- Checkbox toggles ---
 
-    $GLOBALS['SiteConfiguration']['site']['columns']['subnavOrder'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.subnavOrder.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.subnavOrder.description',
-        'config' => [
-            'renderType' => 'checkboxToggle',
-            'type' => 'check',
-            'default' => 0,
-        ],
-    ];
+    foreach (['search', 'subnav', 'subnavOrder'] as $field) {
+        $GLOBALS['SiteConfiguration']['site']['columns'][$field] = [
+            'label' => $lll . $field . '.label',
+            'description' => $lll . $field . '.description',
+            'config' => [
+                'renderType' => 'checkboxToggle',
+                'type' => 'check',
+                'default' => 0,
+            ],
+        ];
+    }
+
+    // --- Navigation type ---
 
     $GLOBALS['SiteConfiguration']['site']['columns']['navType'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.navType',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.navType.description',
+        'label' => $lll . 'navType',
+        'description' => $lll . 'navType.description',
         'config' => [
-            'items' =>
-                [
-                    0 =>
-                        [
-                            0 => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.navType.0',
-                            1 => '1',
-                        ],
-                    1 =>
-                        [
-                            0 => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.navType.1',
-                            1 => '2',
-                        ],
-                    2 =>
-                        [
-                            0 => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.navType.2',
-                            1 => '3',
-                        ],
-                ],
+            'items' => [
+                ['label' => $lll . 'navType.0', 'value' => '1'],
+                ['label' => $lll . 'navType.1', 'value' => '2'],
+                ['label' => $lll . 'navType.2', 'value' => '3'],
+            ],
             'renderType' => 'selectSingle',
             'type' => 'select',
         ],
     ];
 
-    // Add copyrightText to the page
+    // --- Copyright text ---
+
     $GLOBALS['SiteConfiguration']['site']['columns']['copyrightText'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.copyrightText.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.copyrightText.description',
+        'label' => $lll . 'copyrightText.label',
+        'description' => $lll . 'copyrightText.description',
         'config' => [
             'type' => 'text',
             'renderType' => 'input',
         ],
     ];
 
-    // Add different favicons to the page
-    $GLOBALS['SiteConfiguration']['site']['columns']['apple-touch-icon'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.apple-touch-icon',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.description.apple-touch-icon',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['file'],
-            ],
-    ];
+    // --- Favicons (file links) ---
 
-    $GLOBALS['SiteConfiguration']['site']['columns']['faviconIco'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.faviconIco',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.description.faviconIco',
-        'config' =>
-            [
+    $faviconFields = [
+        'apple-touch-icon',
+        'faviconIco',
+        'faviconSvg',
+        'favicon-96x96-png',
+        'webmanifest',
+        'web-app-manifest-192x192',
+        'web-app-manifest-512x512',
+    ];
+    foreach ($faviconFields as $field) {
+        $GLOBALS['SiteConfiguration']['site']['columns'][$field] = [
+            'label' => $lll . $field,
+            'description' => $lll . 'description.' . $field,
+            'config' => [
                 'type' => 'link',
                 'allowedTypes' => ['file'],
             ],
-    ];
+        ];
+    }
 
-    $GLOBALS['SiteConfiguration']['site']['columns']['faviconSvg'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.faviconSvg',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.description.faviconSvg',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['file'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['favicon-96x96-png'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.favicon-96x96-png',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.description.favicon-96x96-png',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['file'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['webmanifest'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.webmanifest',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.description.webmanifest',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['file'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['web-app-manifest-192x192'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.web-app-manifest-192x192',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.description.web-app-manifest-192x192',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['file'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['web-app-manifest-512x512'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.web-app-manifest-512x512',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.description.web-app-manifest-512x512',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['file'],
-            ],
-    ];
+    // --- Color toggle ---
 
     $GLOBALS['SiteConfiguration']['site']['columns']['color-toggle'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-toggle',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-toggle.description',
+        'label' => $lll . 'color-toggle',
+        'description' => $lll . 'color-toggle.description',
         'config' => [
             'renderType' => 'checkboxToggle',
             'type' => 'check',
@@ -153,224 +82,50 @@ defined('TYPO3') || die();
         ],
     ];
 
-    $GLOBALS['SiteConfiguration']['site']['columns']["label-color-1"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-1.label",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-1.label.description",
-        'config' => [
-            'type' => 'input',
-            'size' => 25,
-        ],
-    ];
+    // --- Numbered color pairs (label + color picker) ---
 
-    $GLOBALS['SiteConfiguration']['site']['columns']["color-1"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-1",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-1.description",
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
+    for ($i = 1; $i <= 8; $i++) {
+        $GLOBALS['SiteConfiguration']['site']['columns']['label-color-' . $i] = [
+            'label' => $lll . 'color-' . $i . '.label',
+            'description' => $lll . 'color-' . $i . '.label.description',
+            'config' => [
+                'type' => 'input',
+                'size' => 25,
+            ],
+        ];
+        $GLOBALS['SiteConfiguration']['site']['columns']['color-' . $i] = [
+            'label' => $lll . 'color-' . $i,
+            'description' => $lll . 'color-' . $i . '.description',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'color',
+                'opacity' => true,
+                'size' => 25,
+            ],
+        ];
+    }
 
-    $GLOBALS['SiteConfiguration']['site']['columns']["label-color-2"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-2.label",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-2.label.description",
-        'config' => [
-            'type' => 'input',
-            'size' => 25,
-        ],
-    ];
+    // --- Named color pickers ---
 
-    $GLOBALS['SiteConfiguration']['site']['columns']["color-2"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-2",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-2.description",
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
+    $namedColors = ['color-primary', 'color-secondary', 'color-secondary-rgba', 'color-tertiary', 'color-quaternary'];
+    foreach ($namedColors as $field) {
+        $GLOBALS['SiteConfiguration']['site']['columns'][$field] = [
+            'label' => $lll . $field . '.label',
+            'description' => $lll . $field . '.description',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'color',
+                'opacity' => true,
+                'size' => 25,
+            ],
+        ];
+    }
 
-    $GLOBALS['SiteConfiguration']['site']['columns']["label-color-3"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-3.label",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-3.label.description",
-        'config' => [
-            'type' => 'input',
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["color-3"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-3",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-3.description",
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["label-color-4"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-4.label",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-4.label.description",
-        'config' => [
-            'type' => 'input',
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["color-4"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-4",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-4.description",
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["label-color-5"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-5.label",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-5.label.description",
-        'config' => [
-            'type' => 'input',
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["color-5"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-5",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-5.description",
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["label-color-6"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-6.label",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-6.label.description",
-        'config' => [
-            'type' => 'input',
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["color-6"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-6",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-6.description",
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["label-color-7"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-7.label",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-7.label.description",
-        'config' => [
-            'type' => 'input',
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["color-7"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-7",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-7.description",
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["label-color-8"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-8.label",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-8.label.description",
-        'config' => [
-            'type' => 'input',
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']["color-8"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-8",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-8.description",
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['color-primary'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-primary.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-primary.description',
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['color-secondary'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-secondary.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-secondary.description',
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['color-secondary-rgba'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-secondary-rgba.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-secondary-rgba.description',
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['color-tertiary'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-tertiary.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-tertiary.description',
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['color-quaternary'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-quaternary.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.color-quaternary.description',
-        'config' => [
-            'type' => 'input',
-            'renderType' => 'color',
-            'opacity' => true,
-            'size' => 25,
-        ],
-    ];
+    // --- Custom styles textarea ---
 
     $GLOBALS['SiteConfiguration']['site']['columns']['styles'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.styles',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.styles.description',
+        'label' => $lll . 'styles',
+        'description' => $lll . 'styles.description',
         'config' => [
             'type' => 'text',
             'placeholder' => ':root {' . LF . '  --bs-primary: #000' . LF . '}',
@@ -380,9 +135,11 @@ defined('TYPO3') || die();
         ],
     ];
 
+    // --- Social media ---
+
     $GLOBALS['SiteConfiguration']['site']['columns']['socialMediaSwitch'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.socialMediaSwitch.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.socialMediaSwitch.description',
+        'label' => $lll . 'socialMediaSwitch.label',
+        'description' => $lll . 'socialMediaSwitch.description',
         'config' => [
             'renderType' => 'checkboxToggle',
             'type' => 'check',
@@ -390,229 +147,48 @@ defined('TYPO3') || die();
         ],
     ];
 
-    $GLOBALS['SiteConfiguration']['site']['columns']['facebook'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.facebook.label',
-        'config' =>
-            [
+    $socialMediaPlatforms = [
+        'facebook', 'x', 'instagram', 'threads', 'mastodon', 'bluesky',
+        'tiktok', 'tumblr', 'reddit', 'linkedin', 'xing', 'youtube',
+        'vimeo', 'spotify', 'bandcamp', 'soundcloud', 'pinterest',
+        'whatsapp', 'signal', 'telegram', 'discord',
+    ];
+    foreach ($socialMediaPlatforms as $platform) {
+        $GLOBALS['SiteConfiguration']['site']['columns'][$platform] = [
+            'label' => $lll . $platform . '.label',
+            'config' => [
                 'type' => 'link',
                 'allowedTypes' => ['url'],
             ],
-    ];
+        ];
+    }
 
-    $GLOBALS['SiteConfiguration']['site']['columns']['x'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.x.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
+    // --- Logos ---
 
-    $GLOBALS['SiteConfiguration']['site']['columns']['instagram'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.instagram.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['threads'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.threads.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['mastodon'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.mastodon.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['bluesky'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.bluesky.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['tiktok'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.tiktok.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['tumblr'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.tumblr.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['reddit'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.reddit.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['linkedin'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.linkedin.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['xing'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.xing.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['youtube'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.youtube.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['vimeo'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.vimeo.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['spotify'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.spotify.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['bandcamp'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.bandcamp.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['soundcloud'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.soundcloud.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['pinterest'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.pinterest.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['whatsapp'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.whatsapp.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['signal'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.signal.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['telegram'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.telegram.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['discord'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.discord.label',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['url'],
-            ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['logoBig'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logoBig.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logoBig.description',
-        'config' =>
-            [
+    foreach (['logoBig', 'logoSmall'] as $field) {
+        $GLOBALS['SiteConfiguration']['site']['columns'][$field] = [
+            'label' => $lll . $field . '.label',
+            'description' => $lll . $field . '.description',
+            'config' => [
                 'type' => 'link',
                 'allowedTypes' => ['file'],
             ],
-    ];
-
-    $GLOBALS['SiteConfiguration']['site']['columns']['logoSmall'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logoSmall.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logoSmall.description',
-        'config' =>
-            [
-                'type' => 'link',
-                'allowedTypes' => ['file'],
-            ],
-    ];
+        ];
+    }
 
     $GLOBALS['SiteConfiguration']['site']['columns']['logoSvg'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logoSvg.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logoSvg.description',
-        'config' =>
-            [
-                'renderType' => 'checkboxToggle',
-                'type' => 'check',
-                'default' => 1,
-            ],
+        'label' => $lll . 'logoSvg.label',
+        'description' => $lll . 'logoSvg.description',
+        'config' => [
+            'renderType' => 'checkboxToggle',
+            'type' => 'check',
+            'default' => 1,
+        ],
     ];
 
-    $GLOBALS['SiteConfiguration']['site']['columns']["logoText"] = [
-        'label' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logoText.label",
-        'description' => "LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logoText.description",
+    $GLOBALS['SiteConfiguration']['site']['columns']['logoText'] = [
+        'label' => $lll . 'logoText.label',
+        'description' => $lll . 'logoText.description',
         'config' => [
             'type' => 'input',
             'size' => 50,
@@ -620,70 +196,43 @@ defined('TYPO3') || die();
     ];
 
     $GLOBALS['SiteConfiguration']['site']['columns']['logoTextHidden'] = [
-        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logoTextHidden.label',
-        'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logoTextHidden.description',
-        'config' =>
-            [
-                'renderType' => 'checkboxToggle',
-                'type' => 'check',
-                'default' => 0,
-            ],
+        'label' => $lll . 'logoTextHidden.label',
+        'description' => $lll . 'logoTextHidden.description',
+        'config' => [
+            'renderType' => 'checkboxToggle',
+            'type' => 'check',
+            'default' => 0,
+        ],
     ];
 
+    // --- Show items ---
+
     $GLOBALS['SiteConfiguration']['site']['types']['0']['showitem'] .= '
-        ,--div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.customization, navType, subnav, subnavOrder, search, copyrightText
-        ,--div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.favicons, favicon-96x96-png, faviconIco, faviconSvg, apple-touch-icon, webmanifest, web-app-manifest-192x192, web-app-manifest-512x512
-        ,--div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.colorsAndStyles, color-toggle, label-color-1, color-1, label-color-2, color-2, label-color-3, color-3, label-color-4, color-4, label-color-5, color-5, label-color-6, color-6, label-color-7, color-7, label-color-8, color-8, color-primary, color-secondary, color-secondary-rgba, color-tertiary, color-quaternary, styles
-        ,--div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.socialMediaTitle.title, socialMediaSwitch, facebook, x, instagram, threads, mastodon, bluesky, tiktok, tumblr, reddit, linkedin, xing, youtube, vimeo, spotify, bandcamp, soundcloud, pinterest, whatsapp, signal, telegram, discord
-        ,--div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.logos.title, logoBig, logoSmall, logoSvg, logoText, logoTextHidden
+        ,--div--;' . $lll . 'customization, navType, subnav, subnavOrder, search, copyrightText
+        ,--div--;' . $lll . 'favicons, favicon-96x96-png, faviconIco, faviconSvg, apple-touch-icon, webmanifest, web-app-manifest-192x192, web-app-manifest-512x512
+        ,--div--;' . $lll . 'colorsAndStyles, color-toggle, label-color-1, color-1, label-color-2, color-2, label-color-3, color-3, label-color-4, color-4, label-color-5, color-5, label-color-6, color-6, label-color-7, color-7, label-color-8, color-8, color-primary, color-secondary, color-secondary-rgba, color-tertiary, color-quaternary, styles
+        ,--div--;' . $lll . 'socialMediaTitle.title, socialMediaSwitch, ' . implode(', ', $socialMediaPlatforms) . '
+        ,--div--;' . $lll . 'logos.title, logoBig, logoSmall, logoSvg, logoText, logoTextHidden
     ';
 })();
 
-$localizableKeys = [
-    'copyrightText',
-];
+// --- Language-specific overrides ---
 
-$localizableKeysLogo = [
-    'logoBig',
-    'logoSmall',
-    'logoSvg',
-];
+$localizableKeys = ['copyrightText'];
+$localizableKeysLogo = ['logoBig', 'logoSmall', 'logoSvg'];
+$localizableKeysText = ['logoText', 'logoTextHidden'];
 
-$localizableKeysText = [
-    'logoText',
-    'logoTextHidden',
-];
-
-foreach ($localizableKeys as $localizableKey) {
-    $GLOBALS['SiteConfiguration']['site_language']['columns'][$localizableKey] = $GLOBALS['SiteConfiguration']['site']['columns'][$localizableKey];
+foreach ([...$localizableKeys, ...$localizableKeysLogo, ...$localizableKeysText] as $key) {
+    $GLOBALS['SiteConfiguration']['site_language']['columns'][$key] = $GLOBALS['SiteConfiguration']['site']['columns'][$key];
 }
 
-foreach ($localizableKeysLogo as $localizableKeyLogo) {
-    $GLOBALS['SiteConfiguration']['site_language']['columns'][$localizableKeyLogo] = $GLOBALS['SiteConfiguration']['site']['columns'][$localizableKeyLogo];
+$lllPalette = 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:page.configuration.palette.localized-variables.';
+
+foreach (['localized-variables' => $localizableKeys, 'localized-variables-logo' => $localizableKeysLogo, 'localized-variables-text' => $localizableKeysText] as $paletteName => $fields) {
+    $GLOBALS['SiteConfiguration']['site_language']['palettes'][$paletteName] = [
+        'label' => $lllPalette . 'label',
+        'description' => $lllPalette . 'description',
+        'showitem' => implode(',', $fields),
+    ];
+    $GLOBALS['SiteConfiguration']['site_language']['types']['1']['showitem'] .= ',--palette--;;' . $paletteName;
 }
-
-foreach ($localizableKeysText as $localizableKeyText) {
-    $GLOBALS['SiteConfiguration']['site_language']['columns'][$localizableKeyText] = $GLOBALS['SiteConfiguration']['site']['columns'][$localizableKeyText];
-}
-
-$GLOBALS['SiteConfiguration']['site_language']['palettes']['localized-variables'] = [
-    'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:page.configuration.palette.localized-variables.label',
-    'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:page.configuration.palette.localized-variables.description',
-    'showitem' => implode(',', $localizableKeys),
-];
-
-$GLOBALS['SiteConfiguration']['site_language']['palettes']['localized-variables-logo'] = [
-    'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:page.configuration.palette.localized-variables.label',
-    'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:page.configuration.palette.localized-variables.description',
-    'showitem' => implode(',', $localizableKeysLogo),
-];
-
-$GLOBALS['SiteConfiguration']['site_language']['palettes']['localized-variables-text'] = [
-    'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:page.configuration.palette.localized-variables.label',
-    'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:page.configuration.palette.localized-variables.description',
-    'showitem' => implode(',', $localizableKeysText),
-];
-
-$GLOBALS['SiteConfiguration']['site_language']['types']['1']['showitem'] .= ',--palette--;;localized-variables';
-$GLOBALS['SiteConfiguration']['site_language']['types']['1']['showitem'] .= ',--palette--;;localized-variables-logo';
-$GLOBALS['SiteConfiguration']['site_language']['types']['1']['showitem'] .= ',--palette--;;localized-variables-text';

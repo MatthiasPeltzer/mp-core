@@ -26,14 +26,14 @@
   dd,
   a {
     hyphens: auto;
-    word-break: break-word;
     overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   hr {
     border: 0 none;
     color: inherit;
-    margin: 2rem 0;
+    margin: 32px 0;
     opacity: 1;
 
     &::after {

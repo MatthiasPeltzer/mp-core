@@ -37,11 +37,19 @@
       top: 0;
       width: 100%;
       z-index: 1030;
+
+      .sticky & {
+        padding-top: 0;
+      }
     }
 
     .toplogo-container {
       a {
         display: inline-block;
+      }
+
+      .sticky & {
+        margin-bottom: 6px;
       }
     }
   }

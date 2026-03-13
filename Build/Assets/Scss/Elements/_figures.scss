@@ -63,9 +63,6 @@
 }
 
 .toplogo-container {
-  margin-top: 0;
-  transition: margin-top 0.2s ease-in-out;
-
   &::after {
     background-color: var(--bs-primary);
     content: "";
@@ -89,10 +86,6 @@
 
   .image-wrapper {
     flex-grow: 0;
-  }
-
-  .sticky & {
-    margin-top: -122px;
   }
 }
 
