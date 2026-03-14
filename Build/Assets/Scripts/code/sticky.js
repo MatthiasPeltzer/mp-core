@@ -30,15 +30,12 @@ if (!header) {
   // =============================================================================
 
   function handleScroll() {
-    const scrollY = window.scrollY;
+    if (!toplogo || toplogoHeight <= 0) return;
 
-    if (toplogo && toplogoHeight > 0) {
-      const offset = Math.min(scrollY, toplogoHeight);
-      toplogo.style.marginTop = `${-offset}px`;
-      body.classList.toggle('sticky', scrollY >= toplogoHeight);
-    } else {
-      body.classList.toggle('sticky', scrollY > headerHeight);
-    }
+    const scrollY = window.scrollY;
+    const offset = Math.min(scrollY, toplogoHeight);
+    toplogo.style.marginTop = `${-offset}px`;
+    body.classList.toggle('sticky', scrollY >= toplogoHeight);
   }
 
   window.addEventListener('scroll', handleScroll, {passive: true});
