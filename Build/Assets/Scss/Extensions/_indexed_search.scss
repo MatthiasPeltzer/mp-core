@@ -65,26 +65,30 @@
 
 .tx-indexedsearch-text-item-path a {
   hyphens: auto;
-  word-break: break-word;
   overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .tx-indexedsearch-browsebox {
-  background-color: var(--bs-primary);
+  background-color: transparent;
   display: flex;
 
   @include font-size($fs-xs);
 
   list-style: none;
   margin-bottom: 0;
-  padding: 2px 10px;
+  padding: 0;
 
   a {
+    background-color: var(--bs-primary);
     color: var(--bs-white) !important;
+    margin: 0;
     outline-color: var(--bs-white) !important;
+    padding: 4px 8px;
   }
 
   li {
+    margin: 16px 0;
     padding-right: 20px;
 
     &:last-child {
@@ -108,35 +112,82 @@
   width: 100%;
 }
 
-.search-form {
+.tx-indexedsearch-searchbox {
+  .input-group {
+    .form-control {
+      @include font-size($fs-xl);
+    }
+
+    .btn {
+      @include font-size($fs-lg);
+
+      padding: 10px 30px;
+    }
+  }
+}
+
+.tx-indexedsearch-advanced {
+  border-color: var(--bs-border-color);
+
+  .card-body {
+    .form-label {
+      font-weight: 600;
+    }
+
+    .d-grid .btn {
+      @include font-size($fs-lg);
+
+      padding: 10px 30px;
+    }
+  }
+}
+
+.tx-indexedsearch-res {
+  border-bottom: 2px solid var(--bs-primary);
+  margin-bottom: 16px;
+}
+
+.tx-indexedsearch-res-header {
+  align-items: baseline;
   display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
-  text-align: center;
+  gap: 8px;
 
-  .label {
-    @include font-size($fs-xl);
-
-    font-weight: 700;
-    margin-bottom: 30px;
-    width: 100%;
+  .tx-indexedsearch-result-number {
+    flex: 1;
   }
 
-  .form-control {
-    display: block;
-    flex: 1 1 auto;
-
-    @include font-size($fs-xl);
-
-    margin-bottom: 30px;
+  .tx-indexedsearch-title {
+    flex: 1 0 auto;
+    width: auto;
   }
 
-  .btn {
-    @include font-size($fs-lg);
+  .tx-indexedsearch-percent {
+    @extend %opensansweb;
 
-    margin: auto;
-    padding: 10px 30px;
+    @include font-size($fs-md);
+
+    flex: 0 1 auto;
+    letter-spacing: normal;
+    margin-left: auto;
+    text-align: right;
   }
+}
+
+.tx-indexedsearch-info-sword-word {
+  font-style: italic;
+  font-weight: 700;
+}
+
+.tx-indexedsearch-advanced-search-button {
+  @include media-breakpoint-up(md) {
+    margin-top: -54px;
+  }
+}
+
+.tx-indexedsearch-list {
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
 .tx-indexedsearch-info {

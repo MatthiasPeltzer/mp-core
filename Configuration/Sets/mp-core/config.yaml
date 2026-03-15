@@ -2,6 +2,7 @@ name: mpc/mp-core
 label: MP Core [Template]
 dependencies:
   - typo3/fluid-styled-content
+  - typo3/indexed-search
 settings:
   definitions: settings.definitions.yaml
   defaults: settings.yaml
