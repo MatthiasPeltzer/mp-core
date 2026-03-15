@@ -6,7 +6,7 @@
 <f:if condition="{pagination}">
     <ul class="tx-indexedsearch-browsebox">
         <f:if condition="{pagination.previousPageNumber}">
-            <li class="tx-indexedsearch-browselist-next">
+            <li class="tx-indexedsearch-browselist-prev">
                 <a href="#" class="tx-indexedsearch-page-selector" data-prefix="tx_indexedsearch" data-pointer="{pagination.previousPageNumber - 1}" data-free-index-uid="{freeIndexUid}">
                     <f:translate key="displayResults.previous" />
                 </a>
@@ -17,10 +17,10 @@
             <f:variable name="pageLabel" value="{f:translate(key: 'displayResults.page')} {pageNumber}" />
             <f:if condition="{pageNumber} == {searchParams.pointer + 1}">
                 <f:then>
-                    <li><strong><a href="#" class="tx-indexedsearch-page-selector" data-prefix="tx_indexedsearch" data-pointer="{pageNumber - 1}" data-free-index-uid="{freeIndexUid}" aria-current="page">{pageLabel}</a></strong></li>
+                    <li class="tx-indexedsearch-page"><strong><a href="#" class="tx-indexedsearch-page-selector" data-prefix="tx_indexedsearch" data-pointer="{pageNumber - 1}" data-free-index-uid="{freeIndexUid}" aria-current="page">{pageLabel}</a></strong></li>
                 </f:then>
                 <f:else>
-                    <li><a href="#" class="tx-indexedsearch-page-selector" data-prefix="tx_indexedsearch" data-pointer="{pageNumber - 1}" data-free-index-uid="{freeIndexUid}">{pageLabel}</a></li>
+                    <li class="tx-indexedsearch-page"><a href="#" class="tx-indexedsearch-page-selector" data-prefix="tx_indexedsearch" data-pointer="{pageNumber - 1}" data-free-index-uid="{freeIndexUid}">{pageLabel}</a></li>
                 </f:else>
             </f:if>
         </f:for>
