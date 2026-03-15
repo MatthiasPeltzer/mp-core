@@ -20,6 +20,7 @@
 
     .tx-indexedsearch-result-number {
       flex: 1;
+      white-space: nowrap;
     }
 
     .tx-indexedsearch-title {
@@ -70,17 +71,21 @@
 }
 
 .tx-indexedsearch-browsebox {
+  align-items: center;
   background-color: transparent;
   display: flex;
+  flex-wrap: wrap;
 
   @include font-size($fs-xs);
 
+  gap: 4px 0;
   list-style: none;
   margin-bottom: 0;
   padding: 0;
 
   a {
     background-color: var(--bs-primary);
+    border-radius: 4px;
     color: var(--bs-white) !important;
     margin: 0;
     outline-color: var(--bs-white) !important;
@@ -93,6 +98,15 @@
 
     &:last-child {
       padding-right: 0;
+    }
+  }
+
+  .tx-indexedsearch-ellipsis {
+    padding-right: 20px;
+    user-select: none;
+
+    span {
+      letter-spacing: 2px;
     }
   }
 }
