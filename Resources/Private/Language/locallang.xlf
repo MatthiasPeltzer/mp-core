@@ -198,6 +198,15 @@
       <trans-unit id="tt_content.images" resname="tt_content.images">
         <source>images</source>
       </trans-unit>
+      <trans-unit id="search.dateFormat" resname="search.dateFormat">
+        <source>m/d/Y</source>
+      </trans-unit>
+      <trans-unit id="search.decimalSeparator" resname="search.decimalSeparator">
+        <source>.</source>
+      </trans-unit>
+      <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator">
+        <source>,</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

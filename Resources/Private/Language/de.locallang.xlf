@@ -263,6 +263,18 @@
         <source>images</source>
         <target>Bilder</target>
       </trans-unit>
+      <trans-unit id="search.dateFormat" resname="search.dateFormat" approved="yes">
+        <source>m/d/Y</source>
+        <target>d.m.Y</target>
+      </trans-unit>
+      <trans-unit id="search.decimalSeparator" resname="search.decimalSeparator" approved="yes">
+        <source>.</source>
+        <target>,</target>
+      </trans-unit>
+      <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator" approved="yes">
+        <source>,</source>
+        <target>.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
