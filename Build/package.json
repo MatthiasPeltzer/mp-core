@@ -20,7 +20,7 @@
 	"dependencies": {
 		"@popperjs/core": "^2.11.8",
 		"bootstrap": "5.3.8",
-		"jarallax": "^2.2.1",
+		"jarallax": "^3.0.0",
 		"swiper": "^12.1.2",
 		"vue": "^3.5.30"
 	},
