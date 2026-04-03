@@ -33,7 +33,7 @@
 		"postcss": "^8.5.8",
 		"postcss-preset-env": "^11.2.0",
 		"postcss-pxtorem": "^6.1.0",
-		"sass": "1.98.0",
+		"sass": "1.99.0",
 		"stylelint": "^17.6.0",
 		"stylelint-config-recommended": "^18.0.0",
 		"stylelint-config-recommended-scss": "^17.0.0",
