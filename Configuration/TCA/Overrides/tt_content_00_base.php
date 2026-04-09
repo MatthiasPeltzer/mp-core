@@ -7,9 +7,9 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 defined('TYPO3') || die();
 
 (static function (): void {
-    // Use a custom preview renderer in the page module as a safe fallback for TYPO3 v14+
-    // (do not override if another extension already registered one)
-    $GLOBALS['TCA']['tt_content']['ctrl']['previewRenderer'] ??= \Mpc\MpCore\Preview\CustomContentPreviewRenderer::class;
+    // Use a custom preview renderer to work around TYPO3 core TypeErrors in backend previews
+    // (null passed to Sanitizer::sanitize, missing file references in getThumbCodeUnlinked)
+    $GLOBALS['TCA']['tt_content']['ctrl']['previewRenderer'] = \Mpc\MpCore\Preview\CustomContentPreviewRenderer::class;
 
     $linkColumns = [
         'tx_link_switch' =>
