@@ -18,7 +18,7 @@
         <f:if condition="{data.gallery_layout} == 'gallery-single'">
             <section aria-label="{data.header}" aria-roledescription="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery')}" class="gallery-image {data.gallery_layout} row list-unstyled" id="gallery-single-{data.uid}">
                 <div class="col-12 pb-3 pt-3">
-                    <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#" role="button" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
+                    <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#galleryModal-{data.uid}" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
                         <f:render arguments="{_all}" section="GallerySingle"/>
                         <f:if condition="{files -> f:count()} > 1">
                             <p class="count">{files -> f:count()} {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.images')}</p>
@@ -31,8 +31,8 @@
         <f:if condition="{data.gallery_layout} == 'gallery-tiles'">
             <ul class="gallery-image {data.gallery_layout} row list-unstyled" id="gallery-tiles-{data.uid}">
                 <f:for as="file" each="{files}" iteration="i">
-                    <li class="col-6 col-md-4 col-lg-3 pb-3 pt-3" data-count="{i.index}" aria-label="{i.cycle} von {i.total}">
-                        <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#" role="button" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
+                    <li class="col-6 col-md-4 col-lg-3 pb-3 pt-3" data-count="{i.index}" aria-label="{i.cycle} {f:translate(key: 'tt_content.gallery_of', extensionName: 'mp_core')} {i.total}">
+                        <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#galleryModal-{data.uid}" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
                             <f:render arguments="{_all}" section="GalleryTiles"/>
                         </a>
                     </li>
@@ -65,7 +65,7 @@
             >
                 <f:for as="file" each="{files}" iteration="i">
                     <div class="gallery-slide-content" data-count="{i.index}">
-                        <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#" role="button" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
+                        <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="modal" href="#galleryModal-{data.uid}" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
                             <f:render arguments="{_all}" section="GallerySlide"/>
                         </a>
                     </div>
@@ -146,7 +146,7 @@
         </f:if>
 
         <f:if condition="{data.gallery_layout} == 'gallery-single' || {data.gallery_layout} == 'gallery-tiles' || {data.gallery_layout} == 'gallery-slider'">
-            <div aria-hidden="true" aria-labelledby="modalLabel-{data.uid}" class="modal fade" data-bs-backdrop="static" id="galleryModal-{data.uid}" tabindex="-1">
+            <div aria-hidden="true" aria-labelledby="modalLabel-{data.uid}" class="modal fade" data-bs-backdrop="static" id="galleryModal-{data.uid}" role="dialog" tabindex="-1">
                 <div class="modal-dialog modal-fullscreen" role="document">
                     <div class="modal-content">
                         <div class="modal-header">

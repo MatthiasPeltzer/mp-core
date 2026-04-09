@@ -16,6 +16,7 @@ styles.content.defaultHeaderType: 2
 styles.content.links.extTarget: _blank
 
 # MP Core Page IDs
+PIDs.pidSearch: 0
 PIDs.pidHome: 1
 PIDs.pidMetaNavTop: 66
 PIDs.pidMetaNavFooter: 25

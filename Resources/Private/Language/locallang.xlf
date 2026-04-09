@@ -94,7 +94,7 @@
         <source>Navigation area</source>
       </trans-unit>
       <trans-unit id="header.closeMenu" resname="header.closeMenu">
-        <source><![CDATA[<span class="visually-hidden">Close</span>]]> menu</source>
+        <source>Menu</source>
       </trans-unit>
       <trans-unit id="header.closeMenuTitle" resname="header.closeMenuTitle">
         <source>Close menu</source>
@@ -112,7 +112,7 @@
         <source>Main navigation</source>
       </trans-unit>
       <trans-unit id="header.openMenu" resname="header.openMenu">
-        <source><![CDATA[<span class="visually-hidden">Open</span>]]> menu</source>
+        <source>Menu</source>
       </trans-unit>
       <trans-unit id="header.openMenuTitle" resname="header.openMenuTitle">
         <source>Open menu</source>
@@ -161,6 +161,18 @@
       </trans-unit>
       <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator">
         <source>,</source>
+      </trans-unit>
+      <trans-unit id="search.button" resname="search.button">
+        <source>Search</source>
+      </trans-unit>
+      <trans-unit id="search.inputLabel" resname="search.inputLabel">
+        <source>Enter search term(s)</source>
+      </trans-unit>
+      <trans-unit id="search.submit" resname="search.submit">
+        <source>Search</source>
+      </trans-unit>
+      <trans-unit id="search.suggestHeader" resname="search.suggestHeader">
+        <source>Top results</source>
       </trans-unit>
       <trans-unit id="slider.next" resname="slider.next">
         <source>Next slide</source>

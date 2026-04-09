@@ -115,6 +115,14 @@
         <source>Homepage Page ID</source>
         <target>Startseiten-ID</target>
       </trans-unit>
+      <trans-unit id="PIDs.pidSearch.form.description" resname="PIDs.pidSearch.form.description" approved="yes">
+        <source>Page ID of the search results page</source>
+        <target>Seiten-ID der Suchergebnisseite</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidSearch.form.label" resname="PIDs.pidSearch.form.label" approved="yes">
+        <source>Search Page ID</source>
+        <target>Suchseiten-ID</target>
+      </trans-unit>
       <trans-unit id="PIDs.pidLogosBannerTop.form.description" resname="PIDs.pidLogosBannerTop.form.description" approved="yes">
         <source>Page ID of the additional logos or banners in the header area</source>
         <target>Seiten-ID der zusätzlichen Logos oder Banner im Kopfbereich</target>

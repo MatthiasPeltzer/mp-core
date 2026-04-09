@@ -20,7 +20,7 @@ manifest {
   config {
     disableAllHeaderCode = 1
     additionalHeaders = Content-Type: application/manifest+json
-    no_cache = 1
+    no_cache = 0
   }
 
   10 = FLUIDTEMPLATE

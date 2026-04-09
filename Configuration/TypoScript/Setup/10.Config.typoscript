@@ -28,7 +28,6 @@ config {
   htmlTag {
     attributes {
       class = no-js
-      data-bs-theme = dark
       data-theme-keybind = 1
     }
   }

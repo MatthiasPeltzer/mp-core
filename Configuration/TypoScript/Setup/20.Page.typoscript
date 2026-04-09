@@ -16,6 +16,11 @@ page {
   }
 
   headerData {
+    1 = FLUIDTEMPLATE
+    1 {
+      file = EXT:mp_core/Resources/Private/Partials/Page/ThemeInit.html
+    }
+
     10 = HMENU
     10 {
       special = browse
