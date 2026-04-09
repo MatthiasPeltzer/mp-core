@@ -39,6 +39,17 @@ document.addEventListener('click', (e) => {
 });
 
 // =============================================================================
+// REDUCED MOTION: PAUSE AUTOPLAY VIDEOS
+// =============================================================================
+
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('video[autoplay]').forEach((video) => {
+    video.removeAttribute('autoplay');
+    video.pause();
+  });
+}
+
+// =============================================================================
 // AUTO-FOCUS FUNCTIONALITY
 // =============================================================================
 

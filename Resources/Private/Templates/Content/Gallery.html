@@ -146,7 +146,7 @@
         </f:if>
 
         <f:if condition="{data.gallery_layout} == 'gallery-single' || {data.gallery_layout} == 'gallery-tiles' || {data.gallery_layout} == 'gallery-slider'">
-            <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="galleryModal-{data.uid}" tabindex="-1">
+            <div aria-hidden="true" aria-labelledby="modalLabel-{data.uid}" class="modal fade" data-bs-backdrop="static" id="galleryModal-{data.uid}" tabindex="-1">
                 <div class="modal-dialog modal-fullscreen" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -185,7 +185,7 @@
                                 </ul>
                             </div>
                             <div class="modal-footer container">
-                                <nav aria-label="Galerie Navigation">
+                                <nav aria-label="{f:translate(key: 'tt_content.gallery_navigation', extensionName: 'mp_core')}">
                                     <ul class="list-unstyled">
                                         <li>
                                             <a class="carousel-control-prev" data-bs-slide="prev" href="#galleryCarousel-{data.uid}"

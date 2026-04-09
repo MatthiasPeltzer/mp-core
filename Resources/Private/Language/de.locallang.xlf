@@ -125,7 +125,7 @@
       </trans-unit>
       <trans-unit id="header.closeMenu" resname="header.closeMenu" approved="yes">
         <source><![CDATA[<span class="visually-hidden">Close</span>]]> menu</source>
-        <target>Menü <![CDATA[<span class="visually-hidden"">schließen</span>]]></target>
+        <target>Menü <![CDATA[<span class="visually-hidden">schließen</span>]]></target>
       </trans-unit>
       <trans-unit id="header.closeMenuTitle" resname="header.closeMenuTitle" approved="yes">
         <source>Close menu</source>
@@ -199,6 +199,30 @@
         <source>External</source>
         <target>Extern</target>
       </trans-unit>
+      <trans-unit id="pagination.label" resname="pagination.label" approved="yes">
+        <source>Pagination</source>
+        <target>Seitennavigation</target>
+      </trans-unit>
+      <trans-unit id="search.dateFormat" resname="search.dateFormat" approved="yes">
+        <source>m/d/Y</source>
+        <target>d.m.Y</target>
+      </trans-unit>
+      <trans-unit id="search.decimalSeparator" resname="search.decimalSeparator" approved="yes">
+        <source>.</source>
+        <target>,</target>
+      </trans-unit>
+      <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator" approved="yes">
+        <source>,</source>
+        <target>.</target>
+      </trans-unit>
+      <trans-unit id="slider.next" resname="slider.next" approved="yes">
+        <source>Next slide</source>
+        <target>Nächster Slide</target>
+      </trans-unit>
+      <trans-unit id="slider.previous" resname="slider.previous" approved="yes">
+        <source>Previous slide</source>
+        <target>Vorheriger Slide</target>
+      </trans-unit>
       <trans-unit id="supplement.areamenu" resname="supplement.areamenu" approved="yes">
         <source>Section navigation</source>
         <target>Bereichsnavigation</target>
@@ -239,8 +263,16 @@
         <source>Opens image in enlarged view</source>
         <target>Öffnet Bild in Großansicht</target>
       </trans-unit>
+      <trans-unit id="tt_content.gallery_image_of" resname="tt_content.gallery_image_of" approved="yes">
+        <source>Image %s of %s</source>
+        <target>Bild %s von %s</target>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_navigation" resname="tt_content.gallery_navigation" approved="yes">
+        <source>Gallery navigation</source>
+        <target>Galerie-Navigation</target>
+      </trans-unit>
       <trans-unit id="tt_content.gallery_next" resname="tt_content.gallery_next" approved="yes">
-        <source>Previous image</source>
+        <source>Next image</source>
         <target>Nächstes Bild</target>
       </trans-unit>
       <trans-unit id="tt_content.gallery_of" resname="tt_content.gallery_of" approved="yes">
@@ -256,24 +288,12 @@
         <target>Langbeschreibung</target>
       </trans-unit>
       <trans-unit id="tt_content.gallery_previous" resname="tt_content.gallery_previous" approved="yes">
-        <source>Next image</source>
+        <source>Previous image</source>
         <target>Vorheriges Bild</target>
       </trans-unit>
       <trans-unit id="tt_content.images" resname="tt_content.images" approved="yes">
         <source>images</source>
         <target>Bilder</target>
-      </trans-unit>
-      <trans-unit id="search.dateFormat" resname="search.dateFormat" approved="yes">
-        <source>m/d/Y</source>
-        <target>d.m.Y</target>
-      </trans-unit>
-      <trans-unit id="search.decimalSeparator" resname="search.decimalSeparator" approved="yes">
-        <source>.</source>
-        <target>,</target>
-      </trans-unit>
-      <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator" approved="yes">
-        <source>,</source>
-        <target>.</target>
       </trans-unit>
     </body>
   </file>
