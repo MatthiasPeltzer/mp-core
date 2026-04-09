@@ -14,7 +14,7 @@ defined('TYPO3') || die();
     $linkColumns = [
         'tx_link_switch' =>
             [
-            'exclude' => '0',
+            'exclude' => false,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_switch',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_switch.description',
             'onChange' => 'reload',
@@ -56,7 +56,7 @@ defined('TYPO3') || die();
                             'allowLanguageSynchronization' => true,
                         ],
                     ],
-                'exclude' => '0',
+                'exclude' => false,
                 'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link',
             ],
         'tx_link_layout' =>
@@ -113,7 +113,7 @@ defined('TYPO3') || die();
                         ],
                     ],
                 'displayCond' => 'FIELD:tx_link_switch:=:1',
-                'exclude' => '0',
+                'exclude' => false,
                 'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_layout',
             ],
         'tx_link_text' =>
@@ -124,7 +124,7 @@ defined('TYPO3') || die();
                         'type' => 'input',
                     ],
                 'displayCond' => 'FIELD:tx_link_switch:=:1',
-                'exclude' => '0',
+                'exclude' => false,
                 'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_text',
             ],
         'tx_link_position' =>
@@ -160,7 +160,7 @@ defined('TYPO3') || die();
                             'allowLanguageSynchronization' => true,
                         ],
                     ],
-                'exclude' => '0',
+                'exclude' => false,
                 'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_position',
             ],
     ];

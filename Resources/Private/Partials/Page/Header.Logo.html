@@ -19,9 +19,11 @@
     <f:for as="websiteTitleVar" each="{site.configuration.languages}" iteration="langCount"><f:if condition="{langCount.index} == {data.sys_language_uid} && {websiteTitleVar.websiteTitle}">{websiteTitleVar.websiteTitle}</f:if></f:for>
 </f:variable>
 
+<f:variable name="currentPageId">{f:cObject(typoscriptObjectPath: 'lib.pageid')}</f:variable>
+
 <f:if condition="{site.configuration.navType} == 1">
     <div class="col logo-wrapper text-end flex-grow-0 ms-auto ms-lg-0">
-        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.pageid')} == {site.rootPageId}">
+        <f:if condition="{currentPageId} == {site.rootPageId}">
             <f:then>
                 <div class="logo mb-0 lh-1">
                     <f:if condition="{logoBig}">
@@ -88,7 +90,7 @@
 
 <f:if condition="{site.configuration.navType} == 2">
     <div class="col logo-wrapper text-start flex-grow-0 ms-auto ms-lg-0">
-        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.pageid')} == {site.rootPageId}">
+        <f:if condition="{currentPageId} == {site.rootPageId}">
             <f:then>
                 <div class="logo mb-0 lh-1">
                     <f:if condition="{logoBig}">
@@ -155,7 +157,7 @@
 
 <f:if condition="{site.configuration.navType} == 3">
     <div class="col logo-wrapper text-start flex-grow-0 me-auto ms-lg-0">
-        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.pageid')} == {site.rootPageId}">
+        <f:if condition="{currentPageId} == {site.rootPageId}">
             <f:then>
                 <div class="logo mb-0 lh-1">
                     <f:if condition="{logoBig}">

@@ -16,8 +16,12 @@ class ColorPickerValueItems
     #[AsAllowedCallable]
     public function getItems(array &$config): void
     {
-        /** @var SiteInterface $site */
-        $site = $config['site'];
+        $site = $config['site'] ?? null;
+        if (!$site instanceof SiteInterface) {
+            $config['items'] = [];
+            return;
+        }
+
         $languageService = $this->getLanguageService();
         $items = [
             [
@@ -25,10 +29,6 @@ class ColorPickerValueItems
                 'value' => '',
             ],
         ];
-        if (!method_exists($site, 'getConfiguration')) {
-            $config['items'] = [];
-            return;
-        }
 
         $configuration = $site->getConfiguration();
 

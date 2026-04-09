@@ -283,6 +283,8 @@ const isReady = computed(() => {
 </script>
 
 <template>
+  <!-- SECURITY: All v-html bindings below render server-side TYPO3 Fluid output (trusted editors only).
+       Never populate slides from untrusted user input without server-side sanitization. -->
   <div class="gallery-swiper-wrapper">
     <!-- Thumbs layout: main swiper first, then thumbnails below -->
     <template v-if="config.layout === 'thumbs'">

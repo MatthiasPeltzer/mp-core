@@ -93,7 +93,10 @@ const todos = ref([]);
 const loadTodos = () => {
   const saved = sessionStorage.getItem('todos');
   if (saved) {
-    return JSON.parse(saved);
+    try {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed)) return parsed;
+    } catch { /* corrupt storage — fall through to defaults */ }
   }
 
   // Use predefined items from backend if available

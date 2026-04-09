@@ -20,7 +20,7 @@ page {
 
       30 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
       30 {
-        entryLevel = {$PIDs.pidHome}
+        entryLevel = 0
         expandAll = 0
         levels = 6
         as = menuSub
@@ -137,45 +137,7 @@ page {
   }
 [global]
 
-[traverse(site("configuration"),"navType") == "2"]
-  page {
-    10 {
-      dataProcessing {
-        110 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
-        110 {
-          special = directory
-          special.value = {$PIDs.pidHome}
-          levels = 4
-          includeSpacer = 1
-          as = menuMainDesktop
-          dataProcessing {
-            10 = files
-            10 {
-              references.fieldName = link_icon
-            }
-          }
-        }
-
-        120 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
-        120 {
-          special = directory
-          special.value = {$PIDs.pidHome}
-          levels = 4
-          includeSpacer = 1
-          as = menuMainMobile
-          dataProcessing {
-            10 = files
-            10 {
-              references.fieldName = link_icon
-            }
-          }
-        }
-      }
-    }
-  }
-[global]
-
-[traverse(site("configuration"),"navType") == "3"]
+[traverse(site("configuration"),"navType") in ["2","3"]]
   page {
     10 {
       dataProcessing {
