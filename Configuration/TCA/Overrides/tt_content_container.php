@@ -49,7 +49,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_icon_switch' => [
-            'exclude' => '0',
+            'exclude' => false,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.grid_icon_switch',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.grid_icon_switch.description',
             'onChange' => 'reload',
@@ -69,7 +69,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_icon' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.icon',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.icon.description',
             'displayCond' => 'FIELD:grid_icon_switch:=:1',
@@ -149,7 +149,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_light' => [
-            'exclude' => '0',
+            'exclude' => false,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.light',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.light.description',
             'l10n_mode' => 'exclude',
@@ -168,7 +168,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_parallax' => [
-            'exclude' => '0',
+            'exclude' => false,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.parallax',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.parallax.description',
             'l10n_mode' => 'exclude',
@@ -187,7 +187,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_bgfullsize' => [
-            'exclude' => '0',
+            'exclude' => false,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.bgfullsize',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.bgfullsize.description',
             'displayCond' => 'FIELD:grid_icon_switch:=:0',
@@ -207,7 +207,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_container' => [
-            'exclude' => '0',
+            'exclude' => false,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.container',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.container.description',
             'displayCond' => 'FIELD:grid_icon_switch:=:0',
@@ -227,13 +227,13 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_bgimage' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bgimage.container',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bgimage.container.description',
             'config' => [
                 'type' => 'file',
                 'allowed' => 'png,jpg,jpeg,gif,svg,webp',
-                'maxitems' => '1',
+                'maxitems' => 1,
                 'appearance' => [
                     'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
                     'showPossibleLocalizationRecords' => true,

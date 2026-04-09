@@ -26,10 +26,14 @@ function getThemeSwitches() {
 /**
  * Sets the current theme
  * @param {string} theme - 'light' or 'dark'
+ * @param {boolean} [explicit=true] - Whether this is an explicit user choice
  */
-function setTheme(theme) {
+function setTheme(theme, explicit = true) {
   html.setAttribute('data-bs-theme', theme);
-  localStorage.setItem('theme', `theme-${theme}`);
+  if (explicit) {
+    localStorage.setItem('theme', `theme-${theme}`);
+    mediaQueryDark.removeEventListener('change', handleSystemPreferenceChange);
+  }
   
   getThemeSwitches().forEach(el => {
     el.checked = theme === 'dark';
@@ -37,11 +41,11 @@ function setTheme(theme) {
 }
 
 /**
- * Handles system preference changes
+ * Handles system preference changes (only active when no explicit user choice)
  * @param {MediaQueryListEvent} e - Media query change event
  */
 function handleSystemPreferenceChange(e) {
-  setTheme(e.matches ? 'dark' : 'light');
+  setTheme(e.matches ? 'dark' : 'light', false);
 }
 
 // =============================================================================
@@ -75,16 +79,18 @@ function initThemeSwitch() {
     });
   });
 
-  // Keyboard support for Enter key (bind once)
+  // Keyboard support for Enter key on all theme switches
   if (!html.dataset.themeKeybind) {
     html.dataset.themeKeybind = '1';
-    
-    const formCheckInput = document.querySelector('.form-check-input');
-    formCheckInput?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        formCheckInput.nextElementSibling?.click();
-      }
+
+    switches.forEach(switchEl => {
+      switchEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          switchEl.checked = !switchEl.checked;
+          setTheme(switchEl.checked ? 'dark' : 'light');
+        }
+      });
     });
   }
 }

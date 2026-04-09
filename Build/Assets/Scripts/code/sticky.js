@@ -17,10 +17,7 @@ const body = document.body;
 const header = document.querySelector('.header-wrapper-bg');
 
 // Exit early if header doesn't exist
-if (!header) {
-  // eslint-disable-next-line no-console
-  console.warn('Sticky: .header-wrapper-bg not found');
-} else {
+if (header) {
   const toplogo = header.querySelector('.toplogo-container');
   let headerHeight = header.offsetHeight;
   let toplogoHeight = toplogo ? toplogo.offsetHeight : 0;
@@ -29,13 +26,21 @@ if (!header) {
   // SCROLL HANDLING
   // =============================================================================
 
-  function handleScroll() {
-    if (!toplogo || toplogoHeight <= 0) return;
+  let ticking = false;
 
-    const scrollY = window.scrollY;
-    const offset = Math.min(scrollY, toplogoHeight);
-    toplogo.style.marginTop = `${-offset}px`;
-    body.classList.toggle('sticky', scrollY >= toplogoHeight);
+  function handleScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      if (toplogo && toplogoHeight > 0) {
+        const offset = Math.min(scrollY, toplogoHeight + 17);
+        toplogo.style.marginTop = `${-offset / 16}rem`;
+      }
+      const threshold = toplogoHeight > 0 ? toplogoHeight : headerHeight;
+      body.classList.toggle('sticky', scrollY >= threshold);
+      ticking = false;
+    });
   }
 
   window.addEventListener('scroll', handleScroll, {passive: true});

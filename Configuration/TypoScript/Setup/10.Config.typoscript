@@ -32,11 +32,11 @@ config {
     }
   }
 
-  // Compression and concatenation of CSS and JS files
-  compressJs = {$config.compressJs}
-  compressCss = {$config.compressCss}
-  concatenateJs = {$config.concatenateJs}
-  concatenateCss = {$config.concatenateCss}
+  // Compression and concatenation — driven by site settings with TS constant fallback
+  compressJs.data = site:settings.performance.compressJs // {$config.compressJs}
+  compressCss.data = site:settings.performance.compressCss // {$config.compressCss}
+  concatenateJs.data = site:settings.performance.concatenateJs // {$config.concatenateJs}
+  concatenateCss.data = site:settings.performance.concatenateCss // {$config.concatenateCss}
 }
 
 plugin {

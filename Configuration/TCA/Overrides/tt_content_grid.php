@@ -112,7 +112,7 @@ defined('TYPO3') or die('Access denied.');
                         'allowLanguageSynchronization' => true,
                     ],
                 ],
-            'exclude' => '0',
+            'exclude' => false,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.type',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.type.description',
         ],
@@ -149,12 +149,12 @@ defined('TYPO3') or die('Access denied.');
                         'allowLanguageSynchronization' => true,
                     ],
                 ],
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.columns',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.columns.description',
         ],
         'grid_breakpoint' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.breakpoint',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.breakpoint.description',
             'config' => [
@@ -168,7 +168,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_gutter' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.gutter',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.gutter.description',
             'config' => [
@@ -181,7 +181,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_col1' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col1',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col.description',
             'config' => [
@@ -194,7 +194,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_offset1' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset1',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset.description',
             'config' => [
@@ -207,7 +207,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_col2' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col2',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col.description',
             'displayCond' => 'FIELD:grid_columns:>=:2',
@@ -221,7 +221,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_offset2' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset2',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset.description',
             'displayCond' => 'FIELD:grid_columns:>=:2',
@@ -235,7 +235,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_col3' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col3',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col.description',
             'displayCond' => 'FIELD:grid_columns:>=:3',
@@ -249,7 +249,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_offset3' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset3',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset.description',
             'displayCond' => 'FIELD:grid_columns:>=:3',
@@ -263,7 +263,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_col4' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col4',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.col.description',
             'displayCond' => 'FIELD:grid_columns:>=:4',
@@ -277,7 +277,7 @@ defined('TYPO3') or die('Access denied.');
             ],
         ],
         'grid_offset4' => [
-            'exclude' => '1',
+            'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset4',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.offset.description',
             'displayCond' => 'FIELD:grid_columns:>=:4',

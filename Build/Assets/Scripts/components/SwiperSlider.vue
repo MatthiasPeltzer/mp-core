@@ -457,6 +457,8 @@ const onTransitionEnd = () => {
         :key="slide.id"
         class="swiper-slide"
       >
+        <!-- SECURITY: slide.content originates from server-rendered TYPO3 Fluid output (trusted editors only).
+             Never populate slides from untrusted user input without server-side sanitization. -->
         <div v-html="slide.content"></div>
       </swiper-slide>
     </swiper>

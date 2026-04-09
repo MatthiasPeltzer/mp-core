@@ -40,8 +40,6 @@ function initializeVueComponents() {
   const containers = document.querySelectorAll('[data-container="vue"]');
 
   if (!containers.length) {
-    // eslint-disable-next-line no-console
-    console.log('No Vue containers found on page');
     return;
   }
 
@@ -87,12 +85,6 @@ function initializeVueComponents() {
 
       const app = createApp(component);
       app.mount(element);
-    } else {
-      // eslint-disable-next-line no-console
-      console.warn(
-        `Vue component "${componentName}" not found in registry. ` +
-        `Available: ${Object.keys(components).join(', ')}`
-      );
     }
   });
 }

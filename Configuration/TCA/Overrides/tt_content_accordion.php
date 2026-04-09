@@ -71,7 +71,7 @@ defined('TYPO3') or die('Access denied.');
                 'renderType' => 'selectSingle',
                 'type' => 'select',
             ],
-            'exclude' => '0',
+            'exclude' => false,
             'onChange' => 'reload',
             'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
