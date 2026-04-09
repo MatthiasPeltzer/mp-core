@@ -150,6 +150,24 @@
       <trans-unit id="opens" resname="opens">
         <source>External</source>
       </trans-unit>
+      <trans-unit id="pagination.label" resname="pagination.label">
+        <source>Pagination</source>
+      </trans-unit>
+      <trans-unit id="search.dateFormat" resname="search.dateFormat">
+        <source>m/d/Y</source>
+      </trans-unit>
+      <trans-unit id="search.decimalSeparator" resname="search.decimalSeparator">
+        <source>.</source>
+      </trans-unit>
+      <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator">
+        <source>,</source>
+      </trans-unit>
+      <trans-unit id="slider.next" resname="slider.next">
+        <source>Next slide</source>
+      </trans-unit>
+      <trans-unit id="slider.previous" resname="slider.previous">
+        <source>Previous slide</source>
+      </trans-unit>
       <trans-unit id="supplement.areamenu" resname="supplement.areamenu">
         <source>Section navigation</source>
       </trans-unit>
@@ -180,8 +198,14 @@
       <trans-unit id="tt_content.gallery_enlarge_picture" resname="tt_content.gallery_enlarge_picture">
         <source>Opens image in enlarged view</source>
       </trans-unit>
+      <trans-unit id="tt_content.gallery_image_of" resname="tt_content.gallery_image_of">
+        <source>Image %s of %s</source>
+      </trans-unit>
+      <trans-unit id="tt_content.gallery_navigation" resname="tt_content.gallery_navigation">
+        <source>Gallery navigation</source>
+      </trans-unit>
       <trans-unit id="tt_content.gallery_next" resname="tt_content.gallery_next">
-        <source>Previous image</source>
+        <source>Next image</source>
       </trans-unit>
       <trans-unit id="tt_content.gallery_of" resname="tt_content.gallery_of">
         <source>of</source>
@@ -193,19 +217,10 @@
         <source>Long description</source>
       </trans-unit>
       <trans-unit id="tt_content.gallery_previous" resname="tt_content.gallery_previous">
-        <source>Next image</source>
+        <source>Previous image</source>
       </trans-unit>
       <trans-unit id="tt_content.images" resname="tt_content.images">
         <source>images</source>
-      </trans-unit>
-      <trans-unit id="search.dateFormat" resname="search.dateFormat">
-        <source>m/d/Y</source>
-      </trans-unit>
-      <trans-unit id="search.decimalSeparator" resname="search.decimalSeparator">
-        <source>.</source>
-      </trans-unit>
-      <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator">
-        <source>,</source>
       </trans-unit>
     </body>
   </file>

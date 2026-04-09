@@ -170,6 +170,8 @@ class SvgInlineViewHelper extends AbstractViewHelper
         }
 
         $root = $dom->documentElement;
+        self::sanitizeSvgDom($dom);
+
         foreach ($attributes as $attributeKey => $attributeValue) {
             if ($attributeValue === null) {
                 continue;
@@ -178,5 +180,37 @@ class SvgInlineViewHelper extends AbstractViewHelper
         }
 
         return (string)$dom->saveXML($root);
+    }
+
+    private static function sanitizeSvgDom(DOMDocument $dom): void
+    {
+        $dangerousTags = ['script', 'foreignObject', 'iframe', 'embed', 'object'];
+        foreach ($dangerousTags as $tagName) {
+            $elements = $dom->getElementsByTagName($tagName);
+            while ($elements->length > 0) {
+                $element = $elements->item(0);
+                $element?->parentNode?->removeChild($element);
+            }
+        }
+
+        $xpath = new \DOMXPath($dom);
+        $allElements = $xpath->query('//*');
+        if ($allElements === false) {
+            return;
+        }
+        foreach ($allElements as $element) {
+            if (!$element instanceof DOMElement) {
+                continue;
+            }
+            $attributesToRemove = [];
+            foreach ($element->attributes as $attr) {
+                if (str_starts_with(strtolower($attr->nodeName), 'on')) {
+                    $attributesToRemove[] = $attr->nodeName;
+                }
+            }
+            foreach ($attributesToRemove as $attrName) {
+                $element->removeAttribute($attrName);
+            }
+        }
     }
 }
