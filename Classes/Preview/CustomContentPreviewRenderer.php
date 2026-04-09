@@ -28,22 +28,36 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
     ) {}
 
     /**
-     * Override the main rendering method to catch and handle exceptions
-     * from file reference issues.
-     *
-     * @todo Remove this workaround once the TYPO3 core fixes the TypeError
-     *       in BackendUtility::getThumbCodeUnlinked() for missing file references.
-     *       Track: https://forge.typo3.org — search "getThumbCodeUnlinked TypeError"
+     * @todo Remove these workarounds once the TYPO3 core fixes these TypeErrors:
+     *       - BackendUtility::getThumbCodeUnlinked() with missing file references
+     *       - Sanitizer::sanitize() receiving null from RecordFieldPreviewProcessor
+     *       Track: https://forge.typo3.org
      */
     public function renderPageModulePreviewContent(GridColumnItem $item): string
     {
         try {
             return parent::renderPageModulePreviewContent($item);
         } catch (\TypeError $e) {
-            if (str_contains($e->getMessage(), 'getThumbCodeUnlinked')) {
-                return $this->renderFallbackPreview($item);
-            }
-            throw $e;
+            return $this->renderFallbackPreview($item);
+        }
+    }
+
+    public function renderPageModulePreviewHeader(GridColumnItem $item): string
+    {
+        try {
+            return parent::renderPageModulePreviewHeader($item);
+        } catch (\TypeError $e) {
+            $record = $item->getRecord()->toArray();
+            return '<strong>' . htmlspecialchars((string)($record['header'] ?? '')) . '</strong>';
+        }
+    }
+
+    public function renderPageModulePreviewFooter(GridColumnItem $item): string
+    {
+        try {
+            return parent::renderPageModulePreviewFooter($item);
+        } catch (\TypeError $e) {
+            return '';
         }
     }
     
