@@ -1,0 +1,1 @@
+!function(){var t=localStorage.getItem("theme"),d=document.documentElement;d.setAttribute("data-bs-theme",t?t.indexOf("dark")>-1?"dark":"light":window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");}();

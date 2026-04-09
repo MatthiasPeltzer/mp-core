@@ -15,7 +15,6 @@ defined('TYPO3') or die('Access denied.');
  * Define TypoScript as content rendering template
  */
 $GLOBALS['TYPO3_CONF_VARS']['FE']['contentRenderingTemplates'][] = 'mp_core/Configuration/TypoScript/';
-$GLOBALS['TYPO3_CONF_VARS']['FE']['contentRenderingTemplates'][] = 'mp_core/Configuration/TypoScript/ContentElement/';
 
 /***************
  * Register custom EXT:form configuration

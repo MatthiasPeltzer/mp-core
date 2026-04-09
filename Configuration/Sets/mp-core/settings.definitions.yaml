@@ -22,6 +22,12 @@ categories:
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreMeta.description'
 settings:
   # Page ID Settings
+  PIDs.pidSearch:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidSearch.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidSearch.form.description'
+    category: MPCore
+    type: int
+    default: 0
   PIDs.pidHome:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidHome.form.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidHome.form.description'

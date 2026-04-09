@@ -29,14 +29,17 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
 
     /**
      * Override the main rendering method to catch and handle exceptions
-     * from file reference issues
+     * from file reference issues.
+     *
+     * @todo Remove this workaround once the TYPO3 core fixes the TypeError
+     *       in BackendUtility::getThumbCodeUnlinked() for missing file references.
+     *       Track: https://forge.typo3.org — search "getThumbCodeUnlinked TypeError"
      */
     public function renderPageModulePreviewContent(GridColumnItem $item): string
     {
         try {
             return parent::renderPageModulePreviewContent($item);
         } catch (\TypeError $e) {
-            // Catch type errors from file reference issues and provide a simple preview
             if (str_contains($e->getMessage(), 'getThumbCodeUnlinked')) {
                 return $this->renderFallbackPreview($item);
             }

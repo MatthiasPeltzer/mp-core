@@ -241,8 +241,23 @@ onBeforeMount(() => {
 // EVENTS
 // =============================================================================
 
+function observeRedundantAria(swiper) {
+  const wrapper = swiper.el?.closest('.gallery-swiper-wrapper') || swiper.el?.parentElement;
+  if (!wrapper) return;
+  new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      if (m.type === 'attributes' && m.attributeName === 'aria-disabled' && m.target.hasAttribute('disabled')) {
+        m.target.removeAttribute('aria-disabled');
+      }
+    }
+  }).observe(wrapper, { attributes: true, attributeFilter: ['aria-disabled'], subtree: true });
+  wrapper.querySelectorAll('button[disabled][aria-disabled]')
+    .forEach(btn => btn.removeAttribute('aria-disabled'));
+}
+
 const onMainSwiper = (swiper) => {
   mainSwiperRef.value = swiper;
+  observeRedundantAria(swiper);
 };
 
 const onThumbsSwiper = (swiper) => {
