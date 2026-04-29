@@ -152,6 +152,7 @@ defined('TYPO3') || die();
         'tiktok', 'tumblr', 'reddit', 'linkedin', 'xing', 'youtube',
         'vimeo', 'spotify', 'bandcamp', 'soundcloud', 'pinterest',
         'whatsapp', 'signal', 'telegram', 'discord',
+        'github', 'gitlab', 'opencode', 'packagist', 'npmjs',
     ];
     foreach ($socialMediaPlatforms as $platform) {
         $GLOBALS['SiteConfiguration']['site']['columns'][$platform] = [
