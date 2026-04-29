@@ -676,6 +676,21 @@
       <trans-unit id="site.configuration.facebook.label" resname="site.configuration.facebook.label">
         <source>Facebook</source>
       </trans-unit>
+      <trans-unit id="site.configuration.github.label" resname="site.configuration.github.label">
+        <source>GitHub</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.gitlab.label" resname="site.configuration.gitlab.label">
+        <source>GitLab</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.npmjs.label" resname="site.configuration.npmjs.label">
+        <source>npm</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.opencode.label" resname="site.configuration.opencode.label">
+        <source>OpenCode</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.packagist.label" resname="site.configuration.packagist.label">
+        <source>Packagist</source>
+      </trans-unit>
       <trans-unit id="site.configuration.favicon-48x48-png" resname="site.configuration.favicon-48x48-png">
         <source>Favicon 48x48 PNG</source>
       </trans-unit>

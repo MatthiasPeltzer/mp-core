@@ -923,6 +923,26 @@
         <source>Facebook</source>
         <target>Facebook</target>
       </trans-unit>
+      <trans-unit id="site.configuration.github.label" resname="site.configuration.github.label" approved="yes">
+        <source>GitHub</source>
+        <target>GitHub</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.gitlab.label" resname="site.configuration.gitlab.label" approved="yes">
+        <source>GitLab</source>
+        <target>GitLab</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.npmjs.label" resname="site.configuration.npmjs.label" approved="yes">
+        <source>npm</source>
+        <target>npm</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.opencode.label" resname="site.configuration.opencode.label" approved="yes">
+        <source>OpenCode</source>
+        <target>OpenCode</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.packagist.label" resname="site.configuration.packagist.label" approved="yes">
+        <source>Packagist</source>
+        <target>Packagist</target>
+      </trans-unit>
       <trans-unit id="site.configuration.favicon-48x48-png" resname="site.configuration.favicon-48x48-png" approved="yes">
         <source>Favicon 48x48 PNG</source>
         <target>Favicon 48x48 PNG</target>

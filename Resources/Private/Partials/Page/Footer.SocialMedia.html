@@ -132,6 +132,36 @@
                             <span class="visually-hidden" lang="en">Discord</span></f:link.typolink>
                     </li>
                 </f:if>
+                <f:if condition="{site.configuration.github}">
+                    <li class="col github">
+                        <f:link.typolink parameter="{site.configuration.github}" title="GitHub {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-github'>|</span>">
+                            <span class="visually-hidden" lang="en">GitHub</span></f:link.typolink>
+                    </li>
+                </f:if>
+                <f:if condition="{site.configuration.gitlab}">
+                    <li class="col gitlab">
+                        <f:link.typolink parameter="{site.configuration.gitlab}" title="GitLab {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-gitlab'>|</span>">
+                            <span class="visually-hidden" lang="en">GitLab</span></f:link.typolink>
+                    </li>
+                </f:if>
+                <f:if condition="{site.configuration.opencode}">
+                    <li class="col opencode">
+                        <f:link.typolink parameter="{site.configuration.opencode}" title="OpenCode {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-opencode'>|</span>">
+                            <span class="visually-hidden" lang="en">OpenCode</span></f:link.typolink>
+                    </li>
+                </f:if>
+                <f:if condition="{site.configuration.packagist}">
+                    <li class="col packagist">
+                        <f:link.typolink parameter="{site.configuration.packagist}" title="Packagist {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-packagist'>|</span>">
+                            <span class="visually-hidden" lang="en">Packagist</span></f:link.typolink>
+                    </li>
+                </f:if>
+                <f:if condition="{site.configuration.npmjs}">
+                    <li class="col npmjs">
+                        <f:link.typolink parameter="{site.configuration.npmjs}" title="npm {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-npmjs'>|</span>">
+                            <span class="visually-hidden" lang="en">npm</span></f:link.typolink>
+                    </li>
+                </f:if>
             </ul>
         </nav>
     </div>
