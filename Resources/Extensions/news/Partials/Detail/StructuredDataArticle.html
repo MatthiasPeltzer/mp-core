@@ -1,0 +1,16 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:variable name="articleUrl"><n:link configuration="{forceAbsoluteUrl: 1}" newsItem="{newsItem}" settings="{settings}" uriOnly="1"/></f:variable>
+<f:variable name="leadImage"><f:if condition="{newsItem.mediaPreviews}"><f:then><f:uri.image absolute="1" src="{newsItem.mediaPreviews.0.originalResource.properties.uid}" treatIdAsReference="1"/></f:then><f:else></f:else></f:if></f:variable>
+<f:variable name="plainTeaser"><f:if condition="{newsItem.teaser}"><f:then>{newsItem.teaser -> f:format.stripTags()}</f:then><f:else>{newsItem.bodytext -> f:format.stripTags() -> f:format.crop(maxCharacters: 400)}</f:else></f:if></f:variable>
+
+<f:variable name="newsJsonLd"><mpc:schema.newsArticleJsonLd articleUrl="{articleUrl}" dateModified="{newsItem.tstamp -> f:format.date(format: 'c')}" datePublished="{newsItem.datetime -> f:format.date(format: 'c')}" description="{plainTeaser}" headline="{newsItem.title}" imageUrl="{leadImage}"/></f:variable>
+<f:if condition="{newsJsonLd}">
+<script type="application/ld+json">
+<f:format.raw>{newsJsonLd}</f:format.raw>
+</script>
+</f:if>
+</html>
