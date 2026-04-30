@@ -33,7 +33,7 @@
             </n:link>
         </div>
 
-        <div class="col-md-7 articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}" itemscope="itemscope" itemtype="http://schema.org/Article">
+        <div class="col-md-7 articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}">
             <p class="date">
                 <f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
             </p>
