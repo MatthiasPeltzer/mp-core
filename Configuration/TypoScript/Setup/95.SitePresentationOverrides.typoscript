@@ -1,0 +1,133 @@
+# Template roots, JSON-LD header template, plugin view paths (former mpc-sitepackage Site Set + legacy static includes)
+
+page {
+    10 {
+        templateRootPaths {
+            10 = {$mpcSitepackage.page.templates}
+        }
+
+        partialRootPaths {
+            10 = {$mpcSitepackage.page.partials}
+        }
+
+        layoutRootPaths {
+            10 = {$mpcSitepackage.page.layouts}
+        }
+    }
+
+    headerData {
+        2039 {
+            # Resolved at runtime from Site Set YAML (CONSTANTS {$settings.*} is not substituted for site settings).
+            file.data = site:settings.pageFaviconsFile // EXT:mp_core/Resources/Private/Partials/Page/Favicons.html
+        }
+
+        2041 = FLUIDTEMPLATE
+        2041 {
+            if.isTrue.data = site:settings.structuredDataEnabled
+            file = EXT:mp_core/Resources/Private/Partials/Page/StructuredData.html
+            extbase {
+                controllerExtensionName = mp_core
+            }
+            dataProcessing {
+                10 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
+                10 {
+                    as = site
+                }
+                15 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                15 {
+                    references.data = levelmedia: -1, slide
+                    as = pageMedia
+                }
+                20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+                20 {
+                    special = rootline
+                    special.range = 0|-1
+                    as = breadcrumb
+                }
+                30 = Mpc\MpCore\DataProcessing\SocialMediaProcessor
+                40 = Mpc\MpCore\DataProcessing\StructuredDataProcessor
+            }
+        }
+    }
+}
+
+lib {
+    contentElement {
+        templateRootPaths {
+            20 = {$mpcSitepackage.contentElement.templates}
+        }
+
+        partialRootPaths {
+            20 = {$mpcSitepackage.contentElement.partials}
+        }
+
+        layoutRootPaths {
+            20 = {$mpcSitepackage.contentElement.layouts}
+        }
+    }
+
+    containerContentElement {
+        templateRootPaths {
+            10 = {$mpcSitepackage.containerElement.templates}
+        }
+
+        partialRootPaths {
+            10 = {$mpcSitepackage.containerElement.partials}
+        }
+
+        layoutRootPaths {
+            10 = {$mpcSitepackage.containerElement.layouts}
+        }
+    }
+}
+
+plugin {
+    tx_news {
+        view {
+            templateRootPaths {
+                3 = {$mpcSitepackage.plugins.news.templates}
+            }
+
+            partialRootPaths {
+                3 = {$mpcSitepackage.plugins.news.partials}
+            }
+
+            layoutRootPaths {
+                3 = {$mpcSitepackage.plugins.news.layouts}
+            }
+        }
+    }
+
+    tx_indexedsearch {
+        view {
+            templateRootPaths {
+                20 = {$mpcSitepackage.plugins.indexedSearch.templates}
+            }
+
+            partialRootPaths {
+                20 = {$mpcSitepackage.plugins.indexedSearch.partials}
+            }
+
+            layoutRootPaths {
+                20 = {$mpcSitepackage.plugins.indexedSearch.layouts}
+            }
+        }
+    }
+}
+
+tt_content {
+    gallery {
+        templateRootPaths {
+            300 = {$mpcSitepackage.contentTypes.gallery.templates}
+        }
+    }
+}
+
+page.meta.og:type >
+page.meta.og:type = TEXT
+page.meta.og:type {
+    attribute = property
+    value = website
+    override = article
+    override.if.isPositive.data = request:routing|arguments|tx_news_pi1|news
+}

@@ -1,9 +1,11 @@
 // headlines
 
 .header-text {
+  @extend %specialelite;
+
   font-weight: 700;
   padding-left: 4px;
-  padding-right: 4px;
+  padding-right: 0;
   position: relative;
   text-shadow: var(--bs-secondary) 1px 1px 1px;
   top: -1px;
@@ -15,6 +17,8 @@ h2,
 .h2,
 h3,
 .h3 {
+  @extend %specialelite;
+
   .ce-uploads & {
     @include font-size($fs-md);
   }

@@ -303,7 +303,7 @@
   }
 
   .first-child {
-    @include font-size($fs-md);
+    @extend %specialelite;
 
     background-color: transparent;
     color: var(--bs-body-color);
@@ -314,6 +314,8 @@
     padding: 16px 0;
     position: relative;
     text-transform: uppercase;
+
+    @include font-size($fs-md);
 
     @include on-interact {
       color: var(--bs-body-color);

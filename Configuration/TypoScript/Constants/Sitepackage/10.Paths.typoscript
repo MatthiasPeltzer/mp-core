@@ -1,0 +1,9 @@
+# Base paths — constants map to Site Settings (mpcSitepackage.*)
+mpcSitepackage {
+    basePath = {$settings.basePath}
+
+    resources {
+        private = {$settings.resourcesPrivate}
+        extensions = {$settings.resourcesExtensions}
+    }
+}

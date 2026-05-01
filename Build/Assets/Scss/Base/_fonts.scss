@@ -1,13 +1,23 @@
+@include font-face("SpecialElite", "../Fonts/specialelite-regular-webfont", 400, normal, woff2, swap);
 @include font-face("OpenSans", "../Fonts/opensans-regular-webfont", 400, normal, woff2, swap);
 @include font-face("OpenSans", "../Fonts/opensans-italic-webfont", 400, italic, woff2, swap);
 @include font-face("OpenSans", "../Fonts/opensans-bold-webfont", 700, normal, woff2, swap);
 @include font-face("OpenSans", "../Fonts/opensans-bolditalic-webfont", 700, italic, woff2, swap);
 
+%specialelite {
+  font-family: SpecialElite, "Courier New", Courier, ui-monospace, monospace;
+}
+
+// mixins for including in @media contexts
+@mixin specialelite {
+  font-family: SpecialElite, "Courier New", Courier, ui-monospace, monospace;
+}
+
 %opensansweb {
-  font-family: OpenSans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: OpenSans, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 // mixins for including in @media contexts
 @mixin opensansweb {
-  font-family: OpenSans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: OpenSans, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

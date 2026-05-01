@@ -20,6 +20,9 @@ categories:
   MPCoreMeta:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreMeta.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreMeta.description'
+  MPCoreTemplates:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreTemplates.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreTemplates.description'
 settings:
   # Page ID Settings
   PIDs.pidSearch:
@@ -324,3 +327,166 @@ settings:
     category: MPCore
     type: string
     default: 'EXT:mp_core/Resources/Private/Templates/'
+
+  basePath:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:basePath.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:basePath.description'
+    type: string
+    default: 'EXT:mp_core'
+    category: MPCoreTemplates
+  pageTemplates:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:page.templates.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:page.templates.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Templates/Page/'
+    category: MPCoreTemplates
+  pagePartials:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:page.partials.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:page.partials.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Partials/Page/'
+    category: MPCoreTemplates
+  pageLayouts:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:page.layouts.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:page.layouts.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Layouts/Page/'
+    category: MPCoreTemplates
+  pageFaviconsFile:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:page.headerData.favicons.file.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:page.headerData.favicons.file.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Partials/Page/Favicons.html'
+    category: MPCoreTemplates
+  contentElementTemplates:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:contentElement.templates.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:contentElement.templates.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Templates/'
+    category: MPCoreTemplates
+  contentElementPartials:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:contentElement.partials.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:contentElement.partials.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/'
+    category: MPCoreTemplates
+  contentElementLayouts:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:contentElement.layouts.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:contentElement.layouts.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Layouts/'
+    category: MPCoreTemplates
+  containerElementTemplates:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:containerElement.templates.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:containerElement.templates.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Templates/Container/'
+    category: MPCoreTemplates
+  containerElementPartials:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:containerElement.partials.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:containerElement.partials.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Partials/Container/'
+    category: MPCoreTemplates
+  containerElementLayouts:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:containerElement.layouts.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:containerElement.layouts.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Layouts/Container/'
+    category: MPCoreTemplates
+  pluginsNewsTemplates:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.news.templates.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.news.templates.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Extensions/news/Templates/'
+    category: MPCoreTemplates
+  pluginsNewsPartials:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.news.partials.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.news.partials.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Extensions/news/Partials/'
+    category: MPCoreTemplates
+  pluginsNewsLayouts:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.news.layouts.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.news.layouts.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Extensions/news/Layouts/'
+    category: MPCoreTemplates
+  pluginsIndexedSearchTemplates:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.indexedSearch.templates.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.indexedSearch.templates.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Extensions/indexed_search/Templates/'
+    category: MPCoreTemplates
+  pluginsIndexedSearchPartials:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.indexedSearch.partials.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.indexedSearch.partials.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Extensions/indexed_search/Partials/'
+    category: MPCoreTemplates
+  pluginsIndexedSearchLayouts:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.indexedSearch.layouts.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:plugins.indexedSearch.layouts.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Extensions/indexed_search/Layouts/'
+    category: MPCoreTemplates
+  contentTypesTemplates:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:contentTypes.templates.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:contentTypes.templates.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Templates/Content/'
+    category: MPCoreTemplates
+  contentTypesGalleryTemplates:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:contentTypes.gallery.templates.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:contentTypes.gallery.templates.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Private/Templates/Content/'
+    category: MPCoreTemplates
+  resourcesPrivate:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:resources.private.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:resources.private.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Private'
+    category: MPCoreTemplates
+  resourcesExtensions:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:resources.extensions.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:resources.extensions.description'
+    type: string
+    default: 'EXT:mp_core/Resources/Extensions'
+    category: MPCoreTemplates
+  structuredDataEnabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:structuredDataEnabled.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:structuredDataEnabled.description'
+    type: bool
+    default: true
+    category: MPCoreTemplates
+  musicGroupEnabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupEnabled.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupEnabled.description'
+    type: bool
+    default: false
+    category: MPCoreTemplates
+  musicGroupName:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupName.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupName.description'
+    type: string
+    default: 'Pellerhead'
+    category: MPCoreTemplates
+  musicGroupGenre:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupGenre.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupGenre.description'
+    type: string
+    default: 'Rock, Punk, Electronic'
+    category: MPCoreTemplates
+  musicGroupDescription:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupDescription.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupDescription.description'
+    type: string
+    default: ''
+    category: MPCoreTemplates
+  musicGroupImage:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupImage.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupImage.description'
+    type: string
+    default: ''
+    category: MPCoreTemplates

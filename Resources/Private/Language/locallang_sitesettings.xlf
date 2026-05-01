@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2025-10-21T12:00:00Z" product-name="mp_core">
+    <header/>
+    <body>
+      <trans-unit id="basePath.description">
+        <source>Base path for the sitepackage extension</source>
+      </trans-unit>
+      <trans-unit id="basePath.label">
+        <source>Base Extension Path</source>
+      </trans-unit>
+      <trans-unit id="containerElement.description">
+        <source>Container content element template paths</source>
+      </trans-unit>
+      <trans-unit id="containerElement.label">
+        <source>Container Elements Configuration</source>
+      </trans-unit>
+      <trans-unit id="containerElement.layouts.description">
+        <source>Path to container layouts</source>
+      </trans-unit>
+      <trans-unit id="containerElement.layouts.label">
+        <source>Container Layouts Path</source>
+      </trans-unit>
+      <trans-unit id="containerElement.partials.description">
+        <source>Path to container partials</source>
+      </trans-unit>
+      <trans-unit id="containerElement.partials.label">
+        <source>Container Partials Path</source>
+      </trans-unit>
+      <trans-unit id="containerElement.templates.description">
+        <source>Path to container templates</source>
+      </trans-unit>
+      <trans-unit id="containerElement.templates.label">
+        <source>Container Templates Path</source>
+      </trans-unit>
+      <trans-unit id="contentElement.description">
+        <source>Fluid Styled Content template paths</source>
+      </trans-unit>
+      <trans-unit id="contentElement.label">
+        <source>Content Elements Configuration</source>
+      </trans-unit>
+      <trans-unit id="contentElement.layouts.description">
+        <source>Path to content element layouts</source>
+      </trans-unit>
+      <trans-unit id="contentElement.layouts.label">
+        <source>Content Element Layouts Path</source>
+      </trans-unit>
+      <trans-unit id="contentElement.partials.description">
+        <source>Path to content element partials</source>
+      </trans-unit>
+      <trans-unit id="contentElement.partials.label">
+        <source>Content Element Partials Path</source>
+      </trans-unit>
+      <trans-unit id="contentElement.templates.description">
+        <source>Path to content element templates</source>
+      </trans-unit>
+      <trans-unit id="contentElement.templates.label">
+        <source>Content Element Templates Path</source>
+      </trans-unit>
+      <trans-unit id="contentTypes.description">
+        <source>Configuration for specific content types (gallery)</source>
+      </trans-unit>
+      <trans-unit id="contentTypes.gallery.templates.description">
+        <source>Path to gallery content element templates</source>
+      </trans-unit>
+      <trans-unit id="contentTypes.gallery.templates.label">
+        <source>Gallery Templates Path</source>
+      </trans-unit>
+      <trans-unit id="contentTypes.label">
+        <source>Content Types Configuration</source>
+      </trans-unit>
+      <trans-unit id="contentTypes.templates.description">
+        <source>Base path for content type templates</source>
+      </trans-unit>
+      <trans-unit id="contentTypes.templates.label">
+        <source>Content Types Base Templates Path</source>
+      </trans-unit>
+      <trans-unit id="mpcSitepackage.description">
+        <source>Configuration settings for MPC Sitepackage template paths and resources</source>
+      </trans-unit>
+      <trans-unit id="mpcSitepackage.label">
+        <source>MPC Sitepackage</source>
+      </trans-unit>
+      <trans-unit id="musicGroup.description">
+        <source>Schema.org structured data for music projects, bands, and artists</source>
+      </trans-unit>
+      <trans-unit id="musicGroup.label">
+        <source>MusicGroup Schema</source>
+      </trans-unit>
+      <trans-unit id="musicGroupEnabled.description">
+        <source>Enable MusicGroup structured data for music projects (e.g., Pellerhead)</source>
+      </trans-unit>
+      <trans-unit id="musicGroupEnabled.label">
+        <source>Enable MusicGroup Schema</source>
+      </trans-unit>
+      <trans-unit id="musicGroupGenre.description">
+        <source>Music genres, comma-separated (e.g., Rock, Punk, Electronic)</source>
+      </trans-unit>
+      <trans-unit id="musicGroupGenre.label">
+        <source>Music Genre(s)</source>
+      </trans-unit>
+      <trans-unit id="musicGroupName.description">
+        <source>Name of your band or music project (default: Pellerhead)</source>
+      </trans-unit>
+      <trans-unit id="musicGroupName.label">
+        <source>Music Group/Artist Name</source>
+      </trans-unit>
+      <trans-unit id="musicGroupDescription.description">
+        <source>Optional plain text or HTML snippet for MusicGroup description (HTML is stripped, max 500 characters)</source>
+      </trans-unit>
+      <trans-unit id="musicGroupDescription.label">
+        <source>MusicGroup description</source>
+      </trans-unit>
+      <trans-unit id="musicGroupImage.description">
+        <source>FAL file reference UID or path (same style as logo) for MusicGroup image</source>
+      </trans-unit>
+      <trans-unit id="musicGroupImage.label">
+        <source>MusicGroup image</source>
+      </trans-unit>
+      <trans-unit id="page.description">
+        <source>Page template paths and header data configuration</source>
+      </trans-unit>
+      <trans-unit id="page.headerData.favicons.file.description">
+        <source>Path to favicons partial file</source>
+      </trans-unit>
+      <trans-unit id="page.headerData.favicons.file.label">
+        <source>Favicons File</source>
+      </trans-unit>
+      <trans-unit id="page.label">
+        <source>Page Configuration</source>
+      </trans-unit>
+      <trans-unit id="page.layouts.description">
+        <source>Path to page layouts</source>
+      </trans-unit>
+      <trans-unit id="page.layouts.label">
+        <source>Page Layouts Path</source>
+      </trans-unit>
+      <trans-unit id="page.partials.description">
+        <source>Path to page partials</source>
+      </trans-unit>
+      <trans-unit id="page.partials.label">
+        <source>Page Partials Path</source>
+      </trans-unit>
+      <trans-unit id="page.templates.description">
+        <source>Path to page templates</source>
+      </trans-unit>
+      <trans-unit id="page.templates.label">
+        <source>Page Templates Path</source>
+      </trans-unit>
+      <trans-unit id="plugins.description">
+        <source>Configuration for various plugins (News, IndexedSearch, etc.)</source>
+      </trans-unit>
+      <trans-unit id="plugins.indexedSearch.label">
+        <source>Indexed Search Plugin Configuration</source>
+      </trans-unit>
+      <trans-unit id="plugins.indexedSearch.layouts.description">
+        <source>Path to indexed search layouts</source>
+      </trans-unit>
+      <trans-unit id="plugins.indexedSearch.layouts.label">
+        <source>Indexed Search Layouts Path</source>
+      </trans-unit>
+      <trans-unit id="plugins.indexedSearch.partials.description">
+        <source>Path to indexed search partials</source>
+      </trans-unit>
+      <trans-unit id="plugins.indexedSearch.partials.label">
+        <source>Indexed Search Partials Path</source>
+      </trans-unit>
+      <trans-unit id="plugins.indexedSearch.templates.description">
+        <source>Path to indexed search templates</source>
+      </trans-unit>
+      <trans-unit id="plugins.indexedSearch.templates.label">
+        <source>Indexed Search Templates Path</source>
+      </trans-unit>
+      <trans-unit id="plugins.label">
+        <source>Plugin Configurations</source>
+      </trans-unit>
+      <trans-unit id="plugins.news.label">
+        <source>News Plugin Configuration</source>
+      </trans-unit>
+      <trans-unit id="plugins.news.layouts.description">
+        <source>Path to news layouts</source>
+      </trans-unit>
+      <trans-unit id="plugins.news.layouts.label">
+        <source>News Layouts Path</source>
+      </trans-unit>
+      <trans-unit id="plugins.news.partials.description">
+        <source>Path to news partials</source>
+      </trans-unit>
+      <trans-unit id="plugins.news.partials.label">
+        <source>News Partials Path</source>
+      </trans-unit>
+      <trans-unit id="plugins.news.templates.description">
+        <source>Path to news templates</source>
+      </trans-unit>
+      <trans-unit id="plugins.news.templates.label">
+        <source>News Templates Path</source>
+      </trans-unit>
+      <trans-unit id="resources.description">
+        <source>Base resource paths for private and extension resources</source>
+      </trans-unit>
+      <trans-unit id="resources.extensions.description">
+        <source>Path to extension overrides</source>
+      </trans-unit>
+      <trans-unit id="resources.extensions.label">
+        <source>Extension Resources Path</source>
+      </trans-unit>
+      <trans-unit id="resources.label">
+        <source>Resource Paths</source>
+      </trans-unit>
+      <trans-unit id="resources.private.description">
+        <source>Path to private resources</source>
+      </trans-unit>
+      <trans-unit id="resources.private.label">
+        <source>Private Resources Path</source>
+      </trans-unit>
+      <trans-unit id="structuredData.description">
+        <source>Configuration for Schema.org structured data output</source>
+      </trans-unit>
+      <trans-unit id="structuredData.label">
+        <source>Structured Data / Schema.org</source>
+      </trans-unit>
+      <trans-unit id="structuredDataEnabled.description">
+        <source>Enable Schema.org JSON-LD structured data output for better SEO</source>
+      </trans-unit>
+      <trans-unit id="structuredDataEnabled.label">
+        <source>Enable Structured Data</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

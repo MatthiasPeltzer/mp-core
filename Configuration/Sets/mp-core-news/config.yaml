@@ -1,7 +1,7 @@
 name: mpc/mp-core-news
 label: MP Core - News Extension Configuration
 dependencies:
-  - mpc/mp-core
+  - mpc/mp-core-base
   - georgringer/news
 settings:
   definitions: settings.definitions.yaml

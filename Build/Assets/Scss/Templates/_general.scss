@@ -14,6 +14,8 @@ html {
 
 .main-wrapper,
 .header-wrapper-bg {
+  background-color: var(--bs-body-bg);
+
   &::after {
     bottom: 0;
     content: "";
@@ -152,4 +154,8 @@ html {
 
 .top-container > .frame-type-ce_slider {
   margin-top: -3px;
+}
+
+.vidply-player {
+  z-index: 2;
 }

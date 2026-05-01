@@ -29,8 +29,12 @@ $carousel-bg-light: var(--bs-gray-100);
     max-width: 100%;
   }
 
+  .figure {
+    display: inline-block;
+  }
+
   a.stretched-link {
-    display: inline;
+    display: contents;
 
     @include on-interact {
       outline: none;

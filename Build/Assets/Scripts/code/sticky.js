@@ -45,6 +45,12 @@ if (header) {
 
   window.addEventListener('scroll', handleScroll, {passive: true});
 
+  // One pass after layout so body.sticky matches scroll position and header heights are non-zero
+  requestAnimationFrame(() => {
+    measureToplogo();
+    handleScroll();
+  });
+
   // =============================================================================
   // RESPONSIVE PADDING
   // =============================================================================
