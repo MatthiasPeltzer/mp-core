@@ -1,13 +1,24 @@
 // header logo
 
+.logo-wrapper {
+  flex: 0 0 auto;
+}
+
 .logo {
   align-items: center;
   display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  justify-content: end;
+  max-width: 100%;
   padding: 0 0 8px;
 
   a {
     align-items: center;
-    display: flex;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    max-width: 100%;
   }
 }
 
@@ -18,20 +29,37 @@
 
   &-image,
   &-image-small {
-    img {
-      height: 48px;
-      width: 48px;
+    display: block;
+    flex-shrink: 0;
+    max-width: 100%;
+
+    img,
+    svg {
+      display: block;
+      flex-shrink: 0;
+      height: auto;
+      max-height: 4rem;
+      max-width: 100%;
+      object-fit: contain;
+      width: auto;
+    }
+  }
+
+  &-image-small {
+    img,
+    svg {
+      max-height: 3rem;
     }
   }
 
   &-image {
-    .sticky & {
+    body.sticky & {
       display: none !important;
     }
   }
 
   &-image-small {
-    .sticky & {
+    body.sticky & {
       display: block !important;
     }
   }

@@ -1,12 +1,6 @@
 <html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
-<f:variable name="langVar">
-    <f:for as="langText" each="{site.configuration.languages}" iteration="langCount">
-        <f:if condition="{langCount.index} == {data.sys_language_uid} && {langText.copyrightText}">
-            {langText.copyrightText}
-        </f:if>
-    </f:for>
-</f:variable>
+<f:variable name="langVar"><f:spaceless><f:for as="langText" each="{site.configuration.languages}"><f:if condition="{langText.languageId} == {data.sys_language_uid} && {langText.copyrightText}">{langText.copyrightText}</f:if></f:for></f:spaceless></f:variable>
 
 <footer class="footer pt-4 pb-4" aria-label="{f:translate(key: 'footer.info', extensionName: 'mp_core')}">
     <div class="container">

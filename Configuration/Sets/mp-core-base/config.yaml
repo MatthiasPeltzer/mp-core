@@ -1,0 +1,13 @@
+name: mpc/mp-core-base
+label: MP Core (shared settings / system dependencies)
+dependencies:
+  - typo3/form
+  - typo3/redirects
+  - typo3/indexed-search
+  - georgringer/news-recordlinks
+  - georgringer/news-sitemap
+  - mpc/mpc-vidply
+  - mpc/mpc-rss
+settings:
+  definitions: EXT:mp_core/Configuration/Sets/mp-core/settings.definitions.yaml
+  defaults: EXT:mp_core/Configuration/Sets/mp-core/settings.yaml

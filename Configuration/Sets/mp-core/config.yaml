@@ -1,8 +1,11 @@
 name: mpc/mp-core
 label: MP Core [Template]
 dependencies:
-  - typo3/fluid-styled-content
-  - typo3/indexed-search
-settings:
-  definitions: settings.definitions.yaml
-  defaults: settings.yaml
+  # Compose feature sets below the base stack. Child sets MUST depend on
+  # mpc/mp-core-base (not mpc/mp-core) — otherwise TYPO3 SetRegistry recurse() deadlocks:
+  # aggregator → mp-core-news → aggregator → ...
+  - mpc/mp-core-base
+  - mpc/mp-core-news
+  - mpc/mp-core-form
+  - mpc/mp-core-seo
+  - mpc/mp-core-container

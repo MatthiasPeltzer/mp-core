@@ -1,2 +1,7 @@
 @import 'EXT:mp_core/Configuration/TypoScript/Constants/Page/'
 @import 'EXT:mp_core/Configuration/TypoScript/Constants/ContentElements/'
+@import 'EXT:mp_core/Configuration/TypoScript/Constants/Sitepackage/10.Paths.typoscript'
+@import 'EXT:mp_core/Configuration/TypoScript/Constants/Sitepackage/20.Page.typoscript'
+@import 'EXT:mp_core/Configuration/TypoScript/Constants/Sitepackage/30.ContentElements.typoscript'
+@import 'EXT:mp_core/Configuration/TypoScript/Constants/Sitepackage/40.Plugins.typoscript'
+@import 'EXT:mp_core/Configuration/TypoScript/Constants/Sitepackage/50.ContentTypes.typoscript'

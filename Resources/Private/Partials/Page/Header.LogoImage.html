@@ -1,0 +1,18 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:if condition="{logoFile}">
+    <f:then>
+        <f:if condition="{preferSvg}">
+            <f:then><mpc:svgInline src="{logoFile}" class="{imageClass}" additionalAttributes="{aria-hidden:'true'}"/></f:then>
+            <f:else><f:image src="{logoFile}" treatIdAsReference="1" maxHeight="48px" /></f:else>
+        </f:if>
+    </f:then>
+    <f:else>
+        <f:image src="EXT:mp_core/Resources/Public/Images/logo-square.png" maxHeight="48px" />
+    </f:else>
+</f:if>
+
+</html>

@@ -45,6 +45,12 @@
       <trans-unit id="MPCoreMeta.label" resname="MPCoreMeta.label">
         <source>Meta Tags</source>
       </trans-unit>
+      <trans-unit id="MPCoreTemplates.description" resname="MPCoreTemplates.description">
+        <source>Template root paths, resources, and JSON-LD options (site layer)</source>
+      </trans-unit>
+      <trans-unit id="MPCoreTemplates.label" resname="MPCoreTemplates.label">
+        <source>Templates &amp; structured data</source>
+      </trans-unit>
       <trans-unit id="MPCoreNavigation.description" resname="MPCoreNavigation.description">
         <source>Navigation and menu settings</source>
       </trans-unit>

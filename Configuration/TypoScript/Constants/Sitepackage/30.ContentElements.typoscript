@@ -1,0 +1,13 @@
+mpcSitepackage {
+    contentElement {
+        templates = {$settings.contentElementTemplates}
+        partials = {$settings.contentElementPartials}
+        layouts = {$settings.contentElementLayouts}
+    }
+
+    containerElement {
+        templates = {$settings.containerElementTemplates}
+        partials = {$settings.containerElementPartials}
+        layouts = {$settings.containerElementLayouts}
+    }
+}

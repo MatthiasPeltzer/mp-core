@@ -3,9 +3,7 @@
       xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
-    <f:variable name="logoBig">
-        <f:for as="logoBigVar" each="{site.configuration.languages}" iteration="langCount"><f:if condition="{langCount.index} == {data.sys_language_uid} && {logoBigVar.logoBig}"><f:if condition="{logoBigVar.logoSvg}"><f:then><mpc:svgInline src="{logoBigVar.logoBig}" class="bg-svg" additionalAttributes="{aria-hidden:'true'}"/></f:then><f:else><mpc:svgInline src="{logoBigVar.logoBig}" class="bg-svg" additionalAttributes="{aria-hidden:'true'}"/></f:else></f:if></f:if></f:for>
-    </f:variable>
+    <f:variable name="logoBig"><f:spaceless><f:for as="lang" each="{site.configuration.languages}"><f:if condition="{lang.languageId} == {data.sys_language_uid}"><f:if condition="{lang.logoBig}"><f:then><f:render partial="Header.LogoImage" arguments="{logoFile: lang.logoBig, preferSvg: lang.logoSvg, imageClass: 'bg-svg'}"/></f:then><f:else><f:if condition="{site.configuration.logoBig}"><f:then><f:render partial="Header.LogoImage" arguments="{logoFile: site.configuration.logoBig, preferSvg: site.configuration.logoSvg, imageClass: 'bg-svg'}"/></f:then><f:else><f:render partial="Header.LogoImage" arguments="{logoFile: '', preferSvg: false, imageClass: 'bg-svg'}"/></f:else></f:if></f:else></f:if></f:if></f:for></f:spaceless></f:variable>
 
     <div class="header-bg-svg">
         <f:if condition="{filesbg.0}">

@@ -485,11 +485,11 @@ $paragraph-margin-bottom: 1rem;
 // scss-docs-start grid-breakpoints
 $grid-breakpoints: (
   xs: 0,
-  sm: 576px, // 36rem
-  md: 768px, // 48rem
-  lg: 992px, // 62rem
-  xl: 1200px, // 75rem
-  xxl: 1400px // 87.5rem
+  sm: 576px, /* 36rem*/
+  md: 768px, /* 48rem*/
+  lg: 992px, /* 62rem*/
+  xl: 1200px, /* 75rem*/
+  xxl: 1400px /* 87.5rem*/
 );
 // scss-docs-end grid-breakpoints
 
@@ -501,11 +501,11 @@ $grid-breakpoints: (
 
 // scss-docs-start container-max-widths
 $container-max-widths: (
-  sm: 540px, // 34rem
-  md: 720px, // 45rem
-  lg: 960px, // 60rem
-  xl: 1140px, // 71.25rem
-  xxl: 1320px // 82.5rem
+  sm: 540px, /* 34rem*/
+  md: 720px, /* 45rem*/
+  lg: 960px, /* 60rem*/
+  xl: 1140px, /* 71.25rem*/
+  xxl: 1320px /* 82.5rem*/
 );
 // scss-docs-end container-max-widths
 

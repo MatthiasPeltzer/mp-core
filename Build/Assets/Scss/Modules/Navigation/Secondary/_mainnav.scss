@@ -489,7 +489,7 @@ $transition-bounce: $nav-transition-bounce;
   }
 
   .first-child {
-    @include font-size(18px);
+    @extend %specialelite;
 
     background-color: transparent;
     color: var(--bs-body-color);
@@ -500,6 +500,8 @@ $transition-bounce: $nav-transition-bounce;
     padding: 16px 0;
     position: relative;
     text-transform: uppercase;
+
+    @include font-size(18px);
 
     @include on-interact {
       color: var(--bs-body-color);

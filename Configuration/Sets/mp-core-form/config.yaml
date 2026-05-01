@@ -1,7 +1,7 @@
 name: mpc/mp-core-form
 label: MP Core - Form Extension Configuration
 dependencies:
-  - mpc/mp-core
+  - mpc/mp-core-base
 optionalDependencies:
   - typo3/form
 settings:
