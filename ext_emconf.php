@@ -11,7 +11,11 @@ $EM_CONF['mp_core'] = [
             'seo' => '13.4.0-14.3.99',
         ],
         'conflicts' => [],
-        'suggests' => [],
+        'suggests' => [
+            'news' => '13.4.0-14.3.99',
+            'mpc_vidply' => '1.1.0-1.99.99',
+            'mpc_rss' => '1.0.0-1.99.99',
+        ],
     ],
     'autoload' => [
         'psr-4' => [
