@@ -2,9 +2,6 @@
 <f:if condition="{menuMainMobile}">
     <div class="main-nav-wrapper" id="main-menu-list">
         <div class="container-md">
-            <div class="meta-mobile" id="meta-mobile">
-                <f:render arguments="{_all}" partial="Navigation/Tertiary/NavMeta"/>
-            </div>
             <ul class="main-menu list-unstyled row">
                 <f:for as="mainItem" each="{menuMainMobile}">
                     <li class="col{f:if(condition:'{mainItem.data.doktype} == 4', then:' shortcut')}">

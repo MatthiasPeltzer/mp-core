@@ -1,16 +1,21 @@
 <html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
-<div class="row align-items-center flex-nowrap">
+<div class="row align-items-center flex-nowrap gx-2 gx-lg-3 nav-tertiary-header-bar">
     <f:render arguments="{_all}" partial="Header.Logo"/>
-    <div class="col meta-desktop flex-grow-1">
-        <f:render arguments="{_all}" partial="Navigation/Tertiary/NavMeta"/>
+    <div class="col flex-grow-1 min-w-0">
+        <div class="d-flex justify-content-end align-items-center gap-2 flex-nowrap">
+            <div class="meta-desktop">
+                <f:render arguments="{_all}" partial="Navigation/Tertiary/NavMeta"/>
+            </div>
+            <f:render arguments="{_all}" partial="Navigation/Tertiary/NavMainMobile"/>
+        </div>
     </div>
-    <f:render arguments="{_all}" partial="Navigation/Tertiary/NavMainMobile"/>
 </div>
 
-<div class="row align-items-center d-none d-lg-block">
-    <nav aria-label="{f:translate(key: 'header.mainnavigation', extensionName: 'mp_core')}" class="mainnav-desktop justify-content-end d-none d-lg-flex">
-        <ul class="list-unstyled d-flex mb-0 justify-content-end" id="nav-desktop">
+<div class="row d-none d-lg-flex">
+    <div class="col-12">
+        <nav aria-label="{f:translate(key: 'header.mainnavigation', extensionName: 'mp_core')}" class="mainnav-desktop justify-content-end w-100 d-flex flex-wrap">
+        <ul class="list-unstyled d-flex mb-0 justify-content-end flex-grow-1" id="nav-desktop">
             <f:for as="mainItem" each="{menuMainDesktop}">
                 <f:render arguments="{_all}" partial="Navigation/Tertiary/NavMain"/>
             </f:for>
@@ -21,7 +26,8 @@
                 </li>
             </f:if>
         </ul>
-    </nav>
+        </nav>
+    </div>
 </div>
 
 </html>

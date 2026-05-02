@@ -137,7 +137,7 @@ page {
   }
 [global]
 
-[traverse(site("configuration"),"navType") in ["2","3"]]
+[traverse(site("configuration"),"navType") == "2" || traverse(site("configuration"),"navType") == "3"]
   page {
     10 {
       dataProcessing {
