@@ -163,3 +163,7 @@ html {
 .main-container .frame .frame {
   position: relative;
 }
+
+[class^="banner bgcolor-"] {
+  z-index: 0;
+}
