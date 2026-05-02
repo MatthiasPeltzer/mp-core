@@ -354,6 +354,8 @@ $transition-bounce: $nav-transition-bounce;
   }
 
   .first-nav {
+    @extend %specialelite;
+
     background-color: transparent;
     border: 0 none;
     color: var(--bs-body-color);
