@@ -11,14 +11,14 @@ Build system, asset pipeline, JavaScript/SCSS architecture, and best practices.
 
 ## Technology Stack
 
-- **Vite 7.2** - Build tool and dev server with HMR
-- **Vue.js 3.5** - Interactive components
-- **Bootstrap 5.3.8** - UI framework
-- **Sass 1.96** - CSS preprocessing
-- **PostCSS** - Autoprefixer, pxtorem
-- **ESLint 9** / **Stylelint 16** - Code quality
-- **Swiper 12** - Touch sliders
-- **Jarallax 2** - Parallax scrolling
+- **Vite 8** -- Build tool with HMR
+- **Vue.js 3.5** -- Interactive components (TodoList, GallerySwiper, SwiperSlider)
+- **Bootstrap 5.3** -- UI framework
+- **Sass 1.99** -- CSS preprocessing (modern-compiler API)
+- **PostCSS** -- preset-env, pxtorem
+- **ESLint 10** / **Stylelint 17** -- Code quality
+- **Swiper 12** -- Touch sliders (integrated via Vue components)
+- **Jarallax 3** -- Parallax scrolling
 
 ---
 
@@ -34,9 +34,10 @@ Output goes to `Resources/Public/` (JavaScripts, StyleSheets, Fonts, Icons, Imag
 
 | Script | Description |
 |--------|-------------|
-| `build` | Production build (minified, optimized) |
-| `dev` | Development build with source maps |
+| `build` | Lint + production build (minified, optimized) |
+| `dev` | Lint + development build with source maps |
 | `watch` | Development build with file watcher |
+| `lint` | Run ESLint + Stylelint |
 | `eslint` / `eslint.fix` | JavaScript linting |
 | `stylelint` / `stylelint.fix` | CSS/SCSS linting |
 
@@ -93,12 +94,13 @@ Defined in `Build/vite.config.js`:
 |--------|---------|
 | `bootstrap.js` | Bootstrap framework initialization |
 | `screen.js` | Main frontend (sticky header, theme, etc.) |
-| `vue.js` | Vue.js 3 components |
-| `swiper.js` | Swiper carousel initialization |
+| `vue.js` | Vue.js 3 components (includes Swiper integration) |
 | `navigationPrimary/Secondary/Tertiary.js` | Navigation levels |
 | `print.js` | Print-specific styles |
 | `backend.js` | TYPO3 backend styles |
 | `ckeditor.js` | CKEditor RTE styles |
+
+> **Note:** Swiper is integrated into the `vue.js` bundle -- there is no separate `swiper.js` entry point.
 
 ### Adding a New Entry
 
@@ -118,46 +120,40 @@ Defined in `Build/vite.config.js`:
 
 ### Feature Modules (`Build/Assets/Scripts/code/`)
 
-**Core:** `i18n.js`, `i18nLinkHelper.js`, `main.js`
+**Core:** `main.js`, `i18n.js`, `i18nLinkHelper.js`
 
-**UI:** `jarallax.js`, `modalGallery.js`, `openAccordionAndTabs.js`, `pagination.js`, `sticky.js`, `teaserLink.js`, `totop.js`
+**UI:** `jarallax.js`, `modalGallery.js`, `openAccordionAndTabs.js`, `pagination.js`, `sticky.js`, `totop.js`
 
-**Navigation:** `nav-toggle.js`, `Navigation/Primary.js`, `Navigation/Secondary.js`, `Navigation/Tertiary.js`
+**Navigation:** `nav-toggle.js`, `Navigation/Primary/navigation.js`, `Navigation/Secondary/navigation.js`, `Navigation/Tertiary/navigation.js`
 
-**Layout:** `moveHeaderDate.js`, `resizeListener.js`, `theme.js`
-
-**Swiper:** `Swiper/init.js`, `Swiper/config.js`
+**Layout:** `moveHeaderDate.js`, `moveMeta.js`, `theme.js`
 
 ### Shared Utilities (`Utils/domUtils.js`)
 
-- `debounce(func, wait)` - Performance-safe resize/scroll handling
-- `toggleNavState(...)` - Navigation open/closed state
-- `handleDropdownVisibility(element, showCb, hideCb)` - Bootstrap dropdown events
-- `toggleAriaLabelAndTitle(element, openLabel, closeLabel)` - Accessible label toggling
+- `debounce(func, wait)` -- Performance-safe resize/scroll handling
+- `toggleNavState(...)` -- Navigation open/closed state
+- `handleDropdownVisibility(element, showCb, hideCb)` -- Bootstrap dropdown events
+- `toggleAriaLabelAndTitle(element, openLabel, closeLabel)` -- Accessible label toggling
 
 ---
 
 ## Vue.js Components
 
-**TodoList** (`Build/Assets/Scripts/components/TodoList.vue`) - Interactive todo with localStorage, registered as CType `mpcore_todolist`.
+Located in `Build/Assets/Scripts/components/`:
+
+| Component | Description |
+|-----------|-------------|
+| `TodoList.vue` | Interactive todo with localStorage, registered as CType `mpcore_todolist` |
+| `GallerySwiper.vue` | Swiper-based gallery carousel for the gallery content element |
+| `SwiperSlider.vue` | Generic Swiper slider for container slider elements |
+
+Component registration is handled in `code/Vue/vue-initialisation.js`.
 
 ### Creating a New Component
 
 1. Create `.vue` file in `Build/Assets/Scripts/components/`
-2. Create entry point:
-
-```javascript
-import { createApp } from 'vue';
-import MyComponent from './components/MyComponent.vue';
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.my-component-mount').forEach(el => {
-    createApp(MyComponent).mount(el);
-  });
-});
-```
-
-3. Register in `vite.config.js`, build, and include via `<f:asset.script>` in Fluid.
+2. Register in `code/Vue/vue-initialisation.js`
+3. Build and include via `<f:asset.script>` in Fluid (the `vue.js` entry point auto-mounts registered components).
 
 ---
 
@@ -165,13 +161,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 Layers from low to high specificity:
 
-1. **Settings** (`Base/`) - Variables, fonts, color maps
-2. **Tools** (`Mixins/`) - Functions, mixins (no CSS output)
-3. **Generic** - Reset, normalize (from Bootstrap)
-4. **Elements** (`Elements/`) - Base HTML elements
-5. **Objects** - Layout patterns
-6. **Components** (`Modules/`) - Styled UI components
-7. **Utilities** - Helper classes
+1. **Settings** (`Base/`) -- Variables, fonts, color maps
+2. **Tools** (`Mixins/`) -- Functions, mixins (no CSS output)
+3. **Generic** -- Reset, normalize (from Bootstrap)
+4. **Elements** (`Elements/`) -- Base HTML elements
+5. **Objects** -- Layout patterns
+6. **Components** (`Modules/`) -- Styled UI components
+7. **Utilities** -- Helper classes
 
 ### Bootstrap Customization
 
@@ -249,6 +245,6 @@ Template path precedence: higher numbers override lower (`0` = core, `10` = exte
 
 ## Further Reading
 
-- [Favicons](Favicons.md) - Favicon generation
-- [Configuration](Configuration.md) - Site Sets, TypoScript, TCA
+- [Favicons](Favicons.md) -- Favicon generation
+- [Configuration](Configuration.md) -- Site Sets, TypoScript, TCA
 - [Vite](https://vitejs.dev/) | [Vue.js](https://vuejs.org/) | [Bootstrap 5](https://getbootstrap.com/docs/5.3/) | [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
