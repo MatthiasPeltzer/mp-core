@@ -1,6 +1,6 @@
 # MP Core · TYPO3 13 / 14 Site Package
 
-MP Core delivers a Bootstrap- and Vue-powered site package for TYPO3 13.4 / 14.3, including ready-made content elements, container layouts, Schema.org structured data, and a Vite-based frontend toolchain. It is designed as a solid starting point for corporate and public sector websites.
+MP Core delivers a Bootstrap- and Vue-powered site package for TYPO3 13.4 / 14.3, including ready-made content elements, container layouts, Schema.org structured data, and a Vite-based frontend toolchain. It is designed as a solid starting point for personal, corporate and public sector websites.
 
 - Prebuilt content modules (stage, banner, gallery, single teaser, menu subpages, Vue todo list) with Fluid templates.
 - Container elements (accordion, tabs, slider, grid, wrapper) via b13/container.
