@@ -1,6 +1,6 @@
 # MP Core -- Feature Overview
 
-TYPO3 ^13.4 / ^14.3 | PHP >=8.2 | Node.js >=20 -- See [README](../README.md) for installation.
+TYPO3 ^13.4 / ^14.3 | PHP >=8.2 | Node.js >=22 -- See [README](../README.md) for installation.
 
 ---
 

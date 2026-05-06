@@ -6,7 +6,7 @@ Build system, asset pipeline, JavaScript/SCSS architecture, and best practices.
 
 ## Requirements
 
-- **Node.js** >=20 (Node 22 recommended)
+- **Node.js** >=22 (Node 24 recommended)
 - **npm** >=10
 
 ## Technology Stack
