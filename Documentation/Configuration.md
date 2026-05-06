@@ -8,15 +8,18 @@ Site Sets, Site Settings, TypoScript, and TCA configuration reference.
 
 | Set | Purpose |
 |-----|---------|
-| `mpc/mp-core` (required) | Core functionality, templates, base styling |
+| `mpc/mp-core` (aggregator) | Pulls in all feature sets below in one include |
+| `mpc/mp-core-base` (required) | Core functionality, templates, base styling, shared settings |
 | `mpc/mp-core-container` | Container elements (accordion, tabs, slider, grid) |
 | `mpc/mp-core-news` | News extension integration |
 | `mpc/mp-core-form` | Form framework configuration |
-| `mpc/mp-core-seo` | SEO (Open Graph, Twitter Cards, sitemap) |
+| `mpc/mp-core-seo` | SEO (Open Graph, Twitter Cards, Schema.org, sitemap) |
+
+`mpc/mp-core` is an aggregator that depends on `mpc/mp-core-base` plus all feature sets. Including only `mpc/mp-core` in your site is sufficient. If you need fine-grained control, include `mpc/mp-core-base` and pick individual feature sets.
 
 ### Enabling Sets
 
-**Backend:** Site Management -> Sites -> Sets tab -> enable and order sets (`MP Core` first).
+**Backend:** Site Management -> Sites -> Sets tab -> enable and order sets.
 
 **YAML** (`config/sites/[site]/config.yaml`):
 
@@ -25,9 +28,14 @@ base: 'https://example.com'
 rootPageId: 1
 dependencies:
   - mpc/mp-core
+```
+
+Or cherry-pick individual sets:
+
+```yaml
+dependencies:
+  - mpc/mp-core-base
   - mpc/mp-core-container
-  - mpc/mp-core-news
-  - mpc/mp-core-form
   - mpc/mp-core-seo
 ```
 
@@ -37,42 +45,204 @@ dependencies:
 
 Editable via **Site Management -> Sites -> Settings** or `config/sites/[site]/settings.yaml`.
 
-### Core (`mpCore`)
+### Core (`mpc/mp-core-base`)
 
-| Category | Key examples | Description |
-|----------|-------------|-------------|
-| PIDs | `PIDs.pidHome`, `PIDs.pidMetaNavTop`, `PIDs.pidCategories` | Page IDs for navigation, categories |
-| Design | `design.colors.primary`, `design.fonts.primary`, `design.breakpoints.*` | Colors, fonts, breakpoints |
-| Performance | `performance.compressJs`, `performance.compressCss`, `performance.enableLazyLoading` | Compression, lazy loading |
-| Content | `content.textmedia.maxWidth`, `content.lightbox.enabled`, `content.defaultHeaderType` | Image sizes, lightbox, headers |
-| Navigation | `navigation.maxDepth`, `navigation.enableBreadcrumb` | Menu depth, breadcrumbs |
-| Meta | `meta.viewport`, `meta.robots`, `meta.googleSiteVerification` | Meta tags |
-| Config | `config.admPanel`, `config.debug`, `config.spamProtectEmailAddresses` | Debug, caching, spam |
+#### PIDs
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `PIDs.pidSearch` | int | 0 | Search result page |
+| `PIDs.pidHome` | int | 1 | Homepage |
+| `PIDs.pidMetaNavTop` | int | 66 | Top meta navigation page |
+| `PIDs.pidMetaNavFooter` | int | 25 | Footer meta navigation page |
+| `PIDs.pidMainNavMeta` | int | 25 | Main navigation meta page |
+| `PIDs.pidCategories` | int | 251 | Category storage page |
+| `PIDs.pidLogosBannerTop` | int | 391 | Top logos/banner page |
+| `PIDs.pidSupplement` | int | 24 | Supplement page |
+
+#### Content
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `content.textmedia.maxWidth` | int | 1200 | Max image width (px) |
+| `content.textmedia.maxWidthInText` | int | 600 | Max image width in-text (px) |
+| `content.lightbox.enabled` | bool | true | Enable lightbox for images |
+| `content.lightbox.cssClass` | string | `lightbox` | Lightbox CSS class |
+| `content.defaultHeaderType` | int | 2 | Default header level (h2) |
+| `content.links.extTarget` | string | `_blank` | External link target |
+
+#### Configuration
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `config.admPanel` | bool | false | Admin panel |
+| `config.debug` | bool | false | Debug mode |
+| `config.noCache` | bool | false | Disable caching |
+| `config.removeDefaultJS` | string | `external` | Default JS removal mode |
+| `config.spamProtectEmailAddresses` | bool | true | Email obfuscation |
+| `config.spamProtectEmailAddresses_atSubst` | string | `[at]` | @ replacement string |
+| `config.absRefPrefix` | string | `auto` | Absolute reference prefix |
+| `config.headerComment` | string | (empty) | HTML source header comment |
+
+#### Performance
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `performance.compressJs` | bool | false | Compress JavaScript |
+| `performance.compressCss` | bool | false | Compress CSS |
+| `performance.concatenateJs` | bool | false | Concatenate JavaScript |
+| `performance.concatenateCss` | bool | false | Concatenate CSS |
+| `performance.enableLazyLoading` | bool | true | Enable lazy loading |
+
+#### Design
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `design.colors.primary` | string | `#0066cc` | Primary brand color |
+| `design.colors.secondary` | string | `#ff6600` | Secondary brand color |
+| `design.fonts.primary` | string | `Open Sans, sans-serif` | Primary font family |
+| `design.fonts.heading` | string | `Turret Road, sans-serif` | Heading font family |
+| `design.breakpoints.mobile` | int | 768 | Mobile breakpoint (px) |
+| `design.breakpoints.tablet` | int | 1024 | Tablet breakpoint (px) |
+| `design.breakpoints.desktop` | int | 1440 | Desktop breakpoint (px) |
+| `design.container.maxWidth` | string | `1200px` | Container max width |
+
+#### Navigation
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `navigation.maxDepth` | int | 3 | Maximum menu depth |
+| `navigation.showHiddenPages` | bool | false | Show hidden pages in menus |
+| `navigation.enableBreadcrumb` | bool | true | Breadcrumb navigation |
+| `navigation.breadcrumb.includeHome` | bool | true | Include home in breadcrumb |
+
+#### Meta
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `meta.viewport` | string | `width=device-width, initial-scale=1` | Viewport meta tag |
+| `meta.robots` | string | `index,follow` | Robots meta tag |
+| `meta.appleMobileWebAppCapable` | string | `no` | Apple web app capable |
+| `meta.compatible` | string | `IE=edge` | X-UA-Compatible |
+| `meta.google` | string | `notranslate` | Google meta tag |
+| `meta.googleSiteVerification` | string | (empty) | Google site verification |
+
+#### Templates
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `basePath` | string | `EXT:mp_core` | Extension base path |
+| `pageTemplates` | string | `EXT:mp_core/Resources/Private/Templates/Page/` | Page templates |
+| `pagePartials` | string | `EXT:mp_core/Resources/Private/Partials/Page/` | Page partials |
+| `pageLayouts` | string | `EXT:mp_core/Resources/Private/Layouts/Page/` | Page layouts |
+| `pageFaviconsFile` | string | `EXT:mp_core/Resources/Private/Partials/Page/Favicons.html` | Favicons partial |
+| `contentElementTemplates` | string | `EXT:mp_core/.../fluid_styled_content/.../Templates/` | Content element templates |
+| `contentElementPartials` | string | `EXT:mp_core/.../fluid_styled_content/.../Partials/` | Content element partials |
+| `contentElementLayouts` | string | `EXT:mp_core/.../fluid_styled_content/.../Layouts/` | Content element layouts |
+| `containerElementTemplates` | string | `EXT:mp_core/Resources/Private/Templates/Container/` | Container templates |
+| `containerElementPartials` | string | `EXT:mp_core/Resources/Private/Partials/Container/` | Container partials |
+| `containerElementLayouts` | string | `EXT:mp_core/Resources/Private/Layouts/Container/` | Container layouts |
+| `pluginsNewsTemplates` | string | `EXT:mp_core/Resources/Extensions/news/Templates/` | News templates |
+| `pluginsNewsPartials` | string | `EXT:mp_core/Resources/Extensions/news/Partials/` | News partials |
+| `pluginsNewsLayouts` | string | `EXT:mp_core/Resources/Extensions/news/Layouts/` | News layouts |
+| `pluginsIndexedSearchTemplates` | string | `EXT:mp_core/.../indexed_search/Templates/` | Search templates |
+| `pluginsIndexedSearchPartials` | string | `EXT:mp_core/.../indexed_search/Partials/` | Search partials |
+| `pluginsIndexedSearchLayouts` | string | `EXT:mp_core/.../indexed_search/Layouts/` | Search layouts |
+| `contentTypesTemplates` | string | `EXT:mp_core/Resources/Private/Templates/Content/` | Custom content templates |
+| `contentTypesGalleryTemplates` | string | `EXT:mp_core/Resources/Private/Templates/Content/` | Gallery templates |
+| `resourcesPrivate` | string | `EXT:mp_core/Resources/Private` | Private resources base |
+| `resourcesExtensions` | string | `EXT:mp_core/Resources/Extensions` | Extension overrides base |
+
+#### Structured Data / MusicGroup
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `structuredDataEnabled` | bool | true | Enable Schema.org JSON-LD output |
+| `musicGroupEnabled` | bool | false | Enable MusicGroup schema |
+| `musicGroupName` | string | `Pellerhead` | MusicGroup name |
+| `musicGroupGenre` | string | `Rock, Punk, Electronic` | MusicGroup genre |
+| `musicGroupDescription` | string | (empty) | MusicGroup description |
+| `musicGroupImage` | string | (empty) | MusicGroup image reference |
 
 ### Container (`mpc/mp-core-container`)
 
-Grid, accordion, tabs, slider settings (enabled, columns, gutters, toggle behavior).
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `container.grid.enabled` | bool | true | Enable grid element |
+| `container.grid.defaultColumns` | int | 2 | Default column count |
+| `container.grid.maxColumns` | int | 4 | Maximum columns |
+| `container.grid.gutterSize` | string | `20px` | Grid gutter |
+| `container.accordion.enabled` | bool | true | Enable accordion element |
+| `container.accordion.allowMultiple` | bool | false | Allow multiple open items |
+| `container.accordion.firstOpen` | bool | true | Open first item by default |
+| `container.tabs.enabled` | bool | true | Enable tabs element |
+| `container.tabs.position` | string | `top` | Tab bar position |
+| `container.wrapper.maxWidth` | string | `1200px` | Wrapper max width |
+| `container.wrapper.padding` | string | `15px` | Wrapper padding |
 
 ### News (`mpc/mp-core-news`)
 
-List pagination, ordering, date format, detail view back link, related news, media sizes.
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `news.list.paginate.itemsPerPage` | int | 10 | Items per page |
+| `news.list.orderBy` | string | `datetime` | Sort field |
+| `news.list.orderDirection` | string | `desc` | Sort direction |
+| `news.list.dateFormat` | string | `d.m.Y` | Date format |
+| `news.list.showCategories` | bool | true | Show categories in list |
+| `news.list.showTags` | bool | true | Show tags in list |
+| `news.detail.showBackLink` | bool | true | Show back link |
+| `news.detail.showRelated` | bool | true | Show related news |
+| `news.detail.relatedLimit` | int | 3 | Related news limit |
+| `news.detail.enableComments` | bool | false | Enable comments |
+| `news.media.maxWidth` | int | 1200 | Max image width |
+| `news.media.maxHeight` | int | 800 | Max image height |
 
 ### Form (`mpc/mp-core-form`)
 
-Honeypot, email sender/reply-to, validation, storage, upload folder.
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `form.honeypot.enabled` | bool | true | Enable honeypot spam protection |
+| `form.confirmationPage.enabled` | bool | true | Show confirmation page |
+| `form.requiredFieldMarker` | string | `*` | Required field marker |
+| `form.email.senderName` | string | `Website Contact Form` | Email sender name |
+| `form.email.senderEmail` | string | `noreply@example.com` | Email sender address |
+| `form.email.replyToEmail` | string | `info@example.com` | Reply-to address |
+| `form.validation.clientSide` | bool | true | Client-side validation |
+| `form.validation.showInlineErrors` | bool | true | Show inline errors |
+| `form.storage.saveToDatabase` | bool | false | Save submissions to DB |
+| `form.storage.uploadFolder` | string | `1:/forms/` | Upload folder |
 
 ### SEO (`mpc/mp-core-seo`)
 
-Open Graph, Twitter Cards, Schema.org, XML sitemap, canonical URLs.
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `seo.meta.defaultDescription` | string | (empty) | Default meta description |
+| `seo.meta.generateDescriptions` | bool | true | Auto-generate descriptions |
+| `seo.meta.maxDescriptionLength` | int | 160 | Max description length |
+| `seo.meta.maxTitleLength` | int | 60 | Max title length |
+| `seo.meta.titleSeparator` | string | ` \| ` | Title separator |
+| `seo.openGraph.enabled` | bool | true | Enable Open Graph |
+| `seo.openGraph.defaultImage` | string | (empty) | Default OG image |
+| `seo.openGraph.imageWidth` | int | 1200 | OG image width |
+| `seo.openGraph.imageHeight` | int | 630 | OG image height |
+| `seo.twitter.enabled` | bool | true | Enable Twitter Cards |
+| `seo.twitter.cardType` | string | `summary_large_image` | Twitter card type |
+| `seo.twitter.site` | string | (empty) | Twitter @username |
+| `seo.sitemap.enabled` | bool | true | Enable XML sitemap |
+| `seo.sitemap.excludeHiddenPages` | bool | true | Exclude hidden pages |
+| `seo.sitemap.priority` | string | `0.5` | Default sitemap priority |
+| `seo.canonical.enabled` | bool | true | Enable canonical URLs |
+| `seo.schema.enabled` | bool | true | Enable Schema.org |
+| `seo.schema.organizationType` | string | `Organization` | Publisher @type for JSON-LD |
 
 ### Using Settings in TypoScript
 
 ```typoscript
 # Constants
-mpCore.design.primaryColor = {$settings.mpCore.design.colors.primary}
+mpCore.design.primaryColor = {$settings.design.colors.primary}
 
 # Setup
-page.10.templateRootPaths.10 = {$settings.mpCore.templates.templateRootPath}
+page.10.templateRootPaths.10 = {$settings.pageTemplates}
 ```
 
 ---
@@ -81,9 +251,23 @@ page.10.templateRootPaths.10 = {$settings.mpCore.templates.templateRootPath}
 
 ```
 Configuration/
-├── Sets/mp-core/
-│   ├── config.yaml, settings.yaml, settings.definitions.yaml
-│   ├── constants.typoscript, setup.typoscript, page.tsconfig
+├── Sets/
+│   ├── mp-core/
+│   │   └── config.yaml (aggregator)
+│   ├── mp-core-base/
+│   │   └── config.yaml, settings.yaml, settings.definitions.yaml
+│   ├── mp-core-container/
+│   │   ├── config.yaml, settings.yaml, settings.definitions.yaml
+│   │   ├── constants.typoscript, setup.typoscript
+│   ├── mp-core-news/
+│   │   ├── config.yaml, settings.yaml, settings.definitions.yaml
+│   │   ├── constants.typoscript, setup.typoscript
+│   ├── mp-core-form/
+│   │   ├── config.yaml, settings.yaml, settings.definitions.yaml
+│   │   ├── constants.typoscript, setup.typoscript
+│   └── mp-core-seo/
+│       ├── config.yaml, settings.yaml, settings.definitions.yaml
+│       ├── constants.typoscript, setup.typoscript
 ├── TypoScript/
 │   ├── constants.typoscript, setup.typoscript
 │   ├── VueComponents.typoscript
@@ -115,15 +299,15 @@ page.10 = FLUIDTEMPLATE
 page.10 {
   templateRootPaths {
     0 = EXT:mp_core/Resources/Private/Templates/Page/
-    10 = {$settings.mpCore.templates.templateRootPath}
+    10 = {$settings.pageTemplates}
   }
   partialRootPaths {
     0 = EXT:mp_core/Resources/Private/Partials/
-    10 = {$settings.mpCore.templates.partialRootPath}
+    10 = {$settings.pagePartials}
   }
   layoutRootPaths {
     0 = EXT:mp_core/Resources/Private/Layouts/
-    10 = {$settings.mpCore.templates.layoutRootPath}
+    10 = {$settings.pageLayouts}
   }
 }
 ```
@@ -253,8 +437,8 @@ CREATE TABLE tt_content (
 
 ## Further Reading
 
-- [Frontend](Frontend.md) - Build system and asset pipeline
-- [Favicons](Favicons.md) - Favicon generation
+- [Frontend](Frontend.md) -- Build system and asset pipeline
+- [Favicons](Favicons.md) -- Favicon generation
 - [TYPO3 TCA Reference](https://docs.typo3.org/m/typo3/reference-tca/main/en-us/)
 - [TYPO3 Site Sets](https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/SiteHandling/SiteSets.html)
 - [TYPO3 TypoScript Reference](https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/)

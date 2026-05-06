@@ -1,6 +1,6 @@
 # MP Core Documentation
 
-Documentation hub for the MP Core TYPO3 13.4 site package.
+Documentation hub for the MP Core TYPO3 13 / 14 site package.
 
 ---
 
@@ -21,3 +21,5 @@ Documentation hub for the MP Core TYPO3 13.4 site package.
 - [Bootstrap 5](https://getbootstrap.com/docs/5.3/)
 - [Vue.js 3](https://vuejs.org/)
 - [Vite](https://vitejs.dev/)
+- [Swiper](https://swiperjs.com/)
+- [b13/container](https://github.com/b13/container)
