@@ -37,39 +37,28 @@ $gradient-light: $gray-100;
 .gradient-bottom,
 .gradient-top {
   position: relative;
+}
 
-  &::before {
-    content: "";
-    display: block;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: -1;
+.gradient-bg {
+  background-image: linear-gradient(to right, transparent 0%, $gradient-dark 100%);
+
+  @include light-theme {
+    background-image: linear-gradient(to right, transparent 0%, $gradient-light 100%);
   }
 }
 
-.gradient-bg::before {
-  @include gradient(right, transparent, $gradient-dark);
+.gradient-bottom {
+  background-image: linear-gradient(to bottom, transparent 0%, $gradient-dark 100%);
 
   @include light-theme {
-    @include gradient(right, transparent, $gradient-light);
+    background-image: linear-gradient(to bottom, transparent 0%, $gradient-light 100%);
   }
 }
 
-.gradient-bottom::before {
-  @include gradient(bottom, transparent, $gradient-dark);
+.gradient-top {
+  background-image: linear-gradient(to top, $gradient-dark 0%, transparent 100%);
 
   @include light-theme {
-    @include gradient(bottom, transparent, $gradient-light);
-  }
-}
-
-.gradient-top::before {
-  @include gradient(top, $gradient-dark, transparent);
-
-  @include light-theme {
-    @include gradient(top, $gradient-light, transparent);
+    background-image: linear-gradient(to top, $gradient-light 0%, transparent 100%);
   }
 }
