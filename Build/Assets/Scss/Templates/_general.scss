@@ -64,6 +64,8 @@ html {
 .bgcolor-6,
 .bgcolor-7,
 .bgcolor-8 {
+  isolation: isolate;
+
   &::before {
     border-radius: var(--bs-border-radius);
     content: "";
