@@ -11,15 +11,6 @@ TYPO3:
         allowDeleteFromExtensionPaths: true
       prototypes:
         standard:
-          finishersDefinition:
-            EmailToReceiver:
-              options:
-                templateRootPaths:
-                  101: 'EXT:mp_core/Resources/Extensions/form/Frontend/Templates/Finishers/Email/'
-            EmailToSender:
-              options:
-                templateRootPaths:
-                  101: 'EXT:mp_core/Resources/Extensions/form/Frontend/Templates/Finishers/Email/'
           formElementsDefinition:
             FileUpload:
               formEditor:
@@ -34,6 +25,10 @@ TYPO3:
                         label: '2:/formupload/'
               properties:
                 saveToFileMount: '2:/formupload/'
+            Textarea:
+              properties:
+                rows: 10
+                maxlength: 2000
             ImageUpload:
               formEditor:
                 predefinedDefaults:
