@@ -14,11 +14,6 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 defined('TYPO3') or die('Access denied.');
 
 /***************
- * Define TypoScript as content rendering template
- */
-$GLOBALS['TYPO3_CONF_VARS']['FE']['contentRenderingTemplates'][] = 'mp_core/Configuration/TypoScript/';
-
-/***************
  * Register custom EXT:form configuration
  */
 if (ExtensionManagementUtility::isLoaded('form')) {
