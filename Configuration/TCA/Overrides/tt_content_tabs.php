@@ -56,9 +56,8 @@ defined('TYPO3') or die('Access denied.');
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tabs.label.onload',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tabs.description.onload',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 1,
-                'eval' => 'trim,number',
                 'range' => [
                     'lower' => 1,
                     'upper' => 20,
