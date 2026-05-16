@@ -28,7 +28,7 @@
             </f:then>
             <f:else>
                 <div class="logo mb-0 lh-1">
-                    <f:link.page pageUid="{site.rootPageId}" title="{f:translate(key: 'header.text.aria', extensionName: 'mp_core')} {f:if(condition: '{websiteTitle}', then: '{websiteTitle -> f:format.raw()}', else: '{site.identifier}')}">
+                    <f:link.page pageUid="{site.rootPageId}" title="{f:translate(key: 'header.text.aria', extensionName: 'mp_core')} {f:if(condition: '{websiteTitle}', then: '{websiteTitle}', else: '{site.identifier}')}">
                         <span class="header-image d-none d-md-block">{logoBig -> f:format.raw()}</span>
                         <span class="header-image-small d-block d-md-none">{logoSmall -> f:format.raw()}</span>
                         <f:if condition="{logoText}">
@@ -57,7 +57,7 @@
             </f:then>
             <f:else>
                 <div class="logo mb-0 lh-1">
-                    <f:link.page pageUid="{site.rootPageId}" title="{f:translate(key: 'header.text.aria', extensionName: 'mp_core')} {websiteTitle -> f:format.raw()}">
+                    <f:link.page pageUid="{site.rootPageId}" title="{f:translate(key: 'header.text.aria', extensionName: 'mp_core')} {websiteTitle}">
                         <span class="header-image d-none d-md-block">{logoBig -> f:format.raw()}</span>
                         <span class="header-image-small d-block d-md-none">{logoSmall -> f:format.raw()}</span>
                         <f:if condition="{logoText}">
@@ -86,7 +86,7 @@
             </f:then>
             <f:else>
                 <div class="logo mb-0 lh-1">
-                    <f:link.page pageUid="{site.rootPageId}" title="{f:translate(key: 'header.text.aria', extensionName: 'mp_core')} {websiteTitle -> f:format.raw()}">
+                    <f:link.page pageUid="{site.rootPageId}" title="{f:translate(key: 'header.text.aria', extensionName: 'mp_core')} {websiteTitle}">
                         <span class="header-image d-none d-md-block">{logoBig -> f:format.raw()}</span>
                         <span class="header-image-small d-block d-md-none">{logoSmall -> f:format.raw()}</span>
                         <f:if condition="{logoText}">
