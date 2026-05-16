@@ -145,9 +145,8 @@ defined('TYPO3') or die('Access denied.');
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.label.open',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.description.open',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 1,
-                'eval' => 'trim,number',
                 'range' => [
                     'lower' => 1,
                     'upper' => 50,
