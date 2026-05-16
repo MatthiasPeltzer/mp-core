@@ -35,11 +35,11 @@
         `maxHeight` is the *server-side* raster cap passed to `<f:image>`. It's
         sized at ~2× the largest CSS display height for HiDPI sharpness:
         - Big variant CSS cap is `max-height: 250px` (see `_logo.scss`
-          `.header-image img, .header-image svg`) → 500.
+          `.header-image img, .header-image svg`) → 300.
         - Small/sticky variant CSS cap is `max-height: 3rem` (~48px) → 96.
         Inline `<mpc:svgInline>` ignores `maxHeight` (vector output).
     --></f:comment>
-    <span class="header-image d-none d-md-block"><f:render partial="Header.LogoImage" arguments="{logoFile: logoBig, preferSvg: logoSvgBig, imageClass: 'logo-svg', maxHeight: 400}"/></span>
+    <span class="header-image d-none d-md-block"><f:render partial="Header.LogoImage" arguments="{logoFile: logoBig, preferSvg: logoSvgBig, imageClass: 'logo-svg', maxHeight: 300}"/></span>
     <span class="header-image-small d-block d-md-none"><f:render partial="Header.LogoImage" arguments="{logoFile: logoSmall, preferSvg: logoSvgSmall, imageClass: 'logo-svg', maxHeight: 96}"/></span>
     <f:if condition="{logoText}">
         <f:if condition="{logoTextHidden}">
