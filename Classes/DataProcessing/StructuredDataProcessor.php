@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Mpc\MpCore\DataProcessing;
 
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Routing\PageArguments;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
+use TYPO3\CMS\Frontend\Page\PageInformation;
 
 /**
  * Builds one Schema.org JSON-LD @graph with json_encode for safe output.
@@ -28,6 +30,18 @@ final class StructuredDataProcessor implements DataProcessorInterface
      * Project-specific doktype representing a blog/news style page (BlogPosting).
      */
     private const BLOG_DOKTYPE = 137;
+
+    /**
+     * Doktypes that must never appear in a Schema.org BreadcrumbList because a
+     * frontend visitor cannot navigate to them. Matches the default
+     * `$excludedDoktypes` set in `AbstractMenuContentObject` (sysfolder + BE
+     * user section), which is what `MenuProcessor special=rootline` filters by
+     * when no `excludeDoktypes` override is configured.
+     */
+    private const BREADCRUMB_EXCLUDED_DOKTYPES = [
+        PageRepository::DOKTYPE_BE_USER_SECTION,
+        PageRepository::DOKTYPE_SYSFOLDER,
+    ];
 
     public function process(
         ContentObjectRenderer $cObj,
@@ -138,7 +152,7 @@ final class StructuredDataProcessor implements DataProcessorInterface
             $graph[] = $this->buildWebPageEntity($cObj, $site, $pageRow, $processedData, $publisherId, $websiteId);
         }
 
-        $breadcrumbItems = $this->buildBreadcrumbList($cObj, $processedData['breadcrumb'] ?? []);
+        $breadcrumbItems = $this->buildBreadcrumbList($cObj, $request);
         if ($breadcrumbItems !== []) {
             $graph[] = [
                 '@type' => 'BreadcrumbList',
@@ -268,21 +282,71 @@ final class StructuredDataProcessor implements DataProcessorInterface
     }
 
     /**
-     * @param list<array<string, mixed>> $breadcrumb
+     * Builds the Schema.org BreadcrumbList from the rootline that TYPO3 already
+     * resolved once during `PrepareTypoScriptFrontendRendering` and exposed on
+     * the request as `frontend.page.information` (changelog 102715, TYPO3 13.0).
+     *
+     * This deliberately avoids a second `MenuProcessor special=rootline` pass
+     * (which would re-walk the same pages, re-run TMENU access checks and
+     * `processAdditionalDataProcessors()` per cold render). `nav_hide`,
+     * `nav_title` and `excludeDoktypes` semantics mirror MenuProcessor's
+     * defaults so the resulting BreadcrumbList stays byte-identical.
+     *
      * @return list<array<string, mixed>>
      */
-    private function buildBreadcrumbList(ContentObjectRenderer $cObj, array $breadcrumb): array
+    private function buildBreadcrumbList(ContentObjectRenderer $cObj, ServerRequestInterface $request): array
     {
+        $pageInformation = $request->getAttribute('frontend.page.information');
+        if (!$pageInformation instanceof PageInformation) {
+            return [];
+        }
+
+        $site = $request->getAttribute('site');
+        $siteRootPageId = $site instanceof Site ? $site->getRootPageId() : 0;
+
+        // RootlineUtility returns the rootline current-first → root-last; the
+        // BreadcrumbList wants root-first → current-last. Truncate above the
+        // site root in case the page tree extends beyond it.
+        $rootline = $pageInformation->getRootLine();
+        $rootlineUpToSiteRoot = [];
+        foreach ($rootline as $page) {
+            $rootlineUpToSiteRoot[] = $page;
+            if ($siteRootPageId > 0 && (int)($page['uid'] ?? 0) === $siteRootPageId) {
+                break;
+            }
+        }
+        $rootlineRootFirst = array_reverse($rootlineUpToSiteRoot);
+
         $items = [];
         $position = 1;
-        foreach ($breadcrumb as $row) {
-            $data = $row['data'] ?? null;
-            $pageUid = is_array($data) ? (int)($data['uid'] ?? 0) : 0;
-            $title = trim((string)($row['title'] ?? ''));
-            if ($pageUid <= 0 || $title === '') {
+        foreach ($rootlineRootFirst as $page) {
+            if (!is_array($page)) {
+                continue;
+            }
+            $pageUid = (int)($page['uid'] ?? 0);
+            if ($pageUid <= 0) {
+                continue;
+            }
+            // "Hide in menus" pages are excluded from the BreadcrumbList,
+            // matching MenuProcessor's default (`includeNotInMenu = 0`).
+            if ((int)($page['nav_hide'] ?? 0) === 1) {
+                continue;
+            }
+            // Sysfolders / spacers / recyclers / BE user sections are not
+            // navigable in the frontend and must not appear in JSON-LD.
+            if (in_array((int)($page['doktype'] ?? 0), self::BREADCRUMB_EXCLUDED_DOKTYPES, true)) {
+                continue;
+            }
+            $title = trim((string)(($page['nav_title'] ?? '') ?: ($page['title'] ?? '')));
+            if ($title === '') {
                 continue;
             }
             $url = $this->absolutePageUrl($cObj, $pageUid);
+            // Defense in depth: drop entries with no resolvable frontend URL
+            // (e.g. shortcuts pointing at deleted targets).
+            if ($url === '') {
+                continue;
+            }
             $items[] = [
                 '@type' => 'ListItem',
                 'position' => $position,

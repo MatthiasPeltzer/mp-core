@@ -35,12 +35,11 @@ page {
                     references.data = levelmedia: -1, slide
                     as = pageMedia
                 }
-                20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
-                20 {
-                    special = rootline
-                    special.range = 0|-1
-                    as = breadcrumb
-                }
+                # Note: no MenuProcessor for `breadcrumb` here. The Schema.org
+                # BreadcrumbList is built inside StructuredDataProcessor from the
+                # `frontend.page.information` request attribute (rootline already
+                # resolved once by PrepareTypoScriptFrontendRendering middleware),
+                # which avoids re-walking the rootline on every cold page render.
                 30 = Mpc\MpCore\DataProcessing\SocialMediaProcessor
                 40 = Mpc\MpCore\DataProcessing\StructuredDataProcessor
             }
