@@ -99,6 +99,7 @@ page {
         pidInList = {$PIDs.pidCategories}
         join = sys_category_record_mm ON sys_category.uid = sys_category_record_mm.uid_local
         where.dataWrap = sys_category_record_mm.tablenames = 'pages' AND sys_category_record_mm.fieldname = 'categories' AND sys_category_record_mm.uid_foreign = {FIELD:uid}
+        max = 50
         as = categories
       }
 
