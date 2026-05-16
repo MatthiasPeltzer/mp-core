@@ -2,166 +2,56 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
+<f:comment><!--
+    Platform list: site-config field key + display label + lang attribute for the
+    visually-hidden brand name. CSS class .icon-{key} and the wrapper class .{key}
+    follow the same name, so the dynamic lookup `{site.configuration.{platformKey}}`
+    is enough to render the link. lang="" suppresses the lang attribute for brands
+    whose name is treated as language-neutral in this codebase (TikTok, Xing).
+--></f:comment>
+<f:variable name="socialPlatforms" value="{
+    facebook:   {label: 'Facebook',   lang: 'en'},
+    x:          {label: 'X',          lang: 'en'},
+    instagram:  {label: 'Instagram',  lang: 'en'},
+    threads:    {label: 'Threads',    lang: 'en'},
+    mastodon:   {label: 'Mastodon',   lang: 'en'},
+    bluesky:    {label: 'Bluesky',    lang: 'en'},
+    tiktok:     {label: 'TikTok',     lang: 'en'},
+    tumblr:     {label: 'Tumblr',     lang: 'en'},
+    reddit:     {label: 'Reddit',     lang: 'en'},
+    linkedin:   {label: 'Linkedin',   lang: 'en'},
+    xing:       {label: 'Xing',       lang: 'en'},
+    spotify:    {label: 'Spotify',    lang: 'en'},
+    soundcloud: {label: 'Soundcloud', lang: 'en'},
+    bandcamp:   {label: 'Bandcamp',   lang: 'en'},
+    youtube:    {label: 'YouTube',    lang: 'en'},
+    vimeo:      {label: 'Vimeo',      lang: 'en'},
+    pinterest:  {label: 'Pinterest',  lang: 'en'},
+    whatsapp:   {label: 'Whatsapp',   lang: 'en'},
+    signal:     {label: 'Signal',     lang: 'en'},
+    telegram:   {label: 'Telegram',   lang: 'en'},
+    discord:    {label: 'Discord',    lang: 'en'},
+    github:     {label: 'GitHub',     lang: 'en'},
+    gitlab:     {label: 'GitLab',     lang: 'en'},
+    opencode:   {label: 'OpenCode',   lang: 'en'},
+    packagist:  {label: 'Packagist',  lang: 'en'},
+    npmjs:      {label: 'npm',        lang: 'en'}
+}"/>
+
+<f:variable name="opensInNewWindow">{f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}</f:variable>
+
 <section class="row row-border pt-3 pb-1" aria-label="{f:translate(key: 'footer.socialmediafooter', extensionName: 'mp_core')}">
     <div class="col-12">
         <nav aria-label="{f:translate(key: 'footer.socialmediaheader', extensionName: 'mp_core')}" class="footer-socialmedia">
             <ul class="row g-0 list-unstyled share">
-                <f:if condition="{site.configuration.facebook}">
-                    <li class="col facebook">
-                        <f:link.typolink parameter="{site.configuration.facebook}" title="Facebook {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-facebook'>|</span>">
-                            <span class="visually-hidden" lang="en">Facebook</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.x}">
-                    <li class="col x">
-                        <f:link.typolink parameter="{site.configuration.x}" title="X {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-x'>|</span>">
-                            <span class="visually-hidden" lang="en">X</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.instagram}">
-                    <li class="col instagram">
-                        <f:link.typolink parameter="{site.configuration.instagram}" title="Instagram {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-instagram'>|</span>">
-                            <span class="visually-hidden" lang="en">Instagram</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.threads}">
-                    <li class="col threads">
-                        <f:link.typolink parameter="{site.configuration.threads}" title="Threads {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-threads'>|</span>">
-                            <span class="visually-hidden" lang="en">Threads</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.mastodon}">
-                    <li class="col mastodon">
-                        <f:link.typolink parameter="{site.configuration.mastodon}" title="Mastodon {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-mastodon'>|</span>">
-                            <span class="visually-hidden" lang="en">Mastodon</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.bluesky}">
-                    <li class="col bluesky">
-                        <f:link.typolink parameter="{site.configuration.bluesky}" title="Bluesky {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-bluesky'>|</span>">
-                            <span class="visually-hidden" lang="en">Bluesky</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.tiktok}">
-                    <li class="col tiktok">
-                        <f:link.typolink parameter="{site.configuration.tiktok}" title="TikTok {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-tiktok'>|</span>">
-                            <span class="visually-hidden">TikTok</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.tumblr}">
-                    <li class="col tumblr">
-                        <f:link.typolink parameter="{site.configuration.tumblr}" title="Tumblr {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-tumblr'>|</span>">
-                            <span class="visually-hidden" lang="en">Tumblr</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.reddit}">
-                    <li class="col reddit">
-                        <f:link.typolink parameter="{site.configuration.reddit}" title="Reddit {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-reddit'>|</span>">
-                            <span class="visually-hidden" lang="en">Reddit</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.linkedin}">
-                    <li class="col linkedin">
-                        <f:link.typolink parameter="{site.configuration.linkedin}" title="Linkedin {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-linkedin'>|</span>">
-                            <span class="visually-hidden" lang="en">Linkedin</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.xing}">
-                    <li class="col xing">
-                        <f:link.typolink parameter="{site.configuration.xing}" title="Xing {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-xing'>|</span>">
-                            <span class="visually-hidden">Xing</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.spotify}">
-                    <li class="col spotify">
-                        <f:link.typolink parameter="{site.configuration.spotify}" title="Spotify {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-spotify'>|</span>">
-                            <span class="visually-hidden" lang="en">Spotify</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.soundcloud}">
-                    <li class="col soundcloud">
-                        <f:link.typolink parameter="{site.configuration.soundcloud}" title="Soundcloud {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-soundcloud'>|</span>">
-                            <span class="visually-hidden" lang="en">Soundcloud</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.bandcamp}">
-                    <li class="col bandcamp">
-                        <f:link.typolink parameter="{site.configuration.bandcamp}" title="Bandcamp {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-bandcamp'>|</span>">
-                            <span class="visually-hidden" lang="en">Bandcamp</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.youtube}">
-                    <li class="col youtube">
-                        <f:link.typolink parameter="{site.configuration.youtube}" title="YouTube {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-youtube'>|</span>">
-                            <span class="visually-hidden" lang="en">YouTube</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.vimeo}">
-                    <li class="col vimeo">
-                        <f:link.typolink parameter="{site.configuration.vimeo}" title="Vimeo {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-vimeo'>|</span>">
-                            <span class="visually-hidden" lang="en">Vimeo</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.pinterest}">
-                    <li class="col pinterest">
-                        <f:link.typolink parameter="{site.configuration.pinterest}" title="Pinterest {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-pinterest'>|</span>">
-                            <span class="visually-hidden" lang="en">Pinterest</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.whatsapp}">
-                    <li class="col whatsapp">
-                        <f:link.typolink parameter="{site.configuration.whatsapp}" title="Whatsapp {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-whatsapp'>|</span>">
-                            <span class="visually-hidden" lang="en">Whatsapp</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.signal}">
-                    <li class="col signal">
-                        <f:link.typolink parameter="{site.configuration.signal}" title="Signal {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-signal'>|</span>">
-                            <span class="visually-hidden" lang="en">Signal</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.telegram}">
-                    <li class="col telegram">
-                        <f:link.typolink parameter="{site.configuration.telegram}" title="Telegram {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-telegram'>|</span>">
-                            <span class="visually-hidden" lang="en">Telegram</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.discord}">
-                    <li class="col discord">
-                        <f:link.typolink parameter="{site.configuration.discord}" title="Discord {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-discord'>|</span>">
-                            <span class="visually-hidden" lang="en">Discord</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.github}">
-                    <li class="col github">
-                        <f:link.typolink parameter="{site.configuration.github}" title="GitHub {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-github'>|</span>">
-                            <span class="visually-hidden" lang="en">GitHub</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.gitlab}">
-                    <li class="col gitlab">
-                        <f:link.typolink parameter="{site.configuration.gitlab}" title="GitLab {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-gitlab'>|</span>">
-                            <span class="visually-hidden" lang="en">GitLab</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.opencode}">
-                    <li class="col opencode">
-                        <f:link.typolink parameter="{site.configuration.opencode}" title="OpenCode {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-opencode'>|</span>">
-                            <span class="visually-hidden" lang="en">OpenCode</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.packagist}">
-                    <li class="col packagist">
-                        <f:link.typolink parameter="{site.configuration.packagist}" title="Packagist {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-packagist'>|</span>">
-                            <span class="visually-hidden" lang="en">Packagist</span></f:link.typolink>
-                    </li>
-                </f:if>
-                <f:if condition="{site.configuration.npmjs}">
-                    <li class="col npmjs">
-                        <f:link.typolink parameter="{site.configuration.npmjs}" title="npm {f:translate(key: 'opens', extensionName: 'mp_core')} {f:translate(key: 'innewwindow', extensionName: 'mp_core')}" textWrap="<span class='icon-share icon-npmjs'>|</span>">
-                            <span class="visually-hidden" lang="en">npm</span></f:link.typolink>
-                    </li>
-                </f:if>
+                <f:for each="{socialPlatforms}" as="platform" key="platformKey">
+                    <f:variable name="platformUrl" value="{site.configuration.{platformKey}}"/>
+                    <f:if condition="{platformUrl}">
+                        <li class="col {platformKey}">
+                            <f:link.typolink parameter="{platformUrl}" title="{platform.label} {opensInNewWindow}" textWrap="<span class='icon-share icon-{platformKey}'>|</span>"><f:if condition="{platform.lang}"><f:then><span class="visually-hidden" lang="{platform.lang}">{platform.label}</span></f:then><f:else><span class="visually-hidden">{platform.label}</span></f:else></f:if></f:link.typolink>
+                        </li>
+                    </f:if>
+                </f:for>
             </ul>
         </nav>
     </div>
