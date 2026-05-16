@@ -17,8 +17,23 @@ manifest {
 
   config {
     disableAllHeaderCode = 1
-    additionalHeaders = Content-Type: application/manifest+json
-    no_cache = 1
+    # Manifest is fully derived from static site configuration; safe to cache for 24h.
+    cache_period = 86400
+
+    # Modern structured form. The legacy single-line "additionalHeaders = Content-Type: ..."
+    # syntax is silently ignored by TYPO3 13/14, which is why the manifest was previously
+    # served as text/html. replace=1 also overrides TYPO3's default "Cache-Control: private,
+    # no-store" fallback that fires when any USER_INT element is on the site.
+    additionalHeaders {
+      10 {
+        header = Content-Type: application/manifest+json
+        replace = 1
+      }
+      20 {
+        header = Cache-Control: public, max-age=86400, immutable
+        replace = 1
+      }
+    }
   }
 
   10 = FLUIDTEMPLATE
