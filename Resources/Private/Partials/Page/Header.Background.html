@@ -8,7 +8,7 @@
     <div class="header-bg-svg">
         <f:if condition="{filesbg.0}">
             <f:then>
-                <mpc:svgInline src="fileadmin/{filesbg.0.properties.identifier}" width="16" height="16" class="bg-svg" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
+                <mpc:svgInline image="{filesbg.0}" width="16" height="16" class="bg-svg" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
             </f:then>
             <f:else>
                 {logoBig -> f:format.raw()}
