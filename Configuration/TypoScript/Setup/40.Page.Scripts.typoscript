@@ -40,10 +40,7 @@ manifest {
   10 {
     file = EXT:mp_core/Resources/Private/Partials/Page/Manifest.html
     dataProcessing {
-      10 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
-      10 {
-        as = site
-      }
+      10 < lib.contentProcessors.site
     }
   }
 }
