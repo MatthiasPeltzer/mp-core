@@ -29,10 +29,7 @@ page {
                 controllerExtensionName = mp_core
             }
             dataProcessing {
-                10 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
-                10 {
-                    as = site
-                }
+                10 < lib.contentProcessors.site
                 15 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
                 15 {
                     references.data = levelmedia: -1, slide

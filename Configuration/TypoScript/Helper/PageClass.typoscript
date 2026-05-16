@@ -1,3 +1,14 @@
+###################################
+#### SHARED DATA PROCESSORS    ####
+###################################
+# Reusable DataProcessor definitions referenced via `<` from page.10 and the
+# headerData.* FLUIDTEMPLATE blocks to avoid TypoScript duplication.
+# (Note: SiteProcessor itself is a one-line PSR-7 attribute read, so the
+# perf benefit of "not re-running it" is microseconds. The DRY benefit is
+# the actual point — change the `as` once, here.)
+lib.contentProcessors.site = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
+lib.contentProcessors.site.as = site
+
 ####################
 #### PAGE CLASS ####
 ####################
