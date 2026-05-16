@@ -3,7 +3,7 @@
       xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
-<f:comment>
+<f:comment><!--
     Arguments:
         logoFile    string  `t3://file?uid=N` link string from the
                             SiteConfiguration `type=link/allowedTypes=['file']`
@@ -28,8 +28,8 @@
                             logo capped to 48px, 920 for the .bg-svg
                             background). Defaults to 500 so the partial does
                             something reasonable for sites that don't pass it.
-</f:comment>
-<f:variable name="resolvedMaxHeight">{f:if(condition: maxHeight, then: maxHeight, else: 500)}</f:variable>
+--></f:comment>
+<f:variable name="resolvedMaxHeight">{f:if(condition: maxHeight, then: maxHeight, else: 400)}</f:variable>
 <f:if condition="{logoFile}">
     <f:then>
         <f:if condition="{preferSvg}">
