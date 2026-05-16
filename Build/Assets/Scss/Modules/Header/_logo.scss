@@ -33,12 +33,17 @@
     flex-shrink: 0;
     max-width: 100%;
 
+    // Aspect-ratio is preserved by `height/width: auto` + `object-fit: contain`,
+    // so non-square logos (wordmarks etc.) render in their natural proportions.
+    // The big variant is capped to 250px tall; width is left free (capped only
+    // by the `.logo-wrapper`'s flex room via `max-width: 100%`). The small
+    // variant stays at 3rem (~48px) for mobile + .sticky header.
     img,
     svg {
       display: block;
       flex-shrink: 0;
       height: auto;
-      max-height: 4rem;
+      max-height: 250px;
       max-width: 100%;
       object-fit: contain;
       width: auto;

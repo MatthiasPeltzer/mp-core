@@ -3,15 +3,42 @@
       xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
+<f:comment>
+    Arguments:
+        logoFile    string  `t3://file?uid=N` link string from the
+                            SiteConfiguration `type=link/allowedTypes=['file']`
+                            field, *not* a sys_file_reference UID.
+                            `ImageService::getImage()` detects the `t3://file`
+                            prefix and resolves it via `LinkService`, so no
+                            `treatIdAsReference` is needed (and would be
+                            misleading here).
+        preferSvg   bool    If true, the file is inlined via `mpc:svgInline`
+                            (requires the file to actually be an SVG, else the
+                            ViewHelper throws). If false, the file is rendered
+                            via `<f:image>` (raster output, served at the size
+                            requested via `maxHeight`).
+        imageClass  string  Class applied to the inlined SVG / `<img>`. The
+                            CSS visual size cap lives on the surrounding
+                            wrapper (`.header-image`, `.header-image-small`,
+                            `.header-bg-svg`), not on this class.
+        maxHeight   int     Optional. Server-side height cap passed to
+                            `<f:image>`. Pick ~2× the largest CSS display
+                            height for HiDPI sharpness (e.g. 500 for the big
+                            logo capped to 250px, 96 for the small/sticky
+                            logo capped to 48px, 920 for the .bg-svg
+                            background). Defaults to 500 so the partial does
+                            something reasonable for sites that don't pass it.
+</f:comment>
+<f:variable name="resolvedMaxHeight">{f:if(condition: maxHeight, then: maxHeight, else: 500)}</f:variable>
 <f:if condition="{logoFile}">
     <f:then>
         <f:if condition="{preferSvg}">
             <f:then><mpc:svgInline src="{logoFile}" class="{imageClass}" additionalAttributes="{aria-hidden:'true'}"/></f:then>
-            <f:else><f:image src="{logoFile}" treatIdAsReference="1" maxHeight="48px" /></f:else>
+            <f:else><f:image src="{logoFile}" maxHeight="{resolvedMaxHeight}" /></f:else>
         </f:if>
     </f:then>
     <f:else>
-        <f:image src="EXT:mp_core/Resources/Public/Images/logo-square.png" maxHeight="48px" />
+        <f:image src="EXT:mp_core/Resources/Public/Images/logo-square.png" maxHeight="{resolvedMaxHeight}" />
     </f:else>
 </f:if>
 

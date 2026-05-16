@@ -3,6 +3,13 @@ page {
     dataProcessing {
       10 < lib.contentProcessors.site
 
+      # Resolves logoBig / logoSmall / logoSvg / logoText / logoTextHidden /
+      # websiteTitle for the active language exactly once. Replaces the five
+      # nested <f:for>/<f:if> loops at the top of Header.Logo.html and
+      # Header.Background.html (Finding #32 — also drops several f:format.raw
+      # calls that were on the deferred list for Finding #3).
+      12 = Mpc\MpCore\DataProcessing\HeaderLogoProcessor
+
       20 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
       20 {
         references.data = levelmedia: -1, slide
