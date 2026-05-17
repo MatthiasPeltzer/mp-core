@@ -1,5 +1,4 @@
 /**
- * Secondary Navigation Module
  * Handles both desktop and mobile navigation:
  * - Desktop: Dropdown menus with collapse submenus
  * - Mobile: Dropdown menu with collapse submenus and body state management
@@ -21,15 +20,10 @@ import {
   scrollToCurrentElement
 } from '../../Utils/domUtils.js';
 
-// =============================================================================
-// CONFIGURATION
-// =============================================================================
-
 const CONFIG = {
   desktop: {
     container: '#nav-desktop',
     buttonSelector: '.first-nav-btn',
-    // Collapse buttons in desktop flyout
     collapseButtonSelector: '[data-bs-toggle="collapse"]',
     subnavButtonSelector: '.subnav-children .hassub',
     subnavMenuSelector: '.subnav-children'
@@ -39,28 +33,18 @@ const CONFIG = {
     menuButton: '#main-menu-button',
     solrButton: '#solr-button',
     dropdownSelector: '#main-menu .dropdown-menu',
-    // All collapse buttons in mobile menu
     collapseButtonSelector: '[data-bs-toggle="collapse"]',
     menuSelector: '.collapse'
   },
   breakpoint: '(min-width: 62rem)'
 };
 
-// =============================================================================
-// SHARED STATE
-// =============================================================================
-
 const headerWrapper = document.querySelector('.header-wrapper');
 const navDesktop = document.getElementById('nav-desktop');
 
-// =============================================================================
-// SHARED UTILITY FUNCTIONS
-// =============================================================================
-
 /**
- * Updates a button's visual and accessibility state
- * @param {HTMLElement} button - The button element to update
- * @param {boolean} isOpen - Whether the associated menu is open
+ * @param {HTMLElement} button
+ * @param {boolean} isOpen
  */
 function updateButtonState(button, isOpen) {
   if (!button) return;
@@ -71,10 +55,9 @@ function updateButtonState(button, isOpen) {
 }
 
 /**
- * Syncs all button states within a container based on menu state
- * @param {string} containerSelector - Container selector
- * @param {string} buttonSelector - Button selector
- * @param {HTMLElement|null} excludeButton - Button to exclude
+ * @param {string} containerSelector
+ * @param {string} buttonSelector
+ * @param {HTMLElement|null} excludeButton
  */
 function syncAllButtonStates(containerSelector, buttonSelector, excludeButton = null) {
   document.querySelectorAll(`${containerSelector} ${buttonSelector}`).forEach(button => {
@@ -88,8 +71,7 @@ function syncAllButtonStates(containerSelector, buttonSelector, excludeButton = 
 }
 
 /**
- * Finds the trigger button for a collapse event
- * @param {Event} event - Bootstrap collapse event
+ * @param {Event} event
  * @returns {HTMLElement|null}
  */
 function getTriggerButton(event) {
@@ -97,13 +79,6 @@ function getTriggerButton(event) {
   return document.querySelector(`[data-bs-target="#${targetId}"]`);
 }
 
-// =============================================================================
-// DESKTOP NAVIGATION
-// =============================================================================
-
-/**
- * Updates button titles based on open/closed state
- */
 function updateDesktopButtonTitles() {
   document.querySelectorAll(CONFIG.desktop.buttonSelector).forEach(button => {
     const isOpen = button.classList.contains('show');
@@ -111,9 +86,6 @@ function updateDesktopButtonTitles() {
   });
 }
 
-/**
- * Syncs body/header active classes based on dropdown state
- */
 function syncActiveNavClasses() {
   if (!headerWrapper) return;
 
@@ -124,16 +96,11 @@ function syncActiveNavClasses() {
   headerWrapper.classList.toggle('active-nav', hasOpenDropdown);
 }
 
-/**
- * Initializes desktop navigation event handlers
- */
 function initDesktopNavigation() {
-  // Handle dropdown show/hide events
   document.addEventListener('shown.bs.dropdown', (event) => {
     if (!event.target.closest(CONFIG.desktop.container)) return;
     syncActiveNavClasses();
     updateDesktopButtonTitles();
-    // Scroll to current page element after navigation is visible
     scrollToCurrentElement(CONFIG.desktop.container);
   });
 
@@ -143,21 +110,18 @@ function initDesktopNavigation() {
     updateDesktopButtonTitles();
   });
 
-  // Close button in flyout menu
   document.querySelectorAll('.main-menu-desktop .btn-close').forEach(button => {
     button.addEventListener('click', () => {
       document.querySelector(`${CONFIG.desktop.buttonSelector}.show`)?.click();
     });
   });
 
-  // Handle subnav collapse interactions
   document.querySelectorAll(CONFIG.desktop.subnavButtonSelector).forEach(subButton => {
     subButton.addEventListener('click', () => {
       closeOtherSubmenus(subButton, CONFIG.desktop.subnavButtonSelector, CONFIG.desktop.subnavMenuSelector);
     });
   });
 
-  // Handle Bootstrap collapse events for desktop flyout submenus
   document.addEventListener('show.bs.collapse', (event) => {
     if (!event.target.closest(CONFIG.desktop.container)) return;
 
@@ -198,21 +162,15 @@ function initDesktopNavigation() {
     syncAllButtonStates(CONFIG.desktop.container, CONFIG.desktop.collapseButtonSelector);
   });
 
-  // Initialize: Open parent submenus for current page
   setTimeout(() => {
     openCurrentPageParents(CONFIG.desktop.subnavMenuSelector, closeButtonMessage);
     syncAllButtonStates(CONFIG.desktop.container, CONFIG.desktop.collapseButtonSelector);
   }, 100);
 }
 
-// =============================================================================
-// MOBILE NAVIGATION
-// =============================================================================
-
 /**
- * Updates mobile menu button text and title
- * @param {HTMLElement} button - The button that triggered the dropdown
- * @param {boolean} isOpen - Whether the dropdown is opening
+ * @param {HTMLElement} button
+ * @param {boolean} isOpen
  */
 function updateMobileMenuButton(button, isOpen) {
   if (!button || button.id !== 'main-menu-button') return;
@@ -226,9 +184,8 @@ function updateMobileMenuButton(button, isOpen) {
 }
 
 /**
- * Handles mobile dropdown show/hide events
- * @param {Event} event - Bootstrap dropdown event
- * @param {boolean} isOpening - Whether the dropdown is opening
+ * @param {Event} event
+ * @param {boolean} isOpening
  */
 function handleMobileDropdown(event, isOpening) {
   const button = event.target.closest(`${CONFIG.mobile.menuButton}, ${CONFIG.mobile.solrButton}`);
@@ -237,10 +194,8 @@ function handleMobileDropdown(event, isOpening) {
   setTimeout(() => {
     if (isOpening) {
       document.body.classList.add('active-nav-body');
-      // Scroll to current page element after navigation is visible
       scrollToCurrentElement(CONFIG.mobile.container);
     } else {
-      // Only remove if no dropdown is still open
       const anyOpen = document.querySelector(`${CONFIG.mobile.dropdownSelector}.show`);
       if (!anyOpen) {
         document.body.classList.remove('active-nav-body');
@@ -250,21 +205,15 @@ function handleMobileDropdown(event, isOpening) {
   }, 0);
 }
 
-/**
- * Initializes mobile navigation event handlers
- */
 function initMobileNavigation() {
-  // Main dropdown toggle events
   document.addEventListener('show.bs.dropdown', (event) => handleMobileDropdown(event, true));
   document.addEventListener('hide.bs.dropdown', (event) => handleMobileDropdown(event, false));
 
-  // Direct click handler for immediate button state toggle on mobile collapse buttons
   document.addEventListener('click', (event) => {
     const button = event.target.closest(`${CONFIG.mobile.container} ${CONFIG.mobile.collapseButtonSelector}`);
     if (!button) return;
 
     const isCurrentlyCollapsed = button.classList.contains('collapsed');
-    // Toggle immediately on click
     if (isCurrentlyCollapsed) {
       button.classList.remove('collapsed');
       button.setAttribute('aria-expanded', 'true');
@@ -276,7 +225,6 @@ function initMobileNavigation() {
     }
   });
 
-  // Handle Bootstrap collapse events for mobile submenus
   document.addEventListener('show.bs.collapse', (event) => {
     if (!event.target.closest(CONFIG.mobile.container)) return;
 
@@ -317,30 +265,20 @@ function initMobileNavigation() {
     syncAllButtonStates(CONFIG.mobile.container, CONFIG.mobile.collapseButtonSelector);
   });
 
-  // Initialize: Open parent submenus for current page
   setTimeout(() => {
     openCurrentPageParents(CONFIG.mobile.menuSelector, closeButtonMessage);
     syncAllButtonStates(CONFIG.mobile.container, CONFIG.mobile.collapseButtonSelector);
   }, 100);
 }
 
-// =============================================================================
-// RESPONSIVE BEHAVIOR
-// =============================================================================
-
-/**
- * Closes all open mobile menus
- */
 function closeMobileMenus() {
   const mainMenu = document.getElementById('main-menu');
   const navbarToggler = document.querySelector('.navbar-toggler');
   
-  // If mobile menu is open, close it by clicking the toggler
   if (mainMenu?.classList.contains('show') && navbarToggler) {
     navbarToggler.click();
   }
   
-  // Also close any open collapse submenus in mobile
   document.querySelectorAll(`${CONFIG.mobile.container} .collapse.show`).forEach(menu => {
     const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
     if (button && !button.classList.contains('collapsed')) {
@@ -349,16 +287,11 @@ function closeMobileMenus() {
   });
 }
 
-/**
- * Closes all open desktop menus
- */
 function closeDesktopMenus() {
-  // Close first-level dropdown buttons
   document.querySelectorAll('.first-nav-button.show, .first-nav-btn.show, #nav-desktop .dropdown-toggle.show').forEach(button => {
     button.click();
   });
   
-  // Close any open collapse submenus in desktop
   document.querySelectorAll(`${CONFIG.desktop.container} .collapse.show`).forEach(menu => {
     const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
     if (button && !button.classList.contains('collapsed')) {
@@ -367,22 +300,16 @@ function closeDesktopMenus() {
   });
 }
 
-/**
- * Handles breakpoint changes - closes open menus
- */
 function initResponsiveBehavior() {
   const mediaQuery = window.matchMedia(CONFIG.breakpoint);
   const body = document.body;
 
   const handleBreakpointChange = (event) => {
-    // Only act on actual breakpoint changes, not initial load
     if (!event) return;
     
     if (event.matches) {
-      // Switching TO desktop: close mobile menus
       closeMobileMenus();
     } else {
-      // Switching TO mobile: close desktop menus
       closeDesktopMenus();
     }
 
@@ -392,10 +319,6 @@ function initResponsiveBehavior() {
 
   mediaQuery.addEventListener('change', handleBreakpointChange);
 }
-
-// =============================================================================
-// INITIALIZATION
-// =============================================================================
 
 function init() {
   if (navDesktop) {

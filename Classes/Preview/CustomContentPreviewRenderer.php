@@ -18,8 +18,12 @@ use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Resource\ProcessedFile;
 
 /**
- * Custom content preview renderer to handle TYPO3 v14 compatibility issues
- * with file field rendering in backend previews
+ * Catches TypeErrors from the TYPO3 core backend preview pipeline that are
+ * triggered by missing file references or null values passed to core utilities
+ * (BackendUtility::getThumbCodeUnlinked, Sanitizer::sanitize).
+ *
+ * @todo Remove once the TYPO3 core fixes these TypeErrors.
+ *       Track: https://forge.typo3.org
  */
 class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
 {
@@ -27,12 +31,6 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
         private readonly FileRepository $fileRepository,
     ) {}
 
-    /**
-     * @todo Remove these workarounds once the TYPO3 core fixes these TypeErrors:
-     *       - BackendUtility::getThumbCodeUnlinked() with missing file references
-     *       - Sanitizer::sanitize() receiving null from RecordFieldPreviewProcessor
-     *       Track: https://forge.typo3.org
-     */
     public function renderPageModulePreviewContent(GridColumnItem $item): string
     {
         try {
@@ -61,9 +59,6 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
         }
     }
     
-    /**
-     * Render a simple fallback preview when file reference issues occur
-     */
     protected function renderFallbackPreview(GridColumnItem $item): string
     {
         $record = $item->getRecord()->toArray();
@@ -73,14 +68,13 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
         
         $preview = '';
         
-        // Try to render images
         try {
             $imagePreview = $this->renderImages($record);
             if ($imagePreview !== '') {
                 $preview .= $imagePreview . '<br>';
             }
         } catch (\Throwable $e) {
-            // Silently skip image rendering if it fails
+            // intentionally silent — image rendering is best-effort in previews
         }
         
         if ($header !== '') {
@@ -100,9 +94,6 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
         return $preview ?: '[No preview available]';
     }
     
-    /**
-     * Render image thumbnails for the record
-     */
     protected function renderImages(array $record): string
     {
         $images = '';
@@ -121,7 +112,6 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
 
                         $file = $fileReference->getOriginalFile();
                         
-                        // Generate thumbnail
                         $processingInstructions = [
                             'width' => '150c',
                             'height' => '150c',
@@ -138,12 +128,12 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer
                                 . 'style="max-width:150px;max-height:150px;margin-right:10px;" />';
                             $renderedCount++;
                         } catch (\Throwable $e) {
-                            // Skip this image if processing fails
+                            // intentionally silent — processing is best-effort
                         }
                     }
                 }
             } catch (\Throwable $e) {
-                // Return empty string if file fetching fails
+                // intentionally silent — best-effort preview
             }
         }
         

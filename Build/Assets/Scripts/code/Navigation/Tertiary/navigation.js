@@ -1,5 +1,4 @@
 /**
- * Tertiary Navigation Module
  * Handles both desktop and mobile navigation interactions including:
  * - Dropdown visibility
  * - Collapse/expand submenus
@@ -24,10 +23,6 @@ import {
   scrollToCurrentElement
 } from '../../Utils/domUtils.js';
 
-// =============================================================================
-// CONFIGURATION
-// =============================================================================
-
 const CONFIG = {
   desktop: {
     container: '.mainnav-desktop',
@@ -44,27 +39,18 @@ const CONFIG = {
   breakpoint: '(min-width: 62rem)'
 };
 
-// =============================================================================
-// SHARED UTILITY FUNCTIONS
-// =============================================================================
-
 /**
- * Updates a button's visual and accessibility state
- * @param {HTMLElement} button - The button element to update
- * @param {boolean} isOpen - Whether the associated menu is open
+ * @param {HTMLElement} button
+ * @param {boolean} isOpen
  * @param {boolean} updateVisuallyHidden - Whether to update .visually-hidden text (mobile only)
  */
 function updateButtonState(button, isOpen, updateVisuallyHidden = false) {
   if (!button) return;
 
-  // Update accessibility attributes
   button.setAttribute('title', isOpen ? closeButtonMessage : openButtonMessage);
   button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-
-  // Update collapsed class (controls icon rotation via CSS)
   button.classList.toggle('collapsed', !isOpen);
 
-  // Update visually hidden text if present (for screen readers)
   if (updateVisuallyHidden) {
     const buttonText = button.querySelector('.visually-hidden');
     if (buttonText) {
@@ -74,11 +60,10 @@ function updateButtonState(button, isOpen, updateVisuallyHidden = false) {
 }
 
 /**
- * Syncs all button states within a container based on their menu's current state
- * @param {string} containerSelector - CSS selector for the navigation container
- * @param {string} buttonSelector - CSS selector for buttons within the container
- * @param {HTMLElement|null} excludeButton - Button to exclude from sync (usually the one being clicked)
- * @param {boolean} updateVisuallyHidden - Whether to update .visually-hidden text
+ * @param {string} containerSelector
+ * @param {string} buttonSelector
+ * @param {HTMLElement|null} excludeButton
+ * @param {boolean} updateVisuallyHidden
  */
 function syncAllButtonStates(containerSelector, buttonSelector, excludeButton = null, updateVisuallyHidden = false) {
   const selector = `${containerSelector} ${buttonSelector}`;
@@ -95,43 +80,33 @@ function syncAllButtonStates(containerSelector, buttonSelector, excludeButton = 
 }
 
 /**
- * Finds the trigger button for a collapse event
- * @param {Event} event - Bootstrap collapse event
- * @returns {HTMLElement|null} - The button that triggered the collapse
+ * @param {Event} event
+ * @returns {HTMLElement|null}
  */
 function getTriggerButton(event) {
   const targetId = event.target.id;
   return document.querySelector(`[data-bs-target="#${targetId}"]`);
 }
 
-// =============================================================================
-// COLLAPSE EVENT HANDLERS FACTORY
-// =============================================================================
-
 /**
- * Creates and registers Bootstrap collapse event handlers for a navigation container
- * @param {Object} config - Configuration object with container, buttonSelector, menuSelector
- * @param {boolean} updateVisuallyHidden - Whether to update .visually-hidden text
+ * Creates and registers Bootstrap collapse event handlers for a navigation container.
+ * @param {Object} config
+ * @param {boolean} updateVisuallyHidden
  */
 function registerCollapseHandlers(config, updateVisuallyHidden = false) {
   const { container, buttonSelector, menuSelector } = config;
 
-  // Handle collapse SHOW event (before animation)
   document.addEventListener('show.bs.collapse', (event) => {
     if (!event.target.closest(container)) return;
 
     const triggerButton = getTriggerButton(event);
     if (!triggerButton) return;
 
-    // Close sibling submenus and sync their button states
     closeOtherSubmenus(triggerButton, buttonSelector, menuSelector);
     syncAllButtonStates(container, buttonSelector, triggerButton, updateVisuallyHidden);
-    
-    // Update the clicked button to open state
     updateButtonState(triggerButton, true, updateVisuallyHidden);
   });
 
-  // Handle collapse HIDE event (before animation)
   document.addEventListener('hide.bs.collapse', (event) => {
     if (!event.target.closest(container)) return;
 
@@ -141,7 +116,6 @@ function registerCollapseHandlers(config, updateVisuallyHidden = false) {
     }
   });
 
-  // Handle collapse SHOWN event (after animation completes)
   document.addEventListener('shown.bs.collapse', (event) => {
     if (!event.target.closest(container)) return;
 
@@ -149,12 +123,9 @@ function registerCollapseHandlers(config, updateVisuallyHidden = false) {
     if (triggerButton) {
       updateButtonState(triggerButton, true, updateVisuallyHidden);
     }
-    
-    // Final sync to ensure consistency
     syncAllButtonStates(container, buttonSelector, null, updateVisuallyHidden);
   });
 
-  // Handle collapse HIDDEN event (after animation completes)
   document.addEventListener('hidden.bs.collapse', (event) => {
     if (!event.target.closest(container)) return;
 
@@ -162,15 +133,12 @@ function registerCollapseHandlers(config, updateVisuallyHidden = false) {
     if (triggerButton) {
       updateButtonState(triggerButton, false, updateVisuallyHidden);
     }
-    
-    // Final sync to ensure consistency
     syncAllButtonStates(container, buttonSelector, null, updateVisuallyHidden);
   });
 }
 
 /**
- * Registers a click handler for immediate button state toggle
- * @param {string} selector - CSS selector for buttons
+ * @param {string} selector
  */
 function registerClickHandler(selector) {
   document.addEventListener('click', (event) => {
@@ -182,22 +150,16 @@ function registerClickHandler(selector) {
   });
 }
 
-// =============================================================================
-// DESKTOP NAVIGATION
-// =============================================================================
-
 function initDesktopNavigation() {
   const body = document.body;
   const headerWrapper = document.querySelector('.header-wrapper');
 
-  // Handle first-level dropdown visibility (adds body classes for overlay effects)
   document.querySelectorAll('.mainnav-desktop-item').forEach(item => {
     handleDropdownVisibility(
       item,
       () => setTimeout(() => {
         body.classList.add('active-nav-body');
         headerWrapper?.classList.add('active-nav');
-        // Scroll to current page element after navigation is visible
         scrollToCurrentElement(CONFIG.desktop.container);
       }, 0),
       () => {
@@ -207,22 +169,14 @@ function initDesktopNavigation() {
     );
   });
 
-  // Register click handler for immediate button state toggle
   registerClickHandler(`${CONFIG.desktop.container} ${CONFIG.desktop.buttonSelector}`);
-
-  // Register Bootstrap collapse event handlers
   registerCollapseHandlers(CONFIG.desktop, false);
 
-  // Initialize: Open parent submenus for current page
   setTimeout(() => {
     openCurrentPageParents(CONFIG.desktop.parentMenuSelector, closeButtonMessage);
     syncAllButtonStates(CONFIG.desktop.container, CONFIG.desktop.buttonSelector, null, false);
   }, 100);
 }
-
-// =============================================================================
-// MOBILE NAVIGATION
-// =============================================================================
 
 function initMobileNavigation() {
   const body = document.body;
@@ -233,63 +187,46 @@ function initMobileNavigation() {
 
   if (!dropdown) return;
 
-  // Handle main mobile menu visibility
   handleDropdownVisibility(
     dropdown,
     () => {
       toggleNavState(true, body, headerWrapper, navbarToggler, navbarTogglerText, 
                      openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
-      // Scroll to current page element after navigation is visible
       setTimeout(() => scrollToCurrentElement(CONFIG.mobile.container), 0);
     },
     () => toggleNavState(false, body, headerWrapper, navbarToggler, navbarTogglerText, 
                          openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage)
   );
 
-  // Close button for desktop flyout menu
   document.querySelectorAll('.main-menu-desktop .btn-close').forEach(button => {
     button.addEventListener('click', () => {
       document.querySelector('.first-nav-button.show')?.click();
     });
   });
 
-  // Handle subnav-children links with submenus
   document.querySelectorAll('.subnav-children .hassub').forEach(subButton => {
     subButton.addEventListener('click', () => {
       closeOtherSubmenus(subButton, '.subnav-children .hassub', '.subnav-children');
     });
   });
 
-  // Register click handler for immediate button state toggle
   registerClickHandler(`${CONFIG.mobile.container} ${CONFIG.mobile.buttonSelector}`);
-
-  // Register Bootstrap collapse event handlers (with visually-hidden text updates)
   registerCollapseHandlers(CONFIG.mobile, true);
 
-  // Initialize: Open parent submenus for current page
   setTimeout(() => {
     openCurrentPageParents(CONFIG.mobile.parentMenuSelector, closeButtonMessage);
     syncAllButtonStates(CONFIG.mobile.container, CONFIG.mobile.buttonSelector, null, true);
   }, 100);
 }
 
-// =============================================================================
-// RESPONSIVE BEHAVIOR
-// =============================================================================
-
-/**
- * Closes all open mobile menus
- */
 function closeMobileMenus() {
   const mainMenu = document.getElementById('main-menu');
   const navbarToggler = document.querySelector('.navbar-toggler');
   
-  // If mobile menu is open, close it by clicking the toggler
   if (mainMenu?.classList.contains('show') && navbarToggler) {
     navbarToggler.click();
   }
   
-  // Also close any open collapse submenus in mobile
   document.querySelectorAll(`${CONFIG.mobile.container} .collapse.show`).forEach(menu => {
     const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
     if (button && !button.classList.contains('collapsed')) {
@@ -298,16 +235,11 @@ function closeMobileMenus() {
   });
 }
 
-/**
- * Closes all open desktop menus
- */
 function closeDesktopMenus() {
-  // Close first-level dropdown buttons
   document.querySelectorAll('.first-nav-button.show, .mainnav-desktop .dropdown-toggle.show').forEach(button => {
     button.click();
   });
   
-  // Close any open collapse submenus in desktop
   document.querySelectorAll(`${CONFIG.desktop.container} .collapse.show`).forEach(menu => {
     const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
     if (button && !button.classList.contains('collapsed')) {
@@ -322,18 +254,14 @@ function initResponsiveBehavior() {
   const headerWrapper = document.querySelector('.header-wrapper');
 
   const handleBreakpointChange = (event) => {
-    // Only act on actual breakpoint changes, not initial load
     if (!event) return;
     
     if (event.matches) {
-      // Switching TO desktop: close mobile menus
       closeMobileMenus();
     } else {
-      // Switching TO mobile: close desktop menus
       closeDesktopMenus();
     }
 
-    // Reset body state
     body.classList.remove('active-nav-body');
     headerWrapper?.classList.remove('active-nav');
   };
@@ -341,24 +269,16 @@ function initResponsiveBehavior() {
   mediaQuery.addEventListener('change', handleBreakpointChange);
 }
 
-// =============================================================================
-// INITIALIZATION
-// =============================================================================
-
 function init() {
-  // Initialize desktop navigation if present
   if (document.querySelector('.mainnav-desktop')) {
     initDesktopNavigation();
   }
 
-  // Initialize mobile navigation if present
   if (document.getElementById('main-menu')) {
     initMobileNavigation();
   }
 
-  // Initialize responsive behavior
   initResponsiveBehavior();
 }
 
-// Start the module
 init();

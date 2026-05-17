@@ -1,32 +1,9 @@
-/**
- * Theme Switcher Module
- * Manages light/dark theme switching with localStorage persistence
- * Respects system preference when no stored preference exists
- */
-
-// =============================================================================
-// CONFIGURATION
-// =============================================================================
-
 const html = document.documentElement;
 const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-// =============================================================================
-// CORE FUNCTIONS
-// =============================================================================
-
 /**
- * Gets all theme switch elements
- * @returns {HTMLElement[]} Array of switch elements
- */
-function getThemeSwitches() {
-  return Array.from(document.querySelectorAll('#themeSwitch'));
-}
-
-/**
- * Sets the current theme
  * @param {string} theme - 'light' or 'dark'
- * @param {boolean} [explicit=true] - Whether this is an explicit user choice
+ * @param {boolean} explicit - Whether this is an explicit user choice (persists to localStorage)
  */
 function setTheme(theme, explicit = true) {
   html.setAttribute('data-bs-theme', theme);
@@ -40,19 +17,14 @@ function setTheme(theme, explicit = true) {
   });
 }
 
-/**
- * Handles system preference changes (only active when no explicit user choice)
- * @param {MediaQueryListEvent} e - Media query change event
- */
+function getThemeSwitches() {
+  return Array.from(document.querySelectorAll('#themeSwitch'));
+}
+
 function handleSystemPreferenceChange(e) {
   setTheme(e.matches ? 'dark' : 'light', false);
 }
 
-// =============================================================================
-// INITIALIZATION
-// =============================================================================
-
-// Apply stored or system theme immediately
 const storedTheme = localStorage.getItem('theme');
 
 if (storedTheme) {
@@ -63,8 +35,7 @@ if (storedTheme) {
 }
 
 /**
- * Initializes theme switch elements
- * Safe to call multiple times (uses data attribute to prevent double-binding)
+ * Safe to call multiple times — uses a data attribute to prevent double-binding.
  */
 function initThemeSwitch() {
   const switches = getThemeSwitches();
@@ -79,7 +50,6 @@ function initThemeSwitch() {
     });
   });
 
-  // Keyboard support for Enter key on all theme switches
   if (!html.dataset.themeKeybind) {
     html.dataset.themeKeybind = '1';
 
@@ -95,14 +65,13 @@ function initThemeSwitch() {
   }
 }
 
-// Initialize on DOM ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initThemeSwitch);
 } else {
   initThemeSwitch();
 }
 
-// Expose for re-initialization after DOM restore
+// Exposed for re-initialization after DOM restore (e.g. nav-toggle swaps)
 if (typeof window !== 'undefined') {
   window.mpcInitThemeSwitch = initThemeSwitch;
 }

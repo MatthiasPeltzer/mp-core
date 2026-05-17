@@ -1,7 +1,5 @@
-// Get the language attribute from the <html> tag
 const lang = document.querySelector('html')?.getAttribute('lang') || 'en';
 
-// Define messages for different languages
 const messages = {
     de: {
         prevSlide: 'Zum vorherigen Eintrag',
@@ -71,10 +69,8 @@ const messages = {
     }
 };
 
-// Get the messages for the current language, falling back to English
 const currentMessages = messages[lang] || messages.en;
 
-// Create and export all messages dynamically
 export const {
     prevSlide: prevSlideMessage,
     nextSlide: nextSlideMessage,
@@ -90,15 +86,13 @@ export const {
     openButton: openButtonMessage,
     closeButton: closeButtonMessage
 } = {
-    ...messages.en, // Default English messages
-    ...currentMessages // Override with current language
+    ...messages.en,
+    ...currentMessages
 };
 
-// Export merged messages for general i18n lookups
 export const i18n = {
     ...messages.en,
     ...currentMessages
 };
 
-// Convenience export for new-window text
 export const newWindowMessage = i18n.newWindow;

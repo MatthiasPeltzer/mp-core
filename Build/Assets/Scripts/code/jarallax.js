@@ -1,8 +1,3 @@
-/**
- * Parallax Effects Module
- * Initializes jarallax for parallax scrolling effects
- */
-
 import { jarallax } from 'jarallax';
 
 const parallaxElements = document.querySelectorAll('.grid-parallax');

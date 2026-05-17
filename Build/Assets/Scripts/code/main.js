@@ -1,23 +1,5 @@
-/**
- * Main JavaScript Entry Point
- * Core functionality and global event handlers
- */
-
-// =============================================================================
-// INITIALIZATION
-// =============================================================================
-
-// Replace no-js class with js class for CSS hooks
 document.documentElement.classList.replace('no-js', 'js');
 
-// =============================================================================
-// GLOBAL EVENT HANDLERS
-// =============================================================================
-
-/**
- * Handle popup window links
- * Opens links with .popup-window class in a new popup window
- */
 document.addEventListener('click', (e) => {
   const popupLink = e.target.closest('.popup-window');
   if (popupLink) {
@@ -38,10 +20,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// =============================================================================
-// REDUCED MOTION: PAUSE AUTOPLAY VIDEOS
-// =============================================================================
-
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('video[autoplay]').forEach((video) => {
     video.removeAttribute('autoplay');
@@ -49,12 +27,5 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   });
 }
 
-// =============================================================================
-// AUTO-FOCUS FUNCTIONALITY
-// =============================================================================
-
-// Focus on first invalid input for better form UX
 document.querySelector('.is-invalid')?.focus();
-
-// Focus on search box if present
 document.getElementById('tx-indexedsearch-searchbox-sword')?.focus();
