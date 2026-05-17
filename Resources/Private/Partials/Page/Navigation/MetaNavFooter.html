@@ -19,7 +19,6 @@
                                             title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
                                             class="nav-link{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainChild.data.target, then:' external-link')}"
                                             additionalAttributes="{'aria-current': 'page'}">
-                                          <f:spaceless>
                                             <f:if condition="{mainItem.files.0}">
                                               <f:then>
                                                 <mpc:svgInline image="{mainItem.files.0}" width="16" height="16" class="nav-icon" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
@@ -29,7 +28,6 @@
                                               </f:else>
                                             </f:if>
                                             <span class="text-decoration-underline">{mainItem.title}</span>
-                                          </f:spaceless>
                                         </f:link.typolink>
                                     </f:then>
                                     <f:else>
@@ -38,7 +36,6 @@
                                             target="{mainItem.data.target}"
                                             title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
                                             class="nav-link fw-normal{f:if(condition: mainItem.data.target, then:' external-link')}">
-                                          <f:spaceless>
                                             <f:if condition="{mainItem.files.0}">
                                               <f:then>
                                                 <mpc:svgInline image="{mainItem.files.0}" width="16" height="16" class="nav-icon" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
@@ -48,7 +45,6 @@
                                               </f:else>
                                             </f:if>
                                             <span>{mainItem.title}</span>
-                                          </f:spaceless>
                                         </f:link.typolink>
                                     </f:else>
                                 </f:if>

@@ -1,37 +1,37 @@
 <html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 <li class="mainnav-desktop-item{f:if(condition:'{mainItem.data.doktype} == 4', then:' shortcut')}">
-    <f:if condition="{mainItem.children}">
-        <f:then>
-            <f:if condition="{mainItem.children}">
-                <button aria-controls="menu-desktop-{mainItem.data.uid}" aria-expanded="false" class="first-nav first-nav-btn{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" data-bs-auto-close="outside" data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent" data-bs-toggle="dropdown" type="button" title="{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}">
-                    <span class="txt">{mainItem.title}</span>
-                </button>
-                <div class="dropdown-menu main-menu-desktop" id="menu-desktop-{mainItem.data.uid}">
-                    <div class="container d-flex justify-content-end pt-3 pb-3" style="height: 5.5rem !important">
-                        <button aria-label="{f:translate(key: 'header.closeMenuTitleClose', extensionName: 'mp_core')}" class="btn-close rounded-circle dropdown-item" type="button"></button>
-                    </div>
-                    <ul class="container list-unstyled mainnav-children">
-                        <f:for as="mainChild" each="{mainItem.children}">
-                            <f:render arguments="{mainChild: mainChild, mainItem: mainItem}" section="submenu"/>
-                        </f:for>
-                    </ul>
-                </div>
-            </f:if>
-        </f:then>
-        <f:else>
-            <f:if condition="{mainItem.current}">
-                <f:then>
-                    <f:link.page aria="{current: 'page'}" class="first-nav{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
-                        {mainItem.title}
-                    </f:link.page>
-                </f:then>
-                <f:else>
-                    <f:link.page class="first-nav{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
-                        {mainItem.title}
-                    </f:link.page>
-                </f:else>
-            </f:if>
-        </f:else>
+      <f:if condition="{mainItem.children}">
+          <f:then>
+              <f:if condition="{mainItem.children}">
+                  <button aria-controls="menu-desktop-{mainItem.data.uid}" aria-expanded="false" class="first-nav first-nav-btn{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" data-bs-auto-close="outside" data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent" data-bs-toggle="dropdown" type="button" title="{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}">
+                      <span class="txt">{mainItem.title}</span>
+                  </button>
+                  <div class="dropdown-menu main-menu-desktop" id="menu-desktop-{mainItem.data.uid}">
+                      <div class="container d-flex justify-content-end pt-3 pb-3" style="height: 5.5rem !important">
+                          <button aria-label="{f:translate(key: 'header.closeMenuTitleClose', extensionName: 'mp_core')}" class="btn-close rounded-circle dropdown-item" type="button"></button>
+                      </div>
+                      <ul class="container list-unstyled mainnav-children">
+                          <f:for as="mainChild" each="{mainItem.children}">
+                              <f:render arguments="{mainChild: mainChild, mainItem: mainItem}" section="submenu"/>
+                          </f:for>
+                      </ul>
+                  </div>
+              </f:if>
+          </f:then>
+          <f:else>
+              <f:if condition="{mainItem.current}">
+                  <f:then>
+                      <f:link.page aria="{current: 'page'}" class="first-nav{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
+                          {mainItem.title}
+                      </f:link.page>
+                  </f:then>
+                  <f:else>
+                      <f:link.page class="first-nav{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
+                          {mainItem.title}
+                      </f:link.page>
+                  </f:else>
+              </f:if>
+          </f:else>
     </f:if>
 </li>
 

@@ -136,6 +136,12 @@ function enhanceLinksAccessibility(root = document) {
   }
 
   links.forEach(link => {
+    // Respect explicit opt-out: pages/templates can mark a link as
+    // already having a sufficient accessible name and ask the helper
+    // to keep its hands off (avoids double labelling for screen readers).
+    if (link.dataset.noI18nHelper === 'true') return;
+    if (link.hasAttribute('aria-label') || link.hasAttribute('aria-labelledby')) return;
+
     const matchedKey = getMatchedKey(link);
     const isBlank = link.getAttribute('target') === '_blank';
     const external = isExternal(link);

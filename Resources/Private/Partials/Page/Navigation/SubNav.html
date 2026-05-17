@@ -16,7 +16,6 @@
                                 parameter="{mainItem.link}"
                                 target="{mainItem.data.target}"
                                 title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}">
-                              <f:spaceless>
                                 <f:if condition="{mainItem.files.0}">
                                   <f:then>
                                     <mpc:svgInline additionalAttributes="{aria-hidden:'true'}" class="nav-icon" height="16" image="{mainItem.files.0}" viewBox="0 0 16 16" width="16"/>
@@ -26,7 +25,6 @@
                                   </f:else>
                                 </f:if>
                                 <span class="text-decoration-underline">{mainItem.title}</span>
-                              </f:spaceless>
                             </f:link.typolink>
                         </f:then>
                         <f:else>
@@ -35,7 +33,6 @@
                                 parameter="{mainItem.link}"
                                 target="{mainItem.data.target}"
                                 title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}">
-                              <f:spaceless>
                                 <f:if condition="{mainItem.files.0}">
                                   <f:then>
                                     <mpc:svgInline additionalAttributes="{aria-hidden:'true'}" class="nav-icon" height="16" image="{mainItem.files.0}" viewBox="0 0 16 16" width="16"/>
@@ -45,7 +42,6 @@
                                   </f:else>
                                 </f:if>
                                 <span>{mainItem.title}</span>
-                              </f:spaceless>
                             </f:link.typolink>
                         </f:else>
                     </f:if>
@@ -72,7 +68,6 @@
                     parameter="{mainChild.link}"
                     target="{mainChild.data.target}"
                     title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}">
-                  <f:spaceless>
                     <f:if condition="{mainChild.files.0}">
                       <f:then>
                         <mpc:svgInline additionalAttributes="{aria-hidden:'true'}" class="nav-icon" height="16" image="{mainChild.files.0}" viewBox="0 0 16 16" width="16"/>
@@ -82,7 +77,6 @@
                       </f:else>
                     </f:if>
                     <span class="text-decoration-underline">{mainChild.title}</span>
-                  </f:spaceless>
                 </f:link.typolink>
             </f:then>
             <f:else>
@@ -91,7 +85,6 @@
                     parameter="{mainChild.link}"
                     target="{mainChild.data.target}"
                     title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}">
-                  <f:spaceless>
                     <f:if condition="{mainChild.files.0}">
                       <f:then>
                         <mpc:svgInline additionalAttributes="{aria-hidden:'true'}" class="nav-icon" height="16" image="{mainChild.files.0}" viewBox="0 0 16 16" width="16"/>
@@ -101,7 +94,6 @@
                       </f:else>
                     </f:if>
                     <span>{mainChild.title}</span>
-                  </f:spaceless>
                 </f:link.typolink>
             </f:else>
         </f:if>
