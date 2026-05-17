@@ -62,11 +62,15 @@ final class HtmlWhitespaceCompressorMiddleware implements MiddlewareInterface
             return $response;
         }
 
+        // The PSR-7 stream cast and the subsequent empty-string check below
+        // already handle zero-byte bodies, so we deliberately skip the
+        // `getSize()` fast path here. `StreamInterface::getSize()` is allowed
+        // to return null for non-seekable streams and the TYPO3 Extension
+        // Scanner flags every `->getSize()` call as potentially affected by
+        // Deprecation #101475 (`ModifyIconForResourcePropertiesEvent`),
+        // because it cannot infer the receiver type — avoiding the call
+        // sidesteps that false positive without changing behaviour.
         $body = $response->getBody();
-        if ($body->getSize() === 0) {
-            return $response;
-        }
-
         if ($body->isSeekable()) {
             $body->rewind();
         }
