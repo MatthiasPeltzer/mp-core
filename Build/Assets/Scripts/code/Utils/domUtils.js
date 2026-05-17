@@ -1,17 +1,7 @@
 /**
- * DOM Utilities Module
- * Shared utility functions for DOM manipulation and navigation handling
- */
-
-// =============================================================================
-// GENERAL UTILITIES
-// =============================================================================
-
-/**
- * Creates a debounced version of a function
- * @param {Function} func - Function to debounce
- * @param {number} wait - Delay in milliseconds (default: 100)
- * @returns {Function} Debounced function
+ * @param {Function} func
+ * @param {number} wait
+ * @returns {Function}
  */
 export function debounce(func, wait = 100) {
   let timeout;
@@ -21,21 +11,16 @@ export function debounce(func, wait = 100) {
   };
 }
 
-// =============================================================================
-// NAVIGATION STATE UTILITIES
-// =============================================================================
-
 /**
- * Toggles navigation state classes and updates button attributes
- * @param {boolean} isShow - Whether navigation is showing
- * @param {HTMLElement} body - Document body element
- * @param {HTMLElement} headerWrapper - Header wrapper element
- * @param {HTMLElement} navbarToggler - Navbar toggler button
- * @param {HTMLElement} navbarTogglerText - Text element inside toggler
- * @param {string} openTitle - Title text for closed state
- * @param {string} closeTitle - Title text for open state
- * @param {string} openNav - Button text for closed state
- * @param {string} closeNav - Button text for open state
+ * @param {boolean} isShow
+ * @param {HTMLElement} body
+ * @param {HTMLElement} headerWrapper
+ * @param {HTMLElement} navbarToggler
+ * @param {HTMLElement} navbarTogglerText
+ * @param {string} openTitle
+ * @param {string} closeTitle
+ * @param {string} openNav
+ * @param {string} closeNav
  */
 export function toggleNavState(
   isShow,
@@ -61,10 +46,9 @@ export function toggleNavState(
 }
 
 /**
- * Registers Bootstrap dropdown visibility event handlers
- * @param {HTMLElement} element - Element to attach handlers to
- * @param {Function} showCallback - Called when dropdown shows
- * @param {Function} hideCallback - Called when dropdown hides
+ * @param {HTMLElement} element
+ * @param {Function} showCallback
+ * @param {Function} hideCallback
  */
 export function handleDropdownVisibility(element, showCallback, hideCallback) {
   if (!element) return;
@@ -73,10 +57,9 @@ export function handleDropdownVisibility(element, showCallback, hideCallback) {
 }
 
 /**
- * Toggles aria-label and title between two values
- * @param {HTMLElement} element - Element to update
- * @param {string} openLabel - Label for closed state
- * @param {string} closeLabel - Label for open state
+ * @param {HTMLElement} element
+ * @param {string} openLabel
+ * @param {string} closeLabel
  */
 export function toggleAriaLabelAndTitle(element, openLabel, closeLabel) {
   if (!element) return;
@@ -88,27 +71,21 @@ export function toggleAriaLabelAndTitle(element, openLabel, closeLabel) {
   element.setAttribute('title', newLabel);
 }
 
-// =============================================================================
-// SUBMENU UTILITIES
-// =============================================================================
-
 /**
- * Opens parent submenus for current page menu items
- * Looks for elements with aria-current="page" or .current class
- * Provides navigation context by showing the current page's location
- * Only opens parent collapses, not child collapses controlled by the current element
- * @param {string} menuSelector - CSS selector for menu containers (default: '.collapse')
- * @param {string} openText - Text to display when submenu is open (default: 'Close Submenu')
+ * Opens parent collapse menus for the current page's nav item.
+ * Looks for [aria-current="page"] or .current; opens ancestor menus matching
+ * `menuSelector` without opening child menus below the current element.
+ *
+ * @param {string} menuSelector
+ * @param {string} openText
  */
 export function openCurrentPageParents(menuSelector = '.collapse', openText = 'Close Submenu') {
-  // Find current elements - prioritize aria-current, then fallback to .current class
   const currentPageElements = document.querySelectorAll('[aria-current="page"], .current');
 
   currentPageElements.forEach(currentElement => {
     const parentsToOpen = [];
     let parent = currentElement.parentElement;
 
-    // Traverse up the DOM tree to find all parent submenus
     while (parent) {
       if (parent.matches(menuSelector)) {
         parentsToOpen.unshift(parent);
@@ -116,11 +93,9 @@ export function openCurrentPageParents(menuSelector = '.collapse', openText = 'C
       parent = parent.parentElement;
     }
 
-    // Open all parent submenus (but not child submenus controlled by the current element)
     parentsToOpen.forEach(menu => {
       menu.classList.add('show');
 
-      // Find and update the corresponding button
       const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
       if (button) {
         button.classList.remove('collapsed');
@@ -137,12 +112,12 @@ export function openCurrentPageParents(menuSelector = '.collapse', openText = 'C
 }
 
 /**
- * Focuses and scrolls to the current page element in the navigation
- * Looks for elements with aria-current="page" or .current class
- * @param {string} containerSelector - CSS selector for the navigation container
- * @param {Object} options - Scroll options
- * @param {string} options.behavior - Scroll behavior ('smooth' or 'instant', default: 'smooth')
- * @param {string} options.block - Vertical alignment ('center', 'start', 'end', 'nearest', default: 'center')
+ * Focuses and scrolls to [aria-current="page"] or .current within the container.
+ *
+ * @param {string} containerSelector
+ * @param {Object} options
+ * @param {string} options.behavior
+ * @param {string} options.block
  */
 export function scrollToCurrentElement(containerSelector, options = {}) {
   const {behavior = 'smooth', block = 'center'} = options;
@@ -150,29 +125,23 @@ export function scrollToCurrentElement(containerSelector, options = {}) {
 
   if (!container) return;
 
-  // Find the current element - prioritize aria-current, then fallback to .current class
   const currentElement = container.querySelector('[aria-current="page"]')
     || container.querySelector('.current');
 
   if (currentElement) {
-    // Make element focusable if it isn't already
     if (!currentElement.hasAttribute('tabindex') && !currentElement.matches('a, button, input, select, textarea')) {
       currentElement.setAttribute('tabindex', '-1');
     }
 
-    // Focus the element (this also scrolls it into view in most browsers)
     currentElement.focus({preventScroll: true});
-
-    // Ensure it's scrolled into view with the desired positioning
     currentElement.scrollIntoView({behavior, block});
   }
 }
 
 /**
- * Calculates menu nesting level by counting ancestors
- * @param {HTMLElement} menu - Menu element to check
- * @param {string} menuSelector - CSS selector for menu containers
- * @returns {number} Nesting level (0 = top level)
+ * @param {HTMLElement} menu
+ * @param {string} menuSelector
+ * @returns {number}
  */
 function getMenuLevel(menu, menuSelector) {
   let level = 0;
@@ -192,11 +161,11 @@ function getMenuLevel(menu, menuSelector) {
 }
 
 /**
- * Closes all other open submenus except the one being opened
- * Handles nested levels by closing menus at the same level or deeper
- * @param {HTMLElement} targetButton - The button that was clicked to open a submenu
- * @param {string} buttonSelector - CSS selector for submenu buttons (default: '.btn-open')
- * @param {string} menuSelector - CSS selector for submenu containers (default: '.collapse')
+ * Closes open sibling/child submenus at the same nesting level or deeper.
+ *
+ * @param {HTMLElement} targetButton
+ * @param {string} buttonSelector
+ * @param {string} menuSelector
  */
 export function closeOtherSubmenus(targetButton, buttonSelector = '.btn-open', menuSelector = '.collapse') {
   if (!targetButton) return;
@@ -208,7 +177,6 @@ export function closeOtherSubmenus(targetButton, buttonSelector = '.btn-open', m
 
   const targetLevel = getMenuLevel(targetMenu, menuSelector);
 
-  // Close all open menus at the same level or deeper
   document.querySelectorAll(`${menuSelector}.show`).forEach(menu => {
     const menuLevel = getMenuLevel(menu, menuSelector);
     const menuId = `#${menu.id}`;
@@ -216,14 +184,12 @@ export function closeOtherSubmenus(targetButton, buttonSelector = '.btn-open', m
     if (menuLevel >= targetLevel && menuId !== targetMenuId) {
       menu.classList.remove('show');
 
-      // Also close any child menus
       menu.querySelectorAll(`${menuSelector}.show`).forEach(childMenu => {
         childMenu.classList.remove('show');
       });
     }
   });
 
-  // Update button states for all affected buttons
   document.querySelectorAll(buttonSelector).forEach(button => {
     const buttonMenuId = button.getAttribute('data-bs-target');
     const buttonMenu = document.querySelector(buttonMenuId);

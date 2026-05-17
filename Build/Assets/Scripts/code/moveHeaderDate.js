@@ -1,8 +1,3 @@
-/**
- * Header Date Mover Module
- * Repositions date wrapper element in the header structure
- */
-
 const dateWrapper = document.querySelector('.date-wrapper');
 const headerContent = document.getElementById('headerMain');
 

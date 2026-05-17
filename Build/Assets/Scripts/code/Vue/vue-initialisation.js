@@ -1,14 +1,11 @@
 /**
- * Vue 3 Application Initialization
- * Initializes Vue 3 components and mounts them to DOM elements
- *
  * Usage in TYPO3 templates:
- * <div data-container="vue" data-component="TodoList"></div>
+ *   <div data-container="vue" data-component="TodoList"></div>
  *
  * Optional configuration via data attributes:
- * <div data-container="vue" data-component="TodoList"
- *      data-card-title="My Tasks"
- *      data-color-scheme="primary"></div>
+ *   <div data-container="vue" data-component="TodoList"
+ *        data-card-title="My Tasks"
+ *        data-color-scheme="primary"></div>
  */
 
 import {createApp} from 'vue';
@@ -16,26 +13,13 @@ import TodoList from '@components/TodoList.vue';
 import SwiperSlider from '@components/SwiperSlider.vue';
 import GallerySwiper from '@components/GallerySwiper.vue';
 
-// =============================================================================
-// CONFIGURATION
-// =============================================================================
-
-/**
- * Component registry - add new Vue components here
- */
+/** Component registry — add new Vue components here */
 const components = {
   TodoList,
   SwiperSlider,
   GallerySwiper
 };
 
-// =============================================================================
-// INITIALIZATION
-// =============================================================================
-
-/**
- * Initializes all Vue components found in the DOM
- */
 function initializeVueComponents() {
   const containers = document.querySelectorAll('[data-container="vue"]');
 
@@ -48,7 +32,7 @@ function initializeVueComponents() {
     const component = components[componentName];
 
     if (component) {
-      // For SwiperSlider, we need to preserve the slide content before Vue replaces it
+      // Preserve slide content before Vue replaces innerHTML
       if (componentName === 'SwiperSlider') {
         const slideElements = element.querySelectorAll('.swiper-slide-content');
         if (slideElements.length > 0) {
@@ -60,16 +44,14 @@ function initializeVueComponents() {
         }
       }
 
-      // For GallerySwiper, preserve gallery slide content and thumbnails
       if (componentName === 'GallerySwiper') {
         const slideElements = element.querySelectorAll('.gallery-slide-content');
         if (slideElements.length > 0) {
           const slidesData = Array.from(slideElements).map((el, index) => {
-            // Extract main content (from .gallery-main-content or fallback to entire innerHTML)
             const mainContentEl = el.querySelector('.gallery-main-content');
             const content = mainContentEl ? mainContentEl.innerHTML : el.innerHTML;
 
-            // Extract thumbnail from template element (if present)
+            // Thumbnail comes from a <template> element to avoid rendering it twice
             const thumbnailTemplate = el.querySelector('.gallery-thumbnail-template');
             const thumbnail = thumbnailTemplate ? thumbnailTemplate.innerHTML : content;
 
@@ -89,7 +71,6 @@ function initializeVueComponents() {
   });
 }
 
-// Auto-initialize on DOM ready
 if (typeof window !== 'undefined') {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeVueComponents);
@@ -98,5 +79,4 @@ if (typeof window !== 'undefined') {
   }
 }
 
-// Export for manual initialization
 export {createApp, components};

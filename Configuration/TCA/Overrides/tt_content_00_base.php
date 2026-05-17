@@ -7,8 +7,6 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 defined('TYPO3') || die();
 
 (static function (): void {
-    // Use a custom preview renderer to work around TYPO3 core TypeErrors in backend previews
-    // (null passed to Sanitizer::sanitize, missing file references in getThumbCodeUnlinked)
     $GLOBALS['TCA']['tt_content']['ctrl']['previewRenderer'] = \Mpc\MpCore\Preview\CustomContentPreviewRenderer::class;
 
     $linkColumns = [
@@ -175,10 +173,6 @@ defined('TYPO3') || die();
 
     $GLOBALS['TCA']['tt_content']['palettes'] += $linkPalettes;
 
-    /***************
-     * Register Vue TodoList as Content Element (CType)
-     * This creates a standalone content element in Special Elements
-     */
     $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
         'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:typo3vitedemo_todolist',
         'value' => 'mpcore_todolist',
@@ -187,10 +181,8 @@ defined('TYPO3') || die();
         'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:typo3vitedemo_todolist.description',
     ];
 
-// Register icon for the CType in list view
     $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['mpcore_todolist'] = 'typo3-vite-demo-todolist';
 
-// Define showitem for the plugin CType
     $GLOBALS['TCA']['tt_content']['types']['mpcore_todolist'] = [
         'showitem' => '
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,

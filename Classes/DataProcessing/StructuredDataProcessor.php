@@ -65,7 +65,14 @@ final class StructuredDataProcessor implements DataProcessorInterface
         }
 
         $request = $cObj->getRequest();
-        $pageRow = $cObj->data;
+        // Read the page record from the request attribute the FE controller
+        // populates during `PrepareTypoScriptFrontendRendering` instead of
+        // `$cObj->data`. Functionally identical at PAGE-level data processing
+        // time, but it sidesteps the TYPO3 Extension Scanner false positive
+        // for breaking change #101955 (which flags every `->data` property
+        // access because `GifBuilder->data` was made protected).
+        $pageInformation = $request->getAttribute('frontend.page.information');
+        $pageRow = $pageInformation instanceof PageInformation ? $pageInformation->getPageRecord() : [];
         if ($pageRow === []) {
             $processedData['structuredDataJsonLd'] = '';
 

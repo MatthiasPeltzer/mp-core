@@ -1,13 +1,3 @@
-/**
- * Pagination Module
- * Client-side pagination for list elements
- * Creates paginated views with Previous/Next controls
- */
-
-// =============================================================================
-// CONFIGURATION
-// =============================================================================
-
 const CONFIG = {
   itemsPerPage: 10,
   containerSelector: '.paginated-list',
@@ -15,13 +5,8 @@ const CONFIG = {
   controlsSelector: '.pagination-controls'
 };
 
-// =============================================================================
-// PAGINATION LOGIC
-// =============================================================================
-
 /**
- * Creates and manages pagination for a list container
- * @param {HTMLElement} listContainer - Container element with list and controls
+ * @param {HTMLElement} listContainer
  */
 function createPagination(listContainer) {
   const itemList = listContainer.querySelector(CONFIG.listSelector);
@@ -33,21 +18,14 @@ function createPagination(listContainer) {
   const totalPages = Math.ceil(items.length / CONFIG.itemsPerPage);
   let currentPage = 1;
 
-  /**
-   * Renders items for the specified page
-   * @param {number} page - Page number to render
-   * @param {boolean} focusFirstItem - Whether to focus first item after render
-   */
   function renderPage(page, focusFirstItem = false) {
     const start = (page - 1) * CONFIG.itemsPerPage;
     const end = start + CONFIG.itemsPerPage;
 
-    // Show only items for current page
     items.forEach((item, index) => {
       item.style.display = (index >= start && index < end) ? 'block' : 'none';
     });
 
-    // Focus first visible link if requested
     if (focusFirstItem && items[start]) {
       const link = items[start].querySelector('a');
       link?.focus();
@@ -56,13 +34,6 @@ function createPagination(listContainer) {
     renderControls(page);
   }
 
-  /**
-   * Creates a pagination button
-   * @param {string} text - Button text
-   * @param {boolean} disabled - Whether button is disabled
-   * @param {Function} onClick - Click handler
-   * @returns {HTMLElement} List item with button
-   */
   function createButton(text, disabled, onClick) {
     const listItem = document.createElement('li');
     listItem.className = 'page-item';
@@ -78,10 +49,6 @@ function createPagination(listContainer) {
     return listItem;
   }
 
-  /**
-   * Renders pagination controls
-   * @param {number} page - Current page number
-   */
   function renderControls(page) {
     paginationControls.innerHTML = '';
 
@@ -90,7 +57,6 @@ function createPagination(listContainer) {
     const paginationList = document.createElement('ul');
     paginationList.className = 'pagination';
 
-    // Previous button
     paginationList.appendChild(
       createButton('Previous', page === 1, () => {
         if (page > 1) {
@@ -100,7 +66,6 @@ function createPagination(listContainer) {
       })
     );
 
-    // Page number buttons
     for (let i = 1; i <= totalPages; i++) {
       const isCurrentPage = i === page;
       const pageItem = createButton(String(i), isCurrentPage, () => {
@@ -116,7 +81,6 @@ function createPagination(listContainer) {
       paginationList.appendChild(pageItem);
     }
 
-    // Next button
     paginationList.appendChild(
       createButton('Next', page === totalPages, () => {
         if (page < totalPages) {
@@ -129,13 +93,8 @@ function createPagination(listContainer) {
     paginationControls.appendChild(paginationList);
   }
 
-  // Initialize first page
   renderPage(currentPage, false);
 }
-
-// =============================================================================
-// INITIALIZATION
-// =============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll(CONFIG.containerSelector).forEach(createPagination);

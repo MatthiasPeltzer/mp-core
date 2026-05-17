@@ -1,19 +1,6 @@
-/**
- * Accessibility Link Helper Module
- * Enhances links with screen reader text based on link type
- * Observes DOM changes to handle dynamically added content
- */
-
 import { i18n } from './i18n.js';
 import { debounce } from './Utils/domUtils.js';
 
-// =============================================================================
-// CONFIGURATION
-// =============================================================================
-
-/**
- * Map of camelCase class names to i18n keys
- */
 const CLASS_TO_KEY = new Map([
   ['audio', 'audio'],
   ['chart', 'chart'],
@@ -34,9 +21,6 @@ const CLASS_TO_KEY = new Map([
   ['video', 'video']
 ]);
 
-/**
- * Map of kebab-case class aliases to i18n keys
- */
 const ALIAS_TO_KEY = new Map([
   ['external-link', 'externalLink'],
   ['external-link-new', 'externalLinkNew'],
@@ -47,14 +31,9 @@ const ALIAS_TO_KEY = new Map([
   ['download', 'download']
 ]);
 
-// =============================================================================
-// HELPER FUNCTIONS
-// =============================================================================
-
 /**
- * Checks if a link points to an external origin
- * @param {HTMLAnchorElement} link - Link element to check
- * @returns {boolean} Whether link is external
+ * @param {HTMLAnchorElement} link
+ * @returns {boolean}
  */
 function isExternal(link) {
   const href = link.getAttribute('href');
@@ -69,9 +48,8 @@ function isExternal(link) {
 }
 
 /**
- * Adds or updates hidden span for screen readers
- * @param {HTMLElement} linkElement - Link to enhance
- * @param {string} text - Text for screen readers
+ * @param {HTMLElement} linkElement
+ * @param {string} text
  */
 function ensureHiddenSpan(linkElement, text) {
   if (!linkElement) return;
@@ -91,19 +69,16 @@ function ensureHiddenSpan(linkElement, text) {
 }
 
 /**
- * Gets the i18n key for a link based on its classes
- * @param {HTMLAnchorElement} link - Link to check
- * @returns {string|null} Matched i18n key or null
+ * @param {HTMLAnchorElement} link
+ * @returns {string|null}
  */
 function getMatchedKey(link) {
-  // Check camelCase classes
   for (const [className, key] of CLASS_TO_KEY) {
     if (link.classList.contains(className) && i18n[key]) {
       return key;
     }
   }
 
-  // Check kebab-case aliases
   for (const cls of link.classList) {
     const aliasKey = ALIAS_TO_KEY.get(cls);
     if (aliasKey && i18n[aliasKey]) {
@@ -114,31 +89,23 @@ function getMatchedKey(link) {
   return null;
 }
 
-// =============================================================================
-// MAIN ENHANCEMENT FUNCTION
-// =============================================================================
-
 /**
- * Enhances links with accessibility text
- * @param {HTMLElement|Document} root - Root element to search within
+ * @param {HTMLElement|Document} root
  */
 function enhanceLinksAccessibility(root = document) {
   const links = [];
 
-  // Include root if it's an anchor
   if (root?.nodeType === 1 && root.matches?.('a')) {
     links.push(root);
   }
 
-  // Include all descendant anchors
   if (root?.querySelectorAll) {
     links.push(...root.querySelectorAll('a'));
   }
 
   links.forEach(link => {
-    // Respect explicit opt-out: pages/templates can mark a link as
-    // already having a sufficient accessible name and ask the helper
-    // to keep its hands off (avoids double labelling for screen readers).
+    // Respect explicit opt-out: data-no-i18n-helper="true" signals the link
+    // already has a sufficient accessible name and should not be double-labelled.
     if (link.dataset.noI18nHelper === 'true') return;
     if (link.hasAttribute('aria-label') || link.hasAttribute('aria-labelledby')) return;
 
@@ -146,13 +113,11 @@ function enhanceLinksAccessibility(root = document) {
     const isBlank = link.getAttribute('target') === '_blank';
     const external = isExternal(link);
 
-    // Skip internal links entirely
     if (matchedKey === 'internalLink' || matchedKey === 'internalLinkNew') return;
     if (!matchedKey && !external) return;
 
     let helperText = matchedKey ? i18n[matchedKey] : null;
 
-    // Handle external _blank links
     if (isBlank && external) {
       if (matchedKey === 'externalLinkNew') {
         helperText = i18n.externalLinkNew;
@@ -167,28 +132,16 @@ function enhanceLinksAccessibility(root = document) {
   });
 }
 
-// =============================================================================
-// INITIALIZATION
-// =============================================================================
-
 function init() {
   enhanceLinksAccessibility();
 }
 
-// Run on DOMContentLoaded
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 } else {
   init();
 }
 
-// =============================================================================
-// MUTATION OBSERVER
-// =============================================================================
-
-/**
- * Starts observing DOM for dynamically added links
- */
 function startObserver() {
   if (!('MutationObserver' in window)) return;
 
