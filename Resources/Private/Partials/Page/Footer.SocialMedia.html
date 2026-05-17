@@ -2,13 +2,6 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
-<f:comment><!--
-    Platform list: site-config field key + display label + lang attribute for the
-    visually-hidden brand name. CSS class .icon-{key} and the wrapper class .{key}
-    follow the same name, so the dynamic lookup `{site.configuration.{platformKey}}`
-    is enough to render the link. lang="" suppresses the lang attribute for brands
-    whose name is treated as language-neutral in this codebase (TikTok, Xing).
---></f:comment>
 <f:variable name="socialPlatforms" value="{
     facebook:   {label: 'Facebook',   lang: 'en'},
     x:          {label: 'X',          lang: ''},

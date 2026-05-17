@@ -3,29 +3,12 @@
       xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
-    <f:comment>
-        `logoBig` / `logoSvgBig` are scalars resolved once per request by
-        `Mpc\MpCore\DataProcessing\HeaderLogoProcessor` (see Finding #32).
-        Replaces an inline `<f:variable>` block that re-ran the same
-        language-fallback loop already done in Header.Logo.html. The flag is
-        paired with the file's source scope (per-language vs site) so that
-        toggling the site-level `logoSvg` switch is honoured even when the
-        per-language YAML still carries the TCA default of `true`.
-    </f:comment>
     <div class="header-bg-svg">
         <f:if condition="{filesbg.0}">
             <f:then>
                 <mpc:svgInline image="{filesbg.0}" width="16" height="16" class="bg-svg" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
             </f:then>
             <f:else>
-                <f:comment>
-                    `maxHeight=920` matches the largest `.bg-svg` CSS height
-                    (see `_header.scss`: 420px on xs, 620px on sm, 920px on
-                    md+). The previous absence of `maxHeight` here meant the
-                    partial's default of 500 was used, which is fine for SVG
-                    (vector, scale-free) but produces a slightly blurry raster
-                    fallback at the md+ breakpoint.
-                </f:comment>
                 <f:render partial="Header.LogoImage" arguments="{logoFile: logoBig, preferSvg: logoSvgBig, imageClass: 'bg-svg', maxHeight: 920}"/>
             </f:else>
         </f:if>
