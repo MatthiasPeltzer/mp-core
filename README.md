@@ -26,7 +26,14 @@ npm run build
 
 ## Documentation
 
-Detailed setup and feature documentation lives in `Documentation/README.md`. Start there for Site Set configuration, content element guides, and frontend workflow notes.
+Detailed guides live in [`Documentation/README.md`](Documentation/README.md):
+
+- [Feature overview](Documentation/OVERVIEW.md) — content elements, Site Sets, PHP classes
+- [Frontend / Vite](Documentation/Frontend.md) — build pipeline and Vue components
+- [Configuration](Documentation/Configuration.md) — Site Settings, TypoScript, TCA
+- [Backend](Documentation/Backend.md) — RTE, TSconfig, backend previews
+- [Content elements](Documentation/ContentElements.md) — per-CType TCA reference
+- [Favicons](Documentation/Favicons.md) — assets, Fluid partial, site config (not static HTML paste)
 
 ## License & Support
 

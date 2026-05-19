@@ -30,7 +30,9 @@ npm ci
 npm run watch   # Auto-rebuild on file changes
 ```
 
-Output goes to `Resources/Public/` (JavaScripts, StyleSheets, Fonts, Icons, Images).
+In an **mpc monorepo** with DDEV running, you can also build from the site root: `ddev mp-core-build` (same as `npm run build` inside `libs/mp-core/Build/`).
+
+Output goes to `Resources/Public/` (JavaScripts, StyleSheets, Fonts, Icons, Images, **Favicons**, BackendLayouts).
 
 | Script | Description |
 |--------|-------------|
@@ -56,8 +58,10 @@ Build/
 │   ├── Images/                 # Source images, Icons/
 │   ├── Scripts/                # JavaScript/Vue
 │   │   ├── code/               # Feature modules
-│   │   ├── components/         # Vue components
-│   │   └── Utils/              # Shared utilities
+│   │   │   ├── Utils/          # Shared utilities (domUtils.js, …)
+│   │   │   ├── Vue/            # vue-initialisation.js (component registry)
+│   │   │   └── Navigation/     # Primary / Secondary / Tertiary
+│   │   └── components/         # Vue SFCs
 │   ├── Scss/                   # SCSS (ITCSS layers)
 │   │   ├── Base/               # Variables, fonts
 │   │   ├── Elements/           # Base elements
@@ -128,7 +132,7 @@ Defined in `Build/vite.config.js`:
 
 **Layout:** `moveHeaderDate.js`, `moveMeta.js`, `theme.js`
 
-### Shared Utilities (`Utils/domUtils.js`)
+### Shared Utilities (`code/Utils/domUtils.js`)
 
 - `debounce(func, wait)` -- Performance-safe resize/scroll handling
 - `toggleNavState(...)` -- Navigation open/closed state
@@ -148,6 +152,8 @@ Located in `Build/Assets/Scripts/components/`:
 | `SwiperSlider.vue` | Generic Swiper slider for container slider elements |
 
 Component registration is handled in `code/Vue/vue-initialisation.js`.
+
+Vue mounts on elements with `data-container="vue"` and `data-component="ComponentName"` (see `VueComponents.typoscript` and content element templates). Optional `data-*` attributes pass props (e.g. `data-card-title` on TodoList).
 
 ### Creating a New Component
 
@@ -245,6 +251,6 @@ Template path precedence: higher numbers override lower (`0` = core, `10` = exte
 
 ## Further Reading
 
-- [Favicons](Favicons.md) -- Favicon generation
+- [Favicons](Favicons.md) -- Favicon assets and Fluid partial (do not overwrite with `output.html`)
 - [Configuration](Configuration.md) -- Site Sets, TypoScript, TCA
 - [Vite](https://vitejs.dev/) | [Vue.js](https://vuejs.org/) | [Bootstrap 5](https://getbootstrap.com/docs/5.3/) | [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
