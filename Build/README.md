@@ -1,115 +1,67 @@
-# Build Folder
+# Build folder
 
-Frontend asset pipeline for TYPO3. Requires Node 22+ and npm.
+Frontend asset pipeline for **mpc/mp-core**. Requires **Node.js 22+** and npm.
 
-## Technology Stack
-
-- Vite - Build tool
-- Vue.js 3 - Interactive components
-- Sass/SCSS - CSS preprocessing
-- PostCSS - Autoprefixer  
-- ESLint - JavaScript linting
-- Stylelint - CSS/SCSS linting
+Output is written to **`../Resources/Public/`** (JavaScripts, StyleSheets, Fonts, Icons, Images, Favicons, BackendLayouts).
 
 ---
 
-## 1. Installation
+## Quick start
 
 ```bash
 cd Build
 npm ci
+npm run watch   # development + file watcher
+# or
+npm run build   # production
 ```
+
+In an mpc monorepo with DDEV: `ddev mp-core-build` from the site root.
 
 ---
 
-## 2. NPM Scripts
+## NPM scripts
 
 | Script | Description |
 |--------|-------------|
-| `dev` | Development build with source maps |
-| `build` | Production build (minified, optimized) |
-| `watch` | Development build with file watcher |
-| `eslint` / `eslint.fix` | JavaScript linting |
-| `stylelint` / `stylelint.fix` | CSS/SCSS linting |
-| `stylelint.verbose` | Detailed linting output |
+| `build` | ESLint + Stylelint + Vite production build |
+| `dev` | Lint + development build (source maps) |
+| `watch` | Development build with watcher |
+| `lint` | ESLint + Stylelint |
+| `eslint` / `eslint.fix` | JavaScript |
+| `stylelint` / `stylelint.fix` | SCSS |
 
-### Development Workflow
+---
+
+## Vite
+
+- Config: `vite.config.js`
+- Static copy: `Assets/Static/` → `Resources/Public/` (includes **Favicons**, BackendLayouts)
+- Entry points: `bootstrap`, `screen`, `navigationPrimary|Secondary|Tertiary`, `ckeditor`, `backend`, `print`, `vue`
+
+See **[Documentation/Frontend.md](../Documentation/Frontend.md)** for architecture, SCSS layers, and Vue components.
+
+---
+
+## Documentation
+
+All guides live in **`../Documentation/`**:
+
+| Guide | Topic |
+|-------|--------|
+| [Documentation/README.md](../Documentation/README.md) | Hub |
+| [Frontend.md](../Documentation/Frontend.md) | Vite, JS, SCSS, Vue |
+| [Favicons.md](../Documentation/Favicons.md) | Icon files + `Favicons.html` (not static HTML injection) |
+| [Backend.md](../Documentation/Backend.md) | RTE, TSconfig |
+| [Configuration.md](../Documentation/Configuration.md) | Site Sets, settings |
+| [ContentElements.md](../Documentation/ContentElements.md) | TCA reference |
+
+---
+
+## Clean build
 
 ```bash
-cd Build
-npm run watch  # Auto-rebuild on file changes
+rm -rf node_modules ../Resources/Public && npm ci && npm run build
 ```
 
-Output structure:
-```
-Resources/Public/
-- JavaScripts/    # Compiled JS
-- StyleSheets/    # Compiled CSS
-- Fonts/          # Web fonts
-- Icons/          # SVG icons
-- Images/         # Optimized images
-```
-
----
-
-## 3. Documentation
-
-### Quick Start Guides
-* [Vue.js 3 DDEV Quick Start](Documentation/Vue-DDEV-QuickStart.md)
-* [DDEV Setup Summary](Documentation/DDEV-Setup-Summary.md)
-
-### Frontend Development
-* [Vue.js 3 Full Guide](Documentation/Vue.md)
-* [JavaScripts](../Documentation/Frontend-JavaScript.md)
-* [SCSS](../Documentation/Frontend-SCSS.md)
-* [Favicons](../Documentation/Favicons.md)
-* [Build Integration](../Documentation/Frontend-Build-Integration.md)
-
-### TYPO3 Configuration
-* [Navigation](Documentation/Navigation.md)
-* [Site Settings](../Documentation/Site-Settings.md)
-* [Site Sets](../Documentation/Site-Set.md)
-* [TCA](../Documentation/TCA-Overview.md)
-* [TypoScript](../Documentation/TypoScript-Overview.md)
-
----
-
-## 4. Clean Build
-
-```bash
-rm -rf node_modules Resources/Public && npm ci && npm run build
-```
-
----
-
-## 5. Vue.js Component Development
-
-Create Vue 3 single-file components:
-
-1. Create `Assets/Scripts/components/YourComponent.vue`
-2. Create entry point in `Assets/Scripts/yourcomponent.js`:
-   ```javascript
-   import { createApp } from 'vue';
-   import YourComponent from './components/YourComponent.vue';
-   
-   document.addEventListener('DOMContentLoaded', () => {
-     const element = document.getElementById('your-component');
-     if (element) {
-       createApp(YourComponent).mount(element);
-     }
-   });
-   ```
-3. Add entry point to `vite.config.js` input object
-4. Run `npm run watch` or `npm run build`
-
-### Vite Configuration
-
-Configured via `vite.config.js`:
-- Multiple entry points
-- Vue 3 SFC support
-- SCSS preprocessing
-- PostCSS with autoprefixer
-- Automatic cleanup
-- Source maps in development
-
-See [Vue.js documentation](Documentation/Vue.md) for complete guide.
+On Windows, delete `node_modules` and `Resources/Public` manually, then run `npm ci` and `npm run build`.

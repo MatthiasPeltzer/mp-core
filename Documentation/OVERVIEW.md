@@ -21,12 +21,25 @@ TYPO3 ^13.4 / ^14.3 | PHP >=8.2 | Node.js >=22 -- See [README](../README.md) for
 
 ## Site Sets
 
-1. `mpc/mp-core` (aggregator) -- Pulls in all feature sets below
-2. `mpc/mp-core-base` (required) -- Core functionality, shared settings, system dependencies
+1. `mpc/mp-core` (aggregator) -- Pulls in all feature sets below; **include this one** in `config/sites/*/config.yaml` for a full stack
+2. `mpc/mp-core-base` (required foundation) -- System extension dependencies (`typo3/form`, `typo3/indexed-search`, …) and shared Site Settings definitions (YAML files live under `Configuration/Sets/mp-core/`)
 3. `mpc/mp-core-container` -- Container element configuration
-4. `mpc/mp-core-news` -- News extension integration
+4. `mpc/mp-core-news` -- News extension integration (`georgringer/news`)
 5. `mpc/mp-core-form` -- Form framework configuration
 6. `mpc/mp-core-seo` -- SEO optimization settings
+
+**Custom feature sets** must depend on `mpc/mp-core-base`, not on `mpc/mp-core` — otherwise TYPO3’s SetRegistry can deadlock (`aggregator → child → aggregator → …`). See `Configuration/Sets/mp-core/config.yaml`.
+
+### Optional extension dependencies (`mpc/mp-core-base`)
+
+Activated automatically when the extension is installed:
+
+| Set / extension | Purpose |
+|-----------------|---------|
+| `georgringer/news-recordlinks` | News record links |
+| `georgringer/news-sitemap` | News sitemap |
+| `mpc/mpc-vidply` | VidPly video player integration |
+| `mpc/mpc-rss` | RSS feed integration |
 
 ## Frontend Stack
 
@@ -38,8 +51,13 @@ TYPO3 ^13.4 / ^14.3 | PHP >=8.2 | Node.js >=22 -- See [README](../README.md) for
 
 ### DataProcessors
 
+- **HeaderLogoProcessor** -- Resolves per-language and site-level logo settings (`logoBig`, `logoSmall`, `logoSvg`, `logoText`, `logoTextHidden`, `websiteTitle`) once per page render for `Header.Logo.html` / `Header.Background.html`
 - **StructuredDataProcessor** -- Builds a Schema.org JSON-LD `@graph` (WebSite, WebPage/BlogPosting, BreadcrumbList, MusicGroup) with safe `json_encode` output
 - **SocialMediaProcessor** -- Extracts social media URLs from site configuration for `sameAs` arrays and template rendering
+
+### Middleware
+
+- **HtmlWhitespaceCompressorMiddleware** (`mpc/mp-core/html-whitespace-compressor`) -- Collapses redundant whitespace in HTML `200` responses after Fluid rendering; preserves `<pre>`, `<textarea>`, `<script>`, `<style>`, `<svg>`, and HTML comments. Registered in `Configuration/RequestMiddlewares.php` (always on; no Site Setting toggle).
 
 ### ViewHelpers
 
@@ -82,5 +100,7 @@ TYPO3 ^13.4 / ^14.3 | PHP >=8.2 | Node.js >=22 -- See [README](../README.md) for
 ## Documentation
 
 - [Frontend](Frontend.md) -- Build system, JS/SCSS architecture
-- [Configuration](Configuration.md) -- Site Sets, TypoScript, TCA
-- [Favicons](Favicons.md) -- Favicon generation pipeline
+- [Configuration](Configuration.md) -- Site Sets, TypoScript, TCA, Site Settings
+- [Backend](Backend.md) -- RTE, TSconfig, previews, Content Blocks
+- [Content elements](ContentElements.md) -- Gallery, stage, banner, containers, field reference
+- [Favicons](Favicons.md) -- Favicon assets, `Favicons.html`, web manifest

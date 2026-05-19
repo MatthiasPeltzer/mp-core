@@ -1,5 +1,5 @@
 <html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
-<f:if condition="{site.configuration.favicon-48x48-png} || {site.configuration.favicon-96x96-png} || {site.configuration.faviconIco} || {site.configuration.faviconSvg} || {site.configuration.apple-touch-icon} || {site.configuration.webmanifest}">
+<f:if condition="{site.configuration.favicon-96x96-png} || {site.configuration.faviconIco} || {site.configuration.faviconSvg} || {site.configuration.apple-touch-icon} || {site.configuration.webmanifest}">
     <f:then>
         <f:if condition="{site.configuration.favicon-96x96-png}">
             <link href="{f:uri.image(src: '{site.configuration.favicon-96x96-png}')}" rel="icon" sizes="96x96" type="image/png"/>
