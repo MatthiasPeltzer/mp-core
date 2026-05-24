@@ -1,5 +1,3 @@
-document.documentElement.classList.replace('no-js', 'js');
-
 document.addEventListener('click', (e) => {
   const popupLink = e.target.closest('.popup-window');
   if (popupLink) {
