@@ -14,6 +14,7 @@ export default {
     'declaration-property-value-keyword-no-deprecated': null,
     'selector-class-pattern': null,
     'scss/no-global-function-names': null,
-    'import-notation': null
+    'import-notation': null,
+    'color-function-alias-notation': null
   }
 };
