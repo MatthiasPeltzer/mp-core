@@ -169,3 +169,23 @@ html {
 [class^="banner bgcolor-"] {
   z-index: 0;
 }
+
+.no-js {
+  .mainnav-desktop .first-nav:not(.hassub) {
+    margin-right: 4px;
+  }
+
+  .collapse:not(.show),
+  .header-image-small,
+  .header-wrapper-bg .container > .d-none {
+    display: block !important;
+  }
+
+  .grid-parallax,
+  .first-nav-button,
+  .header-image,
+  .main-menu-layer,
+  .form-switch {
+    display: none !important;
+  }
+}

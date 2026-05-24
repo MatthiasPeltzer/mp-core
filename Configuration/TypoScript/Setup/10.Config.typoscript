@@ -29,6 +29,7 @@ config {
     attributes {
       class = no-js
       data-theme-keybind = 1
+      data-bs-theme = dark
     }
   }
 
