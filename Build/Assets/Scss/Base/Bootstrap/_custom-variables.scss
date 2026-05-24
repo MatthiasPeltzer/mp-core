@@ -734,15 +734,15 @@ $table-th-font-weight: null;
 
 $table-striped-color: $table-color;
 $table-striped-bg-factor: .05;
-$table-striped-bg: rgb(var(--#{$prefix}primary-rgba), $table-striped-bg-factor);
+$table-striped-bg: rgba(var(--#{$prefix}emphasis-color-rgb), $table-striped-bg-factor);
 
 $table-active-color: $table-color;
 $table-active-bg-factor: .1;
-$table-active-bg: rgb(var(--#{$prefix}primary-rgba), $table-active-bg-factor);
+$table-active-bg: rgba(var(--#{$prefix}emphasis-color-rgb), $table-active-bg-factor);
 
 $table-hover-color: $table-color;
 $table-hover-bg-factor: .075;
-$table-hover-bg: rgb(var(--#{$prefix}primary-rgba), $table-hover-bg-factor);
+$table-hover-bg: rgba(var(--#{$prefix}emphasis-color-rgb), $table-hover-bg-factor);
 
 $table-border-factor: .2;
 $table-border-width: var(--#{$prefix}border-width);
