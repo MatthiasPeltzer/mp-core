@@ -11,3 +11,10 @@ services:
   Mpc\MpCore\UserFunc\ColorPickerValueItems:
     public: true
 
+  Mpc\MpCore\Command\ImportDocumentationCommand:
+    tags:
+      - name: console.command
+        command: 'docsite:import'
+        description: 'Import docs-site HTML fragments into TYPO3 pages.'
+        schedulable: false
+

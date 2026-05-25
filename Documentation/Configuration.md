@@ -191,11 +191,10 @@ Source: `Configuration/Sets/mp-core/`
 | `resourcesPrivate` | string | `EXT:mp_core/Resources/Private` |
 | `resourcesExtensions` | string | `EXT:mp_core/Resources/Extensions` |
 | `structuredDataEnabled` | bool | `true` |
-| `musicGroupEnabled` | bool | `false` |
-| `musicGroupName` | string | `Pellerhead` |
-| `musicGroupGenre` | string | `Rock, Punk, Electronic` |
-| `musicGroupDescription` | string | (empty) |
-| `musicGroupImage` | string | (empty) |
+| `structuredData.extraEntity.type` | string (enum) | `none` |
+| `structuredData.extraEntity.name` | string | (empty) |
+| `structuredData.extraEntity.description` | string | (empty) |
+| `structuredData.extraEntity.keywords` | string | (empty) |
 
 ### Container (`mpc/mp-core-container`)
 
@@ -301,6 +300,7 @@ Beyond Site Settings, mp-core extends the **site record** and **site language** 
 | Colors & styles | `color-toggle`, `color-1`…`color-8`, `color-primary`, `styles` | `styles` injects custom `:root` CSS; pairs with `ColorPickerValueItems` in TCA |
 | Social media | `socialMediaSwitch`, platform URL fields | Fed into `SocialMediaProcessor` / structured data |
 | Logos | `logoBig`, `logoSmall`, `logoSvg`, `logoText`, `logoTextHidden` | Per-language overrides on site languages; resolved by `HeaderLogoProcessor` |
+| Structured data entity | `extraEntityImage` | FAL file link for optional Schema.org extra entity (`StructuredDataProcessor`); type/name/keywords in Site Settings |
 
 Language-specific palettes: `copyrightText`, logo fields, and `logoText` / `logoTextHidden` can differ per site language.
 

@@ -1007,6 +1007,18 @@
         <source>Logos</source>
         <target>Logos</target>
       </trans-unit>
+      <trans-unit id="site.configuration.structuredData.title" resname="site.configuration.structuredData.title" approved="yes">
+        <source>Structured data entity</source>
+        <target>Strukturierte Daten (Entität)</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.extraEntityImage.description" resname="site.configuration.extraEntityImage.description" approved="yes">
+        <source>Representative image for the additional Schema.org entity (Site Settings → entity type). Use a logo, band photo, or storefront image — square or landscape, at least 696×696 px recommended. Leave empty to omit image from JSON-LD.</source>
+        <target>Repräsentatives Bild für die zusätzliche Schema.org-Entität (Site-Einstellungen → Entitätstyp). Logo, Bandfoto oder Geschäftsbild — quadratisch oder Querformat, mindestens 696×696 px empfohlen. Leer lassen, um kein Bild im JSON-LD auszugeben.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.extraEntityImage.label" resname="site.configuration.extraEntityImage.label" approved="yes">
+        <source>Entity image (logo or photo)</source>
+        <target>Entitätsbild (Logo oder Foto)</target>
+      </trans-unit>
       <trans-unit id="site.configuration.mastodon.label" resname="site.configuration.mastodon.label" approved="yes">
         <source>Mastodon</source>
         <target>Mastodon</target>

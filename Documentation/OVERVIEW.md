@@ -1,6 +1,6 @@
 # MP Core -- Feature Overview
 
-TYPO3 ^13.4 / ^14.3 | PHP >=8.2 | Node.js >=22 -- See [README](../README.md) for installation.
+Overview of all functions, features, and integrations provided by **mpc/mp-core**.
 
 ---
 

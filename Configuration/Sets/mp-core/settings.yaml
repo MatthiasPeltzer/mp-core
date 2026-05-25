@@ -102,8 +102,7 @@ contentTypesGalleryTemplates: 'EXT:mp_core/Resources/Private/Templates/Content/'
 resourcesPrivate: 'EXT:mp_core/Resources/Private'
 resourcesExtensions: 'EXT:mp_core/Resources/Extensions'
 structuredDataEnabled: true
-musicGroupEnabled: false
-musicGroupName: 'Pellerhead'
-musicGroupGenre: 'Rock, Punk, Electronic'
-musicGroupDescription: ''
-musicGroupImage: ''
+structuredData.extraEntity.type: none
+structuredData.extraEntity.name: ''
+structuredData.extraEntity.description: ''
+structuredData.extraEntity.keywords: ''

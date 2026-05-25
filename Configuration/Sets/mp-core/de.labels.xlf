@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="EXT:mp_core/Configuration/Sets/mp-core/labels.xlf" product-name="mp_core">
+    <header/>
+    <body>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.none" approved="yes">
+        <source>None (disabled)</source>
+        <target>Keine (deaktiviert)</target>
+      </trans-unit>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.MusicGroup" approved="yes">
+        <source>Band / music group</source>
+        <target>Band / Musikgruppe</target>
+      </trans-unit>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.MusicPerson" approved="yes">
+        <source>Solo artist</source>
+        <target>Solokünstler</target>
+      </trans-unit>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.PerformingGroup" approved="yes">
+        <source>Performing group (theater, dance)</source>
+        <target>Künstlergruppe (Theater, Tanz)</target>
+      </trans-unit>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.LocalBusiness" approved="yes">
+        <source>Local business</source>
+        <target>Lokales Unternehmen</target>
+      </trans-unit>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.NGO" approved="yes">
+        <source>Nonprofit / NGO</source>
+        <target>Gemeinnützige Organisation / NGO</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
