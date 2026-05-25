@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="EXT:mp_core/Configuration/Sets/mp-core/labels.xlf" product-name="mp_core">
+    <header/>
+    <body>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.none">
+        <source>None (disabled)</source>
+      </trans-unit>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.MusicGroup">
+        <source>Band / music group</source>
+      </trans-unit>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.MusicPerson">
+        <source>Solo artist</source>
+      </trans-unit>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.PerformingGroup">
+        <source>Performing group (theater, dance)</source>
+      </trans-unit>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.LocalBusiness">
+        <source>Local business</source>
+      </trans-unit>
+      <trans-unit id="settings.structuredData.extraEntity.type.enum.NGO">
+        <source>Nonprofit / NGO</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

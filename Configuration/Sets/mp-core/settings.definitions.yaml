@@ -460,33 +460,34 @@ settings:
     type: bool
     default: true
     category: MPCoreTemplates
-  musicGroupEnabled:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupEnabled.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupEnabled.description'
-    type: bool
-    default: false
-    category: MPCoreTemplates
-  musicGroupName:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupName.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupName.description'
+  structuredData.extraEntity.type:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:structuredData.extraEntity.type.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:structuredData.extraEntity.type.description'
     type: string
-    default: 'Pellerhead'
+    default: 'none'
+    enum:
+      - none
+      - MusicGroup
+      - MusicPerson
+      - PerformingGroup
+      - LocalBusiness
+      - NGO
     category: MPCoreTemplates
-  musicGroupGenre:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupGenre.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupGenre.description'
-    type: string
-    default: 'Rock, Punk, Electronic'
-    category: MPCoreTemplates
-  musicGroupDescription:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupDescription.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupDescription.description'
+  structuredData.extraEntity.name:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:structuredData.extraEntity.name.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:structuredData.extraEntity.name.description'
     type: string
     default: ''
     category: MPCoreTemplates
-  musicGroupImage:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupImage.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:musicGroupImage.description'
+  structuredData.extraEntity.description:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:structuredData.extraEntity.description.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:structuredData.extraEntity.description.description'
+    type: string
+    default: ''
+    category: MPCoreTemplates
+  structuredData.extraEntity.keywords:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:structuredData.extraEntity.keywords.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:structuredData.extraEntity.keywords.description'
     type: string
     default: ''
     category: MPCoreTemplates

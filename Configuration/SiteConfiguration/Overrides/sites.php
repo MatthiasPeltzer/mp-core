@@ -206,6 +206,15 @@ defined('TYPO3') || die();
         ],
     ];
 
+    $GLOBALS['SiteConfiguration']['site']['columns']['extraEntityImage'] = [
+        'label' => $lll . 'extraEntityImage.label',
+        'description' => $lll . 'extraEntityImage.description',
+        'config' => [
+            'type' => 'link',
+            'allowedTypes' => ['file'],
+        ],
+    ];
+
     // --- Show items ---
 
     $GLOBALS['SiteConfiguration']['site']['types']['0']['showitem'] .= '
@@ -214,6 +223,7 @@ defined('TYPO3') || die();
         ,--div--;' . $lll . 'colorsAndStyles, color-toggle, label-color-1, color-1, label-color-2, color-2, label-color-3, color-3, label-color-4, color-4, label-color-5, color-5, label-color-6, color-6, label-color-7, color-7, label-color-8, color-8, color-primary, color-secondary, color-secondary-rgba, color-tertiary, color-quaternary, styles
         ,--div--;' . $lll . 'socialMediaTitle.title, socialMediaSwitch, ' . implode(', ', $socialMediaPlatforms) . '
         ,--div--;' . $lll . 'logos.title, logoBig, logoSmall, logoSvg, logoText, logoTextHidden
+        ,--div--;' . $lll . 'structuredData.title, extraEntityImage
     ';
 })();
 

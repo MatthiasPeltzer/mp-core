@@ -739,6 +739,15 @@
       <trans-unit id="site.configuration.logos.title" resname="site.configuration.logos.title">
         <source>Logos</source>
       </trans-unit>
+      <trans-unit id="site.configuration.structuredData.title" resname="site.configuration.structuredData.title">
+        <source>Structured data entity</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.extraEntityImage.description" resname="site.configuration.extraEntityImage.description">
+        <source>Representative image for the additional Schema.org entity (Site Settings → entity type). Use a logo, band photo, or storefront image — square or landscape, at least 696×696 px recommended. Leave empty to omit image from JSON-LD.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.extraEntityImage.label" resname="site.configuration.extraEntityImage.label">
+        <source>Entity image (logo or photo)</source>
+      </trans-unit>
       <trans-unit id="site.configuration.mastodon.label" resname="site.configuration.mastodon.label">
         <source>Mastodon</source>
       </trans-unit>

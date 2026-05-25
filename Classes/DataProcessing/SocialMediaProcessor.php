@@ -15,12 +15,12 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 final class SocialMediaProcessor implements DataProcessorInterface
 {
     /**
-     * Site setting keys whose URLs should not appear on MusicGroup.sameAs
-     * (developer/professional profiles — they identify you, not the musical act).
+     * Site setting keys whose URLs should not appear on extra-entity sameAs
+     * (developer/professional profiles — they identify you, not the project or brand).
      *
      * @var list<string>
      */
-    private const MUSIC_GROUP_SAME_AS_EXCLUDED_FIELDS = [
+    private const EXTRA_ENTITY_SAME_AS_EXCLUDED_FIELDS = [
         'github',
         'gitlab',
         'linkedin',
@@ -68,7 +68,7 @@ final class SocialMediaProcessor implements DataProcessorInterface
         ];
 
         $socialMediaUrls = [];
-        $musicGroupSameAsUrls = [];
+        $extraEntitySameAsUrls = [];
 
         $site = $processedData['site'] ?? null;
         if ($site instanceof Site) {
@@ -82,8 +82,8 @@ final class SocialMediaProcessor implements DataProcessorInterface
 
                     if (filter_var($url, FILTER_VALIDATE_URL)) {
                         $socialMediaUrls[] = $url;
-                        if (!in_array($field, self::MUSIC_GROUP_SAME_AS_EXCLUDED_FIELDS, true)) {
-                            $musicGroupSameAsUrls[] = $url;
+                        if (!in_array($field, self::EXTRA_ENTITY_SAME_AS_EXCLUDED_FIELDS, true)) {
+                            $extraEntitySameAsUrls[] = $url;
                         }
                     }
                 }
@@ -91,7 +91,8 @@ final class SocialMediaProcessor implements DataProcessorInterface
         }
 
         $processedData['socialMediaUrls'] = array_values(array_unique($socialMediaUrls));
-        $processedData['musicGroupSameAsUrls'] = array_values(array_unique($musicGroupSameAsUrls));
+        $processedData['extraEntitySameAsUrls'] = array_values(array_unique($extraEntitySameAsUrls));
+        $processedData['musicGroupSameAsUrls'] = $processedData['extraEntitySameAsUrls'];
 
         return $processedData;
     }

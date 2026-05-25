@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\DataProcessing;
 
+use Mpc\MpCore\Enum\StructuredDataExtraEntityType;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Routing\PageArguments;
@@ -127,32 +128,9 @@ final class StructuredDataProcessor implements DataProcessorInterface
 
         $graph[] = $webSite;
 
-        $musicEnabled = filter_var($settings->get('musicGroupEnabled') ?? false, FILTER_VALIDATE_BOOLEAN);
-        if ($musicEnabled) {
-            $musicName = (string)($settings->get('musicGroupName') ?: 'Pellerhead');
-            $musicGenre = (string)($settings->get('musicGroupGenre') ?: 'Rock, Punk, Electronic');
-            $musicSameAs = $processedData['musicGroupSameAsUrls'] ?? [];
-            $musicGroup = [
-                '@type' => 'MusicGroup',
-                'name' => $musicName,
-                'genre' => $musicGenre,
-                'url' => $homeUrl,
-            ];
-            if ($musicSameAs !== []) {
-                $musicGroup['sameAs'] = $musicSameAs;
-            }
-            $musicDescription = trim((string)($settings->get('musicGroupDescription') ?? ''));
-            if ($musicDescription !== '') {
-                $musicGroup['description'] = mb_substr($this->plainText($musicDescription), 0, 500);
-            }
-            $musicImageRef = trim((string)($settings->get('musicGroupImage') ?? ''));
-            if ($musicImageRef !== '') {
-                $imgObj = $this->buildLogoObject($cObj, $musicImageRef);
-                if ($imgObj !== []) {
-                    $musicGroup['image'] = $imgObj;
-                }
-            }
-            $graph[] = $musicGroup;
+        $extraEntity = $this->buildExtraEntity($cObj, $site, $processedData, $homeUrl, $websiteTitle);
+        if ($extraEntity !== []) {
+            $graph[] = $extraEntity;
         }
 
         if (!$this->isNewsDetailRequest($request)) {
@@ -182,6 +160,145 @@ final class StructuredDataProcessor implements DataProcessorInterface
         }
 
         return $processedData;
+    }
+
+    /**
+     * @param array<string, mixed> $processedData
+     * @return array<string, mixed>
+     */
+    private function buildExtraEntity(
+        ContentObjectRenderer $cObj,
+        Site $site,
+        array $processedData,
+        string $homeUrl,
+        string $websiteTitle
+    ): array {
+        $entityType = $this->resolveExtraEntityType($site);
+        if ($entityType === StructuredDataExtraEntityType::None) {
+            return [];
+        }
+
+        $name = trim($this->resolveSiteValue($site, 'structuredData.extraEntity.name', 'musicGroupName'));
+        if ($name === '') {
+            $name = $websiteTitle;
+        }
+        if ($name === '') {
+            return [];
+        }
+
+        $entity = [
+            '@type' => $entityType->value,
+            'name' => $name,
+            'url' => $homeUrl,
+        ];
+
+        $sameAs = $processedData['extraEntitySameAsUrls']
+            ?? $processedData['musicGroupSameAsUrls']
+            ?? [];
+        if (is_array($sameAs) && $sameAs !== []) {
+            $entity['sameAs'] = $sameAs;
+        }
+
+        $description = trim($this->resolveSiteValue($site, 'structuredData.extraEntity.description', 'musicGroupDescription'));
+        if ($description !== '') {
+            $entity['description'] = mb_substr($this->plainText($description), 0, 500);
+        }
+
+        $imageRef = $this->resolveExtraEntityImageReference($site);
+        if ($imageRef !== '') {
+            $imgObj = $this->buildLogoObject($cObj, $imageRef);
+            if ($imgObj !== []) {
+                $entity['image'] = $imgObj;
+            }
+        }
+
+        $this->applyExtraEntityKeywords($entity, $entityType, $site);
+
+        return $entity;
+    }
+
+    /**
+     * @param array<string, mixed> $entity
+     */
+    private function applyExtraEntityKeywords(array &$entity, StructuredDataExtraEntityType $entityType, Site $site): void
+    {
+        $property = $entityType->keywordsSchemaProperty();
+        if ($property === null) {
+            return;
+        }
+
+        $keywords = trim((string)(
+            $this->resolveSiteValue($site, 'structuredData.extraEntity.keywords')
+            ?: $this->resolveSiteValue($site, 'structuredData.extraEntity.genre', 'musicGroupGenre')
+        ));
+        if ($keywords === '') {
+            return;
+        }
+
+        if ($property === 'genre') {
+            $entity['genre'] = $keywords;
+
+            return;
+        }
+
+        $topics = array_values(array_filter(array_map(trim(...), explode(',', $keywords))));
+        if ($topics === []) {
+            return;
+        }
+
+        $entity[$property] = count($topics) === 1 ? $topics[0] : $topics;
+    }
+
+    private function resolveExtraEntityImageReference(Site $site): string
+    {
+        foreach (['extraEntityImage', 'structuredData.extraEntity.image', 'musicGroupImage'] as $key) {
+            $value = trim((string)$this->resolveSiteValue($site, $key));
+            if ($value !== '') {
+                return $value;
+            }
+        }
+
+        return '';
+    }
+
+    private function resolveExtraEntityType(Site $site): StructuredDataExtraEntityType
+    {
+        $typeValue = trim($this->resolveSiteValue($site, 'structuredData.extraEntity.type'));
+        if ($typeValue !== '' && $typeValue !== 'none') {
+            return StructuredDataExtraEntityType::tryFrom($typeValue) ?? StructuredDataExtraEntityType::None;
+        }
+
+        if (filter_var($this->resolveSiteValue($site, 'musicGroupEnabled', default: false), FILTER_VALIDATE_BOOLEAN)) {
+            return StructuredDataExtraEntityType::MusicGroup;
+        }
+
+        return StructuredDataExtraEntityType::None;
+    }
+
+    private function resolveSiteValue(Site $site, string $key, ?string $legacyKey = null, mixed $default = ''): mixed
+    {
+        $settings = $site->getSettings();
+        $value = $settings->get($key);
+        if ($value !== null && $value !== '') {
+            return $value;
+        }
+
+        $config = $site->getConfiguration();
+        if (array_key_exists($key, $config) && $config[$key] !== null && $config[$key] !== '') {
+            return $config[$key];
+        }
+
+        if ($legacyKey !== null) {
+            $legacyValue = $settings->get($legacyKey);
+            if ($legacyValue !== null && $legacyValue !== '') {
+                return $legacyValue;
+            }
+            if (array_key_exists($legacyKey, $config) && $config[$legacyKey] !== null && $config[$legacyKey] !== '') {
+                return $config[$legacyKey];
+            }
+        }
+
+        return $default;
     }
 
     private function resolvePublisherSchemaType(Site $site): string
