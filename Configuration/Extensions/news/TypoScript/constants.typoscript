@@ -2,13 +2,13 @@
 
 plugin.tx_news {
   rss.channel {
-    title = mpeltzer.de News
+    title = mpcore.de News
     description =
     link = https://yourhost.ddev.docker/news
     language = de
-    copyright = mpeltzer.de
+    copyright = mpcore.de
     category =
-    generator = mpeltzer.de News
+    generator = mpcore.de News
     typeNum = 9818
   }
 
