@@ -8,7 +8,7 @@
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
-                <title>mpeltzer.de XML Sitemap</title>
+                <title>mpcore.de XML Sitemap</title>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                 <style type="text/css">
                     body {
@@ -62,7 +62,7 @@
             </head>
             <body>
                 <div id="content">
-                    <h1>mpeltzer.de Sitemap</h1>
+                    <h1>mpcore.de Sitemap</h1>
                     <xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &gt; 0">
                         <p class="expl">
                             This XML Sitemap Index file contains <xsl:value-of select="count(sitemap:sitemapindex/sitemap:sitemap)"/> sitemaps.

@@ -38,4 +38,4 @@ Detailed guides live in [`Documentation/README.md`](Documentation/README.md):
 ## License & Support
 
 - GPL-2.0-or-later -- see `LICENSE`
-- Author: Matthias Peltzer (`mail@mpeltzer.de`, https://www.mpeltzer.de/)
+- Author: Matthias Peltzer (`mail@mpcore.de`, https://www.mpcore.de/)
