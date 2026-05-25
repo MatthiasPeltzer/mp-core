@@ -4,3 +4,5 @@
 /sync-sitesets-to-vendor.ps1
 /sync-sitesets-to-vendor.sh
 /webpage/
+/Classes/Command/ImportDocumentationCommand.php
+/Classes/Service/DocumentationImportService.php
