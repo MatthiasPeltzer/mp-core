@@ -55,9 +55,9 @@ Activated automatically when the extension is installed:
 - **StructuredDataProcessor** -- Builds a Schema.org JSON-LD `@graph` (WebSite, WebPage/BlogPosting, BreadcrumbList, MusicGroup) with safe `json_encode` output
 - **SocialMediaProcessor** -- Extracts social media URLs from site configuration for `sameAs` arrays and template rendering
 
-### Middleware
+### Event listeners
 
-- **HtmlWhitespaceCompressorMiddleware** (`mpc/mp-core/html-whitespace-compressor`) -- Collapses redundant whitespace in HTML `200` responses after Fluid rendering; preserves `<pre>`, `<textarea>`, `<script>`, `<style>`, `<svg>`, and HTML comments. Registered in `Configuration/RequestMiddlewares.php` (always on; no Site Setting toggle).
+- **CompressHtmlWhitespaceOnCacheableContentListener** -- Minifies HTML on `AfterCacheableContentIsGeneratedEvent` before the page cache row is written. Preserves `<pre>`, `<textarea>`, `<script>`, `<style>`, `<svg>`, and HTML comments. Always on; no Site Setting toggle.
 
 ### ViewHelpers
 

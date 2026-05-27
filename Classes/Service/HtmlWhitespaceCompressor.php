@@ -9,22 +9,13 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace Mpc\MpCore\Middleware;
-
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use TYPO3\CMS\Core\Http\Stream;
+namespace Mpc\MpCore\Service;
 
 /**
- * Collapses redundant whitespace in HTML responses produced by the TYPO3
- * frontend so that View-Source no longer shows the indentation Fluid leaves
- * behind. Runs on the response side before
- * `typo3/cms-frontend/content-length-headers`, so the Content-Length header
- * still matches the rewritten body.
+ * Collapses redundant whitespace in HTML so that View Source no longer shows
+ * the indentation Fluid leaves behind.
  *
- * Content of <pre>, <textarea>, <script>, <style> and <svg> elements as well
+ * Content of <pre>, <textarea>, <script>, <style>, <svg> elements as well
  * as HTML comments (incl. TYPO3SEARCH markers and IE conditional comments)
  * is preserved byte-for-byte. Inside the remaining markup, runs of
  * whitespace are collapsed to a single newline (when the run contains a
@@ -35,7 +26,7 @@ use TYPO3\CMS\Core\Http\Stream;
  * as `<strong>foo</strong> <em>bar</em>` (single space, no newline) in RTE
  * content.
  */
-final class HtmlWhitespaceCompressorMiddleware implements MiddlewareInterface
+final class HtmlWhitespaceCompressor
 {
     /**
      * Matches blocks whose contents must not be touched.
@@ -49,46 +40,16 @@ final class HtmlWhitespaceCompressorMiddleware implements MiddlewareInterface
     private const PLACEHOLDER_PREFIX = "\x00MPC_HTMLWS_";
     private const PLACEHOLDER_SUFFIX = "\x00";
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function compress(string $html): string
     {
-        $response = $handler->handle($request);
+        return $this->minify($html);
+    }
 
-        if ($response->getStatusCode() !== 200) {
-            return $response;
-        }
+    public function isHtmlContentType(string $contentType): bool
+    {
+        $contentType = strtolower(trim(explode(';', $contentType, 2)[0]));
 
-        $contentType = strtolower($response->getHeaderLine('Content-Type'));
-        if ($contentType !== '' && !str_starts_with($contentType, 'text/html')) {
-            return $response;
-        }
-
-        // The PSR-7 stream cast and the subsequent empty-string check below
-        // already handle zero-byte bodies, so we deliberately skip the
-        // `getSize()` fast path here. `StreamInterface::getSize()` is allowed
-        // to return null for non-seekable streams and the TYPO3 Extension
-        // Scanner flags every `->getSize()` call as potentially affected by
-        // Deprecation #101475 (`ModifyIconForResourcePropertiesEvent`),
-        // because it cannot infer the receiver type — avoiding the call
-        // sidesteps that false positive without changing behaviour.
-        $body = $response->getBody();
-        if ($body->isSeekable()) {
-            $body->rewind();
-        }
-        $original = (string)$body;
-        if ($original === '') {
-            return $response;
-        }
-
-        $minified = $this->minify($original);
-        if ($minified === $original) {
-            return $response;
-        }
-
-        $stream = new Stream('php://temp', 'rw');
-        $stream->write($minified);
-        $stream->rewind();
-
-        return $response->withBody($stream);
+        return $contentType === '' || $contentType === 'text/html';
     }
 
     private function minify(string $html): string

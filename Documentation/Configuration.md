@@ -310,8 +310,7 @@ Language-specific palettes: `copyrightText`, logo fields, and `logoText` / `logo
 
 ```
 Configuration/
-├── RequestMiddlewares.php          # HtmlWhitespaceCompressorMiddleware
-├── Services.yaml
+├── Services.yaml                   # HtmlWhitespaceCompressor + event listener autowiring
 ├── Sets/
 │   ├── mp-core/
 │   │   ├── config.yaml               # Aggregator (depends on all feature sets)
