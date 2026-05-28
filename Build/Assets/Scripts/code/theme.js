@@ -71,7 +71,7 @@ if (document.readyState === 'loading') {
   initThemeSwitch();
 }
 
-// Exposed for re-initialization after DOM restore (e.g. nav-toggle swaps)
+// Exposed for optional re-initialization when navigation markup is replaced dynamically.
 if (typeof window !== 'undefined') {
   window.mpcInitThemeSwitch = initThemeSwitch;
 }

@@ -1,9 +1,9 @@
 <html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
-<f:if condition="{menuMainMobile}">
+<f:if condition="{menuMain}">
     <div class="main-nav-wrapper" id="main-menu-list">
         <div class="container-md">
             <ul class="main-menu list-unstyled row">
-                <f:for as="mainItem" each="{menuMainMobile}">
+                <f:for as="mainItem" each="{menuMain}">
                     <li class="col{f:if(condition:'{mainItem.data.doktype} == 4', then:' shortcut')}">
                         <f:if condition="{mainItem.children}">
                             <f:then>
