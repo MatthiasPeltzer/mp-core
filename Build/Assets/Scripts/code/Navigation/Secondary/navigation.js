@@ -16,7 +16,10 @@ import {
 
 import {
   closeOtherSubmenus,
+  hasOpenDesktopOrMobileNav,
+  isDropdownNavLinkClick,
   openCurrentPageParents,
+  scheduleNavOverlaySync,
   scrollToCurrentElement
 } from '../../Utils/domUtils.js';
 
@@ -87,16 +90,19 @@ function updateDesktopButtonTitles() {
 }
 
 function syncActiveNavClasses() {
-  if (!headerWrapper) return;
-
-  const root = navDesktop ?? document;
-  const hasOpenDropdown = !!root.querySelector('.dropdown.show, .dropdown-menu.show');
-
-  document.body.classList.toggle('active-nav-body', hasOpenDropdown);
-  headerWrapper.classList.toggle('active-nav', hasOpenDropdown);
+  scheduleNavOverlaySync(
+    document.body,
+    headerWrapper,
+    () => hasOpenDesktopOrMobileNav(CONFIG.desktop.container)
+  );
 }
 
 function initDesktopNavigation() {
+  document.addEventListener('show.bs.dropdown', (event) => {
+    if (!event.target.closest(CONFIG.desktop.container)) return;
+    syncActiveNavClasses();
+  });
+
   document.addEventListener('shown.bs.dropdown', (event) => {
     if (!event.target.closest(CONFIG.desktop.container)) return;
     syncActiveNavClasses();
@@ -104,8 +110,15 @@ function initDesktopNavigation() {
     scrollToCurrentElement(CONFIG.desktop.container);
   });
 
+  document.addEventListener('hide.bs.dropdown', (event) => {
+    if (!event.target.closest(CONFIG.desktop.container)) return;
+    if (isDropdownNavLinkClick(event.clickEvent)) return;
+    syncActiveNavClasses();
+  });
+
   document.addEventListener('hidden.bs.dropdown', (event) => {
     if (!event.target.closest(CONFIG.desktop.container)) return;
+    if (isDropdownNavLinkClick(event.clickEvent)) return;
     syncActiveNavClasses();
     updateDesktopButtonTitles();
   });
@@ -191,18 +204,21 @@ function handleMobileDropdown(event, isOpening) {
   const button = event.target.closest(`${CONFIG.mobile.menuButton}, ${CONFIG.mobile.solrButton}`);
   if (!button) return;
 
-  setTimeout(() => {
-    if (isOpening) {
-      document.body.classList.add('active-nav-body');
-      scrollToCurrentElement(CONFIG.mobile.container);
-    } else {
-      const anyOpen = document.querySelector(`${CONFIG.mobile.dropdownSelector}.show`);
-      if (!anyOpen) {
-        document.body.classList.remove('active-nav-body');
-      }
-    }
-    updateMobileMenuButton(button, isOpening);
-  }, 0);
+  if (!isOpening && isDropdownNavLinkClick(event.clickEvent)) return;
+
+  if (isOpening) {
+    document.body.classList.add('active-nav-body');
+    headerWrapper?.classList.add('active-nav');
+    scrollToCurrentElement(CONFIG.mobile.container);
+  } else {
+    scheduleNavOverlaySync(
+      document.body,
+      headerWrapper,
+      () => !!document.querySelector(`${CONFIG.mobile.dropdownSelector}.show, #main-menu.show`)
+    );
+  }
+
+  updateMobileMenuButton(button, isOpening);
 }
 
 function initMobileNavigation() {

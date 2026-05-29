@@ -45,6 +45,53 @@ export function toggleNavState(
   }
 }
 
+let navOverlaySyncFrame = 0;
+
+/**
+ * @param {string} desktopSelector
+ * @returns {boolean}
+ */
+export function hasOpenDesktopOrMobileNav(desktopSelector = '.mainnav-desktop') {
+  return !!document.querySelector(
+    `${desktopSelector} .dropdown-menu.show, #nav-desktop .dropdown-menu.show, #main-menu.show`
+  );
+}
+
+/**
+ * @param {Event|null|undefined} clickEvent
+ * @returns {boolean}
+ */
+export function isDropdownNavLinkClick(clickEvent) {
+  if (!clickEvent) return false;
+
+  const link = clickEvent.target?.closest?.('a[href]');
+  if (!link) return false;
+
+  const href = link.getAttribute('href');
+  if (!href || href.startsWith('#') || href.startsWith('javascript:')) return false;
+  if (link.target === '_blank') return false;
+
+  return true;
+}
+
+/**
+ * Defers overlay sync so hide/show sequences (e.g. switching top-level menus) settle first.
+ *
+ * @param {HTMLElement} body
+ * @param {HTMLElement|null|undefined} headerWrapper
+ * @param {() => boolean} hasOpenNav
+ */
+export function scheduleNavOverlaySync(body, headerWrapper, hasOpenNav) {
+  cancelAnimationFrame(navOverlaySyncFrame);
+  navOverlaySyncFrame = requestAnimationFrame(() => {
+    navOverlaySyncFrame = requestAnimationFrame(() => {
+      const isOpen = hasOpenNav();
+      body.classList.toggle('active-nav-body', isOpen);
+      headerWrapper?.classList.toggle('active-nav', isOpen);
+    });
+  });
+}
+
 /**
  * @param {HTMLElement} element
  * @param {Function} showCallback
@@ -53,7 +100,7 @@ export function toggleNavState(
 export function handleDropdownVisibility(element, showCallback, hideCallback) {
   if (!element) return;
   element.addEventListener('show.bs.dropdown', showCallback);
-  element.addEventListener('hide.bs.dropdown', hideCallback);
+  element.addEventListener('hide.bs.dropdown', (event) => hideCallback(event));
 }
 
 /**
