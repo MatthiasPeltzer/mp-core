@@ -45,8 +45,11 @@ $transition-bounce: $nav-transition-bounce;
     button,
     a {
       color: var(--bs-body-color);
+      hyphens: auto;
+      overflow-wrap: break-word;
       position: relative;
       white-space: normal;
+      word-break: break-word;
 
       &::before {
         border-bottom: 2px solid var(--bs-gray-700);
