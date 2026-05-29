@@ -46,8 +46,11 @@
 
     a {
       color: var(--bs-body-color);
+      hyphens: auto;
+      overflow-wrap: break-word;
       position: relative;
       white-space: normal;
+      word-break: break-word;
     }
 
     // Desktop submenu button rotation for all levels
