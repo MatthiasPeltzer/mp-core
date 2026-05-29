@@ -93,6 +93,12 @@
   }
 }
 
+.header-wrapper:has(.mainnav-desktop .dropdown-menu.show) .layer,
+.header-wrapper:has(#nav-desktop .dropdown-menu.show) .layer,
+.header-wrapper:has(#main-menu.show) .layer {
+  display: block;
+}
+
 .btn-search-nav {
   background: none;
   border: none;

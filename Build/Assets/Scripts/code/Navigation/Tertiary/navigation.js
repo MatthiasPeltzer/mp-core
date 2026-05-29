@@ -17,6 +17,9 @@ import {
 
 import {
   handleDropdownVisibility,
+  hasOpenDesktopOrMobileNav,
+  isDropdownNavLinkClick,
+  scheduleNavOverlaySync,
   toggleNavState,
   closeOtherSubmenus,
   openCurrentPageParents,
@@ -150,23 +153,38 @@ function registerClickHandler(selector) {
   });
 }
 
-function initDesktopNavigation() {
-  const body = document.body;
-  const headerWrapper = document.querySelector('.header-wrapper');
+function syncDesktopNavOverlay() {
+  scheduleNavOverlaySync(
+    document.body,
+    document.querySelector('.header-wrapper'),
+    () => hasOpenDesktopOrMobileNav(CONFIG.desktop.container)
+  );
+}
 
-  document.querySelectorAll('.mainnav-desktop-item').forEach(item => {
-    handleDropdownVisibility(
-      item,
-      () => setTimeout(() => {
-        body.classList.add('active-nav-body');
-        headerWrapper?.classList.add('active-nav');
-        scrollToCurrentElement(CONFIG.desktop.container);
-      }, 0),
-      () => {
-        body.classList.remove('active-nav-body');
-        headerWrapper?.classList.remove('active-nav');
-      }
-    );
+function initDesktopNavigation() {
+  const desktopRoot = CONFIG.desktop.container;
+
+  document.addEventListener('show.bs.dropdown', (event) => {
+    if (!event.target.closest(desktopRoot)) return;
+    syncDesktopNavOverlay();
+  });
+
+  document.addEventListener('shown.bs.dropdown', (event) => {
+    if (!event.target.closest(desktopRoot)) return;
+    scrollToCurrentElement(CONFIG.desktop.container);
+    syncDesktopNavOverlay();
+  });
+
+  document.addEventListener('hide.bs.dropdown', (event) => {
+    if (!event.target.closest(desktopRoot)) return;
+    if (isDropdownNavLinkClick(event.clickEvent)) return;
+    syncDesktopNavOverlay();
+  });
+
+  document.addEventListener('hidden.bs.dropdown', (event) => {
+    if (!event.target.closest(desktopRoot)) return;
+    if (isDropdownNavLinkClick(event.clickEvent)) return;
+    syncDesktopNavOverlay();
   });
 
   registerClickHandler(`${CONFIG.desktop.container} ${CONFIG.desktop.buttonSelector}`);
@@ -190,12 +208,15 @@ function initMobileNavigation() {
   handleDropdownVisibility(
     dropdown,
     () => {
-      toggleNavState(true, body, headerWrapper, navbarToggler, navbarTogglerText, 
+      toggleNavState(true, body, headerWrapper, navbarToggler, navbarTogglerText,
                      openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
-      setTimeout(() => scrollToCurrentElement(CONFIG.mobile.container), 0);
+      scrollToCurrentElement(CONFIG.mobile.container);
     },
-    () => toggleNavState(false, body, headerWrapper, navbarToggler, navbarTogglerText, 
-                         openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage)
+    (event) => {
+      if (isDropdownNavLinkClick(event.clickEvent)) return;
+      toggleNavState(false, body, headerWrapper, navbarToggler, navbarTogglerText,
+                     openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
+    }
   );
 
   document.querySelectorAll('.main-menu-desktop .btn-close').forEach(button => {
