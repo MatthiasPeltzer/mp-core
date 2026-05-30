@@ -2,6 +2,8 @@
 // This file is imported in vue.js to ensure CSS variables are available
 // SINGLE SOURCE OF TRUTH for all Swiper styles used by Vue components
 
+@import "Modules/swiper-vue-placeholder";
+
 // =============================================================================
 // SWIPER CSS VARIABLES
 // =============================================================================
@@ -211,18 +213,3 @@ html[data-bs-theme="light"] {
   width: 100%;
 }
 
-.no-js {
-  .swiper-vue-container {
-    .swiper-slide-content {
-      display: none;
-
-      &:first-child {
-        display: block;
-      }
-    }
-
-    .swiper-button {
-      display: none;
-    }
-  }
-}

@@ -1,0 +1,24 @@
+// Pre-mount layout for Vue Swiper components (ce_slider, gallery-slider, …).
+// screen.css loads in <head>; vue.css may load later. ThemeInit removes .no-js
+// before Vue runs, so .no-js-only rules do not prevent CLS.
+
+[data-container="vue"]:not(.swiper-vue-ready) {
+  overflow: hidden;
+
+  &.swiper-vue-container,
+  &[data-component="GallerySwiper"] {
+    .swiper-slide-content,
+    .gallery-slide-content {
+      display: none;
+
+      &:first-child {
+        display: block;
+      }
+    }
+  }
+
+  &.swiper-vue-container .swiper-navigation {
+    min-height: 60px;
+    visibility: hidden;
+  }
+}

@@ -67,6 +67,7 @@ function initializeVueComponents() {
 
       const app = createApp(component);
       app.mount(element);
+      element.classList.add('swiper-vue-ready');
     }
   });
 }
