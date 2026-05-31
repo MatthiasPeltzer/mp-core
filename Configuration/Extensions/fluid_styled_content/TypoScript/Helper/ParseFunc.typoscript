@@ -2,7 +2,7 @@ lib.parseFunc_RTE {
     externalBlocks {
         table {
             stdWrap {
-                wrap = <div class="table-responsive">|</div>
+                wrap = <div class="table-responsive" tabindex="0">|</div>
                 HTMLparser {
                     tags.table.fixAttrib.class {
                         default = table table-striped table-hover
