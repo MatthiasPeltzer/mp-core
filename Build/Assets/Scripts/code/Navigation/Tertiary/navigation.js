@@ -30,6 +30,7 @@ const CONFIG = {
   desktop: {
     container: '.mainnav-desktop',
     buttonSelector: '.dropdown-item-button',
+    dropdownButtonSelector: '.first-nav-button',
     menuSelector: '.collapse',
     parentMenuSelector: '.subnav-children'
   },
@@ -46,18 +47,29 @@ const CONFIG = {
  * @param {HTMLElement} button
  * @param {boolean} isOpen
  * @param {boolean} updateVisuallyHidden - Whether to update .visually-hidden text (mobile only)
+ * @param {boolean} toggleCollapsed - Whether to toggle Bootstrap collapse .collapsed class
  */
-function updateButtonState(button, isOpen, updateVisuallyHidden = false) {
+function updateButtonState(button, isOpen, updateVisuallyHidden = false, toggleCollapsed = true) {
   if (!button) return;
 
-  button.setAttribute('title', isOpen ? closeButtonMessage : openButtonMessage);
+  const label = isOpen ? closeButtonMessage : openButtonMessage;
+
+  button.setAttribute('aria-label', label);
   button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  button.classList.toggle('collapsed', !isOpen);
+
+  if (toggleCollapsed) {
+    button.classList.toggle('collapsed', !isOpen);
+  }
+
+  const svgTitle = button.querySelector('svg title');
+  if (svgTitle) {
+    svgTitle.textContent = label;
+  }
 
   if (updateVisuallyHidden) {
     const buttonText = button.querySelector('.visually-hidden');
     if (buttonText) {
-      buttonText.textContent = isOpen ? closeButtonMessage : openButtonMessage;
+      buttonText.textContent = label;
     }
   }
 }
@@ -143,13 +155,13 @@ function registerCollapseHandlers(config, updateVisuallyHidden = false) {
 /**
  * @param {string} selector
  */
-function registerClickHandler(selector) {
+function registerClickHandler(selector, updateVisuallyHidden = false) {
   document.addEventListener('click', (event) => {
     const button = event.target.closest(selector);
     if (!button) return;
 
     const isCurrentlyCollapsed = button.classList.contains('collapsed');
-    updateButtonState(button, isCurrentlyCollapsed, false);
+    updateButtonState(button, isCurrentlyCollapsed, updateVisuallyHidden);
   });
 }
 
@@ -159,6 +171,18 @@ function syncDesktopNavOverlay() {
     document.querySelector('.header-wrapper'),
     () => hasOpenDesktopOrMobileNav(CONFIG.desktop.container)
   );
+}
+
+/**
+ * Syncs aria-label / SVG title on desktop top-level dropdown toggles (.first-nav-button).
+ */
+function syncDesktopDropdownButtonStates() {
+  const { container, dropdownButtonSelector } = CONFIG.desktop;
+
+  document.querySelectorAll(`${container} ${dropdownButtonSelector}`).forEach(button => {
+    const isOpen = button.classList.contains('show');
+    updateButtonState(button, isOpen, false, false);
+  });
 }
 
 function initDesktopNavigation() {
@@ -173,6 +197,7 @@ function initDesktopNavigation() {
     if (!event.target.closest(desktopRoot)) return;
     scrollToCurrentElement(CONFIG.desktop.container);
     syncDesktopNavOverlay();
+    syncDesktopDropdownButtonStates();
   });
 
   document.addEventListener('hide.bs.dropdown', (event) => {
@@ -185,6 +210,7 @@ function initDesktopNavigation() {
     if (!event.target.closest(desktopRoot)) return;
     if (isDropdownNavLinkClick(event.clickEvent)) return;
     syncDesktopNavOverlay();
+    syncDesktopDropdownButtonStates();
   });
 
   registerClickHandler(`${CONFIG.desktop.container} ${CONFIG.desktop.buttonSelector}`);
@@ -193,6 +219,7 @@ function initDesktopNavigation() {
   setTimeout(() => {
     openCurrentPageParents(CONFIG.desktop.parentMenuSelector, closeButtonMessage);
     syncAllButtonStates(CONFIG.desktop.container, CONFIG.desktop.buttonSelector, null, false);
+    syncDesktopDropdownButtonStates();
   }, 100);
 }
 
@@ -231,7 +258,7 @@ function initMobileNavigation() {
     });
   });
 
-  registerClickHandler(`${CONFIG.mobile.container} ${CONFIG.mobile.buttonSelector}`);
+  registerClickHandler(`${CONFIG.mobile.container} ${CONFIG.mobile.buttonSelector}`, true);
   registerCollapseHandlers(CONFIG.mobile, true);
 
   setTimeout(() => {
