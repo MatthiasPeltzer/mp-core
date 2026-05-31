@@ -1,12 +1,33 @@
 lib.parseFunc_RTE {
     externalBlocks {
+        figure {
+            callRecursive {
+                tagStdWrap {
+                    replacement {
+                        10 {
+                            search = class="table"
+                            replace = class="table-responsive" tabindex="0"
+                        }
+                    }
+                }
+            }
+        }
+
         table {
             stdWrap {
-                wrap = <div class="table-responsive" tabindex="0">|</div>
+                HTMLparser = 1
                 HTMLparser {
-                    tags.table.fixAttrib.class {
-                        default = table table-striped table-hover
-                        list = table table-striped table-hover
+                    keepNonMatchedTags = 1
+                    tags {
+                        table {
+                            fixAttrib {
+                                class {
+                                    default = table table-striped table-hover
+                                    always = 1
+                                    list = table table-striped table-hover
+                                }
+                            }
+                        }
                     }
                 }
             }

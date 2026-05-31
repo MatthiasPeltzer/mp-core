@@ -15,29 +15,6 @@ lib {
   search.value = {$config.pids.Search}
 
   parseFunc_RTE {
-    externalBlocks {
-      table {
-        stdWrap {
-          HTMLparser = 1
-          wrap = <div class="table-responsive">|</div>
-
-          HTMLparser {
-            tags {
-              table {
-                fixAttrib {
-                  class {
-                    default = table table-striped table-hover
-                    always = 1
-                    list = table table-striped table-hover
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
     tags {
       a {
         postCObject = COA
