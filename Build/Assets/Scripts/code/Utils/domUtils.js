@@ -147,7 +147,13 @@ export function openCurrentPageParents(menuSelector = '.collapse', openText = 'C
       if (button) {
         button.classList.remove('collapsed');
         button.setAttribute('aria-expanded', 'true');
+        button.setAttribute('aria-label', openText);
         button.setAttribute('title', openText);
+
+        const svgTitle = button.querySelector('svg title');
+        if (svgTitle) {
+          svgTitle.textContent = openText;
+        }
 
         const buttonText = button.querySelector('.visually-hidden');
         if (buttonText) {
