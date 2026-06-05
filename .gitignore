@@ -6,3 +6,4 @@
 /webpage/
 /Classes/Command/ImportDocumentationCommand.php
 /Classes/Service/DocumentationImportService.php
+/Configuration/Services.local.yaml

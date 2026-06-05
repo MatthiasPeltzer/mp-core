@@ -21,7 +21,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Mpc\\MpCore\\": "Tests/"
+      "Mpc\\MpCore\\Tests\\": "Tests/"
     }
   },
   "config": {

@@ -32,11 +32,10 @@
   }
 
   .first-child {
-    @extend %specialelite;
-
     background-color: transparent;
     color: var(--bs-body-color);
     display: block;
+    font-family: var(--#{$prefix}font-sans-serif);
     font-weight: 700;
     margin-bottom: 30px;
     padding: 0;

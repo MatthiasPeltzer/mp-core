@@ -111,3 +111,31 @@ CREATE TABLE tt_content
 	tx_stage_switch                tinyint(1)       DEFAULT '0'  NOT NULL,
 	tx_stage_video                 tinytext
 );
+
+#
+# Table structure for table 'tx_mpcore_domain_model_webfontfamily'
+#
+CREATE TABLE tx_mpcore_domain_model_webfontfamily
+(
+	name         varchar(255)        DEFAULT ''     NOT NULL,
+	fallback     varchar(255)        DEFAULT 'sans-serif' NOT NULL,
+	role         varchar(16)         DEFAULT 'body' NOT NULL,
+	css_variable varchar(64)         DEFAULT ''     NOT NULL,
+	font_display varchar(16)         DEFAULT 'swap' NOT NULL,
+	faces        int unsigned        DEFAULT '0'    NOT NULL
+);
+
+#
+# Table structure for table 'tx_mpcore_domain_model_webfontface'
+#
+CREATE TABLE tx_mpcore_domain_model_webfontface
+(
+	parentid      int unsigned       DEFAULT '0'      NOT NULL,
+	parenttable   varchar(255)       DEFAULT ''       NOT NULL,
+	weight        varchar(8)         DEFAULT '400'    NOT NULL,
+	font_style    varchar(16)        DEFAULT 'normal' NOT NULL,
+	file          int unsigned       DEFAULT '0'      NOT NULL,
+	unicode_range varchar(255)       DEFAULT ''       NOT NULL,
+
+	KEY parent (parentid, parenttable)
+);

@@ -4,9 +4,11 @@
 	"description": "Bootstrap 5, Vite, PostCSS, Stylelint, ESLint",
 	"type": "module",
 	"scripts": {
-		"build": "npm run eslint && npm run stylelint && vite build --mode production",
+		"build": "npm run eslint && npm run stylelint && vite build --mode production && npm run check-size",
+		"build:analyze": "node scripts/build-analyze.js",
 		"dev": "npm run eslint && npm run stylelint && vite build --mode development",
 		"watch": "vite build --mode development --watch",
+		"check-size": "node scripts/check-bundle-size.js",
 		"lint": "npm run eslint && npm run stylelint",
 		"eslint": "eslint .",
 		"eslint.fix": "eslint --fix .",
@@ -33,13 +35,17 @@
 		"postcss": "^8.5.15",
 		"postcss-preset-env": "^11.3.0",
 		"postcss-pxtorem": "^6.1.0",
+		"rollup-plugin-visualizer": "^7.0.1",
 		"sass": "1.100.0",
 		"stylelint": "^17.12.0",
 		"stylelint-config-recommended": "^18.0.0",
 		"stylelint-config-recommended-scss": "^17.0.1",
 		"stylelint-config-standard": "^40.0.0",
 		"stylelint-order": "^8.1.1",
-		"stylelint-scss": "^7.1.1",
-		"vite": "^8.0.14"
+		"stylelint-scss": "^7.2.0",
+		"vite": "^8.0.16"
+	},
+	"allowScripts": {
+		"@parcel/watcher@2.5.6": true
 	}
 }

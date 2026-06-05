@@ -177,11 +177,10 @@
   }
 
   .tx-indexedsearch-percent {
-    @extend %opensansweb;
-
     @include font-size($fs-md);
 
     flex: 0 1 auto;
+    font-family: var(--#{$prefix}body-font-family);
     letter-spacing: normal;
     margin-left: auto;
     text-align: right;

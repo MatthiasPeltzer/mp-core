@@ -135,6 +135,7 @@ $GLOBALS['TCA']['tt_content']['ctrl']['previewRenderer'] =
 
 - Delegates to TYPO3’s `StandardContentPreviewRenderer` when possible.
 - Catches `TypeError` from core preview utilities (missing file refs, null sanitization) and renders a **fallback**: optional 150×150 image thumb, header, subheader, bodytext excerpt (200 chars).
+- Implements `LoggerAwareInterface`. Every caught throwable is logged at `warning` level with `method`, `uid`, `pid`, `CType`, and the exception, so upstream regressions stay visible in the TYPO3 log instead of being masked by the fallback.
 - Intended as a temporary workaround until core preview edge cases are fixed.
 
 ---
@@ -143,11 +144,12 @@ $GLOBALS['TCA']['tt_content']['ctrl']['previewRenderer'] =
 
 | Class | Role |
 |-------|------|
-| `UserFunc\ColorPickerValueItems` | `itemsProcFunc` for `grid_bgcolor` — builds color options from site config `color-*` keys |
+| `UserFunc\ColorPickerValueItems` | `itemsProcFunc` for `grid_bgcolor` -- builds colour options from site config `color-*` keys. Filters values through `Service\CssColorValidator` and caps labels at 200 chars so malformed configs cannot pollute the BE select. |
+| `Service\CssColorValidator` | Pure static validator for CSS `<color>` tokens (named, `#rgb[a]`, `#rrggbb[aa]`, `rgb()/rgba()/hsl()/hsla()`); rejects any byte that could break out of a CSS declaration. Reused by `Format\CssColorViewHelper`. |
 | `Backend\Form\Container\FilesControlContainer` | File field container; forwards `fieldInformation` to child fields |
 | `Preview\CustomContentPreviewRenderer` | See above |
 
-Registered in `Configuration/Services.yaml` (`ColorPickerValueItems` is `public: true` for TCA callbacks).
+Registered in `Configuration/Services.yaml` (`ColorPickerValueItems` is `public: true` so TYPO3 can resolve the `itemsProcFunc` callback from the container). See [Configuration → Dependency Injection](Configuration.md#dependency-injection-servicesyaml) for the full list and the local-overrides pattern.
 
 ---
 

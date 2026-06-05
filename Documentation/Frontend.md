@@ -36,9 +36,11 @@ Output goes to `Resources/Public/` (JavaScripts, StyleSheets, Fonts, Icons, Imag
 
 | Script | Description |
 |--------|-------------|
-| `build` | Lint + production build (minified, optimized) |
+| `build` | Lint + production build (minified, optimized) + bundle-size gate |
+| `build:analyze` | Production build with `rollup-plugin-visualizer` (writes `reports/bundle-stats.html`) |
 | `dev` | Lint + development build with source maps |
 | `watch` | Development build with file watcher |
+| `check-size` | Run the bundle-size budget gate against `Resources/Public/` |
 | `lint` | Run ESLint + Stylelint |
 | `eslint` / `eslint.fix` | JavaScript linting |
 | `stylelint` / `stylelint.fix` | CSS/SCSS linting |
@@ -87,6 +89,99 @@ Resources/
 └── Public/                     # Compiled assets (web-accessible)
     ├── Fonts/, Icons/, Images/, JavaScripts/, StyleSheets/, Favicons/
 ```
+
+---
+
+## Bundle Budgets
+
+Every `npm run build` finishes by invoking `scripts/check-bundle-size.js`. The
+script reads each compiled JS/CSS file from `Resources/Public/`, computes
+gzip (level 9) and brotli (quality 11) sizes, compares them against
+`scripts/bundle-budgets.json`, and exits non-zero if any per-file or
+combined-total budget is exceeded. A WARN (orange light) is emitted when a
+bundle is within 10% of its budget -- that is the signal to refactor before
+the next feature pushes us over.
+
+If a bundle grew legitimately (new component, intentional dependency upgrade),
+update `scripts/bundle-budgets.json` in the **same commit** as the size
+change. Never raise a budget just to silence the gate.
+
+### Baseline (2026-06-03)
+
+Captured against Vite 8, Bootstrap 5.3.8, Vue 3.5, Swiper 12.
+
+| Bundle | Raw | Gzip | Brotli |
+|---|---:|---:|---:|
+| `bootstrap.js` | 65.9 KiB | 20.1 KiB | 17.9 KiB |
+| `screen.js` | 33.0 KiB | 9.6 KiB | 8.6 KiB |
+| `vue.js` | 239.8 KiB | 72.5 KiB | 63.8 KiB |
+| `navigationPrimary.js` | 1.7 KiB | 662 B | 560 B |
+| `navigationSecondary.js` | 5.6 KiB | 1.3 KiB | 1.2 KiB |
+| `navigationTertiary.js` | 4.4 KiB | 1.3 KiB | 1.1 KiB |
+| `paginationTruncate.js` | 1.7 KiB | 733 B | 579 B |
+| `theme-init.js` | 222 B | 183 B | 129 B |
+| `bootstrap.css` | 174.1 KiB | 24.2 KiB | 17.5 KiB |
+| `screen.css` | 67.4 KiB | 10.6 KiB | 9.1 KiB |
+| `vue.css` | 24.2 KiB | 3.9 KiB | 3.4 KiB |
+| `navigationPrimary.css` | 7.8 KiB | 1.8 KiB | 1.6 KiB |
+| `navigationSecondary.css` | 25.2 KiB | 3.6 KiB | 3.2 KiB |
+| `navigationTertiary.css` | 17.3 KiB | 3.2 KiB | 2.8 KiB |
+| `ckeditor.css` | 18.3 KiB | 2.7 KiB | 2.3 KiB |
+| `print.css` | 1.3 KiB | 559 B | 432 B |
+| **total** | -- | **158.7 KiB** | **135.8 KiB** |
+
+After the manual-chunk + dynamic-import refactor (see "Vendor splitting"
+below), expect `vue.js` itself to shrink considerably as the Vue runtime,
+Swiper, and the three Vue SFCs move into long-lived `vendor-*` / per-SFC
+chunks. Re-run `npm run check-size` once after the next build and lower
+the affected budgets in `scripts/bundle-budgets.json`.
+
+### Vendor splitting
+
+`vite.config.js` declares a `manualChunks` map that pulls these
+`node_modules` paths into named vendor chunks:
+
+| Chunk | Contents |
+|---|---|
+| `vendor-vue` | `vue`, `@vue/*` |
+| `vendor-swiper` | `swiper` |
+| `vendor-bootstrap` | `bootstrap` |
+| `vendor-popper` | `@popperjs/core` |
+| `vendor-jarallax` | `jarallax` |
+
+Vendor chunks change only when the pinned dependency changes, so they stay
+in HTTP cache across deployments while our own application code rotates.
+
+### Code splitting Vue components
+
+`code/Vue/vue-initialisation.js` uses dynamic `import()` per component, so
+each `.vue` SFC compiles to its own chunk. A page that mounts only
+`SwiperSlider` never downloads `TodoList` or `GallerySwiper`. Add new
+components by extending the `componentLoaders` map in
+`vue-initialisation.js`.
+
+### On-demand vendor: Jarallax
+
+`code/jarallax.js` lazy-loads the Jarallax vendor bundle via dynamic
+`import('jarallax')`, gated on a `document.querySelectorAll('.grid-parallax')`
+presence check. The `.grid-parallax` wrapper is only emitted by
+`fluid_styled_content/Layouts/Container.html` when an editor toggles the
+**Parallax** checkbox (`grid_parallax = 1`) on a `ce_container`-style
+content element.
+
+Effect: pages without a parallax container never request the
+`vendor-jarallax-*.js` chunk (~26 KiB raw / ~7 KiB gzip / ~6 KiB brotli).
+The chunk stays a separate, cacheable asset thanks to the `manualChunks`
+map; only the network request changes from eager to deferred.
+
+### Visualising the bundle
+
+```bash
+npm run build:analyze
+```
+
+Writes `Build/reports/bundle-stats.html` (treemap, gzip + brotli aware,
+gitignored). Open it directly in a browser; no server required.
 
 ---
 

@@ -1,3 +1,8 @@
 lib.jumpNav = TEXT
 lib.jumpNav.data = getIndpEnv:TYPO3_REQUEST_URL
+# Defense in depth: htmlSpecialChars must run BEFORE dataWrap concatenates the
+# URL into an <a href="..."> attribute. Browsers normally percent-encode the
+# meta characters that would let an attacker break out (`"`, `<`, `>`), but
+# upstream proxies / curl clients can deliver them raw, so we escape explicitly.
+lib.jumpNav.htmlSpecialChars = 1
 lib.jumpNav.dataWrap = <p class="skipnav"><a href=" | #mainContent">{lll:EXT:mp_core/Resources/Private/Language/locallang.xlf:header.jumptocontent}</a></p>

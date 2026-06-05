@@ -19,8 +19,49 @@ const entryPoints = {
   vue: resolve(__dirname, 'Assets/Scripts/vue.js')
 };
 
-export default defineConfig(({mode}) => {
+// Vendor splitting groups. Keys become the chunk file name; values are the
+// node_modules subpaths that should land in that chunk. Splitting yields
+// long-lived cacheable vendor bundles separate from our own application code,
+// which is what dominates churn between releases.
+const vendorChunks = {
+  'vendor-vue': ['/node_modules/vue/', '/node_modules/@vue/'],
+  'vendor-swiper': ['/node_modules/swiper/'],
+  'vendor-bootstrap': ['/node_modules/bootstrap/'],
+  'vendor-popper': ['/node_modules/@popperjs/'],
+  'vendor-jarallax': ['/node_modules/jarallax/']
+};
+
+function vendorChunkFor(id) {
+  const normalized = id.replace(/\\/g, '/');
+  for (const [chunk, matchers] of Object.entries(vendorChunks)) {
+    if (matchers.some((m) => normalized.includes(m))) {
+      return chunk;
+    }
+  }
+  return undefined;
+}
+
+export default defineConfig(async ({mode}) => {
   const isDev = mode === 'development';
+  const analyze = process.env.ANALYZE === '1';
+
+  const plugins = [vue()];
+
+  if (analyze) {
+    // Loaded dynamically so the package is only required when explicitly
+    // running `npm run build:analyze`. Keeps the default install path light.
+    const {visualizer} = await import('rollup-plugin-visualizer');
+    plugins.push(
+      visualizer({
+        filename: resolve(__dirname, 'reports/bundle-stats.html'),
+        template: 'treemap',
+        gzipSize: true,
+        brotliSize: true,
+        sourcemap: false,
+        open: false
+      })
+    );
+  }
 
   return {
     root: resolve(__dirname),
@@ -38,10 +79,7 @@ export default defineConfig(({mode}) => {
       devSourcemap: true // Dev server CSS sourcemaps
     },
 
-    plugins: [
-      // Vue 3 support
-      vue()
-    ].filter(Boolean),
+    plugins,
 
     build: {
       outDir: resolve(__dirname, '../Resources/Public'),
@@ -56,6 +94,9 @@ export default defineConfig(({mode}) => {
         output: {
           entryFileNames: 'JavaScripts/[name].js',
           chunkFileNames: 'JavaScripts/[name]-[hash].js',
+          manualChunks(id) {
+            return vendorChunkFor(id);
+          },
           assetFileNames: (assetInfo) => {
             const name = assetInfo.names?.[0] ?? assetInfo.name ?? '';
             if (name.endsWith('.css')) {

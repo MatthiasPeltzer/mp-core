@@ -35,7 +35,7 @@ final class HtmlWhitespaceCompressor
      * <svg> and HTML comments (incl. TYPO3SEARCH markers) are matched as a
      * single unit; the `i` flag tolerates upper-case tag names.
      */
-    private const PROTECTED_PATTERN = '#<(pre|textarea|script|svg)\b[^>]*>.*?</\1\s*>|<!--.*?-->#is';
+    private const PROTECTED_PATTERN = '#<(pre|textarea|script|style|svg)\b[^>]*>.*?</\1\s*>|<!--.*?-->#is';
 
     private const PLACEHOLDER_PREFIX = "\x00MPC_HTMLWS_";
     private const PLACEHOLDER_SUFFIX = "\x00";

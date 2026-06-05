@@ -46,6 +46,9 @@ Source: \`Configuration/Sets/mp-core/\``,
 
 /** @param {string} raw */
 function parseDefinitions(raw) {
+  // Normalize CRLF/CR so the line-anchored regexes below match regardless of
+  // the source file's line endings (mp-core ships CRLF, feature sets LF).
+  raw = raw.replace(/\r\n?/g, '\n');
   /** @type {Array<{key: string, type: string, default: string, category: string}>} */
   const items = [];
   const blocks = raw.split(/\n  ([A-Za-z0-9_.]+):\n/g);
@@ -80,6 +83,7 @@ function parseDefinitions(raw) {
 
 /** @param {string} raw */
 function parseSettingsYaml(raw) {
+  raw = raw.replace(/\r\n?/g, '\n');
   /** @type {Record<string, string>} */
   const map = {};
   for (const line of raw.split('\n')) {

@@ -8,9 +8,6 @@ categories:
   MPCoreConfig:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreConfig.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreConfig.description'
-  MPCoreDesign:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreDesign.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreDesign.description'
   MPCorePerformance:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCorePerformance.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCorePerformance.description'
@@ -73,45 +70,13 @@ settings:
     category: MPCore
     type: int
     default: 24
-  
-  # Content Element Settings
-  content.textmedia.maxWidth:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.textmedia.maxWidth.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.textmedia.maxWidth.form.description'
-    category: MPCoreContent
+  PIDs.pidWebFonts:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidWebFonts.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:PIDs.pidWebFonts.form.description'
+    category: MPCore
     type: int
-    default: 1200
-  content.textmedia.maxWidthInText:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.textmedia.maxWidthInText.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.textmedia.maxWidthInText.form.description'
-    category: MPCoreContent
-    type: int
-    default: 600
-  content.lightbox.enabled:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.lightbox.enabled.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.lightbox.enabled.form.description'
-    category: MPCoreContent
-    type: bool
-    default: true
-  content.lightbox.cssClass:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.lightbox.cssClass.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.lightbox.cssClass.form.description'
-    category: MPCoreContent
-    type: string
-    default: 'lightbox'
-  content.defaultHeaderType:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.defaultHeaderType.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.defaultHeaderType.form.description'
-    category: MPCoreContent
-    type: int
-    default: 2
-  content.links.extTarget:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.links.extTarget.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:content.links.extTarget.form.description'
-    category: MPCoreContent
-    type: string
-    default: '_blank'
-  
+    default: 0
+
   # Configuration Settings
   config.admPanel:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:config.admPanel.form.label'
@@ -161,7 +126,7 @@ settings:
     category: MPCoreConfig
     type: string
     default: ''
-  
+
   # Performance Settings
   performance.compressJs:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:performance.compressJs.form.label'
@@ -193,64 +158,14 @@ settings:
     category: MPCorePerformance
     type: bool
     default: true
-  
-  # Design/Style Settings
-  design.colors.primary:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.colors.primary.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.colors.primary.form.description'
-    category: MPCoreDesign
-    type: string
-    default: '#0066cc'
-  design.colors.secondary:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.colors.secondary.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.colors.secondary.form.description'
-    category: MPCoreDesign
-    type: string
-    default: '#ff6600'
-  design.fonts.primary:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.fonts.primary.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.fonts.primary.form.description'
-    category: MPCoreDesign
-    type: string
-    default: 'Open Sans, sans-serif'
-  design.fonts.heading:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.fonts.heading.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.fonts.heading.form.description'
-    category: MPCoreDesign
-    type: string
-    default: 'Turret Road, sans-serif'
-  design.breakpoints.mobile:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.mobile.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.mobile.form.description'
-    category: MPCoreDesign
-    type: int
-    default: 768
-  design.breakpoints.tablet:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.tablet.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.tablet.form.description'
-    category: MPCoreDesign
-    type: int
-    default: 1024
-  design.breakpoints.desktop:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.desktop.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.breakpoints.desktop.form.description'
-    category: MPCoreDesign
-    type: int
-    default: 1440
-  design.container.maxWidth:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.container.maxWidth.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:design.container.maxWidth.form.description'
-    category: MPCoreDesign
-    type: string
-    default: '1200px'
-  
+
   # Navigation Settings
   navigation.maxDepth:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.maxDepth.form.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.maxDepth.form.description'
     category: MPCoreNavigation
     type: int
-    default: 3
+    default: 5
   navigation.showHiddenPages:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.showHiddenPages.form.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.showHiddenPages.form.description'
@@ -263,13 +178,7 @@ settings:
     category: MPCoreNavigation
     type: bool
     default: true
-  navigation.breadcrumb.includeHome:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.breadcrumb.includeHome.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.breadcrumb.includeHome.form.description'
-    category: MPCoreNavigation
-    type: bool
-    default: true
-  
+
   # Meta Data Settings
   meta.viewport:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:meta.viewport.form.label'
@@ -307,26 +216,6 @@ settings:
     category: MPCoreMeta
     type: string
     default: ''
-  
-  # Template Paths
-  templates.layoutRootPath:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.layoutRootPath.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.layoutRootPath.form.description'
-    category: MPCore
-    type: string
-    default: 'EXT:mp_core/Resources/Private/Layouts/'
-  templates.partialRootPath:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.partialRootPath.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.partialRootPath.form.description'
-    category: MPCore
-    type: string
-    default: 'EXT:mp_core/Resources/Private/Partials/'
-  templates.templateRootPath:
-    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.templateRootPath.form.label'
-    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:templates.templateRootPath.form.description'
-    category: MPCore
-    type: string
-    default: 'EXT:mp_core/Resources/Private/Templates/'
 
   basePath:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_sitesettings.xlf:basePath.label'
