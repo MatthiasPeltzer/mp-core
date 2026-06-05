@@ -190,12 +190,11 @@
   }
 
   .first-nav {
-    @extend %specialelite;
-
     background-color: transparent;
     border: 0 none;
     color: var(--bs-body-color);
     display: inline-block;
+    font-family: var(--#{$prefix}font-sans-serif);
     font-weight: 700;
     line-height: 1;
     margin-bottom: 0;
@@ -308,11 +307,10 @@
   }
 
   .first-child {
-    @extend %specialelite;
-
     background-color: transparent;
     color: var(--bs-body-color);
     display: block;
+    font-family: var(--#{$prefix}font-sans-serif);
     font-weight: 500;
     margin-bottom: 0;
     outline-offset: -2px;

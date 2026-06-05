@@ -44,8 +44,8 @@ details:not(.extbase-debugger-tree) {
 
   summary {
     @extend %summary-base;
-    @extend %specialelite;
 
+    font-family: var(--#{$prefix}font-sans-serif);
     font-size: 24px;
 
     &::after {

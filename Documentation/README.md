@@ -24,8 +24,8 @@ Documentation hub for **mpc/mp-core** — the TYPO3 13.4 / 14.3 site package (`e
 | Path | Purpose |
 |------|---------|
 | `Build/` | Vite source and `npm` scripts — edit assets here |
-| `Classes/` | PHP (DataProcessors, ViewHelpers, Middleware, Backend) |
-| `Configuration/` | Site Sets, TypoScript, TCA, Services |
+| `Classes/` | PHP (DataProcessors, ViewHelpers, EventListener, Preview, Service, UserFunc, Backend) |
+| `Configuration/` | Site Sets, TypoScript, TCA, Services (optional `Services.local.yaml` for local-only DI overrides) |
 | `ContentBlocks/` | TYPO3 Content Blocks (e.g. definition list) |
 | `Resources/Private/` | Fluid templates, XLF, Form YAML |
 | `Resources/Public/` | **Generated** — output of `npm run build`; do not edit |

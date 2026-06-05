@@ -61,8 +61,9 @@ Activated automatically when the extension is installed:
 
 ### ViewHelpers
 
-- **SvgInlineViewHelper** (`mpc:svgInline`) -- Inline SVG rendering with DOM sanitization, attribute merging, and per-request caching
+- **SvgInlineViewHelper** (`mpc:svgInline`) -- Inline SVG rendering with DOM sanitization (removes `<script>`/`<foreignObject>`/`<iframe>`/`<embed>`/`<object>`, strips `on*` event handlers, neutralizes `javascript:`/`vbscript:`/`data:` URIs in `href`/`xlink:href`/`src`, and restricts `<use>`/`<image>` to same-document fragment refs), attribute merging, and per-request caching
 - **Format\CssSanitizeViewHelper** (`mpc:format.cssSanitize`) -- Sanitizes CSS strings to prevent style-tag breakout and dangerous constructs
+- **Format\CssColorViewHelper** (`mpc:format.cssColor`) -- Emits a CSS colour value verbatim only if it passes `Service\CssColorValidator`, otherwise emits an empty string; defends inline `<style>` blocks from site-configuration colour-value injection
 - **Format\Json\DecodeViewHelper** (`mpc:format.json.decode`) -- JSON decoding in Fluid templates
 - **Schema\NewsArticleJsonLdViewHelper** (`mpc:schema.newsArticleJsonLd`) -- Emits NewsArticle JSON-LD for EXT:news detail views
 
@@ -70,7 +71,7 @@ Activated automatically when the extension is installed:
 
 - **ColorPickerValueItems** -- Dynamic color picker `itemsProcFunc` reading `color-*` keys from site configuration
 - **FilesControlContainer** -- Enhanced file field container forwarding `fieldInformation` config
-- **CustomContentPreviewRenderer** -- Backend preview renderer with TYPO3 v14 TypeError fallback handling
+- **CustomContentPreviewRenderer** -- Backend preview renderer with TYPO3 v14 TypeError fallback handling; implements `LoggerAwareInterface` so masked core regressions are logged at `warning` level
 
 ### Exceptions
 

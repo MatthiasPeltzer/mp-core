@@ -5,7 +5,7 @@ document.addEventListener('click', (e) => {
     try {
       const url = new URL(popupLink.getAttribute('href'), document.baseURI);
       if (url.protocol === 'https:' || url.protocol === 'http:') {
-        window.open(url.href, '', 'width=600,height=600,noopener');
+        window.open(url.href, '', 'width=600,height=600,noopener,noreferrer');
       }
     } catch { /* invalid URL — ignore */ }
     return;

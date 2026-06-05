@@ -4,3 +4,4 @@
 node_modules
 reports/eslintreport.json
 reports/stylelintreport.json
+reports/bundle-stats.html

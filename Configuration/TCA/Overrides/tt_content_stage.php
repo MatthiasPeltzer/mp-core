@@ -111,6 +111,32 @@ defined('TYPO3') || die();
                 'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:stage.tx_stage_bgcolor',
                 'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:stage.tx_stage_bgcolor.description',
             ],
+        // The SQL column `tx_stage_bg` exists and is consumed by Stage.html
+        // (toggles the `stage-bg` CSS class). It was previously missing from
+        // TCA, which made the field invisible to editors. Adding it as a
+        // checkbox toggle, scoped to presentation (so translations inherit
+        // the default-language value).
+        'tx_stage_bg' =>
+            [
+                'l10n_mode' => 'exclude',
+                'l10n_display' => 'defaultAsReadonly',
+                'config' =>
+                    [
+                        'items' =>
+                            [
+                                [
+                                    'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:stage.tx_stage_bg',
+                                    'labelChecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
+                                    'labelUnchecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.disabled',
+                                ],
+                            ],
+                        'renderType' => 'checkboxToggle',
+                        'type' => 'check',
+                        'default' => 0,
+                    ],
+                'exclude' => true,
+                'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:stage.tx_stage_bg',
+            ],
     ];
 
     ExtensionManagementUtility::addTCAcolumns('tt_content', $tempStageColumns);
@@ -124,7 +150,7 @@ defined('TYPO3') || die();
 
     $stagePositionPalettes = [
         'stageposition_config' => [
-            'showitem' => 'tx_stage_position, grid_bgcolor, tx_stage_bgcolor',
+            'showitem' => 'tx_stage_position, grid_bgcolor, tx_stage_bgcolor, tx_stage_bg',
             'canNotCollapse' => 1,
         ],
         'stagefile_config' => [

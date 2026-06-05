@@ -1213,6 +1213,82 @@
       <trans-unit id="without_frame" resname="without_frame">
         <source>Without frame</source>
       </trans-unit>
+      <!-- Web Fonts -->
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily" resname="tx_mpcore_domain_model_webfontfamily">
+        <source>Web Font Family</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name" resname="tx_mpcore_domain_model_webfontfamily.name">
+        <source>Font family name</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name.description" resname="tx_mpcore_domain_model_webfontfamily.name.description">
+        <source>CSS font-family name used in @font-face and the custom property (e.g. "Inter").</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback" resname="tx_mpcore_domain_model_webfontfamily.fallback">
+        <source>Fallback stack</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback.description" resname="tx_mpcore_domain_model_webfontfamily.fallback.description">
+        <source>Fallback fonts appended after the family name, e.g. "Helvetica Neue, Arial, sans-serif".</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role" resname="tx_mpcore_domain_model_webfontfamily.role">
+        <source>Applies to</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.description" resname="tx_mpcore_domain_model_webfontfamily.role.description">
+        <source>Which CSS custom property this family is assigned to.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.body" resname="tx_mpcore_domain_model_webfontfamily.role.body">
+        <source>Body text (--bs-body-font-family)</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.heading" resname="tx_mpcore_domain_model_webfontfamily.role.heading">
+        <source>Headings (--bs-font-sans-serif)</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.custom" resname="tx_mpcore_domain_model_webfontfamily.role.custom">
+        <source>Custom CSS variable</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable" resname="tx_mpcore_domain_model_webfontfamily.css_variable">
+        <source>Custom CSS variable</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable.description" resname="tx_mpcore_domain_model_webfontfamily.css_variable.description">
+        <source>Custom property name to set, must start with -- (e.g. --mpc-font-display). Only used when "Applies to" is "Custom CSS variable".</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display" resname="tx_mpcore_domain_model_webfontfamily.font_display">
+        <source>font-display</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display.description" resname="tx_mpcore_domain_model_webfontfamily.font_display.description">
+        <source>CSS font-display strategy applied to all faces of this family.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces" resname="tx_mpcore_domain_model_webfontfamily.faces">
+        <source>Font files (weights / styles)</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces.description" resname="tx_mpcore_domain_model_webfontfamily.faces.description">
+        <source>One entry per uploaded font file. Add a face for each weight/style you need (e.g. 400 normal, 700 bold).</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface" resname="tx_mpcore_domain_model_webfontface">
+        <source>Font Face</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.weight" resname="tx_mpcore_domain_model_webfontface.weight">
+        <source>Weight</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.weight.description" resname="tx_mpcore_domain_model_webfontface.weight.description">
+        <source>font-weight this file provides.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style" resname="tx_mpcore_domain_model_webfontface.font_style">
+        <source>Style</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style.description" resname="tx_mpcore_domain_model_webfontface.font_style.description">
+        <source>font-style this file provides.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.file" resname="tx_mpcore_domain_model_webfontface.file">
+        <source>Font file</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.file.description" resname="tx_mpcore_domain_model_webfontface.file.description">
+        <source>Upload or pick a font file from the FileManager. Allowed: woff2.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range" resname="tx_mpcore_domain_model_webfontface.unicode_range">
+        <source>unicode-range (optional)</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range.description" resname="tx_mpcore_domain_model_webfontface.unicode_range.description">
+        <source>Optional CSS unicode-range, e.g. "U+0-7F, U+1E00-1EFF". Leave empty to apply to all characters.</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

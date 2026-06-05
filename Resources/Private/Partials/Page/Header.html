@@ -36,7 +36,7 @@
     </f:if>
 </header>
 
-<f:if condition="{data.breadcrumb} != 1">
+<f:if condition="{data.breadcrumb} != 1 && {site.settings.navigation.enableBreadcrumb}">
     <f:render arguments="{breadcrumb: breadcrumb}" partial="Navigation/Breadcrumb"/>
 </f:if>
 

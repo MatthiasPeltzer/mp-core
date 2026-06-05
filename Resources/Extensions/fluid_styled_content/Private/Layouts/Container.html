@@ -13,7 +13,7 @@
     <f:if condition="{data_bgimage}">
         <f:variable name="bgimage">{f:uri.image(image: data_bgimage.0, maxWidth: 2560, treatIdAsReference: '1', fileExtension: 'webp')}</f:variable>
         <f:if condition="{data.grid_parallax} == 0">
-            <f:asset.css identifier="c{data.uid}-data-bgimage" priority="true">
+            <f:asset.css identifier="c{data.uid}-data-bgimage" priority="true" useNonce="1">
                 #c{data.uid}-data-bgimage
                 <f:format.raw>{</f:format.raw>
                 background-image: url("{bgimage}");

@@ -27,12 +27,6 @@
       <trans-unit id="MPCoreContent.label" resname="MPCoreContent.label">
         <source>Content Elements</source>
       </trans-unit>
-      <trans-unit id="MPCoreDesign.description" resname="MPCoreDesign.description">
-        <source>Design tokens, colors, fonts, and breakpoints</source>
-      </trans-unit>
-      <trans-unit id="MPCoreDesign.label" resname="MPCoreDesign.label">
-        <source>Design &amp; Layout</source>
-      </trans-unit>
       <trans-unit id="MPCoreForm.description" resname="MPCoreForm.description">
         <source>Configuration for form extension</source>
       </trans-unit>
@@ -128,6 +122,12 @@
       </trans-unit>
       <trans-unit id="PIDs.pidSupplement.form.label" resname="PIDs.pidSupplement.form.label">
         <source>Supplement Page ID</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidWebFonts.form.description" resname="PIDs.pidWebFonts.form.description">
+        <source>Page ID of the storage folder holding Web Font Family records. 0 = use the site root page.</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidWebFonts.form.label" resname="PIDs.pidWebFonts.form.label">
+        <source>Web Fonts Storage Page ID</source>
       </trans-unit>
       <trans-unit id="config.absRefPrefix.form.description" resname="config.absRefPrefix.form.description">
         <source>Absolute reference prefix (auto, /, or custom)</source>
@@ -243,90 +243,6 @@
       <trans-unit id="container.wrapper.padding.form.label" resname="container.wrapper.padding.form.label">
         <source>Wrapper Padding</source>
       </trans-unit>
-      <trans-unit id="content.defaultHeaderType.form.description" resname="content.defaultHeaderType.form.description">
-        <source>Default header type for content elements (1=h1, 2=h2, etc.)</source>
-      </trans-unit>
-      <trans-unit id="content.defaultHeaderType.form.label" resname="content.defaultHeaderType.form.label">
-        <source>Default Header Type</source>
-      </trans-unit>
-      <trans-unit id="content.lightbox.cssClass.form.description" resname="content.lightbox.cssClass.form.description">
-        <source>CSS class for lightbox</source>
-      </trans-unit>
-      <trans-unit id="content.lightbox.cssClass.form.label" resname="content.lightbox.cssClass.form.label">
-        <source>Lightbox CSS Class</source>
-      </trans-unit>
-      <trans-unit id="content.lightbox.enabled.form.description" resname="content.lightbox.enabled.form.description">
-        <source>Enable lightbox for images</source>
-      </trans-unit>
-      <trans-unit id="content.lightbox.enabled.form.label" resname="content.lightbox.enabled.form.label">
-        <source>Enable Lightbox</source>
-      </trans-unit>
-      <trans-unit id="content.links.extTarget.form.description" resname="content.links.extTarget.form.description">
-        <source>Target for external links (_blank, _self, _top)</source>
-      </trans-unit>
-      <trans-unit id="content.links.extTarget.form.label" resname="content.links.extTarget.form.label">
-        <source>External Link Target</source>
-      </trans-unit>
-      <trans-unit id="content.textmedia.maxWidth.form.description" resname="content.textmedia.maxWidth.form.description">
-        <source>Maximum width for text/media elements</source>
-      </trans-unit>
-      <trans-unit id="content.textmedia.maxWidth.form.label" resname="content.textmedia.maxWidth.form.label">
-        <source>Text/Media Maximum Width</source>
-      </trans-unit>
-      <trans-unit id="content.textmedia.maxWidthInText.form.description" resname="content.textmedia.maxWidthInText.form.description">
-        <source>Maximum width for media in text</source>
-      </trans-unit>
-      <trans-unit id="content.textmedia.maxWidthInText.form.label" resname="content.textmedia.maxWidthInText.form.label">
-        <source>Media in Text Maximum Width</source>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.desktop.form.description" resname="design.breakpoints.desktop.form.description">
-        <source>Desktop breakpoint in pixels</source>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.desktop.form.label" resname="design.breakpoints.desktop.form.label">
-        <source>Desktop Breakpoint</source>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.mobile.form.description" resname="design.breakpoints.mobile.form.description">
-        <source>Mobile breakpoint in pixels</source>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.mobile.form.label" resname="design.breakpoints.mobile.form.label">
-        <source>Mobile Breakpoint</source>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.tablet.form.description" resname="design.breakpoints.tablet.form.description">
-        <source>Tablet breakpoint in pixels</source>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.tablet.form.label" resname="design.breakpoints.tablet.form.label">
-        <source>Tablet Breakpoint</source>
-      </trans-unit>
-      <trans-unit id="design.colors.primary.form.description" resname="design.colors.primary.form.description">
-        <source>Primary brand color</source>
-      </trans-unit>
-      <trans-unit id="design.colors.primary.form.label" resname="design.colors.primary.form.label">
-        <source>Primary Color</source>
-      </trans-unit>
-      <trans-unit id="design.colors.secondary.form.description" resname="design.colors.secondary.form.description">
-        <source>Secondary brand color</source>
-      </trans-unit>
-      <trans-unit id="design.colors.secondary.form.label" resname="design.colors.secondary.form.label">
-        <source>Secondary Color</source>
-      </trans-unit>
-      <trans-unit id="design.container.maxWidth.form.description" resname="design.container.maxWidth.form.description">
-        <source>Maximum container width in pixels</source>
-      </trans-unit>
-      <trans-unit id="design.container.maxWidth.form.label" resname="design.container.maxWidth.form.label">
-        <source>Container Maximum Width</source>
-      </trans-unit>
-      <trans-unit id="design.fonts.heading.form.description" resname="design.fonts.heading.form.description">
-        <source>Heading font family</source>
-      </trans-unit>
-      <trans-unit id="design.fonts.heading.form.label" resname="design.fonts.heading.form.label">
-        <source>Heading Font Family</source>
-      </trans-unit>
-      <trans-unit id="design.fonts.primary.form.description" resname="design.fonts.primary.form.description">
-        <source>Primary font family</source>
-      </trans-unit>
-      <trans-unit id="design.fonts.primary.form.label" resname="design.fonts.primary.form.label">
-        <source>Primary Font Family</source>
-      </trans-unit>
       <trans-unit id="form.confirmationPage.enabled.form.description" resname="form.confirmationPage.enabled.form.description">
         <source>Show confirmation page after form submission</source>
       </trans-unit>
@@ -422,12 +338,6 @@
       </trans-unit>
       <trans-unit id="meta.viewport.form.label" resname="meta.viewport.form.label">
         <source>Viewport Meta Tag</source>
-      </trans-unit>
-      <trans-unit id="navigation.breadcrumb.includeHome.form.description" resname="navigation.breadcrumb.includeHome.form.description">
-        <source>Include homepage in breadcrumb</source>
-      </trans-unit>
-      <trans-unit id="navigation.breadcrumb.includeHome.form.label" resname="navigation.breadcrumb.includeHome.form.label">
-        <source>Include Home in Breadcrumb</source>
       </trans-unit>
       <trans-unit id="navigation.enableBreadcrumb.form.description" resname="navigation.enableBreadcrumb.form.description">
         <source>Show breadcrumb navigation</source>
@@ -656,24 +566,6 @@
       </trans-unit>
       <trans-unit id="seo.twitter.site.form.label" resname="seo.twitter.site.form.label">
         <source>Twitter Site Username</source>
-      </trans-unit>
-      <trans-unit id="templates.layoutRootPath.form.description" resname="templates.layoutRootPath.form.description">
-        <source>Path to Fluid layouts</source>
-      </trans-unit>
-      <trans-unit id="templates.layoutRootPath.form.label" resname="templates.layoutRootPath.form.label">
-        <source>Layout Root Path</source>
-      </trans-unit>
-      <trans-unit id="templates.partialRootPath.form.description" resname="templates.partialRootPath.form.description">
-        <source>Path to Fluid partials</source>
-      </trans-unit>
-      <trans-unit id="templates.partialRootPath.form.label" resname="templates.partialRootPath.form.label">
-        <source>Partial Root Path</source>
-      </trans-unit>
-      <trans-unit id="templates.templateRootPath.form.description" resname="templates.templateRootPath.form.description">
-        <source>Path to Fluid templates</source>
-      </trans-unit>
-      <trans-unit id="templates.templateRootPath.form.label" resname="templates.templateRootPath.form.label">
-        <source>Template Root Path</source>
       </trans-unit>
     </body>
   </file>

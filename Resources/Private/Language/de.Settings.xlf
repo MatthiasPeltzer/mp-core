@@ -35,14 +35,6 @@
         <source>Content Elements</source>
         <target>Inhaltselemente</target>
       </trans-unit>
-      <trans-unit id="MPCoreDesign.description" resname="MPCoreDesign.description" approved="yes">
-        <source>Design tokens, colors, fonts, and breakpoints</source>
-        <target>Design-Tokens, Farben, Schriften und Breakpoints</target>
-      </trans-unit>
-      <trans-unit id="MPCoreDesign.label" resname="MPCoreDesign.label" approved="yes">
-        <source>Design &amp; Layout</source>
-        <target>Design &amp; Layout</target>
-      </trans-unit>
       <trans-unit id="MPCoreForm.description" resname="MPCoreForm.description" approved="yes">
         <source>Configuration for form extension</source>
         <target>Konfiguration für die Formular-Extension</target>
@@ -162,6 +154,14 @@
       <trans-unit id="PIDs.pidSupplement.form.label" resname="PIDs.pidSupplement.form.label" approved="yes">
         <source>Supplement Page ID</source>
         <target>Ergänzungsbereich Seiten-ID</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidWebFonts.form.description" resname="PIDs.pidWebFonts.form.description" approved="yes">
+        <source>Page ID of the storage folder holding Web Font Family records. 0 = use the site root page.</source>
+        <target>Seiten-ID des Ablageordners mit den Webschrift-Familien-Datensätzen. 0 = Stammseite der Site verwenden.</target>
+      </trans-unit>
+      <trans-unit id="PIDs.pidWebFonts.form.label" resname="PIDs.pidWebFonts.form.label" approved="yes">
+        <source>Web Fonts Storage Page ID</source>
+        <target>Webschriften Ablage Seiten-ID</target>
       </trans-unit>
       <trans-unit id="config.absRefPrefix.form.description" resname="config.absRefPrefix.form.description" approved="yes">
         <source>Absolute reference prefix (auto, /, or custom)</source>
@@ -315,118 +315,6 @@
         <source>Wrapper Padding</source>
         <target>Wrapper-Innenabstand</target>
       </trans-unit>
-      <trans-unit id="content.defaultHeaderType.form.description" resname="content.defaultHeaderType.form.description" approved="yes">
-        <source>Default header type for content elements (1=h1, 2=h2, etc.)</source>
-        <target>Standard-Überschriftentyp für Inhaltselemente (1=h1, 2=h2, etc.)</target>
-      </trans-unit>
-      <trans-unit id="content.defaultHeaderType.form.label" resname="content.defaultHeaderType.form.label" approved="yes">
-        <source>Default Header Type</source>
-        <target>Standard-Überschriftentyp</target>
-      </trans-unit>
-      <trans-unit id="content.lightbox.cssClass.form.description" resname="content.lightbox.cssClass.form.description" approved="yes">
-        <source>CSS class for lightbox</source>
-        <target>CSS-Klasse für Lightbox</target>
-      </trans-unit>
-      <trans-unit id="content.lightbox.cssClass.form.label" resname="content.lightbox.cssClass.form.label" approved="yes">
-        <source>Lightbox CSS Class</source>
-        <target>Lightbox CSS-Klasse</target>
-      </trans-unit>
-      <trans-unit id="content.lightbox.enabled.form.description" resname="content.lightbox.enabled.form.description" approved="yes">
-        <source>Enable lightbox for images</source>
-        <target>Lightbox für Bilder aktivieren</target>
-      </trans-unit>
-      <trans-unit id="content.lightbox.enabled.form.label" resname="content.lightbox.enabled.form.label" approved="yes">
-        <source>Enable Lightbox</source>
-        <target>Lightbox aktivieren</target>
-      </trans-unit>
-      <trans-unit id="content.links.extTarget.form.description" resname="content.links.extTarget.form.description" approved="yes">
-        <source>Target for external links (_blank, _self, _top)</source>
-        <target>Ziel für externe Links (_blank, _self, _top)</target>
-      </trans-unit>
-      <trans-unit id="content.links.extTarget.form.label" resname="content.links.extTarget.form.label" approved="yes">
-        <source>External Link Target</source>
-        <target>Externe Links Ziel</target>
-      </trans-unit>
-      <trans-unit id="content.textmedia.maxWidth.form.description" resname="content.textmedia.maxWidth.form.description" approved="yes">
-        <source>Maximum width for text/media elements</source>
-        <target>Maximale Breite für Text/Medien-Elemente</target>
-      </trans-unit>
-      <trans-unit id="content.textmedia.maxWidth.form.label" resname="content.textmedia.maxWidth.form.label" approved="yes">
-        <source>Text/Media Maximum Width</source>
-        <target>Text/Media Maximale Breite</target>
-      </trans-unit>
-      <trans-unit id="content.textmedia.maxWidthInText.form.description" resname="content.textmedia.maxWidthInText.form.description" approved="yes">
-        <source>Maximum width for media in text</source>
-        <target>Maximale Breite für Medien im Text</target>
-      </trans-unit>
-      <trans-unit id="content.textmedia.maxWidthInText.form.label" resname="content.textmedia.maxWidthInText.form.label" approved="yes">
-        <source>Media in Text Maximum Width</source>
-        <target>Medien im Text Maximale Breite</target>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.desktop.form.description" resname="design.breakpoints.desktop.form.description" approved="yes">
-        <source>Desktop breakpoint in pixels</source>
-        <target>Desktop-Breakpoint in Pixeln</target>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.desktop.form.label" resname="design.breakpoints.desktop.form.label" approved="yes">
-        <source>Desktop Breakpoint</source>
-        <target>Desktop-Breakpoint</target>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.mobile.form.description" resname="design.breakpoints.mobile.form.description" approved="yes">
-        <source>Mobile breakpoint in pixels</source>
-        <target>Mobiler Breakpoint in Pixeln</target>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.mobile.form.label" resname="design.breakpoints.mobile.form.label" approved="yes">
-        <source>Mobile Breakpoint</source>
-        <target>Mobiler Breakpoint</target>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.tablet.form.description" resname="design.breakpoints.tablet.form.description" approved="yes">
-        <source>Tablet breakpoint in pixels</source>
-        <target>Tablet-Breakpoint in Pixeln</target>
-      </trans-unit>
-      <trans-unit id="design.breakpoints.tablet.form.label" resname="design.breakpoints.tablet.form.label" approved="yes">
-        <source>Tablet Breakpoint</source>
-        <target>Tablet-Breakpoint</target>
-      </trans-unit>
-      <trans-unit id="design.colors.primary.form.description" resname="design.colors.primary.form.description" approved="yes">
-        <source>Primary brand color</source>
-        <target>Primäre Markenfarbe</target>
-      </trans-unit>
-      <trans-unit id="design.colors.primary.form.label" resname="design.colors.primary.form.label" approved="yes">
-        <source>Primary Color</source>
-        <target>Primärfarbe</target>
-      </trans-unit>
-      <trans-unit id="design.colors.secondary.form.description" resname="design.colors.secondary.form.description" approved="yes">
-        <source>Secondary brand color</source>
-        <target>Sekundäre Markenfarbe</target>
-      </trans-unit>
-      <trans-unit id="design.colors.secondary.form.label" resname="design.colors.secondary.form.label" approved="yes">
-        <source>Secondary Color</source>
-        <target>Sekundärfarbe</target>
-      </trans-unit>
-      <trans-unit id="design.container.maxWidth.form.description" resname="design.container.maxWidth.form.description" approved="yes">
-        <source>Maximum container width in pixels</source>
-        <target>Maximale Container-Breite in Pixeln</target>
-      </trans-unit>
-      <trans-unit id="design.container.maxWidth.form.label" resname="design.container.maxWidth.form.label" approved="yes">
-        <source>Container Maximum Width</source>
-        <target>Container Maximale Breite</target>
-      </trans-unit>
-      <trans-unit id="design.fonts.heading.form.description" resname="design.fonts.heading.form.description" approved="yes">
-        <source>Heading font family</source>
-        <target>Überschriften-Schriftfamilie</target>
-      </trans-unit>
-      <trans-unit id="design.fonts.heading.form.label" resname="design.fonts.heading.form.label" approved="yes">
-        <source>Heading Font Family</source>
-        <target>Überschriften-Schriftart</target>
-      </trans-unit>
-      <trans-unit id="design.fonts.primary.form.description" resname="design.fonts.primary.form.description" approved="yes">
-        <source>Primary font family</source>
-        <target>Primäre Schriftfamilie</target>
-      </trans-unit>
-      <trans-unit id="design.fonts.primary.form.label" resname="design.fonts.primary.form.label" approved="yes">
-        <source>Primary Font Family</source>
-        <target>Primäre Schriftart</target>
-      </trans-unit>
       <trans-unit id="form.confirmationPage.enabled.form.description" resname="form.confirmationPage.enabled.form.description" approved="yes">
         <source>Show confirmation page after form submission</source>
         <target>Bestätigungsseite nach Formularübermittlung anzeigen</target>
@@ -554,14 +442,6 @@
       <trans-unit id="meta.viewport.form.label" resname="meta.viewport.form.label" approved="yes">
         <source>Viewport Meta Tag</source>
         <target>Viewport Meta-Tag</target>
-      </trans-unit>
-      <trans-unit id="navigation.breadcrumb.includeHome.form.description" resname="navigation.breadcrumb.includeHome.form.description" approved="yes">
-        <source>Include homepage in breadcrumb</source>
-        <target>Startseite im Breadcrumb einbeziehen</target>
-      </trans-unit>
-      <trans-unit id="navigation.breadcrumb.includeHome.form.label" resname="navigation.breadcrumb.includeHome.form.label" approved="yes">
-        <source>Include Home in Breadcrumb</source>
-        <target>Startseite im Breadcrumb</target>
       </trans-unit>
       <trans-unit id="navigation.enableBreadcrumb.form.description" resname="navigation.enableBreadcrumb.form.description" approved="yes">
         <source>Show breadcrumb navigation</source>
@@ -866,30 +746,6 @@
       <trans-unit id="seo.twitter.site.form.label" resname="seo.twitter.site.form.label" approved="yes">
         <source>Twitter Site Username</source>
         <target>Twitter Website-Benutzername</target>
-      </trans-unit>
-      <trans-unit id="templates.layoutRootPath.form.description" resname="templates.layoutRootPath.form.description" approved="yes">
-        <source>Path to Fluid layouts</source>
-        <target>Pfad zu Fluid-Layouts</target>
-      </trans-unit>
-      <trans-unit id="templates.layoutRootPath.form.label" resname="templates.layoutRootPath.form.label" approved="yes">
-        <source>Layout Root Path</source>
-        <target>Layout-Stammpfad</target>
-      </trans-unit>
-      <trans-unit id="templates.partialRootPath.form.description" resname="templates.partialRootPath.form.description" approved="yes">
-        <source>Path to Fluid partials</source>
-        <target>Pfad zu Fluid-Partials</target>
-      </trans-unit>
-      <trans-unit id="templates.partialRootPath.form.label" resname="templates.partialRootPath.form.label" approved="yes">
-        <source>Partial Root Path</source>
-        <target>Partial-Stammpfad</target>
-      </trans-unit>
-      <trans-unit id="templates.templateRootPath.form.description" resname="templates.templateRootPath.form.description" approved="yes">
-        <source>Path to Fluid templates</source>
-        <target>Pfad zu Fluid-Templates</target>
-      </trans-unit>
-      <trans-unit id="templates.templateRootPath.form.label" resname="templates.templateRootPath.form.label" approved="yes">
-        <source>Template Root Path</source>
-        <target>Template-Stammpfad</target>
       </trans-unit>
     </body>
   </file>

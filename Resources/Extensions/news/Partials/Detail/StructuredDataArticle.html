@@ -9,7 +9,7 @@
 
 <f:variable name="newsJsonLd"><mpc:schema.newsArticleJsonLd articleUrl="{articleUrl}" dateModified="{newsItem.tstamp -> f:format.date(format: 'c')}" datePublished="{newsItem.datetime -> f:format.date(format: 'c')}" description="{plainTeaser}" headline="{newsItem.title}" imageUrl="{leadImage}"/></f:variable>
 <f:if condition="{newsJsonLd}">
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="{f:security.nonce()}">
 <f:format.raw>{newsJsonLd}</f:format.raw>
 </script>
 </f:if>

@@ -6,7 +6,7 @@
 
 <f:if condition="{site.settings.structuredDataEnabled}">
   <f:if condition="{structuredDataJsonLd}">
-    <script type="application/ld+json">
+    <script type="application/ld+json" nonce="{f:security.nonce()}">
       <f:format.raw>{structuredDataJsonLd}</f:format.raw>
     </script>
   </f:if>

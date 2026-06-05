@@ -1,0 +1,27 @@
+{
+  "$comment": "Size budgets for the compiled mp-core bundles. Numbers are bytes. Update intentionally when a bundle legitimately grows, never as a workaround for accidental bloat. Baseline captured 2026-06-03 against vite 8 + bootstrap 5.3.8 + vue 3.5 + swiper 12.",
+  "warnRatio": 0.9,
+  "perFile": {
+    "bootstrap.js":            { "gzip": 24000, "brotli": 21000 },
+    "screen.js":               { "gzip": 12000, "brotli": 11000 },
+    "vue.js":                  { "gzip": 78000, "brotli": 68000 },
+    "navigationPrimary.js":    { "gzip":  1200, "brotli":  1100 },
+    "navigationSecondary.js":  { "gzip":  1800, "brotli":  1600 },
+    "navigationTertiary.js":   { "gzip":  1800, "brotli":  1600 },
+    "paginationTruncate.js":   { "gzip":  1200, "brotli":  1100 },
+    "theme-init.js":           { "gzip":   500, "brotli":   400 },
+    "bootstrap.css":           { "gzip": 28000, "brotli": 21000 },
+    "screen.css":              { "gzip": 14000, "brotli": 12000 },
+    "vue.css":                 { "gzip":  5000, "brotli":  4500 },
+    "navigationPrimary.css":   { "gzip":  2400, "brotli":  2200 },
+    "navigationSecondary.css": { "gzip":  4500, "brotli":  4000 },
+    "navigationTertiary.css":  { "gzip":  4000, "brotli":  3600 },
+    "ckeditor.css":            { "gzip":  3500, "brotli":  3000 },
+    "print.css":               { "gzip":   800, "brotli":   700 }
+  },
+  "totals": {
+    "$comment": "Sum across all JS+CSS bundles. Headroom over current baseline (~160 KiB gzip / ~140 KiB brotli) leaves room for two ~10 KiB features before requiring a budget review.",
+    "gzip":   200000,
+    "brotli": 180000
+  }
+}

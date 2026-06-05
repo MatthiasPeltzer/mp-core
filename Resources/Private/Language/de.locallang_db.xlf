@@ -1647,6 +1647,107 @@
         <source>Without frame</source>
         <target>Ohne Rahmen</target>
       </trans-unit>
+      <!-- Web Fonts -->
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily" resname="tx_mpcore_domain_model_webfontfamily" approved="yes">
+        <source>Web Font Family</source>
+        <target>Webschrift-Familie</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name" resname="tx_mpcore_domain_model_webfontfamily.name" approved="yes">
+        <source>Font family name</source>
+        <target>Name der Schriftfamilie</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name.description" resname="tx_mpcore_domain_model_webfontfamily.name.description" approved="yes">
+        <source>CSS font-family name used in @font-face and the custom property (e.g. "Inter").</source>
+        <target>CSS-font-family-Name für @font-face und die Custom Property (z. B. "Inter").</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback" resname="tx_mpcore_domain_model_webfontfamily.fallback" approved="yes">
+        <source>Fallback stack</source>
+        <target>Fallback-Stack</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback.description" resname="tx_mpcore_domain_model_webfontfamily.fallback.description" approved="yes">
+        <source>Fallback fonts appended after the family name, e.g. "Helvetica Neue, Arial, sans-serif".</source>
+        <target>Ersatzschriften nach dem Familiennamen, z. B. "Helvetica Neue, Arial, sans-serif".</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role" resname="tx_mpcore_domain_model_webfontfamily.role" approved="yes">
+        <source>Applies to</source>
+        <target>Angewendet auf</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.description" resname="tx_mpcore_domain_model_webfontfamily.role.description" approved="yes">
+        <source>Which CSS custom property this family is assigned to.</source>
+        <target>Welcher CSS-Custom-Property diese Familie zugewiesen wird.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.body" resname="tx_mpcore_domain_model_webfontfamily.role.body" approved="yes">
+        <source>Body text (--bs-body-font-family)</source>
+        <target>Fließtext (--bs-body-font-family)</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.heading" resname="tx_mpcore_domain_model_webfontfamily.role.heading" approved="yes">
+        <source>Headings (--bs-font-sans-serif)</source>
+        <target>Überschriften (--bs-font-sans-serif)</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.custom" resname="tx_mpcore_domain_model_webfontfamily.role.custom" approved="yes">
+        <source>Custom CSS variable</source>
+        <target>Eigene CSS-Variable</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable" resname="tx_mpcore_domain_model_webfontfamily.css_variable" approved="yes">
+        <source>Custom CSS variable</source>
+        <target>Eigene CSS-Variable</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable.description" resname="tx_mpcore_domain_model_webfontfamily.css_variable.description" approved="yes">
+        <source>Custom property name to set, must start with -- (e.g. --mpc-font-display). Only used when "Applies to" is "Custom CSS variable".</source>
+        <target>Zu setzender Custom-Property-Name, muss mit -- beginnen (z. B. --mpc-font-display). Nur bei "Eigene CSS-Variable" wirksam.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display" resname="tx_mpcore_domain_model_webfontfamily.font_display" approved="yes">
+        <source>font-display</source>
+        <target>font-display</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display.description" resname="tx_mpcore_domain_model_webfontfamily.font_display.description" approved="yes">
+        <source>CSS font-display strategy applied to all faces of this family.</source>
+        <target>CSS-font-display-Strategie für alle Schnitte dieser Familie.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces" resname="tx_mpcore_domain_model_webfontfamily.faces" approved="yes">
+        <source>Font files (weights / styles)</source>
+        <target>Schriftdateien (Schnitte / Stile)</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces.description" resname="tx_mpcore_domain_model_webfontfamily.faces.description" approved="yes">
+        <source>One entry per uploaded font file. Add a face for each weight/style you need (e.g. 400 normal, 700 bold).</source>
+        <target>Ein Eintrag pro Schriftdatei. Für jeden benötigten Schnitt/Stil einen Eintrag anlegen (z. B. 400 normal, 700 bold).</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface" resname="tx_mpcore_domain_model_webfontface" approved="yes">
+        <source>Font Face</source>
+        <target>Schriftschnitt</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.weight" resname="tx_mpcore_domain_model_webfontface.weight" approved="yes">
+        <source>Weight</source>
+        <target>Schriftstärke</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.weight.description" resname="tx_mpcore_domain_model_webfontface.weight.description" approved="yes">
+        <source>font-weight this file provides.</source>
+        <target>font-weight, den diese Datei bereitstellt.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style" resname="tx_mpcore_domain_model_webfontface.font_style" approved="yes">
+        <source>Style</source>
+        <target>Stil</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style.description" resname="tx_mpcore_domain_model_webfontface.font_style.description" approved="yes">
+        <source>font-style this file provides.</source>
+        <target>font-style, den diese Datei bereitstellt.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.file" resname="tx_mpcore_domain_model_webfontface.file" approved="yes">
+        <source>Font file</source>
+        <target>Schriftdatei</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.file.description" resname="tx_mpcore_domain_model_webfontface.file.description" approved="yes">
+        <source>Upload or pick a font file from the FileManager. Allowed: woff2.</source>
+        <target>Schriftdatei hochladen oder aus dem Dateimanager wählen. Erlaubt: woff2.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range" resname="tx_mpcore_domain_model_webfontface.unicode_range" approved="yes">
+        <source>unicode-range (optional)</source>
+        <target>unicode-range (optional)</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range.description" resname="tx_mpcore_domain_model_webfontface.unicode_range.description" approved="yes">
+        <source>Optional CSS unicode-range, e.g. "U+0-7F, U+1E00-1EFF". Leave empty to apply to all characters.</source>
+        <target>Optionaler CSS-unicode-range, z. B. "U+0-7F, U+1E00-1EFF". Leer lassen, um alle Zeichen abzudecken.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

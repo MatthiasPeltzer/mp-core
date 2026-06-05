@@ -202,15 +202,52 @@ class SvgInlineViewHelper extends AbstractViewHelper
             if (!$element instanceof DOMElement) {
                 continue;
             }
+            $localName = strtolower($element->localName ?? '');
             $attributesToRemove = [];
             foreach ($element->attributes as $attr) {
-                if (str_starts_with(strtolower($attr->nodeName), 'on')) {
-                    $attributesToRemove[] = $attr->nodeName;
+                $attrName = $attr->nodeName;
+                $attrLower = strtolower($attrName);
+
+                if (str_starts_with($attrLower, 'on')) {
+                    $attributesToRemove[] = $attrName;
+                    continue;
+                }
+
+                if (!self::isUriAttribute($attrLower)) {
+                    continue;
+                }
+
+                $rawValue = (string)$attr->nodeValue;
+                $decoded = html_entity_decode($rawValue, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $normalized = strtolower((string)preg_replace('/\s+/', '', $decoded));
+
+                if (str_starts_with($normalized, 'javascript:')
+                    || str_starts_with($normalized, 'vbscript:')
+                    || str_starts_with($normalized, 'data:')
+                ) {
+                    $attributesToRemove[] = $attrName;
+                    continue;
+                }
+
+                // `<use>` / `<image>` can fetch remote SVGs/rasters which
+                // re-introduce script vectors. Allow only same-document
+                // fragment references (`#id`).
+                if (($localName === 'use' || $localName === 'image')
+                    && !str_starts_with(ltrim($decoded), '#')
+                ) {
+                    $attributesToRemove[] = $attrName;
                 }
             }
             foreach ($attributesToRemove as $attrName) {
                 $element->removeAttribute($attrName);
             }
         }
+    }
+
+    private static function isUriAttribute(string $attrLower): bool
+    {
+        return $attrLower === 'href'
+            || $attrLower === 'xlink:href'
+            || $attrLower === 'src';
     }
 }

@@ -18,6 +18,15 @@ class CssSanitizeViewHelper extends AbstractViewHelper
 {
     protected $escapeOutput = false;
 
+    /**
+     * Children carry the raw CSS source; HTML-escaping them before sanitization
+     * would corrupt syntax like `&` in selectors and offer no security benefit
+     * since the sanitizer's output is dropped into a `<style>` block, not HTML
+     * text. The real mitigation is CSP — this ViewHelper is best-effort defense
+     * in depth.
+     */
+    protected $escapeChildren = false;
+
     public function initializeArguments(): void
     {
         $this->registerArgument('value', 'string', 'The CSS string to sanitize', false, null);

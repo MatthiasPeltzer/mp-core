@@ -26,7 +26,8 @@ page {
       30 {
         entryLevel = 0
         expandAll = 0
-        levels = 6
+        levels = {$navigation.maxDepth}
+        includeNotInMenu = {$navigation.showHiddenPages}
         as = menuSub
         dataProcessing {
           10 = files
@@ -127,7 +128,8 @@ page {
         110 {
           special = directory
           special.value = {$PIDs.pidHome}
-          levels = 4
+          levels = {$navigation.maxDepth}
+          includeNotInMenu = {$navigation.showHiddenPages}
           includeSpacer = 1
           as = mainNav
           dataProcessing {
@@ -150,7 +152,8 @@ page {
         110 {
           special = directory
           special.value = {$PIDs.pidHome}
-          levels = 4
+          levels = {$navigation.maxDepth}
+          includeNotInMenu = {$navigation.showHiddenPages}
           includeSpacer = 1
           as = menuMain
           dataProcessing {

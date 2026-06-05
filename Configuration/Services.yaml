@@ -1,3 +1,8 @@
+imports:
+  # Optional local-only DI registrations (e.g. tooling commands that are
+  # gitignored). Missing file must not break container compilation.
+  - { resource: 'Services.local.yaml', ignore_errors: not_found }
+
 services:
   _defaults:
     public: false
@@ -8,13 +13,19 @@ services:
     resource: '../Classes/*'
     exclude: '../Classes/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
-  Mpc\MpCore\UserFunc\ColorPickerValueItems:
+  # DataProcessors are instantiated by TypoScript via GeneralUtility::makeInstance()
+  # and therefore must be resolvable as public services from the container.
+  Mpc\MpCore\DataProcessing\HeaderLogoProcessor:
     public: true
 
-  Mpc\MpCore\Command\ImportDocumentationCommand:
-    tags:
-      - name: console.command
-        command: 'docsite:import'
-        description: 'Import docs-site HTML fragments into TYPO3 pages.'
-        schedulable: false
+  Mpc\MpCore\DataProcessing\SocialMediaProcessor:
+    public: true
 
+  Mpc\MpCore\DataProcessing\StructuredDataProcessor:
+    public: true
+
+  Mpc\MpCore\DataProcessing\WebFontProcessor:
+    public: true
+
+  Mpc\MpCore\UserFunc\ColorPickerValueItems:
+    public: true

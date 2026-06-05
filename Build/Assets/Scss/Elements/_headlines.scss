@@ -1,8 +1,7 @@
 // headlines
 
 .header-text {
-  @extend %specialelite;
-
+  font-family: var(--#{$prefix}font-sans-serif);
   font-weight: 700;
   padding-left: 4px;
   padding-right: 0;
@@ -17,7 +16,7 @@ h2,
 .h2,
 h3,
 .h3 {
-  @extend %specialelite;
+  font-family: var(--#{$prefix}font-sans-serif);
 
   .ce-uploads & {
     @include font-size($fs-md);
