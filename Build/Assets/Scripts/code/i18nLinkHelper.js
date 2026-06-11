@@ -65,7 +65,7 @@ function ensureHiddenSpan(linkElement, text) {
   span.className = 'visually-hidden';
   span.setAttribute('data-i18n-helper', 'true');
   span.textContent = text;
-  linkElement.prepend(span);
+  linkElement.append(span);
 }
 
 /**
