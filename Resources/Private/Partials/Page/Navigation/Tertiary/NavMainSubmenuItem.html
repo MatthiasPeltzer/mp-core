@@ -1,29 +1,17 @@
-<html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:variable name="submenuLinkClass" value="sub{f:if(condition: '{variant} == \'desktop\'', then: ' collapsed')} dropdown-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}" />
 
 <f:if condition="{mainChild.children}">
     <f:then>
         <li{f:if(condition: '{mainChild.data.doktype} == 4', then: ' class="shortcut"')}>
-            <f:if condition="{mainChild.current}">
-                <f:then>
-                    <f:link.page aria="{current: 'page'}" class="sub{f:if(condition: '{variant} == \'desktop\'', then: ' collapsed')} dropdown-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}" pageUid="{mainChild.data.uid}">
-                        <f:if condition="{variant} == 'desktop'">
-                            <span>{mainChild.title}</span>
-                        </f:if>
-                        <f:if condition="{variant} == 'mobile'">
-                            {mainChild.title}
-                        </f:if>
-                    </f:link.page>
-                </f:then>
-                <f:else>
-                    <f:link.page class="sub{f:if(condition: '{variant} == \'desktop\'', then: ' collapsed')} dropdown-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}" pageUid="{mainChild.data.uid}">
-                        <f:if condition="{variant} == 'desktop'">
-                            <span>{mainChild.title}</span>
-                        </f:if>
-                        <f:if condition="{variant} == 'mobile'">
-                            {mainChild.title}
-                        </f:if>
-                    </f:link.page>
-                </f:else>
+            <f:if condition="{variant} == 'desktop'">
+                <f:render partial="Navigation/NavMenuLink" arguments="{item: mainChild, current: mainChild.current, linkClass: submenuLinkClass, wrapInSpan: 1}" />
+            </f:if>
+            <f:if condition="{variant} == 'mobile'">
+                <f:render partial="Navigation/NavMenuLink" arguments="{item: mainChild, current: mainChild.current, linkClass: submenuLinkClass}" />
             </f:if>
             <button
                 aria-controls="{f:if(condition: '{variant} == \'desktop\'', then: 'menu-desktop', else: 'menu')}-{mainChild.data.uid}"
@@ -58,27 +46,11 @@
     </f:then>
     <f:else>
         <li{f:if(condition: '{mainChild.data.doktype} == 4', then: ' class="shortcut"')}>
-            <f:if condition="{mainChild.current}">
-                <f:then>
-                    <f:link.page aria="{current: 'page'}" class="sub{f:if(condition: '{variant} == \'desktop\'', then: ' collapsed')} dropdown-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}" pageUid="{mainChild.data.uid}">
-                        <f:if condition="{variant} == 'desktop'">
-                            <span>{mainChild.title}</span>
-                        </f:if>
-                        <f:if condition="{variant} == 'mobile'">
-                            {mainChild.title}
-                        </f:if>
-                    </f:link.page>
-                </f:then>
-                <f:else>
-                    <f:link.page class="sub{f:if(condition: '{variant} == \'desktop\'', then: ' collapsed')} dropdown-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}" pageUid="{mainChild.data.uid}">
-                        <f:if condition="{variant} == 'desktop'">
-                            <span>{mainChild.title}</span>
-                        </f:if>
-                        <f:if condition="{variant} == 'mobile'">
-                            {mainChild.title}
-                        </f:if>
-                    </f:link.page>
-                </f:else>
+            <f:if condition="{variant} == 'desktop'">
+                <f:render partial="Navigation/NavMenuLink" arguments="{item: mainChild, current: mainChild.current, linkClass: submenuLinkClass, wrapInSpan: 1}" />
+            </f:if>
+            <f:if condition="{variant} == 'mobile'">
+                <f:render partial="Navigation/NavMenuLink" arguments="{item: mainChild, current: mainChild.current, linkClass: submenuLinkClass}" />
             </f:if>
         </li>
     </f:else>
