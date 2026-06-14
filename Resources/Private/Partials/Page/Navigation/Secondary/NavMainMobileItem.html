@@ -1,4 +1,7 @@
-<html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 <f:if condition="{menuMain}">
     <div class="main-nav-wrapper" id="main-menu-list">
         <div class="container-md">
@@ -17,18 +20,7 @@
                                 </f:if>
                             </f:then>
                             <f:else>
-                                <f:if condition="{mainItem.current}">
-                                    <f:then>
-                                        <f:link.page aria="{current: 'page'}" class="first-child dropdown-item{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
-                                            {mainItem.title}
-                                        </f:link.page>
-                                    </f:then>
-                                    <f:else>
-                                        <f:link.page class="first-child dropdown-item{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
-                                            {mainItem.title}
-                                        </f:link.page>
-                                    </f:else>
-                                </f:if>
+                                <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-child dropdown-item{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
                             </f:else>
                         </f:if>
                     </li>
@@ -56,18 +48,7 @@
             <li
                 {f:if(condition:
             '{mainChild.data.doktype} == 4', then:' class="shortcut"')}>
-            <f:if condition="{mainChild.current}">
-                <f:then>
-                    <f:link.page aria="{current: 'page'}" class="sub dropdown-item{f:if(condition:mainChild.active, then:' act')}{f:if(condition:mainChild.current, then:' current')}{f:if(condition:mainChild.hasSubpages, then:' hassub')}" pageUid="{mainChild.data.uid}">
-                        {mainChild.title}
-                    </f:link.page>
-                </f:then>
-                <f:else>
-                    <f:link.page class="sub dropdown-item{f:if(condition:mainChild.active, then:' act')}{f:if(condition:mainChild.current, then:' current')}{f:if(condition:mainChild.hasSubpages, then:' hassub')}" pageUid="{mainChild.data.uid}">
-                        {mainChild.title}
-                    </f:link.page>
-                </f:else>
-            </f:if>
+            <f:render partial="Navigation/NavMenuLink" arguments="{item: mainChild, current: mainChild.current, linkClass: 'sub dropdown-item{f:if(condition:mainChild.active, then:\' act\')}{f:if(condition:mainChild.current, then:\' current\')}{f:if(condition:mainChild.hasSubpages, then:\' hassub\')}'}" />
             </li>
         </f:else>
     </f:if>

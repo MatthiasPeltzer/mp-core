@@ -1,0 +1,57 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:if condition="{current}">
+    <f:then>
+        <f:link.typolink
+            parameter="{item.link}"
+            target="{item.data.target}"
+            title="{f:if(condition: item.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+            class="{linkClass}{f:if(condition: item.data.target, then:' external-link')}"
+            additionalAttributes="{'aria-current': 'page'}">
+            <f:render partial="Navigation/NavLinkIcon" arguments="{item: item}" />
+            <f:if condition="{wrapInSpan}">
+                <f:then>
+                    <f:if condition="{titleClass}">
+                        <f:then>
+                            <span class="{titleClass}">{item.title}</span>
+                        </f:then>
+                        <f:else>
+                            <span>{item.title}</span>
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    {item.title}
+                </f:else>
+            </f:if>
+        </f:link.typolink>
+    </f:then>
+    <f:else>
+        <f:link.typolink
+            parameter="{item.link}"
+            target="{item.data.target}"
+            title="{f:if(condition: item.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
+            class="{linkClass}{f:if(condition: item.data.target, then:' external-link')}">
+            <f:render partial="Navigation/NavLinkIcon" arguments="{item: item}" />
+            <f:if condition="{wrapInSpan}">
+                <f:then>
+                    <f:if condition="{titleClass}">
+                        <f:then>
+                            <span class="{titleClass}">{item.title}</span>
+                        </f:then>
+                        <f:else>
+                            <span>{item.title}</span>
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    {item.title}
+                </f:else>
+            </f:if>
+        </f:link.typolink>
+    </f:else>
+</f:if>
+
+</html>

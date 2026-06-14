@@ -1,20 +1,12 @@
-<html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 <li class="mainnav-desktop-item{f:if(condition:'{mainItem.data.doktype} == 4', then:' shortcut')}">
       <f:if condition="{mainItem.children}">
           <f:then>
               <f:if condition="{mainItem.children}">
-                  <f:if condition="{mainItem.current}">
-                      <f:then>
-                          <f:link.page aria="{current: 'page'}" class="first-nav{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
-                              {mainItem.title}
-                          </f:link.page>
-                      </f:then>
-                      <f:else>
-                          <f:link.page class="first-nav{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
-                              {mainItem.title}
-                          </f:link.page>
-                      </f:else>
-                  </f:if>
+                  <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-nav{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
                   <button aria-controls="menu-desktop-{mainItem.data.uid}" aria-expanded="false" class="first-nav-button {f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" data-bs-auto-close="outside" data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent" data-bs-toggle="dropdown" type="button" aria-label="{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                           <title>{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}</title>
@@ -31,18 +23,7 @@
               </f:if>
           </f:then>
           <f:else>
-              <f:if condition="{mainItem.current}">
-                  <f:then>
-                      <f:link.page aria="{current: 'page'}" class="first-nav{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
-                          {mainItem.title}
-                      </f:link.page>
-                  </f:then>
-                  <f:else>
-                      <f:link.page class="first-nav{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}" pageUid="{mainItem.data.uid}">
-                          {mainItem.title}
-                      </f:link.page>
-                  </f:else>
-              </f:if>
+              <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-nav{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
           </f:else>
     </f:if>
 </li>

@@ -1,0 +1,15 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:if condition="{item.files.0}">
+    <f:then>
+        <mpc:svgInline image="{item.files.0}" width="16" height="16" class="nav-icon" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
+    </f:then>
+    <f:else>
+        <f:if condition="{item.data.target}"><span class="icon" aria-hidden="true"></span></f:if>
+    </f:else>
+</f:if>
+
+</html>
