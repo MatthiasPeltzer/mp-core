@@ -531,6 +531,30 @@
       <trans-unit id="seo.schema.organizationType.form.label" resname="seo.schema.organizationType.form.label">
         <source>Organization Type</source>
       </trans-unit>
+      <trans-unit id="seo.llmsTxt.enabled.form.description" resname="seo.llmsTxt.enabled.form.description">
+        <source>Serve an llms.txt markdown site map for AI agents at /llms.txt</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.enabled.form.label" resname="seo.llmsTxt.enabled.form.label">
+        <source>Enable llms.txt</source>
+      </trans-unit>
+      <trans-unit id="seo.robots.additional.form.description" resname="seo.robots.additional.form.description">
+        <source>Additional robots.txt lines appended after the default rules (one directive per line)</source>
+      </trans-unit>
+      <trans-unit id="seo.robots.additional.form.label" resname="seo.robots.additional.form.label">
+        <source>Additional robots.txt Rules</source>
+      </trans-unit>
+      <trans-unit id="seo.robots.allowAiBots.form.description" resname="seo.robots.allowAiBots.form.description">
+        <source>Allow AI crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.) to access the site</source>
+      </trans-unit>
+      <trans-unit id="seo.robots.allowAiBots.form.label" resname="seo.robots.allowAiBots.form.label">
+        <source>Allow AI Crawlers</source>
+      </trans-unit>
+      <trans-unit id="seo.robots.enabled.form.description" resname="seo.robots.enabled.form.description">
+        <source>Serve a dynamic robots.txt with sitemap reference and AI crawler rules</source>
+      </trans-unit>
+      <trans-unit id="seo.robots.enabled.form.label" resname="seo.robots.enabled.form.label">
+        <source>Enable Dynamic robots.txt</source>
+      </trans-unit>
       <trans-unit id="seo.sitemap.enabled.form.description" resname="seo.sitemap.enabled.form.description">
         <source>Enable XML sitemap generation</source>
       </trans-unit>

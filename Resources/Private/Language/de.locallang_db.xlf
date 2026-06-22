@@ -28,6 +28,10 @@
         <source>The content elements are accessible in an accordion</source>
         <target>Die Inhaltselemente sind in einem Akkordeon zugänglich</target>
       </trans-unit>
+      <trans-unit id="accordion.description.faqSchema" resname="accordion.description.faqSchema" approved="yes">
+        <source>Emit FAQPage JSON-LD from accordion headers and text answers (for Q&amp;A content only)</source>
+        <target>FAQPage JSON-LD aus Akkordeon-Überschriften und Textantworten ausgeben (nur für Q&amp;A-Inhalte)</target>
+      </trans-unit>
       <trans-unit id="accordion.description.onload" resname="accordion.description.onload" approved="yes">
         <source>Open a specific accordion tile when loading</source>
         <target>Öffne eine bestimmte Akkordeon-Kachel beim Laden</target>
@@ -40,6 +44,10 @@
       <trans-unit id="accordion.description.open" resname="accordion.description.open" approved="yes">
         <source>Choose the accordion tile, wich should be opened</source>
         <target>Wähle die Akkordeonkachel, die geöffnet werden soll</target>
+      </trans-unit>
+      <trans-unit id="accordion.label.faqSchema" resname="accordion.label.faqSchema" approved="yes">
+        <source>FAQ structured data</source>
+        <target>FAQ-Strukturierte Daten</target>
       </trans-unit>
       <trans-unit id="accordion.label.onload" resname="accordion.label.onload" approved="yes">
         <source>On load</source>

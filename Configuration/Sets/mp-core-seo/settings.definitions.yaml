@@ -136,3 +136,31 @@ settings:
     type: string
     default: 'Organization'
 
+  seo.robots.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.enabled.form.description'
+    category: MPCoreSEO
+    type: bool
+    default: true
+
+  seo.robots.allowAiBots:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.allowAiBots.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.allowAiBots.form.description'
+    category: MPCoreSEO
+    type: bool
+    default: true
+
+  seo.robots.additional:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.additional.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.additional.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.llmsTxt.enabled:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.enabled.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.enabled.form.description'
+    category: MPCoreSEO
+    type: bool
+    default: true
+

@@ -38,6 +38,7 @@ CREATE TABLE sys_file_reference
 CREATE TABLE tt_content
 (
 	container_accordion_open       int(11) unsigned DEFAULT '1'  NOT NULL,
+	container_accordion_faq_schema int(11) unsigned DEFAULT '0'  NOT NULL,
 	container_accordion_toggle     int(11) unsigned DEFAULT '0'  NOT NULL,
 	container_accordion_toggle_all int(11) unsigned DEFAULT '0'  NOT NULL,
 	container_accordion_type       int(11) unsigned DEFAULT '1'  NOT NULL,

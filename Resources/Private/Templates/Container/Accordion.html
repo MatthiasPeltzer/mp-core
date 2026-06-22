@@ -1,4 +1,4 @@
-<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers">
 
 <f:layout name="Container"/>
 
@@ -10,6 +10,11 @@
         <f:else>
             <f:render arguments="{_all}" section="AccordionDetails"/>
         </f:else>
+    </f:if>
+    <f:if condition="{data.container_accordion_faq_schema} && {children_101}">
+        <script type="application/ld+json" nonce="{f:security.nonce()}">
+            <f:format.raw><mpc:schema.faqPageJsonLd items="{children_101}" /></f:format.raw>
+        </script>
     </f:if>
 </f:section>
 
