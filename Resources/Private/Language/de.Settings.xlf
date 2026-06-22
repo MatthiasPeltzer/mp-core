@@ -699,6 +699,38 @@
         <source>Organization Type</source>
         <target>Organisationstyp</target>
       </trans-unit>
+      <trans-unit id="seo.llmsTxt.enabled.form.description" resname="seo.llmsTxt.enabled.form.description" approved="yes">
+        <source>Serve an llms.txt markdown site map for AI agents at /llms.txt</source>
+        <target>Markdown-Sitemap für KI-Agenten unter /llms.txt bereitstellen</target>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.enabled.form.label" resname="seo.llmsTxt.enabled.form.label" approved="yes">
+        <source>Enable llms.txt</source>
+        <target>llms.txt aktivieren</target>
+      </trans-unit>
+      <trans-unit id="seo.robots.additional.form.description" resname="seo.robots.additional.form.description" approved="yes">
+        <source>Additional robots.txt lines appended after the default rules (one directive per line)</source>
+        <target>Zusätzliche robots.txt-Zeilen nach den Standardregeln (eine Direktive pro Zeile)</target>
+      </trans-unit>
+      <trans-unit id="seo.robots.additional.form.label" resname="seo.robots.additional.form.label" approved="yes">
+        <source>Additional robots.txt Rules</source>
+        <target>Zusätzliche robots.txt-Regeln</target>
+      </trans-unit>
+      <trans-unit id="seo.robots.allowAiBots.form.description" resname="seo.robots.allowAiBots.form.description" approved="yes">
+        <source>Allow AI crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.) to access the site</source>
+        <target>KI-Crawler (GPTBot, ClaudeBot, PerplexityBot usw.) Zugriff auf die Website erlauben</target>
+      </trans-unit>
+      <trans-unit id="seo.robots.allowAiBots.form.label" resname="seo.robots.allowAiBots.form.label" approved="yes">
+        <source>Allow AI Crawlers</source>
+        <target>KI-Crawler erlauben</target>
+      </trans-unit>
+      <trans-unit id="seo.robots.enabled.form.description" resname="seo.robots.enabled.form.description" approved="yes">
+        <source>Serve a dynamic robots.txt with sitemap reference and AI crawler rules</source>
+        <target>Dynamische robots.txt mit Sitemap-Verweis und KI-Crawler-Regeln bereitstellen</target>
+      </trans-unit>
+      <trans-unit id="seo.robots.enabled.form.label" resname="seo.robots.enabled.form.label" approved="yes">
+        <source>Enable Dynamic robots.txt</source>
+        <target>Dynamische robots.txt aktivieren</target>
+      </trans-unit>
       <trans-unit id="seo.sitemap.enabled.form.description" resname="seo.sitemap.enabled.form.description" approved="yes">
         <source>Enable XML sitemap generation</source>
         <target>XML-Sitemap-Generierung aktivieren</target>

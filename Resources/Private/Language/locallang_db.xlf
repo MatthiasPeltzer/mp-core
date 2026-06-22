@@ -22,6 +22,9 @@
       <trans-unit id="accordion.description" resname="accordion.description">
         <source>The content elements are accessible in an accordion</source>
       </trans-unit>
+      <trans-unit id="accordion.description.faqSchema" resname="accordion.description.faqSchema">
+        <source>Emit FAQPage JSON-LD from accordion headers and text answers (for Q&amp;A content only)</source>
+      </trans-unit>
       <trans-unit id="accordion.description.onload" resname="accordion.description.onload">
         <source>Open a specific accordion tile when loading</source>
       </trans-unit>
@@ -30,6 +33,9 @@
       </trans-unit>
       <trans-unit id="accordion.description.open" resname="accordion.description.open">
         <source>Choose the accordion tile, wich should be opened</source>
+      </trans-unit>
+      <trans-unit id="accordion.label.faqSchema" resname="accordion.label.faqSchema">
+        <source>FAQ structured data</source>
       </trans-unit>
       <trans-unit id="accordion.label.onload" resname="accordion.label.onload">
         <source>On load</source>
