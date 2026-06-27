@@ -86,6 +86,7 @@ async function mountComponent(element, componentName) {
       return;
     }
     const app = createApp(component);
+    app.provide('mpcMountElement', element);
     app.mount(element);
     element.classList.add('swiper-vue-ready');
   } catch (err) {

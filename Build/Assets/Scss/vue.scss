@@ -38,11 +38,15 @@ html[data-bs-theme="light"] {
 }
 
 .swiper-wrapper {
+  align-items: stretch;
+  height: 100%;
   margin: 3px;
 }
 
 .swiper-slide {
-  height: auto;
+  align-self: stretch;
+  box-sizing: border-box;
+  height: 100%;
   right: 2px;
 
   > div {
@@ -60,9 +64,11 @@ html[data-bs-theme="light"] {
   }
 }
 
-.swiper-autoheight,
-.swiper-autoheight .swiper-slide {
-  height: 100%;
+// Keep thumb strip slides content-sized (main gallery swipers stay at 100%).
+.gallery-thumbs-swiper .swiper-slide,
+.gallery-thumb-slide {
+  align-self: auto;
+  height: auto;
 }
 
 // =============================================================================
@@ -84,10 +90,13 @@ html[data-bs-theme="light"] {
 
   .swiper-navigation-icon {
     height: 50%;
+    pointer-events: none;
     width: auto;
   }
 
   svg {
+    pointer-events: none;
+
     path {
       fill: #fff;
     }
@@ -110,6 +119,29 @@ html[data-bs-theme="light"] {
   justify-content: center;
   margin: 16px 0;
   padding: 0;
+  position: relative;
+
+  // Beat vendor-swiper.css (loads after vue.css): buttons and pagination both use
+  // z-index: 10 there, so the overlay wins hit-testing in the button center.
+  .swiper-button-prev,
+  .swiper-button-next {
+    z-index: 20;
+  }
+
+  // Let clicks pass through the full-width pagination strip except on bullets /
+  // fraction text (production layout unchanged).
+  .swiper-pagination {
+    pointer-events: none;
+  }
+
+  .swiper-pagination-bullet {
+    pointer-events: auto;
+  }
+
+  &:has(.swiper-pagination-fraction) .swiper-pagination,
+  &:has(.swiper-pagination-custom) .swiper-pagination {
+    pointer-events: auto;
+  }
 
   &:has(.swiper-pagination-bullets-dynamic),
   &:has(.swiper-pagination-fraction) {
@@ -189,6 +221,38 @@ html[data-bs-theme="light"] {
   overflow: hidden;
   position: relative;
   width: 100%;
+
+  // Beat vendor-swiper.css slide sizing — equal height across all slides.
+  .swiper:not(.gallery-thumbs-swiper) {
+    &.swiper-equal-heights {
+      .swiper-wrapper {
+        align-items: stretch;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        align-self: stretch;
+        height: 100%;
+      }
+    }
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      height: 100%;
+    }
+  }
+
+  .swiper-autoheight:not(.gallery-thumbs-swiper),
+  .swiper-autoheight:not(.gallery-thumbs-swiper) .swiper-slide {
+    height: 100%;
+  }
+
+  .swiper-autoheight:not(.gallery-thumbs-swiper) .swiper-wrapper {
+    align-items: stretch;
+  }
 }
 
 .gallery-swiper-wrapper {
