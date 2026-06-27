@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onBeforeMount, nextTick, getCurrentInstance } from 'vue';
+import { ref, computed, onBeforeMount, inject } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import {
   A11y,
@@ -28,6 +28,7 @@ import {
   slideLabelMessage,
   itemRoleDescriptionMessage
 } from '../code/i18n.js';
+import { bindEqualSwiperSlideHeights } from '../code/swiper-equal-heights.js';
 
 // Swiper CSS is imported in vue.js entry point (swiper/css/bundle)
 // This ensures all Swiper CSS is bundled into vue.css
@@ -37,7 +38,10 @@ import {
 // =============================================================================
 
 // No props needed - we read everything from data attributes
-const props = defineProps({});
+defineProps({});
+
+/** TYPO3 mount target injected by vue-initialisation.js (avoids DOM query races). */
+const mountElement = inject('mpcMountElement', null);
 
 // =============================================================================
 // STATE
@@ -294,75 +298,45 @@ const a11yConfig = computed(() => ({
 
 // Extract slides and config before Vue renders
 onBeforeMount(() => {
-  // Get the instance to access the mounting element
-  const instance = getCurrentInstance();
-  if (!instance) {
+  const element = mountElement;
+  if (!element) {
     return;
   }
-  
-  // The element Vue is mounting to (the one with data-container="vue")
-  // In Vue 3, we can access it via the vnode's el property, but it might not be set yet
-  // So we'll use the parent element or find it by data attributes
-  let element = null;
-  
-  // Try to get from instance vnode
-  if (instance.vnode?.el) {
-    element = instance.vnode.el;
-  }
-  
-  // Fallback: find by data attributes
-  if (!element) {
-    const allContainers = document.querySelectorAll('[data-container="vue"][data-component="SwiperSlider"]');
-    // Find one that has slides data attribute (set by initialization)
-    element = Array.from(allContainers).find(el => el.hasAttribute('data-slides-data'));
-    // Or find one that still has slide content
-    if (!element) {
-      element = Array.from(allContainers).find(el => 
-        el.querySelectorAll('.swiper-slide-content').length > 0
-      );
-    }
-    // Last resort: use first one
-    if (!element && allContainers.length > 0) {
-      element = allContainers[0];
+
+  // Try to get slides from data attribute first (set by initialization)
+  const slidesDataAttr = element.getAttribute('data-slides-data');
+  if (slidesDataAttr) {
+    try {
+      const parsedSlides = JSON.parse(slidesDataAttr);
+      slides.value = parsedSlides.map(slide => ({
+        id: slide.id,
+        content: slide.content.trim()
+      }));
+    } catch (e) {
+      // Failed to parse slides data - will try DOM extraction
     }
   }
-  
-  if (element) {
-    // Try to get slides from data attribute first (set by initialization)
-    const slidesDataAttr = element.getAttribute('data-slides-data');
-    if (slidesDataAttr) {
-      try {
-        const parsedSlides = JSON.parse(slidesDataAttr);
-        slides.value = parsedSlides.map(slide => ({
-          id: slide.id,
-          content: slide.content.trim()
-        }));
-      } catch (e) {
-        // Failed to parse slides data - will try DOM extraction
-      }
+
+  // Fallback: extract from DOM if data attribute not available
+  if (slides.value.length === 0) {
+    const slideElements = element.querySelectorAll('.swiper-slide-content');
+    if (slideElements.length > 0) {
+      slides.value = Array.from(slideElements).map((el, index) => {
+        const content = el.innerHTML.trim();
+        return {
+          id: index,
+          content: content
+        };
+      });
     }
-    
-    // Fallback: extract from DOM if data attribute not available
-    if (slides.value.length === 0) {
-      const slideElements = element.querySelectorAll('.swiper-slide-content');
-      if (slideElements.length > 0) {
-        slides.value = Array.from(slideElements).map((el, index) => {
-          const content = el.innerHTML.trim();
-          return {
-            id: index,
-            content: content
-          };
-        });
-      }
-    }
-    
-    // Load config from the element's data attributes
-    loadConfig(element);
-    
-    // Clean up the data attribute after use
-    if (element.hasAttribute('data-slides-data')) {
-      element.removeAttribute('data-slides-data');
-    }
+  }
+
+  // Load config from the element's data attributes
+  loadConfig(element);
+
+  // Clean up the data attribute after use
+  if (element.hasAttribute('data-slides-data')) {
+    element.removeAttribute('data-slides-data');
   }
 });
 
@@ -387,13 +361,7 @@ function observeRedundantAria(swiper) {
 const onSwiper = (swiperInstance) => {
   swiperRef.value = swiperInstance;
   observeRedundantAria(swiperInstance);
-};
-
-const onSlideChange = () => {
-};
-
-const onTransitionEnd = () => {
-  // Transition end handler - helps ensure fade effect animations complete properly
+  bindEqualSwiperSlideHeights(swiperInstance);
 };
 
 // Note: Navigation is handled by Swiper's Navigation module via CSS selectors
@@ -448,8 +416,6 @@ const onTransitionEnd = () => {
       } : undefined"
       :breakpoints="breakpoints"
       @swiper="onSwiper"
-      @slideChange="onSlideChange"
-      @transitionEnd="onTransitionEnd"
       class="swiper"
     >
       <swiper-slide

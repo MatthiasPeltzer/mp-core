@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onBeforeMount, getCurrentInstance } from 'vue';
+import { ref, computed, onBeforeMount, inject } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import {
   A11y,
@@ -20,6 +20,10 @@ import {
   slideLabelMessage,
   itemRoleDescriptionMessage
 } from '../code/i18n.js';
+import { bindEqualSwiperSlideHeights } from '../code/swiper-equal-heights.js';
+
+/** TYPO3 mount target injected by vue-initialisation.js (avoids DOM query races). */
+const mountElement = inject('mpcMountElement', null);
 
 // =============================================================================
 // STATE
@@ -188,52 +192,37 @@ const a11yConfig = computed(() => ({
 // =============================================================================
 
 onBeforeMount(() => {
-  const instance = getCurrentInstance();
-  if (!instance) return;
-  
-  let element = instance.vnode?.el;
-  
+  const element = mountElement;
   if (!element) {
-    const allContainers = document.querySelectorAll('[data-container="vue"][data-component="GallerySwiper"]');
-    element = Array.from(allContainers).find(el => el.hasAttribute('data-slides-data'));
-    if (!element) {
-      element = Array.from(allContainers).find(el => 
-        el.querySelectorAll('.gallery-slide-content').length > 0
-      );
-    }
-    if (!element && allContainers.length > 0) {
-      element = allContainers[0];
+    return;
+  }
+
+  // Try data attribute first
+  const slidesDataAttr = element.getAttribute('data-slides-data');
+  if (slidesDataAttr) {
+    try {
+      slides.value = JSON.parse(slidesDataAttr);
+    } catch (e) {
+      // Failed to parse - will try DOM extraction
     }
   }
-  
-  if (element) {
-    // Try data attribute first
-    const slidesDataAttr = element.getAttribute('data-slides-data');
-    if (slidesDataAttr) {
-      try {
-        slides.value = JSON.parse(slidesDataAttr);
-      } catch (e) {
-        // Failed to parse - will try DOM extraction
-      }
+
+  // Fallback: extract from DOM
+  if (slides.value.length === 0) {
+    const slideElements = element.querySelectorAll('.gallery-slide-content');
+    if (slideElements.length > 0) {
+      slides.value = Array.from(slideElements).map((el, index) => ({
+        id: index,
+        content: el.innerHTML.trim(),
+        thumbnail: el.dataset.thumbnail || ''
+      }));
     }
-    
-    // Fallback: extract from DOM
-    if (slides.value.length === 0) {
-      const slideElements = element.querySelectorAll('.gallery-slide-content');
-      if (slideElements.length > 0) {
-        slides.value = Array.from(slideElements).map((el, index) => ({
-          id: index,
-          content: el.innerHTML.trim(),
-          thumbnail: el.dataset.thumbnail || ''
-        }));
-      }
-    }
-    
-    loadConfig(element);
-    
-    if (element.hasAttribute('data-slides-data')) {
-      element.removeAttribute('data-slides-data');
-    }
+  }
+
+  loadConfig(element);
+
+  if (element.hasAttribute('data-slides-data')) {
+    element.removeAttribute('data-slides-data');
   }
 });
 
@@ -258,14 +247,11 @@ function observeRedundantAria(swiper) {
 const onMainSwiper = (swiper) => {
   mainSwiperRef.value = swiper;
   observeRedundantAria(swiper);
+  bindEqualSwiperSlideHeights(swiper);
 };
 
 const onThumbsSwiper = (swiper) => {
   thumbsSwiperRef.value = swiper;
-};
-
-const onTransitionEnd = () => {
-  // Transition end handler - helps ensure animations complete properly
 };
 
 // Note: Navigation is handled by Swiper's Navigation module via CSS selectors
@@ -325,7 +311,6 @@ const isReady = computed(() => {
         :pagination="paginationConfig"
         :thumbs="{ swiper: thumbsSwiper }"
         @swiper="onMainSwiper"
-        @transitionEnd="onTransitionEnd"
         class="swiper gallery-main-swiper"
         style="order: 1;"
       >
@@ -356,7 +341,6 @@ const isReady = computed(() => {
         :breakpoints="mainBreakpoints"
         :grab-cursor="true"
         @swiper="onMainSwiper"
-        @transitionEnd="onTransitionEnd"
         class="swiper gallery-swiper"
       >
         <swiper-slide
