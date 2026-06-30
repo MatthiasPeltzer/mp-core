@@ -13,6 +13,7 @@ namespace Mpc\MpCore\Preview;
 
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer;
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
 use TYPO3\CMS\Core\Resource\FileReference;
@@ -32,6 +33,7 @@ use TYPO3\CMS\Core\Resource\ProcessedFile;
  * @todo Remove once the TYPO3 core fixes these TypeErrors.
  *       Track: https://forge.typo3.org
  */
+#[Autoconfigure(public: true)]
 class CustomContentPreviewRenderer extends StandardContentPreviewRenderer implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
