@@ -213,7 +213,17 @@ RTE definition lists are also available inside the main RTE preset (toolbar plug
 
 ## Container elements (b13/container)
 
-Child content lives in **colPos 101** unless noted. Icons and labels in `locallang_db.xlf`.
+All five container CTypes register via `B13\Container\Tca\Registry::configureContainer()`.
+Child content lives in **colPos 101** for every container (shared by design — children are
+scoped by `tx_container_parent`, not colPos alone). Page backend layouts use colPos 0–4;
+**do not assign colPos 101 to page columns.**
+
+TypoScript: `Configuration/TypoScript/Setup/ContentElements/tt_content/ContainerElements.typoscript`
+(Site Set `mpc/mp-core-container`). Frontend rendering uses `ContainerProcessor` and
+`{children_101}` in Fluid templates.
+
+Shared wrapper field `grid_container` and palette `grid_container_pallet` are defined in
+`Configuration/TCA/Overrides/tt_content_00_container_shared.php`.
 
 ### Accordion (`ce_accordion`)
 
@@ -228,7 +238,9 @@ Child content lives in **colPos 101** unless noted. Icons and labels in `localla
 | `container_accordion_open` | check | First panel open |
 | `grid_container` | check | Width container |
 
-**Allowed child CTypes:** `header`, `text`, `textpic`, `ce_accordion`, `ce_container`
+**Allowed child CTypes:** same as tabs — `header`, `text`, `textpic`, `ce_accordion`, `ce_tabs`,
+`ce_container`, `mpc_vidply` (requires extension `mpc_vidply`). Accordion and tabs may nest
+each other. Listview/detail VidPly elements are intentionally excluded.
 
 ### Tabs (`ce_tabs`)
 
@@ -239,6 +251,8 @@ Child content lives in **colPos 101** unless noted. Icons and labels in `localla
 | `container_headline` | input | |
 | `container_tab_open` | check | Open first tab |
 | `grid_container` | check | |
+
+**Allowed child CTypes:** same list as accordion (see above).
 
 ### Slider (`ce_slider`)
 
@@ -269,6 +283,12 @@ Child content lives in **colPos 101** unless noted. Icons and labels in `localla
 ### Grid (`ce_grid`)
 
 **TCA:** `tt_content_grid.php` — Bootstrap column editor.
+
+Child elements share a **single backend drop zone** (colPos 101). On the frontend,
+[`Grid.html`](../Resources/Private/Templates/Container/Grid.html) distributes children
+**round-robin** across the configured number of columns (`grid_columns`, 1–4). Child
+**sort order** determines placement; `grid_col1`–`grid_col4` and offsets control column
+widths only.
 
 | Field | Type | Description |
 |-------|------|-------------|

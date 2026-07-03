@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+- b13/container elements: use `allowedContentTypes` on accordion (TYPO3 14+), extract shared
+  `grid_container` TCA, remove dead palette/cObject wiring, unify child rendering in
+  Accordion/Tabs templates.
+- Accordion, tabs and slider containers: shared `allowedContentTypes` (including nested accordion/tabs
+  and `mpc_vidply` inline player).
+
+### Fixed
+- Vue Swiper slider/gallery: initialize VidPly after slide HTML is injected via `v-html` and
+  pause playback when leaving a slide.
+
 ## [1.2.7] - 2026-06-30
 
 ### Fixed

@@ -39,11 +39,6 @@ lib {
       }
     }
   }
-
- mpcContainer {
-    renderContent = TEXT
-    renderContent.field = renderedContent
-  }
 }
 
 tt_content {

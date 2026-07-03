@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onBeforeMount, inject } from 'vue';
+import { ref, computed, onBeforeMount, onMounted, nextTick, inject } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import {
   A11y,
@@ -29,6 +29,7 @@ import {
   itemRoleDescriptionMessage
 } from '../code/i18n.js';
 import { bindEqualSwiperSlideHeights } from '../code/swiper-equal-heights.js';
+import { bindVidplySwiperLifecycle, notifyDynamicContentReady } from '../code/vidply-dynamic-content.js';
 
 // Swiper CSS is imported in vue.js entry point (swiper/css/bundle)
 // This ensures all Swiper CSS is bundled into vue.css
@@ -340,6 +341,12 @@ onBeforeMount(() => {
   }
 });
 
+onMounted(() => {
+  nextTick(() => {
+    notifyDynamicContentReady(mountElement);
+  });
+});
+
 // =============================================================================
 // EVENTS
 // =============================================================================
@@ -362,6 +369,8 @@ const onSwiper = (swiperInstance) => {
   swiperRef.value = swiperInstance;
   observeRedundantAria(swiperInstance);
   bindEqualSwiperSlideHeights(swiperInstance);
+  bindVidplySwiperLifecycle(swiperInstance);
+  notifyDynamicContentReady(mountElement);
 };
 
 // Note: Navigation is handled by Swiper's Navigation module via CSS selectors
