@@ -63,7 +63,7 @@
          aria-labelledby="heading-{record.uid}"
          data-bs-parent="{f:if(condition: '{data.container_accordion_toggle_all} != 1', then: '#accordion-{data.uid}')}">
         <div class="accordion-body">
-            {f:cObject(typoscriptObjectPath: 'lib.mpcContainer.renderContent', data: record)}
+            <f:format.raw>{record.renderedContent}</f:format.raw>
         </div>
     </div>
     </li></f:for></ul></div>
@@ -76,7 +76,7 @@
                 <li>
                     <details class="details-item"{f:if(condition:'{data.container_accordion_toggle} == 1 && {iterator.cycle} == {data.container_accordion_open}', then: ' open')}{f:if(condition:'{data.container_accordion_toggle_all} == 0', then:' name="details-item-{data.uid}"')}>
                         <summary data-bs-target="#accordion-{record.uid}">{record.header}</summary>
-                        {f:cObject(typoscriptObjectPath: 'lib.mpcContainer.renderContent', data: record)}
+                        <f:format.raw>{record.renderedContent}</f:format.raw>
                     </details>
                 </li>
             </f:for>

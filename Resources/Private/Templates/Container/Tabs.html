@@ -26,7 +26,7 @@
         <div class="tab-content" id="tab-content-{data.uid}">
             <f:for as="record" each="{children_101}" iteration="iterator">
                 <div aria-labelledby="tab-{record.uid}" class="ce-tab-pane tab-pane fade{f:if(condition:'{iterator.cycle}=={data.container_tab_open}',then:' show active')}" id="tab-content-{record.uid}" role="tabpanel">
-                    {f:cObject(typoscriptObjectPath: 'lib.mpcContainer.renderContent', data: record)}
+                    <f:format.raw>{record.renderedContent}</f:format.raw>
                 </div>
             </f:for>
         </div>

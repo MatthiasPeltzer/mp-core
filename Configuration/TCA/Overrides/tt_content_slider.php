@@ -7,14 +7,14 @@ use B13\Container\Tca\Registry;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-defined('TYPO3') || die();
+defined('TYPO3') or die('Access denied.');
 
 (static function (): void {
     /**
      * Register Slider
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        (new ContainerConfiguration(
+        new ContainerConfiguration(
             'ce_slider',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.description',
@@ -26,7 +26,7 @@ defined('TYPO3') || die();
                     ],
                 ],
             ]
-        ))
+        )
             ->setIcon('tx_slider')
             ->setSaveAndCloseInNewContentElementWizard(true)
     );
@@ -287,11 +287,5 @@ defined('TYPO3') || die();
     ExtensionManagementUtility::addTCAcolumns(
         'tt_content',
         $slider
-    );
-
-    ExtensionManagementUtility::addFieldsToPalette(
-        'tt_content',
-        'container',
-        'slider'
     );
 })();

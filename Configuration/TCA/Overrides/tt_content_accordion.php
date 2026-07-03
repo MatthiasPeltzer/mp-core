@@ -14,7 +14,7 @@ defined('TYPO3') or die('Access denied.');
      * Register accordion
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        (new ContainerConfiguration(
+        new ContainerConfiguration(
             'ce_accordion',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:accordion.description',
@@ -23,11 +23,11 @@ defined('TYPO3') or die('Access denied.');
                     [
                         'name' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:content',
                         'colPos' => 101,
-                        'allowed' => ['CType' => 'header, text, textpic, ce_accordion, ce_container'],
+                        'allowedContentTypes' => MP_CORE_PANEL_ALLOWED_CONTENT_TYPES,
                     ],
                 ],
             ]
-        ))
+        )
         ->setIcon('tx_accordion')
         ->setSaveAndCloseInNewContentElementWizard(true)
     );
@@ -205,11 +205,5 @@ defined('TYPO3') or die('Access denied.');
     ExtensionManagementUtility::addTCAcolumns(
         'tt_content',
         $accordionOpen
-    );
-
-    ExtensionManagementUtility::addFieldsToPalette(
-        'tt_content',
-        'container',
-        'container_accordion_toggle, container_accordion_open, --linebreak--'
     );
 })();

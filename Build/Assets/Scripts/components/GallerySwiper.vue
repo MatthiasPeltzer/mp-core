@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onBeforeMount, inject } from 'vue';
+import { ref, computed, onBeforeMount, onMounted, nextTick, inject } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import {
   A11y,
@@ -21,6 +21,7 @@ import {
   itemRoleDescriptionMessage
 } from '../code/i18n.js';
 import { bindEqualSwiperSlideHeights } from '../code/swiper-equal-heights.js';
+import { bindVidplySwiperLifecycle, notifyDynamicContentReady } from '../code/vidply-dynamic-content.js';
 
 /** TYPO3 mount target injected by vue-initialisation.js (avoids DOM query races). */
 const mountElement = inject('mpcMountElement', null);
@@ -226,6 +227,12 @@ onBeforeMount(() => {
   }
 });
 
+onMounted(() => {
+  nextTick(() => {
+    notifyDynamicContentReady(mountElement);
+  });
+});
+
 // =============================================================================
 // EVENTS
 // =============================================================================
@@ -248,6 +255,8 @@ const onMainSwiper = (swiper) => {
   mainSwiperRef.value = swiper;
   observeRedundantAria(swiper);
   bindEqualSwiperSlideHeights(swiper);
+  bindVidplySwiperLifecycle(swiper);
+  notifyDynamicContentReady(mountElement);
 };
 
 const onThumbsSwiper = (swiper) => {

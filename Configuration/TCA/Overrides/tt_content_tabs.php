@@ -14,7 +14,7 @@ defined('TYPO3') or die('Access denied.');
      * Register tabs
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        (new ContainerConfiguration(
+        new ContainerConfiguration(
             'ce_tabs',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tabs.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tabs.description',
@@ -23,10 +23,11 @@ defined('TYPO3') or die('Access denied.');
                     [
                         'name' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:content',
                         'colPos' => 101,
+                        'allowedContentTypes' => MP_CORE_PANEL_ALLOWED_CONTENT_TYPES,
                     ],
                 ],
             ]
-        ))
+        )
         ->setIcon('tx_tabs')
         ->setSaveAndCloseInNewContentElementWizard(true)
     );
@@ -77,11 +78,5 @@ defined('TYPO3') or die('Access denied.');
     ExtensionManagementUtility::addTCAcolumns(
         'tt_content',
         $tabOpen
-    );
-
-    ExtensionManagementUtility::addFieldsToPalette(
-        'tt_content',
-        'container',
-        'container_tab_open, --linebreak--'
     );
 })();

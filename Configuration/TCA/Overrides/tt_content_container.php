@@ -16,7 +16,7 @@ defined('TYPO3') or die('Access denied.');
      * Register container
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        (new ContainerConfiguration(
+        new ContainerConfiguration(
             'ce_container',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:container.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:container.description',
@@ -28,7 +28,7 @@ defined('TYPO3') or die('Access denied.');
                     ],
                 ],
             ]
-        ))
+        )
         ->setIcon('tx_container')
         ->setSaveAndCloseInNewContentElementWizard(false)
     );
@@ -206,26 +206,6 @@ defined('TYPO3') or die('Access denied.');
                 'default' => '0',
             ],
         ],
-        'grid_container' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.container',
-            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.container.description',
-            'displayCond' => 'FIELD:grid_icon_switch:=:0',
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bg.container',
-                        'labelChecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-                        'labelUnchecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.disabled',
-                    ],
-                ],
-                'default' => '0',
-            ],
-        ],
         'grid_bgimage' => [
             'exclude' => true,
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.bgimage.container',
@@ -278,10 +258,6 @@ defined('TYPO3') or die('Access denied.');
     $containerPalettes = [
         'grid_bg' => [
             'showitem' => 'grid_bgcolor,grid_light,grid_icon_switch,--linebreak--,grid_icon,--linebreak--,grid_bgimage,--linebreak--,grid_parallax',
-            'canNotCollapse' => 1,
-        ],
-        'grid_container_pallet' => [
-            'showitem' => 'grid_bgfullsize,grid_container',
             'canNotCollapse' => 1,
         ],
     ];
