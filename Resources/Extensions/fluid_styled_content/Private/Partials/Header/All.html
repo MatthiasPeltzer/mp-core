@@ -2,7 +2,7 @@
 <f:if condition="{data.header_layout} != 100">
     <f:if condition="{data.header} || {data.subheader} || {data.date}">
         <f:comment><!-- ce_modal: tx_link styles the built-in trigger only (see ContentElements.md) --></f:comment>
-        <f:variable name="headerTeaserLink">{f:if(condition: '{data.tx_link_switch} && {data.CType} != \'ce_modal\' && {data.tx_link_action} != \'modal\'', then: data.tx_link)}</f:variable>
+        <f:variable name="headerTeaserLink">{f:if(condition: '{data.tx_link} && {data.CType} != \'ce_modal\' && {data.tx_link_action} != \'modal\'', then: data.tx_link)}</f:variable>
         <header class="page-header ce-headline-{data.header_position}">
             <f:render arguments="{
 			header: data.header,
