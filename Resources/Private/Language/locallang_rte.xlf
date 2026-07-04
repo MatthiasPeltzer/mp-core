@@ -154,6 +154,9 @@
       <trans-unit id="style.link.chart" resname="style.link.chart">
         <source>Link: Chart</source>
       </trans-unit>
+      <trans-unit id="style.link.modal" resname="style.link.modal">
+        <source>Link: Modal</source>
+      </trans-unit>
       <trans-unit id="style.link.download" resname="style.link.download">
         <source>Link: Download</source>
       </trans-unit>

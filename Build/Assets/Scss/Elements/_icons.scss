@@ -34,6 +34,20 @@ $icon-mapping: (
   }
 }
 
+// RTE modal links: icon via ::before (no .icon child span)
+a.modal-link {
+  padding-left: 24px;
+  position: relative;
+
+  &::before {
+    @include masked-icon("#{$icon-base-path}icon-modal.svg", $icon-default-size);
+
+    background-color: var(--bs-body-color);
+    left: $icon-default-offset;
+    top: 1px;
+  }
+}
+
 // Base styles: General styles for icons
 a {
   .icon {

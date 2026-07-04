@@ -1543,6 +1543,10 @@
         <source>Only output the modal markup. Use link action “Open modal” on another content element to trigger it.</source>
         <target>Nur Modal-Markup ausgeben. Link-Aktion „Modal öffnen“ auf einem anderen Inhaltselement verwenden.</target>
       </trans-unit>
+      <trans-unit id="modal.linkhandler.label" resname="modal.linkhandler.label" approved="yes">
+        <source>Modal</source>
+        <target>Modal</target>
+      </trans-unit>
       <trans-unit id="tt_content.CType.div._gallery_" resname="tt_content.CType.div._gallery_" approved="yes">
         <source>Gallery</source>
         <target>Galerie</target>

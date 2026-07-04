@@ -13,6 +13,19 @@ mod.wizards.newContentElement.wizardItems.container {
   show := addToList(ce_modal)
 }
 
+TCEMAIN {
+  linkHandler {
+    tx_mpcore_modal {
+      handler = Mpc\MpCore\LinkHandler\ModalRecordLinkHandler
+      label = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:modal.linkhandler.label
+      scanBefore = url
+      configuration {
+        table = tt_content
+      }
+    }
+  }
+}
+
 TCEFORM {
   tt_content {
     tx_header_inside {

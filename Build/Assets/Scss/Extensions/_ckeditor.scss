@@ -32,6 +32,8 @@
     &.legal,
     &.gallery,
     &.chart,
+    &.modal-link,
+    &[href^="t3://record?identifier=tx_mpcore_modal"],
     .list-scroll & {
       padding-left: 24px;
       position: relative;
@@ -177,6 +179,17 @@
 
         @include forced-colors {
           background-image: url("@assets/Images/Icons/icon-chart.svg");
+        }
+      }
+    }
+
+    &.modal-link,
+    &[href^="t3://record?identifier=tx_mpcore_modal"] {
+      &::before {
+        mask-image: url("@assets/Images/Icons/icon-modal.svg");
+
+        @include forced-colors {
+          background-image: url("@assets/Images/Icons/icon-modal.svg");
         }
       }
     }

@@ -1,0 +1,20 @@
+# Render RTE / link browser modal record links as Bootstrap modal triggers.
+config {
+  recordLinks {
+    tx_mpcore_modal {
+      forceLink = 1
+      typolink {
+        parameter {
+          data = field:uid
+          wrap = #modal-|
+        }
+
+        ATagParams.cObject = TEXT
+        ATagParams.cObject {
+          data = field:uid
+          wrap = class="modal-link" data-bs-toggle="modal" data-bs-target="#modal-|"
+        }
+      }
+    }
+  }
+}

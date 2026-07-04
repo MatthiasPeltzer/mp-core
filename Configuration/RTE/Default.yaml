@@ -87,6 +87,7 @@ editor:
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.legal', element: 'a', classes: [ 'legal' ] }
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.gallery', element: 'a', classes: [ 'gallery' ] }
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.chart', element: 'a', classes: [ 'chart' ] }
+        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.modal', element: 'a', classes: [ 'modal-link' ] }
 
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.text.lowercase', element: 'span', classes: [ 'text-lowercase' ] }
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.text.uppercase', element: 'span', classes: [ 'text-uppercase' ] }
@@ -198,8 +199,80 @@ editor:
         - { name: 'h5', classes: true }
         - { name: 'h6', classes: true }
 
+classesAnchor:
+  - { class: 'internal-link', type: 'page' }
+  - { class: 'gallery', type: 'page' }
+  - { class: 'glossary', type: 'page' }
+  - { class: 'public', type: 'page' }
+  - { class: 'legal', type: 'page' }
+  - { class: 'chart', type: 'page' }
+  - { class: 'audio', type: 'page' }
+  - { class: 'video', type: 'page' }
+  - { class: 'external-link', type: 'url', target: '_blank' }
+  - { class: 'download', type: 'file' }
+  - { class: 'download', type: 'folder' }
+  - { class: 'email', type: 'email' }
+  - { class: 'phone', type: 'telephone' }
+  - { class: 'modal-link', type: 'tx_mpcore_modal' }
+
+classes:
+  internal-link:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.internal'
+  external-link:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.external'
+  download:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.download'
+  email:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.email'
+  phone:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.phone'
+  audio:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.audio'
+  video:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.video'
+  glossary:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.glossary'
+  public:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.public'
+  legal:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.legal'
+  gallery:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.gallery'
+  chart:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.chart'
+  modal-link:
+    name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.link.modal'
+
 buttons:
   link:
     properties:
       class:
-        allowedClasses: 'internal-link, external-link, download, email, phone, audio, video, glossary, public, legal, gallery, chart'
+        allowedClasses: 'internal-link, external-link, download, email, phone, audio, video, glossary, public, legal, gallery, chart, modal-link'
+    page:
+      properties:
+        class:
+          default: 'internal-link'
+    url:
+      properties:
+        class:
+          default: 'external-link'
+    file:
+      properties:
+        class:
+          default: 'download'
+    folder:
+      properties:
+        class:
+          default: 'download'
+    email:
+      properties:
+        class:
+          default: 'email'
+    telephone:
+      properties:
+        class:
+          default: 'phone'
+    tx_mpcore_modal:
+      properties:
+        class:
+          default: 'modal-link'
