@@ -46,11 +46,12 @@ final class StructuredDataProcessorTest extends TestCase
     }
 
     #[Test]
-    public function resolvesPublisherTypeFromSettingsThenConfigThenDefault(): void
+    public function isStructuredDataEnabledRequiresBothToggles(): void
     {
-        self::assertSame('Organization', $this->invoke('resolvePublisherSchemaType', $this->site(['seo' => ['schema' => ['organizationType' => 'Organization']]])));
-        self::assertSame('LocalBusiness', $this->invoke('resolvePublisherSchemaType', $this->site([], ['schemaType' => 'LocalBusiness'])));
-        self::assertSame('Person', $this->invoke('resolvePublisherSchemaType', $this->site()));
+        self::assertTrue($this->invoke('isStructuredDataEnabled', $this->site()));
+        self::assertTrue($this->invoke('isStructuredDataEnabled', $this->site(['structuredDataEnabled' => true, 'seo' => ['schema' => ['enabled' => true]]])));
+        self::assertFalse($this->invoke('isStructuredDataEnabled', $this->site(['structuredDataEnabled' => false])));
+        self::assertFalse($this->invoke('isStructuredDataEnabled', $this->site(['seo' => ['schema' => ['enabled' => false]]])));
     }
 
     #[Test]

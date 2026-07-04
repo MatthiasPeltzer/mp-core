@@ -90,7 +90,10 @@ final class FaqPageJsonLdViewHelper extends AbstractViewHelper
             return true;
         }
 
-        return filter_var($site->getSettings()->get('structuredDataEnabled') ?? true, FILTER_VALIDATE_BOOLEAN);
+        $settings = $site->getSettings();
+
+        return filter_var($settings->get('structuredDataEnabled') ?? true, FILTER_VALIDATE_BOOLEAN)
+            && filter_var($settings->get('seo.schema.enabled') ?? true, FILTER_VALIDATE_BOOLEAN);
     }
 
     private function plainText(string $html): string

@@ -247,3 +247,37 @@ foreach (['localized-variables' => $localizableKeys, 'localized-variables-logo' 
     ];
     $GLOBALS['SiteConfiguration']['site_language']['types']['1']['showitem'] .= ',--palette--;;' . $paletteName;
 }
+
+// --- Language-specific llms.txt content (mp_core SEO) ---
+// Per-language overrides for the generated /llms.txt (falls back to the global
+// seo.meta.defaultDescription / seo.llmsTxt.intro Site Settings when empty).
+
+$lllLlms = 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:site.configuration.';
+
+$GLOBALS['SiteConfiguration']['site_language']['columns']['llmsTxtDescription'] = [
+    'label' => $lllLlms . 'llmsTxtDescription.label',
+    'description' => $lllLlms . 'llmsTxtDescription.description',
+    'config' => [
+        'type' => 'text',
+        'rows' => 3,
+        'cols' => 40,
+        'max' => 500,
+    ],
+];
+
+$GLOBALS['SiteConfiguration']['site_language']['columns']['llmsTxtIntro'] = [
+    'label' => $lllLlms . 'llmsTxtIntro.label',
+    'description' => $lllLlms . 'llmsTxtIntro.description',
+    'config' => [
+        'type' => 'text',
+        'rows' => 5,
+        'cols' => 40,
+        'max' => 2000,
+    ],
+];
+
+$GLOBALS['SiteConfiguration']['site_language']['palettes']['llmstxt'] = [
+    'label' => $lllLlms . 'llmstxt.palette.label',
+    'showitem' => 'llmsTxtDescription, llmsTxtIntro',
+];
+$GLOBALS['SiteConfiguration']['site_language']['types']['1']['showitem'] .= ',--palette--;;llmstxt';

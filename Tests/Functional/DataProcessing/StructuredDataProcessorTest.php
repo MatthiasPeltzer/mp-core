@@ -42,10 +42,11 @@ final class StructuredDataProcessorTest extends FunctionalTestCase
         $this->writeStructuredDataSiteConfiguration();
     }
 
-    private function writeStructuredDataSiteConfiguration(): void
+    private function writeStructuredDataSiteConfiguration(bool $schemaEnabled = true): void
     {
         $path = Environment::getConfigPath() . '/sites/mpcore';
         GeneralUtility::mkdir_deep($path);
+        $enabled = $schemaEnabled ? 'true' : 'false';
         GeneralUtility::writeFile(
             $path . '/config.yaml',
             "rootPageId: 1\n"
@@ -58,7 +59,22 @@ final class StructuredDataProcessorTest extends FunctionalTestCase
             . "    base: /\n"
             . "    locale: en_US.UTF-8\n"
             . "settings:\n"
-            . "  structuredDataEnabled: true\n",
+            . "  structuredDataEnabled: true\n"
+            . "  seo:\n"
+            . "    schema:\n"
+            . "      enabled: {$enabled}\n"
+            . "      organizationType: 'Organization'\n"
+            . "      legalName: 'Acme GmbH'\n"
+            . "      email: 'info@example.com'\n"
+            . "      telephone: '+49 30 1234567'\n"
+            . "      address:\n"
+            . "        streetAddress: 'Main Street 1'\n"
+            . "        addressLocality: 'Berlin'\n"
+            . "        postalCode: '10115'\n"
+            . "        addressCountry: 'DE'\n"
+            . "      contactPoint:\n"
+            . "        contactType: 'customer service'\n"
+            . "        email: 'support@example.com'\n",
         );
     }
 
@@ -101,6 +117,31 @@ final class StructuredDataProcessorTest extends FunctionalTestCase
     }
 
     #[Test]
+    public function rendersOrganizationIdentityContactAndAddress(): void
+    {
+        $graph = $this->renderGraphIndexedByType();
+
+        $organization = $graph['Organization'];
+        self::assertSame('Acme GmbH', $organization['legalName']);
+        self::assertSame('info@example.com', $organization['email']);
+        self::assertSame('+49 30 1234567', $organization['telephone']);
+
+        self::assertSame([
+            '@type' => 'PostalAddress',
+            'streetAddress' => 'Main Street 1',
+            'addressLocality' => 'Berlin',
+            'postalCode' => '10115',
+            'addressCountry' => 'DE',
+        ], $organization['address']);
+
+        self::assertSame([
+            '@type' => 'ContactPoint',
+            'contactType' => 'customer service',
+            'email' => 'support@example.com',
+        ], $organization['contactPoint']);
+    }
+
+    #[Test]
     public function rendersWebPageAndBreadcrumbForCurrentPage(): void
     {
         $graph = $this->renderGraphIndexedByType();
@@ -110,10 +151,25 @@ final class StructuredDataProcessorTest extends FunctionalTestCase
         self::assertSame('http://localhost/', $graph['WebPage']['url']);
         self::assertSame('Welcome to Acme', $graph['WebPage']['description']);
 
+        // The WebPage references the BreadcrumbList by its stable @id.
         self::assertArrayHasKey('BreadcrumbList', $graph);
+        self::assertSame($graph['BreadcrumbList']['@id'], $graph['WebPage']['breadcrumb']['@id']);
+
         $items = $graph['BreadcrumbList']['itemListElement'];
         self::assertNotEmpty($items);
         self::assertSame('Home', $items[0]['name']);
         self::assertSame('http://localhost/', $items[0]['item']);
+    }
+
+    #[Test]
+    public function omitsJsonLdWhenSchemaDisabled(): void
+    {
+        $this->writeStructuredDataSiteConfiguration(false);
+
+        $response = $this->executeFrontendSubRequest((new InternalRequest('http://localhost/'))->withPageId(1));
+        $body = (string)$response->getBody();
+
+        self::assertSame(1, preg_match('~<body>(.*)</body>~s', $body, $matches));
+        self::assertSame('', trim($matches[1]));
     }
 }

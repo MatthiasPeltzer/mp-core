@@ -8,15 +8,20 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Mpc\MpCore\Service\LanguageAwarePageRepositoryFactory;
+use Mpc\MpCore\Service\LlmsTxtNewsProvider;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Routing\InvalidRouteArgumentsException;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Serves llms.txt: a concise markdown site map for AI agents.
+ * Serves llms.txt: a concise markdown site map for AI agents. A localized
+ * variant is served per enabled site language (`/llms.txt`, `/en/llms.txt`, …),
+ * each listing that language's pages and cross-linking the other variants.
  */
 final class LlmsTxtMiddleware implements MiddlewareInterface
 {
@@ -37,15 +42,29 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
         255,
     ];
 
+    private readonly LlmsTxtNewsProvider $newsProvider;
+    private readonly LanguageAwarePageRepositoryFactory $pageRepositoryFactory;
+
     public function __construct(
         private readonly PageRepository $pageRepository,
         private readonly FrontendInterface $cache,
-    ) {}
+        ?LlmsTxtNewsProvider $newsProvider = null,
+        ?LanguageAwarePageRepositoryFactory $pageRepositoryFactory = null,
+    ) {
+        $this->newsProvider = $newsProvider ?? GeneralUtility::makeInstance(LlmsTxtNewsProvider::class);
+        $this->pageRepositoryFactory = $pageRepositoryFactory
+            ?? GeneralUtility::makeInstance(LanguageAwarePageRepositoryFactory::class);
+    }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $site = $request->getAttribute('site');
-        if (!$site instanceof Site || !$this->matchesSitePath($request, $site, 'llms.txt')) {
+        if (!$site instanceof Site) {
+            return $handler->handle($request);
+        }
+
+        $language = $this->matchesLanguageFile($request, $site, 'llms.txt');
+        if ($language === null) {
             return $handler->handle($request);
         }
 
@@ -53,12 +72,11 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        $language = $this->resolveSiteLanguage($request, $site);
         $cacheIdentifier = $this->geoTextCacheIdentifier('llms', $site, $language);
 
         $content = $this->cache->get($cacheIdentifier);
         if (!is_string($content)) {
-            $content = $this->buildLlmsTxt($request, $site);
+            $content = $this->buildLlmsTxt($site, $language);
             $this->cache->set(
                 $cacheIdentifier,
                 $content,
@@ -72,17 +90,19 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
         ]);
     }
 
-    private function buildLlmsTxt(ServerRequestInterface $request, Site $site): string
+    private function buildLlmsTxt(Site $site, SiteLanguage $language): string
     {
         $siteConfig = $site->getConfiguration();
-        $websiteTitle = trim((string)($siteConfig['websiteTitle'] ?? ''));
+        $websiteTitle = $this->languageAttribute($language, 'websiteTitle')
+            ?: trim((string)($siteConfig['websiteTitle'] ?? ''));
         if ($websiteTitle === '') {
             $websiteTitle = 'Website';
         }
 
-        $description = trim((string)$this->resolveSiteSetting($site, 'seo.meta.defaultDescription', ''));
-        $baseUrl = $this->resolveSiteBaseUrl($site);
-        $language = $this->resolveSiteLanguage($request, $site);
+        // Per-language override (Site config → Languages) with global setting fallback.
+        $description = $this->languageAttribute($language, 'llmsTxtDescription')
+            ?: trim((string)$this->resolveSiteSetting($site, 'seo.meta.defaultDescription', ''));
+        $languageBaseUrl = rtrim((string)$language->getBase(), '/');
 
         $lines = [
             '# ' . $websiteTitle,
@@ -90,11 +110,20 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
         ];
 
         if ($description !== '') {
-            $lines[] = $description;
+            $lines[] = '> ' . $description;
             $lines[] = '';
         }
 
-        foreach ($this->resolveMenuPages($site, $language, $site->getRootPageId()) as $section) {
+        $intro = $this->languageAttribute($language, 'llmsTxtIntro')
+            ?: trim((string)$this->resolveSiteSetting($site, 'seo.llmsTxt.intro', ''));
+        if ($intro !== '') {
+            $lines[] = trim(preg_replace('/\n{3,}/', "\n\n", str_replace("\r\n", "\n", $intro)) ?? $intro);
+            $lines[] = '';
+        }
+
+        $menuRepository = $this->menuRepository($language);
+
+        foreach ($this->resolveMenuPages($menuRepository, $site, $language, $site->getRootPageId()) as $section) {
             $lines[] = '## [' . $section['title'] . '](' . $section['url'] . ')';
 
             if ($section['description'] !== '') {
@@ -102,7 +131,7 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
                 $lines[] = $section['description'];
             }
 
-            $children = $this->resolveMenuPages($site, $language, $section['uid']);
+            $children = $this->resolveMenuPages($menuRepository, $site, $language, $section['uid']);
             if ($children !== []) {
                 $lines[] = '';
                 foreach ($children as $child) {
@@ -117,11 +146,193 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
             $lines[] = '';
         }
 
+        foreach ($this->buildNewsSection($site, $language) as $line) {
+            $lines[] = $line;
+        }
+
+        foreach ($this->buildAboutSection($site) as $line) {
+            $lines[] = $line;
+        }
+
+        $languageLinks = $this->resolveLanguageLinks($site, $language);
+        if ($languageLinks !== []) {
+            $lines[] = '## Languages';
+            $lines[] = '';
+            foreach ($languageLinks as $link) {
+                $lines[] = '- ' . $link;
+            }
+            $lines[] = '';
+        }
+
         $lines[] = '## Sitemap';
         $lines[] = '';
-        $lines[] = '- [XML Sitemap](' . $baseUrl . '/sitemap.xml)';
+        $lines[] = '- [XML Sitemap](' . $languageBaseUrl . '/sitemap.xml)';
 
         return rtrim(implode("\n", $lines)) . "\n";
+    }
+
+    /**
+     * Markdown links to each enabled language's llms.txt (only when the site has
+     * more than one language), with the current language marked.
+     *
+     * @return list<string>
+     */
+    private function resolveLanguageLinks(Site $site, SiteLanguage $current): array
+    {
+        $languages = $site->getLanguages();
+        if (count($languages) < 2) {
+            return [];
+        }
+
+        $links = [];
+        foreach ($languages as $language) {
+            $label = trim($language->getNavigationTitle()) ?: trim($language->getTitle());
+            if ($label === '') {
+                $label = $language->getHreflang() ?: ('language ' . $language->getLanguageId());
+            }
+            $url = rtrim((string)$language->getBase(), '/') . '/llms.txt';
+            $marker = $language->getLanguageId() === $current->getLanguageId() ? ' (current)' : '';
+            $links[] = '[' . $label . '](' . $url . ')' . $marker;
+        }
+
+        return $links;
+    }
+
+    /**
+     * "Latest news" section, listing the most recent EXT:news articles for the
+     * current language. Returns an empty list when the news storage/detail page
+     * is not configured or EXT:news is unavailable.
+     *
+     * @return list<string>
+     */
+    private function buildNewsSection(Site $site, SiteLanguage $language): array
+    {
+        $storagePids = $this->parseIntList((string)$this->resolveSiteSetting($site, 'seo.llmsTxt.news.storagePid', ''));
+        $detailPageId = (int)$this->resolveSiteSetting($site, 'seo.llmsTxt.news.detailPageId', 0);
+        $limit = max(1, (int)$this->resolveSiteSetting($site, 'seo.llmsTxt.news.limit', 5));
+
+        $items = $this->newsProvider->recentNews($site, $language, $storagePids, $detailPageId, $limit);
+        if ($items === []) {
+            return [];
+        }
+
+        $lines = ['## Latest news', ''];
+        foreach ($items as $item) {
+            $line = '- [' . $item['title'] . '](' . $item['url'] . ')';
+            $teaser = $this->truncate($item['teaser']);
+            if ($teaser !== '') {
+                $line .= ': ' . $teaser;
+            }
+            $lines[] = $line;
+        }
+        $lines[] = '';
+
+        return $lines;
+    }
+
+    /**
+     * "About" section describing the publisher, derived from the shared
+     * `seo.schema.*` Site Settings. Omitted when no publisher details are set.
+     *
+     * @return list<string>
+     */
+    private function buildAboutSection(Site $site): array
+    {
+        $settings = $site->getSettings();
+        $email = trim((string)($settings->get('seo.schema.email') ?? ''));
+        $legalName = trim((string)($settings->get('seo.schema.legalName') ?? ''));
+        $topics = $this->parseStringList((string)($settings->get('seo.schema.knowsAbout') ?? ''));
+
+        if ($email === '' && $legalName === '' && $topics === []) {
+            return [];
+        }
+
+        $config = $site->getConfiguration();
+        $type = trim((string)($settings->get('seo.schema.organizationType') ?? ''))
+            ?: trim((string)($config['schemaType'] ?? ''))
+            ?: 'Person';
+
+        if ($type === 'Person') {
+            // A Person's name is the given + family name (as used by
+            // PublisherSchemaBuilder), not the website title.
+            $name = trim(
+                trim((string)($config['schemaGivenName'] ?? ''))
+                . ' '
+                . trim((string)($config['schemaFamilyName'] ?? ''))
+            );
+            if ($name === '') {
+                $name = trim((string)($settings->get('seo.schema.alternateName') ?? ''));
+            }
+        } else {
+            $name = $legalName;
+        }
+
+        if ($name === '') {
+            $name = trim((string)($config['websiteTitle'] ?? ''));
+        }
+
+        $lines = ['## About', ''];
+        if ($name !== '') {
+            $lines[] = '- Publisher: ' . $name . ' (' . $type . ')';
+        }
+        if ($email !== '') {
+            $lines[] = '- Email: ' . $email;
+        }
+        if ($topics !== []) {
+            $lines[] = '- Topics: ' . implode(', ', $topics);
+        }
+        $lines[] = '';
+
+        return $lines;
+    }
+
+    /**
+     * PageRepository used to resolve the page menu. The default language uses the
+     * injected (default-context) repository; other languages get a language-aware
+     * repository so `getMenu()` returns the correct translation overlay.
+     */
+    private function menuRepository(SiteLanguage $language): PageRepository
+    {
+        if ($language->getLanguageId() === 0) {
+            return $this->pageRepository;
+        }
+
+        return $this->pageRepositoryFactory->create($language);
+    }
+
+    /**
+     * Reads a custom per-language attribute from the Site Configuration
+     * (Languages → site_language), e.g. `llmsTxtIntro`, returning '' when unset.
+     */
+    private function languageAttribute(SiteLanguage $language, string $key): string
+    {
+        $value = $language->toArray()[$key] ?? '';
+
+        return is_string($value) ? trim($value) : '';
+    }
+
+    /**
+     * @return list<int>
+     */
+    private function parseIntList(string $raw): array
+    {
+        $ints = [];
+        foreach (explode(',', $raw) as $part) {
+            $part = trim($part);
+            if ($part !== '' && ctype_digit($part)) {
+                $ints[] = (int)$part;
+            }
+        }
+
+        return $ints;
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function parseStringList(string $raw): array
+    {
+        return array_values(array_filter(array_map(trim(...), explode(',', $raw))));
     }
 
     /**
@@ -129,13 +340,17 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
      *
      * @return list<array{uid: int, title: string, url: string, description: string}>
      */
-    private function resolveMenuPages(Site $site, SiteLanguage $language, int $parentPageId): array
-    {
+    private function resolveMenuPages(
+        PageRepository $pageRepository,
+        Site $site,
+        SiteLanguage $language,
+        int $parentPageId
+    ): array {
         // Select `*`: TYPO3 core documents that restricting getMenu()'s field
         // list breaks its internal shortcut resolution (sub-methods rely on
         // fields like `doktype`/`shortcut`).
         $additionalWhere = 'pages.no_index = 0 AND pages.nav_hide = 0';
-        $menuPages = $this->pageRepository->getMenu(
+        $menuPages = $pageRepository->getMenu(
             $parentPageId,
             '*',
             'sorting',
@@ -183,6 +398,15 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
     private function resolvePageDescription(array $page): string
     {
         $text = (string)(($page['description'] ?? '') ?: ($page['abstract'] ?? ''));
+
+        return $this->truncate($text);
+    }
+
+    /**
+     * Strips tags, collapses whitespace and truncates to the description limit.
+     */
+    private function truncate(string $text): string
+    {
         $text = trim(preg_replace('/\s+/u', ' ', strip_tags($text)) ?? '');
         if ($text === '') {
             return '';

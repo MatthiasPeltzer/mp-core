@@ -22,10 +22,35 @@ seo.canonical.enabled: true
 
 seo.schema.enabled: true
 seo.schema.organizationType: 'Organization'
+seo.schema.legalName: ''
+seo.schema.alternateName: ''
+seo.schema.description: ''
+seo.schema.foundingDate: ''
+seo.schema.vatId: ''
+seo.schema.taxId: ''
+seo.schema.knowsAbout: ''
+seo.schema.person.jobTitle: ''
+seo.schema.email: ''
+seo.schema.telephone: ''
+seo.schema.contactPoint.contactType: 'customer service'
+seo.schema.contactPoint.telephone: ''
+seo.schema.contactPoint.email: ''
+seo.schema.contactPoint.areaServed: ''
+seo.schema.contactPoint.availableLanguage: ''
+seo.schema.address.streetAddress: ''
+seo.schema.address.addressLocality: ''
+seo.schema.address.postalCode: ''
+seo.schema.address.addressRegion: ''
+seo.schema.address.addressCountry: ''
 
 seo.robots.enabled: true
 seo.robots.allowAiBots: true
+seo.robots.crawlDelay: 0
 seo.robots.additional: ''
 
 seo.llmsTxt.enabled: true
+seo.llmsTxt.intro: ''
+seo.llmsTxt.news.storagePid: ''
+seo.llmsTxt.news.detailPageId: 0
+seo.llmsTxt.news.limit: 5
 

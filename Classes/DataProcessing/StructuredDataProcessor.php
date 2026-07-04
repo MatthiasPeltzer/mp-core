@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Mpc\MpCore\DataProcessing;
 
 use Mpc\MpCore\Enum\StructuredDataExtraEntityType;
+use Mpc\MpCore\Schema\PublisherSchemaBuilder;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Routing\PageArguments;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use TYPO3\CMS\Frontend\Page\PageInformation;
@@ -18,14 +20,13 @@ use TYPO3\CMS\Frontend\Page\PageInformation;
 /**
  * Builds one Schema.org JSON-LD @graph with json_encode for safe output.
  *
- * Publisher @type resolution order (single source of truth with NewsArticleJsonLdViewHelper):
- * 1) site.settings seo.schema.organizationType (mp-core-seo Site Settings)
- * 2) site.configuration schemaType (site YAML / Site Configuration)
- * 3) default Person
+ * The publisher (Organization / Person) node is assembled by the shared
+ * {@see PublisherSchemaBuilder} so the site-wide @graph and the NewsArticle
+ * markup stay in sync.
  */
 final class StructuredDataProcessor implements DataProcessorInterface
 {
-    private const DEFAULT_PUBLISHER_TYPE = 'Person';
+    public function __construct(private ?PublisherSchemaBuilder $publisherBuilder = null) {}
 
     /**
      * Project-specific doktype representing a blog/news style page (BlogPosting).
@@ -63,9 +64,7 @@ final class StructuredDataProcessor implements DataProcessorInterface
             return $processedData;
         }
 
-        $settings = $site->getSettings();
-        $structuredEnabled = filter_var($settings->get('structuredDataEnabled') ?? true, FILTER_VALIDATE_BOOLEAN);
-        if (!$structuredEnabled) {
+        if (!$this->isStructuredDataEnabled($site)) {
             $processedData['structuredDataJsonLd'] = '';
 
             return $processedData;
@@ -87,7 +86,6 @@ final class StructuredDataProcessor implements DataProcessorInterface
         }
 
         $siteConfig = $site->getConfiguration();
-        $publisherType = $this->resolvePublisherSchemaType($site);
         $websiteTitle = (string)($siteConfig['websiteTitle'] ?? '');
         $homeUrl = $this->absolutePageUrl($cObj, $site->getRootPageId());
 
@@ -96,21 +94,7 @@ final class StructuredDataProcessor implements DataProcessorInterface
 
         $graph = [];
 
-        $givenName = $publisherType !== 'Organization' ? trim((string)($siteConfig['schemaGivenName'] ?? '')) : '';
-        $familyName = $publisherType !== 'Organization' ? trim((string)($siteConfig['schemaFamilyName'] ?? '')) : '';
-
-        $publisher = array_filter([
-            '@type' => $publisherType,
-            '@id' => $publisherId,
-            'name' => $websiteTitle,
-            'url' => $homeUrl,
-            'givenName' => $givenName !== '' ? $givenName : null,
-            'familyName' => $familyName !== '' ? $familyName : null,
-            'logo' => $this->buildLogoObject($cObj, $siteConfig['logoBig'] ?? ''),
-            'sameAs' => $processedData['socialMediaUrls'] ?? [],
-        ], static fn ($v) => $v !== null && $v !== '' && $v !== []);
-
-        $graph[] = $publisher;
+        $graph[] = $this->builder()->build($cObj, $site, $homeUrl, $publisherId, $processedData['socialMediaUrls'] ?? []);
 
         $webSite = [
             '@type' => 'WebSite',
@@ -139,16 +123,23 @@ final class StructuredDataProcessor implements DataProcessorInterface
             $graph[] = $extraEntity;
         }
 
+        // The BreadcrumbList is built first so the WebPage can reference it by
+        // @id (and so a WebPage.breadcrumb reference never dangles).
+        $breadcrumbItems = $this->buildBreadcrumbList($cObj, $request);
+        $currentPageUrl = $this->absolutePageUrl($cObj, (int)($pageRow['uid'] ?? 0));
+        $breadcrumbId = ($breadcrumbItems !== [] && $currentPageUrl !== '') ? $currentPageUrl . '#breadcrumb' : '';
+
         if (!$this->isNewsDetailRequest($request)) {
-            $graph[] = $this->buildWebPageEntity($cObj, $site, $pageRow, $processedData, $publisherId, $websiteId);
+            $graph[] = $this->buildWebPageEntity($cObj, $site, $pageRow, $processedData, $publisherId, $websiteId, $currentPageUrl, $breadcrumbId);
         }
 
-        $breadcrumbItems = $this->buildBreadcrumbList($cObj, $request);
         if ($breadcrumbItems !== []) {
-            $graph[] = [
-                '@type' => 'BreadcrumbList',
-                'itemListElement' => $breadcrumbItems,
-            ];
+            $breadcrumbList = ['@type' => 'BreadcrumbList'];
+            if ($breadcrumbId !== '') {
+                $breadcrumbList['@id'] = $breadcrumbId;
+            }
+            $breadcrumbList['itemListElement'] = $breadcrumbItems;
+            $graph[] = $breadcrumbList;
         }
 
         $payload = [
@@ -212,7 +203,7 @@ final class StructuredDataProcessor implements DataProcessorInterface
 
         $imageRef = $this->resolveExtraEntityImageReference($site);
         if ($imageRef !== '') {
-            $imgObj = $this->buildLogoObject($cObj, $imageRef);
+            $imgObj = $this->builder()->buildImageObject($cObj, $imageRef);
             if ($imgObj !== []) {
                 $entity['image'] = $imgObj;
             }
@@ -307,20 +298,21 @@ final class StructuredDataProcessor implements DataProcessorInterface
         return $default;
     }
 
-    private function resolvePublisherSchemaType(Site $site): string
+    private function builder(): PublisherSchemaBuilder
+    {
+        return $this->publisherBuilder ??= GeneralUtility::makeInstance(PublisherSchemaBuilder::class);
+    }
+
+    /**
+     * JSON-LD is emitted only when both the base structuredDataEnabled toggle
+     * and the seo.schema.enabled SEO toggle are truthy (both default to true).
+     */
+    private function isStructuredDataEnabled(Site $site): bool
     {
         $settings = $site->getSettings();
-        $fromSeo = trim((string)($settings->get('seo.schema.organizationType') ?? ''));
-        if ($fromSeo !== '') {
-            return $fromSeo;
-        }
 
-        $fromConfig = trim((string)($site->getConfiguration()['schemaType'] ?? ''));
-        if ($fromConfig !== '') {
-            return $fromConfig;
-        }
-
-        return self::DEFAULT_PUBLISHER_TYPE;
+        return filter_var($settings->get('structuredDataEnabled') ?? true, FILTER_VALIDATE_BOOLEAN)
+            && filter_var($settings->get('seo.schema.enabled') ?? true, FILTER_VALIDATE_BOOLEAN);
     }
 
     private function currentHreflang(Site $site, ServerRequestInterface $request): string
@@ -362,10 +354,10 @@ final class StructuredDataProcessor implements DataProcessorInterface
         array $pageRow,
         array $processedData,
         string $publisherId,
-        string $websiteId
+        string $websiteId,
+        string $canonicalUrl,
+        string $breadcrumbId
     ): array {
-        $uid = (int)($pageRow['uid'] ?? 0);
-        $canonicalUrl = $this->absolutePageUrl($cObj, $uid);
         $doktype = (int)($pageRow['doktype'] ?? 0);
         $isBlog = $doktype === self::BLOG_DOKTYPE;
 
@@ -380,6 +372,10 @@ final class StructuredDataProcessor implements DataProcessorInterface
             'isPartOf' => ['@id' => $websiteId],
             'publisher' => ['@id' => $publisherId],
         ];
+
+        if ($breadcrumbId !== '') {
+            $entity['breadcrumb'] = ['@id' => $breadcrumbId];
+        }
 
         if ($description !== '') {
             $entity['description'] = mb_substr($description, 0, 500);
@@ -398,6 +394,10 @@ final class StructuredDataProcessor implements DataProcessorInterface
         $imageUrl = $this->resolveFirstPageMediaUrl($cObj, $processedData['pageMedia'] ?? []);
         if ($imageUrl !== '') {
             $entity['image'] = $imageUrl;
+            $entity['primaryImageOfPage'] = [
+                '@type' => 'ImageObject',
+                'url' => $imageUrl,
+            ];
         }
 
         if (!empty($pageRow['crdate'])) {
@@ -533,35 +533,6 @@ final class StructuredDataProcessor implements DataProcessorInterface
         }
 
         return rtrim($normalizedParams->getSiteUrl(), '/') . '/' . ltrim($publicUrl, '/');
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    private function buildLogoObject(ContentObjectRenderer $cObj, string $logoReference): array
-    {
-        if ($logoReference === '') {
-            return [];
-        }
-        $local = $cObj->cObjGetSingle('IMG_RESOURCE', [
-            'file' => $logoReference,
-            'file.' => [
-                'treatIdAsReference' => 1,
-            ],
-        ]);
-        if ($local === '' || !is_string($local)) {
-            return [];
-        }
-        $normalizedParams = $cObj->getRequest()->getAttribute('normalizedParams');
-        if ($normalizedParams === null) {
-            return [];
-        }
-        $url = $normalizedParams->getSiteUrl() . ltrim($local, '/');
-
-        return [
-            '@type' => 'ImageObject',
-            'url' => $url,
-        ];
     }
 
     private function plainText(string $html): string

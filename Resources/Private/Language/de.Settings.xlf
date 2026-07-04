@@ -699,6 +699,166 @@
         <source>Organization Type</source>
         <target>Organisationstyp</target>
       </trans-unit>
+      <trans-unit id="seo.schema.legalName.form.description" resname="seo.schema.legalName.form.description" approved="yes">
+        <source>Registered legal name of the organization (Organization types only)</source>
+        <target>Eingetragener rechtlicher Name der Organisation (nur für Organization-Typen)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.legalName.form.label" resname="seo.schema.legalName.form.label" approved="yes">
+        <source>Legal Name</source>
+        <target>Rechtlicher Name</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.alternateName.form.description" resname="seo.schema.alternateName.form.description" approved="yes">
+        <source>Alternate name or brand the publisher is also known as</source>
+        <target>Alternativer Name oder Marke, unter der der Herausgeber ebenfalls bekannt ist</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.alternateName.form.label" resname="seo.schema.alternateName.form.label" approved="yes">
+        <source>Alternate Name</source>
+        <target>Alternativer Name</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.description.form.description" resname="seo.schema.description.form.description" approved="yes">
+        <source>Short description of the publisher used in structured data</source>
+        <target>Kurze Beschreibung des Herausgebers für strukturierte Daten</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.description.form.label" resname="seo.schema.description.form.label" approved="yes">
+        <source>Publisher Description</source>
+        <target>Herausgeber-Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.foundingDate.form.description" resname="seo.schema.foundingDate.form.description" approved="yes">
+        <source>Founding date in ISO 8601 format (e.g., 2004-01-15; Organization types only)</source>
+        <target>Gründungsdatum im ISO-8601-Format (z.B. 2004-01-15; nur für Organization-Typen)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.foundingDate.form.label" resname="seo.schema.foundingDate.form.label" approved="yes">
+        <source>Founding Date</source>
+        <target>Gründungsdatum</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.vatId.form.description" resname="seo.schema.vatId.form.description" approved="yes">
+        <source>Value-added tax identification number (Organization types only)</source>
+        <target>Umsatzsteuer-Identifikationsnummer (nur für Organization-Typen)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.vatId.form.label" resname="seo.schema.vatId.form.label" approved="yes">
+        <source>VAT ID</source>
+        <target>USt-IdNr.</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.taxId.form.description" resname="seo.schema.taxId.form.description" approved="yes">
+        <source>Tax identification number (Organization types only)</source>
+        <target>Steuernummer (nur für Organization-Typen)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.taxId.form.label" resname="seo.schema.taxId.form.label" approved="yes">
+        <source>Tax ID</source>
+        <target>Steuernummer</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.knowsAbout.form.description" resname="seo.schema.knowsAbout.form.description" approved="yes">
+        <source>Topics or areas of expertise, comma-separated (Organization or Person, e.g., TYPO3, PHP, Accessibility)</source>
+        <target>Themen oder Fachgebiete, kommagetrennt (Organisation oder Person, z.B. TYPO3, PHP, Barrierefreiheit)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.knowsAbout.form.label" resname="seo.schema.knowsAbout.form.label" approved="yes">
+        <source>Knows About / Expertise</source>
+        <target>Fachgebiete / Kenntnisse</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.person.jobTitle.form.description" resname="seo.schema.person.jobTitle.form.description" approved="yes">
+        <source>Job title of the person publisher (Person type only, e.g., Senior TYPO3 Developer)</source>
+        <target>Berufsbezeichnung des Personen-Herausgebers (nur für Person-Typ, z.B. Senior TYPO3-Entwickler)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.person.jobTitle.form.label" resname="seo.schema.person.jobTitle.form.label" approved="yes">
+        <source>Job Title</source>
+        <target>Berufsbezeichnung</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.email.form.description" resname="seo.schema.email.form.description" approved="yes">
+        <source>Public contact email address of the publisher</source>
+        <target>Öffentliche Kontakt-E-Mail-Adresse des Herausgebers</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.email.form.label" resname="seo.schema.email.form.label" approved="yes">
+        <source>Publisher Email</source>
+        <target>Herausgeber-E-Mail</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.telephone.form.description" resname="seo.schema.telephone.form.description" approved="yes">
+        <source>Public contact phone number of the publisher (international format, e.g., +49 30 1234567)</source>
+        <target>Öffentliche Kontakt-Telefonnummer des Herausgebers (internationales Format, z.B. +49 30 1234567)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.telephone.form.label" resname="seo.schema.telephone.form.label" approved="yes">
+        <source>Publisher Telephone</source>
+        <target>Herausgeber-Telefon</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.contactPoint.contactType.form.description" resname="seo.schema.contactPoint.contactType.form.description" approved="yes">
+        <source>Contact point type (e.g., customer service, technical support, sales)</source>
+        <target>Art der Kontaktstelle (z.B. customer service, technical support, sales)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.contactPoint.contactType.form.label" resname="seo.schema.contactPoint.contactType.form.label" approved="yes">
+        <source>Contact Point Type</source>
+        <target>Kontaktstellen-Typ</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.contactPoint.telephone.form.description" resname="seo.schema.contactPoint.telephone.form.description" approved="yes">
+        <source>Contact point phone number (international format)</source>
+        <target>Telefonnummer der Kontaktstelle (internationales Format)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.contactPoint.telephone.form.label" resname="seo.schema.contactPoint.telephone.form.label" approved="yes">
+        <source>Contact Point Telephone</source>
+        <target>Kontaktstellen-Telefon</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.contactPoint.email.form.description" resname="seo.schema.contactPoint.email.form.description" approved="yes">
+        <source>Contact point email address</source>
+        <target>E-Mail-Adresse der Kontaktstelle</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.contactPoint.email.form.label" resname="seo.schema.contactPoint.email.form.label" approved="yes">
+        <source>Contact Point Email</source>
+        <target>Kontaktstellen-E-Mail</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.contactPoint.areaServed.form.description" resname="seo.schema.contactPoint.areaServed.form.description" approved="yes">
+        <source>Geographic area served by the contact point (e.g., DE, EU, Worldwide)</source>
+        <target>Vom Kontaktpunkt bediente geografische Region (z.B. DE, EU, weltweit)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.contactPoint.areaServed.form.label" resname="seo.schema.contactPoint.areaServed.form.label" approved="yes">
+        <source>Contact Point Area Served</source>
+        <target>Kontaktstellen-Einzugsgebiet</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.contactPoint.availableLanguage.form.description" resname="seo.schema.contactPoint.availableLanguage.form.description" approved="yes">
+        <source>Languages available at the contact point, comma-separated (e.g., German, English)</source>
+        <target>Am Kontaktpunkt verfügbare Sprachen, kommagetrennt (z.B. German, English)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.contactPoint.availableLanguage.form.label" resname="seo.schema.contactPoint.availableLanguage.form.label" approved="yes">
+        <source>Contact Point Languages</source>
+        <target>Kontaktstellen-Sprachen</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.streetAddress.form.description" resname="seo.schema.address.streetAddress.form.description" approved="yes">
+        <source>Street address including house number</source>
+        <target>Straße und Hausnummer</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.streetAddress.form.label" resname="seo.schema.address.streetAddress.form.label" approved="yes">
+        <source>Street Address</source>
+        <target>Straße</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressLocality.form.description" resname="seo.schema.address.addressLocality.form.description" approved="yes">
+        <source>City or locality</source>
+        <target>Stadt oder Ort</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressLocality.form.label" resname="seo.schema.address.addressLocality.form.label" approved="yes">
+        <source>City / Locality</source>
+        <target>Stadt / Ort</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.postalCode.form.description" resname="seo.schema.address.postalCode.form.description" approved="yes">
+        <source>Postal or ZIP code</source>
+        <target>Postleitzahl</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.postalCode.form.label" resname="seo.schema.address.postalCode.form.label" approved="yes">
+        <source>Postal Code</source>
+        <target>Postleitzahl</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressRegion.form.description" resname="seo.schema.address.addressRegion.form.description" approved="yes">
+        <source>Region, state or federal state</source>
+        <target>Region, Bundesland oder Kanton</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressRegion.form.label" resname="seo.schema.address.addressRegion.form.label" approved="yes">
+        <source>Region / State</source>
+        <target>Region / Bundesland</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressCountry.form.description" resname="seo.schema.address.addressCountry.form.description" approved="yes">
+        <source>Country as ISO 3166-1 alpha-2 code (e.g., DE, AT, CH)</source>
+        <target>Land als ISO-3166-1-alpha-2-Code (z.B. DE, AT, CH)</target>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressCountry.form.label" resname="seo.schema.address.addressCountry.form.label" approved="yes">
+        <source>Country Code</source>
+        <target>Ländercode</target>
+      </trans-unit>
       <trans-unit id="seo.llmsTxt.enabled.form.description" resname="seo.llmsTxt.enabled.form.description" approved="yes">
         <source>Serve an llms.txt markdown site map for AI agents at /llms.txt</source>
         <target>Markdown-Sitemap für KI-Agenten unter /llms.txt bereitstellen</target>
@@ -707,6 +867,38 @@
         <source>Enable llms.txt</source>
         <target>llms.txt aktivieren</target>
       </trans-unit>
+      <trans-unit id="seo.llmsTxt.intro.form.description" resname="seo.llmsTxt.intro.form.description" approved="yes">
+        <source>Optional intro paragraph for AI agents, shown after the site description in llms.txt. Falls back to the meta default description when empty.</source>
+        <target>Optionaler Einleitungstext für KI-Agenten, wird in llms.txt nach der Seitenbeschreibung angezeigt. Fällt auf die Standard-Meta-Beschreibung zurück, wenn leer.</target>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.intro.form.label" resname="seo.llmsTxt.intro.form.label" approved="yes">
+        <source>llms.txt Intro Text</source>
+        <target>llms.txt-Einleitungstext</target>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.detailPageId.form.description" resname="seo.llmsTxt.news.detailPageId.form.description" approved="yes">
+        <source>Page UID of the news detail page used to build article links (0 = disable the news section).</source>
+        <target>Seiten-UID der News-Detailseite zum Erzeugen der Artikellinks (0 = News-Abschnitt deaktivieren).</target>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.detailPageId.form.label" resname="seo.llmsTxt.news.detailPageId.form.label" approved="yes">
+        <source>llms.txt News Detail Page UID</source>
+        <target>llms.txt News-Detailseiten-UID</target>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.limit.form.description" resname="seo.llmsTxt.news.limit.form.description" approved="yes">
+        <source>Maximum number of recent news items listed in llms.txt.</source>
+        <target>Maximale Anzahl aktueller News-Einträge in llms.txt.</target>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.limit.form.label" resname="seo.llmsTxt.news.limit.form.label" approved="yes">
+        <source>llms.txt News Item Limit</source>
+        <target>llms.txt News-Anzahl-Limit</target>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.storagePid.form.description" resname="seo.llmsTxt.news.storagePid.form.description" approved="yes">
+        <source>Storage page UID(s) of news records, comma-separated (empty = disable the news section).</source>
+        <target>Speicher-Seiten-UID(s) der News-Datensätze, kommagetrennt (leer = News-Abschnitt deaktivieren).</target>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.storagePid.form.label" resname="seo.llmsTxt.news.storagePid.form.label" approved="yes">
+        <source>llms.txt News Storage PID(s)</source>
+        <target>llms.txt News-Speicher-PID(s)</target>
+      </trans-unit>
       <trans-unit id="seo.robots.additional.form.description" resname="seo.robots.additional.form.description" approved="yes">
         <source>Additional robots.txt lines appended after the default rules (one directive per line)</source>
         <target>Zusätzliche robots.txt-Zeilen nach den Standardregeln (eine Direktive pro Zeile)</target>
@@ -714,6 +906,14 @@
       <trans-unit id="seo.robots.additional.form.label" resname="seo.robots.additional.form.label" approved="yes">
         <source>Additional robots.txt Rules</source>
         <target>Zusätzliche robots.txt-Regeln</target>
+      </trans-unit>
+      <trans-unit id="seo.robots.crawlDelay.form.description" resname="seo.robots.crawlDelay.form.description" approved="yes">
+        <source>Optional Crawl-delay in seconds for the generic User-agent group (0 = no delay). Note: Google ignores Crawl-delay; it is honored mainly by Bing and others.</source>
+        <target>Optionale Crawl-delay in Sekunden für die allgemeine User-agent-Gruppe (0 = keine Verzögerung). Hinweis: Google ignoriert Crawl-delay; es wird vor allem von Bing und anderen berücksichtigt.</target>
+      </trans-unit>
+      <trans-unit id="seo.robots.crawlDelay.form.label" resname="seo.robots.crawlDelay.form.label" approved="yes">
+        <source>Crawl-delay (seconds)</source>
+        <target>Crawl-delay (Sekunden)</target>
       </trans-unit>
       <trans-unit id="seo.robots.allowAiBots.form.description" resname="seo.robots.allowAiBots.form.description" approved="yes">
         <source>Allow AI crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.) to access the site</source>

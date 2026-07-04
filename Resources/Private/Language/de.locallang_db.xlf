@@ -891,6 +891,26 @@
         <source>Customization</source>
         <target>Einstellungen</target>
       </trans-unit>
+      <trans-unit id="site.configuration.llmstxt.palette.label" resname="site.configuration.llmstxt.palette.label" approved="yes">
+        <source>llms.txt (AI agents)</source>
+        <target>llms.txt (KI-Agenten)</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtDescription.description" resname="site.configuration.llmsTxtDescription.description" approved="yes">
+        <source>Short summary for this language, shown as the blockquote in llms.txt. Falls back to the SEO default description when empty.</source>
+        <target>Kurze Zusammenfassung für diese Sprache, wird als Zitat in llms.txt angezeigt. Fällt auf die SEO-Standardbeschreibung zurück, wenn leer.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtDescription.label" resname="site.configuration.llmsTxtDescription.label" approved="yes">
+        <source>llms.txt Description</source>
+        <target>llms.txt-Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtIntro.description" resname="site.configuration.llmsTxtIntro.description" approved="yes">
+        <source>Optional intro paragraph for AI agents in this language, shown after the description in llms.txt. Falls back to the global llms.txt intro when empty.</source>
+        <target>Optionaler Einleitungstext für KI-Agenten in dieser Sprache, wird in llms.txt nach der Beschreibung angezeigt. Fällt auf den globalen llms.txt-Einleitungstext zurück, wenn leer.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtIntro.label" resname="site.configuration.llmsTxtIntro.label" approved="yes">
+        <source>llms.txt Intro</source>
+        <target>llms.txt-Einleitung</target>
+      </trans-unit>
       <trans-unit id="site.configuration.description.apple-touch-icon" resname="site.configuration.description.apple-touch-icon" approved="yes">
         <source>The PNG file has to be square in 180x180 pixel. Filename must be 'apple-touch-icon.png'.</source>
         <target>Die PNG-Datei muss quadratisch sein und eine Größe von 180x180 Pixel haben. Dateiname muss "apple-touch-icon.png" sein.</target>
