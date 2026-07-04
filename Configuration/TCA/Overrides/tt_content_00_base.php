@@ -10,6 +10,29 @@ defined('TYPO3') || die();
     $GLOBALS['TCA']['tt_content']['ctrl']['previewRenderer'] = \Mpc\MpCore\Preview\CustomContentPreviewRenderer::class;
 
     $linkColumns = [
+        'tx_link_action' => [
+            'exclude' => false,
+            'onChange' => 'reload',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_action',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_action.description',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    [
+                        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_action.navigate',
+                        'value' => 'navigate',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_action.modal',
+                        'value' => 'modal',
+                    ],
+                ],
+                'default' => 'navigate',
+            ],
+        ],
         'tx_link_switch' =>
             [
             'exclude' => false,
@@ -166,7 +189,7 @@ defined('TYPO3') || die();
 
     $linkPalettes = [
         'link_config' => [
-            'showitem' => 'tx_link,tx_link_position,--linebreak--,tx_link_switch,--linebreak--,tx_link_text,tx_link_layout',
+            'showitem' => 'tx_link_action,tx_link,tx_link_position,--linebreak--,tx_link_switch,--linebreak--,tx_link_text,tx_link_layout',
             'canNotCollapse' => 1,
         ],
     ];

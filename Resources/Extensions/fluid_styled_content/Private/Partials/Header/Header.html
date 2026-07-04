@@ -11,7 +11,7 @@
                 <f:if condition="{kicker}">
                     <span class="kicker">{kicker}<span class="visually-hidden">: </span></span>{f:if(condition: '{headerLinkParameter}', then: '<br>')}
                 </f:if>
-                <f:link.typolink class="{headerLinkClass}" parameter="{headerLinkParameter}" target="{data.linkLayout}"><span>{header}</span></f:link.typolink>
+                <f:render partial="Header/LinkedText" arguments="{linkAction: linkAction, linkParameter: headerLinkParameter, linkClass: headerLinkClass, linkTarget: headerLinkTarget, text: header}"/>
             </h1>
         </f:case>
         <f:case value="2">
@@ -19,8 +19,7 @@
                 <f:if condition="{kicker}">
                     <span class="kicker">{kicker}<span class="visually-hidden">: </span></span>{f:if(condition: '{headerLinkParameter}', then: '<br>')}
                 </f:if>
-                <f:link.typolink class="{headerLinkClass}" parameter="{headerLinkParameter}" target="{headerLinkTarget}">
-                    <span>{header}</span></f:link.typolink>
+                <f:render partial="Header/LinkedText" arguments="{linkAction: linkAction, linkParameter: headerLinkParameter, linkClass: headerLinkClass, linkTarget: headerLinkTarget, text: header}"/>
             </h2>
         </f:case>
         <f:case value="3">
@@ -28,8 +27,7 @@
                 <f:if condition="{kicker}">
                     <span class="kicker">{kicker}<span class="visually-hidden">: </span></span>{f:if(condition: '{headerLinkParameter}', then: '<br>')}
                 </f:if>
-                <f:link.typolink class="{headerLinkClass}" parameter="{headerLinkParameter}"><span>{header}</span>
-                </f:link.typolink>
+                <f:render partial="Header/LinkedText" arguments="{linkAction: linkAction, linkParameter: headerLinkParameter, linkClass: headerLinkClass, linkTarget: headerLinkTarget, text: header}"/>
             </h3>
         </f:case>
         <f:case value="4">
@@ -37,8 +35,7 @@
                 <f:if condition="{kicker}">
                     <span class="kicker">{kicker}<span class="visually-hidden">: </span></span>{f:if(condition: '{headerLinkParameter}', then: '<br>')}
                 </f:if>
-                <f:link.typolink class="{headerLinkClass}" parameter="{headerLinkParameter}"><span>{header}</span>
-                </f:link.typolink>
+                <f:render partial="Header/LinkedText" arguments="{linkAction: linkAction, linkParameter: headerLinkParameter, linkClass: headerLinkClass, linkTarget: headerLinkTarget, text: header}"/>
             </h4>
         </f:case>
         <f:case value="5">
@@ -46,8 +43,7 @@
                 <f:if condition="{kicker}">
                     <span class="kicker">{kicker}<span class="visually-hidden">: </span></span>{f:if(condition: '{headerLinkParameter}', then: '<br>')}
                 </f:if>
-                <f:link.typolink class="{headerLinkClass}" parameter="{headerLinkParameter}"><span>{header}</span>
-                </f:link.typolink>
+                <f:render partial="Header/LinkedText" arguments="{linkAction: linkAction, linkParameter: headerLinkParameter, linkClass: headerLinkClass, linkTarget: headerLinkTarget, text: header}"/>
             </h5>
         </f:case>
         <f:case value="6">
@@ -55,8 +51,7 @@
                 <f:if condition="{kicker}">
                     <span class="kicker">{kicker}<span class="visually-hidden">: </span></span>{f:if(condition: '{headerLinkParameter}', then: '<br>')}
                 </f:if>
-                <f:link.typolink class="{headerLinkClass}" parameter="{headerLinkParameter}"><span>{header}</span>
-                </f:link.typolink>
+                <f:render partial="Header/LinkedText" arguments="{linkAction: linkAction, linkParameter: headerLinkParameter, linkClass: headerLinkClass, linkTarget: headerLinkTarget, text: header}"/>
             </h6>
         </f:case>
         <f:case value="7">

@@ -39,14 +39,25 @@
                                     <f:format.stripTags><f:format.raw><f:format.crop append="..." maxCharacters="200" respectHtml="true" respectWordBoundaries="true">{f:if(condition:'{page.data.teaser_description}', then:'{page.data.teaser_description}', else: '{page.data.description}')}</f:format.crop></f:format.raw></f:format.stripTags>
                                 </p>
                                 <f:if condition="{data.tx_link_switch}">
-                                    <p class="teaser-link{f:if(condition:'{data.header_position}', then:' {data.header_position}')}{f:if(condition:'{data.tx_link_layout}', then:' {data.tx_link_layout}', else: ' internal-link')}">
-                                        <span class="icon"></span>
+                                    <p class="{f:if(condition:'{data.header_position}', then:' {data.header_position}')}">
                                         <f:if condition="{data.tx_link_text}">
                                             <f:then>
-                                                <span>{data.tx_link_text}<span class="visually-hidden">:</span></span>
+                                                <f:render partial="Link/ActionLink" arguments="{
+                                                    linkAction: data.tx_link_action,
+                                                    linkParameter: data.tx_link,
+                                                    linkClass: '{f:if(condition: data.tx_link_layout, then: data.tx_link_layout, else: \'internal-link\')} teaser-link',
+                                                    linkText: data.tx_link_text,
+                                                    showIcon: 1
+                                                }"/>
                                             </f:then>
                                             <f:else>
-                                                <span>{f:translate(key: 'content.readmore', extensionName: 'mp_core')}</span>
+                                                <f:render partial="Link/ActionLink" arguments="{
+                                                    linkAction: data.tx_link_action,
+                                                    linkParameter: data.tx_link,
+                                                    linkClass: '{f:if(condition: data.tx_link_layout, then: data.tx_link_layout, else: \'internal-link\')} teaser-link',
+                                                    linkText: '{f:translate(key: \'content.readmore\', extensionName: \'mp_core\')}',
+                                                    showIcon: 1
+                                                }"/>
                                             </f:else>
                                         </f:if>
                                     </p>

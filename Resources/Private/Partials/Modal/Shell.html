@@ -1,0 +1,37 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<div
+    aria-hidden="true"
+    aria-labelledby="{labelId}"
+    class="modal fade"
+    data-bs-backdrop="static"
+    id="{modalId}"
+    role="dialog"
+    tabindex="-1"
+>
+    <div class="modal-dialog modal-{size} modal-dialog-scrollable modal-dialog-centered text-left" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="container">
+                    <div class="row g-0">
+                        <div class="col-10 title">
+                            <f:if condition="{title}">
+                                <h2 class="modal-title h3" id="{labelId}">{title}</h2>
+                            </f:if>
+                        </div>
+                        <div class="col-2 close text-end">
+                            <button class="btn-close" data-bs-dismiss="modal" title="{closeLabel}" type="button">
+                                <span class="visually-hidden">{closeLabel}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" data-modal-content-root>
+                {bodyContent -> f:format.raw()}
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,34 @@
+mod.wizards.newContentElement.wizardItems.container {
+  elements {
+    ce_modal {
+      iconIdentifier = tx_modal
+      title = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:modal.title
+      description = LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:modal.description
+      tt_content_defValues {
+        CType = ce_modal
+      }
+    }
+  }
+
+  show := addToList(ce_modal)
+}
+
+TCEFORM {
+  tt_content {
+    tx_header_inside {
+      types {
+        ce_modal {
+          disabled = 1
+        }
+      }
+    }
+
+    tx_link_action {
+      types {
+        ce_modal {
+          disabled = 1
+        }
+      }
+    }
+  }
+}

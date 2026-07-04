@@ -37,6 +37,9 @@ CREATE TABLE sys_file_reference
 #
 CREATE TABLE tt_content
 (
+	container_modal_hide_trigger   tinyint(1)       DEFAULT '0'  NOT NULL,
+	container_modal_size           varchar(20)      DEFAULT 'lg' NOT NULL,
+	container_modal_trigger        varchar(20)      DEFAULT 'image_link' NOT NULL,
 	container_accordion_open       int(11) unsigned DEFAULT '1'  NOT NULL,
 	container_accordion_faq_schema int(11) unsigned DEFAULT '0'  NOT NULL,
 	container_accordion_toggle     int(11) unsigned DEFAULT '0'  NOT NULL,
@@ -82,6 +85,7 @@ CREATE TABLE tt_content
 	header_subpages                tinytext,
 	tx_header_inside               tinyint(1)       DEFAULT '0'  NOT NULL,
 	tx_header_style                tinytext,
+	tx_link_action                 varchar(20)      DEFAULT 'navigate' NOT NULL,
 	tx_link                        tinytext,
 	tx_link_layout                 tinytext,
 	tx_link_position               tinytext,

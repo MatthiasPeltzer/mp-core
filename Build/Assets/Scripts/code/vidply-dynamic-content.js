@@ -18,6 +18,36 @@ export function notifyDynamicContentReady(root) {
 }
 
 /**
+ * Pause VidPly players and native media inside the given container.
+ *
+ * @param {Element | null | undefined} container
+ */
+export function pausePlayersInside(container) {
+  if (!(container instanceof Element)) {
+    return;
+  }
+
+  window.VidPlyTheme?.getPlayers?.().forEach((player) => {
+    const host = player?.element;
+    if (!host || !container.contains(host)) {
+      return;
+    }
+
+    try {
+      player.pause?.();
+    } catch {
+      // Ignore pause errors during modal close.
+    }
+  });
+
+  container.querySelectorAll('video, audio').forEach((media) => {
+    if (media instanceof HTMLMediaElement) {
+      media.pause();
+    }
+  });
+}
+
+/**
  * Pause VidPly players outside the active slide and init any player on it.
  *
  * @param {import('swiper').Swiper | null | undefined} swiper

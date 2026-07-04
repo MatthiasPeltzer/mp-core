@@ -16,17 +16,25 @@
                         </f:if>
                         <f:if condition="{data.tx_header_inside} == '1' && {data.tx_link_text} && {data.tx_link_switch}">
                             <p class="stage-link mb-0">
-                                <span class="{data.tx_link_layout} {data.tx_link_position} teaser-link">
-                                    <span>{data.tx_link_text}</span>
-                                </span>
+                                <f:render partial="Link/ActionLink" arguments="{
+                                    linkAction: data.tx_link_action,
+                                    linkParameter: data.tx_link,
+                                    linkClass: '{data.tx_link_layout} {data.tx_link_position} teaser-link',
+                                    linkText: data.tx_link_text,
+                                    showIcon: 1
+                                }"/>
                             </p>
                         </f:if>
                     </div>
                     <f:if condition="{data.tx_header_inside} != '1' && {data.tx_link_text} && {data.tx_link_switch}">
                         <p class="stage-link mt-3 mb-0">
-                            <span class="{data.tx_link_layout} {data.tx_link_position} teaser-link">
-                                <span>{data.tx_link_text}</span>
-                            </span>
+                            <f:render partial="Link/ActionLink" arguments="{
+                                linkAction: data.tx_link_action,
+                                linkParameter: data.tx_link,
+                                linkClass: '{data.tx_link_layout} {data.tx_link_position} teaser-link',
+                                linkText: data.tx_link_text,
+                                showIcon: 1
+                            }"/>
                         </p>
                     </f:if>
                 </div>

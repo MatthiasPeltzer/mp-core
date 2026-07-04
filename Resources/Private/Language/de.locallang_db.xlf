@@ -1483,6 +1483,66 @@
         <source>Tabs</source>
         <target>Tabs</target>
       </trans-unit>
+      <trans-unit id="modal.title" resname="modal.title" approved="yes">
+        <source>Modal</source>
+        <target>Modal</target>
+      </trans-unit>
+      <trans-unit id="modal.description" resname="modal.description" approved="yes">
+        <source>Overlay dialog with composed content (text, images, video).</source>
+        <target>Overlay-Dialog mit zusammengesetztem Inhalt (Text, Bilder, Video).</target>
+      </trans-unit>
+      <trans-unit id="modal.content" resname="modal.content" approved="yes">
+        <source>Modal content</source>
+        <target>Modal-Inhalt</target>
+      </trans-unit>
+      <trans-unit id="modal.trigger.label" resname="modal.trigger.label" approved="yes">
+        <source>Trigger type</source>
+        <target>Trigger-Typ</target>
+      </trans-unit>
+      <trans-unit id="modal.trigger.description" resname="modal.trigger.description" approved="yes">
+        <source>Choose what opens the modal on the page.</source>
+        <target>Wählen Sie, was das Modal auf der Seite öffnet.</target>
+      </trans-unit>
+      <trans-unit id="modal.trigger.image" resname="modal.trigger.image" approved="yes">
+        <source>Image</source>
+        <target>Bild</target>
+      </trans-unit>
+      <trans-unit id="modal.trigger.link" resname="modal.trigger.link" approved="yes">
+        <source>Link / button</source>
+        <target>Link / Schaltfläche</target>
+      </trans-unit>
+      <trans-unit id="modal.trigger.image_link" resname="modal.trigger.image_link" approved="yes">
+        <source>Image and link / button</source>
+        <target>Bild und Link / Schaltfläche</target>
+      </trans-unit>
+      <trans-unit id="modal.size.label" resname="modal.size.label" approved="yes">
+        <source>Modal size</source>
+        <target>Modal-Größe</target>
+      </trans-unit>
+      <trans-unit id="modal.size.md" resname="modal.size.md" approved="yes">
+        <source>Medium</source>
+        <target>Mittel</target>
+      </trans-unit>
+      <trans-unit id="modal.size.lg" resname="modal.size.lg" approved="yes">
+        <source>Large</source>
+        <target>Groß</target>
+      </trans-unit>
+      <trans-unit id="modal.size.xl" resname="modal.size.xl" approved="yes">
+        <source>Extra large</source>
+        <target>Extra groß</target>
+      </trans-unit>
+      <trans-unit id="modal.size.fullscreen" resname="modal.size.fullscreen" approved="yes">
+        <source>Fullscreen</source>
+        <target>Vollbild</target>
+      </trans-unit>
+      <trans-unit id="modal.hide_trigger.label" resname="modal.hide_trigger.label" approved="yes">
+        <source>Hide built-in trigger</source>
+        <target>Eingebauten Trigger ausblenden</target>
+      </trans-unit>
+      <trans-unit id="modal.hide_trigger.description" resname="modal.hide_trigger.description" approved="yes">
+        <source>Only output the modal markup. Use link action “Open modal” on another content element to trigger it.</source>
+        <target>Nur Modal-Markup ausgeben. Link-Aktion „Modal öffnen“ auf einem anderen Inhaltselement verwenden.</target>
+      </trans-unit>
       <trans-unit id="tt_content.CType.div._gallery_" resname="tt_content.CType.div._gallery_" approved="yes">
         <source>Gallery</source>
         <target>Galerie</target>
@@ -1570,6 +1630,22 @@
       <trans-unit id="tt_content.tx_link" resname="tt_content.tx_link" approved="yes">
         <source>Link</source>
         <target>Link</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_action" resname="tt_content.tx_link_action" approved="yes">
+        <source>Link action</source>
+        <target>Link-Aktion</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_action.description" resname="tt_content.tx_link_action.description" approved="yes">
+        <source>Navigate to the link target or open a modal content element on this page.</source>
+        <target>Zum Linkziel navigieren oder ein Modal-Inhaltselement auf dieser Seite öffnen.</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_action.navigate" resname="tt_content.tx_link_action.navigate" approved="yes">
+        <source>Navigate</source>
+        <target>Navigieren</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_action.modal" resname="tt_content.tx_link_action.modal" approved="yes">
+        <source>Open modal</source>
+        <target>Modal öffnen</target>
       </trans-unit>
       <trans-unit id="tt_content.tx_link_layout" resname="tt_content.tx_link_layout" approved="yes">
         <source>Link layout</source>
