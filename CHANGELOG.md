@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.10] - 2026-07-04
+
+### Changed
+- Teaser vs. modal link elements now differentiate the link target by `tx_link_action`: for `navigate` teasers (`singleteaser`, `stage`) the headline is the stretched link and the button/link-text renders as a non-interactive label; for `modal` link boxes the headline is not linked and the button/link-text becomes the modal trigger.
+
+### Accessibility
+- Navigate teasers no longer emit a second link to the same target beneath the `stretched-link` headline, removing duplicate/nested interactive controls announced by assistive technology.
+
 ## [1.2.9] - 2026-07-04
 
 ### Added
@@ -703,6 +711,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.10]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.9...v1.2.10
 [1.2.9]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.8...v1.2.9
 [1.2.8]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.7...v1.2.8
 [1.2.7]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.6...v1.2.7
