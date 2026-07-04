@@ -71,6 +71,62 @@
     .image-buttons .btn-image + .dropdown-menu.dropdown-download {
       margin-top: -9px !important;
     }
+
+    // VidPly headline is shown in the modal header bar instead.
+    .frame-type-mpc_vidply .page-header {
+      display: none;
+    }
+  }
+
+  &-trigger-wrapper {
+    margin-bottom: $spacer;
+    width: 100%;
+
+    .modal-trigger {
+      cursor: pointer;
+      font: inherit;
+      max-width: 100%;
+      text-align: inherit;
+      width: auto;
+
+      &.card {
+        display: inline-block;
+      }
+
+      // One focus ring on the trigger; nested .btn is visual only (invalid nested button).
+      .modal-trigger-label.btn {
+        pointer-events: none;
+
+        @include on-interact {
+          outline: none !important;
+        }
+      }
+    }
+
+    .modal-trigger-label {
+      &.internal-link .icon,
+      &.external-link .icon,
+      &.download .icon {
+        display: inline;
+        margin-right: 8px;
+        padding-left: 22px;
+        position: relative;
+
+        &::before {
+          background-color: var(--bs-body-color);
+          content: "";
+          display: block;
+          height: 19px;
+          left: 3px;
+          mask-position: center;
+          mask-repeat: no-repeat;
+          mask-size: 18px;
+          position: absolute;
+          top: 1px;
+          width: 19px;
+        }
+      }
+    }
   }
 
   &-backdrop {

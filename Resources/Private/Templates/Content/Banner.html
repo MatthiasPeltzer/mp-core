@@ -4,16 +4,22 @@
 
         <div class="banner-item container">
             <f:if condition="{data.tx_link_text}">
-                <f:link.typolink parameter="{data.tx_link}" class="banner-link d-flex align-items-center justify-content-center">
-                    <f:if condition="{files}">
-                        <div class="banner-image me-3 p-1">
-                            <f:for each="{files}" as="file">
-                                <f:render partial="Media/Rendering/ImageBanner" arguments="{_all}"/>
-                            </f:for>
-                        </div>
-                    </f:if>
-                    <div class="banner-text p-1">{data.tx_link_text}</div>
-                </f:link.typolink>
+                <f:render partial="Link/ActionLink" contentAs="linkContent" arguments="{
+                    linkAction: data.tx_link_action,
+                    linkParameter: data.tx_link,
+                    linkClass: 'banner-link d-flex align-items-center justify-content-center'
+                }">
+                    <f:section name="linkContent">
+                        <f:if condition="{files}">
+                            <div class="banner-image me-3 p-1">
+                                <f:for each="{files}" as="file">
+                                    <f:render partial="Media/Rendering/ImageBanner" arguments="{_all}"/>
+                                </f:for>
+                            </div>
+                        </f:if>
+                        <div class="banner-text p-1">{data.tx_link_text}</div>
+                    </f:section>
+                </f:render>
             </f:if>
         </div>
 

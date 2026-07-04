@@ -1093,6 +1093,51 @@
       <trans-unit id="tabs.title" resname="tabs.title">
         <source>Tabs</source>
       </trans-unit>
+      <trans-unit id="modal.title" resname="modal.title">
+        <source>Modal</source>
+      </trans-unit>
+      <trans-unit id="modal.description" resname="modal.description">
+        <source>Overlay dialog with composed content (text, images, video).</source>
+      </trans-unit>
+      <trans-unit id="modal.content" resname="modal.content">
+        <source>Modal content</source>
+      </trans-unit>
+      <trans-unit id="modal.trigger.label" resname="modal.trigger.label">
+        <source>Trigger type</source>
+      </trans-unit>
+      <trans-unit id="modal.trigger.description" resname="modal.trigger.description">
+        <source>Choose what opens the modal on the page.</source>
+      </trans-unit>
+      <trans-unit id="modal.trigger.image" resname="modal.trigger.image">
+        <source>Image</source>
+      </trans-unit>
+      <trans-unit id="modal.trigger.link" resname="modal.trigger.link">
+        <source>Link / button</source>
+      </trans-unit>
+      <trans-unit id="modal.trigger.image_link" resname="modal.trigger.image_link">
+        <source>Image and link / button</source>
+      </trans-unit>
+      <trans-unit id="modal.size.label" resname="modal.size.label">
+        <source>Modal size</source>
+      </trans-unit>
+      <trans-unit id="modal.size.md" resname="modal.size.md">
+        <source>Medium</source>
+      </trans-unit>
+      <trans-unit id="modal.size.lg" resname="modal.size.lg">
+        <source>Large</source>
+      </trans-unit>
+      <trans-unit id="modal.size.xl" resname="modal.size.xl">
+        <source>Extra large</source>
+      </trans-unit>
+      <trans-unit id="modal.size.fullscreen" resname="modal.size.fullscreen">
+        <source>Fullscreen</source>
+      </trans-unit>
+      <trans-unit id="modal.hide_trigger.label" resname="modal.hide_trigger.label">
+        <source>Hide built-in trigger</source>
+      </trans-unit>
+      <trans-unit id="modal.hide_trigger.description" resname="modal.hide_trigger.description">
+        <source>Only output the modal markup. Use link action “Open modal” on another content element to trigger it.</source>
+      </trans-unit>
       <trans-unit id="tt_content.CType.div._gallery_" resname="tt_content.CType.div._gallery_">
         <source>Gallery</source>
       </trans-unit>
@@ -1155,6 +1200,18 @@
       </trans-unit>
       <trans-unit id="tt_content.tx_link" resname="tt_content.tx_link">
         <source>Link</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_action" resname="tt_content.tx_link_action">
+        <source>Link action</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_action.description" resname="tt_content.tx_link_action.description">
+        <source>Navigate to the link target or open a modal content element on this page.</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_action.navigate" resname="tt_content.tx_link_action.navigate">
+        <source>Navigate</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_action.modal" resname="tt_content.tx_link_action.modal">
+        <source>Open modal</source>
       </trans-unit>
       <trans-unit id="tt_content.tx_link_layout" resname="tt_content.tx_link_layout">
         <source>Link layout</source>

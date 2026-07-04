@@ -1,0 +1,65 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers">
+
+<f:variable name="resolvedAction">{f:if(condition: linkAction, then: linkAction, else: 'navigate')}</f:variable>
+<f:variable name="resolvedTarget">{f:if(condition: '{linkLayout} == download || {linkLayout} == external-link', then: '_blank', else: linkTarget)}</f:variable>
+
+<f:if condition="{linkParameter}">
+    <f:then>
+        <f:if condition="{resolvedAction} == 'modal'">
+            <f:then>
+                <f:variable name="modalUid"><mpc:link.modalTargetUid link="{linkParameter}" /></f:variable>
+                <f:if condition="{modalUid}">
+                    <f:then>
+                        <button
+                            type="button"
+                            class="{linkClass}"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modal-{modalUid}"
+                            title="{title}"
+                        >
+                            <f:if condition="{showIcon}">
+                                <span class="icon"></span>
+                            </f:if>
+                            <f:if condition="{linkContent}">
+                                <f:then>{linkContent -> f:format.raw()}</f:then>
+                                <f:else><span>{linkText}</span></f:else>
+                            </f:if>
+                        </button>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{linkContent}">
+                            <f:then>{linkContent -> f:format.raw()}</f:then>
+                            <f:else><span>{linkText}</span></f:else>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </f:then>
+            <f:else>
+                <f:link.typolink class="{linkClass}" parameter="{linkParameter}" target="{resolvedTarget}" title="{title}">
+                    <f:if condition="{showIcon}">
+                        <span class="icon"></span>
+                    </f:if>
+                    <f:if condition="{linkContent}">
+                        <f:then>{linkContent -> f:format.raw()}</f:then>
+                        <f:else><span>{linkText}</span></f:else>
+                    </f:if>
+                </f:link.typolink>
+            </f:else>
+        </f:if>
+    </f:then>
+    <f:else>
+        <f:if condition="{linkText} || {linkContent}">
+            <span class="{linkClass}">
+                <f:if condition="{showIcon}">
+                    <span class="icon"></span>
+                </f:if>
+                <f:if condition="{linkContent}">
+                    <f:then>{linkContent -> f:format.raw()}</f:then>
+                    <f:else><span>{linkText}</span></f:else>
+                </f:if>
+            </span>
+        </f:if>
+    </f:else>
+</f:if>
+
+</html>

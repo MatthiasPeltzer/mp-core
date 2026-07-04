@@ -11,6 +11,7 @@ import './code/sticky.js';
 import './code/theme.js';
 import './code/totop.js';
 import './code/modalGallery.js';
+import './code/modalContent.js';
 import './code/jarallax.js';
 import './code/openAccordionAndTabs.js';
 import './code/i18nLinkHelper.js';

@@ -52,4 +52,18 @@ tt_content {
   ce_tabs.templateName = Tabs
   ce_slider =< lib.containerContentElement
   ce_slider.templateName = Slider
+  ce_modal =< lib.containerContentElement
+  ce_modal {
+    templateName = Modal
+    dataProcessing {
+      100 {
+        if.isTrue.field = image
+        references {
+          fieldName = image
+          table = tt_content
+        }
+        as = files
+      }
+    }
+  }
 }

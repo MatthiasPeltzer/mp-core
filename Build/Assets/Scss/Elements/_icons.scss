@@ -26,7 +26,8 @@ $icon-mapping: (
 
 // Dynamic generation of icon classes
 @each $class, $icon in $icon-mapping {
-  a.#{$class} .icon {
+  a.#{$class} .icon,
+  .modal-trigger-label.#{$class} .icon {
     display: inline;
 
     @include apply-icon-style($icon);

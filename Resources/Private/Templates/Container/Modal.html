@@ -1,0 +1,112 @@
+<html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:layout name="Container"/>
+
+<f:section name="Main">
+    <f:variable name="modalId">modal-{data.uid}</f:variable>
+    <f:variable name="modalLabelId">modalLabel-{data.uid}</f:variable>
+    <f:variable name="modalSize">{f:if(condition: data.container_modal_size, then: data.container_modal_size, else: 'lg')}</f:variable>
+    <f:variable name="closeLabel">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</f:variable>
+    <f:variable name="showImageTrigger">{f:if(condition: '{data.container_modal_trigger} == image || {data.container_modal_trigger} == image_link', then: '1', else: '0')}</f:variable>
+    <f:variable name="showLinkTrigger">{f:if(condition: '{data.container_modal_trigger} == link || {data.container_modal_trigger} == image_link', then: '1', else: '0')}</f:variable>
+
+    <f:variable name="firstChildHeader">{children_101.0.header}</f:variable>
+    <f:variable name="modalTitle">{f:if(condition: data.header, then: data.header, else: firstChildHeader)}</f:variable>
+
+    <f:variable name="hasImageTrigger">{f:if(condition: '{showImageTrigger} && {files}', then: '1', else: '0')}</f:variable>
+    <f:variable name="hasLinkTrigger">{f:if(condition: '{showLinkTrigger} && {data.tx_link_text}', then: '1', else: '0')}</f:variable>
+    <f:variable name="hasStackedTrigger">{f:if(condition: '{hasImageTrigger} && {hasLinkTrigger}', then: '1', else: '0')}</f:variable>
+    <f:variable name="linkStyleClass">{data.tx_link_layout}</f:variable>
+    <f:variable name="linkPositionClass">{data.tx_link_position}</f:variable>
+    <f:variable name="useTeaserLinkStyle">{f:if(condition: '{linkStyleClass} == internal-link || {linkStyleClass} == external-link || {linkStyleClass} == download', then: '1', else: '0')}</f:variable>
+    <f:variable name="triggerOutline">{f:if(condition: '{hasImageTrigger} && {files.0.properties.outline} == 1', then: '1', else: '0')}</f:variable>
+    <f:variable name="triggerBorderClass">{f:if(condition: triggerOutline, then: ' border border-2 border-body', else: ' border-0')}</f:variable>
+
+    <f:if condition="{data.container_modal_hide_trigger} != 1">
+        <div class="modal-trigger-wrapper{f:if(condition: linkPositionClass, then: ' {linkPositionClass}')}">
+            <button
+                type="button"
+                class="modal-trigger{f:if(condition: hasStackedTrigger, then: ' card p-0 bg-transparent overflow-hidden rounded')}{f:if(condition: '{hasImageTrigger} && {hasLinkTrigger} != 1', then: ' overflow-hidden rounded')}{f:if(condition: '{hasImageTrigger} && {hasStackedTrigger}', then: '{triggerBorderClass}')}{f:if(condition: '{hasImageTrigger} && {hasLinkTrigger} != 1', then: '{triggerBorderClass}')}{f:if(condition: '{hasLinkTrigger} && {hasStackedTrigger} != 1', then: ' {linkStyleClass}')}{f:if(condition: '{hasLinkTrigger} && {hasStackedTrigger} != 1 && {useTeaserLinkStyle} == 1', then: ' teaser-link')}"
+                data-bs-toggle="modal"
+                data-bs-target="#{modalId}"
+                title="{f:if(condition: data.tx_link_text, then: data.tx_link_text, else: data.header)}"
+            >
+                <f:if condition="{hasImageTrigger}">
+                    <f:for as="file" each="{files}">
+                        <f:image
+                            alt="{file.alternative}"
+                            class="figure-img img-fluid card-img-top"
+                            cropVariant="default"
+                            decoding="async"
+                            fileExtension="webp"
+                            image="{file}"
+                            loading="lazy"
+                            maxHeight="400"
+                            maxWidth="711"
+                        />
+                    </f:for>
+                </f:if>
+                <f:if condition="{hasLinkTrigger}">
+                    <f:if condition="{hasStackedTrigger}">
+                        <f:then>
+                            <span class="card-body">
+                                <span class="modal-trigger-label w-100{f:if(condition: linkStyleClass, then: ' {linkStyleClass}', else: ' btn btn-primary')}{f:if(condition: useTeaserLinkStyle, then: ' teaser-link')}">
+                                    <f:if condition="{useTeaserLinkStyle}">
+                                        <span class="icon"></span>
+                                    </f:if>
+                                    <span>{data.tx_link_text}</span>
+                                </span>
+                            </span>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{useTeaserLinkStyle}">
+                                <span class="icon"></span>
+                            </f:if>
+                            <span>{data.tx_link_text}</span>
+                        </f:else>
+                    </f:if>
+                </f:if>
+            </button>
+        </div>
+    </f:if>
+
+    <div
+        aria-hidden="true"
+        aria-labelledby="{f:if(condition: modalTitle, then: modalLabelId)}"
+        class="modal fade"
+        data-bs-backdrop="static"
+        id="{modalId}"
+        role="dialog"
+        tabindex="-1"
+    >
+        <div class="modal-dialog modal-{modalSize} modal-dialog-scrollable modal-dialog-centered text-left" role="document">
+            <div class="modal-content">
+                <f:if condition="{modalTitle}">
+                    <div class="modal-header">
+                        <div class="container">
+                            <div class="row g-0">
+                                <div class="col-10 title">
+                                    <h3 class="modal-title h3" id="{modalLabelId}">{modalTitle}</h3>
+                                </div>
+                                <div class="col-2 close text-end">
+                                    <button class="btn-close" data-bs-dismiss="modal" title="{closeLabel}" type="button">
+                                        <span class="visually-hidden">{closeLabel}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </f:if>
+                <div class="modal-body" data-modal-content-root>
+                    <f:if condition="{children_101}">
+                        <f:for as="child" each="{children_101}">
+                            <f:format.raw>{child.renderedContent}</f:format.raw>
+                        </f:for>
+                    </f:if>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:section>
+
+</html>

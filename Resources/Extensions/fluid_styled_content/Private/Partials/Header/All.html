@@ -1,6 +1,8 @@
 <html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 <f:if condition="{data.header_layout} != 100">
     <f:if condition="{data.header} || {data.subheader} || {data.date}">
+        <f:comment><!-- ce_modal: tx_link styles the built-in trigger only (see ContentElements.md) --></f:comment>
+        <f:variable name="headerTeaserLink">{f:if(condition: '{data.tx_link_switch} && {data.CType} != \'ce_modal\'', then: data.tx_link)}</f:variable>
         <header class="page-header ce-headline-{data.header_position}">
             <f:render arguments="{
 			header: data.header,
@@ -9,7 +11,8 @@
 			style: data.tx_header_style,
 			linkLayout: data.tx_link_layout,
 			linkText: data.tx_link_text,
-			teaserLink: data.tx_link,
+			linkAction: data.tx_link_action,
+			teaserLink: headerTeaserLink,
 			positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')} {f:if(condition: data.tx_header_style, then: data.tx_header_style)}',
 			link: data.header_link,
 			default: settings.defaultHeaderType}" partial="Header/Header"/>
@@ -20,7 +23,7 @@
 			subheader: data.subheader,
 			layout: data.header_layout,
 			linkText: data.tx_link_text,
-			teaserLink: data.tx_link,
+			teaserLink: headerTeaserLink,
 			positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')}',
 			default: settings.defaultHeaderType}" partial="Header/SubHeader"/>
         </header>

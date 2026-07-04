@@ -113,6 +113,10 @@ TCEFORM {
           disabled = 1
         }
 
+        ce_modal {
+          disabled = 1
+        }
+
         video {
           disabled = 1
         }

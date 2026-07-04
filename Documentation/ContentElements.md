@@ -22,6 +22,7 @@ Reference for **mp-core** content types: TCA location, Fluid templates, TSconfig
 | `ce_slider` | b13/container | `tt_content_slider.php` | Container + `SwiperSlider.vue` |
 | `ce_grid` | b13/container | `tt_content_grid.php` | Container templates |
 | `ce_container` | b13/container | `tt_content_container.php` | Container wrapper |
+| `ce_modal` | b13/container | `tt_content_modal.php` | `Resources/Private/Templates/Container/Modal.html` |
 
 TypoScript: `Configuration/TypoScript/Setup/ContentElements/tt_content/*.typoscript`  
 Database columns: `ext_tables.sql` (all `tt_content` extensions)
@@ -38,8 +39,9 @@ Used by stage, banner, singleteaser, and others.
 
 | Field | Type | Description |
 |-------|------|-------------|
+| `tx_link_action` | select | `navigate` (default) or `modal` — when `modal`, `tx_link` must point to a `ce_modal` record on the same page |
 | `tx_link_switch` | check | Enable link button |
-| `tx_link` | link | Page, file, URL, or record |
+| `tx_link` | link | Page, file, URL, record, or `ce_modal` content element (when action = modal) |
 | `tx_link_text` | input | Custom link label (`displayCond`: switch on) |
 | `tx_link_layout` | select | `btn btn-primary/secondary/tertiary/quaternary`, `internal-link`, `external-link`, `download` |
 | `tx_link_position` | select | `btn-center`, `btn-left`, `btn-right` |
@@ -301,6 +303,23 @@ widths only.
 | Shared `grid_*` background fields | | From container TCA |
 
 Uses palette `frames_ce_grid` (spacing only, no frame layout select).
+
+### Modal (`ce_modal`)
+
+**TCA:** `tt_content_modal.php` — Bootstrap overlay with composed child content in colPos 101.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `header` | input | Modal title in the header bar (`aria-labelledby`); falls back to the first child headline (e.g. VidPly) |
+| `container_modal_trigger` | select | `image`, `link`, `image_link` — built-in trigger on the page |
+| `container_modal_size` | select | `md`, `lg`, `xl`, `fullscreen` |
+| `container_modal_hide_trigger` | check | Output modal markup only; trigger from another CE via `tx_link_action=modal` |
+| `image` | FAL | Max 1 — trigger thumbnail when trigger includes image |
+| `link_config` palette | | Trigger link label and button style (does not navigate) |
+
+**Allowed child CTypes:** accordion/tabs panel list plus `image`.
+
+Frontend: `#modal-{uid}`; trigger thumbnail from the container `image` field when trigger type includes image; shared link rendering via `Resources/Extensions/fluid_styled_content/Private/Partials/Link/ActionLink.html`.
 
 ### Container (`ce_container`)
 
