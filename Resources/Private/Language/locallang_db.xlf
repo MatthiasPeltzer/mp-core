@@ -1138,6 +1138,9 @@
       <trans-unit id="modal.hide_trigger.description" resname="modal.hide_trigger.description">
         <source>Only output the modal markup. Use link action “Open modal” on another content element to trigger it.</source>
       </trans-unit>
+      <trans-unit id="modal.linkhandler.label" resname="modal.linkhandler.label">
+        <source>Modal</source>
+      </trans-unit>
       <trans-unit id="tt_content.CType.div._gallery_" resname="tt_content.CType.div._gallery_">
         <source>Gallery</source>
       </trans-unit>

@@ -313,13 +313,15 @@ Uses palette `frames_ce_grid` (spacing only, no frame layout select).
 | `header` | input | Modal title in the header bar (`aria-labelledby`); falls back to the first child headline (e.g. VidPly) |
 | `container_modal_trigger` | select | `image`, `link`, `image_link` — built-in trigger on the page |
 | `container_modal_size` | select | `md`, `lg`, `xl`, `fullscreen` |
-| `container_modal_hide_trigger` | check | Output modal markup only; trigger from another CE via `tx_link_action=modal` |
+| `container_modal_hide_trigger` | check | Output modal markup only; trigger from another CE via `tx_link_action=modal` or an RTE bodytext link (Link browser tab “Modal”) |
 | `image` | FAL | Max 1 — trigger thumbnail when trigger includes image |
 | `link_config` palette | | Trigger link label and button style (does not navigate) |
 
 **Allowed child CTypes:** accordion/tabs panel list plus `image`.
 
 Frontend: `#modal-{uid}`; trigger thumbnail from the container `image` field when trigger type includes image; shared link rendering via `Resources/Extensions/fluid_styled_content/Private/Partials/Link/ActionLink.html`.
+
+**RTE modal links:** In bodytext, use the link browser tab “Modal” to pick a `ce_modal` on the same page. The frontend renders an inline link with a modal icon (`a.modal-link`) that opens `#modal-{uid}` via Bootstrap. The modal CE should usually have “Hide built-in trigger” enabled when triggered from RTE text.
 
 ### Container (`ce_container`)
 
