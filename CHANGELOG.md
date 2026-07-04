@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.11] - 2026-07-04
+
+### Changed
+- The teaser headline is now linked whenever a `tx_link` target is set (navigate, non-modal), independent of `tx_link_switch`. `tx_link_switch` now only controls whether the separate button/link-text is shown, not whether the headline links.
+
 ## [1.2.10] - 2026-07-04
 
 ### Changed
@@ -711,6 +716,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.11]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.10...v1.2.11
 [1.2.10]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.9...v1.2.10
 [1.2.9]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.8...v1.2.9
 [1.2.8]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.7...v1.2.8
