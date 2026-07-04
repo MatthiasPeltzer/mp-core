@@ -58,7 +58,7 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer implem
             return parent::renderPageModulePreviewHeader($item);
         } catch (\TypeError $e) {
             $this->logPreviewFailure('renderPageModulePreviewHeader', $item, $e);
-            $record = $item->getRecord()->toArray();
+            $record = $this->normalizeRecord($item->getRecord());
             return '<strong>' . htmlspecialchars((string)($record['header'] ?? '')) . '</strong>';
         }
     }
@@ -75,7 +75,7 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer implem
 
     protected function renderFallbackPreview(GridColumnItem $item): string
     {
-        $record = $item->getRecord()->toArray();
+        $record = $this->normalizeRecord($item->getRecord());
         $header = $record['header'] ?? '';
         $subheader = $record['subheader'] ?? '';
         $bodytext = $record['bodytext'] ?? '';
@@ -169,13 +169,29 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer implem
         return $images;
     }
 
+    /**
+     * Normalises the value returned by {@see GridColumnItem::getRecord()} across
+     * core versions: TYPO3 v14 returns a Record value object exposing toArray(),
+     * whereas v13 already returns a plain database row array.
+     *
+     * @return array<string, mixed>
+     */
+    private function normalizeRecord(mixed $record): array
+    {
+        if (is_object($record) && method_exists($record, 'toArray')) {
+            $record = $record->toArray();
+        }
+
+        return is_array($record) ? $record : [];
+    }
+
     private function logPreviewFailure(string $method, GridColumnItem $item, \Throwable $e): void
     {
         if ($this->logger === null) {
             return;
         }
         try {
-            $record = $item->getRecord()->toArray();
+            $record = $this->normalizeRecord($item->getRecord());
             $context = [
                 'method' => $method,
                 'uid' => $record['uid'] ?? null,

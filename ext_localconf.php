@@ -32,6 +32,11 @@ if (ExtensionManagementUtility::isLoaded('form')) {
     '));
 }
 
+// Dedicated cache for the generated /robots.txt and /llms.txt payloads
+// (keyed per site + language). Uses the framework defaults (variable frontend
+// on the database backend) unless overridden by the integrator.
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['mp_core_geotext'] ??= [];
+
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['default'] = 'EXT:mp_core/Configuration/RTE/Default.yaml';
 $GLOBALS['TYPO3_CONF_VARS']['BE']['stylesheets']['mp_core_backend'] = 'EXT:mp_core/Resources/Public/StyleSheets/backend.css';
 $GLOBALS['TYPO3_CONF_VARS']['BE']['stylesheets']['mp_core_ckeditor'] = 'EXT:mp_core/Resources/Public/StyleSheets/ckeditor.css';

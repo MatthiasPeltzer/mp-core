@@ -39,13 +39,35 @@ class CssSanitizeViewHelper extends AbstractViewHelper
             return '';
         }
 
-        $value = (string)preg_replace('/<\s*\/\s*style/i', '', $value);
-        $value = (string)preg_replace('/<\s*script/i', '', $value);
-        $value = (string)preg_replace('/@import\b/i', '', $value);
-        $value = (string)preg_replace('/expression\s*\(/i', '', $value);
-        $value = (string)preg_replace('/javascript\s*:/i', '', $value);
-        $value = (string)preg_replace('/behavior\s*:/i', '', $value);
-        $value = (string)preg_replace('/url\s*\(\s*["\']?\s*data\s*:/i', 'url(', $value);
+        return self::stripDangerousConstructs($value);
+    }
+
+    /**
+     * Strips style-tag breakout sequences and dangerous CSS constructs.
+     *
+     * Each pattern is re-applied until the string stops changing: a single
+     * pass is not enough because overlapping/nested tokens can reconstruct a
+     * dangerous sequence after one replacement (e.g. `</sty</stylele>` collapses
+     * to `</style>`, and `<scr<scriptipt` to `<script`).
+     */
+    public static function stripDangerousConstructs(string $value): string
+    {
+        $patterns = [
+            '/<\s*\/\s*style/i' => '',
+            '/<\s*script/i' => '',
+            '/@import\b/i' => '',
+            '/expression\s*\(/i' => '',
+            '/javascript\s*:/i' => '',
+            '/behavior\s*:/i' => '',
+            '/url\s*\(\s*["\']?\s*data\s*:/i' => 'url(',
+        ];
+
+        do {
+            $previous = $value;
+            foreach ($patterns as $pattern => $replacement) {
+                $value = (string)preg_replace($pattern, $replacement, $value);
+            }
+        } while ($value !== $previous);
 
         return $value;
     }

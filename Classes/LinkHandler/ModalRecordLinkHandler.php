@@ -28,6 +28,9 @@ final class ModalRecordLinkHandler implements LinkHandlerInterface, LinkParamete
         private readonly RecordLinkHandler $recordLinkHandler,
     ) {}
 
+    /**
+     * @return list<string>
+     */
     public function getLinkAttributes(): array
     {
         return $this->linkAttributes;
@@ -40,11 +43,17 @@ final class ModalRecordLinkHandler implements LinkHandlerInterface, LinkParamete
         return $this->recordLinkHandler->modifyLinkAttributes($fieldDefinitions);
     }
 
+    /**
+     * @param array<string, mixed> $configuration
+     */
     public function initialize(AbstractLinkBrowserController $linkBrowser, $identifier, array $configuration): void
     {
         $this->recordLinkHandler->initialize($linkBrowser, $identifier, $configuration);
     }
 
+    /**
+     * @param array<string, mixed> $linkParts
+     */
     public function canHandleLink(array $linkParts): bool
     {
         return $this->recordLinkHandler->canHandleLink($linkParts);
@@ -70,6 +79,10 @@ final class ModalRecordLinkHandler implements LinkHandlerInterface, LinkParamete
         return $this->recordLinkHandler->getBodyTagAttributes();
     }
 
+    /**
+     * @param array<string, mixed> $values
+     * @return array<string, mixed>
+     */
     public function getUrlParameters(array $values): array
     {
         return $this->recordLinkHandler->getUrlParameters($values);

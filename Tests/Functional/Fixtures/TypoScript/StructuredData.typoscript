@@ -1,0 +1,15 @@
+page = PAGE
+page {
+    # Emit ONLY the JSON-LD produced by StructuredDataProcessor so the functional
+    # test can json_decode the whole frontend response body.
+    10 = FLUIDTEMPLATE
+    10 {
+        template = TEXT
+        template.value = {structuredDataJsonLd -> f:format.raw()}
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\SiteProcessor
+            20 = Mpc\MpCore\DataProcessing\SocialMediaProcessor
+            30 = Mpc\MpCore\DataProcessing\StructuredDataProcessor
+        }
+    }
+}

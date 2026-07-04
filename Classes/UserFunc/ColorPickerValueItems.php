@@ -7,7 +7,7 @@ namespace Mpc\MpCore\UserFunc;
 use Mpc\MpCore\Service\CssColorValidator;
 use TYPO3\CMS\Core\Attribute\AsAllowedCallable;
 use TYPO3\CMS\Core\Localization\LanguageService;
-use TYPO3\CMS\Core\Site\Entity\SiteInterface;
+use TYPO3\CMS\Core\Site\Entity\Site;
 
 /**
  * Builds the items array for the color-picker TCA select, sourced from the
@@ -31,7 +31,9 @@ class ColorPickerValueItems
     public function getItems(array &$config): void
     {
         $site = $config['site'] ?? null;
-        if (!$site instanceof SiteInterface) {
+        // getConfiguration() is declared on the concrete Site, not SiteInterface,
+        // and is present on both TYPO3 v13 and v14.
+        if (!$site instanceof Site) {
             $config['items'] = [];
             return;
         }

@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Routing\InvalidRouteArgumentsException;
@@ -38,6 +39,7 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
 
     public function __construct(
         private readonly PageRepository $pageRepository,
+        private readonly FrontendInterface $cache,
     ) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -51,7 +53,19 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        $content = $this->buildLlmsTxt($request, $site);
+        $language = $this->resolveSiteLanguage($request, $site);
+        $cacheIdentifier = $this->geoTextCacheIdentifier('llms', $site, $language);
+
+        $content = $this->cache->get($cacheIdentifier);
+        if (!is_string($content)) {
+            $content = $this->buildLlmsTxt($request, $site);
+            $this->cache->set(
+                $cacheIdentifier,
+                $content,
+                $this->geoTextCacheTags($site),
+                self::GEO_TEXT_CACHE_LIFETIME
+            );
+        }
 
         return new HtmlResponse($content, 200, [
             'Content-Type' => 'text/markdown; charset=utf-8',

@@ -9,7 +9,11 @@ editor:
     contentsCss:
       - "EXT:mp_core/Resources/Public/StyleSheets/ckeditor.css"
     debug: false
-    allowedContent: true
+    # Content is intentionally NOT unrestricted. Permitted markup is scoped by the
+    # CKEditor 5 schema (enabled plugins/toolbar) plus the General HTML Support
+    # allow-list under `editor.config.htmlSupport.allow` below. (`allowedContent`
+    # is a CKEditor 4 Advanced Content Filter option that CKEditor 5 ignores, so
+    # it was removed to avoid implying an "allow everything" policy.)
     defaultContentLanguage: "de"
 
     importModules:

@@ -1,0 +1,4 @@
+"pages"
+,"uid","pid","title","doktype","slug","is_siteroot","nav_hide","description"
+,1,0,"Home",1,"/",1,0,"Welcome to Acme"
+,2,1,"Child",1,"/child",0,0,"Child page"

@@ -25,13 +25,18 @@
     }
   },
   "config": {
-    "vendor-dir": "../default.instance/vendor",
-    "bin-dir": "../default.instance/bin"
+    "vendor-dir": ".Build/vendor",
+    "bin-dir": ".Build/bin",
+    "allow-plugins": {
+      "phpstan/extension-installer": true,
+      "typo3/class-alias-loader": true,
+      "typo3/cms-composer-installers": true
+    }
   },
   "extra": {
     "typo3/cms": {
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": "../default.instance",
+      "web-dir": ".Build/Public",
       "extension-key": "mp_core"
     }
   },
@@ -45,7 +50,16 @@
     "php": ">=8.2",
     "typo3/cms-core": "^13.4 || ^14.3",
     "typo3/cms-extbase": "^13.4 || ^14.3",
-    "typo3/cms-fluid": "^13.4 || ^14.3"
+    "typo3/cms-fluid": "^13.4 || ^14.3",
+    "typo3/cms-rte-ckeditor": "^13.4 || ^14.3",
+    "typo3/cms-seo": "^13.4 || ^14.3"
+  },
+  "require-dev": {
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^10.5 || ^11.5",
+    "saschaegerer/phpstan-typo3": "^2.1",
+    "typo3/testing-framework": "^8.2 || ^9.0"
   },
   "suggest": {
     "georgringer/news": "^13.0 || ^14.0",
@@ -54,9 +68,15 @@
     "mpc/mpc-rss": "^1.0"
   },
   "scripts": {
-    "post-autoload-dump": [
-      "mkdir -p ../default.instance/typo3conf/ext/",
-      "[ -L ../default.instance/typo3conf/ext/mp_core ] || ln -snvf ../../../dir-project ../default.instance/typo3conf/ext/mp_core"
-    ]
+    "test:unit": "phpunit --colors=always -c phpunit.xml.dist",
+    "test:functional": "phpunit --colors=always -c Build/FunctionalTests.xml",
+    "test:coverage": "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html .Build/coverage",
+    "test:coverage:merged": [
+      "@putenv XDEBUG_MODE=coverage",
+      "phpunit -c phpunit.xml.dist --coverage-php .Build/coverage/unit.cov",
+      "phpunit -c Build/FunctionalTests.xml --coverage-php .Build/coverage/functional.cov",
+      "php Build/merge-coverage.php"
+    ],
+    "phpstan": "phpstan analyse -c phpstan.neon.dist"
   }
 }

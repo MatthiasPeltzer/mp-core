@@ -13,6 +13,20 @@ services:
     resource: '../Classes/*'
     exclude: '../Classes/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
+  # Dedicated cache frontend for the /robots.txt and /llms.txt middleware.
+  cache.mp_core_geotext:
+    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+    arguments: ['mp_core_geotext']
+
+  Mpc\MpCore\Middleware\RobotsTxtMiddleware:
+    arguments:
+      $cache: '@cache.mp_core_geotext'
+
+  Mpc\MpCore\Middleware\LlmsTxtMiddleware:
+    arguments:
+      $cache: '@cache.mp_core_geotext'
+
   # DataProcessors are instantiated by TypoScript via GeneralUtility::makeInstance()
   # and therefore must be resolvable as public services from the container.
   Mpc\MpCore\DataProcessing\HeaderLogoProcessor:
