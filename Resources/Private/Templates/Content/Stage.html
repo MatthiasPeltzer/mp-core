@@ -18,7 +18,7 @@
                             <p class="stage-link mb-0">
                                 <f:render partial="Link/ActionLink" arguments="{
                                     linkAction: data.tx_link_action,
-                                    linkParameter: data.tx_link,
+                                    linkParameter: '{f:if(condition: \'{data.tx_link_action} == modal\', then: data.tx_link)}',
                                     linkClass: '{data.tx_link_layout} {data.tx_link_position} teaser-link',
                                     linkText: data.tx_link_text,
                                     showIcon: 1
@@ -30,7 +30,7 @@
                         <p class="stage-link mt-3 mb-0">
                             <f:render partial="Link/ActionLink" arguments="{
                                 linkAction: data.tx_link_action,
-                                linkParameter: data.tx_link,
+                                linkParameter: '{f:if(condition: \'{data.tx_link_action} == modal\', then: data.tx_link)}',
                                 linkClass: '{data.tx_link_layout} {data.tx_link_position} teaser-link',
                                 linkText: data.tx_link_text,
                                 showIcon: 1

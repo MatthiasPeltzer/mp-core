@@ -11,7 +11,7 @@
             <p class="teaser-link">
                 <f:render partial="Link/ActionLink" arguments="{
                     linkAction: data.tx_link_action,
-                    linkParameter: data.tx_link,
+                    linkParameter: '{f:if(condition: \'{data.tx_link_action} == modal\', then: data.tx_link)}',
                     linkClass: data.tx_link_layout,
                     linkText: data.tx_link_text,
                     showIcon: 1
