@@ -1,14 +1,17 @@
 <html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 <f:comment><!--
     Schema.org JSON-LD: single @graph built in StructuredDataProcessor (json_encode, stable @id, publisher links).
-    Gated by site setting structuredDataEnabled (TypoScript if skips processors when false).
+    Gated by the base site setting structuredDataEnabled AND the SEO setting seo.schema.enabled;
+    the processor enforces the same combination and outputs an empty string when either is off.
 --></f:comment>
 
 <f:if condition="{site.settings.structuredDataEnabled}">
-  <f:if condition="{structuredDataJsonLd}">
-    <script type="application/ld+json" nonce="{f:security.nonce()}">
-      <f:format.raw>{structuredDataJsonLd}</f:format.raw>
-    </script>
+  <f:if condition="{site.settings.seo.schema.enabled}">
+    <f:if condition="{structuredDataJsonLd}">
+      <script type="application/ld+json" nonce="{f:security.nonce()}">
+        <f:format.raw>{structuredDataJsonLd}</f:format.raw>
+      </script>
+    </f:if>
   </f:if>
 </f:if>
 

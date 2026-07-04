@@ -42,6 +42,7 @@ final class NewsArticleJsonLdViewHelperTest extends TestCase
             'datePublished' => '',
             'dateModified' => '',
             'imageUrl' => '',
+            'author' => '',
             'publisherName' => '',
         ], $arguments));
 
@@ -57,10 +58,21 @@ final class NewsArticleJsonLdViewHelperTest extends TestCase
         self::assertSame('NewsArticle', $data['@type']);
         self::assertSame('Headline', $data['headline']);
         self::assertSame('https://example.com/news/1', $data['url']);
+        self::assertSame('https://example.com/news/1', $data['mainEntityOfPage']);
         self::assertArrayNotHasKey('description', $data);
         self::assertArrayNotHasKey('datePublished', $data);
         self::assertArrayNotHasKey('image', $data);
         self::assertArrayNotHasKey('publisher', $data);
+        self::assertArrayNotHasKey('author', $data);
+    }
+
+    #[Test]
+    public function emitsAuthorAsPersonWhenProvided(): void
+    {
+        $data = json_decode($this->render(['author' => 'Jane Doe']), true, 512, JSON_THROW_ON_ERROR);
+
+        self::assertSame(['@type' => 'Person', 'name' => 'Jane Doe'], $data['author']);
+        self::assertSame('https://example.com/news/1', $data['mainEntityOfPage']);
     }
 
     #[Test]

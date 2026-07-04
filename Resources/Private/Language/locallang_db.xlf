@@ -652,6 +652,21 @@
       <trans-unit id="site.configuration.customization" resname="site.configuration.customization">
         <source>Customization</source>
       </trans-unit>
+      <trans-unit id="site.configuration.llmstxt.palette.label" resname="site.configuration.llmstxt.palette.label">
+        <source>llms.txt (AI agents)</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtDescription.description" resname="site.configuration.llmsTxtDescription.description">
+        <source>Short summary for this language, shown as the blockquote in llms.txt. Falls back to the SEO default description when empty.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtDescription.label" resname="site.configuration.llmsTxtDescription.label">
+        <source>llms.txt Description</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtIntro.description" resname="site.configuration.llmsTxtIntro.description">
+        <source>Optional intro paragraph for AI agents in this language, shown after the description in llms.txt. Falls back to the global llms.txt intro when empty.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtIntro.label" resname="site.configuration.llmsTxtIntro.label">
+        <source>llms.txt Intro</source>
+      </trans-unit>
       <trans-unit id="site.configuration.description.apple-touch-icon" resname="site.configuration.description.apple-touch-icon">
         <source>The PNG file has to be square in 180x180 pixel. Filename must be 'apple-touch-icon.png'.</source>
       </trans-unit>

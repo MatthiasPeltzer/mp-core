@@ -43,6 +43,28 @@ trait GeoTextFileMiddlewareTrait
         return $requestPath === $expectedPath;
     }
 
+    /**
+     * Resolves which enabled site language's variant of a root file (e.g.
+     * `llms.txt`) is being requested by matching each language's base-path
+     * prefix (`/llms.txt`, `/en/llms.txt`, …). Returns null when the request
+     * does not target that file in any language.
+     */
+    private function matchesLanguageFile(ServerRequestInterface $request, Site $site, string $filename): ?SiteLanguage
+    {
+        $filename = trim($filename, '/');
+        $requestPath = trim($request->getUri()->getPath(), '/');
+
+        foreach ($site->getLanguages() as $language) {
+            $basePath = trim($language->getBase()->getPath(), '/');
+            $expected = trim(($basePath !== '' ? $basePath . '/' : '') . $filename, '/');
+            if ($requestPath === $expected) {
+                return $language;
+            }
+        }
+
+        return null;
+    }
+
     private function resolveSiteRelativePath(ServerRequestInterface $request, Site $site): string
     {
         $path = ltrim($request->getUri()->getPath(), '/');

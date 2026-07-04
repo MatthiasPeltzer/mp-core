@@ -23,6 +23,9 @@ page {
 
         2041 = FLUIDTEMPLATE
         2041 {
+            # Fast opt-out via the base toggle. The SEO toggle seo.schema.enabled
+            # is additionally enforced in StructuredDataProcessor and the
+            # StructuredData.html partial (both must be true to emit JSON-LD).
             if.isTrue.data = site:settings.structuredDataEnabled
             file = EXT:mp_core/Resources/Private/Partials/Page/StructuredData.html
             extbase {

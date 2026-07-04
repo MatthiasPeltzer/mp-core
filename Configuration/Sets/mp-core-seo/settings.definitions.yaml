@@ -136,6 +136,151 @@ settings:
     type: string
     default: 'Organization'
 
+  # Publisher identity (schema.org Organization / Person)
+  seo.schema.legalName:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.legalName.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.legalName.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.alternateName:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.alternateName.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.alternateName.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.description:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.description.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.description.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.foundingDate:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.foundingDate.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.foundingDate.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.vatId:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.vatId.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.vatId.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.taxId:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.taxId.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.taxId.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  # Publisher expertise (Organization or Person)
+  seo.schema.knowsAbout:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.knowsAbout.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.knowsAbout.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  # Publisher identity (Person type only)
+  seo.schema.person.jobTitle:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.person.jobTitle.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.person.jobTitle.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  # Publisher contact
+  seo.schema.email:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.email.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.email.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.telephone:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.telephone.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.telephone.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.contactPoint.contactType:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.contactPoint.contactType.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.contactPoint.contactType.form.description'
+    category: MPCoreSEO
+    type: string
+    default: 'customer service'
+
+  seo.schema.contactPoint.telephone:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.contactPoint.telephone.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.contactPoint.telephone.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.contactPoint.email:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.contactPoint.email.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.contactPoint.email.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.contactPoint.areaServed:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.contactPoint.areaServed.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.contactPoint.areaServed.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.contactPoint.availableLanguage:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.contactPoint.availableLanguage.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.contactPoint.availableLanguage.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  # Publisher postal address (schema.org PostalAddress)
+  seo.schema.address.streetAddress:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.address.streetAddress.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.address.streetAddress.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.address.addressLocality:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.address.addressLocality.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.address.addressLocality.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.address.postalCode:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.address.postalCode.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.address.postalCode.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.address.addressRegion:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.address.addressRegion.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.address.addressRegion.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.schema.address.addressCountry:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.address.addressCountry.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.schema.address.addressCountry.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
   seo.robots.enabled:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.enabled.form.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.enabled.form.description'
@@ -150,6 +295,13 @@ settings:
     type: bool
     default: true
 
+  seo.robots.crawlDelay:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.crawlDelay.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.crawlDelay.form.description'
+    category: MPCoreSEO
+    type: int
+    default: 0
+
   seo.robots.additional:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.additional.form.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.robots.additional.form.description'
@@ -163,4 +315,33 @@ settings:
     category: MPCoreSEO
     type: bool
     default: true
+
+  seo.llmsTxt.intro:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.intro.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.intro.form.description'
+    category: MPCoreSEO
+    type: text
+    default: ''
+
+  # Latest-news section in llms.txt (requires EXT:news). Left empty = section omitted.
+  seo.llmsTxt.news.storagePid:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.news.storagePid.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.news.storagePid.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.llmsTxt.news.detailPageId:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.news.detailPageId.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.news.detailPageId.form.description'
+    category: MPCoreSEO
+    type: int
+    default: 0
+
+  seo.llmsTxt.news.limit:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.news.limit.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.news.limit.form.description'
+    category: MPCoreSEO
+    type: int
+    default: 5
 

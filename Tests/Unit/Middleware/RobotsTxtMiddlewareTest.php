@@ -118,6 +118,78 @@ final class RobotsTxtMiddlewareTest extends TestCase
     }
 
     #[Test]
+    public function includesTempDirAndParameterizedUrlRules(): void
+    {
+        $cache = $this->createMock(FrontendInterface::class);
+        $cache->method('get')->willReturn(false);
+
+        $middleware = new RobotsTxtMiddleware($cache);
+        $response = $middleware->process($this->request('/robots.txt', $this->site()), $this->passthroughHandler());
+
+        $body = $this->bodyOf($response);
+        self::assertStringContainsString('Disallow: /typo3temp/', $body);
+        self::assertStringContainsString('Disallow: /fileadmin/_processed_/', $body);
+        self::assertStringContainsString('Disallow: /*?cHash=', $body);
+        self::assertStringContainsString('Disallow: /*?tx_', $body);
+    }
+
+    #[Test]
+    public function rendersHeaderCommentWithSiteHostFallback(): void
+    {
+        $cache = $this->createMock(FrontendInterface::class);
+        $cache->method('get')->willReturn(false);
+
+        $middleware = new RobotsTxtMiddleware($cache);
+        $response = $middleware->process($this->request('/robots.txt', $this->site()), $this->passthroughHandler());
+
+        self::assertStringStartsWith('# robots.txt for example.com', $this->bodyOf($response));
+    }
+
+    #[Test]
+    public function emitsCrawlDelayOnlyWhenConfigured(): void
+    {
+        $cache = $this->createMock(FrontendInterface::class);
+        $cache->method('get')->willReturn(false);
+        $middleware = new RobotsTxtMiddleware($cache);
+
+        $without = $this->bodyOf(
+            $middleware->process($this->request('/robots.txt', $this->site()), $this->passthroughHandler())
+        );
+        self::assertStringNotContainsString('Crawl-delay:', $without);
+
+        $withDelay = $this->bodyOf($middleware->process(
+            $this->request('/robots.txt', $this->site(['seo' => ['robots' => ['crawlDelay' => 10]]])),
+            $this->passthroughHandler()
+        ));
+        self::assertStringContainsString('Crawl-delay: 10', $withDelay);
+    }
+
+    #[Test]
+    public function listsOneSitemapPerEnabledLanguage(): void
+    {
+        $de = $this->createMock(SiteLanguage::class);
+        $de->method('getBase')->willReturn(new Uri('https://example.com/'));
+        $en = $this->createMock(SiteLanguage::class);
+        $en->method('getBase')->willReturn(new Uri('https://example.com/en/'));
+
+        $site = $this->createMock(Site::class);
+        $site->method('getBase')->willReturn(new Uri('https://example.com/'));
+        $site->method('getIdentifier')->willReturn('main');
+        $site->method('getSettings')->willReturn(SiteSettings::createFromSettingsTree([]));
+        $site->method('getDefaultLanguage')->willReturn($de);
+        $site->method('getLanguages')->willReturn([$de, $en]);
+
+        $cache = $this->createMock(FrontendInterface::class);
+        $cache->method('get')->willReturn(false);
+        $middleware = new RobotsTxtMiddleware($cache);
+
+        $body = $this->bodyOf($middleware->process($this->request('/robots.txt', $site), $this->passthroughHandler()));
+
+        self::assertStringContainsString('Sitemap: https://example.com/sitemap.xml', $body);
+        self::assertStringContainsString('Sitemap: https://example.com/en/sitemap.xml', $body);
+    }
+
+    #[Test]
     public function disallowsAiCrawlersWhenConfigured(): void
     {
         $cache = $this->createMock(FrontendInterface::class);

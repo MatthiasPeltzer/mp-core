@@ -4,12 +4,20 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\ViewHelpers\Schema;
 
+use Mpc\MpCore\Schema\PublisherSchemaBuilder;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Site\Entity\Site;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Emits NewsArticle JSON-LD (single object, no script wrapper) with json_encode.
+ *
+ * The publisher is assembled by the shared {@see PublisherSchemaBuilder} so it
+ * carries the same @type, logo and @id as the site-wide @graph publisher (which
+ * is always present in the page head, even on news detail); consumers that merge
+ * by @id therefore see one complete publisher node.
  */
 final class NewsArticleJsonLdViewHelper extends AbstractViewHelper
 {
@@ -23,33 +31,37 @@ final class NewsArticleJsonLdViewHelper extends AbstractViewHelper
         $this->registerArgument('datePublished', 'string', 'ISO 8601 datetime', false, '');
         $this->registerArgument('dateModified', 'string', 'ISO 8601 datetime', false, '');
         $this->registerArgument('imageUrl', 'string', 'Lead image absolute URL', false, '');
-        $this->registerArgument('publisherName', 'string', 'Override publisher; defaults to site websiteTitle', false, '');
+        $this->registerArgument('author', 'string', 'Author display name; defaults to site websiteTitle', false, '');
+        $this->registerArgument('publisherName', 'string', 'Override publisher name; defaults to site websiteTitle', false, '');
     }
 
     public function render(): string
     {
         $request = $this->getServerRequest();
         $site = $request?->getAttribute('site');
-        if ($site instanceof Site) {
-            $enabled = filter_var($site->getSettings()->get('structuredDataEnabled') ?? true, FILTER_VALIDATE_BOOLEAN);
-            if (!$enabled) {
-                return '';
-            }
+        if ($site instanceof Site && !$this->isStructuredDataEnabled($site)) {
+            return '';
         }
 
-        $publisherName = $this->resolvePublisherName();
         $data = [
             '@context' => 'https://schema.org',
             '@type' => 'NewsArticle',
             'headline' => $this->arguments['headline'],
             'url' => $this->arguments['articleUrl'],
+            'mainEntityOfPage' => $this->arguments['articleUrl'],
         ];
-        if ($publisherName !== '') {
-            $publisherType = $this->resolvePublisherSchemaType($site);
-            $data['publisher'] = [
-                '@type' => $publisherType,
-                'name' => $publisherName,
-            ];
+
+        $author = trim((string)($this->arguments['author'] ?? ''));
+        if ($author === '') {
+            $author = $this->resolvePublisherName();
+        }
+        if ($author !== '') {
+            $data['author'] = ['@type' => 'Person', 'name' => $author];
+        }
+
+        $publisher = $this->buildPublisher($request, $site instanceof Site ? $site : null);
+        if ($publisher !== []) {
+            $data['publisher'] = $publisher;
         }
 
         $description = trim((string)$this->arguments['description']);
@@ -82,6 +94,44 @@ final class NewsArticleJsonLdViewHelper extends AbstractViewHelper
         }
     }
 
+    /**
+     * Builds the publisher node via the shared builder (incl. logo). Without a
+     * resolvable Site it falls back to a minimal Person publisher for an
+     * explicit publisherName override.
+     *
+     * @return array<string, mixed>
+     */
+    private function buildPublisher(?ServerRequestInterface $request, ?Site $site): array
+    {
+        $override = trim((string)($this->arguments['publisherName'] ?? ''));
+
+        if (!$site instanceof Site || !$request instanceof ServerRequestInterface) {
+            return $override !== '' ? ['@type' => 'Person', 'name' => $override] : [];
+        }
+
+        $builder = GeneralUtility::makeInstance(PublisherSchemaBuilder::class);
+        $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $cObj->setRequest($request);
+
+        $homeUrl = $builder->absolutePageUrl($cObj, $site->getRootPageId());
+        $publisherId = $homeUrl !== '' ? $homeUrl . '#publisher' : '';
+        $publisher = $builder->build($cObj, $site, $homeUrl, $publisherId, []);
+
+        if ($override !== '' && $publisher !== []) {
+            $publisher['name'] = $override;
+        }
+
+        return $publisher;
+    }
+
+    private function isStructuredDataEnabled(Site $site): bool
+    {
+        $settings = $site->getSettings();
+
+        return filter_var($settings->get('structuredDataEnabled') ?? true, FILTER_VALIDATE_BOOLEAN)
+            && filter_var($settings->get('seo.schema.enabled') ?? true, FILTER_VALIDATE_BOOLEAN);
+    }
+
     private function resolvePublisherName(): string
     {
         $raw = $this->arguments['publisherName'] ?? '';
@@ -99,27 +149,6 @@ final class NewsArticleJsonLdViewHelper extends AbstractViewHelper
         }
 
         return '';
-    }
-
-    /**
-     * Same order as mpc_sitepackage StructuredDataProcessor::resolvePublisherSchemaType().
-     */
-    private function resolvePublisherSchemaType(?Site $site): string
-    {
-        if (!$site instanceof Site) {
-            return 'Person';
-        }
-        $settings = $site->getSettings();
-        $fromSeo = trim((string)($settings->get('seo.schema.organizationType') ?? ''));
-        if ($fromSeo !== '') {
-            return $fromSeo;
-        }
-        $fromConfig = trim((string)($site->getConfiguration()['schemaType'] ?? ''));
-        if ($fromConfig !== '') {
-            return $fromConfig;
-        }
-
-        return 'Person';
     }
 
     private function getServerRequest(): ?ServerRequestInterface
