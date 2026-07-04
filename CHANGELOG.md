@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.9] - 2026-07-04
+
+### Added
+- Structured-data publisher identity Site Settings (`seo.schema.*`): `legalName`, `alternateName`, `description`, `foundingDate`, `vatId`, `taxId`, `email`, `telephone`, a `contactPoint` (type, telephone, email, area served, languages) and a `PostalAddress` (`address.*`). These enrich the Organization/Person publisher node in the JSON-LD `@graph`.
+- Publisher expertise Site Setting `seo.schema.knowsAbout` (comma-separated topics) — emitted on both `Organization` and `Person` publishers.
+- Person-only publisher Site Setting `seo.schema.person.jobTitle` — emitted on the `Person` publisher only.
+- `PublisherSchemaBuilder`: shared service that assembles the Schema.org publisher (Organization/Person) used by both the site-wide `@graph` and the `NewsArticle` markup, so the publisher `@type`, logo and `@id` stay identical across the page.
+- `seo.robots.crawlDelay` Site Setting to emit an optional `Crawl-delay` directive in the generated `robots.txt` (0 = off).
+- `llms.txt` now includes an optional configurable intro (`seo.llmsTxt.intro`), an "About" section derived from the `seo.schema.*` publisher settings (name, type, email, expertise), and a "Latest news" section listing recent EXT:news articles per language (opt-in via `seo.llmsTxt.news.storagePid` + `seo.llmsTxt.news.detailPageId`, capped by `seo.llmsTxt.news.limit`).
+- Per-language `llms.txt` content via Site Configuration → Languages: new `site_language` fields `llmsTxtDescription` and `llmsTxtIntro` (translatable in the backend) override the global description/intro per language; the localized `websiteTitle` is now used for the llms.txt heading.
+- `LanguageAwarePageRepositoryFactory` service; the `llms.txt` page menu is now resolved through a language-aware `PageRepository`, so translated variants (e.g. `/en/llms.txt`) list page titles and descriptions in the correct language instead of the default one.
+- `LlmsTxtNewsProvider` service that resolves recent EXT:news records and their detail URLs for the llms.txt news section, degrading gracefully when EXT:news is absent or unconfigured.
+
+### Changed
+- Publisher/Organization JSON-LD now emits the configured identity, contact and postal-address details, and the logo `ImageObject` now includes `width`/`height`.
+- `NewsArticle` JSON-LD now includes `author` (from the news author, falling back to the site title), a full `publisher` (with logo, via the shared builder) and `mainEntityOfPage`.
+- `WebPage`/`BlogPosting` now references the `BreadcrumbList` by `@id` and adds `primaryImageOfPage` when page media is present.
+- Structured-data output is now gated by both `structuredDataEnabled` (base) and `seo.schema.enabled` (SEO); the previously unused `seo.schema.enabled` toggle is now honored. Both must be true to emit JSON-LD.
+- Generated `robots.txt` now includes a header comment (site name), and disallows TYPO3 temp/derivative directories (`/typo3temp/`, `/fileadmin/_processed_/`) and parameterized duplicate URLs (`?cHash=`, `?tx_`) in the default `User-agent: *` group.
+- Generated `robots.txt` now advertises one `Sitemap:` line per enabled site language (e.g. `/sitemap.xml` and `/en/sitemap.xml`), so per-language EXT:seo sitemaps are all discoverable from the single root robots.txt.
+- `llms.txt` is now served per enabled site language (`/llms.txt`, `/en/llms.txt`, …), each listing that language's pages, linking its own localized XML sitemap and cross-linking the other language variants under a `## Languages` section. The site description now uses the llms.txt spec's `>` blockquote summary.
+
+### Security
+- `CssSanitizeViewHelper`: harden the CSS sanitizer against nested/overlapping token bypasses (e.g. `</sty</stylele>` collapsing to `</style>`, `<scr<scriptipt` to `<script`) by re-applying each removal rule until the string stops changing.
+
+### Fixed
+- `MP_CORE_PANEL_ALLOWED_CONTENT_TYPES` is now declared with a guarded `define()` instead of a top-level `const`, so re-evaluating the container TCA override (when the TCA is rebuilt more than once in a single PHP process) no longer raises a "Constant already defined" warning.
+
+### Tests
+- Unit tests for `PublisherSchemaBuilder` (publisher type resolution, Organization vs Person fields, contact/address assembly, `sameAs`) and for the combined structured-data enable toggle.
+- Functional test coverage for the Organization identity/contact/address fields, the WebPage↔BreadcrumbList `@id` reference and the `seo.schema.enabled` opt-out.
+- Unit tests for the CSS and JSON-LD trust-boundary ViewHelpers (`CssSanitize`, `CssColor`, JSON `Decode`, `FaqPageJsonLd`, `NewsArticleJsonLd`) and the `StructuredDataExtraEntityType` enum.
+- Unit tests for the SEO / structured-data logic: `SocialMediaProcessor`, `HeaderLogoProcessor`, `StructuredDataProcessor`, the `robots.txt` / `llms.txt` middleware and their shared geo-text trait, and `FileException`.
+- Functional-test harness (`Build/FunctionalTests.xml` + bootstrap, SQLite by default, overridable to MariaDB/MySQL) with a `WebFontProcessor` test covering the real QueryBuilder / FAL resolution path, and a `StructuredDataProcessor` test that renders a real frontend page and asserts the emitted JSON-LD `@graph` (publisher, WebSite, WebPage and breadcrumb) with real site routing.
+- `composer test:functional`, `composer test:coverage` and `composer test:coverage:merged` (merged unit + functional coverage report) scripts.
+
 ## [1.2.8] - 2026-07-04
 
 ### Added
@@ -667,6 +703,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.9]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.8...v1.2.9
 [1.2.8]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.7...v1.2.8
 [1.2.7]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.6...v1.2.7
 [1.2.6]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.5...v1.2.6
