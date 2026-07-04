@@ -5,9 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.2.8] - 2026-07-04
+
+### Added
+- `ce_modal` container content element: composed modal overlay (text, images, VidPly) with image/link
+  trigger, optional hidden built-in trigger, and Bootstrap modal sizes.
+- `tx_link_action` on the shared `link_config` palette: structured links/buttons outside the RTE can
+  open a `ce_modal` record on the same page via `Resources/Extensions/fluid_styled_content/Private/Partials/Link/ActionLink.html`.
+- RTE bodytext: link browser tab “Modal” (filtered to `ce_modal` records) renders inline modal links
+  with icon in the frontend (`config.recordLinks.tx_mpcore_modal`).
 
 ### Changed
+- RTE link browser: map all link CSS classes to their link-type tabs via `classesAnchor`, with
+  sensible defaults (page, URL, file, email, phone, modal, and special internal styles).
+- RTE / link browser “Modal” tab: hide target field; offer `modal-link` CSS class (default) for modal
+  record links.
 - b13/container elements: use `allowedContentTypes` on accordion (TYPO3 14+), extract shared
   `grid_container` TCA, remove dead palette/cObject wiring, unify child rendering in
   Accordion/Tabs templates.
@@ -15,21 +27,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and `mpc_vidply` inline player).
 
 ### Fixed
+- `ce_modal` backend icon: register `Modal.svg` as `tx_modal` and use the icon identifier in b13/container (same as accordion/tabs).
+- `ce_modal` new content element wizard: register explicit `iconIdentifier = tx_modal` in Page TSconfig (same pattern as gallery/stage).
+- `ce_modal` modal header: show container or first child headline left of the close button (Gallery layout); hide duplicate VidPly headline in the body.
+- `ce_modal`: pause VidPly and native video/audio when the modal is closed (previously `pauseOutside(document.body)` kept in-modal playback running).
+- `ce_modal` trigger image: load the container `image` FAL field into Fluid (`files` was wired to `grid_icon` only, so trigger thumbnails never appeared).
+- `ce_modal` trigger layout: image above button-style label; entire trigger stays one clickable `<button>`.
+- `ce_modal` trigger position: honour `tx_link_position` on the full-width trigger wrapper (left/center/right in the column).
+- `ce_modal` trigger image: clip rounded corners like other content images (`overflow: hidden` on the image wrapper).
+- `ce_modal` stacked trigger: one rounded card for image + button; FAL outline uses Bootstrap `border` utilities on the card (no duplicate `.outline` ring); inner `btn` keeps full button styling in `card-body`.
 - Vue Swiper slider/gallery: initialize VidPly after slide HTML is injected via `v-html` and
   pause playback when leaving a slide.
+- `ce_modal` page headline: do not wrap the container header in `teaser-link` (`tx_link` is for the
+  built-in trigger label/style only).
+- `ce_modal` backend icon: restore `Modal.svg` in `Build/Assets/Static/Icons` so Vite build no longer
+  deletes it from `Resources/Public/Icons`.
 
 ## [1.2.7] - 2026-06-30
 
 ### Fixed
-- Swiper - Ugrade to version 14.01
+- Swiper – Upgrade to version 14.01
 - Add typo3 13 compatibility
 
 ## [1.2.6] - 2026-06-22
 
 ### Fixed
-- Swiper - Ugrade to version 14
+- Swiper – Upgrade to version 14
 - Swiper slider config mix-up when multiple sliders mount on the same page (parallel Vue mount race).
-- Swiper prev/next buttons only clickable at the edges when Swiper v14 pagination overlay blocked clicks (`z-index: 20` on nav buttons; layout unchanged).
+- Swiper prev/next buttons are only clickable at the edges when Swiper v14 pagination overlay blocked clicks (`z-index: 20` on nav buttons; layout unchanged).
 - Swiper slides use equal `height: 100%` instead of content-based `height: auto` (container locked to tallest slide via JS; re-measures on resize/images; thumb strips unchanged).
 
 ## [1.2.5] - 2026-06-22
@@ -642,6 +667,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.8]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.7...v1.2.8
 [1.2.7]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.6...v1.2.7
 [1.2.6]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.5...v1.2.6
 [1.2.5]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.4...v1.2.5
