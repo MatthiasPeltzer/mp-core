@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Site\Entity\Site;
 
@@ -17,6 +18,10 @@ use TYPO3\CMS\Core\Site\Entity\Site;
 final class RobotsTxtMiddleware implements MiddlewareInterface
 {
     use GeoTextFileMiddlewareTrait;
+
+    public function __construct(
+        private readonly FrontendInterface $cache,
+    ) {}
 
     /**
      * Default crawl rules for the generic `User-agent: *` group. Keeps the TYPO3
@@ -59,7 +64,19 @@ final class RobotsTxtMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        $content = $this->buildRobotsTxt($site);
+        $language = $this->resolveSiteLanguage($request, $site);
+        $cacheIdentifier = $this->geoTextCacheIdentifier('robots', $site, $language);
+
+        $content = $this->cache->get($cacheIdentifier);
+        if (!is_string($content)) {
+            $content = $this->buildRobotsTxt($site);
+            $this->cache->set(
+                $cacheIdentifier,
+                $content,
+                $this->geoTextCacheTags($site),
+                self::GEO_TEXT_CACHE_LIFETIME
+            );
+        }
 
         return new HtmlResponse($content, 200, [
             'Content-Type' => 'text/plain; charset=utf-8',

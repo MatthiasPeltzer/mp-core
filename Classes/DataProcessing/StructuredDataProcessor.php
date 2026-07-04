@@ -44,6 +44,12 @@ final class StructuredDataProcessor implements DataProcessorInterface
         PageRepository::DOKTYPE_SYSFOLDER,
     ];
 
+    /**
+     * @param array<string, mixed> $contentObjectConfiguration
+     * @param array<string, mixed> $processorConfiguration
+     * @param array<string, mixed> $processedData
+     * @return array<string, mixed>
+     */
     public function process(
         ContentObjectRenderer $cObj,
         array $contentObjectConfiguration,

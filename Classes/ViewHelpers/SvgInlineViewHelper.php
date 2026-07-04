@@ -8,8 +8,7 @@ use DOMDocument;
 use DOMElement;
 use Mpc\MpCore\Exception\FileException;
 use Throwable;
-use TYPO3\CMS\Core\Resource\File;
-use TYPO3\CMS\Core\Resource\FileReference;
+use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
@@ -28,6 +27,42 @@ class SvgInlineViewHelper extends AbstractViewHelper
 
     /** @var array<string,string> */
     private static array $inlineSvgCache = [];
+
+    /**
+     * Attribute names (lower-cased) that callers are permitted to set on the
+     * root <svg> element. Anything outside this set — event handlers, xlink/href,
+     * scripting hooks, unknown vendor attributes — is dropped.
+     *
+     * @var list<string>
+     */
+    private const ALLOWED_ROOT_ATTRIBUTES = [
+        'id',
+        'class',
+        'style',
+        'width',
+        'height',
+        'viewbox',
+        'preserveaspectratio',
+        'role',
+        'tabindex',
+        'focusable',
+        'lang',
+        'fill',
+        'stroke',
+        'x',
+        'y',
+    ];
+
+    /**
+     * Attribute name prefixes (lower-cased) that are always permitted on the
+     * root element, covering data-* and ARIA accessibility attributes.
+     *
+     * @var list<string>
+     */
+    private const ALLOWED_ROOT_ATTRIBUTE_PREFIXES = [
+        'data-',
+        'aria-',
+    ];
 
     public function __construct(
         private readonly ImageService $imageService,
@@ -74,9 +109,10 @@ class SvgInlineViewHelper extends AbstractViewHelper
     }
 
     /**
+     * @param array<string, mixed> $arguments
      * @throws FileException
      */
-    protected function getImage(array $arguments): File|FileReference
+    protected function getImage(array $arguments): FileInterface
     {
         if ($arguments['src'] === '' && $arguments['image'] === null) {
             throw new FileException('You must either specify a string src or a File object.', 1678366368);
@@ -96,6 +132,9 @@ class SvgInlineViewHelper extends AbstractViewHelper
         return $image;
     }
 
+    /**
+     * @param array<string, mixed> $attributes
+     */
     protected static function getInlineSvgCached(string $svgContent, array $attributes = []): string
     {
         $normalizedAttributes = self::normalizeAttributes($attributes);
@@ -110,6 +149,7 @@ class SvgInlineViewHelper extends AbstractViewHelper
     }
 
     /**
+     * @param array<string, mixed> $attributes
      * @return array<string,scalar|null>
      */
     protected static function normalizeAttributes(array $attributes): array
@@ -126,13 +166,6 @@ class SvgInlineViewHelper extends AbstractViewHelper
             $attributes[$key] = $value === '' ? null : $value;
         }
 
-        // Strip event-handler attributes (on*) to prevent XSS
-        foreach (array_keys($attributes) as $key) {
-            if (str_starts_with(strtolower((string)$key), 'on')) {
-                unset($attributes[$key]);
-            }
-        }
-
         // Expand data-attributes
         if (isset($attributes['data']) && is_array($attributes['data'])) {
             foreach ($attributes['data'] as $attributeDataKey => $attributeDataValue) {
@@ -146,7 +179,33 @@ class SvgInlineViewHelper extends AbstractViewHelper
             unset($attributes['data']);
         }
 
+        // Defense-in-depth: keep only known-safe attribute names on the root
+        // <svg>. This drops event handlers (on*), xlink/href, scripting hooks
+        // and any other unexpected attribute a caller might pass through
+        // additionalAttributes.
+        foreach (array_keys($attributes) as $key) {
+            if (!self::isAllowedRootAttribute((string)$key)) {
+                unset($attributes[$key]);
+            }
+        }
+
         return $attributes;
+    }
+
+    private static function isAllowedRootAttribute(string $name): bool
+    {
+        $name = strtolower($name);
+        if (in_array($name, self::ALLOWED_ROOT_ATTRIBUTES, true)) {
+            return true;
+        }
+
+        foreach (self::ALLOWED_ROOT_ATTRIBUTE_PREFIXES as $prefix) {
+            if (str_starts_with($name, $prefix)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -189,7 +248,10 @@ class SvgInlineViewHelper extends AbstractViewHelper
             $elements = $dom->getElementsByTagName($tagName);
             while ($elements->length > 0) {
                 $element = $elements->item(0);
-                $element?->parentNode?->removeChild($element);
+                if (!$element instanceof DOMElement) {
+                    break;
+                }
+                $element->parentNode?->removeChild($element);
             }
         }
 

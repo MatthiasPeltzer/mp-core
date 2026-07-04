@@ -7,3 +7,13 @@
 /Classes/Command/ImportDocumentationCommand.php
 /Classes/Service/DocumentationImportService.php
 /Configuration/Services.local.yaml
+
+# Standalone test build (composer install inside the extension) + test caches
+/.Build/
+/.phpunit.cache/
+/composer.lock
+
+# Safety net: the standalone install now uses web-dir .Build/Public (ignored via
+# /.Build/ above), but keep ignoring a root-level docroot in case one is scaffolded
+# locally with a different/overridden web-dir. Never shipped.
+/public/

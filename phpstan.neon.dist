@@ -1,0 +1,12 @@
+# PHPStan configuration for the mp_core extension.
+#
+# The TYPO3-specific rules and reflection stubs are provided by
+# saschaegerer/phpstan-typo3, which is auto-registered through
+# phpstan/extension-installer (see composer.json require-dev).
+parameters:
+    level: 8
+    paths:
+        - Classes
+    # Fluid ViewHelpers and DataProcessors are instantiated by the framework;
+    # ignore the "unused" reports the container-driven wiring would trigger.
+    treatPhpDocTypesAsCertain: false

@@ -8,8 +8,14 @@ defined('TYPO3') or die('Access denied.');
 
 /**
  * Allowed child CTypes for ce_accordion and ce_tabs (panel containers).
+ *
+ * Declared via a guarded define() rather than a top-level const so re-evaluating
+ * this override file (e.g. when the TCA is rebuilt multiple times in the same
+ * PHP process, as functional tests do) does not raise a redefinition warning.
  */
-const MP_CORE_PANEL_ALLOWED_CONTENT_TYPES = 'header,text,textpic,ce_accordion,ce_tabs,ce_container,mpc_vidply';
+if (!defined('MP_CORE_PANEL_ALLOWED_CONTENT_TYPES')) {
+    define('MP_CORE_PANEL_ALLOWED_CONTENT_TYPES', 'header,text,textpic,ce_accordion,ce_tabs,ce_container,mpc_vidply');
+}
 
 (static function (): void {
     /**

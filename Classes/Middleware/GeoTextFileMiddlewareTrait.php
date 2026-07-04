@@ -13,6 +13,28 @@ use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
  */
 trait GeoTextFileMiddlewareTrait
 {
+    /**
+     * Lifetime (seconds) for cached /robots.txt and /llms.txt payloads. Entries
+     * are additionally tagged per site so they can be flushed on demand.
+     */
+    private const GEO_TEXT_CACHE_LIFETIME = 86400;
+
+    private function geoTextCacheIdentifier(string $prefix, Site $site, SiteLanguage $language): string
+    {
+        return $prefix . '_' . sha1($site->getIdentifier() . '|' . $language->getLanguageId());
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function geoTextCacheTags(Site $site): array
+    {
+        return [
+            'mp_core_geotext',
+            'site_' . (preg_replace('/[^a-zA-Z0-9_-]/', '_', $site->getIdentifier()) ?? ''),
+        ];
+    }
+
     private function matchesSitePath(ServerRequestInterface $request, Site $site, string $expectedPath): bool
     {
         $expectedPath = trim($expectedPath, '/');

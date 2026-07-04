@@ -8,6 +8,9 @@ use Exception;
 
 class FileException extends Exception
 {
+    /**
+     * @param array<string, mixed> $context
+     */
     public function __construct(
         string $message,
         int $code = 0,
@@ -17,6 +20,9 @@ class FileException extends Exception
         parent::__construct($message, $code, $previous);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getContext(): array
     {
         return $this->context;
