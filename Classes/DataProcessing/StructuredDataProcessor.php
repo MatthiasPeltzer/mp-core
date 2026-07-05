@@ -261,7 +261,11 @@ final class StructuredDataProcessor implements DataProcessorInterface
     private function resolveExtraEntityType(Site $site): StructuredDataExtraEntityType
     {
         $typeValue = trim($this->resolveSiteValue($site, 'structuredData.extraEntity.type'));
-        if ($typeValue !== '' && $typeValue !== 'none') {
+        if ($typeValue !== '') {
+            if ($typeValue === 'none') {
+                return StructuredDataExtraEntityType::None;
+            }
+
             return StructuredDataExtraEntityType::tryFrom($typeValue) ?? StructuredDataExtraEntityType::None;
         }
 

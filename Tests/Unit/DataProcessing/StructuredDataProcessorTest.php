@@ -66,6 +66,16 @@ final class StructuredDataProcessorTest extends TestCase
             $this->invoke('resolveExtraEntityType', $this->site(['structuredData' => ['extraEntity' => ['type' => 'none']]]))
         );
         self::assertSame(
+            StructuredDataExtraEntityType::None,
+            $this->invoke(
+                'resolveExtraEntityType',
+                $this->site(
+                    ['structuredData' => ['extraEntity' => ['type' => 'none']]],
+                    ['musicGroupEnabled' => true]
+                )
+            )
+        );
+        self::assertSame(
             StructuredDataExtraEntityType::MusicGroup,
             $this->invoke('resolveExtraEntityType', $this->site(['musicGroupEnabled' => true]))
         );
