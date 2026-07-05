@@ -91,14 +91,7 @@ final class RestrictModalLinkBrowserListenerTest extends TestCase
 
     private function createListener(?ServerRequestInterface $request): RestrictModalLinkBrowserListener
     {
-        return new readonly class ($request) extends RestrictModalLinkBrowserListener {
-            public function __construct(private ?ServerRequestInterface $stubRequest) {}
-
-            protected function getRequest(): ?ServerRequestInterface
-            {
-                return $this->stubRequest;
-            }
-        };
+        return new StubRestrictModalLinkBrowserListener($request);
     }
 
     private function requestWithAct(string $act): ServerRequestInterface
@@ -121,5 +114,15 @@ final class RestrictModalLinkBrowserListenerTest extends TestCase
             100,
             $this->createMock(DatabaseRecordList::class),
         );
+    }
+}
+
+readonly class StubRestrictModalLinkBrowserListener extends RestrictModalLinkBrowserListener
+{
+    public function __construct(private ?ServerRequestInterface $stubRequest) {}
+
+    protected function getRequest(): ?ServerRequestInterface
+    {
+        return $this->stubRequest;
     }
 }
