@@ -239,7 +239,7 @@ const breakpoints = computed(() => {
     });
     
     return parsed;
-  } catch (e) {
+  } catch {
     return undefined;
   }
 });
@@ -313,7 +313,7 @@ onBeforeMount(() => {
         id: slide.id,
         content: slide.content.trim()
       }));
-    } catch (e) {
+    } catch {
       // Failed to parse slides data - will try DOM extraction
     }
   }

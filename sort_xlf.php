@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // sort_xlf.php
 // Script to sort all <trans-unit> entries in XLF files by their id attribute.
 

@@ -6,6 +6,7 @@ namespace Mpc\MpCore\Tests\Unit\DataProcessing;
 
 use Mpc\MpCore\DataProcessing\StructuredDataProcessor;
 use Mpc\MpCore\Enum\StructuredDataExtraEntityType;
+use Mpc\MpCore\Schema\PublisherSchemaBuilder;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -24,7 +25,7 @@ final class StructuredDataProcessorTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = new StructuredDataProcessor();
+        $this->subject = new StructuredDataProcessor(new PublisherSchemaBuilder());
     }
 
     private function invoke(string $method, mixed ...$args): mixed

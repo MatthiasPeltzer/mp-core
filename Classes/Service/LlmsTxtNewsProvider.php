@@ -10,7 +10,6 @@ use TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer;
 use TYPO3\CMS\Core\Routing\InvalidRouteArgumentsException;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Resolves recent EXT:news records for the llms.txt "Latest news" section.
@@ -24,12 +23,10 @@ class LlmsTxtNewsProvider
 {
     private const NEWS_TABLE = 'tx_news_domain_model_news';
 
-    private readonly ConnectionPool $connectionPool;
-
-    public function __construct(?ConnectionPool $connectionPool = null)
-    {
-        $this->connectionPool = $connectionPool ?? GeneralUtility::makeInstance(ConnectionPool::class);
-    }
+    public function __construct(
+        private readonly ConnectionPool $connectionPool,
+        private readonly FrontendRestrictionContainer $restrictionContainer,
+    ) {}
 
     /**
      * @param list<int> $storagePids
@@ -51,7 +48,7 @@ class LlmsTxtNewsProvider
 
         try {
             $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::NEWS_TABLE);
-            $queryBuilder->setRestrictions(GeneralUtility::makeInstance(FrontendRestrictionContainer::class));
+            $queryBuilder->setRestrictions($this->restrictionContainer);
             $queryBuilder
                 ->select('uid', 'l10n_parent', 'title', 'teaser')
                 ->from(self::NEWS_TABLE)

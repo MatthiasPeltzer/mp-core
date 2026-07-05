@@ -136,7 +136,7 @@
                 <f:for as="relatedFile" each="{newsItem.relatedFiles}">
                     <li>
 						<span class="news-related-files-link">
-							<a href="{relatedFile.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank">
+							<a href="{relatedFile.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank" rel="noopener noreferrer">
 								{f:if(condition:relatedFile.originalResource.title, then:relatedFile.originalResource.title, else:relatedFile.originalResource.name)}
 							</a>
 						</span>

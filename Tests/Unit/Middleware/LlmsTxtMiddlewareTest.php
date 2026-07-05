@@ -33,7 +33,8 @@ final class LlmsTxtMiddlewareTest extends TestCase
         $middleware = new LlmsTxtMiddleware(
             $this->createMock(PageRepository::class),
             $this->createMock(FrontendInterface::class),
-            $this->emptyNewsProvider()
+            $this->emptyNewsProvider(),
+            $this->createMock(LanguageAwarePageRepositoryFactory::class),
         );
 
         return (new \ReflectionMethod(LlmsTxtMiddleware::class, 'resolvePageDescription'))
@@ -176,6 +177,25 @@ final class LlmsTxtMiddlewareTest extends TestCase
     private function bodyOf(ResponseInterface $response): string
     {
         return (string)$response->getBody();
+    }
+
+    #[Test]
+    public function escapesMarkdownMetacharactersInLinks(): void
+    {
+        $middleware = new LlmsTxtMiddleware(
+            $this->createMock(PageRepository::class),
+            $this->createMock(FrontendInterface::class),
+            $this->emptyNewsProvider(),
+            $this->createMock(LanguageAwarePageRepositoryFactory::class),
+        );
+
+        $markdownLink = (new \ReflectionMethod(LlmsTxtMiddleware::class, 'markdownLink'))
+            ->invoke($middleware, 'Evil](http://evil.com', 'https://example.com/page');
+
+        self::assertSame(
+            '- [Evil\\](http://evil.com](https://example.com/page)',
+            '- ' . $markdownLink
+        );
     }
 
     #[Test]

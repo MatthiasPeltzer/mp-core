@@ -17,7 +17,6 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Site\Entity\Site;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
@@ -43,19 +42,12 @@ final class WebFontProcessor implements DataProcessorInterface
     private const FAMILY_TABLE = 'tx_mpcore_domain_model_webfontfamily';
     private const FACE_TABLE = 'tx_mpcore_domain_model_webfontface';
 
-    private WebFontCssBuilder $cssBuilder;
-    private ConnectionPool $connectionPool;
-    private FileRepository $fileRepository;
-
     public function __construct(
-        ?WebFontCssBuilder $cssBuilder = null,
-        ?ConnectionPool $connectionPool = null,
-        ?FileRepository $fileRepository = null,
-    ) {
-        $this->cssBuilder = $cssBuilder ?? GeneralUtility::makeInstance(WebFontCssBuilder::class);
-        $this->connectionPool = $connectionPool ?? GeneralUtility::makeInstance(ConnectionPool::class);
-        $this->fileRepository = $fileRepository ?? GeneralUtility::makeInstance(FileRepository::class);
-    }
+        private readonly WebFontCssBuilder $cssBuilder,
+        private readonly ConnectionPool $connectionPool,
+        private readonly FileRepository $fileRepository,
+        private readonly FrontendRestrictionContainer $restrictionContainer,
+    ) {}
 
     /**
      * @param array<string, mixed> $contentObjectConfiguration
@@ -104,7 +96,7 @@ final class WebFontProcessor implements DataProcessorInterface
     private function loadFamilies(int $storagePid): array
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::FAMILY_TABLE);
-        $queryBuilder->setRestrictions(GeneralUtility::makeInstance(FrontendRestrictionContainer::class));
+        $queryBuilder->setRestrictions($this->restrictionContainer);
 
         $rows = $queryBuilder
             ->select('*')
@@ -146,7 +138,7 @@ final class WebFontProcessor implements DataProcessorInterface
     private function loadFaces(int $familyUid): array
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::FACE_TABLE);
-        $queryBuilder->setRestrictions(GeneralUtility::makeInstance(FrontendRestrictionContainer::class));
+        $queryBuilder->setRestrictions($this->restrictionContainer);
 
         $rows = $queryBuilder
             ->select('*')

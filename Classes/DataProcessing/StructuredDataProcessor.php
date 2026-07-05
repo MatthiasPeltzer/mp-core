@@ -12,7 +12,6 @@ use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Routing\PageArguments;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use TYPO3\CMS\Frontend\Page\PageInformation;
@@ -26,7 +25,9 @@ use TYPO3\CMS\Frontend\Page\PageInformation;
  */
 final class StructuredDataProcessor implements DataProcessorInterface
 {
-    public function __construct(private ?PublisherSchemaBuilder $publisherBuilder = null) {}
+    public function __construct(
+        private readonly PublisherSchemaBuilder $publisherBuilder,
+    ) {}
 
     /**
      * Project-specific doktype representing a blog/news style page (BlogPosting).
@@ -94,7 +95,7 @@ final class StructuredDataProcessor implements DataProcessorInterface
 
         $graph = [];
 
-        $graph[] = $this->builder()->build($cObj, $site, $homeUrl, $publisherId, $processedData['socialMediaUrls'] ?? []);
+        $graph[] = $this->publisherBuilder->build($cObj, $site, $homeUrl, $publisherId, $processedData['socialMediaUrls'] ?? []);
 
         $webSite = [
             '@type' => 'WebSite',
@@ -203,7 +204,7 @@ final class StructuredDataProcessor implements DataProcessorInterface
 
         $imageRef = $this->resolveExtraEntityImageReference($site);
         if ($imageRef !== '') {
-            $imgObj = $this->builder()->buildImageObject($cObj, $imageRef);
+            $imgObj = $this->publisherBuilder->buildImageObject($cObj, $imageRef);
             if ($imgObj !== []) {
                 $entity['image'] = $imgObj;
             }
@@ -300,11 +301,6 @@ final class StructuredDataProcessor implements DataProcessorInterface
         }
 
         return $default;
-    }
-
-    private function builder(): PublisherSchemaBuilder
-    {
-        return $this->publisherBuilder ??= GeneralUtility::makeInstance(PublisherSchemaBuilder::class);
     }
 
     /**

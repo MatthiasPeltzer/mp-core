@@ -9,6 +9,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 
@@ -33,7 +34,10 @@ final class LlmsTxtNewsProviderTest extends TestCase
         $connectionPool->expects(self::never())->method('getQueryBuilderForTable');
         $connectionPool->expects(self::never())->method('getConnectionForTable');
 
-        $provider = new LlmsTxtNewsProvider($connectionPool);
+        $provider = new LlmsTxtNewsProvider(
+            $connectionPool,
+            $this->createMock(FrontendRestrictionContainer::class),
+        );
 
         $result = $provider->recentNews(
             $this->createMock(Site::class),

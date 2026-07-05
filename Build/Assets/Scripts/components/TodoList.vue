@@ -153,7 +153,7 @@ onMounted(() => {
   }
 
   // Load todos after config is loaded
-  let loadedTodos = loadTodos();
+  const loadedTodos = loadTodos();
   
   // Reassign all IDs sequentially to prevent any duplicate ID issues
   const fixedTodos = loadedTodos.map((todo, index) => ({

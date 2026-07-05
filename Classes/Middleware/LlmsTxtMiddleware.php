@@ -16,7 +16,6 @@ use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Routing\InvalidRouteArgumentsException;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Serves llms.txt: a concise markdown site map for AI agents. A localized
@@ -42,19 +41,12 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
         255,
     ];
 
-    private readonly LlmsTxtNewsProvider $newsProvider;
-    private readonly LanguageAwarePageRepositoryFactory $pageRepositoryFactory;
-
     public function __construct(
         private readonly PageRepository $pageRepository,
         private readonly FrontendInterface $cache,
-        ?LlmsTxtNewsProvider $newsProvider = null,
-        ?LanguageAwarePageRepositoryFactory $pageRepositoryFactory = null,
-    ) {
-        $this->newsProvider = $newsProvider ?? GeneralUtility::makeInstance(LlmsTxtNewsProvider::class);
-        $this->pageRepositoryFactory = $pageRepositoryFactory
-            ?? GeneralUtility::makeInstance(LanguageAwarePageRepositoryFactory::class);
-    }
+        private readonly LlmsTxtNewsProvider $newsProvider,
+        private readonly LanguageAwarePageRepositoryFactory $pageRepositoryFactory,
+    ) {}
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
@@ -124,7 +116,7 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
         $menuRepository = $this->menuRepository($language);
 
         foreach ($this->resolveMenuPages($menuRepository, $site, $language, $site->getRootPageId()) as $section) {
-            $lines[] = '## [' . $section['title'] . '](' . $section['url'] . ')';
+            $lines[] = '## ' . $this->markdownLink($section['title'], $section['url']);
 
             if ($section['description'] !== '') {
                 $lines[] = '';
@@ -135,7 +127,7 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
             if ($children !== []) {
                 $lines[] = '';
                 foreach ($children as $child) {
-                    $line = '- [' . $child['title'] . '](' . $child['url'] . ')';
+                    $line = '- ' . $this->markdownLink($child['title'], $child['url']);
                     if ($child['description'] !== '') {
                         $line .= ': ' . $child['description'];
                     }
@@ -192,7 +184,7 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
             }
             $url = rtrim((string)$language->getBase(), '/') . '/llms.txt';
             $marker = $language->getLanguageId() === $current->getLanguageId() ? ' (current)' : '';
-            $links[] = '[' . $label . '](' . $url . ')' . $marker;
+            $links[] = $this->markdownLink($label, $url) . $marker;
         }
 
         return $links;
@@ -218,7 +210,7 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
 
         $lines = ['## Latest news', ''];
         foreach ($items as $item) {
-            $line = '- [' . $item['title'] . '](' . $item['url'] . ')';
+            $line = '- ' . $this->markdownLink($item['title'], $item['url']);
             $teaser = $this->truncate($item['teaser']);
             if ($teaser !== '') {
                 $line .= ': ' . $teaser;
@@ -428,5 +420,26 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
         }
 
         return (string)$uri;
+    }
+
+    private function markdownLink(string $label, string $url): string
+    {
+        return '[' . $this->escapeMarkdownLinkLabel($label) . '](' . $this->escapeMarkdownLinkUrl($url) . ')';
+    }
+
+    private function escapeMarkdownLinkLabel(string $label): string
+    {
+        $label = str_replace('\\', '\\\\', $label);
+
+        return (string)preg_replace('/([\[\]])/', '\\\\$1', $label);
+    }
+
+    private function escapeMarkdownLinkUrl(string $url): string
+    {
+        if (preg_match('/[\s()]/', $url) === 1) {
+            return '<' . str_replace('>', '%3E', $url) . '>';
+        }
+
+        return $url;
     }
 }

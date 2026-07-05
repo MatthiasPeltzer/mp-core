@@ -78,7 +78,7 @@
       "phpunit -c Build/FunctionalTests.xml --coverage-php .Build/coverage/functional.cov",
       "php Build/merge-coverage.php"
     ],
-    "phpstan": "phpstan analyse -c phpstan.neon.dist",
+    "phpstan": "phpstan analyse -c phpstan.neon.dist --memory-limit=512M",
     "cs": [
       "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
       "php .Build/bin/php-cs-fixer fix --dry-run -v --config .php-cs-fixer.dist.php"

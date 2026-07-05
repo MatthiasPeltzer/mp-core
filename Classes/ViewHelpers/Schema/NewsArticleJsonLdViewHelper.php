@@ -23,6 +23,10 @@ final class NewsArticleJsonLdViewHelper extends AbstractViewHelper
 {
     protected $escapeOutput = false;
 
+    public function __construct(
+        private readonly PublisherSchemaBuilder $publisherBuilder,
+    ) {}
+
     public function initializeArguments(): void
     {
         $this->registerArgument('articleUrl', 'string', 'Canonical absolute URL', true);
@@ -109,7 +113,7 @@ final class NewsArticleJsonLdViewHelper extends AbstractViewHelper
             return $override !== '' ? ['@type' => 'Person', 'name' => $override] : [];
         }
 
-        $builder = GeneralUtility::makeInstance(PublisherSchemaBuilder::class);
+        $builder = $this->publisherBuilder;
         $cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
         $cObj->setRequest($request);
 

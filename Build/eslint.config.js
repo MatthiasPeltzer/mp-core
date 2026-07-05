@@ -1,9 +1,11 @@
 import js from "@eslint/js";
+import pluginVue from "eslint-plugin-vue";
 import globals from "globals";
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   js.configs.recommended,
+  ...pluginVue.configs["flat/recommended"],
   {
     files: ["**/*.js"],
     languageOptions: {
@@ -21,6 +23,31 @@ export default [
         "warn"
       ],
       "no-redeclare": "error",
+    },
+  },
+  {
+    files: ["**/*.vue"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        ...globals.browser
+      }
+    },
+    rules: {
+      semi: "error",
+      "prefer-const": "error",
+      "no-unused-vars": "off",
+      "vue/no-unused-vars": ["error", { ignorePattern: "^_" }],
+      "vue/multi-word-component-names": "off",
+      // Trusted editor/server HTML only; CSP is the primary control (see component comments).
+      "vue/no-v-html": "off",
+      "vue/max-attributes-per-line": "off",
+      "vue/html-self-closing": "off",
+      "vue/attributes-order": "off",
+      "vue/html-closing-bracket-spacing": "off",
+      "vue/singleline-html-element-content-newline": "off",
+      "vue/multiline-html-element-content-newline": "off",
     },
   },
   {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\Tests\Unit\ViewHelpers\Schema;
 
+use Mpc\MpCore\Schema\PublisherSchemaBuilder;
 use Mpc\MpCore\ViewHelpers\Schema\NewsArticleJsonLdViewHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -33,7 +34,7 @@ final class NewsArticleJsonLdViewHelperTest extends TestCase
         $renderingContext = $this->createMock(RenderingContextInterface::class);
         $renderingContext->method('hasAttribute')->willReturn(false);
 
-        $viewHelper = new NewsArticleJsonLdViewHelper();
+        $viewHelper = new NewsArticleJsonLdViewHelper(new PublisherSchemaBuilder());
         $viewHelper->setRenderingContext($renderingContext);
         $viewHelper->setArguments(array_merge([
             'articleUrl' => 'https://example.com/news/1',

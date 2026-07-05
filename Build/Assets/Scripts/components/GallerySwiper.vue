@@ -203,7 +203,7 @@ onBeforeMount(() => {
   if (slidesDataAttr) {
     try {
       slides.value = JSON.parse(slidesDataAttr);
-    } catch (e) {
+    } catch {
       // Failed to parse - will try DOM extraction
     }
   }
@@ -268,13 +268,6 @@ const onThumbsSwiper = (swiper) => {
 
 // For thumbs layout, we need thumbs swiper ready first
 const thumbsSwiper = computed(() => thumbsSwiperRef.value);
-
-// Only show main swiper once we have slides (and thumbs if needed)
-const isReady = computed(() => {
-  if (!slides.value.length) return false;
-  if (config.value.layout === 'thumbs' && !thumbsSwiperRef.value) return false;
-  return true;
-});
 </script>
 
 <template>
