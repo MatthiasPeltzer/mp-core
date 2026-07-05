@@ -27,6 +27,10 @@ services:
     arguments:
       $cache: '@cache.mp_core_geotext'
 
+  # TYPO3 core does not register this class; required for frontend query restrictions.
+  TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer:
+    shared: false
+
   # DataProcessors are instantiated by TypoScript via GeneralUtility::makeInstance()
   # and therefore must be resolvable as public services from the container.
   Mpc\MpCore\DataProcessing\HeaderLogoProcessor:
