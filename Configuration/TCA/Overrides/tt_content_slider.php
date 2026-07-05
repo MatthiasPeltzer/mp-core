@@ -14,7 +14,7 @@ defined('TYPO3') or die('Access denied.');
      * Register Slider
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        new ContainerConfiguration(
+        (new ContainerConfiguration(
             'ce_slider',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.description',
@@ -26,7 +26,7 @@ defined('TYPO3') or die('Access denied.');
                     ],
                 ],
             ]
-        )
+        ))
             ->setIcon('tx_slider')
             ->setSaveAndCloseInNewContentElementWizard(true)
     );

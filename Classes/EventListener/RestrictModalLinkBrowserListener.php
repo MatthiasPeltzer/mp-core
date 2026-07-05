@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Attribute\AsEventListener;
  */
 readonly class RestrictModalLinkBrowserListener
 {
-    private const string LINK_HANDLER_IDENTIFIER = 'tx_mpcore_modal';
+    private const LINK_HANDLER_IDENTIFIER = 'tx_mpcore_modal';
 
     #[AsEventListener('mpc/mp-core/restrict-modal-link-browser')]
     public function __invoke(ModifyDatabaseQueryForRecordListingEvent $event): void

@@ -14,7 +14,7 @@ defined('TYPO3') or die('Access denied.');
      * Register grids
      */
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        new ContainerConfiguration(
+        (new ContainerConfiguration(
             'ce_grid',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.description',
@@ -26,7 +26,7 @@ defined('TYPO3') or die('Access denied.');
                     ],
                 ],
             ]
-        )
+        ))
         ->setIcon('tx_grid')
         ->setSaveAndCloseInNewContentElementWizard(true)
     );

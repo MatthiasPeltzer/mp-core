@@ -11,7 +11,7 @@ defined('TYPO3') or die('Access denied.');
 
 (static function (): void {
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
-        new ContainerConfiguration(
+        (new ContainerConfiguration(
             'ce_modal',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:modal.title',
             'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:modal.description',
@@ -24,7 +24,7 @@ defined('TYPO3') or die('Access denied.');
                     ],
                 ],
             ]
-        )
+        ))
             ->setIcon('tx_modal')
             ->setSaveAndCloseInNewContentElementWizard(true)
     );
