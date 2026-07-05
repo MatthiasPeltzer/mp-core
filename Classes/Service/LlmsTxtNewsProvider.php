@@ -42,7 +42,7 @@ class LlmsTxtNewsProvider
         int $detailPageId,
         int $limit
     ): array {
-        $storagePids = array_values(array_filter($storagePids, static fn (int $pid): bool => $pid > 0));
+        $storagePids = array_values(array_filter($storagePids, static fn(int $pid): bool => $pid > 0));
         if ($storagePids === [] || $detailPageId <= 0 || $limit <= 0 || !$this->tableExists()) {
             return [];
         }

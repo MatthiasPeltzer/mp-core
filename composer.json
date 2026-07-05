@@ -59,6 +59,7 @@
     "phpstan/phpstan": "^2.1",
     "phpunit/phpunit": "^10.5 || ^11.5",
     "saschaegerer/phpstan-typo3": "^2.1",
+    "typo3/coding-standards": "^0.8.0",
     "typo3/testing-framework": "^8.2 || ^9.0"
   },
   "suggest": {
@@ -77,6 +78,14 @@
       "phpunit -c Build/FunctionalTests.xml --coverage-php .Build/coverage/functional.cov",
       "php Build/merge-coverage.php"
     ],
-    "phpstan": "phpstan analyse -c phpstan.neon.dist"
+    "phpstan": "phpstan analyse -c phpstan.neon.dist",
+    "cs": [
+      "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
+      "php .Build/bin/php-cs-fixer fix --dry-run -v --config .php-cs-fixer.dist.php"
+    ],
+    "cs:fix": [
+      "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
+      "php .Build/bin/php-cs-fixer fix -v --config .php-cs-fixer.dist.php"
+    ]
   }
 }

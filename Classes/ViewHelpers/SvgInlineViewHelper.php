@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\ViewHelpers;
 
-use DOMDocument;
-use DOMElement;
 use Mpc\MpCore\Exception\FileException;
-use Throwable;
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -97,13 +94,13 @@ class SvgInlineViewHelper extends AbstractViewHelper
         }
 
         $attributes = [
-                'id' => $arguments['id'],
-                'class' => $arguments['class'],
-                'width' => $arguments['width'],
-                'height' => $arguments['height'],
-                'viewBox' => $arguments['viewBox'],
-                'data' => $arguments['data'],
-            ] + $arguments['additionalAttributes'];
+            'id' => $arguments['id'],
+            'class' => $arguments['class'],
+            'width' => $arguments['width'],
+            'height' => $arguments['height'],
+            'viewBox' => $arguments['viewBox'],
+            'data' => $arguments['data'],
+        ] + $arguments['additionalAttributes'];
 
         return $this->getInlineSvgCached($svgContent, $attributes);
     }
@@ -123,7 +120,7 @@ class SvgInlineViewHelper extends AbstractViewHelper
                 $arguments['image'],
                 (bool)$arguments['treatIdAsReference']
             );
-        } catch (Throwable $exception) {
+        } catch (\Throwable $exception) {
             throw new FileException('Could not convert given arguments to image object', 1678367678);
         }
         if ($image->getExtension() !== 'svg') {
@@ -213,7 +210,7 @@ class SvgInlineViewHelper extends AbstractViewHelper
      */
     protected static function renderInlineSvg(string $svgContent, array $attributes): string
     {
-        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
         $dom->preserveWhiteSpace = false;
 
         $previousUseInternalErrors = libxml_use_internal_errors(true);
@@ -224,7 +221,7 @@ class SvgInlineViewHelper extends AbstractViewHelper
             libxml_use_internal_errors($previousUseInternalErrors);
         }
 
-        if (!$loaded || !$dom->documentElement instanceof DOMElement) {
+        if (!$loaded || !$dom->documentElement instanceof \DOMElement) {
             return '';
         }
 
@@ -241,14 +238,14 @@ class SvgInlineViewHelper extends AbstractViewHelper
         return (string)$dom->saveXML($root);
     }
 
-    private static function sanitizeSvgDom(DOMDocument $dom): void
+    private static function sanitizeSvgDom(\DOMDocument $dom): void
     {
         $dangerousTags = ['script', 'foreignObject', 'iframe', 'embed', 'object'];
         foreach ($dangerousTags as $tagName) {
             $elements = $dom->getElementsByTagName($tagName);
             while ($elements->length > 0) {
                 $element = $elements->item(0);
-                if (!$element instanceof DOMElement) {
+                if (!$element instanceof \DOMElement) {
                     break;
                 }
                 $element->parentNode?->removeChild($element);
@@ -261,7 +258,7 @@ class SvgInlineViewHelper extends AbstractViewHelper
             return;
         }
         foreach ($allElements as $element) {
-            if (!$element instanceof DOMElement) {
+            if (!$element instanceof \DOMElement) {
                 continue;
             }
             $localName = strtolower($element->localName ?? '');

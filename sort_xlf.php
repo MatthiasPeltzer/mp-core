@@ -1,4 +1,5 @@
 <?php
+
 // sort_xlf.php
 // Script to sort all <trans-unit> entries in XLF files by their id attribute.
 
@@ -78,4 +79,4 @@ foreach ($iterator as $file) {
     echo "Sorted: $path\n";
 }
 
-echo "Done.\n"; 
+echo "Done.\n";

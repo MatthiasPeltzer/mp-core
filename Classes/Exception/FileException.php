@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\Exception;
 
-use Exception;
-
-class FileException extends Exception
+class FileException extends \Exception
 {
     /**
      * @param array<string, mixed> $context

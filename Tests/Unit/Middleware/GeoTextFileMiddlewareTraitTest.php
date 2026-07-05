@@ -23,7 +23,7 @@ final class GeoTextFileMiddlewareTraitTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->harness = new class {
+        $this->harness = new class () {
             use GeoTextFileMiddlewareTrait;
 
             public function pubRelativePath(ServerRequestInterface $r, Site $s): string

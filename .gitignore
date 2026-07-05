@@ -11,6 +11,7 @@
 # Standalone test build (composer install inside the extension) + test caches
 /.Build/
 /.phpunit.cache/
+/.php-cs-fixer.cache
 /composer.lock
 
 # Safety net: the standalone install now uses web-dir .Build/Public (ignored via

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\ViewHelpers\Link;
 
-use Throwable;
 use TYPO3\CMS\Core\LinkHandling\LinkService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -36,7 +35,7 @@ class ModalTargetUidViewHelper extends AbstractViewHelper
             if (($data['type'] ?? '') === 'record' && ($data['identifier'] ?? '') === 'tt_content') {
                 return (int)($data['uid'] ?? 0);
             }
-        } catch (Throwable) {
+        } catch (\Throwable) {
             return 0;
         }
 

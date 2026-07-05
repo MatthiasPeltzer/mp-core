@@ -91,7 +91,7 @@ final class RestrictModalLinkBrowserListenerTest extends TestCase
 
     private function createListener(?ServerRequestInterface $request): RestrictModalLinkBrowserListener
     {
-        return new readonly class($request) extends RestrictModalLinkBrowserListener {
+        return new readonly class ($request) extends RestrictModalLinkBrowserListener {
             public function __construct(private ?ServerRequestInterface $stubRequest) {}
 
             protected function getRequest(): ?ServerRequestInterface

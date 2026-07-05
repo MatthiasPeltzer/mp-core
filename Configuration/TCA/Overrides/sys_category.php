@@ -17,7 +17,7 @@ defined('TYPO3') || die();
             'behaviour' => [
                 'allowLanguageSynchronization' => true,
             ],
-        ]
+        ],
     ];
-    ExtensionManagementUtility::addToAllTCAtypes('pages', 'mainCategory, categories','', 'before:categories');
+    ExtensionManagementUtility::addToAllTCAtypes('pages', 'mainCategory, categories', '', 'before:categories');
 })();

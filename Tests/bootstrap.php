@@ -11,7 +11,6 @@ declare(strict_types=1);
  * directory via a Composer path repository. We probe the standalone `.Build`
  * layout first and fall back to the other common locations.
  */
-
 $autoloadCandidates = [
     // Standalone: `composer install` inside the extension (vendor-dir=.Build/vendor).
     __DIR__ . '/../.Build/vendor/autoload.php',

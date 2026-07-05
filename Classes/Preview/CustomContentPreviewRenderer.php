@@ -208,4 +208,3 @@ class CustomContentPreviewRenderer extends StandardContentPreviewRenderer implem
         );
     }
 }
-

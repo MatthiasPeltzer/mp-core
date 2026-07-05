@@ -35,25 +35,25 @@ defined('TYPO3') || die();
         ],
         'tx_link_switch' =>
             [
-            'exclude' => false,
-            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_switch',
-            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_switch.description',
-            'onChange' => 'reload',
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_switch',
-                        'labelChecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-                        'labelUnchecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.disabled',
+                'exclude' => false,
+                'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_switch',
+                'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_switch.description',
+                'onChange' => 'reload',
+                'l10n_mode' => 'exclude',
+                'l10n_display' => 'defaultAsReadonly',
+                'config' => [
+                    'type' => 'check',
+                    'renderType' => 'checkboxToggle',
+                    'items' => [
+                        [
+                            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_switch',
+                            'labelChecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
+                            'labelUnchecked' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.disabled',
+                        ],
                     ],
+                    'default' => '0',
                 ],
-                'default' => '0',
             ],
-        ],
         'tx_link' =>
             [
                 'config' =>
@@ -234,8 +234,6 @@ defined('TYPO3') || die();
             ],
         ],
     ];
-
-
 
 })();
 

@@ -58,4 +58,3 @@ return [
         'source' => 'EXT:mp_core/Resources/Public/Icons/TodoList.svg',
     ],
 ];
-

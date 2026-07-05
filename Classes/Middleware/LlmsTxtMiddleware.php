@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\Middleware;
 
+use Mpc\MpCore\Service\LanguageAwarePageRepositoryFactory;
+use Mpc\MpCore\Service\LlmsTxtNewsProvider;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Mpc\MpCore\Service\LanguageAwarePageRepositoryFactory;
-use Mpc\MpCore\Service\LlmsTxtNewsProvider;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Http\HtmlResponse;

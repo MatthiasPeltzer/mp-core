@@ -68,7 +68,7 @@ final class HtmlWhitespaceCompressor
 
         $html = preg_replace_callback(
             '/\s+/',
-            static fn (array $matches): string => str_contains($matches[0], "\n") ? "\n" : ' ',
+            static fn(array $matches): string => str_contains($matches[0], "\n") ? "\n" : ' ',
             $html
         ) ?? $html;
 
@@ -90,7 +90,7 @@ final class HtmlWhitespaceCompressor
             $suffix = preg_quote(self::PLACEHOLDER_SUFFIX, '#');
             $html = preg_replace_callback(
                 '#' . $prefix . '(\d+)' . $suffix . '#',
-                static fn (array $matches): string => $protected[(int)$matches[1]] ?? '',
+                static fn(array $matches): string => $protected[(int)$matches[1]] ?? '',
                 $html
             ) ?? $html;
         }
