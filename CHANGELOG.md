@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.12] - 2026-07-05
+
+### Fixed
+- Structured data no longer emits a `MusicGroup` extra entity when Site Settings → Additional entity type is set to “none”, even if the legacy `musicGroupEnabled` site configuration flag is still enabled.
+
 ## [1.2.11] - 2026-07-04
 
 ### Changed
@@ -716,6 +721,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.12]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.11...v1.2.12
 [1.2.11]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.10...v1.2.11
 [1.2.10]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.9...v1.2.10
 [1.2.9]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.8...v1.2.9
