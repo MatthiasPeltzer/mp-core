@@ -8,9 +8,12 @@ use Mpc\MpCore\Schema\PublisherSchemaBuilder;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use TYPO3\CMS\Core\Http\NormalizedParams;
+use TYPO3\CMS\Core\Imaging\ImageResource;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteSettings;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Core\Http\ServerRequest;
 
 #[CoversClass(PublisherSchemaBuilder::class)]
 final class PublisherSchemaBuilderTest extends TestCase
@@ -231,5 +234,46 @@ final class PublisherSchemaBuilderTest extends TestCase
         );
 
         self::assertSame(['https://mastodon.social/@acme', 'https://example.com/profile'], $publisher['sameAs']);
+    }
+
+    #[Test]
+    public function buildImageObjectReturnsEmptyWhenReferenceIsEmpty(): void
+    {
+        $cObj = $this->createMock(ContentObjectRenderer::class);
+        $cObj->expects(self::never())->method('getImgResource');
+
+        self::assertSame([], $this->subject->buildImageObject($cObj, ''));
+    }
+
+    #[Test]
+    public function buildImageObjectBuildsAbsoluteImageObjectFromImageResource(): void
+    {
+        $imageResource = new ImageResource(
+            width: 1200,
+            height: 630,
+            extension: 'jpg',
+            fullPath: '/var/www/html/fileadmin/logo.jpg',
+            publicUrl: '/fileadmin/logo.jpg',
+        );
+
+        $normalizedParams = $this->createMock(NormalizedParams::class);
+        $normalizedParams->method('getSiteUrl')->willReturn('https://example.com/');
+
+        $request = (new ServerRequest('https://example.com/'))
+            ->withAttribute('normalizedParams', $normalizedParams);
+
+        $cObj = $this->createMock(ContentObjectRenderer::class);
+        $cObj->expects(self::once())
+            ->method('getImgResource')
+            ->with('fileadmin/logo.jpg', ['treatIdAsReference' => 1])
+            ->willReturn($imageResource);
+        $cObj->method('getRequest')->willReturn($request);
+
+        self::assertSame([
+            '@type' => 'ImageObject',
+            'url' => 'https://example.com/fileadmin/logo.jpg',
+            'width' => 1200,
+            'height' => 630,
+        ], $this->subject->buildImageObject($cObj, 'fileadmin/logo.jpg'));
     }
 }

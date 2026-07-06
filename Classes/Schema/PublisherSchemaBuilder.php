@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\Schema;
 
+use TYPO3\CMS\Core\Imaging\ImageResource;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteSettings;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -106,24 +107,38 @@ final class PublisherSchemaBuilder
         if ($reference === '') {
             return [];
         }
-        $image = $cObj->getImgResource($reference, ['treatIdAsReference' => 1]);
-        if (!is_array($image) || empty($image[3])) {
+        $imageResource = $cObj->getImgResource($reference, ['treatIdAsReference' => 1]);
+        if (!$imageResource instanceof ImageResource) {
             return [];
         }
+
+        $publicUrl = $imageResource->getPublicUrl();
+        if ($publicUrl === null || $publicUrl === '') {
+            return [];
+        }
+
         $normalizedParams = $cObj->getRequest()->getAttribute('normalizedParams');
         if ($normalizedParams === null) {
             return [];
         }
 
+        $absoluteUrl = str_starts_with($publicUrl, 'http://') || str_starts_with($publicUrl, 'https://')
+            ? $publicUrl
+            : $normalizedParams->getSiteUrl() . ltrim($publicUrl, '/');
+
         $object = [
             '@type' => 'ImageObject',
-            'url' => $normalizedParams->getSiteUrl() . ltrim((string)$image[3], '/'),
+            'url' => $absoluteUrl,
         ];
-        if (!empty($image[0])) {
-            $object['width'] = (int)$image[0];
+
+        $width = $imageResource->getWidth();
+        if ($width > 0) {
+            $object['width'] = $width;
         }
-        if (!empty($image[1])) {
-            $object['height'] = (int)$image[1];
+
+        $height = $imageResource->getHeight();
+        if ($height > 0) {
+            $object['height'] = $height;
         }
 
         return $object;

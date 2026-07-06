@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\ViewHelpers\Schema;
 
-use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
@@ -13,6 +12,8 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 final class FaqPageJsonLdViewHelper extends AbstractViewHelper
 {
+    use ServerRequestViewHelperTrait;
+
     protected $escapeOutput = false;
 
     public function initializeArguments(): void
@@ -104,19 +105,5 @@ final class FaqPageJsonLdViewHelper extends AbstractViewHelper
         $breaks = str_ireplace(['<br>', '<br/>', '<br />'], "\n", $html);
 
         return trim(preg_replace('/\s+/u', ' ', strip_tags($breaks)) ?? '');
-    }
-
-    private function getServerRequest(): ?ServerRequestInterface
-    {
-        if ($this->renderingContext->hasAttribute(ServerRequestInterface::class)) {
-            $request = $this->renderingContext->getAttribute(ServerRequestInterface::class);
-            if ($request instanceof ServerRequestInterface) {
-                return $request;
-            }
-        }
-
-        $fallback = $GLOBALS['TYPO3_REQUEST'] ?? null;
-
-        return $fallback instanceof ServerRequestInterface ? $fallback : null;
     }
 }

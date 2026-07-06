@@ -21,6 +21,8 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 final class NewsArticleJsonLdViewHelper extends AbstractViewHelper
 {
+    use ServerRequestViewHelperTrait;
+
     protected $escapeOutput = false;
 
     public function __construct(
@@ -153,19 +155,5 @@ final class NewsArticleJsonLdViewHelper extends AbstractViewHelper
         }
 
         return '';
-    }
-
-    private function getServerRequest(): ?ServerRequestInterface
-    {
-        if ($this->renderingContext->hasAttribute(ServerRequestInterface::class)) {
-            $request = $this->renderingContext->getAttribute(ServerRequestInterface::class);
-            if ($request instanceof ServerRequestInterface) {
-                return $request;
-            }
-        }
-
-        $fallback = $GLOBALS['TYPO3_REQUEST'] ?? null;
-
-        return $fallback instanceof ServerRequestInterface ? $fallback : null;
     }
 }

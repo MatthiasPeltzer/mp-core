@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Register `RobotsTxtMiddleware` and `LlmsTxtMiddleware` as public DI services so TYPO3 resolves constructor dependencies from the container instead of calling `GeneralUtility::makeInstance()` with no arguments.
+- Guard nullable Fluid `renderingContext` before reading `ServerRequestInterface` in JSON-LD ViewHelpers (PHPStan level 8).
+- Use TYPO3 `ImageResource` DTO in `PublisherSchemaBuilder::buildImageObject()` instead of legacy array return from `getImgResource()`.
 
 ### Changed
 - Declare `extra.typo3/cms.Package.providesPackages` in `composer.json` for TYPO3 v14.3 metadata.
