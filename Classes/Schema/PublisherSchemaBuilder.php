@@ -75,7 +75,7 @@ final class PublisherSchemaBuilder
         $publisher['contactPoint'] = $this->buildContactPoint($settings);
         $publisher['sameAs'] = array_values($sameAs);
 
-        return array_filter($publisher, static fn($value) => $value !== '' && $value !== []);
+        return array_filter($publisher, static fn ($value) => $value !== '' && $value !== []);
     }
 
     /**
@@ -156,7 +156,7 @@ final class PublisherSchemaBuilder
             'postalCode' => $this->setting($settings, 'seo.schema.address.postalCode'),
             'addressRegion' => $this->setting($settings, 'seo.schema.address.addressRegion'),
             'addressCountry' => $this->setting($settings, 'seo.schema.address.addressCountry'),
-        ], static fn($value) => $value !== '');
+        ], static fn ($value) => $value !== '');
 
         // Only emit when at least one address component beyond @type is present.
         return count($address) > 1 ? $address : [];
@@ -182,7 +182,7 @@ final class PublisherSchemaBuilder
             'email' => $email,
             'areaServed' => $this->setting($settings, 'seo.schema.contactPoint.areaServed'),
             'availableLanguage' => $this->commaSeparated($settings, 'seo.schema.contactPoint.availableLanguage'),
-        ], static fn($value) => $value !== '' && $value !== []);
+        ], static fn ($value) => $value !== '' && $value !== []);
 
         return $contactPoint;
     }

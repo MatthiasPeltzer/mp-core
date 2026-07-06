@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Register `RobotsTxtMiddleware` and `LlmsTxtMiddleware` as public DI services so TYPO3 resolves constructor dependencies from the container instead of calling `GeneralUtility::makeInstance()` with no arguments.
 
+### Changed
+- Declare `extra.typo3/cms.Package.providesPackages` in `composer.json` for TYPO3 v14.3 metadata.
+- Exclude `Build/node_modules` from PHP-CS-Fixer scans; switch ruleset to `@PER-CS1x0`.
+
 ## [1.2.12] - 2026-07-05
 
 ### Fixed
