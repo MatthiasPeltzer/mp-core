@@ -423,6 +423,8 @@ Configuration/
 | `Mpc\MpCore\DataProcessing\HeaderLogoProcessor` | Instantiated by TypoScript via `GeneralUtility::makeInstance()` |
 | `Mpc\MpCore\DataProcessing\SocialMediaProcessor` | Same |
 | `Mpc\MpCore\DataProcessing\StructuredDataProcessor` | Same |
+| `Mpc\MpCore\Middleware\RobotsTxtMiddleware` | Resolved from the PSR-15 middleware stack via the DI container |
+| `Mpc\MpCore\Middleware\LlmsTxtMiddleware` | Same |
 | `Mpc\MpCore\UserFunc\ColorPickerValueItems` | `itemsProcFunc` callback |
 
 #### Local-only DI overrides (`Services.local.yaml`)

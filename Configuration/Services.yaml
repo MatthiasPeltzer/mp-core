@@ -20,10 +20,12 @@ services:
     arguments: ['mp_core_geotext']
 
   Mpc\MpCore\Middleware\RobotsTxtMiddleware:
+    public: true
     arguments:
       $cache: '@cache.mp_core_geotext'
 
   Mpc\MpCore\Middleware\LlmsTxtMiddleware:
+    public: true
     arguments:
       $cache: '@cache.mp_core_geotext'
 

@@ -16,7 +16,7 @@ $autoloadCandidates = [
     __DIR__ . '/../.Build/vendor/autoload.php',
     // Standalone: plain `vendor/` layout.
     __DIR__ . '/../vendor/autoload.php',
-    // mpcore monorepo: extension lives at <root>/libs/mp-core.
+    // mpcore monorepo: extension lives at mpcore/packages/mp-core.
     __DIR__ . '/../../../vendor/autoload.php',
 ];
 
