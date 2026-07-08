@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.14] - 2026-07-08
+
+### Accessibility
+- Color-mode toggle: accessible name changed to "Dark mode" / "Dunkelmodus" so the switch's announced on/off state is meaningful to assistive technology (WCAG 2.2 SC 4.1.2).
+- Color-mode toggle now meets Target Size Minimum (WCAG 2.2 SC 2.5.8) with a 24px tall pointer target.
+- Color-mode toggle state always reflects the active theme: the hardcoded `checked` state was removed and the switch is synced from `data-bs-theme`, so the control no longer disagrees with the rendered theme before interaction or when JavaScript is disabled.
+
+### Changed
+- Color-mode toggle keyboard handling now relies on the native switch (Space toggles, single `change` code path); markup simplified from a `<form>` wrapper to a `<div>` and decorative `<i>` icons to `<span>`.
+- Bump `swiper` dependency to `^14.0.2`.
+
 ## [1.2.13] - 2026-07-06
 
 ### Fixed
@@ -732,6 +743,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.14]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.13...v1.2.14
 [1.2.13]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.12...v1.2.13
 [1.2.12]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.11...v1.2.12
 [1.2.11]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.10...v1.2.11
