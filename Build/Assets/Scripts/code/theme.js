@@ -11,7 +11,7 @@ function setTheme(theme, explicit = true) {
     localStorage.setItem('theme', `theme-${theme}`);
     mediaQueryDark.removeEventListener('change', handleSystemPreferenceChange);
   }
-  
+
   getThemeSwitches().forEach(el => {
     el.checked = theme === 'dark';
   });
@@ -41,28 +41,18 @@ function initThemeSwitch() {
   const switches = getThemeSwitches();
   if (!switches.length) return;
 
+  const isDark = html.getAttribute('data-bs-theme') === 'dark';
+
   switches.forEach(switchEl => {
     if (switchEl.dataset.themeInitialized === '1') return;
     switchEl.dataset.themeInitialized = '1';
+
+    switchEl.checked = isDark;
 
     switchEl.addEventListener('change', () => {
       setTheme(switchEl.checked ? 'dark' : 'light');
     });
   });
-
-  if (!html.dataset.themeKeybind) {
-    html.dataset.themeKeybind = '1';
-
-    switches.forEach(switchEl => {
-      switchEl.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          switchEl.checked = !switchEl.checked;
-          setTheme(switchEl.checked ? 'dark' : 'light');
-        }
-      });
-    });
-  }
 }
 
 if (document.readyState === 'loading') {

@@ -160,8 +160,8 @@
         <target>Untermenü öffnen</target>
       </trans-unit>
       <trans-unit id="header.switch" resname="header.switch" approved="yes">
-        <source>Light and dark color mode</source>
-        <target>Heller und dunkler Farbmodus</target>
+        <source>Dark mode</source>
+        <target>Dunkelmodus</target>
       </trans-unit>
       <trans-unit id="header.text" resname="header.text" approved="yes">
         <source>Link to Homepage</source>

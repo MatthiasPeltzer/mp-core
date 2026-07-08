@@ -20,6 +20,13 @@
     border-width: 2px;
     cursor: pointer;
 
+    // WCAG 2.2 SC 2.5.8 Target Size (Minimum): the toggle must offer at least a
+    // 24x24 CSS px pointer target. Bootstrap's default form-switch input is only
+    // ~1em (16px) tall, so bump the height to 24px. The default width (2em) is
+    // already wide enough, so it is left untouched to preserve the icon layout.
+    height: 24px;
+    min-height: 24px;
+
     @include on-interact {
       box-shadow: none;
       outline: 1px solid var(--bs-body-color);
@@ -66,7 +73,9 @@
     height: 20px;
     mask-size: 18px !important;
     position: absolute;
-    top: 1px;
+
+    // Vertically centre the 20px icons within the 24px tall switch (see 2.5.8).
+    top: 2px;
     width: 20px;
   }
 

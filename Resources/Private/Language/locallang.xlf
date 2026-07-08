@@ -121,7 +121,7 @@
         <source>Open submenu</source>
       </trans-unit>
       <trans-unit id="header.switch" resname="header.switch">
-        <source>Light and dark color mode</source>
+        <source>Dark mode</source>
       </trans-unit>
       <trans-unit id="header.text" resname="header.text">
         <source>Link to Homepage</source>
