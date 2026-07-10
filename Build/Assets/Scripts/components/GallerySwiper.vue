@@ -4,7 +4,12 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import {
   A11y,
   Autoplay,
+  EffectCards,
+  EffectCoverflow,
+  EffectCreative,
+  EffectCube,
   EffectFade,
+  EffectFlip,
   FreeMode,
   Keyboard,
   Navigation,
@@ -18,9 +23,12 @@ import {
   lastSlideMessage,
   paginationBulletMessage,
   slideLabelMessage,
-  itemRoleDescriptionMessage
+  itemRoleDescriptionMessage,
+  pauseAutoplayMessage,
+  playAutoplayMessage
 } from '../code/i18n.js';
 import { bindEqualSwiperSlideHeights } from '../code/swiper-equal-heights.js';
+import { bindSwiperEffectParams } from '../code/swiper-effect-params.js';
 import { bindVidplySwiperLifecycle, notifyDynamicContentReady } from '../code/vidply-dynamic-content.js';
 
 /** TYPO3 mount target injected by vue-initialisation.js (avoids DOM query races). */
@@ -32,10 +40,12 @@ const mountElement = inject('mpcMountElement', null);
 
 const mainSwiperRef = ref(null);
 const thumbsSwiperRef = ref(null);
+const autoplayPausedByUser = ref(false);
 const slides = ref([]);
 const config = ref({
   galleryId: 'default',
   layout: 'slider', // 'slider' or 'thumbs'
+  effect: 'slide',
   columns: 1,
   spaceBetween: 10,
   loop: false,
@@ -47,6 +57,15 @@ const config = ref({
   paginationDynamicBullets: false,
   autoplayEnabled: false,
   autoplayDelay: 3000,
+  autoplayDisableOnInteraction: true,
+  keyboardEnabled: true,
+  fadeCrossFade: true,
+  cubeShadow: true,
+  cubeSlideShadows: true,
+  coverflowRotate: 50,
+  coverflowStretch: 0,
+  coverflowDepth: 100,
+  coverflowModifier: 1,
   thumbsPerView: 4,
   thumbsSpaceBetween: 10
 });
@@ -80,6 +99,7 @@ function loadConfig(container) {
   config.value = {
     galleryId: dataAttrs.galleryId || 'default',
     layout: dataAttrs.layout || 'slider',
+    effect: dataAttrs.effect || 'slide',
     columns: parseNumber(dataAttrs.columns, 1),
     spaceBetween: parseNumber(dataAttrs.spaceBetween, 10),
     loop: parseBool(dataAttrs.loop),
@@ -91,6 +111,15 @@ function loadConfig(container) {
     paginationDynamicBullets: parseBool(dataAttrs.paginationDynamicBullets ?? '1'),
     autoplayEnabled: parseBool(dataAttrs.autoplayEnabled),
     autoplayDelay: parseNumber(dataAttrs.autoplayDelay, 3000),
+    autoplayDisableOnInteraction: parseBool(dataAttrs.autoplayDisableOnInteraction ?? '1'),
+    keyboardEnabled: parseBool(dataAttrs.keyboardEnabled ?? '1'),
+    fadeCrossFade: parseBool(dataAttrs.fadeCrossFade ?? '1'),
+    cubeShadow: parseBool(dataAttrs.cubeShadow ?? '1'),
+    cubeSlideShadows: parseBool(dataAttrs.cubeSlideShadows ?? '1'),
+    coverflowRotate: parseNumber(dataAttrs.coverflowRotate, 50),
+    coverflowStretch: parseNumber(dataAttrs.coverflowStretch, 0),
+    coverflowDepth: parseNumber(dataAttrs.coverflowDepth, 100),
+    coverflowModifier: parseNumber(dataAttrs.coverflowModifier, 1),
     thumbsPerView: parseNumber(dataAttrs.thumbsPerView, 4),
     thumbsSpaceBetween: parseNumber(dataAttrs.thumbsSpaceBetween, 10)
   };
@@ -101,7 +130,6 @@ function loadConfig(container) {
 // =============================================================================
 
 const modules = computed(() => {
-  // Include EffectFade to ensure transitions complete properly
   const mods = [A11y, EffectFade, Keyboard, Pagination];
   if (config.value.layout === 'thumbs') {
     mods.push(Thumbs, FreeMode);
@@ -112,6 +140,11 @@ const modules = computed(() => {
   if (config.value.navigationEnabled) {
     mods.push(Navigation);
   }
+  if (config.value.effect === 'cube') mods.push(EffectCube);
+  if (config.value.effect === 'coverflow') mods.push(EffectCoverflow);
+  if (config.value.effect === 'flip') mods.push(EffectFlip);
+  if (config.value.effect === 'cards') mods.push(EffectCards);
+  if (config.value.effect === 'creative') mods.push(EffectCreative);
   return mods;
 });
 
@@ -139,13 +172,24 @@ const autoplayConfig = computed(() => {
   if (!config.value.autoplayEnabled) return false;
   return {
     delay: config.value.autoplayDelay,
-    disableOnInteraction: false,
+    disableOnInteraction: config.value.autoplayDisableOnInteraction,
     pauseOnMouseEnter: true
   };
 });
 
-// Breakpoints for multi-column layouts
+const keyboardConfig = computed(() => (
+  config.value.keyboardEnabled ? { enabled: true } : false
+));
+
+// Coverflow needs narrower slides (slidesPerView auto) so side slides stay in view.
+const mainSlidesPerView = computed(() => (
+  config.value.effect === 'coverflow' ? 'auto' : 1
+));
+
+// Multi-column breakpoints apply only to the default slide effect.
 const mainBreakpoints = computed(() => {
+  if (config.value.effect !== 'slide') return undefined;
+
   const cols = config.value.columns;
   if (cols === 1) return undefined;
   
@@ -251,10 +295,40 @@ function observeRedundantAria(swiper) {
     .forEach(btn => btn.removeAttribute('aria-disabled'));
 }
 
+function toggleAutoplay() {
+  const swiper = mainSwiperRef.value;
+  if (!swiper?.autoplay) return;
+
+  if (!autoplayPausedByUser.value) {
+    swiper.autoplay.stop();
+    autoplayPausedByUser.value = true;
+  } else {
+    swiper.autoplay.start();
+    autoplayPausedByUser.value = false;
+  }
+}
+
+function bindAutoplayState(swiperInstance) {
+  if (!config.value.autoplayEnabled || !swiperInstance.autoplay) return;
+
+  // Only reflect explicit stops (pause button or disableOnInteraction).
+  // Ignore autoplayPause/autoplayResume — Swiper fires those during transitions.
+  swiperInstance.on('autoplayStop', () => {
+    autoplayPausedByUser.value = true;
+  });
+  swiperInstance.on('autoplayStart', () => {
+    autoplayPausedByUser.value = false;
+  });
+}
+
 const onMainSwiper = (swiper) => {
   mainSwiperRef.value = swiper;
   observeRedundantAria(swiper);
-  bindEqualSwiperSlideHeights(swiper);
+  bindAutoplayState(swiper);
+  bindSwiperEffectParams(swiper, config.value);
+  if (config.value.effect !== 'coverflow') {
+    bindEqualSwiperSlideHeights(swiper);
+  }
   bindVidplySwiperLifecycle(swiper);
   notifyDynamicContentReady(mountElement);
 };
@@ -273,7 +347,10 @@ const thumbsSwiper = computed(() => thumbsSwiperRef.value);
 <template>
   <!-- SECURITY: All v-html bindings below render server-side TYPO3 Fluid output (trusted editors only).
        Never populate slides from untrusted user input without server-side sanitization. -->
-  <div class="gallery-swiper-wrapper">
+  <div
+    class="gallery-swiper-wrapper"
+    :class="{ 'is-swiper-effect-coverflow': config.layout === 'slider' && config.effect === 'coverflow' }"
+  >
     <!-- Thumbs layout: main swiper first, then thumbnails below -->
     <template v-if="config.layout === 'thumbs'">
       <!-- Thumbnails swiper (hidden, renders first for thumbs linking) -->
@@ -308,9 +385,10 @@ const thumbsSwiper = computed(() => thumbsSwiperRef.value);
         :space-between="config.spaceBetween"
         :speed="config.speed"
         :loop="config.loop"
-        :keyboard="{ enabled: true }"
+        :keyboard="keyboardConfig"
         :navigation="navigationConfig"
         :pagination="paginationConfig"
+        :autoplay="autoplayConfig"
         :thumbs="{ swiper: thumbsSwiper }"
         @swiper="onMainSwiper"
         class="swiper gallery-main-swiper"
@@ -332,16 +410,31 @@ const thumbsSwiper = computed(() => thumbsSwiperRef.value);
         v-if="slides.length"
         :modules="modules"
         :a11y="a11yConfig"
-        :slides-per-view="1"
+        :effect="config.effect"
+        :slides-per-view="mainSlidesPerView"
         :space-between="config.spaceBetween"
         :speed="config.speed"
         :loop="config.loop"
-        :keyboard="{ enabled: true }"
+        :centered-slides="config.effect === 'coverflow'"
+        :keyboard="keyboardConfig"
         :navigation="navigationConfig"
         :pagination="paginationConfig"
         :autoplay="autoplayConfig"
+        :fade-effect="config.effect === 'fade' ? { crossFade: config.fadeCrossFade } : undefined"
+        :cube-effect="config.effect === 'cube' ? {
+          shadow: config.cubeShadow,
+          slideShadows: config.cubeSlideShadows
+        } : undefined"
+        :coverflow-effect="config.effect === 'coverflow' ? {
+          rotate: config.coverflowRotate,
+          stretch: config.coverflowStretch,
+          depth: config.coverflowDepth,
+          modifier: config.coverflowModifier,
+          scale: 0.86,
+          slideShadows: false
+        } : undefined"
         :breakpoints="mainBreakpoints"
-        :grab-cursor="true"
+        :grab-cursor="config.effect === 'slide' || config.effect === 'coverflow'"
         @swiper="onMainSwiper"
         class="swiper gallery-swiper"
       >
@@ -364,7 +457,7 @@ const thumbsSwiper = computed(() => thumbsSwiperRef.value);
         :data-gallery-id="config.galleryId"
         :aria-label="prevSlideMessage"
       >
-        <svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"/>
         </svg>
       </button>
@@ -382,8 +475,44 @@ const thumbsSwiper = computed(() => thumbsSwiperRef.value);
         :data-gallery-id="config.galleryId"
         :aria-label="nextSlideMessage"
       >
-        <svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <button
+        v-if="config.autoplayEnabled && config.navigationEnabled"
+        type="button"
+        class="swiper-button swiper-button-autoplay"
+        :data-gallery-id="config.galleryId"
+        :aria-label="autoplayPausedByUser ? playAutoplayMessage : pauseAutoplayMessage"
+        :aria-pressed="!autoplayPausedByUser"
+        @click="toggleAutoplay"
+      >
+        <svg
+          v-if="!autoplayPausedByUser"
+          class="swiper-navigation-icon"
+          width="11"
+          height="20"
+          viewBox="0 0 11 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <rect x="1.5" y="3" width="3" height="14" fill="currentColor"/>
+          <rect x="6.5" y="3" width="3" height="14" fill="currentColor"/>
+        </svg>
+        <svg
+          v-else
+          class="swiper-navigation-icon"
+          width="11"
+          height="20"
+          viewBox="0 0 11 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path d="M2 3.5L9.5 10L2 16.5V3.5Z" fill="currentColor"/>
         </svg>
       </button>
     </div>

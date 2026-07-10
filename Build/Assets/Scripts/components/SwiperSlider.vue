@@ -22,6 +22,8 @@ import {
 import {
   prevSlideMessage,
   nextSlideMessage,
+  pauseAutoplayMessage,
+  playAutoplayMessage,
   firstSlideMessage,
   lastSlideMessage,
   paginationBulletMessage,
@@ -29,6 +31,7 @@ import {
   itemRoleDescriptionMessage
 } from '../code/i18n.js';
 import { bindEqualSwiperSlideHeights } from '../code/swiper-equal-heights.js';
+import { bindSwiperEffectParams } from '../code/swiper-effect-params.js';
 import { bindVidplySwiperLifecycle, notifyDynamicContentReady } from '../code/vidply-dynamic-content.js';
 
 // Swiper CSS is imported in vue.js entry point (swiper/css/bundle)
@@ -54,6 +57,7 @@ const navigationNextRef = ref(null);
 const navigationPrevRef = ref(null);
 const paginationRef = ref(null);
 const scrollbarRef = ref(null);
+const autoplayPausedByUser = ref(false);
 const slides = ref([]);
 const config = ref({
   effect: 'slide',
@@ -365,9 +369,37 @@ function observeRedundantAria(swiper) {
     .forEach(btn => btn.removeAttribute('aria-disabled'));
 }
 
+function toggleAutoplay() {
+  const swiper = swiperRef.value;
+  if (!swiper?.autoplay) return;
+
+  if (!autoplayPausedByUser.value) {
+    swiper.autoplay.stop();
+    autoplayPausedByUser.value = true;
+  } else {
+    swiper.autoplay.start();
+    autoplayPausedByUser.value = false;
+  }
+}
+
+function bindAutoplayState(swiperInstance) {
+  if (!config.value.autoplayEnabled || !swiperInstance.autoplay) return;
+
+  // Only reflect explicit stops (pause button or disableOnInteraction).
+  // Ignore autoplayPause/autoplayResume — Swiper fires those during transitions.
+  swiperInstance.on('autoplayStop', () => {
+    autoplayPausedByUser.value = true;
+  });
+  swiperInstance.on('autoplayStart', () => {
+    autoplayPausedByUser.value = false;
+  });
+}
+
 const onSwiper = (swiperInstance) => {
   swiperRef.value = swiperInstance;
   observeRedundantAria(swiperInstance);
+  bindAutoplayState(swiperInstance);
+  bindSwiperEffectParams(swiperInstance, config.value);
   bindEqualSwiperSlideHeights(swiperInstance);
   bindVidplySwiperLifecycle(swiperInstance);
   notifyDynamicContentReady(mountElement);
@@ -378,7 +410,14 @@ const onSwiper = (swiperInstance) => {
 </script>
 
 <template>
-  <div ref="containerRef" :class="['swiper-vue-wrapper', config.containerClass]">
+  <div
+    ref="containerRef"
+    :class="[
+      'swiper-vue-wrapper',
+      config.containerClass,
+      { 'is-swiper-effect-coverflow': config.effect === 'coverflow' }
+    ]"
+  >
     <swiper
       v-if="slides.length"
       :modules="modules"
@@ -421,7 +460,8 @@ const onSwiper = (swiperInstance) => {
         rotate: config.coverflowRotate,
         stretch: config.coverflowStretch,
         depth: config.coverflowDepth,
-        modifier: config.coverflowModifier
+        modifier: config.coverflowModifier,
+        slideShadows: false
       } : undefined"
       :breakpoints="breakpoints"
       @swiper="onSwiper"
@@ -471,8 +511,44 @@ const onSwiper = (swiperInstance) => {
         :data-slider-id="config.sliderId || 'default'"
         :aria-label="nextSlideMessage"
       >
-        <svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <button
+        v-if="config.autoplayEnabled && config.navigationEnabled"
+        type="button"
+        class="swiper-button swiper-button-autoplay"
+        :data-slider-id="config.sliderId || 'default'"
+        :aria-label="autoplayPausedByUser ? playAutoplayMessage : pauseAutoplayMessage"
+        :aria-pressed="!autoplayPausedByUser"
+        @click="toggleAutoplay"
+      >
+        <svg
+          v-if="!autoplayPausedByUser"
+          class="swiper-navigation-icon"
+          width="11"
+          height="20"
+          viewBox="0 0 11 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <rect x="1.5" y="3" width="3" height="14" fill="currentColor"/>
+          <rect x="6.5" y="3" width="3" height="14" fill="currentColor"/>
+        </svg>
+        <svg
+          v-else
+          class="swiper-navigation-icon"
+          width="11"
+          height="20"
+          viewBox="0 0 11 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path d="M2 3.5L9.5 10L2 16.5V3.5Z" fill="currentColor"/>
         </svg>
       </button>
     </div>

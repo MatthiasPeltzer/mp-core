@@ -51,6 +51,7 @@
                 data-component="GallerySwiper"
                 data-gallery-id="gallery-{data.uid}"
                 data-layout="slider"
+                data-effect="{data.gallery_slider_type -> f:if(condition: data.gallery_slider_type, then: data.gallery_slider_type, else: 'slide')}"
                 data-columns="{data.gallery_columns}"
                 data-space-between="{f:if(condition: data.gallery_space_between, then: data.gallery_space_between, else: '10')}"
                 data-loop="{f:if(condition: data.gallery_loop, then: '1', else: '0')}"
@@ -62,6 +63,15 @@
                 data-pagination-dynamic-bullets="{f:if(condition: data.gallery_pagination_dynamic_bullets, then: '1', else: '0')}"
                 data-autoplay-enabled="{f:if(condition: data.gallery_autoplay_enabled, then: '1', else: '0')}"
                 data-autoplay-delay="{f:if(condition: data.gallery_autoplay_delay, then: data.gallery_autoplay_delay, else: '3000')}"
+                data-autoplay-disable-on-interaction="{f:if(condition: data.gallery_autoplay_disable_on_interaction, then: '1', else: '0')}"
+                data-keyboard-enabled="{f:if(condition: data.gallery_keyboard_enabled, then: '1', else: '0')}"
+                data-coverflow-rotate="{f:if(condition: data.gallery_coverflow_rotate, then: data.gallery_coverflow_rotate, else: '50')}"
+                data-coverflow-stretch="{f:if(condition: data.gallery_coverflow_stretch, then: data.gallery_coverflow_stretch, else: '0')}"
+                data-coverflow-depth="{f:if(condition: data.gallery_coverflow_depth, then: data.gallery_coverflow_depth, else: '100')}"
+                data-coverflow-modifier="{f:if(condition: data.gallery_coverflow_modifier, then: data.gallery_coverflow_modifier, else: '1')}"
+                data-fade-cross-fade="{f:if(condition: data.gallery_fade_crossfade, then: '1', else: '0')}"
+                data-cube-shadow="{f:if(condition: data.gallery_cube_shadow, then: '1', else: '0')}"
+                data-cube-slide-shadows="{f:if(condition: data.gallery_cube_slide_shadows, then: '1', else: '0')}"
             >
                 <f:for as="file" each="{files}" iteration="i">
                     <div class="gallery-slide-content" data-count="{i.index}">
@@ -94,6 +104,10 @@
                     data-pagination-type="{f:if(condition: data.gallery_pagination_type, then: data.gallery_pagination_type, else: 'bullets')}"
                     data-pagination-clickable="{f:if(condition: data.gallery_pagination_clickable, then: '1', else: '0')}"
                     data-pagination-dynamic-bullets="{f:if(condition: data.gallery_pagination_dynamic_bullets, then: '1', else: '0')}"
+                    data-autoplay-enabled="{f:if(condition: data.gallery_autoplay_enabled, then: '1', else: '0')}"
+                    data-autoplay-delay="{f:if(condition: data.gallery_autoplay_delay, then: data.gallery_autoplay_delay, else: '3000')}"
+                    data-autoplay-disable-on-interaction="{f:if(condition: data.gallery_autoplay_disable_on_interaction, then: '1', else: '0')}"
+                    data-keyboard-enabled="{f:if(condition: data.gallery_keyboard_enabled, then: '1', else: '0')}"
                     data-thumbs-per-view="{f:if(condition: data.gallery_thumbs_per_view, then: data.gallery_thumbs_per_view, else: '4')}"
                     data-thumbs-space-between="{f:if(condition: data.gallery_thumbs_space_between, then: data.gallery_thumbs_space_between, else: '10')}"
                 >

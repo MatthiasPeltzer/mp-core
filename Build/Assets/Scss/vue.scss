@@ -76,12 +76,19 @@ html[data-bs-theme="light"] {
 // =============================================================================
 
 .swiper-button-prev,
-.swiper-button-next {
+.swiper-button-next,
+.swiper-button-autoplay {
+  align-items: center;
   background-color: var(--bs-primary);
   border: 2px solid var(--bs-body-color, #fff);
   border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  height: var(--swiper-navigation-size);
+  justify-content: center;
   top: auto !important;
   transition: all 0.3s ease;
+  width: var(--swiper-navigation-size);
 
   // Hide Swiper's default arrows when we have SVG icons
   &::after {
@@ -95,9 +102,13 @@ html[data-bs-theme="light"] {
   }
 
   svg {
+    height: 100%;
+    object-fit: contain;
     pointer-events: none;
+    width: 100%;
 
-    path {
+    path,
+    rect {
       fill: #fff;
     }
   }
@@ -124,8 +135,16 @@ html[data-bs-theme="light"] {
   // Beat vendor-swiper.css (loads after vue.css): buttons and pagination both use
   // z-index: 10 there, so the overlay wins hit-testing in the button center.
   .swiper-button-prev,
-  .swiper-button-next {
+  .swiper-button-next,
+  .swiper-button-autoplay {
     z-index: 20;
+  }
+
+  // Autoplay sits after next without joining the prev/next flex pair.
+  .swiper-button-autoplay {
+    position: absolute;
+    right: auto;
+    top: 0;
   }
 
   // Let clicks pass through the full-width pagination strip except on bullets /
@@ -150,6 +169,96 @@ html[data-bs-theme="light"] {
     .swiper-button-prev,
     .swiper-button-next {
       position: static;
+    }
+
+    .swiper-button-autoplay {
+      // Centered prev/next pair is 248px wide (44 + 160 + 44); place autoplay 8px after next.
+      left: calc(50% + 132px);
+    }
+  }
+
+  &:not(:has(.swiper-pagination-bullets-dynamic, .swiper-pagination-fraction)) {
+    &:has(.swiper-button-autoplay) .swiper-button-next {
+      right: calc(var(--swiper-navigation-sides-offset, 4px) + var(--swiper-navigation-size) + 8px);
+    }
+
+    .swiper-button-autoplay {
+      right: var(--swiper-navigation-sides-offset, 4px);
+    }
+  }
+}
+
+// =============================================================================
+// 3D SWIPER EFFECTS
+// =============================================================================
+
+// Coverflow rotates slides in 3D. overflow:visible showed every off-screen slide; keep
+// horizontal clipping and add vertical padding so rotated top/bottom edges stay visible.
+// content-box keeps equal-height sizing on the slide area; padding sits outside it.
+.swiper.swiper-coverflow {
+  box-sizing: content-box;
+  overflow: hidden;
+  padding-block: clamp(2rem, 12%, 5rem);
+
+  &.swiper-equal-heights {
+    .swiper-wrapper {
+      align-items: stretch;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      align-self: stretch;
+      height: 100%;
+    }
+  }
+
+  // Fill equal-height gaps only on the slide wrapper; teaser keeps its own bgcolor-* styling.
+  .swiper-slide > div {
+    background-color: var(--bs-body-bg);
+    height: 100%;
+    min-height: 100%;
+  }
+
+  // Swiper maps shadow opacity to offsetMultiplier (often > 1) → fully opaque overlay on side slides.
+  .swiper-slide-shadow-left,
+  .swiper-slide-shadow-right,
+  .swiper-slide-shadow-top,
+  .swiper-slide-shadow-bottom {
+    display: none;
+  }
+}
+
+.swiper-vue-wrapper.is-swiper-effect-coverflow,
+.gallery-swiper-wrapper.is-swiper-effect-coverflow {
+  overflow: hidden;
+}
+
+// Gallery coverflow: full-width slides hide neighbours (only ~1px peeks in). Use auto
+// width so prev/next stay visible; natural height instead of equal-heights lock.
+.gallery-swiper-wrapper.is-swiper-effect-coverflow {
+  .gallery-swiper.swiper-coverflow {
+    height: auto;
+    padding-inline: clamp(1rem, 8%, 2.5rem);
+  }
+
+  .gallery-swiper.swiper-coverflow .swiper-wrapper {
+    align-items: center;
+    height: auto;
+  }
+
+  .gallery-swiper.swiper-coverflow .swiper-slide {
+    align-self: center;
+    height: auto;
+    width: clamp(260px, 62%, 600px);
+
+    > div {
+      height: auto;
+      min-height: 0;
+    }
+
+    img {
+      height: auto;
+      width: 100%;
     }
   }
 }
@@ -256,7 +365,7 @@ html[data-bs-theme="light"] {
 }
 
 .gallery-swiper-wrapper {
-  .swiper {
+  .swiper:not(.swiper-coverflow) {
     padding-right: 8px;
   }
 }

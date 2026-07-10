@@ -1,1 +1,242 @@
-import{a as e,c as t,i as n,o as r,s as i,t as a}from"./domUtils-CnWucRtt.js";import{d as o,l as s,n as c,r as l,t as u,u as d}from"./i18n-BhDE1gdd.js";var f={desktop:{container:`#nav-desktop`,buttonSelector:`.first-nav-btn`,collapseButtonSelector:`[data-bs-toggle="collapse"]`,subnavButtonSelector:`.subnav-children .hassub`,subnavMenuSelector:`.subnav-children`},mobile:{container:`#main-menu`,menuButton:`#main-menu-button`,solrButton:`#solr-button`,dropdownSelector:`#main-menu .dropdown-menu`,collapseButtonSelector:`[data-bs-toggle="collapse"]`,menuSelector:`.collapse`},breakpoint:`(min-width: 62rem)`},p=document.querySelector(`.header-wrapper`),m=document.getElementById(`nav-desktop`);function h(e,t){e&&(e.setAttribute(`title`,t?u:s),e.setAttribute(`aria-expanded`,t?`true`:`false`),e.classList.toggle(`collapsed`,!t))}function g(e,t,n=null){document.querySelectorAll(`${e} ${t}`).forEach(e=>{if(e===n)return;let t=e.getAttribute(`data-bs-target`);h(e,document.querySelector(t)?.classList.contains(`show`)??!1)})}function _(e){let t=e.target.id;return document.querySelector(`[data-bs-target="#${t}"]`)}function v(){document.querySelectorAll(f.desktop.buttonSelector).forEach(e=>{let t=e.classList.contains(`show`);e.setAttribute(`title`,t?u:s)})}function y(){i(document.body,p,()=>n(f.desktop.container))}function b(){document.addEventListener(`show.bs.dropdown`,e=>{e.target.closest(f.desktop.container)&&y()}),document.addEventListener(`shown.bs.dropdown`,e=>{e.target.closest(f.desktop.container)&&(y(),v(),t(f.desktop.container))}),document.addEventListener(`hide.bs.dropdown`,t=>{t.target.closest(f.desktop.container)&&(e(t.clickEvent)||y())}),document.addEventListener(`hidden.bs.dropdown`,t=>{t.target.closest(f.desktop.container)&&(e(t.clickEvent)||(y(),v()))}),document.querySelectorAll(`.main-menu-desktop .btn-close`).forEach(e=>{e.addEventListener(`click`,()=>{document.querySelector(`${f.desktop.buttonSelector}.show`)?.click()})}),document.querySelectorAll(f.desktop.subnavButtonSelector).forEach(e=>{e.addEventListener(`click`,()=>{a(e,f.desktop.subnavButtonSelector,f.desktop.subnavMenuSelector)})}),document.addEventListener(`show.bs.collapse`,e=>{if(!e.target.closest(f.desktop.container))return;let t=_(e);t&&(a(t,f.desktop.collapseButtonSelector,f.desktop.subnavMenuSelector),g(f.desktop.container,f.desktop.collapseButtonSelector,t),h(t,!0))}),document.addEventListener(`hide.bs.collapse`,e=>{if(!e.target.closest(f.desktop.container))return;let t=_(e);t&&h(t,!1)}),document.addEventListener(`shown.bs.collapse`,e=>{if(!e.target.closest(f.desktop.container))return;let t=_(e);t&&h(t,!0),g(f.desktop.container,f.desktop.collapseButtonSelector)}),document.addEventListener(`hidden.bs.collapse`,e=>{if(!e.target.closest(f.desktop.container))return;let t=_(e);t&&h(t,!1),g(f.desktop.container,f.desktop.collapseButtonSelector)}),setTimeout(()=>{r(f.desktop.subnavMenuSelector,u),g(f.desktop.container,f.desktop.collapseButtonSelector)},100)}function x(e,t){if(!e||e.id!==`main-menu-button`)return;let n=e.querySelector(`.txt > .visually-hidden`);n&&(n.textContent=t?c:d),e.setAttribute(`title`,t?l:o)}function S(n,r){let a=n.target.closest(`${f.mobile.menuButton}, ${f.mobile.solrButton}`);a&&(!r&&e(n.clickEvent)||(r?(document.body.classList.add(`active-nav-body`),p?.classList.add(`active-nav`),t(f.mobile.container)):i(document.body,p,()=>!!document.querySelector(`${f.mobile.dropdownSelector}.show, #main-menu.show`)),x(a,r)))}function C(){document.addEventListener(`show.bs.dropdown`,e=>S(e,!0)),document.addEventListener(`hide.bs.dropdown`,e=>S(e,!1)),document.addEventListener(`click`,e=>{let t=e.target.closest(`${f.mobile.container} ${f.mobile.collapseButtonSelector}`);t&&(t.classList.contains(`collapsed`)?(t.classList.remove(`collapsed`),t.setAttribute(`aria-expanded`,`true`),t.setAttribute(`title`,u)):(t.classList.add(`collapsed`),t.setAttribute(`aria-expanded`,`false`),t.setAttribute(`title`,s)))}),document.addEventListener(`show.bs.collapse`,e=>{if(!e.target.closest(f.mobile.container))return;let t=_(e);t&&(a(t,f.mobile.collapseButtonSelector,f.mobile.menuSelector),g(f.mobile.container,f.mobile.collapseButtonSelector,t),h(t,!0))}),document.addEventListener(`hide.bs.collapse`,e=>{if(!e.target.closest(f.mobile.container))return;let t=_(e);t&&h(t,!1)}),document.addEventListener(`shown.bs.collapse`,e=>{if(!e.target.closest(f.mobile.container))return;let t=_(e);t&&h(t,!0),g(f.mobile.container,f.mobile.collapseButtonSelector)}),document.addEventListener(`hidden.bs.collapse`,e=>{if(!e.target.closest(f.mobile.container))return;let t=_(e);t&&h(t,!1),g(f.mobile.container,f.mobile.collapseButtonSelector)}),setTimeout(()=>{r(f.mobile.menuSelector,u),g(f.mobile.container,f.mobile.collapseButtonSelector)},100)}function w(){let e=document.getElementById(`main-menu`),t=document.querySelector(`.navbar-toggler`);e?.classList.contains(`show`)&&t&&t.click(),document.querySelectorAll(`${f.mobile.container} .collapse.show`).forEach(e=>{let t=document.querySelector(`[data-bs-target="#${e.id}"]`);t&&!t.classList.contains(`collapsed`)&&t.click()})}function T(){document.querySelectorAll(`.first-nav-button.show, .first-nav-btn.show, #nav-desktop .dropdown-toggle.show`).forEach(e=>{e.click()}),document.querySelectorAll(`${f.desktop.container} .collapse.show`).forEach(e=>{let t=document.querySelector(`[data-bs-target="#${e.id}"]`);t&&!t.classList.contains(`collapsed`)&&t.click()})}function E(){let e=window.matchMedia(f.breakpoint),t=document.body;e.addEventListener(`change`,e=>{e&&(e.matches?w():T(),t.classList.remove(`active-nav-body`),p?.classList.remove(`active-nav`))})}function D(){m&&b(),document.getElementById(`main-menu`)&&C(),E()}D();
+import { a as isDropdownNavLinkClick, c as scrollToCurrentElement, i as hasOpenDesktopOrMobileNav, o as openCurrentPageParents, s as scheduleNavOverlaySync, t as closeOtherSubmenus } from "./domUtils-D0p1mhw4.js";
+import { d as openTitleMessage, l as openButtonMessage, n as closeNavMessage, r as closeTitleMessage, t as closeButtonMessage, u as openNavMessage } from "./i18n-CTgK0wgO.js";
+//#region Assets/Scripts/code/Navigation/Secondary/navigation.js
+/**
+* Handles both desktop and mobile navigation:
+* - Desktop: Dropdown menus with collapse submenus
+* - Mobile: Dropdown menu with collapse submenus and body state management
+* - Responsive: Closes menus when switching breakpoints
+*/
+var CONFIG = {
+	desktop: {
+		container: "#nav-desktop",
+		buttonSelector: ".first-nav-btn",
+		collapseButtonSelector: "[data-bs-toggle=\"collapse\"]",
+		subnavButtonSelector: ".subnav-children .hassub",
+		subnavMenuSelector: ".subnav-children"
+	},
+	mobile: {
+		container: "#main-menu",
+		menuButton: "#main-menu-button",
+		solrButton: "#solr-button",
+		dropdownSelector: "#main-menu .dropdown-menu",
+		collapseButtonSelector: "[data-bs-toggle=\"collapse\"]",
+		menuSelector: ".collapse"
+	},
+	breakpoint: "(min-width: 62rem)"
+};
+var headerWrapper = document.querySelector(".header-wrapper");
+var navDesktop = document.getElementById("nav-desktop");
+/**
+* @param {HTMLElement} button
+* @param {boolean} isOpen
+*/
+function updateButtonState(button, isOpen) {
+	if (!button) return;
+	button.setAttribute("title", isOpen ? closeButtonMessage : openButtonMessage);
+	button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+	button.classList.toggle("collapsed", !isOpen);
+}
+/**
+* @param {string} containerSelector
+* @param {string} buttonSelector
+* @param {HTMLElement|null} excludeButton
+*/
+function syncAllButtonStates(containerSelector, buttonSelector, excludeButton = null) {
+	document.querySelectorAll(`${containerSelector} ${buttonSelector}`).forEach((button) => {
+		if (button === excludeButton) return;
+		const targetMenuId = button.getAttribute("data-bs-target");
+		updateButtonState(button, document.querySelector(targetMenuId)?.classList.contains("show") ?? false);
+	});
+}
+/**
+* @param {Event} event
+* @returns {HTMLElement|null}
+*/
+function getTriggerButton(event) {
+	const targetId = event.target.id;
+	return document.querySelector(`[data-bs-target="#${targetId}"]`);
+}
+function updateDesktopButtonTitles() {
+	document.querySelectorAll(CONFIG.desktop.buttonSelector).forEach((button) => {
+		const isOpen = button.classList.contains("show");
+		button.setAttribute("title", isOpen ? closeButtonMessage : openButtonMessage);
+	});
+}
+function syncActiveNavClasses() {
+	scheduleNavOverlaySync(document.body, headerWrapper, () => hasOpenDesktopOrMobileNav(CONFIG.desktop.container));
+}
+function initDesktopNavigation() {
+	document.addEventListener("show.bs.dropdown", (event) => {
+		if (!event.target.closest(CONFIG.desktop.container)) return;
+		syncActiveNavClasses();
+	});
+	document.addEventListener("shown.bs.dropdown", (event) => {
+		if (!event.target.closest(CONFIG.desktop.container)) return;
+		syncActiveNavClasses();
+		updateDesktopButtonTitles();
+		scrollToCurrentElement(CONFIG.desktop.container);
+	});
+	document.addEventListener("hide.bs.dropdown", (event) => {
+		if (!event.target.closest(CONFIG.desktop.container)) return;
+		if (isDropdownNavLinkClick(event.clickEvent)) return;
+		syncActiveNavClasses();
+	});
+	document.addEventListener("hidden.bs.dropdown", (event) => {
+		if (!event.target.closest(CONFIG.desktop.container)) return;
+		if (isDropdownNavLinkClick(event.clickEvent)) return;
+		syncActiveNavClasses();
+		updateDesktopButtonTitles();
+	});
+	document.querySelectorAll(".main-menu-desktop .btn-close").forEach((button) => {
+		button.addEventListener("click", () => {
+			document.querySelector(`${CONFIG.desktop.buttonSelector}.show`)?.click();
+		});
+	});
+	document.querySelectorAll(CONFIG.desktop.subnavButtonSelector).forEach((subButton) => {
+		subButton.addEventListener("click", () => {
+			closeOtherSubmenus(subButton, CONFIG.desktop.subnavButtonSelector, CONFIG.desktop.subnavMenuSelector);
+		});
+	});
+	document.addEventListener("show.bs.collapse", (event) => {
+		if (!event.target.closest(CONFIG.desktop.container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) {
+			closeOtherSubmenus(triggerButton, CONFIG.desktop.collapseButtonSelector, CONFIG.desktop.subnavMenuSelector);
+			syncAllButtonStates(CONFIG.desktop.container, CONFIG.desktop.collapseButtonSelector, triggerButton);
+			updateButtonState(triggerButton, true);
+		}
+	});
+	document.addEventListener("hide.bs.collapse", (event) => {
+		if (!event.target.closest(CONFIG.desktop.container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) updateButtonState(triggerButton, false);
+	});
+	document.addEventListener("shown.bs.collapse", (event) => {
+		if (!event.target.closest(CONFIG.desktop.container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) updateButtonState(triggerButton, true);
+		syncAllButtonStates(CONFIG.desktop.container, CONFIG.desktop.collapseButtonSelector);
+	});
+	document.addEventListener("hidden.bs.collapse", (event) => {
+		if (!event.target.closest(CONFIG.desktop.container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) updateButtonState(triggerButton, false);
+		syncAllButtonStates(CONFIG.desktop.container, CONFIG.desktop.collapseButtonSelector);
+	});
+	setTimeout(() => {
+		openCurrentPageParents(CONFIG.desktop.subnavMenuSelector, closeButtonMessage);
+		syncAllButtonStates(CONFIG.desktop.container, CONFIG.desktop.collapseButtonSelector);
+	}, 100);
+}
+/**
+* @param {HTMLElement} button
+* @param {boolean} isOpen
+*/
+function updateMobileMenuButton(button, isOpen) {
+	if (!button || button.id !== "main-menu-button") return;
+	const textElement = button.querySelector(".txt > .visually-hidden");
+	if (textElement) textElement.textContent = isOpen ? closeNavMessage : openNavMessage;
+	button.setAttribute("title", isOpen ? closeTitleMessage : openTitleMessage);
+}
+/**
+* @param {Event} event
+* @param {boolean} isOpening
+*/
+function handleMobileDropdown(event, isOpening) {
+	const button = event.target.closest(`${CONFIG.mobile.menuButton}, ${CONFIG.mobile.solrButton}`);
+	if (!button) return;
+	if (!isOpening && isDropdownNavLinkClick(event.clickEvent)) return;
+	if (isOpening) {
+		document.body.classList.add("active-nav-body");
+		headerWrapper?.classList.add("active-nav");
+		scrollToCurrentElement(CONFIG.mobile.container);
+	} else scheduleNavOverlaySync(document.body, headerWrapper, () => !!document.querySelector(`${CONFIG.mobile.dropdownSelector}.show, #main-menu.show`));
+	updateMobileMenuButton(button, isOpening);
+}
+function initMobileNavigation() {
+	document.addEventListener("show.bs.dropdown", (event) => handleMobileDropdown(event, true));
+	document.addEventListener("hide.bs.dropdown", (event) => handleMobileDropdown(event, false));
+	document.addEventListener("click", (event) => {
+		const button = event.target.closest(`${CONFIG.mobile.container} ${CONFIG.mobile.collapseButtonSelector}`);
+		if (!button) return;
+		if (button.classList.contains("collapsed")) {
+			button.classList.remove("collapsed");
+			button.setAttribute("aria-expanded", "true");
+			button.setAttribute("title", closeButtonMessage);
+		} else {
+			button.classList.add("collapsed");
+			button.setAttribute("aria-expanded", "false");
+			button.setAttribute("title", openButtonMessage);
+		}
+	});
+	document.addEventListener("show.bs.collapse", (event) => {
+		if (!event.target.closest(CONFIG.mobile.container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) {
+			closeOtherSubmenus(triggerButton, CONFIG.mobile.collapseButtonSelector, CONFIG.mobile.menuSelector);
+			syncAllButtonStates(CONFIG.mobile.container, CONFIG.mobile.collapseButtonSelector, triggerButton);
+			updateButtonState(triggerButton, true);
+		}
+	});
+	document.addEventListener("hide.bs.collapse", (event) => {
+		if (!event.target.closest(CONFIG.mobile.container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) updateButtonState(triggerButton, false);
+	});
+	document.addEventListener("shown.bs.collapse", (event) => {
+		if (!event.target.closest(CONFIG.mobile.container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) updateButtonState(triggerButton, true);
+		syncAllButtonStates(CONFIG.mobile.container, CONFIG.mobile.collapseButtonSelector);
+	});
+	document.addEventListener("hidden.bs.collapse", (event) => {
+		if (!event.target.closest(CONFIG.mobile.container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) updateButtonState(triggerButton, false);
+		syncAllButtonStates(CONFIG.mobile.container, CONFIG.mobile.collapseButtonSelector);
+	});
+	setTimeout(() => {
+		openCurrentPageParents(CONFIG.mobile.menuSelector, closeButtonMessage);
+		syncAllButtonStates(CONFIG.mobile.container, CONFIG.mobile.collapseButtonSelector);
+	}, 100);
+}
+function closeMobileMenus() {
+	const mainMenu = document.getElementById("main-menu");
+	const navbarToggler = document.querySelector(".navbar-toggler");
+	if (mainMenu?.classList.contains("show") && navbarToggler) navbarToggler.click();
+	document.querySelectorAll(`${CONFIG.mobile.container} .collapse.show`).forEach((menu) => {
+		const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
+		if (button && !button.classList.contains("collapsed")) button.click();
+	});
+}
+function closeDesktopMenus() {
+	document.querySelectorAll(".first-nav-button.show, .first-nav-btn.show, #nav-desktop .dropdown-toggle.show").forEach((button) => {
+		button.click();
+	});
+	document.querySelectorAll(`${CONFIG.desktop.container} .collapse.show`).forEach((menu) => {
+		const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
+		if (button && !button.classList.contains("collapsed")) button.click();
+	});
+}
+function initResponsiveBehavior() {
+	const mediaQuery = window.matchMedia(CONFIG.breakpoint);
+	const body = document.body;
+	const handleBreakpointChange = (event) => {
+		if (!event) return;
+		if (event.matches) closeMobileMenus();
+		else closeDesktopMenus();
+		body.classList.remove("active-nav-body");
+		headerWrapper?.classList.remove("active-nav");
+	};
+	mediaQuery.addEventListener("change", handleBreakpointChange);
+}
+function init() {
+	if (navDesktop) initDesktopNavigation();
+	if (document.getElementById("main-menu")) initMobileNavigation();
+	initResponsiveBehavior();
+}
+init();
+//#endregion
+
+//# sourceMappingURL=navigationSecondary.js.map

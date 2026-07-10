@@ -253,6 +253,78 @@
         <source>Duration of transition between slides in milliseconds</source>
         <target>Dauer des Übergangs zwischen Slides in Millisekunden</target>
       </trans-unit>
+      <trans-unit id="gallery.slider_type" resname="gallery.slider_type" approved="yes">
+        <source>Slider type</source>
+        <target>Slider-Typ</target>
+      </trans-unit>
+      <trans-unit id="gallery.slider_type.description" resname="gallery.slider_type.description" approved="yes">
+        <source>Transition effect for the gallery slider (slide, fade, cube, coverflow, etc.)</source>
+        <target>Übergangseffekt für den Galerie-Slider (Slide, Fade, Cube, Coverflow usw.)</target>
+      </trans-unit>
+      <trans-unit id="gallery.swiper_effect" resname="gallery.swiper_effect" approved="yes">
+        <source>Effect settings</source>
+        <target>Effekt-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="gallery.swiper_advanced" resname="gallery.swiper_advanced" approved="yes">
+        <source>Advanced</source>
+        <target>Erweitert</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_rotate" resname="gallery.coverflow_rotate" approved="yes">
+        <source>Coverflow rotation</source>
+        <target>Coverflow-Rotation</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_rotate.description" resname="gallery.coverflow_rotate.description" approved="yes">
+        <source>Rotation angle in degrees for side slides</source>
+        <target>Rotationswinkel in Grad für seitliche Slides</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_stretch" resname="gallery.coverflow_stretch" approved="yes">
+        <source>Coverflow stretch</source>
+        <target>Coverflow-Abstand</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_stretch.description" resname="gallery.coverflow_stretch.description" approved="yes">
+        <source>Offset in pixels between slides (can be negative)</source>
+        <target>Abstand in Pixeln zwischen Slides (kann negativ sein)</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_depth" resname="gallery.coverflow_depth" approved="yes">
+        <source>Coverflow depth</source>
+        <target>Coverflow-Tiefe</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_depth.description" resname="gallery.coverflow_depth.description" approved="yes">
+        <source>Z-axis depth offset in pixels</source>
+        <target>Tiefenversatz auf der Z-Achse in Pixeln</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_modifier" resname="gallery.coverflow_modifier" approved="yes">
+        <source>Coverflow modifier</source>
+        <target>Coverflow-Modifikator</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_modifier.description" resname="gallery.coverflow_modifier.description" approved="yes">
+        <source>Multiplier for rotate, stretch and depth</source>
+        <target>Multiplikator für Rotation, Abstand und Tiefe</target>
+      </trans-unit>
+      <trans-unit id="gallery.fade_crossfade" resname="gallery.fade_crossfade" approved="yes">
+        <source>Cross fade</source>
+        <target>Überblendung</target>
+      </trans-unit>
+      <trans-unit id="gallery.fade_crossfade.description" resname="gallery.fade_crossfade.description" approved="yes">
+        <source>Fade between overlapping slides</source>
+        <target>Überblendung zwischen überlappenden Slides</target>
+      </trans-unit>
+      <trans-unit id="gallery.cube_shadow" resname="gallery.cube_shadow" approved="yes">
+        <source>Cube shadow</source>
+        <target>Würfel-Schatten</target>
+      </trans-unit>
+      <trans-unit id="gallery.cube_shadow.description" resname="gallery.cube_shadow.description" approved="yes">
+        <source>Show main cube shadow</source>
+        <target>Hauptschatten des Würfels anzeigen</target>
+      </trans-unit>
+      <trans-unit id="gallery.cube_slide_shadows" resname="gallery.cube_slide_shadows" approved="yes">
+        <source>Cube slide shadows</source>
+        <target>Würfel-Slide-Schatten</target>
+      </trans-unit>
+      <trans-unit id="gallery.cube_slide_shadows.description" resname="gallery.cube_slide_shadows.description" approved="yes">
+        <source>Show shadows on cube slide faces</source>
+        <target>Schatten auf den Würfel-Slide-Flächen anzeigen</target>
+      </trans-unit>
       <trans-unit id="gallery.swiper_autoplay" resname="gallery.swiper_autoplay" approved="yes">
         <source>Autoplay</source>
         <target>Autoplay</target>

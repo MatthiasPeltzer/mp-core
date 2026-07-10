@@ -29,7 +29,7 @@ defined('TYPO3') || die();
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.gallery_layout.description',
         ],
 
-        // Slides per view (gallery-slider only)
+        // Slides per view (gallery-slider, slide effect only)
         'gallery_columns' => [
             'config' => [
                 'items' => [
@@ -43,9 +43,133 @@ defined('TYPO3') || die();
                 'behaviour' => ['allowLanguageSynchronization' => true],
             ],
             'exclude' => true,
-            'displayCond' => 'FIELD:gallery_layout:=:gallery-slider',
+            'displayCond' => [
+                'AND' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_slider_type:=:slide',
+                ],
+            ],
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.gallery_columns',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.gallery_columns.description',
+        ],
+
+        // Slider effect (gallery-slider only)
+        'gallery_slider_type' => [
+            'config' => [
+                'items' => [
+                    ['label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.type.slide', 'value' => 'slide'],
+                    ['label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.type.fade', 'value' => 'fade'],
+                    ['label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.type.cube', 'value' => 'cube'],
+                    ['label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.type.coverflow', 'value' => 'coverflow'],
+                    ['label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.type.flip', 'value' => 'flip'],
+                    ['label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.type.cards', 'value' => 'cards'],
+                    ['label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.type.creative', 'value' => 'creative'],
+                ],
+                'renderType' => 'selectSingle',
+                'type' => 'select',
+                'default' => 'slide',
+                'behaviour' => ['allowLanguageSynchronization' => true],
+            ],
+            'exclude' => false,
+            'onChange' => 'reload',
+            'displayCond' => 'FIELD:gallery_layout:=:gallery-slider',
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.slider_type',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.slider_type.description',
+        ],
+
+        // Coverflow effect (gallery-slider + coverflow type)
+        'gallery_coverflow_rotate' => [
+            'config' => ['type' => 'number', 'size' => 5, 'default' => 50],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.coverflow_rotate',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.coverflow_rotate.description',
+            'displayCond' => [
+                'AND' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_slider_type:=:coverflow',
+                ],
+            ],
+        ],
+        'gallery_coverflow_stretch' => [
+            'config' => ['type' => 'number', 'size' => 5, 'default' => 0],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.coverflow_stretch',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.coverflow_stretch.description',
+            'displayCond' => [
+                'AND' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_slider_type:=:coverflow',
+                ],
+            ],
+        ],
+        'gallery_coverflow_depth' => [
+            'config' => ['type' => 'number', 'size' => 5, 'default' => 100],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.coverflow_depth',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.coverflow_depth.description',
+            'displayCond' => [
+                'AND' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_slider_type:=:coverflow',
+                ],
+            ],
+        ],
+        'gallery_coverflow_modifier' => [
+            'config' => ['type' => 'number', 'size' => 5, 'default' => 1],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.coverflow_modifier',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.coverflow_modifier.description',
+            'displayCond' => [
+                'AND' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_slider_type:=:coverflow',
+                ],
+            ],
+        ],
+
+        // Fade effect
+        'gallery_fade_crossfade' => [
+            'config' => ['type' => 'check', 'default' => 1],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.fade_crossfade',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.fade_crossfade.description',
+            'displayCond' => [
+                'AND' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_slider_type:=:fade',
+                ],
+            ],
+        ],
+
+        // Cube effect
+        'gallery_cube_shadow' => [
+            'config' => ['type' => 'check', 'default' => 1],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.cube_shadow',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.cube_shadow.description',
+            'displayCond' => [
+                'AND' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_slider_type:=:cube',
+                ],
+            ],
+        ],
+        'gallery_cube_slide_shadows' => [
+            'config' => ['type' => 'check', 'default' => 1],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.cube_slide_shadows',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.cube_slide_shadows.description',
+            'displayCond' => [
+                'AND' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_slider_type:=:cube',
+                ],
+            ],
+        ],
+
+        'gallery_keyboard_enabled' => [
+            'config' => ['type' => 'check', 'default' => 1],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.keyboard_enabled',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.keyboard_enabled.description',
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_layout:=:gallery-thumbs',
+                ],
+            ],
         ],
 
         // =============================================================================
@@ -206,7 +330,12 @@ defined('TYPO3') || die();
             ],
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.autoplay_enabled',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.autoplay_enabled.description',
-            'displayCond' => 'FIELD:gallery_layout:=:gallery-slider',
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_layout:=:gallery-thumbs',
+                ],
+            ],
         ],
 
         'gallery_autoplay_delay' => [
@@ -217,7 +346,24 @@ defined('TYPO3') || die();
             ],
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.autoplay_delay',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.autoplay_delay.description',
-            'displayCond' => 'FIELD:gallery_layout:=:gallery-slider',
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_layout:=:gallery-thumbs',
+                ],
+            ],
+        ],
+
+        'gallery_autoplay_disable_on_interaction' => [
+            'config' => ['type' => 'check', 'default' => 1],
+            'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.autoplay_disable_on_interaction',
+            'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.autoplay_disable_on_interaction.description',
+            'displayCond' => [
+                'OR' => [
+                    'FIELD:gallery_layout:=:gallery-slider',
+                    'FIELD:gallery_layout:=:gallery-thumbs',
+                ],
+            ],
         ],
 
         // =============================================================================
@@ -269,11 +415,15 @@ defined('TYPO3') || die();
 
     $galleryPositionPalettes = [
         'galleryposition_config' => [
-            'showitem' => 'gallery_layout,gallery_columns',
+            'showitem' => 'gallery_layout,gallery_slider_type,gallery_columns',
             'canNotCollapse' => 1,
         ],
         'gallery_swiper_basic' => [
             'showitem' => 'gallery_space_between,gallery_speed,gallery_loop',
+            'canNotCollapse' => 1,
+        ],
+        'gallery_swiper_effect' => [
+            'showitem' => 'gallery_coverflow_rotate,gallery_coverflow_stretch,gallery_coverflow_depth,gallery_coverflow_modifier,--linebreak--,gallery_fade_crossfade,--linebreak--,gallery_cube_shadow,gallery_cube_slide_shadows',
             'canNotCollapse' => 1,
         ],
         'gallery_swiper_navigation' => [
@@ -281,7 +431,11 @@ defined('TYPO3') || die();
             'canNotCollapse' => 1,
         ],
         'gallery_swiper_autoplay' => [
-            'showitem' => 'gallery_autoplay_enabled,gallery_autoplay_delay',
+            'showitem' => 'gallery_autoplay_enabled,gallery_autoplay_delay,gallery_autoplay_disable_on_interaction',
+            'canNotCollapse' => 1,
+        ],
+        'gallery_swiper_advanced' => [
+            'showitem' => 'gallery_keyboard_enabled',
             'canNotCollapse' => 1,
         ],
         'gallery_swiper_thumbs' => [
@@ -348,8 +502,10 @@ defined('TYPO3') || die();
                   --div--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.CType.gallery,
                       --palette--;;galleryposition_config,
                       --palette--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.swiper_basic;gallery_swiper_basic,
+                      --palette--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.swiper_effect;gallery_swiper_effect,
                       --palette--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.swiper_navigation;gallery_swiper_navigation,
                       --palette--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.swiper_autoplay;gallery_swiper_autoplay,
+                      --palette--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.swiper_advanced;gallery_swiper_advanced,
                       --palette--;LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:gallery.swiper_thumbs;gallery_swiper_thumbs,
                       image,
                   --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,

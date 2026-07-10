@@ -11,6 +11,10 @@ export function equalizeSwiperSlideHeights(swiper) {
     return;
   }
 
+  if (swiper.el.classList.contains('gallery-swiper') && swiper.el.classList.contains('swiper-coverflow')) {
+    return;
+  }
+
   const { el, wrapperEl } = swiper;
   const slideEls = Array.from(swiper.slides);
 
@@ -42,6 +46,10 @@ export function equalizeSwiperSlideHeights(swiper) {
  */
 export function bindEqualSwiperSlideHeights(swiper) {
   if (!swiper?.el || swiper.el.classList.contains('gallery-thumbs-swiper')) {
+    return;
+  }
+
+  if (swiper.el.classList.contains('gallery-swiper') && swiper.el.classList.contains('swiper-coverflow')) {
     return;
   }
 

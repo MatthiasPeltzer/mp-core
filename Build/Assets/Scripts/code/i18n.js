@@ -4,6 +4,8 @@ const messages = {
     de: {
         prevSlide: 'Zum vorherigen Eintrag',
         nextSlide: 'Zum nächsten Eintrag',
+        pauseAutoplay: 'Autoplay pausieren',
+        playAutoplay: 'Autoplay fortsetzen',
         firstSlide: 'Das ist der erste Inhalt',
         lastSlide: 'Das ist der letzte Inhalt',
         paginationBullet: 'Gehe zu Inhalt {{index}}',
@@ -37,6 +39,8 @@ const messages = {
     en: {
         prevSlide: 'To the previous entry',
         nextSlide: 'To the next entry',
+        pauseAutoplay: 'Pause autoplay',
+        playAutoplay: 'Resume autoplay',
         firstSlide: 'This is the first slide',
         lastSlide: 'This is the last slide',
         paginationBullet: 'Go to slide {{index}}',
@@ -74,6 +78,8 @@ const currentMessages = messages[lang] || messages.en;
 export const {
     prevSlide: prevSlideMessage,
     nextSlide: nextSlideMessage,
+    pauseAutoplay: pauseAutoplayMessage,
+    playAutoplay: playAutoplayMessage,
     firstSlide: firstSlideMessage,
     lastSlide: lastSlideMessage,
     paginationBullet: paginationBulletMessage,
