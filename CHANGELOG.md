@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.16] - 2026-07-15
+
+### Tests
+- Functional TCA bootstrap and showitem integrity tests for all mp-core content elements and custom tables.
+- Unit tests for `ColorPickerValueItems` (`itemsProcFunc` colour select).
+- Coverage scripts set `XDEBUG_MODE=coverage` and fail fast with a clear message when no driver is loaded.
+
+### Changed
+- Move PHPUnit functional config, bootstrap, and coverage helpers to `Tests/phpunit/` (frontend `Build/` stays Vite/npm only).
+- Remove per-extension `sort_xlf.php`;
+
+### Fixed
+
 ## [1.2.15] - 2026-07-10
 
 ### Added
@@ -763,6 +776,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.16]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.15...v1.2.16
 [1.2.15]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.14...v1.2.15
 [1.2.14]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.13...v1.2.14
 [1.2.13]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.12...v1.2.13
