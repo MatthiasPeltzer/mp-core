@@ -429,17 +429,37 @@ Configuration/
 
 #### Local-only DI overrides (`Services.local.yaml`)
 
-The shipped `Services.yaml` imports an optional sibling file with `ignore_errors: not_found`, so projects can register local-only services (tooling commands, ad-hoc helpers) without modifying the published file or breaking container compilation when the file is absent:
+The shipped `Services.yaml` imports an optional sibling file with `ignore_errors: not_found`, so projects can register local-only services (ad-hoc helpers, environment-specific wiring) without modifying the published file or breaking container compilation when the file is absent:
 
 ```yaml
 # Configuration/Services.local.yaml  (gitignored)
 services:
-  Mpc\MpCore\Command\ImportDocumentationCommand:
-    tags:
-      - { name: console.command, command: 'docsite:import' }
+  # Example: register a local-only helper or override a service binding.
 ```
 
 `Configuration/Services.local.yaml` is listed in `.gitignore` for this exact pattern.
+
+#### Project tooling (`bin/`)
+
+Project-local scripts live in `mpcore/bin/` (outside any extension repository). Full command reference: **[mpcore/README.md](../../../README.md#project-tooling-bin)**.
+
+##### Docs-site import (`bin/docsite-import.php`)
+
+```bash
+php bin/docsite-import.php
+php bin/docsite-import.php --dry-run
+ddev exec php bin/docsite-import.php --dry-run
+```
+
+From `docs-site/`: `npm run import` / `npm run import:dry` (wraps the same script).
+
+##### XLF sorting (`bin/sort-xlf.php`)
+
+```bash
+php bin/sort-xlf.php
+php bin/sort-xlf.php --dry-run --package=mp-core
+ddev exec php bin/sort-xlf.php
+```
 
 ### Content Security Policy (`ContentSecurityPolicies.php`)
 

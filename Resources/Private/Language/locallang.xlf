@@ -153,17 +153,14 @@
       <trans-unit id="pagination.label" resname="pagination.label">
         <source>Pagination</source>
       </trans-unit>
+      <trans-unit id="search.button" resname="search.button">
+        <source>Search</source>
+      </trans-unit>
       <trans-unit id="search.dateFormat" resname="search.dateFormat">
         <source>m/d/Y</source>
       </trans-unit>
       <trans-unit id="search.decimalSeparator" resname="search.decimalSeparator">
         <source>.</source>
-      </trans-unit>
-      <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator">
-        <source>,</source>
-      </trans-unit>
-      <trans-unit id="search.button" resname="search.button">
-        <source>Search</source>
       </trans-unit>
       <trans-unit id="search.inputLabel" resname="search.inputLabel">
         <source>Enter search term(s)</source>
@@ -173,6 +170,9 @@
       </trans-unit>
       <trans-unit id="search.suggestHeader" resname="search.suggestHeader">
         <source>Top results</source>
+      </trans-unit>
+      <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator">
+        <source>,</source>
       </trans-unit>
       <trans-unit id="slider.next" resname="slider.next">
         <source>Next slide</source>

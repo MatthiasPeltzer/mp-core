@@ -3,7 +3,6 @@
   <file source-language="en" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang_db.xlf" date="2022-12-01T09:48:17" product-name="mp_core">
     <header/>
     <body>
-      <!-- Gallery Swiper Options -->
       <trans-unit id="BackendLayouts.bottom" resname="BackendLayouts.bottom">
         <source>Bottom</source>
       </trans-unit>
@@ -139,8 +138,50 @@
       <trans-unit id="gallery.autoplay_enabled.description" resname="gallery.autoplay_enabled.description">
         <source>Automatically advance slides</source>
       </trans-unit>
+      <trans-unit id="gallery.coverflow_depth" resname="gallery.coverflow_depth">
+        <source>Coverflow depth</source>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_depth.description" resname="gallery.coverflow_depth.description">
+        <source>Z-axis depth offset in pixels</source>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_modifier" resname="gallery.coverflow_modifier">
+        <source>Coverflow modifier</source>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_modifier.description" resname="gallery.coverflow_modifier.description">
+        <source>Multiplier for rotate, stretch and depth</source>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_rotate" resname="gallery.coverflow_rotate">
+        <source>Coverflow rotation</source>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_rotate.description" resname="gallery.coverflow_rotate.description">
+        <source>Rotation angle in degrees for side slides</source>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_stretch" resname="gallery.coverflow_stretch">
+        <source>Coverflow stretch</source>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_stretch.description" resname="gallery.coverflow_stretch.description">
+        <source>Offset in pixels between slides (can be negative)</source>
+      </trans-unit>
+      <trans-unit id="gallery.cube_shadow" resname="gallery.cube_shadow">
+        <source>Cube shadow</source>
+      </trans-unit>
+      <trans-unit id="gallery.cube_shadow.description" resname="gallery.cube_shadow.description">
+        <source>Show main cube shadow</source>
+      </trans-unit>
+      <trans-unit id="gallery.cube_slide_shadows" resname="gallery.cube_slide_shadows">
+        <source>Cube slide shadows</source>
+      </trans-unit>
+      <trans-unit id="gallery.cube_slide_shadows.description" resname="gallery.cube_slide_shadows.description">
+        <source>Show shadows on cube slide faces</source>
+      </trans-unit>
       <trans-unit id="gallery.description" resname="gallery.description">
         <source>Inserts a gallery element as a single image preview, tiles or slider</source>
+      </trans-unit>
+      <trans-unit id="gallery.fade_crossfade" resname="gallery.fade_crossfade">
+        <source>Cross fade</source>
+      </trans-unit>
+      <trans-unit id="gallery.fade_crossfade.description" resname="gallery.fade_crossfade.description">
+        <source>Fade between overlapping slides</source>
       </trans-unit>
       <trans-unit id="gallery.loop" resname="gallery.loop">
         <source>Loop</source>
@@ -178,6 +219,12 @@
       <trans-unit id="gallery.pagination_type.description" resname="gallery.pagination_type.description">
         <source>Choose pagination style</source>
       </trans-unit>
+      <trans-unit id="gallery.slider_type" resname="gallery.slider_type">
+        <source>Slider type</source>
+      </trans-unit>
+      <trans-unit id="gallery.slider_type.description" resname="gallery.slider_type.description">
+        <source>Transition effect for the gallery slider (slide, fade, cube, coverflow, etc.)</source>
+      </trans-unit>
       <trans-unit id="gallery.space_between" resname="gallery.space_between">
         <source>Space between slides</source>
       </trans-unit>
@@ -190,65 +237,17 @@
       <trans-unit id="gallery.speed.description" resname="gallery.speed.description">
         <source>Duration of transition between slides in milliseconds</source>
       </trans-unit>
-      <trans-unit id="gallery.slider_type" resname="gallery.slider_type">
-        <source>Slider type</source>
-      </trans-unit>
-      <trans-unit id="gallery.slider_type.description" resname="gallery.slider_type.description">
-        <source>Transition effect for the gallery slider (slide, fade, cube, coverflow, etc.)</source>
-      </trans-unit>
-      <trans-unit id="gallery.swiper_effect" resname="gallery.swiper_effect">
-        <source>Effect settings</source>
-      </trans-unit>
       <trans-unit id="gallery.swiper_advanced" resname="gallery.swiper_advanced">
         <source>Advanced</source>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_rotate" resname="gallery.coverflow_rotate">
-        <source>Coverflow rotation</source>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_rotate.description" resname="gallery.coverflow_rotate.description">
-        <source>Rotation angle in degrees for side slides</source>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_stretch" resname="gallery.coverflow_stretch">
-        <source>Coverflow stretch</source>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_stretch.description" resname="gallery.coverflow_stretch.description">
-        <source>Offset in pixels between slides (can be negative)</source>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_depth" resname="gallery.coverflow_depth">
-        <source>Coverflow depth</source>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_depth.description" resname="gallery.coverflow_depth.description">
-        <source>Z-axis depth offset in pixels</source>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_modifier" resname="gallery.coverflow_modifier">
-        <source>Coverflow modifier</source>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_modifier.description" resname="gallery.coverflow_modifier.description">
-        <source>Multiplier for rotate, stretch and depth</source>
-      </trans-unit>
-      <trans-unit id="gallery.fade_crossfade" resname="gallery.fade_crossfade">
-        <source>Cross fade</source>
-      </trans-unit>
-      <trans-unit id="gallery.fade_crossfade.description" resname="gallery.fade_crossfade.description">
-        <source>Fade between overlapping slides</source>
-      </trans-unit>
-      <trans-unit id="gallery.cube_shadow" resname="gallery.cube_shadow">
-        <source>Cube shadow</source>
-      </trans-unit>
-      <trans-unit id="gallery.cube_shadow.description" resname="gallery.cube_shadow.description">
-        <source>Show main cube shadow</source>
-      </trans-unit>
-      <trans-unit id="gallery.cube_slide_shadows" resname="gallery.cube_slide_shadows">
-        <source>Cube slide shadows</source>
-      </trans-unit>
-      <trans-unit id="gallery.cube_slide_shadows.description" resname="gallery.cube_slide_shadows.description">
-        <source>Show shadows on cube slide faces</source>
       </trans-unit>
       <trans-unit id="gallery.swiper_autoplay" resname="gallery.swiper_autoplay">
         <source>Autoplay</source>
       </trans-unit>
       <trans-unit id="gallery.swiper_basic" resname="gallery.swiper_basic">
         <source>Slider Settings</source>
+      </trans-unit>
+      <trans-unit id="gallery.swiper_effect" resname="gallery.swiper_effect">
+        <source>Effect settings</source>
       </trans-unit>
       <trans-unit id="gallery.swiper_navigation" resname="gallery.swiper_navigation">
         <source>Navigation &amp; Pagination</source>
@@ -508,6 +507,54 @@
       <trans-unit id="linkicon.label" resname="linkicon.label">
         <source>Link icon</source>
       </trans-unit>
+      <trans-unit id="modal.content" resname="modal.content">
+        <source>Modal content</source>
+      </trans-unit>
+      <trans-unit id="modal.description" resname="modal.description">
+        <source>Overlay dialog with composed content (text, images, video).</source>
+      </trans-unit>
+      <trans-unit id="modal.hide_trigger.description" resname="modal.hide_trigger.description">
+        <source>Only output the modal markup. Use link action “Open modal” on another content element to trigger it.</source>
+      </trans-unit>
+      <trans-unit id="modal.hide_trigger.label" resname="modal.hide_trigger.label">
+        <source>Hide built-in trigger</source>
+      </trans-unit>
+      <trans-unit id="modal.linkhandler.label" resname="modal.linkhandler.label">
+        <source>Modal</source>
+      </trans-unit>
+      <trans-unit id="modal.size.fullscreen" resname="modal.size.fullscreen">
+        <source>Fullscreen</source>
+      </trans-unit>
+      <trans-unit id="modal.size.label" resname="modal.size.label">
+        <source>Modal size</source>
+      </trans-unit>
+      <trans-unit id="modal.size.lg" resname="modal.size.lg">
+        <source>Large</source>
+      </trans-unit>
+      <trans-unit id="modal.size.md" resname="modal.size.md">
+        <source>Medium</source>
+      </trans-unit>
+      <trans-unit id="modal.size.xl" resname="modal.size.xl">
+        <source>Extra large</source>
+      </trans-unit>
+      <trans-unit id="modal.title" resname="modal.title">
+        <source>Modal</source>
+      </trans-unit>
+      <trans-unit id="modal.trigger.description" resname="modal.trigger.description">
+        <source>Choose what opens the modal on the page.</source>
+      </trans-unit>
+      <trans-unit id="modal.trigger.image" resname="modal.trigger.image">
+        <source>Image</source>
+      </trans-unit>
+      <trans-unit id="modal.trigger.image_link" resname="modal.trigger.image_link">
+        <source>Image and link / button</source>
+      </trans-unit>
+      <trans-unit id="modal.trigger.label" resname="modal.trigger.label">
+        <source>Trigger type</source>
+      </trans-unit>
+      <trans-unit id="modal.trigger.link" resname="modal.trigger.link">
+        <source>Link / button</source>
+      </trans-unit>
       <trans-unit id="pages.Breadcrumb" resname="pages.Breadcrumb">
         <source>Breadcrumb</source>
       </trans-unit>
@@ -706,21 +753,6 @@
       <trans-unit id="site.configuration.customization" resname="site.configuration.customization">
         <source>Customization</source>
       </trans-unit>
-      <trans-unit id="site.configuration.llmstxt.palette.label" resname="site.configuration.llmstxt.palette.label">
-        <source>llms.txt (AI agents)</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.llmsTxtDescription.description" resname="site.configuration.llmsTxtDescription.description">
-        <source>Short summary for this language, shown as the blockquote in llms.txt. Falls back to the SEO default description when empty.</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.llmsTxtDescription.label" resname="site.configuration.llmsTxtDescription.label">
-        <source>llms.txt Description</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.llmsTxtIntro.description" resname="site.configuration.llmsTxtIntro.description">
-        <source>Optional intro paragraph for AI agents in this language, shown after the description in llms.txt. Falls back to the global llms.txt intro when empty.</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.llmsTxtIntro.label" resname="site.configuration.llmsTxtIntro.label">
-        <source>llms.txt Intro</source>
-      </trans-unit>
       <trans-unit id="site.configuration.description.apple-touch-icon" resname="site.configuration.description.apple-touch-icon">
         <source>The PNG file has to be square in 180x180 pixel. Filename must be 'apple-touch-icon.png'.</source>
       </trans-unit>
@@ -745,23 +777,14 @@
       <trans-unit id="site.configuration.discord.label" resname="site.configuration.discord.label">
         <source>Discord</source>
       </trans-unit>
+      <trans-unit id="site.configuration.extraEntityImage.description" resname="site.configuration.extraEntityImage.description">
+        <source>Representative image for the additional Schema.org entity (Site Settings → entity type). Use a logo, band photo, or storefront image — square or landscape, at least 696×696 px recommended. Leave empty to omit image from JSON-LD.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.extraEntityImage.label" resname="site.configuration.extraEntityImage.label">
+        <source>Entity image (logo or photo)</source>
+      </trans-unit>
       <trans-unit id="site.configuration.facebook.label" resname="site.configuration.facebook.label">
         <source>Facebook</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.github.label" resname="site.configuration.github.label">
-        <source>GitHub</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.gitlab.label" resname="site.configuration.gitlab.label">
-        <source>GitLab</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.npmjs.label" resname="site.configuration.npmjs.label">
-        <source>npm</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.opencode.label" resname="site.configuration.opencode.label">
-        <source>OpenCode</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.packagist.label" resname="site.configuration.packagist.label">
-        <source>Packagist</source>
       </trans-unit>
       <trans-unit id="site.configuration.favicon-96x96-png" resname="site.configuration.favicon-96x96-png">
         <source>Favicon 96x96 PNG</source>
@@ -775,11 +798,32 @@
       <trans-unit id="site.configuration.favicons" resname="site.configuration.favicons">
         <source>Favicons</source>
       </trans-unit>
+      <trans-unit id="site.configuration.github.label" resname="site.configuration.github.label">
+        <source>GitHub</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.gitlab.label" resname="site.configuration.gitlab.label">
+        <source>GitLab</source>
+      </trans-unit>
       <trans-unit id="site.configuration.instagram.label" resname="site.configuration.instagram.label">
         <source>Instagram</source>
       </trans-unit>
       <trans-unit id="site.configuration.linkedin.label" resname="site.configuration.linkedin.label">
         <source>LinkedIn</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtDescription.description" resname="site.configuration.llmsTxtDescription.description">
+        <source>Short summary for this language, shown as the blockquote in llms.txt. Falls back to the SEO default description when empty.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtDescription.label" resname="site.configuration.llmsTxtDescription.label">
+        <source>llms.txt Description</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtIntro.description" resname="site.configuration.llmsTxtIntro.description">
+        <source>Optional intro paragraph for AI agents in this language, shown after the description in llms.txt. Falls back to the global llms.txt intro when empty.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtIntro.label" resname="site.configuration.llmsTxtIntro.label">
+        <source>llms.txt Intro</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmstxt.palette.label" resname="site.configuration.llmstxt.palette.label">
+        <source>llms.txt (AI agents)</source>
       </trans-unit>
       <trans-unit id="site.configuration.logoBig.description" resname="site.configuration.logoBig.description">
         <source>The general standard logo</source>
@@ -814,15 +858,6 @@
       <trans-unit id="site.configuration.logos.title" resname="site.configuration.logos.title">
         <source>Logos</source>
       </trans-unit>
-      <trans-unit id="site.configuration.structuredData.title" resname="site.configuration.structuredData.title">
-        <source>Structured data entity</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.extraEntityImage.description" resname="site.configuration.extraEntityImage.description">
-        <source>Representative image for the additional Schema.org entity (Site Settings → entity type). Use a logo, band photo, or storefront image — square or landscape, at least 696×696 px recommended. Leave empty to omit image from JSON-LD.</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.extraEntityImage.label" resname="site.configuration.extraEntityImage.label">
-        <source>Entity image (logo or photo)</source>
-      </trans-unit>
       <trans-unit id="site.configuration.mastodon.label" resname="site.configuration.mastodon.label">
         <source>Mastodon</source>
       </trans-unit>
@@ -840,6 +875,15 @@
       </trans-unit>
       <trans-unit id="site.configuration.navType.description" resname="site.configuration.navType.description">
         <source>Customise the page navigation type here.</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.npmjs.label" resname="site.configuration.npmjs.label">
+        <source>npm</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.opencode.label" resname="site.configuration.opencode.label">
+        <source>OpenCode</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.packagist.label" resname="site.configuration.packagist.label">
+        <source>Packagist</source>
       </trans-unit>
       <trans-unit id="site.configuration.pinterest.label" resname="site.configuration.pinterest.label">
         <source>Pinterest</source>
@@ -870,6 +914,9 @@
       </trans-unit>
       <trans-unit id="site.configuration.spotify.label" resname="site.configuration.spotify.label">
         <source>Spotify</source>
+      </trans-unit>
+      <trans-unit id="site.configuration.structuredData.title" resname="site.configuration.structuredData.title">
+        <source>Structured data entity</source>
       </trans-unit>
       <trans-unit id="site.configuration.styles" resname="site.configuration.styles">
         <source>Edit styles</source>
@@ -1162,54 +1209,6 @@
       <trans-unit id="tabs.title" resname="tabs.title">
         <source>Tabs</source>
       </trans-unit>
-      <trans-unit id="modal.title" resname="modal.title">
-        <source>Modal</source>
-      </trans-unit>
-      <trans-unit id="modal.description" resname="modal.description">
-        <source>Overlay dialog with composed content (text, images, video).</source>
-      </trans-unit>
-      <trans-unit id="modal.content" resname="modal.content">
-        <source>Modal content</source>
-      </trans-unit>
-      <trans-unit id="modal.trigger.label" resname="modal.trigger.label">
-        <source>Trigger type</source>
-      </trans-unit>
-      <trans-unit id="modal.trigger.description" resname="modal.trigger.description">
-        <source>Choose what opens the modal on the page.</source>
-      </trans-unit>
-      <trans-unit id="modal.trigger.image" resname="modal.trigger.image">
-        <source>Image</source>
-      </trans-unit>
-      <trans-unit id="modal.trigger.link" resname="modal.trigger.link">
-        <source>Link / button</source>
-      </trans-unit>
-      <trans-unit id="modal.trigger.image_link" resname="modal.trigger.image_link">
-        <source>Image and link / button</source>
-      </trans-unit>
-      <trans-unit id="modal.size.label" resname="modal.size.label">
-        <source>Modal size</source>
-      </trans-unit>
-      <trans-unit id="modal.size.md" resname="modal.size.md">
-        <source>Medium</source>
-      </trans-unit>
-      <trans-unit id="modal.size.lg" resname="modal.size.lg">
-        <source>Large</source>
-      </trans-unit>
-      <trans-unit id="modal.size.xl" resname="modal.size.xl">
-        <source>Extra large</source>
-      </trans-unit>
-      <trans-unit id="modal.size.fullscreen" resname="modal.size.fullscreen">
-        <source>Fullscreen</source>
-      </trans-unit>
-      <trans-unit id="modal.hide_trigger.label" resname="modal.hide_trigger.label">
-        <source>Hide built-in trigger</source>
-      </trans-unit>
-      <trans-unit id="modal.hide_trigger.description" resname="modal.hide_trigger.description">
-        <source>Only output the modal markup. Use link action “Open modal” on another content element to trigger it.</source>
-      </trans-unit>
-      <trans-unit id="modal.linkhandler.label" resname="modal.linkhandler.label">
-        <source>Modal</source>
-      </trans-unit>
       <trans-unit id="tt_content.CType.div._gallery_" resname="tt_content.CType.div._gallery_">
         <source>Gallery</source>
       </trans-unit>
@@ -1279,11 +1278,11 @@
       <trans-unit id="tt_content.tx_link_action.description" resname="tt_content.tx_link_action.description">
         <source>Navigate to the link target or open a modal content element on this page.</source>
       </trans-unit>
-      <trans-unit id="tt_content.tx_link_action.navigate" resname="tt_content.tx_link_action.navigate">
-        <source>Navigate</source>
-      </trans-unit>
       <trans-unit id="tt_content.tx_link_action.modal" resname="tt_content.tx_link_action.modal">
         <source>Open modal</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_action.navigate" resname="tt_content.tx_link_action.navigate">
+        <source>Navigate</source>
       </trans-unit>
       <trans-unit id="tt_content.tx_link_layout" resname="tt_content.tx_link_layout">
         <source>Link layout</source>
@@ -1333,6 +1332,81 @@
       <trans-unit id="tt_content.tx_stage" resname="tt_content.tx_stage">
         <source>Stage</source>
       </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface" resname="tx_mpcore_domain_model_webfontface">
+        <source>Font Face</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.file" resname="tx_mpcore_domain_model_webfontface.file">
+        <source>Font file</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.file.description" resname="tx_mpcore_domain_model_webfontface.file.description">
+        <source>Upload or pick a font file from the FileManager. Allowed: woff2.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style" resname="tx_mpcore_domain_model_webfontface.font_style">
+        <source>Style</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style.description" resname="tx_mpcore_domain_model_webfontface.font_style.description">
+        <source>font-style this file provides.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range" resname="tx_mpcore_domain_model_webfontface.unicode_range">
+        <source>unicode-range (optional)</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range.description" resname="tx_mpcore_domain_model_webfontface.unicode_range.description">
+        <source>Optional CSS unicode-range, e.g. "U+0-7F, U+1E00-1EFF". Leave empty to apply to all characters.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.weight" resname="tx_mpcore_domain_model_webfontface.weight">
+        <source>Weight</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.weight.description" resname="tx_mpcore_domain_model_webfontface.weight.description">
+        <source>font-weight this file provides.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily" resname="tx_mpcore_domain_model_webfontfamily">
+        <source>Web Font Family</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable" resname="tx_mpcore_domain_model_webfontfamily.css_variable">
+        <source>Custom CSS variable</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable.description" resname="tx_mpcore_domain_model_webfontfamily.css_variable.description">
+        <source>Custom property name to set, must start with -- (e.g. --mpc-font-display). Only used when "Applies to" is "Custom CSS variable".</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces" resname="tx_mpcore_domain_model_webfontfamily.faces">
+        <source>Font files (weights / styles)</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces.description" resname="tx_mpcore_domain_model_webfontfamily.faces.description">
+        <source>One entry per uploaded font file. Add a face for each weight/style you need (e.g. 400 normal, 700 bold).</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback" resname="tx_mpcore_domain_model_webfontfamily.fallback">
+        <source>Fallback stack</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback.description" resname="tx_mpcore_domain_model_webfontfamily.fallback.description">
+        <source>Fallback fonts appended after the family name, e.g. "Helvetica Neue, Arial, sans-serif".</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display" resname="tx_mpcore_domain_model_webfontfamily.font_display">
+        <source>font-display</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display.description" resname="tx_mpcore_domain_model_webfontfamily.font_display.description">
+        <source>CSS font-display strategy applied to all faces of this family.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name" resname="tx_mpcore_domain_model_webfontfamily.name">
+        <source>Font family name</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name.description" resname="tx_mpcore_domain_model_webfontfamily.name.description">
+        <source>CSS font-family name used in @font-face and the custom property (e.g. "Inter").</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role" resname="tx_mpcore_domain_model_webfontfamily.role">
+        <source>Applies to</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.body" resname="tx_mpcore_domain_model_webfontfamily.role.body">
+        <source>Body text (--bs-body-font-family)</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.custom" resname="tx_mpcore_domain_model_webfontfamily.role.custom">
+        <source>Custom CSS variable</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.description" resname="tx_mpcore_domain_model_webfontfamily.role.description">
+        <source>Which CSS custom property this family is assigned to.</source>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.heading" resname="tx_mpcore_domain_model_webfontfamily.role.heading">
+        <source>Headings (--bs-font-sans-serif)</source>
+      </trans-unit>
       <trans-unit id="typo3vitedemo_todolist">
         <source>Vue: TodoList</source>
       </trans-unit>
@@ -1347,82 +1421,6 @@
       </trans-unit>
       <trans-unit id="without_frame" resname="without_frame">
         <source>Without frame</source>
-      </trans-unit>
-      <!-- Web Fonts -->
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily" resname="tx_mpcore_domain_model_webfontfamily">
-        <source>Web Font Family</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name" resname="tx_mpcore_domain_model_webfontfamily.name">
-        <source>Font family name</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name.description" resname="tx_mpcore_domain_model_webfontfamily.name.description">
-        <source>CSS font-family name used in @font-face and the custom property (e.g. "Inter").</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback" resname="tx_mpcore_domain_model_webfontfamily.fallback">
-        <source>Fallback stack</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback.description" resname="tx_mpcore_domain_model_webfontfamily.fallback.description">
-        <source>Fallback fonts appended after the family name, e.g. "Helvetica Neue, Arial, sans-serif".</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role" resname="tx_mpcore_domain_model_webfontfamily.role">
-        <source>Applies to</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.description" resname="tx_mpcore_domain_model_webfontfamily.role.description">
-        <source>Which CSS custom property this family is assigned to.</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.body" resname="tx_mpcore_domain_model_webfontfamily.role.body">
-        <source>Body text (--bs-body-font-family)</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.heading" resname="tx_mpcore_domain_model_webfontfamily.role.heading">
-        <source>Headings (--bs-font-sans-serif)</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.custom" resname="tx_mpcore_domain_model_webfontfamily.role.custom">
-        <source>Custom CSS variable</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable" resname="tx_mpcore_domain_model_webfontfamily.css_variable">
-        <source>Custom CSS variable</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable.description" resname="tx_mpcore_domain_model_webfontfamily.css_variable.description">
-        <source>Custom property name to set, must start with -- (e.g. --mpc-font-display). Only used when "Applies to" is "Custom CSS variable".</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display" resname="tx_mpcore_domain_model_webfontfamily.font_display">
-        <source>font-display</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display.description" resname="tx_mpcore_domain_model_webfontfamily.font_display.description">
-        <source>CSS font-display strategy applied to all faces of this family.</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces" resname="tx_mpcore_domain_model_webfontfamily.faces">
-        <source>Font files (weights / styles)</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces.description" resname="tx_mpcore_domain_model_webfontfamily.faces.description">
-        <source>One entry per uploaded font file. Add a face for each weight/style you need (e.g. 400 normal, 700 bold).</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface" resname="tx_mpcore_domain_model_webfontface">
-        <source>Font Face</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.weight" resname="tx_mpcore_domain_model_webfontface.weight">
-        <source>Weight</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.weight.description" resname="tx_mpcore_domain_model_webfontface.weight.description">
-        <source>font-weight this file provides.</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style" resname="tx_mpcore_domain_model_webfontface.font_style">
-        <source>Style</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style.description" resname="tx_mpcore_domain_model_webfontface.font_style.description">
-        <source>font-style this file provides.</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.file" resname="tx_mpcore_domain_model_webfontface.file">
-        <source>Font file</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.file.description" resname="tx_mpcore_domain_model_webfontface.file.description">
-        <source>Upload or pick a font file from the FileManager. Allowed: woff2.</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range" resname="tx_mpcore_domain_model_webfontface.unicode_range">
-        <source>unicode-range (optional)</source>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range.description" resname="tx_mpcore_domain_model_webfontface.unicode_range.description">
-        <source>Optional CSS unicode-range, e.g. "U+0-7F, U+1E00-1EFF". Leave empty to apply to all characters.</source>
       </trans-unit>
     </body>
   </file>

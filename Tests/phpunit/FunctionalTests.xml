@@ -18,7 +18,7 @@
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.2/phpunit.xsd"
          backupGlobals="true"
          bootstrap="FunctionalTestsBootstrap.php"
-         cacheDirectory="../.phpunit.cache"
+         cacheDirectory="../../.phpunit.cache"
          cacheResult="false"
          colors="true"
          displayDetailsOnTestsThatTriggerDeprecations="true"
@@ -33,12 +33,12 @@
 >
     <testsuites>
         <testsuite name="functional">
-            <directory>../Tests/Functional/</directory>
+            <directory>../Functional/</directory>
         </testsuite>
     </testsuites>
     <source>
         <include>
-            <directory>../Classes</directory>
+            <directory>../../Classes</directory>
         </include>
     </source>
     <php>

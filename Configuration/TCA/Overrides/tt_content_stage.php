@@ -154,7 +154,7 @@ defined('TYPO3') || die();
             'canNotCollapse' => 1,
         ],
         'stagefile_config' => [
-            'showitem' => 'tx_stage_switch,--linebreak--, tx_stage_video,--linebreak--,image,--linebreak--,imagewidth,--linebreak--,video,--linebreak--,bodytext',
+            'showitem' => 'tx_stage_switch,--linebreak--, tx_stage_video,--linebreak--,image,--linebreak--,imagewidth,--linebreak--,bodytext',
             'canNotCollapse' => 1,
         ],
     ];

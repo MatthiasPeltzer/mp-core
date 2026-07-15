@@ -73,13 +73,18 @@
   },
   "scripts": {
     "test:unit": "phpunit --colors=always -c phpunit.xml.dist",
-    "test:functional": "phpunit --colors=always -c Build/FunctionalTests.xml",
-    "test:coverage": "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html .Build/coverage",
+    "test:functional": "phpunit --colors=always -c Tests/phpunit/FunctionalTests.xml",
+    "test:coverage": [
+      "@php Tests/phpunit/require-coverage-driver.php",
+      "@putenv XDEBUG_MODE=coverage",
+      "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html .Build/coverage"
+    ],
     "test:coverage:merged": [
+      "@php Tests/phpunit/require-coverage-driver.php",
       "@putenv XDEBUG_MODE=coverage",
       "phpunit -c phpunit.xml.dist --coverage-php .Build/coverage/unit.cov",
-      "phpunit -c Build/FunctionalTests.xml --coverage-php .Build/coverage/functional.cov",
-      "php Build/merge-coverage.php"
+      "phpunit -c Tests/phpunit/FunctionalTests.xml --coverage-php .Build/coverage/functional.cov",
+      "php Tests/phpunit/merge-coverage.php"
     ],
     "phpstan": "phpstan analyse -c phpstan.neon.dist --memory-limit=512M",
     "cs": "php .Build/bin/php-cs-fixer fix --dry-run -v --config .php-cs-fixer.dist.php",

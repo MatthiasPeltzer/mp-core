@@ -1,5 +1,5 @@
 imports:
-  # Optional local-only DI registrations (e.g. tooling commands that are
+  # Optional local-only DI registrations (e.g. environment-specific overrides that are
   # gitignored). Missing file must not break container compilation.
   - { resource: 'Services.local.yaml', ignore_errors: not_found }
 

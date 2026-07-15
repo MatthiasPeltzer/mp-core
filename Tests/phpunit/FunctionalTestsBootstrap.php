@@ -6,8 +6,8 @@ declare(strict_types=1);
  * Bootstrap for the mp_core functional test suite.
  *
  * Adapted from typo3/testing-framework's FunctionalTestsBootstrap.php. It is
- * referenced from Build/FunctionalTests.xml and executed by PHPUnit before the
- * test suites are instantiated.
+ * referenced from Tests/phpunit/FunctionalTests.xml and executed by PHPUnit
+ * before the test suites are instantiated.
  */
 (static function (): void {
     $testbase = new \TYPO3\TestingFramework\Core\Testbase();

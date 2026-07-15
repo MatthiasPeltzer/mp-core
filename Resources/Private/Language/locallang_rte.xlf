@@ -3,19 +3,6 @@
   <file source-language="en" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang_rte.xlf" date="2026-02-10T12:00:00" product-name="mp_core">
     <header/>
     <body>
-      <!-- Heading Options -->
-      <!-- Paragraph Styles -->
-      <!-- Button Styles -->
-      <!-- List Styles -->
-      <!-- Headline Size Variations H2 -->
-      <!-- Headline Size Variations H3 -->
-      <!-- Headline Size Variations H4 -->
-      <!-- Headline Size Variations H5 -->
-      <!-- Headline Size Variations H6 -->
-      <!-- Link Styles -->
-      <!-- Text Styles -->
-      <!-- Language Options -->
-      <!-- Definition List Plugin -->
       <trans-unit id="definitionList.addDescription" resname="definitionList.addDescription">
         <source>Add Description (dd)</source>
       </trans-unit>
@@ -154,9 +141,6 @@
       <trans-unit id="style.link.chart" resname="style.link.chart">
         <source>Link: Chart</source>
       </trans-unit>
-      <trans-unit id="style.link.modal" resname="style.link.modal">
-        <source>Link: Modal</source>
-      </trans-unit>
       <trans-unit id="style.link.download" resname="style.link.download">
         <source>Link: Download</source>
       </trans-unit>
@@ -177,6 +161,9 @@
       </trans-unit>
       <trans-unit id="style.link.legal" resname="style.link.legal">
         <source>Link: Legal</source>
+      </trans-unit>
+      <trans-unit id="style.link.modal" resname="style.link.modal">
+        <source>Link: Modal</source>
       </trans-unit>
       <trans-unit id="style.link.phone" resname="style.link.phone">
         <source>Link: Phone</source>

@@ -3,7 +3,6 @@
   <file source-language="en" target-language="de" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang_db.xlf" date="2025-01-26T12:00:00" product-name="mp_core">
     <header/>
     <body>
-      <!-- Gallery Swiper Options -->
       <trans-unit id="BackendLayouts.bottom" resname="BackendLayouts.bottom" approved="yes">
         <source>Bottom</source>
         <target>Unten</target>
@@ -185,9 +184,65 @@
         <source>Automatically advance slides</source>
         <target>Automatisch zum nächsten Slide wechseln</target>
       </trans-unit>
+      <trans-unit id="gallery.coverflow_depth" resname="gallery.coverflow_depth" approved="yes">
+        <source>Coverflow depth</source>
+        <target>Coverflow-Tiefe</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_depth.description" resname="gallery.coverflow_depth.description" approved="yes">
+        <source>Z-axis depth offset in pixels</source>
+        <target>Tiefenversatz auf der Z-Achse in Pixeln</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_modifier" resname="gallery.coverflow_modifier" approved="yes">
+        <source>Coverflow modifier</source>
+        <target>Coverflow-Modifikator</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_modifier.description" resname="gallery.coverflow_modifier.description" approved="yes">
+        <source>Multiplier for rotate, stretch and depth</source>
+        <target>Multiplikator für Rotation, Abstand und Tiefe</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_rotate" resname="gallery.coverflow_rotate" approved="yes">
+        <source>Coverflow rotation</source>
+        <target>Coverflow-Rotation</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_rotate.description" resname="gallery.coverflow_rotate.description" approved="yes">
+        <source>Rotation angle in degrees for side slides</source>
+        <target>Rotationswinkel in Grad für seitliche Slides</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_stretch" resname="gallery.coverflow_stretch" approved="yes">
+        <source>Coverflow stretch</source>
+        <target>Coverflow-Abstand</target>
+      </trans-unit>
+      <trans-unit id="gallery.coverflow_stretch.description" resname="gallery.coverflow_stretch.description" approved="yes">
+        <source>Offset in pixels between slides (can be negative)</source>
+        <target>Abstand in Pixeln zwischen Slides (kann negativ sein)</target>
+      </trans-unit>
+      <trans-unit id="gallery.cube_shadow" resname="gallery.cube_shadow" approved="yes">
+        <source>Cube shadow</source>
+        <target>Würfel-Schatten</target>
+      </trans-unit>
+      <trans-unit id="gallery.cube_shadow.description" resname="gallery.cube_shadow.description" approved="yes">
+        <source>Show main cube shadow</source>
+        <target>Hauptschatten des Würfels anzeigen</target>
+      </trans-unit>
+      <trans-unit id="gallery.cube_slide_shadows" resname="gallery.cube_slide_shadows" approved="yes">
+        <source>Cube slide shadows</source>
+        <target>Würfel-Slide-Schatten</target>
+      </trans-unit>
+      <trans-unit id="gallery.cube_slide_shadows.description" resname="gallery.cube_slide_shadows.description" approved="yes">
+        <source>Show shadows on cube slide faces</source>
+        <target>Schatten auf den Würfel-Slide-Flächen anzeigen</target>
+      </trans-unit>
       <trans-unit id="gallery.description" resname="gallery.description" approved="yes">
         <source>Inserts a gallery element as a single image preview, tiles or slider</source>
         <target>Fügt ein Galerieelement als Einzelbild Vorschau, Kacheln oder Slider ein</target>
+      </trans-unit>
+      <trans-unit id="gallery.fade_crossfade" resname="gallery.fade_crossfade" approved="yes">
+        <source>Cross fade</source>
+        <target>Überblendung</target>
+      </trans-unit>
+      <trans-unit id="gallery.fade_crossfade.description" resname="gallery.fade_crossfade.description" approved="yes">
+        <source>Fade between overlapping slides</source>
+        <target>Überblendung zwischen überlappenden Slides</target>
       </trans-unit>
       <trans-unit id="gallery.loop" resname="gallery.loop" approved="yes">
         <source>Loop</source>
@@ -237,6 +292,14 @@
         <source>Choose pagination style</source>
         <target>Paginierungsstil wählen</target>
       </trans-unit>
+      <trans-unit id="gallery.slider_type" resname="gallery.slider_type" approved="yes">
+        <source>Slider type</source>
+        <target>Slider-Typ</target>
+      </trans-unit>
+      <trans-unit id="gallery.slider_type.description" resname="gallery.slider_type.description" approved="yes">
+        <source>Transition effect for the gallery slider (slide, fade, cube, coverflow, etc.)</source>
+        <target>Übergangseffekt für den Galerie-Slider (Slide, Fade, Cube, Coverflow usw.)</target>
+      </trans-unit>
       <trans-unit id="gallery.space_between" resname="gallery.space_between" approved="yes">
         <source>Space between slides</source>
         <target>Abstand zwischen Slides</target>
@@ -253,77 +316,9 @@
         <source>Duration of transition between slides in milliseconds</source>
         <target>Dauer des Übergangs zwischen Slides in Millisekunden</target>
       </trans-unit>
-      <trans-unit id="gallery.slider_type" resname="gallery.slider_type" approved="yes">
-        <source>Slider type</source>
-        <target>Slider-Typ</target>
-      </trans-unit>
-      <trans-unit id="gallery.slider_type.description" resname="gallery.slider_type.description" approved="yes">
-        <source>Transition effect for the gallery slider (slide, fade, cube, coverflow, etc.)</source>
-        <target>Übergangseffekt für den Galerie-Slider (Slide, Fade, Cube, Coverflow usw.)</target>
-      </trans-unit>
-      <trans-unit id="gallery.swiper_effect" resname="gallery.swiper_effect" approved="yes">
-        <source>Effect settings</source>
-        <target>Effekt-Einstellungen</target>
-      </trans-unit>
       <trans-unit id="gallery.swiper_advanced" resname="gallery.swiper_advanced" approved="yes">
         <source>Advanced</source>
         <target>Erweitert</target>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_rotate" resname="gallery.coverflow_rotate" approved="yes">
-        <source>Coverflow rotation</source>
-        <target>Coverflow-Rotation</target>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_rotate.description" resname="gallery.coverflow_rotate.description" approved="yes">
-        <source>Rotation angle in degrees for side slides</source>
-        <target>Rotationswinkel in Grad für seitliche Slides</target>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_stretch" resname="gallery.coverflow_stretch" approved="yes">
-        <source>Coverflow stretch</source>
-        <target>Coverflow-Abstand</target>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_stretch.description" resname="gallery.coverflow_stretch.description" approved="yes">
-        <source>Offset in pixels between slides (can be negative)</source>
-        <target>Abstand in Pixeln zwischen Slides (kann negativ sein)</target>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_depth" resname="gallery.coverflow_depth" approved="yes">
-        <source>Coverflow depth</source>
-        <target>Coverflow-Tiefe</target>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_depth.description" resname="gallery.coverflow_depth.description" approved="yes">
-        <source>Z-axis depth offset in pixels</source>
-        <target>Tiefenversatz auf der Z-Achse in Pixeln</target>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_modifier" resname="gallery.coverflow_modifier" approved="yes">
-        <source>Coverflow modifier</source>
-        <target>Coverflow-Modifikator</target>
-      </trans-unit>
-      <trans-unit id="gallery.coverflow_modifier.description" resname="gallery.coverflow_modifier.description" approved="yes">
-        <source>Multiplier for rotate, stretch and depth</source>
-        <target>Multiplikator für Rotation, Abstand und Tiefe</target>
-      </trans-unit>
-      <trans-unit id="gallery.fade_crossfade" resname="gallery.fade_crossfade" approved="yes">
-        <source>Cross fade</source>
-        <target>Überblendung</target>
-      </trans-unit>
-      <trans-unit id="gallery.fade_crossfade.description" resname="gallery.fade_crossfade.description" approved="yes">
-        <source>Fade between overlapping slides</source>
-        <target>Überblendung zwischen überlappenden Slides</target>
-      </trans-unit>
-      <trans-unit id="gallery.cube_shadow" resname="gallery.cube_shadow" approved="yes">
-        <source>Cube shadow</source>
-        <target>Würfel-Schatten</target>
-      </trans-unit>
-      <trans-unit id="gallery.cube_shadow.description" resname="gallery.cube_shadow.description" approved="yes">
-        <source>Show main cube shadow</source>
-        <target>Hauptschatten des Würfels anzeigen</target>
-      </trans-unit>
-      <trans-unit id="gallery.cube_slide_shadows" resname="gallery.cube_slide_shadows" approved="yes">
-        <source>Cube slide shadows</source>
-        <target>Würfel-Slide-Schatten</target>
-      </trans-unit>
-      <trans-unit id="gallery.cube_slide_shadows.description" resname="gallery.cube_slide_shadows.description" approved="yes">
-        <source>Show shadows on cube slide faces</source>
-        <target>Schatten auf den Würfel-Slide-Flächen anzeigen</target>
       </trans-unit>
       <trans-unit id="gallery.swiper_autoplay" resname="gallery.swiper_autoplay" approved="yes">
         <source>Autoplay</source>
@@ -332,6 +327,10 @@
       <trans-unit id="gallery.swiper_basic" resname="gallery.swiper_basic" approved="yes">
         <source>Slider Settings</source>
         <target>Slider-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="gallery.swiper_effect" resname="gallery.swiper_effect" approved="yes">
+        <source>Effect settings</source>
+        <target>Effekt-Einstellungen</target>
       </trans-unit>
       <trans-unit id="gallery.swiper_navigation" resname="gallery.swiper_navigation" approved="yes">
         <source>Navigation &amp; Pagination</source>
@@ -697,6 +696,70 @@
         <source>Link icon</source>
         <target>Link-Symbol</target>
       </trans-unit>
+      <trans-unit id="modal.content" resname="modal.content" approved="yes">
+        <source>Modal content</source>
+        <target>Modal-Inhalt</target>
+      </trans-unit>
+      <trans-unit id="modal.description" resname="modal.description" approved="yes">
+        <source>Overlay dialog with composed content (text, images, video).</source>
+        <target>Overlay-Dialog mit zusammengesetztem Inhalt (Text, Bilder, Video).</target>
+      </trans-unit>
+      <trans-unit id="modal.hide_trigger.description" resname="modal.hide_trigger.description" approved="yes">
+        <source>Only output the modal markup. Use link action “Open modal” on another content element to trigger it.</source>
+        <target>Nur Modal-Markup ausgeben. Link-Aktion „Modal öffnen“ auf einem anderen Inhaltselement verwenden.</target>
+      </trans-unit>
+      <trans-unit id="modal.hide_trigger.label" resname="modal.hide_trigger.label" approved="yes">
+        <source>Hide built-in trigger</source>
+        <target>Eingebauten Trigger ausblenden</target>
+      </trans-unit>
+      <trans-unit id="modal.linkhandler.label" resname="modal.linkhandler.label" approved="yes">
+        <source>Modal</source>
+        <target>Modal</target>
+      </trans-unit>
+      <trans-unit id="modal.size.fullscreen" resname="modal.size.fullscreen" approved="yes">
+        <source>Fullscreen</source>
+        <target>Vollbild</target>
+      </trans-unit>
+      <trans-unit id="modal.size.label" resname="modal.size.label" approved="yes">
+        <source>Modal size</source>
+        <target>Modal-Größe</target>
+      </trans-unit>
+      <trans-unit id="modal.size.lg" resname="modal.size.lg" approved="yes">
+        <source>Large</source>
+        <target>Groß</target>
+      </trans-unit>
+      <trans-unit id="modal.size.md" resname="modal.size.md" approved="yes">
+        <source>Medium</source>
+        <target>Mittel</target>
+      </trans-unit>
+      <trans-unit id="modal.size.xl" resname="modal.size.xl" approved="yes">
+        <source>Extra large</source>
+        <target>Extra groß</target>
+      </trans-unit>
+      <trans-unit id="modal.title" resname="modal.title" approved="yes">
+        <source>Modal</source>
+        <target>Modal</target>
+      </trans-unit>
+      <trans-unit id="modal.trigger.description" resname="modal.trigger.description" approved="yes">
+        <source>Choose what opens the modal on the page.</source>
+        <target>Wählen Sie, was das Modal auf der Seite öffnet.</target>
+      </trans-unit>
+      <trans-unit id="modal.trigger.image" resname="modal.trigger.image" approved="yes">
+        <source>Image</source>
+        <target>Bild</target>
+      </trans-unit>
+      <trans-unit id="modal.trigger.image_link" resname="modal.trigger.image_link" approved="yes">
+        <source>Image and link / button</source>
+        <target>Bild und Link / Schaltfläche</target>
+      </trans-unit>
+      <trans-unit id="modal.trigger.label" resname="modal.trigger.label" approved="yes">
+        <source>Trigger type</source>
+        <target>Trigger-Typ</target>
+      </trans-unit>
+      <trans-unit id="modal.trigger.link" resname="modal.trigger.link" approved="yes">
+        <source>Link / button</source>
+        <target>Link / Schaltfläche</target>
+      </trans-unit>
       <trans-unit id="pages.Breadcrumb" resname="pages.Breadcrumb" approved="yes">
         <source>Breadcrumb</source>
         <target>Breadcrumb</target>
@@ -963,26 +1026,6 @@
         <source>Customization</source>
         <target>Einstellungen</target>
       </trans-unit>
-      <trans-unit id="site.configuration.llmstxt.palette.label" resname="site.configuration.llmstxt.palette.label" approved="yes">
-        <source>llms.txt (AI agents)</source>
-        <target>llms.txt (KI-Agenten)</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.llmsTxtDescription.description" resname="site.configuration.llmsTxtDescription.description" approved="yes">
-        <source>Short summary for this language, shown as the blockquote in llms.txt. Falls back to the SEO default description when empty.</source>
-        <target>Kurze Zusammenfassung für diese Sprache, wird als Zitat in llms.txt angezeigt. Fällt auf die SEO-Standardbeschreibung zurück, wenn leer.</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.llmsTxtDescription.label" resname="site.configuration.llmsTxtDescription.label" approved="yes">
-        <source>llms.txt Description</source>
-        <target>llms.txt-Beschreibung</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.llmsTxtIntro.description" resname="site.configuration.llmsTxtIntro.description" approved="yes">
-        <source>Optional intro paragraph for AI agents in this language, shown after the description in llms.txt. Falls back to the global llms.txt intro when empty.</source>
-        <target>Optionaler Einleitungstext für KI-Agenten in dieser Sprache, wird in llms.txt nach der Beschreibung angezeigt. Fällt auf den globalen llms.txt-Einleitungstext zurück, wenn leer.</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.llmsTxtIntro.label" resname="site.configuration.llmsTxtIntro.label" approved="yes">
-        <source>llms.txt Intro</source>
-        <target>llms.txt-Einleitung</target>
-      </trans-unit>
       <trans-unit id="site.configuration.description.apple-touch-icon" resname="site.configuration.description.apple-touch-icon" approved="yes">
         <source>The PNG file has to be square in 180x180 pixel. Filename must be 'apple-touch-icon.png'.</source>
         <target>Die PNG-Datei muss quadratisch sein und eine Größe von 180x180 Pixel haben. Dateiname muss "apple-touch-icon.png" sein.</target>
@@ -1015,29 +1058,17 @@
         <source>Discord</source>
         <target>Discord</target>
       </trans-unit>
+      <trans-unit id="site.configuration.extraEntityImage.description" resname="site.configuration.extraEntityImage.description" approved="yes">
+        <source>Representative image for the additional Schema.org entity (Site Settings → entity type). Use a logo, band photo, or storefront image — square or landscape, at least 696×696 px recommended. Leave empty to omit image from JSON-LD.</source>
+        <target>Repräsentatives Bild für die zusätzliche Schema.org-Entität (Site-Einstellungen → Entitätstyp). Logo, Bandfoto oder Geschäftsbild — quadratisch oder Querformat, mindestens 696×696 px empfohlen. Leer lassen, um kein Bild im JSON-LD auszugeben.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.extraEntityImage.label" resname="site.configuration.extraEntityImage.label" approved="yes">
+        <source>Entity image (logo or photo)</source>
+        <target>Entitätsbild (Logo oder Foto)</target>
+      </trans-unit>
       <trans-unit id="site.configuration.facebook.label" resname="site.configuration.facebook.label" approved="yes">
         <source>Facebook</source>
         <target>Facebook</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.github.label" resname="site.configuration.github.label" approved="yes">
-        <source>GitHub</source>
-        <target>GitHub</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.gitlab.label" resname="site.configuration.gitlab.label" approved="yes">
-        <source>GitLab</source>
-        <target>GitLab</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.npmjs.label" resname="site.configuration.npmjs.label" approved="yes">
-        <source>npm</source>
-        <target>npm</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.opencode.label" resname="site.configuration.opencode.label" approved="yes">
-        <source>OpenCode</source>
-        <target>OpenCode</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.packagist.label" resname="site.configuration.packagist.label" approved="yes">
-        <source>Packagist</source>
-        <target>Packagist</target>
       </trans-unit>
       <trans-unit id="site.configuration.favicon-96x96-png" resname="site.configuration.favicon-96x96-png" approved="yes">
         <source>Favicon 96x96 PNG</source>
@@ -1055,6 +1086,14 @@
         <source>Favicons</source>
         <target>Favicons</target>
       </trans-unit>
+      <trans-unit id="site.configuration.github.label" resname="site.configuration.github.label" approved="yes">
+        <source>GitHub</source>
+        <target>GitHub</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.gitlab.label" resname="site.configuration.gitlab.label" approved="yes">
+        <source>GitLab</source>
+        <target>GitLab</target>
+      </trans-unit>
       <trans-unit id="site.configuration.instagram.label" resname="site.configuration.instagram.label" approved="yes">
         <source>Instagram</source>
         <target>Instagram</target>
@@ -1062,6 +1101,26 @@
       <trans-unit id="site.configuration.linkedin.label" resname="site.configuration.linkedin.label" approved="yes">
         <source>LinkedIn</source>
         <target>LinkedIn</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtDescription.description" resname="site.configuration.llmsTxtDescription.description" approved="yes">
+        <source>Short summary for this language, shown as the blockquote in llms.txt. Falls back to the SEO default description when empty.</source>
+        <target>Kurze Zusammenfassung für diese Sprache, wird als Zitat in llms.txt angezeigt. Fällt auf die SEO-Standardbeschreibung zurück, wenn leer.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtDescription.label" resname="site.configuration.llmsTxtDescription.label" approved="yes">
+        <source>llms.txt Description</source>
+        <target>llms.txt-Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtIntro.description" resname="site.configuration.llmsTxtIntro.description" approved="yes">
+        <source>Optional intro paragraph for AI agents in this language, shown after the description in llms.txt. Falls back to the global llms.txt intro when empty.</source>
+        <target>Optionaler Einleitungstext für KI-Agenten in dieser Sprache, wird in llms.txt nach der Beschreibung angezeigt. Fällt auf den globalen llms.txt-Einleitungstext zurück, wenn leer.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmsTxtIntro.label" resname="site.configuration.llmsTxtIntro.label" approved="yes">
+        <source>llms.txt Intro</source>
+        <target>llms.txt-Einleitung</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.llmstxt.palette.label" resname="site.configuration.llmstxt.palette.label" approved="yes">
+        <source>llms.txt (AI agents)</source>
+        <target>llms.txt (KI-Agenten)</target>
       </trans-unit>
       <trans-unit id="site.configuration.logoBig.description" resname="site.configuration.logoBig.description" approved="yes">
         <source>The general standard logo</source>
@@ -1107,18 +1166,6 @@
         <source>Logos</source>
         <target>Logos</target>
       </trans-unit>
-      <trans-unit id="site.configuration.structuredData.title" resname="site.configuration.structuredData.title" approved="yes">
-        <source>Structured data entity</source>
-        <target>Strukturierte Daten (Entität)</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.extraEntityImage.description" resname="site.configuration.extraEntityImage.description" approved="yes">
-        <source>Representative image for the additional Schema.org entity (Site Settings → entity type). Use a logo, band photo, or storefront image — square or landscape, at least 696×696 px recommended. Leave empty to omit image from JSON-LD.</source>
-        <target>Repräsentatives Bild für die zusätzliche Schema.org-Entität (Site-Einstellungen → Entitätstyp). Logo, Bandfoto oder Geschäftsbild — quadratisch oder Querformat, mindestens 696×696 px empfohlen. Leer lassen, um kein Bild im JSON-LD auszugeben.</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.extraEntityImage.label" resname="site.configuration.extraEntityImage.label" approved="yes">
-        <source>Entity image (logo or photo)</source>
-        <target>Entitätsbild (Logo oder Foto)</target>
-      </trans-unit>
       <trans-unit id="site.configuration.mastodon.label" resname="site.configuration.mastodon.label" approved="yes">
         <source>Mastodon</source>
         <target>Mastodon</target>
@@ -1142,6 +1189,18 @@
       <trans-unit id="site.configuration.navType.description" resname="site.configuration.navType.description" approved="yes">
         <source>Customise the page navigation type here.</source>
         <target>Navigations-Typ der Seite anpassen.</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.npmjs.label" resname="site.configuration.npmjs.label" approved="yes">
+        <source>npm</source>
+        <target>npm</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.opencode.label" resname="site.configuration.opencode.label" approved="yes">
+        <source>OpenCode</source>
+        <target>OpenCode</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.packagist.label" resname="site.configuration.packagist.label" approved="yes">
+        <source>Packagist</source>
+        <target>Packagist</target>
       </trans-unit>
       <trans-unit id="site.configuration.pinterest.label" resname="site.configuration.pinterest.label" approved="yes">
         <source>Pinterest</source>
@@ -1182,6 +1241,10 @@
       <trans-unit id="site.configuration.spotify.label" resname="site.configuration.spotify.label" approved="yes">
         <source>Spotify</source>
         <target>Spotify</target>
+      </trans-unit>
+      <trans-unit id="site.configuration.structuredData.title" resname="site.configuration.structuredData.title" approved="yes">
+        <source>Structured data entity</source>
+        <target>Strukturierte Daten (Entität)</target>
       </trans-unit>
       <trans-unit id="site.configuration.styles" resname="site.configuration.styles" approved="yes">
         <source>Edit styles</source>
@@ -1575,70 +1638,6 @@
         <source>Tabs</source>
         <target>Tabs</target>
       </trans-unit>
-      <trans-unit id="modal.title" resname="modal.title" approved="yes">
-        <source>Modal</source>
-        <target>Modal</target>
-      </trans-unit>
-      <trans-unit id="modal.description" resname="modal.description" approved="yes">
-        <source>Overlay dialog with composed content (text, images, video).</source>
-        <target>Overlay-Dialog mit zusammengesetztem Inhalt (Text, Bilder, Video).</target>
-      </trans-unit>
-      <trans-unit id="modal.content" resname="modal.content" approved="yes">
-        <source>Modal content</source>
-        <target>Modal-Inhalt</target>
-      </trans-unit>
-      <trans-unit id="modal.trigger.label" resname="modal.trigger.label" approved="yes">
-        <source>Trigger type</source>
-        <target>Trigger-Typ</target>
-      </trans-unit>
-      <trans-unit id="modal.trigger.description" resname="modal.trigger.description" approved="yes">
-        <source>Choose what opens the modal on the page.</source>
-        <target>Wählen Sie, was das Modal auf der Seite öffnet.</target>
-      </trans-unit>
-      <trans-unit id="modal.trigger.image" resname="modal.trigger.image" approved="yes">
-        <source>Image</source>
-        <target>Bild</target>
-      </trans-unit>
-      <trans-unit id="modal.trigger.link" resname="modal.trigger.link" approved="yes">
-        <source>Link / button</source>
-        <target>Link / Schaltfläche</target>
-      </trans-unit>
-      <trans-unit id="modal.trigger.image_link" resname="modal.trigger.image_link" approved="yes">
-        <source>Image and link / button</source>
-        <target>Bild und Link / Schaltfläche</target>
-      </trans-unit>
-      <trans-unit id="modal.size.label" resname="modal.size.label" approved="yes">
-        <source>Modal size</source>
-        <target>Modal-Größe</target>
-      </trans-unit>
-      <trans-unit id="modal.size.md" resname="modal.size.md" approved="yes">
-        <source>Medium</source>
-        <target>Mittel</target>
-      </trans-unit>
-      <trans-unit id="modal.size.lg" resname="modal.size.lg" approved="yes">
-        <source>Large</source>
-        <target>Groß</target>
-      </trans-unit>
-      <trans-unit id="modal.size.xl" resname="modal.size.xl" approved="yes">
-        <source>Extra large</source>
-        <target>Extra groß</target>
-      </trans-unit>
-      <trans-unit id="modal.size.fullscreen" resname="modal.size.fullscreen" approved="yes">
-        <source>Fullscreen</source>
-        <target>Vollbild</target>
-      </trans-unit>
-      <trans-unit id="modal.hide_trigger.label" resname="modal.hide_trigger.label" approved="yes">
-        <source>Hide built-in trigger</source>
-        <target>Eingebauten Trigger ausblenden</target>
-      </trans-unit>
-      <trans-unit id="modal.hide_trigger.description" resname="modal.hide_trigger.description" approved="yes">
-        <source>Only output the modal markup. Use link action “Open modal” on another content element to trigger it.</source>
-        <target>Nur Modal-Markup ausgeben. Link-Aktion „Modal öffnen“ auf einem anderen Inhaltselement verwenden.</target>
-      </trans-unit>
-      <trans-unit id="modal.linkhandler.label" resname="modal.linkhandler.label" approved="yes">
-        <source>Modal</source>
-        <target>Modal</target>
-      </trans-unit>
       <trans-unit id="tt_content.CType.div._gallery_" resname="tt_content.CType.div._gallery_" approved="yes">
         <source>Gallery</source>
         <target>Galerie</target>
@@ -1735,13 +1734,13 @@
         <source>Navigate to the link target or open a modal content element on this page.</source>
         <target>Zum Linkziel navigieren oder ein Modal-Inhaltselement auf dieser Seite öffnen.</target>
       </trans-unit>
-      <trans-unit id="tt_content.tx_link_action.navigate" resname="tt_content.tx_link_action.navigate" approved="yes">
-        <source>Navigate</source>
-        <target>Navigieren</target>
-      </trans-unit>
       <trans-unit id="tt_content.tx_link_action.modal" resname="tt_content.tx_link_action.modal" approved="yes">
         <source>Open modal</source>
         <target>Modal öffnen</target>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_link_action.navigate" resname="tt_content.tx_link_action.navigate" approved="yes">
+        <source>Navigate</source>
+        <target>Navigieren</target>
       </trans-unit>
       <trans-unit id="tt_content.tx_link_layout" resname="tt_content.tx_link_layout" approved="yes">
         <source>Link layout</source>
@@ -1807,6 +1806,106 @@
         <source>Stage</source>
         <target>Bühne</target>
       </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface" resname="tx_mpcore_domain_model_webfontface" approved="yes">
+        <source>Font Face</source>
+        <target>Schriftschnitt</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.file" resname="tx_mpcore_domain_model_webfontface.file" approved="yes">
+        <source>Font file</source>
+        <target>Schriftdatei</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.file.description" resname="tx_mpcore_domain_model_webfontface.file.description" approved="yes">
+        <source>Upload or pick a font file from the FileManager. Allowed: woff2.</source>
+        <target>Schriftdatei hochladen oder aus dem Dateimanager wählen. Erlaubt: woff2.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style" resname="tx_mpcore_domain_model_webfontface.font_style" approved="yes">
+        <source>Style</source>
+        <target>Stil</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style.description" resname="tx_mpcore_domain_model_webfontface.font_style.description" approved="yes">
+        <source>font-style this file provides.</source>
+        <target>font-style, den diese Datei bereitstellt.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range" resname="tx_mpcore_domain_model_webfontface.unicode_range" approved="yes">
+        <source>unicode-range (optional)</source>
+        <target>unicode-range (optional)</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range.description" resname="tx_mpcore_domain_model_webfontface.unicode_range.description" approved="yes">
+        <source>Optional CSS unicode-range, e.g. "U+0-7F, U+1E00-1EFF". Leave empty to apply to all characters.</source>
+        <target>Optionaler CSS-unicode-range, z. B. "U+0-7F, U+1E00-1EFF". Leer lassen, um alle Zeichen abzudecken.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.weight" resname="tx_mpcore_domain_model_webfontface.weight" approved="yes">
+        <source>Weight</source>
+        <target>Schriftstärke</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontface.weight.description" resname="tx_mpcore_domain_model_webfontface.weight.description" approved="yes">
+        <source>font-weight this file provides.</source>
+        <target>font-weight, den diese Datei bereitstellt.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily" resname="tx_mpcore_domain_model_webfontfamily" approved="yes">
+        <source>Web Font Family</source>
+        <target>Webschrift-Familie</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable" resname="tx_mpcore_domain_model_webfontfamily.css_variable" approved="yes">
+        <source>Custom CSS variable</source>
+        <target>Eigene CSS-Variable</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable.description" resname="tx_mpcore_domain_model_webfontfamily.css_variable.description" approved="yes">
+        <source>Custom property name to set, must start with -- (e.g. --mpc-font-display). Only used when "Applies to" is "Custom CSS variable".</source>
+        <target>Zu setzender Custom-Property-Name, muss mit -- beginnen (z. B. --mpc-font-display). Nur bei "Eigene CSS-Variable" wirksam.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces" resname="tx_mpcore_domain_model_webfontfamily.faces" approved="yes">
+        <source>Font files (weights / styles)</source>
+        <target>Schriftdateien (Schnitte / Stile)</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces.description" resname="tx_mpcore_domain_model_webfontfamily.faces.description" approved="yes">
+        <source>One entry per uploaded font file. Add a face for each weight/style you need (e.g. 400 normal, 700 bold).</source>
+        <target>Ein Eintrag pro Schriftdatei. Für jeden benötigten Schnitt/Stil einen Eintrag anlegen (z. B. 400 normal, 700 bold).</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback" resname="tx_mpcore_domain_model_webfontfamily.fallback" approved="yes">
+        <source>Fallback stack</source>
+        <target>Fallback-Stack</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback.description" resname="tx_mpcore_domain_model_webfontfamily.fallback.description" approved="yes">
+        <source>Fallback fonts appended after the family name, e.g. "Helvetica Neue, Arial, sans-serif".</source>
+        <target>Ersatzschriften nach dem Familiennamen, z. B. "Helvetica Neue, Arial, sans-serif".</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display" resname="tx_mpcore_domain_model_webfontfamily.font_display" approved="yes">
+        <source>font-display</source>
+        <target>font-display</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display.description" resname="tx_mpcore_domain_model_webfontfamily.font_display.description" approved="yes">
+        <source>CSS font-display strategy applied to all faces of this family.</source>
+        <target>CSS-font-display-Strategie für alle Schnitte dieser Familie.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name" resname="tx_mpcore_domain_model_webfontfamily.name" approved="yes">
+        <source>Font family name</source>
+        <target>Name der Schriftfamilie</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name.description" resname="tx_mpcore_domain_model_webfontfamily.name.description" approved="yes">
+        <source>CSS font-family name used in @font-face and the custom property (e.g. "Inter").</source>
+        <target>CSS-font-family-Name für @font-face und die Custom Property (z. B. "Inter").</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role" resname="tx_mpcore_domain_model_webfontfamily.role" approved="yes">
+        <source>Applies to</source>
+        <target>Angewendet auf</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.body" resname="tx_mpcore_domain_model_webfontfamily.role.body" approved="yes">
+        <source>Body text (--bs-body-font-family)</source>
+        <target>Fließtext (--bs-body-font-family)</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.custom" resname="tx_mpcore_domain_model_webfontfamily.role.custom" approved="yes">
+        <source>Custom CSS variable</source>
+        <target>Eigene CSS-Variable</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.description" resname="tx_mpcore_domain_model_webfontfamily.role.description" approved="yes">
+        <source>Which CSS custom property this family is assigned to.</source>
+        <target>Welcher CSS-Custom-Property diese Familie zugewiesen wird.</target>
+      </trans-unit>
+      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.heading" resname="tx_mpcore_domain_model_webfontfamily.role.heading" approved="yes">
+        <source>Headings (--bs-font-sans-serif)</source>
+        <target>Überschriften (--bs-font-sans-serif)</target>
+      </trans-unit>
       <trans-unit id="typo3vitedemo_todolist" approved="yes">
         <source>Vue: TodoList</source>
         <target>Vue: TodoList</target>
@@ -1826,107 +1925,6 @@
       <trans-unit id="without_frame" resname="without_frame" approved="yes">
         <source>Without frame</source>
         <target>Ohne Rahmen</target>
-      </trans-unit>
-      <!-- Web Fonts -->
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily" resname="tx_mpcore_domain_model_webfontfamily" approved="yes">
-        <source>Web Font Family</source>
-        <target>Webschrift-Familie</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name" resname="tx_mpcore_domain_model_webfontfamily.name" approved="yes">
-        <source>Font family name</source>
-        <target>Name der Schriftfamilie</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.name.description" resname="tx_mpcore_domain_model_webfontfamily.name.description" approved="yes">
-        <source>CSS font-family name used in @font-face and the custom property (e.g. "Inter").</source>
-        <target>CSS-font-family-Name für @font-face und die Custom Property (z. B. "Inter").</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback" resname="tx_mpcore_domain_model_webfontfamily.fallback" approved="yes">
-        <source>Fallback stack</source>
-        <target>Fallback-Stack</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.fallback.description" resname="tx_mpcore_domain_model_webfontfamily.fallback.description" approved="yes">
-        <source>Fallback fonts appended after the family name, e.g. "Helvetica Neue, Arial, sans-serif".</source>
-        <target>Ersatzschriften nach dem Familiennamen, z. B. "Helvetica Neue, Arial, sans-serif".</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role" resname="tx_mpcore_domain_model_webfontfamily.role" approved="yes">
-        <source>Applies to</source>
-        <target>Angewendet auf</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.description" resname="tx_mpcore_domain_model_webfontfamily.role.description" approved="yes">
-        <source>Which CSS custom property this family is assigned to.</source>
-        <target>Welcher CSS-Custom-Property diese Familie zugewiesen wird.</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.body" resname="tx_mpcore_domain_model_webfontfamily.role.body" approved="yes">
-        <source>Body text (--bs-body-font-family)</source>
-        <target>Fließtext (--bs-body-font-family)</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.heading" resname="tx_mpcore_domain_model_webfontfamily.role.heading" approved="yes">
-        <source>Headings (--bs-font-sans-serif)</source>
-        <target>Überschriften (--bs-font-sans-serif)</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.role.custom" resname="tx_mpcore_domain_model_webfontfamily.role.custom" approved="yes">
-        <source>Custom CSS variable</source>
-        <target>Eigene CSS-Variable</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable" resname="tx_mpcore_domain_model_webfontfamily.css_variable" approved="yes">
-        <source>Custom CSS variable</source>
-        <target>Eigene CSS-Variable</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.css_variable.description" resname="tx_mpcore_domain_model_webfontfamily.css_variable.description" approved="yes">
-        <source>Custom property name to set, must start with -- (e.g. --mpc-font-display). Only used when "Applies to" is "Custom CSS variable".</source>
-        <target>Zu setzender Custom-Property-Name, muss mit -- beginnen (z. B. --mpc-font-display). Nur bei "Eigene CSS-Variable" wirksam.</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display" resname="tx_mpcore_domain_model_webfontfamily.font_display" approved="yes">
-        <source>font-display</source>
-        <target>font-display</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.font_display.description" resname="tx_mpcore_domain_model_webfontfamily.font_display.description" approved="yes">
-        <source>CSS font-display strategy applied to all faces of this family.</source>
-        <target>CSS-font-display-Strategie für alle Schnitte dieser Familie.</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces" resname="tx_mpcore_domain_model_webfontfamily.faces" approved="yes">
-        <source>Font files (weights / styles)</source>
-        <target>Schriftdateien (Schnitte / Stile)</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontfamily.faces.description" resname="tx_mpcore_domain_model_webfontfamily.faces.description" approved="yes">
-        <source>One entry per uploaded font file. Add a face for each weight/style you need (e.g. 400 normal, 700 bold).</source>
-        <target>Ein Eintrag pro Schriftdatei. Für jeden benötigten Schnitt/Stil einen Eintrag anlegen (z. B. 400 normal, 700 bold).</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface" resname="tx_mpcore_domain_model_webfontface" approved="yes">
-        <source>Font Face</source>
-        <target>Schriftschnitt</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.weight" resname="tx_mpcore_domain_model_webfontface.weight" approved="yes">
-        <source>Weight</source>
-        <target>Schriftstärke</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.weight.description" resname="tx_mpcore_domain_model_webfontface.weight.description" approved="yes">
-        <source>font-weight this file provides.</source>
-        <target>font-weight, den diese Datei bereitstellt.</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style" resname="tx_mpcore_domain_model_webfontface.font_style" approved="yes">
-        <source>Style</source>
-        <target>Stil</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.font_style.description" resname="tx_mpcore_domain_model_webfontface.font_style.description" approved="yes">
-        <source>font-style this file provides.</source>
-        <target>font-style, den diese Datei bereitstellt.</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.file" resname="tx_mpcore_domain_model_webfontface.file" approved="yes">
-        <source>Font file</source>
-        <target>Schriftdatei</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.file.description" resname="tx_mpcore_domain_model_webfontface.file.description" approved="yes">
-        <source>Upload or pick a font file from the FileManager. Allowed: woff2.</source>
-        <target>Schriftdatei hochladen oder aus dem Dateimanager wählen. Erlaubt: woff2.</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range" resname="tx_mpcore_domain_model_webfontface.unicode_range" approved="yes">
-        <source>unicode-range (optional)</source>
-        <target>unicode-range (optional)</target>
-      </trans-unit>
-      <trans-unit id="tx_mpcore_domain_model_webfontface.unicode_range.description" resname="tx_mpcore_domain_model_webfontface.unicode_range.description" approved="yes">
-        <source>Optional CSS unicode-range, e.g. "U+0-7F, U+1E00-1EFF". Leave empty to apply to all characters.</source>
-        <target>Optionaler CSS-unicode-range, z. B. "U+0-7F, U+1E00-1EFF". Leer lassen, um alle Zeichen abzudecken.</target>
       </trans-unit>
     </body>
   </file>

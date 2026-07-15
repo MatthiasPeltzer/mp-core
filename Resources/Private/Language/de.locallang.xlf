@@ -203,6 +203,10 @@
         <source>Pagination</source>
         <target>Seitennavigation</target>
       </trans-unit>
+      <trans-unit id="search.button" resname="search.button" approved="yes">
+        <source>Search</source>
+        <target>Suche</target>
+      </trans-unit>
       <trans-unit id="search.dateFormat" resname="search.dateFormat" approved="yes">
         <source>m/d/Y</source>
         <target>d.m.Y</target>
@@ -210,14 +214,6 @@
       <trans-unit id="search.decimalSeparator" resname="search.decimalSeparator" approved="yes">
         <source>.</source>
         <target>,</target>
-      </trans-unit>
-      <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator" approved="yes">
-        <source>,</source>
-        <target>.</target>
-      </trans-unit>
-      <trans-unit id="search.button" resname="search.button" approved="yes">
-        <source>Search</source>
-        <target>Suche</target>
       </trans-unit>
       <trans-unit id="search.inputLabel" resname="search.inputLabel" approved="yes">
         <source>Enter search term(s)</source>
@@ -230,6 +226,10 @@
       <trans-unit id="search.suggestHeader" resname="search.suggestHeader" approved="yes">
         <source>Top results</source>
         <target>Top Treffer</target>
+      </trans-unit>
+      <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator" approved="yes">
+        <source>,</source>
+        <target>.</target>
       </trans-unit>
       <trans-unit id="slider.next" resname="slider.next" approved="yes">
         <source>Next slide</source>

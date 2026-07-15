@@ -107,38 +107,6 @@
         <source>MPC Sitepackage</source>
         <target>MPC Sitepackage</target>
       </trans-unit>
-      <trans-unit id="structuredData.extraEntity.type.description">
-        <source>Additional Schema.org entity in the JSON-LD graph (besides publisher and WebSite). Music types are listed first; LocalBusiness and NGO cover shops, studios, and nonprofits. Set the entity image under Site → Configuration → Structured data entity.</source>
-        <target>Zusätzliche Schema.org-Entität im JSON-LD-Graphen (neben Publisher und WebSite). Musiktypen stehen zuerst; LocalBusiness und NGO für Geschäfte, Studios und gemeinnützige Organisationen. Entitätsbild unter Site → Konfiguration → Strukturierte Daten (Entität).</target>
-      </trans-unit>
-      <trans-unit id="structuredData.extraEntity.type.label">
-        <source>Additional entity type</source>
-        <target>Zusätzlicher Entitätstyp</target>
-      </trans-unit>
-      <trans-unit id="structuredData.extraEntity.name.description">
-        <source>Name of the band, artist, business, or organization. Falls back to the site title when empty.</source>
-        <target>Name der Band, des Künstlers, des Unternehmens oder der Organisation. Fallback: Seitentitel, wenn leer.</target>
-      </trans-unit>
-      <trans-unit id="structuredData.extraEntity.name.label">
-        <source>Entity name</source>
-        <target>Entitätsname</target>
-      </trans-unit>
-      <trans-unit id="structuredData.extraEntity.description.description">
-        <source>Optional plain text or HTML snippet (HTML is stripped, max 500 characters)</source>
-        <target>Optionale Klartext- oder HTML-Eingabe (HTML wird entfernt, max. 500 Zeichen)</target>
-      </trans-unit>
-      <trans-unit id="structuredData.extraEntity.description.label">
-        <source>Entity description</source>
-        <target>Entitätsbeschreibung</target>
-      </trans-unit>
-      <trans-unit id="structuredData.extraEntity.keywords.description">
-        <source>Comma-separated topics or keywords. Output as genre for music types; as knowsAbout for performing groups, local businesses, and nonprofits.</source>
-        <target>Themen oder Schlagwörter, kommagetrennt. Ausgabe als genre bei Musiktypen; als knowsAbout bei Künstlergruppen, lokalen Unternehmen und gemeinnützigen Organisationen.</target>
-      </trans-unit>
-      <trans-unit id="structuredData.extraEntity.keywords.label">
-        <source>Topics / keywords</source>
-        <target>Themen / Schlagwörter</target>
-      </trans-unit>
       <trans-unit id="page.description">
         <source>Page template paths and header data configuration</source>
         <target>Seiten-Template-Pfade und Header-Daten-Konfiguration</target>
@@ -270,6 +238,38 @@
       <trans-unit id="structuredData.description">
         <source>Configuration for Schema.org structured data output</source>
         <target>Konfiguration für Schema.org strukturierte Daten</target>
+      </trans-unit>
+      <trans-unit id="structuredData.extraEntity.description.description">
+        <source>Optional plain text or HTML snippet (HTML is stripped, max 500 characters)</source>
+        <target>Optionale Klartext- oder HTML-Eingabe (HTML wird entfernt, max. 500 Zeichen)</target>
+      </trans-unit>
+      <trans-unit id="structuredData.extraEntity.description.label">
+        <source>Entity description</source>
+        <target>Entitätsbeschreibung</target>
+      </trans-unit>
+      <trans-unit id="structuredData.extraEntity.keywords.description">
+        <source>Comma-separated topics or keywords. Output as genre for music types; as knowsAbout for performing groups, local businesses, and nonprofits.</source>
+        <target>Themen oder Schlagwörter, kommagetrennt. Ausgabe als genre bei Musiktypen; als knowsAbout bei Künstlergruppen, lokalen Unternehmen und gemeinnützigen Organisationen.</target>
+      </trans-unit>
+      <trans-unit id="structuredData.extraEntity.keywords.label">
+        <source>Topics / keywords</source>
+        <target>Themen / Schlagwörter</target>
+      </trans-unit>
+      <trans-unit id="structuredData.extraEntity.name.description">
+        <source>Name of the band, artist, business, or organization. Falls back to the site title when empty.</source>
+        <target>Name der Band, des Künstlers, des Unternehmens oder der Organisation. Fallback: Seitentitel, wenn leer.</target>
+      </trans-unit>
+      <trans-unit id="structuredData.extraEntity.name.label">
+        <source>Entity name</source>
+        <target>Entitätsname</target>
+      </trans-unit>
+      <trans-unit id="structuredData.extraEntity.type.description">
+        <source>Additional Schema.org entity in the JSON-LD graph (besides publisher and WebSite). Music types are listed first; LocalBusiness and NGO cover shops, studios, and nonprofits. Set the entity image under Site → Configuration → Structured data entity.</source>
+        <target>Zusätzliche Schema.org-Entität im JSON-LD-Graphen (neben Publisher und WebSite). Musiktypen stehen zuerst; LocalBusiness und NGO für Geschäfte, Studios und gemeinnützige Organisationen. Entitätsbild unter Site → Konfiguration → Strukturierte Daten (Entität).</target>
+      </trans-unit>
+      <trans-unit id="structuredData.extraEntity.type.label">
+        <source>Additional entity type</source>
+        <target>Zusätzlicher Entitätstyp</target>
       </trans-unit>
       <trans-unit id="structuredData.label">
         <source>Structured Data / Schema.org</source>

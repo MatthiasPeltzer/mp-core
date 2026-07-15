@@ -39,12 +39,6 @@
       <trans-unit id="MPCoreMeta.label" resname="MPCoreMeta.label">
         <source>Meta Tags</source>
       </trans-unit>
-      <trans-unit id="MPCoreTemplates.description" resname="MPCoreTemplates.description">
-        <source>Template root paths, resources, and JSON-LD options (site layer)</source>
-      </trans-unit>
-      <trans-unit id="MPCoreTemplates.label" resname="MPCoreTemplates.label">
-        <source>Templates &amp; structured data</source>
-      </trans-unit>
       <trans-unit id="MPCoreNavigation.description" resname="MPCoreNavigation.description">
         <source>Navigation and menu settings</source>
       </trans-unit>
@@ -69,6 +63,12 @@
       <trans-unit id="MPCoreSEO.label" resname="MPCoreSEO.label">
         <source>SEO Settings</source>
       </trans-unit>
+      <trans-unit id="MPCoreTemplates.description" resname="MPCoreTemplates.description">
+        <source>Template root paths, resources, and JSON-LD options (site layer)</source>
+      </trans-unit>
+      <trans-unit id="MPCoreTemplates.label" resname="MPCoreTemplates.label">
+        <source>Templates &amp; structured data</source>
+      </trans-unit>
       <trans-unit id="PIDs.description" resname="PIDs.description">
         <source>All relevant page IDs can be set here.</source>
       </trans-unit>
@@ -86,12 +86,6 @@
       </trans-unit>
       <trans-unit id="PIDs.pidHome.form.label" resname="PIDs.pidHome.form.label">
         <source>Homepage Page ID</source>
-      </trans-unit>
-      <trans-unit id="PIDs.pidSearch.form.description" resname="PIDs.pidSearch.form.description">
-        <source>Page ID of the search results page</source>
-      </trans-unit>
-      <trans-unit id="PIDs.pidSearch.form.label" resname="PIDs.pidSearch.form.label">
-        <source>Search Page ID</source>
       </trans-unit>
       <trans-unit id="PIDs.pidLogosBannerTop.form.description" resname="PIDs.pidLogosBannerTop.form.description">
         <source>Page ID of the additional logos or banners in the header area</source>
@@ -116,6 +110,12 @@
       </trans-unit>
       <trans-unit id="PIDs.pidMetaNavTop.form.label" resname="PIDs.pidMetaNavTop.form.label">
         <source>Top Meta Navigation Page ID</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidSearch.form.description" resname="PIDs.pidSearch.form.description">
+        <source>Page ID of the search results page</source>
+      </trans-unit>
+      <trans-unit id="PIDs.pidSearch.form.label" resname="PIDs.pidSearch.form.label">
+        <source>Search Page ID</source>
       </trans-unit>
       <trans-unit id="PIDs.pidSupplement.form.description" resname="PIDs.pidSupplement.form.description">
         <source>Page ID of the supplementary area for content under the submenu</source>
@@ -465,6 +465,36 @@
       <trans-unit id="seo.canonical.enabled.form.label" resname="seo.canonical.enabled.form.label">
         <source>Enable Canonical URLs</source>
       </trans-unit>
+      <trans-unit id="seo.llmsTxt.enabled.form.description" resname="seo.llmsTxt.enabled.form.description">
+        <source>Serve an llms.txt markdown site map for AI agents at /llms.txt</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.enabled.form.label" resname="seo.llmsTxt.enabled.form.label">
+        <source>Enable llms.txt</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.intro.form.description" resname="seo.llmsTxt.intro.form.description">
+        <source>Optional intro paragraph for AI agents, shown after the site description in llms.txt. Falls back to the meta default description when empty.</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.intro.form.label" resname="seo.llmsTxt.intro.form.label">
+        <source>llms.txt Intro Text</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.detailPageId.form.description" resname="seo.llmsTxt.news.detailPageId.form.description">
+        <source>Page UID of the news detail page used to build article links (0 = disable the news section).</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.detailPageId.form.label" resname="seo.llmsTxt.news.detailPageId.form.label">
+        <source>llms.txt News Detail Page UID</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.limit.form.description" resname="seo.llmsTxt.news.limit.form.description">
+        <source>Maximum number of recent news items listed in llms.txt.</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.limit.form.label" resname="seo.llmsTxt.news.limit.form.label">
+        <source>llms.txt News Item Limit</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.storagePid.form.description" resname="seo.llmsTxt.news.storagePid.form.description">
+        <source>Storage page UID(s) of news records, comma-separated (empty = disable the news section).</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.news.storagePid.form.label" resname="seo.llmsTxt.news.storagePid.form.label">
+        <source>llms.txt News Storage PID(s)</source>
+      </trans-unit>
       <trans-unit id="seo.meta.defaultDescription.form.description" resname="seo.meta.defaultDescription.form.description">
         <source>Default meta description used when page has no description or abstract</source>
       </trans-unit>
@@ -519,95 +549,65 @@
       <trans-unit id="seo.openGraph.imageWidth.form.label" resname="seo.openGraph.imageWidth.form.label">
         <source>OG Image Width</source>
       </trans-unit>
-      <trans-unit id="seo.schema.enabled.form.description" resname="seo.schema.enabled.form.description">
-        <source>Enable Schema.org structured data</source>
+      <trans-unit id="seo.robots.additional.form.description" resname="seo.robots.additional.form.description">
+        <source>Additional robots.txt lines appended after the default rules (one directive per line)</source>
       </trans-unit>
-      <trans-unit id="seo.schema.enabled.form.label" resname="seo.schema.enabled.form.label">
-        <source>Enable Schema.org</source>
+      <trans-unit id="seo.robots.additional.form.label" resname="seo.robots.additional.form.label">
+        <source>Additional robots.txt Rules</source>
       </trans-unit>
-      <trans-unit id="seo.schema.organizationType.form.description" resname="seo.schema.organizationType.form.description">
-        <source>Schema.org organization type (Organization, Corporation, LocalBusiness, etc.)</source>
+      <trans-unit id="seo.robots.allowAiBots.form.description" resname="seo.robots.allowAiBots.form.description">
+        <source>Allow AI crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.) to access the site</source>
       </trans-unit>
-      <trans-unit id="seo.schema.organizationType.form.label" resname="seo.schema.organizationType.form.label">
-        <source>Organization Type</source>
+      <trans-unit id="seo.robots.allowAiBots.form.label" resname="seo.robots.allowAiBots.form.label">
+        <source>Allow AI Crawlers</source>
       </trans-unit>
-      <trans-unit id="seo.schema.legalName.form.description" resname="seo.schema.legalName.form.description">
-        <source>Registered legal name of the organization (Organization types only)</source>
+      <trans-unit id="seo.robots.crawlDelay.form.description" resname="seo.robots.crawlDelay.form.description">
+        <source>Optional Crawl-delay in seconds for the generic User-agent group (0 = no delay). Note: Google ignores Crawl-delay; it is honored mainly by Bing and others.</source>
       </trans-unit>
-      <trans-unit id="seo.schema.legalName.form.label" resname="seo.schema.legalName.form.label">
-        <source>Legal Name</source>
+      <trans-unit id="seo.robots.crawlDelay.form.label" resname="seo.robots.crawlDelay.form.label">
+        <source>Crawl-delay (seconds)</source>
+      </trans-unit>
+      <trans-unit id="seo.robots.enabled.form.description" resname="seo.robots.enabled.form.description">
+        <source>Serve a dynamic robots.txt with sitemap reference and AI crawler rules</source>
+      </trans-unit>
+      <trans-unit id="seo.robots.enabled.form.label" resname="seo.robots.enabled.form.label">
+        <source>Enable Dynamic robots.txt</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressCountry.form.description" resname="seo.schema.address.addressCountry.form.description">
+        <source>Country as ISO 3166-1 alpha-2 code (e.g., DE, AT, CH)</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressCountry.form.label" resname="seo.schema.address.addressCountry.form.label">
+        <source>Country Code</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressLocality.form.description" resname="seo.schema.address.addressLocality.form.description">
+        <source>City or locality</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressLocality.form.label" resname="seo.schema.address.addressLocality.form.label">
+        <source>City / Locality</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressRegion.form.description" resname="seo.schema.address.addressRegion.form.description">
+        <source>Region, state or federal state</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.addressRegion.form.label" resname="seo.schema.address.addressRegion.form.label">
+        <source>Region / State</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.postalCode.form.description" resname="seo.schema.address.postalCode.form.description">
+        <source>Postal or ZIP code</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.postalCode.form.label" resname="seo.schema.address.postalCode.form.label">
+        <source>Postal Code</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.streetAddress.form.description" resname="seo.schema.address.streetAddress.form.description">
+        <source>Street address including house number</source>
+      </trans-unit>
+      <trans-unit id="seo.schema.address.streetAddress.form.label" resname="seo.schema.address.streetAddress.form.label">
+        <source>Street Address</source>
       </trans-unit>
       <trans-unit id="seo.schema.alternateName.form.description" resname="seo.schema.alternateName.form.description">
         <source>Alternate name or brand the publisher is also known as</source>
       </trans-unit>
       <trans-unit id="seo.schema.alternateName.form.label" resname="seo.schema.alternateName.form.label">
         <source>Alternate Name</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.description.form.description" resname="seo.schema.description.form.description">
-        <source>Short description of the publisher used in structured data</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.description.form.label" resname="seo.schema.description.form.label">
-        <source>Publisher Description</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.foundingDate.form.description" resname="seo.schema.foundingDate.form.description">
-        <source>Founding date in ISO 8601 format (e.g., 2004-01-15; Organization types only)</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.foundingDate.form.label" resname="seo.schema.foundingDate.form.label">
-        <source>Founding Date</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.vatId.form.description" resname="seo.schema.vatId.form.description">
-        <source>Value-added tax identification number (Organization types only)</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.vatId.form.label" resname="seo.schema.vatId.form.label">
-        <source>VAT ID</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.taxId.form.description" resname="seo.schema.taxId.form.description">
-        <source>Tax identification number (Organization types only)</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.taxId.form.label" resname="seo.schema.taxId.form.label">
-        <source>Tax ID</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.knowsAbout.form.description" resname="seo.schema.knowsAbout.form.description">
-        <source>Topics or areas of expertise, comma-separated (Organization or Person, e.g., TYPO3, PHP, Accessibility)</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.knowsAbout.form.label" resname="seo.schema.knowsAbout.form.label">
-        <source>Knows About / Expertise</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.person.jobTitle.form.description" resname="seo.schema.person.jobTitle.form.description">
-        <source>Job title of the person publisher (Person type only, e.g., Senior TYPO3 Developer)</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.person.jobTitle.form.label" resname="seo.schema.person.jobTitle.form.label">
-        <source>Job Title</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.email.form.description" resname="seo.schema.email.form.description">
-        <source>Public contact email address of the publisher</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.email.form.label" resname="seo.schema.email.form.label">
-        <source>Publisher Email</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.telephone.form.description" resname="seo.schema.telephone.form.description">
-        <source>Public contact phone number of the publisher (international format, e.g., +49 30 1234567)</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.telephone.form.label" resname="seo.schema.telephone.form.label">
-        <source>Publisher Telephone</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.contactPoint.contactType.form.description" resname="seo.schema.contactPoint.contactType.form.description">
-        <source>Contact point type (e.g., customer service, technical support, sales)</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.contactPoint.contactType.form.label" resname="seo.schema.contactPoint.contactType.form.label">
-        <source>Contact Point Type</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.contactPoint.telephone.form.description" resname="seo.schema.contactPoint.telephone.form.description">
-        <source>Contact point phone number (international format)</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.contactPoint.telephone.form.label" resname="seo.schema.contactPoint.telephone.form.label">
-        <source>Contact Point Telephone</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.contactPoint.email.form.description" resname="seo.schema.contactPoint.email.form.description">
-        <source>Contact point email address</source>
-      </trans-unit>
-      <trans-unit id="seo.schema.contactPoint.email.form.label" resname="seo.schema.contactPoint.email.form.label">
-        <source>Contact Point Email</source>
       </trans-unit>
       <trans-unit id="seo.schema.contactPoint.areaServed.form.description" resname="seo.schema.contactPoint.areaServed.form.description">
         <source>Geographic area served by the contact point (e.g., DE, EU, Worldwide)</source>
@@ -621,89 +621,89 @@
       <trans-unit id="seo.schema.contactPoint.availableLanguage.form.label" resname="seo.schema.contactPoint.availableLanguage.form.label">
         <source>Contact Point Languages</source>
       </trans-unit>
-      <trans-unit id="seo.schema.address.streetAddress.form.description" resname="seo.schema.address.streetAddress.form.description">
-        <source>Street address including house number</source>
+      <trans-unit id="seo.schema.contactPoint.contactType.form.description" resname="seo.schema.contactPoint.contactType.form.description">
+        <source>Contact point type (e.g., customer service, technical support, sales)</source>
       </trans-unit>
-      <trans-unit id="seo.schema.address.streetAddress.form.label" resname="seo.schema.address.streetAddress.form.label">
-        <source>Street Address</source>
+      <trans-unit id="seo.schema.contactPoint.contactType.form.label" resname="seo.schema.contactPoint.contactType.form.label">
+        <source>Contact Point Type</source>
       </trans-unit>
-      <trans-unit id="seo.schema.address.addressLocality.form.description" resname="seo.schema.address.addressLocality.form.description">
-        <source>City or locality</source>
+      <trans-unit id="seo.schema.contactPoint.email.form.description" resname="seo.schema.contactPoint.email.form.description">
+        <source>Contact point email address</source>
       </trans-unit>
-      <trans-unit id="seo.schema.address.addressLocality.form.label" resname="seo.schema.address.addressLocality.form.label">
-        <source>City / Locality</source>
+      <trans-unit id="seo.schema.contactPoint.email.form.label" resname="seo.schema.contactPoint.email.form.label">
+        <source>Contact Point Email</source>
       </trans-unit>
-      <trans-unit id="seo.schema.address.postalCode.form.description" resname="seo.schema.address.postalCode.form.description">
-        <source>Postal or ZIP code</source>
+      <trans-unit id="seo.schema.contactPoint.telephone.form.description" resname="seo.schema.contactPoint.telephone.form.description">
+        <source>Contact point phone number (international format)</source>
       </trans-unit>
-      <trans-unit id="seo.schema.address.postalCode.form.label" resname="seo.schema.address.postalCode.form.label">
-        <source>Postal Code</source>
+      <trans-unit id="seo.schema.contactPoint.telephone.form.label" resname="seo.schema.contactPoint.telephone.form.label">
+        <source>Contact Point Telephone</source>
       </trans-unit>
-      <trans-unit id="seo.schema.address.addressRegion.form.description" resname="seo.schema.address.addressRegion.form.description">
-        <source>Region, state or federal state</source>
+      <trans-unit id="seo.schema.description.form.description" resname="seo.schema.description.form.description">
+        <source>Short description of the publisher used in structured data</source>
       </trans-unit>
-      <trans-unit id="seo.schema.address.addressRegion.form.label" resname="seo.schema.address.addressRegion.form.label">
-        <source>Region / State</source>
+      <trans-unit id="seo.schema.description.form.label" resname="seo.schema.description.form.label">
+        <source>Publisher Description</source>
       </trans-unit>
-      <trans-unit id="seo.schema.address.addressCountry.form.description" resname="seo.schema.address.addressCountry.form.description">
-        <source>Country as ISO 3166-1 alpha-2 code (e.g., DE, AT, CH)</source>
+      <trans-unit id="seo.schema.email.form.description" resname="seo.schema.email.form.description">
+        <source>Public contact email address of the publisher</source>
       </trans-unit>
-      <trans-unit id="seo.schema.address.addressCountry.form.label" resname="seo.schema.address.addressCountry.form.label">
-        <source>Country Code</source>
+      <trans-unit id="seo.schema.email.form.label" resname="seo.schema.email.form.label">
+        <source>Publisher Email</source>
       </trans-unit>
-      <trans-unit id="seo.llmsTxt.enabled.form.description" resname="seo.llmsTxt.enabled.form.description">
-        <source>Serve an llms.txt markdown site map for AI agents at /llms.txt</source>
+      <trans-unit id="seo.schema.enabled.form.description" resname="seo.schema.enabled.form.description">
+        <source>Enable Schema.org structured data</source>
       </trans-unit>
-      <trans-unit id="seo.llmsTxt.enabled.form.label" resname="seo.llmsTxt.enabled.form.label">
-        <source>Enable llms.txt</source>
+      <trans-unit id="seo.schema.enabled.form.label" resname="seo.schema.enabled.form.label">
+        <source>Enable Schema.org</source>
       </trans-unit>
-      <trans-unit id="seo.llmsTxt.intro.form.description" resname="seo.llmsTxt.intro.form.description">
-        <source>Optional intro paragraph for AI agents, shown after the site description in llms.txt. Falls back to the meta default description when empty.</source>
+      <trans-unit id="seo.schema.foundingDate.form.description" resname="seo.schema.foundingDate.form.description">
+        <source>Founding date in ISO 8601 format (e.g., 2004-01-15; Organization types only)</source>
       </trans-unit>
-      <trans-unit id="seo.llmsTxt.intro.form.label" resname="seo.llmsTxt.intro.form.label">
-        <source>llms.txt Intro Text</source>
+      <trans-unit id="seo.schema.foundingDate.form.label" resname="seo.schema.foundingDate.form.label">
+        <source>Founding Date</source>
       </trans-unit>
-      <trans-unit id="seo.llmsTxt.news.detailPageId.form.description" resname="seo.llmsTxt.news.detailPageId.form.description">
-        <source>Page UID of the news detail page used to build article links (0 = disable the news section).</source>
+      <trans-unit id="seo.schema.knowsAbout.form.description" resname="seo.schema.knowsAbout.form.description">
+        <source>Topics or areas of expertise, comma-separated (Organization or Person, e.g., TYPO3, PHP, Accessibility)</source>
       </trans-unit>
-      <trans-unit id="seo.llmsTxt.news.detailPageId.form.label" resname="seo.llmsTxt.news.detailPageId.form.label">
-        <source>llms.txt News Detail Page UID</source>
+      <trans-unit id="seo.schema.knowsAbout.form.label" resname="seo.schema.knowsAbout.form.label">
+        <source>Knows About / Expertise</source>
       </trans-unit>
-      <trans-unit id="seo.llmsTxt.news.limit.form.description" resname="seo.llmsTxt.news.limit.form.description">
-        <source>Maximum number of recent news items listed in llms.txt.</source>
+      <trans-unit id="seo.schema.legalName.form.description" resname="seo.schema.legalName.form.description">
+        <source>Registered legal name of the organization (Organization types only)</source>
       </trans-unit>
-      <trans-unit id="seo.llmsTxt.news.limit.form.label" resname="seo.llmsTxt.news.limit.form.label">
-        <source>llms.txt News Item Limit</source>
+      <trans-unit id="seo.schema.legalName.form.label" resname="seo.schema.legalName.form.label">
+        <source>Legal Name</source>
       </trans-unit>
-      <trans-unit id="seo.llmsTxt.news.storagePid.form.description" resname="seo.llmsTxt.news.storagePid.form.description">
-        <source>Storage page UID(s) of news records, comma-separated (empty = disable the news section).</source>
+      <trans-unit id="seo.schema.organizationType.form.description" resname="seo.schema.organizationType.form.description">
+        <source>Schema.org organization type (Organization, Corporation, LocalBusiness, etc.)</source>
       </trans-unit>
-      <trans-unit id="seo.llmsTxt.news.storagePid.form.label" resname="seo.llmsTxt.news.storagePid.form.label">
-        <source>llms.txt News Storage PID(s)</source>
+      <trans-unit id="seo.schema.organizationType.form.label" resname="seo.schema.organizationType.form.label">
+        <source>Organization Type</source>
       </trans-unit>
-      <trans-unit id="seo.robots.additional.form.description" resname="seo.robots.additional.form.description">
-        <source>Additional robots.txt lines appended after the default rules (one directive per line)</source>
+      <trans-unit id="seo.schema.person.jobTitle.form.description" resname="seo.schema.person.jobTitle.form.description">
+        <source>Job title of the person publisher (Person type only, e.g., Senior TYPO3 Developer)</source>
       </trans-unit>
-      <trans-unit id="seo.robots.additional.form.label" resname="seo.robots.additional.form.label">
-        <source>Additional robots.txt Rules</source>
+      <trans-unit id="seo.schema.person.jobTitle.form.label" resname="seo.schema.person.jobTitle.form.label">
+        <source>Job Title</source>
       </trans-unit>
-      <trans-unit id="seo.robots.crawlDelay.form.description" resname="seo.robots.crawlDelay.form.description">
-        <source>Optional Crawl-delay in seconds for the generic User-agent group (0 = no delay). Note: Google ignores Crawl-delay; it is honored mainly by Bing and others.</source>
+      <trans-unit id="seo.schema.taxId.form.description" resname="seo.schema.taxId.form.description">
+        <source>Tax identification number (Organization types only)</source>
       </trans-unit>
-      <trans-unit id="seo.robots.crawlDelay.form.label" resname="seo.robots.crawlDelay.form.label">
-        <source>Crawl-delay (seconds)</source>
+      <trans-unit id="seo.schema.taxId.form.label" resname="seo.schema.taxId.form.label">
+        <source>Tax ID</source>
       </trans-unit>
-      <trans-unit id="seo.robots.allowAiBots.form.description" resname="seo.robots.allowAiBots.form.description">
-        <source>Allow AI crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.) to access the site</source>
+      <trans-unit id="seo.schema.telephone.form.description" resname="seo.schema.telephone.form.description">
+        <source>Public contact phone number of the publisher (international format, e.g., +49 30 1234567)</source>
       </trans-unit>
-      <trans-unit id="seo.robots.allowAiBots.form.label" resname="seo.robots.allowAiBots.form.label">
-        <source>Allow AI Crawlers</source>
+      <trans-unit id="seo.schema.telephone.form.label" resname="seo.schema.telephone.form.label">
+        <source>Publisher Telephone</source>
       </trans-unit>
-      <trans-unit id="seo.robots.enabled.form.description" resname="seo.robots.enabled.form.description">
-        <source>Serve a dynamic robots.txt with sitemap reference and AI crawler rules</source>
+      <trans-unit id="seo.schema.vatId.form.description" resname="seo.schema.vatId.form.description">
+        <source>Value-added tax identification number (Organization types only)</source>
       </trans-unit>
-      <trans-unit id="seo.robots.enabled.form.label" resname="seo.robots.enabled.form.label">
-        <source>Enable Dynamic robots.txt</source>
+      <trans-unit id="seo.schema.vatId.form.label" resname="seo.schema.vatId.form.label">
+        <source>VAT ID</source>
       </trans-unit>
       <trans-unit id="seo.sitemap.enabled.form.description" resname="seo.sitemap.enabled.form.description">
         <source>Enable XML sitemap generation</source>

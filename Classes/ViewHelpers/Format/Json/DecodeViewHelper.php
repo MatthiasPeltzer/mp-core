@@ -28,7 +28,7 @@ class DecodeViewHelper extends AbstractViewHelper
     {
         $json = $this->arguments['json'];
 
-        if ($json === '') {
+        if ($json === '' || $json === null) {
             return [];
         }
 

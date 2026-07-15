@@ -12,7 +12,7 @@ declare(strict_types=1);
  * text summary plus an HTML report under `.Build/coverage/html`.
  *
  * Usage (see composer script `test:coverage:merged`):
- *   php Build/merge-coverage.php
+ *   php Tests/phpunit/merge-coverage.php
  */
 
 use SebastianBergmann\CodeCoverage\CodeCoverage;
@@ -20,7 +20,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Facade as HtmlFacade;
 use SebastianBergmann\CodeCoverage\Report\Text as TextReport;
 use SebastianBergmann\CodeCoverage\Report\Thresholds;
 
-$root = dirname(__DIR__);
+$root = dirname(__DIR__, 2);
 require $root . '/.Build/vendor/autoload.php';
 
 $coverageDir = $root . '/.Build/coverage';

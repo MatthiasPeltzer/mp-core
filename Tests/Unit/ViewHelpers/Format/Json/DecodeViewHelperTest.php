@@ -40,6 +40,15 @@ final class DecodeViewHelperTest extends TestCase
     }
 
     #[Test]
+    public function returnsEmptyArrayForNull(): void
+    {
+        $viewHelper = new DecodeViewHelper();
+        $viewHelper->setArguments(['json' => null]);
+
+        self::assertSame([], $viewHelper->render());
+    }
+
+    #[Test]
     public function throwsFluidExceptionForInvalidJson(): void
     {
         $this->expectException(Exception::class);

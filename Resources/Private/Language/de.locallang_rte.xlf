@@ -200,10 +200,6 @@
         <source>Link: Chart</source>
         <target>Link: Diagramm</target>
       </trans-unit>
-      <trans-unit id="style.link.modal" resname="style.link.modal" approved="yes">
-        <source>Link: Modal</source>
-        <target>Link: Modal</target>
-      </trans-unit>
       <trans-unit id="style.link.download" resname="style.link.download" approved="yes">
         <source>Link: Download</source>
         <target>Link: Download</target>
@@ -231,6 +227,10 @@
       <trans-unit id="style.link.legal" resname="style.link.legal" approved="yes">
         <source>Link: Legal</source>
         <target>Link: Rechtliches</target>
+      </trans-unit>
+      <trans-unit id="style.link.modal" resname="style.link.modal" approved="yes">
+        <source>Link: Modal</source>
+        <target>Link: Modal</target>
       </trans-unit>
       <trans-unit id="style.link.phone" resname="style.link.phone" approved="yes">
         <source>Link: Phone</source>
