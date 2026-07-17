@@ -82,10 +82,10 @@ Options:
   -h             This help
 
 Examples:
-  Build/Scripts/runTests.sh -s unit
-  Build/Scripts/runTests.sh -s functional -d postgres
-  Build/Scripts/runTests.sh -s acceptance
-  Build/Scripts/runTests.sh -s phpstan
+  Build/scripts/runTests.sh -s unit
+  Build/scripts/runTests.sh -s functional -d postgres
+  Build/scripts/runTests.sh -s acceptance
+  Build/scripts/runTests.sh -s phpstan
 EOF
 }
 
@@ -302,7 +302,7 @@ case ${TEST_SUITE} in
         ;;
     lintTypoScript)
         ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name lint-typoscript-${SUFFIX} ${IMAGE_PHP} \
-            php Build/Scripts/lintTypoScript.php
+            php Build/scripts/lintTypoScript.php
         SUITE_EXIT_CODE=$?
         ;;
     lintHtml)

@@ -163,7 +163,7 @@ jobs:
         run: .Build/bin/codecept build -c codeception.yml
 
       - name: Acceptance tests via runTests.sh
-        run: bash Build/Scripts/runTests.sh -s acceptance -d sqlite
+        run: bash Build/scripts/runTests.sh -s acceptance -d sqlite
 
   frontend:
     name: Frontend lint & JS unit tests

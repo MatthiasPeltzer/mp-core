@@ -5,10 +5,10 @@
 	"type": "module",
 	"scripts": {
 		"build": "npm run eslint && npm run stylelint && vite build --mode production && npm run check-size",
-		"build:analyze": "node Scripts/build-analyze.js",
+		"build:analyze": "node scripts/build-analyze.js",
 		"dev": "npm run eslint && npm run stylelint && vite build --mode development",
 		"watch": "vite build --mode development --watch",
-		"check-size": "node Scripts/check-bundle-size.js",
+		"check-size": "node scripts/check-bundle-size.js",
 		"lint": "npm run eslint && npm run stylelint",
 		"test:unit": "vitest run",
 		"test:unit:watch": "vitest",

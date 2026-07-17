@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Package-specific settings for Build/Scripts/runTests.sh (mp-core).
+# Package-specific settings for Build/scripts/runTests.sh (mp-core).
 
 NETWORK_PREFIX="mp-core"
 COMPOSER_ROOT_VERSION="${COMPOSER_ROOT_VERSION:-1.2.16-dev}"

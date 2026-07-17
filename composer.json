@@ -101,7 +101,7 @@
     "cs:fix": "php .Build/bin/php-cs-fixer fix -v --config .php-cs-fixer.dist.php",
     "lint:php": "find Classes Tests -name '*.php' -print0 | xargs -0 -n1 php -l",
     "lint:yaml": "find Configuration -name '*.yaml' -o -name '*.yml' | xargs -r .Build/bin/yaml-lint --parse-tags",
-    "lint:typoscript": "php Build/Scripts/lintTypoScript.php",
+    "lint:typoscript": "php Build/scripts/lintTypoScript.php",
     "lint:all": [
       "@lint:php",
       "@lint:yaml",
