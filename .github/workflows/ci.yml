@@ -85,12 +85,12 @@ jobs:
         image: postgres:16-alpine
         env:
           POSTGRES_PASSWORD: funcp
-          POSTGRES_USER: funcu
+          POSTGRES_USER: postgres
           POSTGRES_DB: bamboo
         ports:
           - 5432:5432
         options: >-
-          --health-cmd="pg_isready -U funcu -d bamboo"
+          --health-cmd="pg_isready -U postgres -d bamboo"
           --health-interval=10s --health-timeout=5s --health-retries=5
     steps:
       - uses: actions/checkout@v6
@@ -139,7 +139,7 @@ jobs:
         env:
           typo3DatabaseDriver: pdo_pgsql
           typo3DatabaseName: bamboo
-          typo3DatabaseUsername: funcu
+          typo3DatabaseUsername: postgres
           typo3DatabasePassword: funcp
           typo3DatabaseHost: 127.0.0.1
           typo3DatabasePort: 5432
@@ -168,7 +168,7 @@ jobs:
         run: .Build/bin/codecept build -c codeception.yml
 
       - name: Acceptance tests via runTests.sh
-        run: bash Build/scripts/runTests.sh -s acceptance -d sqlite
+        run: bash Build/scripts/runTests.sh -b docker -s acceptance -d sqlite
 
   frontend:
     name: Frontend lint & JS unit tests

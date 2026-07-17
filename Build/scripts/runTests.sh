@@ -150,7 +150,9 @@ if [ "${CI:-}" == "true" ]; then
 fi
 
 if [[ -z "${CONTAINER_BIN}" ]]; then
-    if type "podman" >/dev/null 2>&1; then
+    if [ "${CI:-}" == "true" ] && type "docker" >/dev/null 2>&1; then
+        CONTAINER_BIN="docker"
+    elif type "podman" >/dev/null 2>&1; then
         CONTAINER_BIN="podman"
     elif type "docker" >/dev/null 2>&1; then
         CONTAINER_BIN="docker"
@@ -206,9 +208,9 @@ runFunctional() {
             CONTAINERPARAMS="-e typo3DatabaseDriver=${DATABASE_DRIVER} -e typo3DatabaseName=func_test -e typo3DatabaseUsername=root -e typo3DatabaseHost=mysql-func-${SUFFIX} -e typo3DatabasePassword=funcp"
             ;;
         postgres)
-            ${CONTAINER_BIN} run --rm ${CI_PARAMS} --name postgres-func-${SUFFIX} --network ${NETWORK} -d -e POSTGRES_PASSWORD=funcp -e POSTGRES_USER=funcu --tmpfs /var/lib/postgresql/data:rw,noexec,nosuid ${IMAGE_POSTGRES} >/dev/null
+            ${CONTAINER_BIN} run --rm ${CI_PARAMS} --name postgres-func-${SUFFIX} --network ${NETWORK} -d -e POSTGRES_PASSWORD=funcp -e POSTGRES_USER=postgres -e POSTGRES_DB=bamboo --tmpfs /var/lib/postgresql/data:rw,noexec,nosuid ${IMAGE_POSTGRES} >/dev/null
             waitFor postgres-func-${SUFFIX} 5432
-            CONTAINERPARAMS="-e typo3DatabaseDriver=pdo_pgsql -e typo3DatabaseName=bamboo -e typo3DatabaseUsername=funcu -e typo3DatabaseHost=postgres-func-${SUFFIX} -e typo3DatabasePassword=funcp"
+            CONTAINERPARAMS="-e typo3DatabaseDriver=pdo_pgsql -e typo3DatabaseName=bamboo -e typo3DatabaseUsername=postgres -e typo3DatabaseHost=postgres-func-${SUFFIX} -e typo3DatabasePassword=funcp"
             ;;
         sqlite)
             mkdir -p "${ROOT_DIR}/${SQLITE_TMPFS_DIR}"
@@ -244,6 +246,7 @@ runAcceptance() {
         ${CONTAINER_BIN} run -d --name ac-phpfpm-${SUFFIX} --network ${NETWORK} --network-alias phpfpm ${USERSET} \
             ${ACCEPTANCE_HTTP_ENV} -v ${ROOT_DIR}:${ROOT_DIR} ${IMAGE_PHP} php-fpm -R ${PHP_FPM_OPTIONS} >/dev/null
         ${CONTAINER_BIN} run --rm -d --name ac-web-${SUFFIX} --network ${NETWORK} --network-alias web \
+            -e APACHE_RUN_USER="#${HOST_UID}" -e APACHE_RUN_GROUP="#${HOST_PID}" -e APACHE_RUN_SERVERNAME=web \
             -e APACHE_RUN_DOCROOT="${ACCEPTANCE_ROOT}" -e PHPFPM_HOST=phpfpm -e PHPFPM_PORT=9000 \
             -v ${ROOT_DIR}:${ROOT_DIR} ${IMAGE_APACHE} >/dev/null
     fi
@@ -257,9 +260,9 @@ runAcceptance() {
             DBPARAMS="-e typo3DatabaseDriver=${DATABASE_DRIVER:-mysqli} -e typo3DatabaseName=func_test -e typo3DatabaseUsername=root -e typo3DatabaseHost=mariadb-ac-${SUFFIX} -e typo3DatabasePassword=funcp"
             ;;
         postgres)
-            ${CONTAINER_BIN} run --rm ${CI_PARAMS} --name postgres-ac-${SUFFIX} --network ${NETWORK} -d -e POSTGRES_PASSWORD=funcp -e POSTGRES_USER=funcu --tmpfs /var/lib/postgresql/data:rw,noexec,nosuid ${IMAGE_POSTGRES} >/dev/null
+            ${CONTAINER_BIN} run --rm ${CI_PARAMS} --name postgres-ac-${SUFFIX} --network ${NETWORK} -d -e POSTGRES_PASSWORD=funcp -e POSTGRES_USER=postgres -e POSTGRES_DB=bamboo --tmpfs /var/lib/postgresql/data:rw,noexec,nosuid ${IMAGE_POSTGRES} >/dev/null
             waitFor postgres-ac-${SUFFIX} 5432
-            DBPARAMS="-e typo3DatabaseDriver=pdo_pgsql -e typo3DatabaseName=bamboo -e typo3DatabaseUsername=funcu -e typo3DatabaseHost=postgres-ac-${SUFFIX} -e typo3DatabasePassword=funcp"
+            DBPARAMS="-e typo3DatabaseDriver=pdo_pgsql -e typo3DatabaseName=bamboo -e typo3DatabaseUsername=postgres -e typo3DatabaseHost=postgres-ac-${SUFFIX} -e typo3DatabasePassword=funcp"
             ;;
     esac
 

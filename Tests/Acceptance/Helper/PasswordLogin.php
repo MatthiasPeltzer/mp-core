@@ -57,12 +57,12 @@ class PasswordLogin extends Module
     private function login(string $role): void
     {
         $webDriver = $this->getWebDriver();
-        $webDriver->waitForElement('body[data-typo3-login-ready]');
+        $webDriver->wait(30)->waitForElement('body[data-typo3-login-ready]');
         $password = $this->_getConfig('passwords')[$role];
         $webDriver->fillField('#t3-username', $role);
         $webDriver->fillField('#t3-password', $password);
         $webDriver->pressKey('#t3-password', WebDriverKeys::ENTER);
-        $webDriver->waitForElement('.t3js-scaffold-toolbar');
+        $webDriver->wait(30)->waitForElement('.t3js-scaffold-toolbar');
         $webDriver->saveSessionSnapshot('login.' . $role);
     }
 
