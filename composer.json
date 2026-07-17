@@ -58,11 +58,17 @@
     "typo3/cms-seo": "^13.4 || ^14.3"
   },
   "require-dev": {
+    "codeception/codeception": "^5.2",
+    "codeception/module-asserts": "^3.0",
+    "codeception/module-cli": "^2.0",
+    "codeception/module-webdriver": "^4.0",
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan": "^2.1",
     "phpunit/phpunit": "^10.5 || ^11.5",
     "saschaegerer/phpstan-typo3": "^3.0",
     "typo3/coding-standards": "^0.8.0",
+    "typo3/cms-backend": "^13.4 || ^14.3",
+    "typo3/cms-install": "^13.4 || ^14.3",
     "typo3/testing-framework": "^8.2 || ^9.0"
   },
   "suggest": {
@@ -72,6 +78,9 @@
     "mpc/mpc-rss": "^1.0"
   },
   "scripts": {
+    "post-autoload-dump": [
+      "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+    ],
     "test:unit": "phpunit --colors=always -c phpunit.xml.dist",
     "test:functional": "phpunit --colors=always -c Tests/phpunit/FunctionalTests.xml",
     "test:coverage": [
@@ -86,8 +95,17 @@
       "phpunit -c Tests/phpunit/FunctionalTests.xml --coverage-php .Build/coverage/functional.cov",
       "php Tests/phpunit/merge-coverage.php"
     ],
+    "test:acceptance": "codecept run -c codeception.yml --env headless",
     "phpstan": "phpstan analyse -c phpstan.neon.dist --memory-limit=512M",
     "cs": "php .Build/bin/php-cs-fixer fix --dry-run -v --config .php-cs-fixer.dist.php",
-    "cs:fix": "php .Build/bin/php-cs-fixer fix -v --config .php-cs-fixer.dist.php"
+    "cs:fix": "php .Build/bin/php-cs-fixer fix -v --config .php-cs-fixer.dist.php",
+    "lint:php": "find Classes Tests -name '*.php' -print0 | xargs -0 -n1 php -l",
+    "lint:yaml": "find Configuration -name '*.yaml' -o -name '*.yml' | xargs -r .Build/bin/yaml-lint --parse-tags",
+    "lint:typoscript": "php Build/Scripts/lintTypoScript.php",
+    "lint:all": [
+      "@lint:php",
+      "@lint:yaml",
+      "@lint:typoscript"
+    ]
   }
 }
