@@ -223,23 +223,26 @@ runAcceptance() {
         echo "Acceptance tests are disabled for this package." >&2
         exit 1
     fi
-    local ACCEPTANCE_ROOT="${ROOT_DIR}/${WEB_PUBLIC_DIR}/typo3temp/var/tests/acceptance"
+    local WEB_ROOT="${ROOT_DIR}/${WEB_PUBLIC_DIR}"
+    local ACCEPTANCE_ROOT="${WEB_ROOT}/typo3temp/var/tests/acceptance"
     mkdir -p "${ACCEPTANCE_ROOT}"
-    local ACCEPTANCE_ENV="-e TYPO3_PATH_APP=${ACCEPTANCE_ROOT} -e TYPO3_PATH_ROOT=${ACCEPTANCE_ROOT} -e TYPO3_PATH_WEB=${ACCEPTANCE_ROOT}"
+    # HTTP stack serves the acceptance instance; Codeception bootstrap needs the composer web dir (index.php).
+    local ACCEPTANCE_HTTP_ENV="-e TYPO3_PATH_APP=${ACCEPTANCE_ROOT} -e TYPO3_PATH_ROOT=${ACCEPTANCE_ROOT} -e TYPO3_PATH_WEB=${ACCEPTANCE_ROOT}"
+    local CODECEPT_ENV="-e TYPO3_PATH_APP=${WEB_ROOT} -e TYPO3_PATH_ROOT=${WEB_ROOT} -e TYPO3_PATH_WEB=${WEB_ROOT}"
 
     ${CONTAINER_BIN} run --rm ${CI_PARAMS} --name chrome-ac-${SUFFIX} --network ${NETWORK} --network-alias chrome --shm-size=2gb -d ${IMAGE_CHROME} >/dev/null
     waitFor chrome-ac-${SUFFIX} 4444
 
     if [ "${CONTAINER_BIN}" == "docker" ]; then
         ${CONTAINER_BIN} run --rm -d --name ac-phpfpm-${SUFFIX} --network ${NETWORK} --network-alias phpfpm --add-host "${CONTAINER_HOST}:host-gateway" ${USERSET} \
-            ${ACCEPTANCE_ENV} -e PHPFPM_USER=${HOST_UID} -e PHPFPM_GROUP=${HOST_PID} -v ${ROOT_DIR}:${ROOT_DIR} ${IMAGE_PHP} php-fpm ${PHP_FPM_OPTIONS} >/dev/null
+            ${ACCEPTANCE_HTTP_ENV} -e PHPFPM_USER=${HOST_UID} -e PHPFPM_GROUP=${HOST_PID} -v ${ROOT_DIR}:${ROOT_DIR} ${IMAGE_PHP} php-fpm ${PHP_FPM_OPTIONS} >/dev/null
         ${CONTAINER_BIN} run --rm -d --name ac-web-${SUFFIX} --network ${NETWORK} --network-alias web --add-host "${CONTAINER_HOST}:host-gateway" \
             -e APACHE_RUN_USER="#${HOST_UID}" -e APACHE_RUN_GROUP="#${HOST_PID}" -e APACHE_RUN_SERVERNAME=web \
             -e APACHE_RUN_DOCROOT="${ACCEPTANCE_ROOT}" -e PHPFPM_HOST=phpfpm -e PHPFPM_PORT=9000 \
             -v ${ROOT_DIR}:${ROOT_DIR} ${IMAGE_APACHE} >/dev/null
     else
         ${CONTAINER_BIN} run -d --name ac-phpfpm-${SUFFIX} --network ${NETWORK} --network-alias phpfpm ${USERSET} \
-            ${ACCEPTANCE_ENV} -v ${ROOT_DIR}:${ROOT_DIR} ${IMAGE_PHP} php-fpm -R ${PHP_FPM_OPTIONS} >/dev/null
+            ${ACCEPTANCE_HTTP_ENV} -v ${ROOT_DIR}:${ROOT_DIR} ${IMAGE_PHP} php-fpm -R ${PHP_FPM_OPTIONS} >/dev/null
         ${CONTAINER_BIN} run --rm -d --name ac-web-${SUFFIX} --network ${NETWORK} --network-alias web \
             -e APACHE_RUN_DOCROOT="${ACCEPTANCE_ROOT}" -e PHPFPM_HOST=phpfpm -e PHPFPM_PORT=9000 \
             -v ${ROOT_DIR}:${ROOT_DIR} ${IMAGE_APACHE} >/dev/null
@@ -261,7 +264,7 @@ runAcceptance() {
     esac
 
     local COMMAND=(.Build/bin/codecept run -c codeception.yml --env headless "$@")
-    ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name acceptance-${SUFFIX} ${DBPARAMS} ${ACCEPTANCE_ENV} \
+    ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name acceptance-${SUFFIX} ${DBPARAMS} ${CODECEPT_ENV} \
         -e typo3TestingAcceptanceBaseUrl=http://web:80 \
         -e typo3TestingAcceptanceAdminPassword=password \
         -e typo3TestingAcceptanceEditorPassword=password \
