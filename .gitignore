@@ -16,3 +16,8 @@
 # /.Build/ above), but keep ignoring a root-level docroot in case one is scaffolded
 # locally with a different/overridden web-dir. Never shipped.
 /public/
+
+# Codeception / local TYPO3 caches (never commit)
+/Tests/Acceptance/_output/
+/Tests/Acceptance/Support/_generated/
+/var/

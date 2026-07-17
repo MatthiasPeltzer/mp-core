@@ -22,7 +22,6 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'name,fallback',
         'typeicon_classes' => [
             'default' => 'content-text',
         ],
@@ -90,6 +89,7 @@ return [
                 'size' => 30,
                 'max' => 64,
                 'eval' => 'trim',
+                'searchable' => false,
                 'placeholder' => '--mpc-font-display',
             ],
         ],
