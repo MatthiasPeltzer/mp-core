@@ -69,7 +69,7 @@
     "typo3/coding-standards": "^0.8.0",
     "typo3/cms-backend": "^13.4 || ^14.3",
     "typo3/cms-install": "^13.4 || ^14.3",
-    "typo3/testing-framework": "^8.2 || ^9.0"
+    "typo3/testing-framework": "^9.3"
   },
   "suggest": {
     "georgringer/news": "^13.0 || ^14.0",
@@ -78,9 +78,6 @@
     "mpc/mpc-rss": "^1.0"
   },
   "scripts": {
-    "post-autoload-dump": [
-      "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
-    ],
     "test:unit": "phpunit --colors=always -c phpunit.xml.dist",
     "test:functional": "phpunit --colors=always -c Tests/phpunit/FunctionalTests.xml",
     "test:coverage": [

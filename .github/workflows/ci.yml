@@ -37,7 +37,8 @@ jobs:
             typo3/cms-rte-ckeditor:"${{ matrix.typo3 }}" \
             typo3/cms-seo:"${{ matrix.typo3 }}" \
             typo3/cms-backend:"${{ matrix.typo3 }}" \
-            typo3/cms-install:"${{ matrix.typo3 }}"
+            typo3/cms-install:"${{ matrix.typo3 }}" \
+            typo3/testing-framework:^9.3
           composer update --no-interaction --no-progress
 
       - name: Coding standards
@@ -103,7 +104,9 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: composer install --no-interaction --no-progress
+        run: |
+          composer require --no-update typo3/testing-framework:^9.3
+          composer update --no-interaction --no-progress
 
       - name: Functional tests (sqlite)
         if: matrix.db == 'sqlite'
@@ -157,7 +160,9 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: composer install --no-interaction --no-progress
+        run: |
+          composer require --no-update typo3/testing-framework:^9.3
+          composer update --no-interaction --no-progress
 
       - name: Build Codeception actors
         run: .Build/bin/codecept build -c codeception.yml
