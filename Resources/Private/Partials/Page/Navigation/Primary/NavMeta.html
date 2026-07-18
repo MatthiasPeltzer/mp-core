@@ -50,7 +50,7 @@
                         </f:if>
                     </li>
                 </f:for>
-                <f:if condition="{site.configuration.search}">
+                <f:if condition="{site.settings.search.headerSearch}">
                     <li class="nav-item searchbox">
                         <f:render arguments="{_all}" partial="Navigation/Search"/>
                     </li>

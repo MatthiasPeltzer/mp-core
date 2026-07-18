@@ -1210,14 +1210,6 @@
         <source>Reddit</source>
         <target>Reddit</target>
       </trans-unit>
-      <trans-unit id="site.configuration.search.description" resname="site.configuration.search.description" approved="yes">
-        <source>Use search on the website. Adds a search field next to the main navigation.</source>
-        <target>Suche auf der Webseite verwenden. Fügt ein Suchfeld neben der Hauptnavigation hinzu.</target>
-      </trans-unit>
-      <trans-unit id="site.configuration.search.label" resname="site.configuration.search.label" approved="yes">
-        <source>Use search</source>
-        <target>Suche nutzen</target>
-      </trans-unit>
       <trans-unit id="site.configuration.signal.label" resname="site.configuration.signal.label" approved="yes">
         <source>Signal</source>
         <target>Signal</target>

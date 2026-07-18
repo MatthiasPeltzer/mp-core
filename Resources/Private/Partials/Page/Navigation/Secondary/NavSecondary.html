@@ -18,7 +18,7 @@
                 <f:render arguments="{mainItem: mainItem}" partial="Navigation/Secondary/NavMain"/>
             </f:for>
 
-            <f:if condition="{site.configuration.search}">
+            <f:if condition="{site.settings.search.headerSearch}">
                 <li class="mainnav-desktop-item searchbox">
                     <f:render arguments="{_all}" partial="Navigation/Search"/>
                 </li>

@@ -15,12 +15,21 @@
             <div class="tx-indexedsearch-suggest">
                 <div class="input-group">
                     <label class="visually-hidden" for="header-search-input">{f:translate(key: 'search.inputLabel', extensionName: 'mp_core')}</label>
-                    <input class="form-control" id="header-search-input" maxlength="300" name="tx_indexedsearch_pi2[search][sword]" type="search" value="" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="header-search-suggest-list" data-autosuggest-url="{searchPageUri}" data-suggest-header="{f:translate(key: 'search.suggestHeader', extensionName: 'mp_core')}">
+                    <f:if condition="{site.settings.search.autosuggest}">
+                        <f:then>
+                            <input class="form-control" id="header-search-input" maxlength="300" name="tx_indexedsearch_pi2[search][sword]" type="search" value="" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="header-search-suggest-list" data-autosuggest-url="{searchPageUri}" data-suggest-header="{f:translate(key: 'search.suggestHeader', extensionName: 'mp_core')}">
+                        </f:then>
+                        <f:else>
+                            <input class="form-control" id="header-search-input" maxlength="300" name="tx_indexedsearch_pi2[search][sword]" type="search" value="" autocomplete="off">
+                        </f:else>
+                    </f:if>
                     <button class="btn btn-primary" title="{f:translate(key: 'search.submit', extensionName: 'mp_core')}" type="submit">
                         <span>{f:translate(key: 'search.submit', extensionName: 'mp_core')}</span>
                     </button>
                 </div>
-                <ul id="header-search-suggest-list" class="tx-indexedsearch-suggest-list" role="listbox" aria-label="{f:translate(key: 'search.suggestions', extensionName: 'mp_core')}" hidden="hidden"></ul>
+                <f:if condition="{site.settings.search.autosuggest}">
+                    <ul id="header-search-suggest-list" class="tx-indexedsearch-suggest-list" role="listbox" aria-label="{f:translate(key: 'search.suggestions', extensionName: 'mp_core')}" hidden="hidden"></ul>
+                </f:if>
             </div>
         </form>
     </div>

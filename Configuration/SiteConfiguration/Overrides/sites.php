@@ -9,7 +9,7 @@ defined('TYPO3') || die();
 
     // --- Checkbox toggles ---
 
-    foreach (['search', 'subnav', 'subnavOrder'] as $field) {
+    foreach (['subnav', 'subnavOrder'] as $field) {
         $GLOBALS['SiteConfiguration']['site']['columns'][$field] = [
             'label' => $lll . $field . '.label',
             'description' => $lll . $field . '.description',
@@ -218,7 +218,7 @@ defined('TYPO3') || die();
     // --- Show items ---
 
     $GLOBALS['SiteConfiguration']['site']['types']['0']['showitem'] .= '
-        ,--div--;' . $lll . 'customization, navType, subnav, subnavOrder, search, copyrightText
+        ,--div--;' . $lll . 'customization, navType, subnav, subnavOrder, copyrightText
         ,--div--;' . $lll . 'favicons, favicon-96x96-png, faviconIco, faviconSvg, apple-touch-icon, webmanifest, web-app-manifest-192x192, web-app-manifest-512x512
         ,--div--;' . $lll . 'colorsAndStyles, color-toggle, label-color-1, color-1, label-color-2, color-2, label-color-3, color-3, label-color-4, color-4, label-color-5, color-5, label-color-6, color-6, label-color-7, color-7, label-color-8, color-8, color-primary, color-secondary, color-secondary-rgba, color-tertiary, color-quaternary, styles
         ,--div--;' . $lll . 'socialMediaTitle.title, socialMediaSwitch, ' . implode(', ', $socialMediaPlatforms) . '

@@ -891,12 +891,6 @@
       <trans-unit id="site.configuration.reddit.label" resname="site.configuration.reddit.label">
         <source>Reddit</source>
       </trans-unit>
-      <trans-unit id="site.configuration.search.description" resname="site.configuration.search.description">
-        <source>Use search on the website. Adds a search field next to the main navigation.</source>
-      </trans-unit>
-      <trans-unit id="site.configuration.search.label" resname="site.configuration.search.label">
-        <source>Use search</source>
-      </trans-unit>
       <trans-unit id="site.configuration.signal.label" resname="site.configuration.signal.label">
         <source>Signal</source>
       </trans-unit>

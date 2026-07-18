@@ -14,6 +14,9 @@ categories:
   MPCoreNavigation:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreNavigation.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreNavigation.description'
+  MPCoreSearch:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreSearch.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreSearch.description'
   MPCoreMeta:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreMeta.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:MPCoreMeta.description'
@@ -176,6 +179,20 @@ settings:
     label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.enableBreadcrumb.form.label'
     description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:navigation.enableBreadcrumb.form.description'
     category: MPCoreNavigation
+    type: bool
+    default: true
+
+  # Search Settings
+  search.headerSearch:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:search.headerSearch.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:search.headerSearch.form.description'
+    category: MPCoreSearch
+    type: bool
+    default: true
+  search.autosuggest:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:search.autosuggest.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:search.autosuggest.form.description'
+    category: MPCoreSearch
     type: bool
     default: true
 

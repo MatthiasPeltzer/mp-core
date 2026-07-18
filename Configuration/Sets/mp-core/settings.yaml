@@ -48,6 +48,10 @@ navigation.maxDepth: 3
 navigation.showHiddenPages: false
 navigation.enableBreadcrumb: true
 
+# Search Settings
+search.headerSearch: true
+search.autosuggest: true
+
 # Meta Data Settings
 meta.viewport: 'width=device-width, initial-scale=1'
 meta.robots: 'index,follow'

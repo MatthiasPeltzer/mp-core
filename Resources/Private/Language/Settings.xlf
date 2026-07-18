@@ -45,6 +45,12 @@
       <trans-unit id="MPCoreNavigation.label" resname="MPCoreNavigation.label">
         <source>Navigation</source>
       </trans-unit>
+      <trans-unit id="MPCoreSearch.description" resname="MPCoreSearch.description">
+        <source>Search field and autosuggest settings</source>
+      </trans-unit>
+      <trans-unit id="MPCoreSearch.label" resname="MPCoreSearch.label">
+        <source>Search</source>
+      </trans-unit>
       <trans-unit id="MPCoreNews.description" resname="MPCoreNews.description">
         <source>Configuration for news extension</source>
       </trans-unit>
@@ -458,6 +464,18 @@
       </trans-unit>
       <trans-unit id="performance.enableLazyLoading.form.label" resname="performance.enableLazyLoading.form.label">
         <source>Enable Lazy Loading</source>
+      </trans-unit>
+      <trans-unit id="search.autosuggest.form.description" resname="search.autosuggest.form.description">
+        <source>Show live type-ahead suggestions (indexed words and matching page titles) while typing in the search field. When disabled, only the plain search field is shown.</source>
+      </trans-unit>
+      <trans-unit id="search.autosuggest.form.label" resname="search.autosuggest.form.label">
+        <source>Enable Search Autosuggest</source>
+      </trans-unit>
+      <trans-unit id="search.headerSearch.form.description" resname="search.headerSearch.form.description">
+        <source>Show the search field (with the search icon toggle) in the page header navigation.</source>
+      </trans-unit>
+      <trans-unit id="search.headerSearch.form.label" resname="search.headerSearch.form.label">
+        <source>Show Search Field in Header</source>
       </trans-unit>
       <trans-unit id="seo.canonical.enabled.form.description" resname="seo.canonical.enabled.form.description">
         <source>Enable canonical URL tags</source>

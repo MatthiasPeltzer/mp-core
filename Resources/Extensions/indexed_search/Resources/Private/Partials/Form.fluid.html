@@ -24,13 +24,23 @@
           <f:translate key="form.searchFor" />:</label>
         <div class="tx-indexedsearch-suggest">
           <div class="input-group">
-            <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control tx-indexedsearch-searchbox-sword"
-              additionalAttributes="{role: 'combobox', autocomplete: 'off'}"
-              aria="{expanded: 'false', controls: 'tx-indexedsearch-suggest-list', autocomplete: 'list'}"
-              data="{autosuggest-url: searchSuggestUri, suggest-header: searchSuggestHeader}" />
+            <f:if condition="{settings.autosuggest}">
+              <f:then>
+                <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control tx-indexedsearch-searchbox-sword"
+                  additionalAttributes="{role: 'combobox', autocomplete: 'off'}"
+                  aria="{expanded: 'false', controls: 'tx-indexedsearch-suggest-list', autocomplete: 'list'}"
+                  data="{autosuggest-url: searchSuggestUri, suggest-header: searchSuggestHeader}" />
+              </f:then>
+              <f:else>
+                <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control tx-indexedsearch-searchbox-sword"
+                  additionalAttributes="{autocomplete: 'off'}" />
+              </f:else>
+            </f:if>
             <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-primary tx-indexedsearch-searchbox-button" />
           </div>
-          <ul id="tx-indexedsearch-suggest-list" class="tx-indexedsearch-suggest-list" role="listbox" aria-label="{searchSuggestLabel}" hidden="hidden"></ul>
+          <f:if condition="{settings.autosuggest}">
+            <ul id="tx-indexedsearch-suggest-list" class="tx-indexedsearch-suggest-list" role="listbox" aria-label="{searchSuggestLabel}" hidden="hidden"></ul>
+          </f:if>
         </div>
       </div>
 

@@ -75,6 +75,14 @@
         <source>Performance</source>
         <target>Performance</target>
       </trans-unit>
+      <trans-unit id="MPCoreSearch.description" resname="MPCoreSearch.description" approved="yes">
+        <source>Search field and autosuggest settings</source>
+        <target>Einstellungen für Suchfeld und Autovervollständigung</target>
+      </trans-unit>
+      <trans-unit id="MPCoreSearch.label" resname="MPCoreSearch.label" approved="yes">
+        <source>Search</source>
+        <target>Suche</target>
+      </trans-unit>
       <trans-unit id="MPCoreSEO.description" resname="MPCoreSEO.description" approved="yes">
         <source>SEO and meta data configuration</source>
         <target>SEO- und Meta-Daten-Konfiguration</target>
@@ -602,6 +610,22 @@
       <trans-unit id="performance.enableLazyLoading.form.label" resname="performance.enableLazyLoading.form.label" approved="yes">
         <source>Enable Lazy Loading</source>
         <target>Lazy Loading aktivieren</target>
+      </trans-unit>
+      <trans-unit id="search.autosuggest.form.description" resname="search.autosuggest.form.description" approved="yes">
+        <source>Show live type-ahead suggestions (indexed words and matching page titles) while typing in the search field. When disabled, only the plain search field is shown.</source>
+        <target>Zeigt beim Tippen im Suchfeld Live-Vorschläge an (indexierte Wörter und passende Seitentitel). Wenn deaktiviert, wird nur das einfache Suchfeld angezeigt.</target>
+      </trans-unit>
+      <trans-unit id="search.autosuggest.form.label" resname="search.autosuggest.form.label" approved="yes">
+        <source>Enable Search Autosuggest</source>
+        <target>Such-Autovervollständigung aktivieren</target>
+      </trans-unit>
+      <trans-unit id="search.headerSearch.form.description" resname="search.headerSearch.form.description" approved="yes">
+        <source>Show the search field (with the search icon toggle) in the page header navigation.</source>
+        <target>Zeigt das Suchfeld (mit dem Such-Icon zum Aufklappen) in der Kopf-Navigation an.</target>
+      </trans-unit>
+      <trans-unit id="search.headerSearch.form.label" resname="search.headerSearch.form.label" approved="yes">
+        <source>Show Search Field in Header</source>
+        <target>Suchfeld im Header anzeigen</target>
       </trans-unit>
       <trans-unit id="seo.canonical.enabled.form.description" resname="seo.canonical.enabled.form.description" approved="yes">
         <source>Enable canonical URL tags</source>

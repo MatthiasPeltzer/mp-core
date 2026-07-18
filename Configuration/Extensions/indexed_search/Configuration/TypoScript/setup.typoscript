@@ -8,6 +8,10 @@ plugin.tx_indexedsearch {
   settings {
     targetPid = {$plugin.tx_indexedsearch.settings.targetPid ?? $indexedsearch.targetPid}
 
+    # Type-ahead autosuggest on the search field. Bridged from the site setting
+    # "search.autosuggest" via the TypoScript condition at the end of this file.
+    autosuggest = 1
+
     # show a link to the advanced search
     displayAdvancedSearchLink = 1
 
@@ -92,3 +96,9 @@ plugin.tx_indexedsearch {
 
 plugin.tx_indexedsearch._LOCAL_LANG.de.displayResults = Zeige Ergebnisse %1$s bis %2$s
 plugin.tx_indexedsearch._LOCAL_LANG.en.displayResults = Show results %1$s to %2$s
+
+# Disable autosuggest on the /suche form when the admin turned it off in the
+# site settings (Settings module → Search). Defaults to enabled (see above).
+[site("settings").get("search.autosuggest") === false]
+  plugin.tx_indexedsearch.settings.autosuggest = 0
+[END]
