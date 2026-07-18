@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.18] - 2026-07-18
+
+### Fixed
+- Search autosuggest "top results" now link to the correct detail URLs for indexed mediathek entries (uses `static_page_arguments` from the indexer, matching indexed_search result links).
+
 ## [1.2.17] - 2026-07-18
 
 ### Added
@@ -804,6 +809,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.18]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.17...v1.2.18
 [1.2.17]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.16...v1.2.17
 [1.2.16]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.15...v1.2.16
 [1.2.15]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.14...v1.2.15
