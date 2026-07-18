@@ -53,7 +53,7 @@ export default [
   {
     // Node-only build tooling (analyzer wrapper, bundle-size gate, etc.).
     // These run via `node scripts/*.js`, not in the browser.
-    files: ["scripts/**/*.js", "vite.config.js", "postcss.config.js", "stylelint.config.js", "eslint.config.js"],
+    files: ["Scripts/**/*.js", "vite.config.js", "postcss.config.js", "stylelint.config.js", "eslint.config.js"],
     languageOptions: {
       globals: {
         ...globals.node
