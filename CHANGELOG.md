@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.17] - 2026-07-18
+
+### Added
+- Autosuggest for the indexed_search frontend, sourced directly from the indexer tables (no Solr): a JSON endpoint (`SearchSuggestMiddleware`/`SearchSuggestService`) returning indexed base words and matching page titles, scoped to the current site, language, and frontend-user access.
+- Accessible autosuggest combobox (WAI-ARIA listbox pattern, keyboard navigation, polite status announcements) wired into both the `/suche` search form and the header search box.
+- Site settings (Settings module → Search): `search.headerSearch` toggles the header search field, and `search.autosuggest` toggles type-ahead autosuggest for both the header and the `/suche` form (falls back to the plain search field when disabled).
+
+### Changed
+- Primary (navType 1) header search now matches Secondary/Tertiary: the meta-bar search button opens a full-width flyout layer over the dimmed backdrop (the `.layer` overlay now also triggers for the navType 1 search flyout), and the hamburger dropdown shows the search as an always-visible inline field with submit button on mobile. The meta-bar search is desktop-only and the inline mobile instance uses the `-mobile` id suffix.
+- Secondary/Tertiary (navType 2/3) mobile navigation now moves the meta navigation (language, meta links, theme switch) into the hamburger dropdown below `lg` (via the shared `moveMeta` handler and a `.meta-mobile` placeholder), like navType 1. The header search keeps its place in the main navigation row on desktop and is additionally rendered inside the hamburger dropdown on mobile as an always-visible inline field with submit button (no dropdown toggle). The `Navigation/Search` partial now accepts `searchIdSuffix` (unique element IDs for the second instance) and `searchInline` (render the bare search form instead of the dropdown button/flyout).
+- Header search box now submits to indexed_search and uses the new autosuggest, replacing leftover (non-functional) Solr markup.
+- Header search field visibility is now controlled by the `search.headerSearch` site setting (Settings module) instead of the "Use search" checkbox in Site Configuration, which has been removed. Note the default is now on.
+
+### Fixed
+- Header search no longer returns a 404 on submit: the form now POSTs to the indexed_search `search` action route (like the `/suche` plugin form) instead of GET-ing plugin parameters onto the search page, which tripped TYPO3's cHash validation.
+- Header search autosuggest is now visible inside the desktop mega-menu flyout: the flyout's descendant-`ul` fade/slide animation no longer catches the combobox listbox (it toggles via the `hidden` attribute, not the `.show` class), so suggestions no longer stay stuck at `opacity: 0`.
+- Header search suggestions render as a full-width vertical list (excluded from the three-column mega-menu grid), with a single separator between the word suggestions and the "top results" group instead of a border under every row.
+- Header search field now receives focus automatically when its dropdown opens, and has a little more spacing from the top of the flyout.
+- Web font family TCA: drop deprecated `ctrl.searchFields`, set `css_variable` to `searchable => false` (TYPO3 14 TCA migration).
+- Functional CI: require `typo3/testing-framework` ^9.3 for TYPO3 14 compatibility; remove obsolete `ExtensionTestEnvironment` composer script.
+- Functional CI (PostgreSQL): use `postgres` superuser so maintenance connections do not target missing database `funcu`.
+- Acceptance CI: prefer Docker on GitHub Actions (`-b docker`); align podman Apache env; use `waitForElement` timeout parameter for login waits.
+- Codeception acceptance: set `support_namespace: Support`, add Docker `--network-alias chrome`, pass `TYPO3_PATH_*` to the acceptance PHP stack only (not the Codeception bootstrap container).
+
+### Tests
+- Align CI with mpc-vidply: Docker `runTests.sh` runner, Codeception backend acceptance smoke test, PHP/YAML/TypoScript linters, quality matrix (PHP × TYPO3 13/14), functional DB matrix, and acceptance Docker job.
+- Acceptance: add extension test that the definition list content block appears in the new content element wizard.
+
 ## [1.2.16] - 2026-07-15
 
 ### Tests
@@ -776,6 +804,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.17]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.16...v1.2.17
 [1.2.16]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.15...v1.2.16
 [1.2.15]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.14...v1.2.15
 [1.2.14]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.13...v1.2.14
