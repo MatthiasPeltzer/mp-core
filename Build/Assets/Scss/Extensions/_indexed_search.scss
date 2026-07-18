@@ -340,3 +340,12 @@
 .tx-indexedsearch-suggest-option-page {
   font-weight: 600;
 }
+
+// Header search lives inside the mega-menu flyout (.main-menu-desktop); give the
+// field a little breathing room from the top edge of the flyout. The flyout's
+// descendant-`ul` open animation is opted out for the combobox listbox in the
+// Secondary/Tertiary nav styles (see Navigation/*/_mainnav.scss) so the
+// suggestions stay visible.
+.main-menu-desktop .tx-indexedsearch-suggest {
+  margin-top: 1rem;
+}

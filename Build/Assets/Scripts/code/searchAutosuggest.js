@@ -396,4 +396,24 @@ function initSearchAutosuggest() {
   document.querySelectorAll('input[data-autosuggest-url]').forEach((input) => new Autosuggest(input));
 }
 
+/**
+ * When the header search dropdown opens (Bootstrap dropdown), move focus into
+ * the search field so the user can type straight away (WCAG 2.4.3 Focus Order).
+ * Works whether autosuggest is enabled or not.
+ */
+function initHeaderSearchFocus() {
+  document.addEventListener('shown.bs.dropdown', (event) => {
+    const toggle = event.target;
+    if (!(toggle instanceof Element)) {
+      return;
+    }
+    const menu = toggle.parentElement?.querySelector('.dropdown-menu');
+    const input = menu?.querySelector('input[type="search"], input[data-autosuggest-url]');
+    if (input instanceof HTMLInputElement) {
+      input.focus();
+    }
+  });
+}
+
 initSearchAutosuggest();
+initHeaderSearchFocus();

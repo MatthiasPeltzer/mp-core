@@ -72,8 +72,10 @@ $transition-bounce: $nav-transition-bounce;
         background-image: linear-gradient(to top, var(--bs-body-bg) 0%, var(--bs-gray-100) 100%);
       }
 
-      // Smooth panel appearance for desktop flyout
-      ul {
+      // Smooth panel appearance for desktop flyout. Exclude the indexed_search
+      // autosuggest listbox: it toggles via the `hidden` attribute (not `.show`),
+      // so this fade/slide would otherwise leave the suggestions at opacity:0.
+      ul:not(.tx-indexedsearch-suggest-list) {
         opacity: 0;
         transform: translateX(-10px);
         transition: opacity 0.2s ease-out,
@@ -212,7 +214,9 @@ $transition-bounce: $nav-transition-bounce;
         }
       }
 
-      li {
+      // Exclude the indexed_search autosuggest items: they are a full-width
+      // vertical list with their own styling, not the three-column mega-menu grid.
+      li:not(.tx-indexedsearch-suggest-option, .tx-indexedsearch-suggest-heading) {
         width: 33.3333%;
 
         @include font-size(22px);

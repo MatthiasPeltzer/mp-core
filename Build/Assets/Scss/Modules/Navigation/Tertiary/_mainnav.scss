@@ -71,7 +71,10 @@
       background-color: transparent;
       position: relative;
 
-      ul {
+      // Exclude the indexed_search autosuggest listbox: it is shown/hidden via
+      // the `hidden` attribute (not the `.show` class), so the flyout's fade/slide
+      // animation would otherwise leave the suggestions stuck at opacity:0.
+      ul:not(.tx-indexedsearch-suggest-list) {
         opacity: 0;
         transform: translateX(-10px);
         transition: opacity 0.2s ease-out,
@@ -105,7 +108,9 @@
         }
       }
 
-      li {
+      // Exclude the indexed_search autosuggest items: they are a full-width
+      // vertical list with their own styling, not the three-column mega-menu grid.
+      li:not(.tx-indexedsearch-suggest-option, .tx-indexedsearch-suggest-heading) {
         align-items: center;
         border-bottom: 1px solid var(--bs-gray-700);
         display: flex;
