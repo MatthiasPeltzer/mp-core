@@ -13,6 +13,13 @@
         <div class="dropdown-menu" id="menu">
             <div class="navbar-wrapper">
                 <div class="meta-mobile" id="meta-mobile"></div>
+                <f:if condition="{site.settings.search.headerSearch}">
+                    <div class="mobile-search container-md d-lg-none">
+                        <f:variable name="searchIdSuffix" value="-mobile"/>
+                        <f:variable name="searchInline" value="1"/>
+                        <f:render arguments="{_all}" partial="Navigation/Search"/>
+                    </div>
+                </f:if>
                 <div class="main-nav-wrapper">
                     <div class="container">
                         <ul class="main-menu list-unstyled row" id="mainNav">

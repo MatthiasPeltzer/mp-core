@@ -46,6 +46,12 @@
   position: relative;
 }
 
+// Inline header search inside the mobile hamburger dropdown (all nav variants):
+// add a little breathing room below the meta navigation above it.
+.mobile-search {
+  margin-top: 12px;
+}
+
 // -----------------------------------------------------------------------------
 // MAIN NAV WRAPPER
 // -----------------------------------------------------------------------------

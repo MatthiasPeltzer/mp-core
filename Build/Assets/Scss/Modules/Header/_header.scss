@@ -95,6 +95,7 @@
 
 .header-wrapper:has(.mainnav-desktop .dropdown-menu.show) .layer,
 .header-wrapper:has(#nav-desktop .dropdown-menu.show) .layer,
+.header-wrapper:has(.navtype-1 .main-menu-desktop.show) .layer,
 .header-wrapper:has(#main-menu.show) .layer {
   display: block;
 }

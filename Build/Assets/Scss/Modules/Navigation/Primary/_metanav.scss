@@ -7,3 +7,21 @@
 .meta-mobile {
   padding: 16px 16px 0;
 }
+
+// Primary variant: header search flyout.
+// The search button stays in the meta bar; clicking it drops a full-width layer
+// over the backdrop, matching the Secondary/Tertiary header search. In navType 1
+// `.main-menu-desktop` is only ever the search flyout (the mega menu uses
+// `#menu`), so scoping to `.navtype-1` keeps these rules off the other variants.
+.navtype-1 {
+  .main-menu-desktop {
+    background-color: transparent;
+    border: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    right: 0;
+    top: 100%;
+    width: 100%;
+  }
+}

@@ -4,35 +4,46 @@
 
 <f:variable name="searchPageUri">{f:uri.page(pageUid: '{site.settings.PIDs.pidSearch}')}</f:variable>
 <f:variable name="searchActionUri">{f:uri.action(action: 'search', controller: 'Search', extensionName: 'IndexedSearch', pluginName: 'Pi2', pageUid: '{site.settings.PIDs.pidSearch}')}</f:variable>
-<button aria-controls="search" aria-expanded="false" class="first-nav first-nav-btn btn-search-nav" data-bs-auto-close="outside" data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent" data-bs-toggle="dropdown" id="solr-button" title="{f:translate(key: 'search.button', extensionName: 'mp_core')}" type="button">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="nav-icon" aria-hidden="true">
-        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
-    </svg>
-    <span>{f:translate(key: 'search.button', extensionName: 'mp_core')}</span>
-</button>
-<div class="dropdown-menu main-menu-desktop" id="search" data-bs-popper="static">
-    <div class="container">
-        <form accept-charset="utf-8" action="{searchActionUri}" id="header-search-form" method="post" role="search">
-            <div class="tx-indexedsearch-suggest">
-                <div class="input-group">
-                    <label class="visually-hidden" for="header-search-input">{f:translate(key: 'search.inputLabel', extensionName: 'mp_core')}</label>
-                    <f:if condition="{site.settings.search.autosuggest}">
-                        <f:then>
-                            <input class="form-control" id="header-search-input" maxlength="300" name="tx_indexedsearch_pi2[search][sword]" type="search" value="" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="header-search-suggest-list" data-autosuggest-url="{searchPageUri}" data-suggest-header="{f:translate(key: 'search.suggestHeader', extensionName: 'mp_core')}">
-                        </f:then>
-                        <f:else>
-                            <input class="form-control" id="header-search-input" maxlength="300" name="tx_indexedsearch_pi2[search][sword]" type="search" value="" autocomplete="off">
-                        </f:else>
-                    </f:if>
-                    <button class="btn btn-primary" title="{f:translate(key: 'search.submit', extensionName: 'mp_core')}" type="submit">
-                        <span>{f:translate(key: 'search.submit', extensionName: 'mp_core')}</span>
-                    </button>
-                </div>
-                <f:if condition="{site.settings.search.autosuggest}">
-                    <ul id="header-search-suggest-list" class="tx-indexedsearch-suggest-list" role="listbox" aria-label="{f:translate(key: 'search.suggestions', extensionName: 'mp_core')}" hidden="hidden"></ul>
-                </f:if>
+<f:if condition="{searchInline}">
+    <f:then>
+        <f:render section="searchForm" arguments="{_all}"/>
+    </f:then>
+    <f:else>
+        <button aria-controls="search{searchIdSuffix}" aria-expanded="false" class="first-nav first-nav-btn btn-search-nav" data-bs-auto-close="outside" data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent" data-bs-toggle="dropdown" id="solr-button{searchIdSuffix}" title="{f:translate(key: 'search.button', extensionName: 'mp_core')}" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="nav-icon" aria-hidden="true">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
+            </svg>
+            <span>{f:translate(key: 'search.button', extensionName: 'mp_core')}</span>
+        </button>
+        <div class="dropdown-menu main-menu-desktop" id="search{searchIdSuffix}" data-bs-popper="static">
+            <div class="container">
+                <f:render section="searchForm" arguments="{_all}"/>
             </div>
-        </form>
-    </div>
-</div>
+        </div>
+    </f:else>
+</f:if>
+
+<f:section name="searchForm">
+    <form accept-charset="utf-8" action="{searchActionUri}" id="header-search-form{searchIdSuffix}" method="post" role="search">
+        <div class="tx-indexedsearch-suggest">
+            <div class="input-group">
+                <label class="visually-hidden" for="header-search-input{searchIdSuffix}">{f:translate(key: 'search.inputLabel', extensionName: 'mp_core')}</label>
+                <f:if condition="{site.settings.search.autosuggest}">
+                    <f:then>
+                        <input class="form-control" id="header-search-input{searchIdSuffix}" maxlength="300" name="tx_indexedsearch_pi2[search][sword]" type="search" value="" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="header-search-suggest-list{searchIdSuffix}" data-autosuggest-url="{searchPageUri}" data-suggest-header="{f:translate(key: 'search.suggestHeader', extensionName: 'mp_core')}">
+                    </f:then>
+                    <f:else>
+                        <input class="form-control" id="header-search-input{searchIdSuffix}" maxlength="300" name="tx_indexedsearch_pi2[search][sword]" type="search" value="" autocomplete="off">
+                    </f:else>
+                </f:if>
+                <button class="btn btn-primary" title="{f:translate(key: 'search.submit', extensionName: 'mp_core')}" type="submit">
+                    <span>{f:translate(key: 'search.submit', extensionName: 'mp_core')}</span>
+                </button>
+            </div>
+            <f:if condition="{site.settings.search.autosuggest}">
+                <ul id="header-search-suggest-list{searchIdSuffix}" class="tx-indexedsearch-suggest-list" role="listbox" aria-label="{f:translate(key: 'search.suggestions', extensionName: 'mp_core')}" hidden="hidden"></ul>
+            </f:if>
+        </div>
+    </form>
+</f:section>
 </html>
