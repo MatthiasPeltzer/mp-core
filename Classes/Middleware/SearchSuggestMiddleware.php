@@ -63,7 +63,7 @@ final class SearchSuggestMiddleware implements MiddlewareInterface
             ];
         }
         foreach ($result['pages'] as $page) {
-            $url = $this->buildPageUrl($site, $page['pageId'], $languageId);
+            $url = $this->buildPageUrl($site, $page);
             if ($url === null) {
                 continue;
             }
@@ -82,14 +82,38 @@ final class SearchSuggestMiddleware implements MiddlewareInterface
         return $response->withHeader('Cache-Control', 'no-cache, private');
     }
 
-    private function buildPageUrl(Site $site, int $pageId, int $languageId): ?string
+    /**
+     * @param array{
+     *     title: string,
+     *     pageId: int,
+     *     pageType: int,
+     *     mountPoint: string,
+     *     staticPageArguments: array<string, mixed>,
+     *     languageId: int
+     * } $page
+     */
+    private function buildPageUrl(Site $site, array $page): ?string
     {
-        if ($pageId <= 0) {
+        if ($page['pageId'] <= 0) {
             return null;
         }
 
+        $parameters = ['_language' => $page['languageId']];
+
+        if ($page['mountPoint'] !== '') {
+            $parameters['MP'] = $page['mountPoint'];
+        }
+
+        if ($page['pageType'] > 0) {
+            $parameters['type'] = (string)$page['pageType'];
+        }
+
+        if ($page['staticPageArguments'] !== []) {
+            $parameters = array_replace_recursive($parameters, $page['staticPageArguments']);
+        }
+
         try {
-            return (string)$site->getRouter()->generateUri($pageId, ['_language' => $languageId]);
+            return (string)$site->getRouter()->generateUri($page['pageId'], $parameters);
         } catch (\Throwable) {
             return null;
         }

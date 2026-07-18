@@ -40,7 +40,17 @@ final class SearchSuggestService
     ) {}
 
     /**
-     * @return array{words: list<string>, pages: list<array{title: string, pageId: int}>}
+     * @return array{
+     *     words: list<string>,
+     *     pages: list<array{
+     *         title: string,
+     *         pageId: int,
+     *         pageType: int,
+     *         mountPoint: string,
+     *         staticPageArguments: array<string, mixed>,
+     *         languageId: int
+     *     }>
+     * }
      */
     public function suggest(string $term, int $rootPageId, int $languageId): array
     {
@@ -93,7 +103,14 @@ final class SearchSuggestService
     /**
      * Indexed pages whose title matches the term, access-filtered for the current user.
      *
-     * @return list<array{title: string, pageId: int}>
+     * @return list<array{
+     *     title: string,
+     *     pageId: int,
+     *     pageType: int,
+     *     mountPoint: string,
+     *     staticPageArguments: array<string, mixed>,
+     *     languageId: int
+     * }>
      */
     private function findPages(string $term, int $rootPageId, int $languageId): array
     {
@@ -110,7 +127,14 @@ final class SearchSuggestService
         $groupListParameter = $queryBuilder->createNamedParameter($userGroupList);
 
         $rows = $queryBuilder
-            ->select('IP.item_title', 'IP.data_page_id')
+            ->select(
+                'IP.item_title',
+                'IP.data_page_id',
+                'IP.data_page_type',
+                'IP.data_page_mp',
+                'IP.static_page_arguments',
+                'IP.sys_language_uid',
+            )
             ->from('index_phash', 'IP')
             ->innerJoin('IP', 'index_section', 'ISEC', $queryBuilder->expr()->eq('ISEC.phash', $queryBuilder->quoteIdentifier('IP.phash')))
             ->leftJoin(
@@ -136,7 +160,15 @@ final class SearchSuggestService
                     $queryBuilder->expr()->isNotNull('IGL.phash'),
                 )
             )
-            ->groupBy('IP.item_title', 'IP.data_page_id')
+            ->groupBy(
+                'IP.phash',
+                'IP.item_title',
+                'IP.data_page_id',
+                'IP.data_page_type',
+                'IP.data_page_mp',
+                'IP.static_page_arguments',
+                'IP.sys_language_uid',
+            )
             ->orderBy('IP.item_title', 'ASC')
             ->setMaxResults(self::MAX_PAGES)
             ->executeQuery()
@@ -146,8 +178,30 @@ final class SearchSuggestService
             static fn (array $row): array => [
                 'title' => (string)$row['item_title'],
                 'pageId' => (int)$row['data_page_id'],
+                'pageType' => (int)$row['data_page_type'],
+                'mountPoint' => (string)($row['data_page_mp'] ?? ''),
+                'staticPageArguments' => self::decodeStaticPageArguments($row['static_page_arguments'] ?? null),
+                'languageId' => (int)$row['sys_language_uid'],
             ],
             $rows
         ));
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private static function decodeStaticPageArguments(mixed $raw): array
+    {
+        if (!is_string($raw) || trim($raw) === '') {
+            return [];
+        }
+
+        try {
+            $decoded = json_decode($raw, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException) {
+            return [];
+        }
+
+        return is_array($decoded) ? $decoded : [];
     }
 }
