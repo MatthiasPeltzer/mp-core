@@ -43,6 +43,38 @@ function safeSameOriginHref(raw) {
   }
 }
 
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
+// Bootstrap Icons path data (search, file-earmark-text, chevron-right).
+const ICON_PATHS = {
+  search: 'M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0',
+  page: 'M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5zM4.5 5.5A.5.5 0 0 1 5 5h4a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5m0 2A.5.5 0 0 1 5 7h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5m0 2A.5.5 0 0 1 5 9h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5',
+  chevron: 'M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'
+};
+
+/**
+ * Builds a decorative inline SVG icon via the DOM (CSP-safe, no innerHTML).
+ * `fill="currentColor"` lets it inherit the option's text colour for the
+ * hover / active (inverted) states.
+ * @param {keyof typeof ICON_PATHS} name
+ * @param {string} extraClass
+ * @returns {SVGSVGElement}
+ */
+function createIcon(name, extraClass) {
+  const svg = document.createElementNS(SVG_NS, 'svg');
+  svg.setAttribute('viewBox', '0 0 16 16');
+  svg.setAttribute('width', '16');
+  svg.setAttribute('height', '16');
+  svg.setAttribute('fill', 'currentColor');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.classList.add('tx-indexedsearch-suggest-glyph', extraClass);
+  const path = document.createElementNS(SVG_NS, 'path');
+  path.setAttribute('d', ICON_PATHS[name]);
+  svg.append(path);
+  return svg;
+}
+
 class Autosuggest {
   /**
    * @param {HTMLInputElement} input
@@ -176,6 +208,10 @@ class Autosuggest {
         // becomes an aria-activedescendant target.
         const heading = document.createElement('li');
         heading.className = 'tx-indexedsearch-suggest-heading';
+        // Only show the separator line when word suggestions precede this group.
+        if (this.options.length > 0) {
+          heading.classList.add('tx-indexedsearch-suggest-heading-divided');
+        }
         heading.setAttribute('role', 'presentation');
         heading.setAttribute('aria-hidden', 'true');
         heading.textContent = this.pagesHeading;
@@ -194,7 +230,11 @@ class Autosuggest {
         const title = document.createElement('span');
         title.className = 'tx-indexedsearch-suggest-title';
         title.textContent = label;
-        optionEl.append(title);
+        optionEl.append(
+          createIcon('page', 'tx-indexedsearch-suggest-icon-page'),
+          title,
+          createIcon('chevron', 'tx-indexedsearch-suggest-chevron')
+        );
         this.listbox.append(optionEl);
         const href = suggestion.url ? safeSameOriginHref(suggestion.url) : null;
         if (href) {
@@ -203,11 +243,11 @@ class Autosuggest {
           this.options.push({ el: optionEl, query: label });
         }
       } else {
-        // The search-glyph is drawn via CSS (::before) so no markup is injected.
         optionEl.classList.add('tx-indexedsearch-suggest-option-word');
         const text = document.createElement('span');
+        text.className = 'tx-indexedsearch-suggest-text';
         text.textContent = label;
-        optionEl.append(text);
+        optionEl.append(createIcon('search', 'tx-indexedsearch-suggest-icon'), text);
         this.listbox.append(optionEl);
         this.options.push({ el: optionEl, query: suggestion.query ?? label });
       }

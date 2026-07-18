@@ -245,14 +245,14 @@
 .tx-indexedsearch-suggest-list {
   background: var(--bs-body-bg);
   border: 1px solid var(--bs-border-color);
-  border-radius: 0 0 var(--bs-border-radius) var(--bs-border-radius);
+  border-radius: var(--bs-border-radius);
   box-shadow: var(--bs-box-shadow);
   left: 0;
   list-style: none;
-  margin: 0;
+  margin: 4px 0 0;
   max-height: 60vh;
   overflow-y: auto;
-  padding: 4px 0;
+  padding: 6px;
   position: absolute;
   right: 0;
   text-align: left;
@@ -264,39 +264,74 @@
   }
 }
 
+// Shared sizing for the decorative inline SVG glyphs (search / page / chevron).
+.tx-indexedsearch-suggest-glyph {
+  flex-shrink: 0;
+}
+
 .tx-indexedsearch-suggest-heading {
   color: var(--bs-secondary-color);
-  font-weight: 600;
-  margin-top: 4px;
-  padding: 6px 16px 2px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  margin: 2px 0;
+  padding: 6px 10px 4px;
+  text-transform: uppercase;
 
   @include font-size($fs-xs);
 }
 
+// Separator line above the "top results" group; only added when word
+// suggestions appear above it, so the group reads as a distinct block.
+.tx-indexedsearch-suggest-heading-divided {
+  border-top: 1px solid var(--bs-border-color);
+  margin-top: 6px;
+  padding-top: 10px;
+}
+
 .tx-indexedsearch-suggest-option {
   align-items: center;
+  border-radius: var(--bs-border-radius-sm);
   cursor: pointer;
   display: flex;
-  gap: 8px;
+  gap: 10px;
 
   // WCAG 2.5.8 Target Size (Minimum): keep pointer targets at least 24px; 44px
   // is the comfortable target we aim for.
   min-height: 44px;
-  padding: 8px 16px;
+  padding: 8px 10px;
 
   @include font-size($fs-md);
 
+  // All glyphs inherit the row's text colour via fill="currentColor", so they
+  // adapt to light and dark mode automatically. Visual hierarchy comes from
+  // opacity only (never a fixed colour that could clash with the surface).
+  .tx-indexedsearch-suggest-icon {
+    opacity: .6;
+  }
+
+  .tx-indexedsearch-suggest-chevron {
+    opacity: .4;
+  }
+
   // Highlight for both pointer hover and keyboard-driven active option
   // (aria-activedescendant). Uses the theme primary colour which the rest of
-  // the search UI already pairs with white text for sufficient contrast.
+  // the search UI already pairs with white text for sufficient contrast; the
+  // glyphs follow via currentColor.
   &.is-active,
   &:hover {
     background: var(--bs-primary);
     color: var(--bs-white);
+
+    .tx-indexedsearch-suggest-glyph {
+      opacity: 1;
+    }
   }
 }
 
+.tx-indexedsearch-suggest-text,
 .tx-indexedsearch-suggest-title {
+  flex: 1 1 auto;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
