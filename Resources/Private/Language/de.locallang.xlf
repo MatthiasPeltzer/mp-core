@@ -227,6 +227,10 @@
         <source>Top results</source>
         <target>Top Treffer</target>
       </trans-unit>
+      <trans-unit id="search.suggestions" resname="search.suggestions" approved="yes">
+        <source>Search suggestions</source>
+        <target>Suchvorschläge</target>
+      </trans-unit>
       <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator" approved="yes">
         <source>,</source>
         <target>.</target>

@@ -171,6 +171,9 @@
       <trans-unit id="search.suggestHeader" resname="search.suggestHeader">
         <source>Top results</source>
       </trans-unit>
+      <trans-unit id="search.suggestions" resname="search.suggestions">
+        <source>Search suggestions</source>
+      </trans-unit>
       <trans-unit id="search.thousandsSeparator" resname="search.thousandsSeparator">
         <source>,</source>
       </trans-unit>

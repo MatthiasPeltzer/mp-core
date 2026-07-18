@@ -1,4 +1,7 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:variable name="searchSuggestUri">{f:uri.page(pageUid: settings.targetPid)}</f:variable>
+<f:variable name="searchSuggestHeader">{f:translate(key: 'search.suggestHeader', extensionName: 'mp_core')}</f:variable>
+<f:variable name="searchSuggestLabel">{f:translate(key: 'search.suggestions', extensionName: 'mp_core')}</f:variable>
 <div class="tx-indexedsearch-searchbox">
   <f:form action="search" method="post" id="tx_indexedsearch" pageUid="{settings.targetPid}">
     <div class="tx-indexedsearch-hidden-fields">
@@ -19,9 +22,15 @@
       <div class="mb-3">
         <label class="form-label fw-bold" for="tx-indexedsearch-searchbox-sword">
           <f:translate key="form.searchFor" />:</label>
-        <div class="input-group">
-          <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control tx-indexedsearch-searchbox-sword" />
-          <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-primary tx-indexedsearch-searchbox-button" />
+        <div class="tx-indexedsearch-suggest">
+          <div class="input-group">
+            <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control tx-indexedsearch-searchbox-sword"
+              additionalAttributes="{role: 'combobox', autocomplete: 'off'}"
+              aria="{expanded: 'false', controls: 'tx-indexedsearch-suggest-list', autocomplete: 'list'}"
+              data="{autosuggest-url: searchSuggestUri, suggest-header: searchSuggestHeader}" />
+            <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-primary tx-indexedsearch-searchbox-button" />
+          </div>
+          <ul id="tx-indexedsearch-suggest-list" class="tx-indexedsearch-suggest-list" role="listbox" aria-label="{searchSuggestLabel}" hidden="hidden"></ul>
         </div>
       </div>
 

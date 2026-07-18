@@ -34,7 +34,10 @@ const messages = {
         press: 'Pressebereich. ',
         public: 'Öffentlicher Bereich. ',
         video: 'Video. ',
-        newWindow: 'Neues Fenster'
+        newWindow: 'Neues Fenster',
+        suggestNone: 'Keine Vorschläge',
+        suggestOne: 'Ein Vorschlag verfügbar',
+        suggestMany: '{{count}} Vorschläge verfügbar'
     },
     en: {
         prevSlide: 'To the previous entry',
@@ -69,7 +72,10 @@ const messages = {
         press: 'Press area. ',
         public: 'Public area. ',
         video: 'Video. ',
-        newWindow: 'New window'
+        newWindow: 'New window',
+        suggestNone: 'No suggestions',
+        suggestOne: 'One suggestion available',
+        suggestMany: '{{count}} suggestions available'
     }
 };
 

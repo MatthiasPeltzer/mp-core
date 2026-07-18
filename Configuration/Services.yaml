@@ -29,6 +29,10 @@ services:
     arguments:
       $cache: '@cache.mp_core_geotext'
 
+  # Resolved from the DI container by the PSR-15 middleware dispatcher.
+  Mpc\MpCore\Middleware\SearchSuggestMiddleware:
+    public: true
+
   # TYPO3 core does not register this class; required for frontend query restrictions.
   TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer:
     shared: false

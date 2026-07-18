@@ -15,6 +15,7 @@ import './code/modalContent.js';
 import './code/jarallax.js';
 import './code/openAccordionAndTabs.js';
 import './code/i18nLinkHelper.js';
+import './code/searchAutosuggest.js';
 import './code/main.js';
 
 // Stylesheets
