@@ -1,0 +1,44 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:is="http://typo3.org/ns/TYPO3/CMS/IndexedSearch/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+<li class="tx-indexedsearch-res">
+    <h2 class="tx-indexedsearch-res-header">
+        <f:if condition="{settings.displayResultNumber}"><span class="tx-indexedsearch-result-number">{row.result_number}</span></f:if>
+        <span class="tx-indexedsearch-title">{row.title -> f:format.raw()}</span>
+        <span class="tx-indexedsearch-percent">{is:searchResult.rating(firstRow: firstRow, sortOrder: searchParams.sortOrder, row: row)}</span>
+    </h2>
+    <f:if condition="{row.headerOnly} == 0">
+      <f:variable name="dateFormat" value="{f:translate(key: 'search.dateFormat', extensionName: 'MpCore')}" />
+      <f:variable name="decSep" value="{f:translate(key: 'search.decimalSeparator', extensionName: 'MpCore')}" />
+      <f:variable name="thousSep" value="{f:translate(key: 'search.thousandsSeparator', extensionName: 'MpCore')}" />
+      <p class="tx-indexedsearch-description">{row.description -> f:format.raw()}</p>
+      <dl class="tx-indexedsearch-info">
+          <dt class="tx-indexedsearch-text-item-size"><f:translate key="result.size" />&nbsp;</dt>
+          <dd class="tx-indexedsearch-text-item-size"><f:format.bytes decimals="0" decimalSeparator="{decSep}" thousandsSeparator="{thousSep}">{row.item_size}</f:format.bytes></dd>
+          <dt class="tx-indexedsearch-text-item-crdate"><f:translate key="result.created" />&nbsp;</dt>
+          <dd class="tx-indexedsearch-text-item-crdate">
+            <time itemprop="datePublished" datetime="{row.created -> f:format.date(format: 'Y-m-d')}">
+              <f:format.date format="{dateFormat}">@{row.created}</f:format.date>
+            </time>
+          </dd>
+          <dt class="tx-indexedsearch-text-item-mtime"><f:translate key="result.modified" />&nbsp;</dt>
+          <dd class="tx-indexedsearch-text-item-mtime">
+            <time itemprop="dateModified" datetime="{row.modified -> f:format.date(format: 'Y-m-d')}">
+              <f:format.date format="{dateFormat}">@{row.modified}</f:format.date>
+            </time>
+          </dd>
+      </dl>
+    </f:if>
+    <f:if condition="{row.headerOnly} == 1">
+        <p class="tx-indexedsearch-description">{row.description -> f:format.raw()}</p>
+    </f:if>
+    <f:if condition="{row.subresults}">
+        <p class="tx-indexedsearch-list">
+            <f:for each="{row.subresults.items}" as="subrow">
+                <f:render partial="Searchresult" arguments="{row: subrow}" />
+            </f:for>
+        </p>
+    </f:if>
+</li>
+</html>
