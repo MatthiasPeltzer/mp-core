@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.21] - 2026-08-27
+
+### Fixed
+- ESLint Node override now matches the `Build/scripts/` directory casing on Linux CI, removing spurious `no-console` and `no-undef` warnings for build tooling.
+
+### Changed
+- Bump frontend build dependencies (swiper 14.2.0, eslint 10.9.1, postcss-preset-env 11.5.0, sass 1.103.1, vite 8.2.2).
+
 ## [1.2.20] - 2026-08-01
 
 ### Changed
@@ -819,6 +827,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.21]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.20...v1.2.21
 [1.2.20]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.19...v1.2.20
 [1.2.19]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.18...v1.2.19
 [1.2.18]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.17...v1.2.18
