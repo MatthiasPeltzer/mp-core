@@ -103,6 +103,8 @@ Shown when layout is `gallery-slider` and/or `gallery-thumbs` (see TCA `displayC
 | `gallery_thumbs_per_view` | select | 4 | Thumbs layout: 3–6 |
 | `gallery_thumbs_space_between` | number | 10 | Thumbs layout |
 
+When **Autoplay** is enabled on slider or thumbs layouts, a pause/resume control appears next to the next-arrow button.
+
 ### Core content fields
 
 | Field | Notes |
@@ -281,6 +283,8 @@ each other. Listview/detail VidPly elements are intentionally excluded.
 | `slider_free_mode_enabled` | check | 0 |
 | `slider_zoom_enabled` | check | 0 |
 | `slider_breakpoints` | text | JSON breakpoints (advanced) |
+
+When **Autoplay** is enabled, a pause/resume control appears next to the next-arrow button so visitors can stop auto-advance without disabling autoplay in the backend.
 
 ### Grid (`ce_grid`)
 

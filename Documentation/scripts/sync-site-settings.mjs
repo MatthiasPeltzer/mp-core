@@ -153,6 +153,7 @@ const CORE_CATEGORY_LABELS = {
   MPCorePerformance: 'Performance',
   MPCoreDesign: 'Design',
   MPCoreNavigation: 'Navigation',
+  MPCoreSearch: 'Search',
   MPCoreMeta: 'Meta',
   MPCoreTemplates: 'Templates & paths',
 };
@@ -197,6 +198,7 @@ function renderCoreSet(setId, title, intro) {
     'MPCorePerformance',
     'MPCoreDesign',
     'MPCoreNavigation',
+    'MPCoreSearch',
     'MPCoreMeta',
     'MPCoreTemplates',
   ];

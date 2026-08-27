@@ -1,7 +1,7 @@
 {
   "name": "mpc/mp-core",
   "title": "MP-Core - Accessible TYPO3 Sitepackage",
-  "description": "Core TYPO3 CMS extension providing base templates, styling, container, content blocks and backend configurations",
+  "description": "Core TYPO3 CMS sitepackage extension providing base templates, styling, container, content blocks and backend configurations",
   "license": [
     "GPL-2.0-or-later"
   ],

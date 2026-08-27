@@ -43,25 +43,8 @@ function vendorChunkFor(id) {
 
 export default defineConfig(async ({mode}) => {
   const isDev = mode === 'development';
-  const analyze = process.env.ANALYZE === '1';
 
   const plugins = [vue()];
-
-  if (analyze) {
-    // Loaded dynamically so the package is only required when explicitly
-    // running `npm run build:analyze`. Keeps the default install path light.
-    const {visualizer} = await import('rollup-plugin-visualizer');
-    plugins.push(
-      visualizer({
-        filename: resolve(__dirname, 'reports/bundle-stats.html'),
-        template: 'treemap',
-        gzipSize: true,
-        brotliSize: true,
-        sourcemap: false,
-        open: false
-      })
-    );
-  }
 
   return {
     root: resolve(__dirname),

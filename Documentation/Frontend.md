@@ -227,6 +227,8 @@ Defined in `Build/vite.config.js`:
 
 **Layout:** `moveHeaderDate.js`, `moveMeta.js`, `theme.js`
 
+**Search:** `searchAutosuggest.js` — type-ahead for `indexed_search` (header and `/suche` form)
+
 ### Shared Utilities (`code/Utils/domUtils.js`)
 
 - `debounce(func, wait)` -- Performance-safe resize/scroll handling
@@ -317,7 +319,35 @@ Template path precedence: higher numbers override lower (`0` = core, `10` = exte
 | fluid_styled_content | `Resources/Extensions/fluid_styled_content/Private/` | Bootstrap 5 styled |
 | form | `Resources/Extensions/form/` | Bootstrap forms + YAML config |
 | news | `Resources/Extensions/news/` | List, detail, category views |
-| indexed_search | `Resources/Extensions/indexed_search/` | Bootstrap search results |
+| indexed_search | `Resources/Extensions/indexed_search/` | Bootstrap search results + autosuggest combobox |
+
+---
+
+## Search (indexed_search)
+
+mp-core replaces the default indexed_search templates and adds an accessible **autosuggest** combobox for the header search field and the dedicated search page (`/suche`).
+
+### Site settings
+
+Configure in **Site Management → Sites → Settings → Search** (or `config/sites/<id>/settings.yaml`):
+
+| Setting | Default | Effect |
+|---------|---------|--------|
+| `search.headerSearch` | `true` | Show the header search field (all navigation variants) |
+| `search.autosuggest` | `true` | Type-ahead suggestions for header and `/suche` forms |
+
+When autosuggest is off, both forms fall back to a plain search field.
+
+### Behaviour
+
+- Suggestions are fetched as JSON from `SearchSuggestMiddleware` / `SearchSuggestService` — indexed base words plus matching page titles, scoped to the current site, language, and frontend-user access (no Solr required).
+- The combobox follows the WAI-ARIA listbox pattern with keyboard navigation and polite status announcements.
+- **Top results** link to the same detail URLs as full search results (including mediathek entries resolved via indexer route arguments).
+- Header search submits via POST to the indexed_search `search` action route (cHash-safe). On desktop navType 1/2/3 the field appears in the meta-bar flyout or inline in the mobile hamburger menu depending on breakpoint.
+
+Frontend module: `Build/Assets/Scripts/code/searchAutosuggest.js` (bundled in `screen.js`).
+
+---
 
 ---
 

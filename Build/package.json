@@ -5,10 +5,10 @@
 	"type": "module",
 	"scripts": {
 		"build": "npm run eslint && npm run stylelint && vite build --mode production && npm run check-size",
-		"build:analyze": "node Scripts/build-analyze.js",
+		"build:analyze": "node scripts/build-analyze.js",
 		"dev": "npm run eslint && npm run stylelint && vite build --mode development",
 		"watch": "vite build --mode development --watch",
-		"check-size": "node Scripts/check-bundle-size.js",
+		"check-size": "node scripts/check-bundle-size.js",
 		"lint": "npm run eslint && npm run stylelint",
 		"test:unit": "vitest run",
 		"test:unit:watch": "vitest",
@@ -24,31 +24,30 @@
 	"dependencies": {
 		"@popperjs/core": "^2.11.8",
 		"bootstrap": "5.3.8",
-		"jarallax": "^3.0.1",
-		"swiper": "^14.1.0",
+		"jarallax": "^3.1.0",
+		"swiper": "^14.2.0",
 		"vue": "^3.5.41"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@vitejs/plugin-vue": "^6.0.8",
 		"autoprefixer": "^10.5.4",
-		"eslint": "^10.8.0",
+		"eslint": "^10.9.1",
 		"eslint-plugin-vue": "^10.10.0",
-		"globals": "^17.9.0",
+		"globals": "^17.11.0",
 		"jsdom": "^30.0.1",
 		"postcss": "^8.5.26",
-		"postcss-preset-env": "^11.3.2",
+		"postcss-preset-env": "^11.5.0",
 		"postcss-pxtorem": "^6.1.0",
-		"rollup-plugin-visualizer": "^7.0.1",
-		"sass": "1.102.0",
+		"sass": "1.103.1",
 		"stylelint": "^17.14.1",
 		"stylelint-config-recommended": "^18.0.0",
 		"stylelint-config-recommended-scss": "^17.0.1",
 		"stylelint-config-standard": "^40.0.0",
 		"stylelint-order": "^8.1.1",
 		"stylelint-scss": "^7.2.0",
-		"vite": "^8.2.1",
-		"vitest": "^4.1.10"
+		"vite": "^8.2.2",
+		"vitest": "^4.1.11"
 	},
 	"allowScripts": {
 		"@parcel/watcher@2.6.0": true
