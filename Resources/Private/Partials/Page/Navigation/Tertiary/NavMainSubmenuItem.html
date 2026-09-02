@@ -3,6 +3,9 @@
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
 <f:variable name="submenuLinkClass" value="sub{f:if(condition: '{variant} == \'desktop\'', then: ' collapsed')} dropdown-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}" />
+<f:variable name="menuIdPrefix" value="{f:if(condition: '{variant} == \'desktop\'', then: 'menu-desktop', else: 'menu')}" />
+<f:variable name="menuId" value="{menuIdPrefix}-{mainChild.data.uid}" />
+<f:variable name="childParentMenuId" value="{menuIdPrefix}-{mainChild.data.uid}" />
 
 <f:if condition="{mainChild.children}">
     <f:then>
@@ -14,11 +17,11 @@
                 <f:render partial="Navigation/NavMenuLink" arguments="{item: mainChild, current: mainChild.current, linkClass: submenuLinkClass}" />
             </f:if>
             <button
-                aria-controls="{f:if(condition: '{variant} == \'desktop\'', then: 'menu-desktop', else: 'menu')}-{mainChild.data.uid}"
+                aria-controls="{menuId}"
                 aria-expanded="false"
                 aria-label="{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}"
                 class="dropdown-item-button{f:if(condition: '{variant} == \'desktop\'', then: ' sub collapsed')} dropdown-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}"
-                data-bs-target="#{f:if(condition: '{variant} == \'desktop\'', then: 'menu-desktop', else: 'menu')}-{mainChild.data.uid}"
+                data-bs-target="#{menuId}"
                 data-bs-toggle="collapse"
                 type="button">
                 <f:if condition="{variant} == 'desktop'">
@@ -36,10 +39,10 @@
             </button>
             <ul
                 class="list-unstyled collapse{f:if(condition: '{variant} == \'desktop\'', then: ' subnav-children')}"
-                id="{f:if(condition: '{variant} == \'desktop\'', then: 'menu-desktop', else: 'menu')}-{mainChild.data.uid}"
-                {f:if(condition: '{variant} == \'desktop\'', then: ' data-bs-parent="#nav-desktop"')}>
-                <f:for as="mainChild" each="{mainChild.children}">
-                    <f:render partial="Navigation/Tertiary/NavMainSubmenuItem" arguments="{mainChild: mainChild, variant: variant}" />
+                id="{menuId}"
+                {f:if(condition: '{variant} == \'desktop\' && parentMenuId', then: ' data-bs-parent="#{parentMenuId}"')}>
+                <f:for as="nestedChild" each="{mainChild.children}">
+                    <f:render partial="Navigation/Tertiary/NavMainSubmenuItem" arguments="{mainChild: nestedChild, variant: variant, parentMenuId: childParentMenuId}" />
                 </f:for>
             </ul>
         </li>

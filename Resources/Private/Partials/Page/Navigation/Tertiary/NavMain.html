@@ -16,7 +16,7 @@
                   <div class="dropdown-menu main-menu-desktop" id="menu-desktop-{mainItem.data.uid}">
                       <ul class="container list-unstyled mainnav-children">
                           <f:for as="mainChild" each="{mainItem.children}">
-                              <f:render partial="Navigation/Tertiary/NavMainSubmenuItem" arguments="{mainChild: mainChild, variant: 'desktop'}" />
+                              <f:render partial="Navigation/Tertiary/NavMainSubmenuItem" arguments="{mainChild: mainChild, variant: 'desktop', parentMenuId: 'menu-desktop-{mainItem.data.uid}'}" />
                           </f:for>
                       </ul>
                   </div>
