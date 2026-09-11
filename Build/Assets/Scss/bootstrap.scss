@@ -1,17 +1,8 @@
 // @import "~bootstrap/scss/mixins/banner";
 // scss-docs-start import-stack
 // Configuration
-// Mixins
 @import "Mixins/mixins";
-// Configuration
-@import "Base/font-sizes";
-@import "~bootstrap/scss/functions";
-@import "Base/Bootstrap/custom-variables";
-@import "~bootstrap/scss/variables";
-@import "Base/Bootstrap/custom-variables-dark";
-@import "~bootstrap/scss/variables-dark";
-@import "~bootstrap/scss/maps";
-@import "~bootstrap/scss/mixins";
+@import "Base/Bootstrap/bootstrap-config";
 @import "~bootstrap/scss/utilities";
 // Layout & components
 @import "~bootstrap/scss/root";

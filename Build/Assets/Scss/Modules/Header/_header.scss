@@ -101,8 +101,10 @@
 }
 
 .btn-search-nav {
+  appearance: none;
   background: none;
   border: none;
+  color: var(--bs-body-color);
   margin-right: 8px;
   padding: 7px 16px;
 }

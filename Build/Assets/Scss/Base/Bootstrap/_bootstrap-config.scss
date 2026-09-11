@@ -1,0 +1,12 @@
+// Shared Bootstrap SCSS configuration for mp-core bundles.
+// Import this wherever custom SCSS needs Bootstrap variables, maps, or mixins.
+// Only bootstrap.scss should additionally import utilities + component partials.
+
+@import "../font-sizes";
+@import "~bootstrap/scss/functions";
+@import "custom-variables";
+@import "~bootstrap/scss/variables";
+@import "custom-variables-dark";
+@import "~bootstrap/scss/variables-dark";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
