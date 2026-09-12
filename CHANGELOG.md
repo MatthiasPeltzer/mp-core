@@ -5,12 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.23] - 2026-09-12
+
+### Fixed
+- Gallery modal prev/next controls show a visible focus ring in dark mode; Bootstrap’s carousel `filter` no longer inverts the white outline to black.
+- Carousel controls are excluded from the global link/button focus outline; modal footer prev/next use theme-aware outline colours.
+
 ## [1.2.22] - 2026-09-12
 
 ### Changed
 - Replace custom `_font-sizes.scss` tokens with a normalized rem-based typography scale (`$font-size-scale` for SCSS, slim `$font-sizes` for Bootstrap `fs-*` utilities only); use `fs-sm` / `fs-base` in Fluid for kicker and gallery captions.
 
 ### Fixed
+- Gallery modal carousel counter (`.carousel-iterator`) is centered again; the `position-absolute` mixin no longer collapses partial `inset` values to all sides.
+- Gallery and carousel image links show a visible inset focus ring; gallery Swipers add inner padding so the ring is not clipped by `overflow: hidden`.
+
+### Accessibility
+- Gallery `a.popup` links and carousel `.stretched-link` overlays use an inset `box-shadow` focus indicator on keyboard focus.
 - Header search toggle on iPad Safari no longer renders with the system blue button styling; `.btn-search-nav` now sets an explicit text color and disables native WebKit appearance.
 
 ### Changed
@@ -838,6 +849,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.23]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.22...v1.2.23
 [1.2.22]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.21...v1.2.22
 [1.2.21]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.20...v1.2.21
 [1.2.20]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.19...v1.2.20
