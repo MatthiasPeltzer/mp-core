@@ -31,8 +31,14 @@
                             </f:for>
                         </ul>
                     </f:if>
-                    <f:if condition="{data.subtitle}">
-                        <p class="lead">{data.subtitle}</p>
+                    <f:if condition="{data.teaser_description} || {data.description} || {data.subtitle}">
+                        <p class="lead">
+                            <f:if condition="{data.teaser_description}">
+                                <f:then>{data.teaser_description}</f:then>
+                                <f:else if="{data.description}">{data.description}</f:else>
+                                <f:else>{data.subtitle}</f:else>
+                            </f:if>
+                        </p>
                     </f:if>
                 </div>
             </div>

@@ -36,7 +36,7 @@
                                     </f:if>
                                 </header>
                                 <p class="{data.header_position}">
-                                    <f:format.stripTags><f:format.raw><f:format.crop append="..." maxCharacters="200" respectHtml="true" respectWordBoundaries="true">{f:if(condition:'{page.data.teaser_description}', then:'{page.data.teaser_description}', else: '{page.data.description}')}</f:format.crop></f:format.raw></f:format.stripTags>
+                                    <f:format.stripTags><f:format.raw>{f:if(condition:'{page.data.teaser_description}', then:'{page.data.teaser_description}', else: '{page.data.description}')}</f:format.raw></f:format.stripTags>
                                 </p>
                                 <f:if condition="{data.tx_link_switch}">
                                     <p class="{f:if(condition:'{data.header_position}', then:' {data.header_position}')}">
