@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.24] - 2026-09-12
+
+### Fixed
+- Teaser cards show a single 1px focus/hover outline with 2px offset; headline and action links inside `.teaser-link` no longer get a separate global link outline.
+
+### Accessibility
+- Teaser focus rings apply when nested links receive keyboard focus (`:focus-visible`); stage teasers use the same outward offset.
+
 ## [1.2.23] - 2026-09-12
 
 ### Fixed
@@ -849,6 +857,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.24]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.23...v1.2.24
 [1.2.23]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.22...v1.2.23
 [1.2.22]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.21...v1.2.22
 [1.2.21]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.20...v1.2.21
