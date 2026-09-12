@@ -144,7 +144,7 @@ $transition-bounce: $nav-transition-bounce;
         top: -88px;
         width: calc(100% - 64px);
 
-        @include font-size(32px);
+        @include font-size(map-get($font-size-scale, 4xl));
 
         button,
         a {
@@ -219,7 +219,7 @@ $transition-bounce: $nav-transition-bounce;
       li:not(.tx-indexedsearch-suggest-option, .tx-indexedsearch-suggest-heading) {
         width: 33.3333%;
 
-        @include font-size(22px);
+        @include font-size(map-get($font-size-scale, xl));
 
         button,
         a {
@@ -375,7 +375,7 @@ $transition-bounce: $nav-transition-bounce;
     position: relative;
     top: 0;
 
-    @include font-size(24px);
+    @include font-size(map-get($font-size-scale, 2xl));
 
     &[aria-expanded="true"],
     &.act,
@@ -507,7 +507,7 @@ $transition-bounce: $nav-transition-bounce;
     position: relative;
     text-transform: uppercase;
 
-    @include font-size(18px);
+    @include font-size(map-get($font-size-scale, md));
 
     @include on-interact {
       color: var(--bs-body-color);
@@ -639,7 +639,7 @@ $transition-bounce: $nav-transition-bounce;
   }
 
   .sub {
-    @include font-size($fs-md);
+    @include font-size(map-get($font-size-scale, md));
 
     margin-bottom: 0;
     outline-offset: -2px;

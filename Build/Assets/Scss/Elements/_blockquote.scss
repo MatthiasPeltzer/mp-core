@@ -56,14 +56,14 @@ blockquote {
   p {
     display: block;
 
-    @include font-size($fs-xl);
+    @include font-size(map-get($font-size-scale, 2xl));
 
     font-style: italic;
     font-weight: 400;
     z-index: 1;
 
     &.small {
-      @include font-size($fs-md);
+      @include font-size(map-get($font-size-scale, md));
 
       letter-spacing: normal;
       text-transform: uppercase;

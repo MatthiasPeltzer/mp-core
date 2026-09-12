@@ -19,14 +19,14 @@ h3,
   font-family: var(--#{$prefix}font-sans-serif);
 
   .ce-uploads & {
-    @include font-size($fs-md);
+    @include font-size(map-get($font-size-scale, md));
   }
 
   &.accordion-header {
-    @include font-size($fs-3xl);
+    @include font-size(map-get($font-size-scale, 3xl));
 
     a {
-      @include font-size($fs-3xl);
+      @include font-size(map-get($font-size-scale, 3xl));
     }
   }
 }
@@ -58,9 +58,6 @@ h6,
   border-radius: 20px;
   color: var(--bs-white);
   display: inline-block;
-
-  @include font-size($fs-xs-plus);
-
   font-weight: 700;
   letter-spacing: normal;
   line-height: 1;

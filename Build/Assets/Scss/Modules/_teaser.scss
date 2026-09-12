@@ -94,13 +94,13 @@
     }
 
     p.lead {
-      @include font-size($fs-lg);
+      @include font-size(map-get($font-size-scale, lg));
 
       margin-bottom: 16px;
     }
 
     p:not(.lead, .date, .kicker) {
-      @include font-size($fs-md);
+      @include font-size(map-get($font-size-scale, md));
 
       margin-bottom: 24px;
     }

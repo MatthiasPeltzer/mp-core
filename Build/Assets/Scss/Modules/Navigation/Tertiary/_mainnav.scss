@@ -116,7 +116,7 @@
         display: flex;
         width: 33.3333%;
 
-        @include font-size(22px);
+        @include font-size(map-get($font-size-scale, xl));
 
         a,
         button {
@@ -244,7 +244,7 @@
       }
     }
 
-    @include font-size(20px);
+    @include font-size(map-get($font-size-scale, lg));
 
     &[aria-expanded="true"],
     &.act,
@@ -323,7 +323,7 @@
     position: relative;
     text-transform: uppercase;
 
-    @include font-size($fs-md);
+    @include font-size(map-get($font-size-scale, md));
 
     @include on-interact {
       color: var(--bs-body-color);
@@ -429,7 +429,7 @@
   }
 
   .sub {
-    @include font-size($fs-md);
+    @include font-size(map-get($font-size-scale, md));
 
     margin-bottom: 0;
     outline-offset: -2px;

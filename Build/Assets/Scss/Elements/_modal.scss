@@ -2,7 +2,7 @@
 
 .modal {
   &-title {
-    @include font-size($fs-md);
+    @include font-size(map-get($font-size-scale, md));
 
     font-weight: 400;
     letter-spacing: normal !important;

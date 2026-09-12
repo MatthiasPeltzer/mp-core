@@ -627,24 +627,43 @@ $line-height-base: 1.5;
 $line-height-sm: 1.25;
 $line-height-lg: 2;
 
-$h1-font-size: $fs-h1;
-$h2-font-size: $fs-h2;
-$h3-font-size: $fs-h3;
-$h4-font-size: $fs-h4;
-$h5-font-size: $fs-h5;
-$h6-font-size: $fs-h6;
-// scss-docs-end font-variables
+// Full typography scale for SCSS (map-get($font-size-scale, …)).
+$font-size-scale: (
+  xs: 0.75rem,
+  sm: 0.875rem,
+  base: 1rem,
+  md: 1.125rem,
+  lg: 1.25rem,
+  xl: 1.375rem,
+  2xl: 1.5rem,
+  3xl: 1.75rem,
+  4xl: 2rem,
+  5xl: 2.125rem,
+  6xl: 2.625rem,
+  display: 3rem,
+);
 
+// Bootstrap fs-* utilities — only keys used in HTML (headings + fs-sm/fs-base).
 // scss-docs-start font-sizes
 $font-sizes: (
-  1: $h1-font-size,
-  2: $h2-font-size,
-  3: $h3-font-size,
-  4: $h4-font-size,
-  5: $h5-font-size,
-  6: $h6-font-size
+  1: map-get($font-size-scale, 5xl),
+  2: map-get($font-size-scale, 4xl),
+  3: map-get($font-size-scale, 3xl),
+  4: map-get($font-size-scale, 2xl),
+  5: map-get($font-size-scale, lg),
+  6: map-get($font-size-scale, lg),
+  sm: map-get($font-size-scale, sm),
+  base: map-get($font-size-scale, base),
 );
 // scss-docs-end font-sizes
+
+$h1-font-size: map-get($font-sizes, 1);
+$h2-font-size: map-get($font-sizes, 2);
+$h3-font-size: map-get($font-sizes, 3);
+$h4-font-size: map-get($font-sizes, 4);
+$h5-font-size: map-get($font-sizes, 5);
+$h6-font-size: map-get($font-sizes, 6);
+// scss-docs-end font-variables
 
 // scss-docs-start headings-variables
 $headings-margin-bottom: $spacer * .5;
@@ -1614,7 +1633,7 @@ $figure-caption-color: var(--#{$prefix}secondary-color);
 // Breadcrumbs
 
 // scss-docs-start breadcrumb-variables
-$breadcrumb-font-size: $fs-xs-plus;
+$breadcrumb-font-size: map-get($font-size-scale, sm);
 $breadcrumb-padding-y: 0.35rem;
 $breadcrumb-padding-x: 0;
 $breadcrumb-item-padding-x: 0;

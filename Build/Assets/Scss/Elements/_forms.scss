@@ -1,7 +1,7 @@
 // forms
 
 legend {
-  @include font-size($fs-sm-plus);
+  @include font-size(map-get($font-size-scale, base));
 
   font-weight: 700;
 }
@@ -36,7 +36,7 @@ textarea.form-control-lg {
 }
 
 .invalid-feedback {
-  @include font-size($fs-sm-plus);
+  @include font-size(map-get($font-size-scale, base));
 
   font-weight: 700;
 }
@@ -53,7 +53,7 @@ textarea.form-control-lg {
 }
 
 .description {
-  @include font-size($fs-sm-plus);
+  @include font-size(map-get($font-size-scale, base));
 
   font-weight: 700;
 }

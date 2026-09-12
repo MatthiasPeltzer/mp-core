@@ -262,13 +262,13 @@
         <f:if condition="{file.properties.caption}">
             <f:then>
                 <figcaption class="figure-caption">
-                    <p class="caption container mb-0">{file.properties.caption}</p>
+                    <p class="caption container mb-0 fs-base">{file.properties.caption}</p>
                 </figcaption>
             </f:then>
             <f:else>
                 <f:if condition="{file.originalFile.properties.caption}">
                     <figcaption class="figure-caption">
-                        <p class="caption container mb-0">{file.originalFile.properties.caption}</p>
+                        <p class="caption container mb-0 fs-base">{file.originalFile.properties.caption}</p>
                     </figcaption>
                 </f:if>
             </f:else>
@@ -323,11 +323,11 @@
                 <figcaption class="figure-caption">
                     <f:if condition="{file.properties.caption}">
                         <f:then>
-                            <p class="caption container mb-0">{file.properties.caption}</p>
+                            <p class="caption container mb-0 fs-base">{file.properties.caption}</p>
                         </f:then>
                         <f:else>
                             <f:if condition="{file.originalFile.properties.caption}">
-                                <p class="caption container mb-0">{file.originalFile.properties.caption}</p>
+                                <p class="caption container mb-0 fs-base">{file.originalFile.properties.caption}</p>
                             </f:if>
                         </f:else>
                     </f:if>

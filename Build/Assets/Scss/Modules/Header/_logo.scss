@@ -24,7 +24,7 @@
 
 .header {
   &-text {
-    @include font-size(42px);
+    @include font-size(map-get($font-size-scale, 6xl));
   }
 
   &-image,

@@ -12,7 +12,7 @@
   }
 
   &-link {
-    @include font-size(18px);
+    @include font-size(map-get($font-size-scale, md));
 
     font-weight: 500;
 

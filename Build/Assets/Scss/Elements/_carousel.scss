@@ -68,7 +68,7 @@ $carousel-bg-light: var(--bs-gray-100);
 }
 
 .carousel-imagetitle {
-  @include font-size(14px);
+  @include font-size(map-get($font-size-scale, sm));
   @include position-absolute(null, null, 0, null);
 
   background-color: $carousel-bg-dark;

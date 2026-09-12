@@ -40,7 +40,7 @@
     margin-bottom: 30px;
     padding: 0;
 
-    @include font-size(22px);
+    @include font-size(map-get($font-size-scale, xl));
 
     @include on-interact {
       color: var(--bs-body-color);
@@ -53,13 +53,13 @@
 
     // Nested level indentation
     ul li .sub {
-      @include font-size($fs-sm);
+      @include font-size(map-get($font-size-scale, base));
 
       padding-left: 8px;
     }
 
     ul ul li .sub {
-      @include font-size($fs-xs-plus);
+      @include font-size(map-get($font-size-scale, sm));
 
       padding-left: 20px;
     }
@@ -74,7 +74,7 @@
   }
 
   .sub {
-    @include font-size($fs-sm-plus);
+    @include font-size(map-get($font-size-scale, base));
 
     margin: 5px 40px 5px 0;
     padding: 5px 0;

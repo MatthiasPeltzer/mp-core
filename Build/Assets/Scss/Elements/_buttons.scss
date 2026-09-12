@@ -47,7 +47,7 @@
       color: var(--bs-white);
       display: flex;
 
-      @include font-size($fs-xxs);
+      @include font-size(map-get($font-size-scale, xs));
 
       height: 32px;
       line-height: 1;
@@ -77,11 +77,11 @@
       }
 
       @include media-breakpoint-up(sm) {
-        @include font-size($fs-xs);
+        @include font-size(map-get($font-size-scale, sm));
       }
 
       @include media-breakpoint-up(md) {
-        @include font-size($fs-sm);
+        @include font-size(map-get($font-size-scale, base));
       }
 
       &.show,
@@ -161,7 +161,7 @@
     &-download {
       + .dropdown-menu {
         .btn-download {
-          @include font-size($fs-sm);
+          @include font-size(map-get($font-size-scale, base));
 
           font-weight: 400;
           padding-left: 32px;
@@ -288,7 +288,9 @@
       @include media-breakpoint-up(md) {
         color: var(--bs-body-color);
         display: block;
-        font-size: 17px;
+
+        @include font-size(map-get($font-size-scale, base));
+
         font-weight: bold;
         height: auto;
         position: absolute;

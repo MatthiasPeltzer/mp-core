@@ -7,7 +7,7 @@
   position: relative;
 
   .form-check-label {
-    @include font-size(17px);
+    @include font-size(map-get($font-size-scale, base));
 
     cursor: pointer;
     font-weight: 700;

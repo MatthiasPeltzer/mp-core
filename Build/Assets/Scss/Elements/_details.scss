@@ -19,7 +19,7 @@ $padding-summary: 16px 60px 18px $padding-horizontal;
   padding: $padding-summary;
   position: relative;
 
-  @include font-size($fs-4xl);
+  @include font-size(map-get($font-size-scale, 4xl));
 }
 
 // Details-Styling
@@ -46,7 +46,8 @@ details:not(.extbase-debugger-tree) {
     @extend %summary-base;
 
     font-family: var(--#{$prefix}font-sans-serif);
-    font-size: 24px;
+
+    @include font-size(map-get($font-size-scale, 2xl));
 
     &::after {
       background-color: var(--bs-body-color);

@@ -118,7 +118,7 @@ ul {
   position: relative;
 
 
-  @include font-size($fs-sm);
+  @include font-size(map-get($font-size-scale, base));
 
   &:last-child {
     margin-bottom: 0;

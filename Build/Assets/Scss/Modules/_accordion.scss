@@ -2,7 +2,7 @@
 
 .accordion {
   &-button {
-    font-size: 24px;
+    @include font-size(map-get($font-size-scale, 2xl));
 
     &:not(.collapsed) {
       background-color: var(--bs-gray-900);
