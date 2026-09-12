@@ -68,16 +68,15 @@
     position: relative;
     z-index: 2;
 
-    &:has(.teaser-link:hover),
-    &:has(.teaser-link:focus),
-    &:has(.teaser-link:active) {
+    &:has(.teaser-link:is(:hover, :focus, :focus-visible, :active)),
+    &:has(.teaser-link :is(:hover, :focus, :focus-visible, :active)) {
       box-shadow: none;
       outline: none;
 
       .teaser-content {
         box-shadow: rgb(9 30 66 / 25%) 0 4px 8px -2px, rgb(9 30 66 / 8%) 0 0 0 1px;
         outline: 1px solid var(--bs-body-color);
-        outline-offset: -1px;
+        outline-offset: 2px;
         position: relative;
       }
     }
