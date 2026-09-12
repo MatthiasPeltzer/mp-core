@@ -365,13 +365,44 @@ html[data-bs-theme="light"] {
 }
 
 .gallery-swiper-wrapper {
-  .swiper:not(.swiper-coverflow) {
-    padding-right: 8px;
+  // Slider layout: allow vertical breathing room for inset focus rings (Swiper keeps overflow-x hidden).
+  &:not(.is-swiper-effect-coverflow) {
+    overflow: visible;
+  }
+
+  // Inner padding + slide gutter so focus rings are not clipped at the bottom edge.
+  .gallery-swiper:not(.swiper-coverflow),
+  .gallery-main-swiper {
+    box-sizing: content-box;
+    padding: 6px 10px 10px 6px;
+
+    .swiper-slide > div {
+      padding-bottom: 4px;
+    }
+  }
+
+  .gallery-thumbs-swiper {
+    box-sizing: content-box;
+    padding: 4px;
+  }
+}
+
+// Gallery slider mount target (section.swiper-gallery.gallery-slider).
+.swiper-gallery.gallery-slider {
+  overflow: visible;
+
+  &.swiper-vue-ready:not(:has(.is-swiper-effect-coverflow)) {
+    padding-bottom: 4px;
   }
 }
 
 .swiper-vue-wrapper {
   padding: 1px 1px 2px 3px;
+
+  .swiper:not(.swiper-coverflow) {
+    box-sizing: content-box;
+    padding: 4px;
+  }
 
   .swiper-slide {
     > div {

@@ -60,6 +60,16 @@
         }
       }
     }
+
+    // Gallery modal prev/next: excluded from global link outline (_links.scss).
+    // filter:none on controls (_carousel.scss) keeps the white ring visible in dark mode.
+    .carousel-control-prev,
+    .carousel-control-next {
+      &:is(:hover, :focus, :focus-visible, :active) {
+        outline: 1px solid var(--bs-white) !important;
+        outline-offset: 2px;
+      }
+    }
   }
 
   &-body {
@@ -132,6 +142,15 @@
   &-backdrop {
     @include light-theme {
       background-color: var(--bs-body-color);
+    }
+  }
+}
+
+html[data-bs-theme="light"] .modal-footer {
+  .carousel-control-prev,
+  .carousel-control-next {
+    &:is(:hover, :focus, :focus-visible, :active) {
+      outline-color: var(--bs-body-color) !important;
     }
   }
 }

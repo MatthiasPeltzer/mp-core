@@ -7,7 +7,22 @@ $carousel-bg-light: var(--bs-gray-100);
 
 @mixin position-absolute($top: null, $right: null, $bottom: null, $left: null) {
   position: absolute;
-  inset: $top $right $bottom $left;
+
+  @if $top {
+    top: $top;
+  }
+
+  @if $right {
+    right: $right;
+  }
+
+  @if $bottom {
+    bottom: $bottom;
+  }
+
+  @if $left {
+    left: $left;
+  }
 }
 
 @mixin flex-center {
@@ -38,12 +53,12 @@ $carousel-bg-light: var(--bs-gray-100);
 
     @include on-interact {
       outline: none;
+    }
 
-      &::after {
-        border-radius: $carousel-border-radius;
-        outline: 1px solid $carousel-body-color;
-        outline-offset: 2px;
-      }
+    &:is(:hover, :focus, :focus-visible, :active)::after {
+      border-radius: $carousel-border-radius;
+      box-shadow: inset 0 0 0 2px $carousel-body-color;
+      outline: none;
     }
   }
 
@@ -64,6 +79,7 @@ $carousel-bg-light: var(--bs-gray-100);
   display: block;
   font-weight: 400;
   margin: 0;
+  text-align: center;
   width: 100%;
 }
 
@@ -88,6 +104,9 @@ $carousel-bg-light: var(--bs-gray-100);
 .carousel-control-next {
   @include flex-center;
 
+  // Custom primary circle buttons use white SVG icons; Bootstrap’s dark-mode
+  // filter also inverts focus outlines (white → black).
+  filter: none;
   background-color: var(--bs-primary);
   border-radius: 50%;
 }

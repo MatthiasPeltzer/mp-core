@@ -2,7 +2,7 @@
 
 button,
 .btn,
-a {
+a:not(.carousel-control-prev, .carousel-control-next) {
   @include on-interact {
     outline: 1px solid var(--bs-body-color) !important;
     outline-offset: 2px;
