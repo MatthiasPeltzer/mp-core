@@ -130,7 +130,7 @@
                                 <f:if condition="{f:uri.image(src: 'file:{f:if(condition: file.originalFile, then: \'file:{file.originalFile.uid}\', else: \'file:{file.uid}\')}')} != '/'">
                                     <f:then>
                                         <a class="d-block" href="{file.publicUrl}" download="" {f:if(condition:data.target,then: ' target="{data.target}"')}{f:if(condition: file.title, then: ' title="{file.title}"')}>
-                                        <f:media file="{file}" width="64" class="figure-img img-fluid rounded" alt="{file.properties.alternative}"/>
+                                        <f:media file="{file}" width="64" class="figure-img img-fluid rounded" alt="{file.alternative}"/>
                                         </a>
                                     </f:then>
                                     <f:else>
@@ -144,13 +144,13 @@
                         <h3 class="h6">
                             <a class="download" download="" href="{file.publicUrl}" {f:if(condition:data.target,then: ' target="{data.target}"')}{f:if(condition: file.title, then: ' title="{file.title}"')}>
                             <span class="icon" aria-hidden="true"></span> <span>
-                                    {f:if(condition: file.properties.title, then: file.properties.title, else: file.name) -> f:format.htmlspecialchars()}
+                                    {f:if(condition: file.title, then: file.title, else: file.name) -> f:format.htmlspecialchars()}
                                     {f:if(condition:  '{file.properties.is_accessible} == "0" && {file.extension} == "pdf"', then: ' {f:translate(key: \'is_accessible\', extensionName: \'mp_core\')}')}
                                     {f:if(condition: data.filelink_size, then: ' [{file.extension -> f:format.case()}, {f:format.bytes(value: file.properties.size)}]')}
                                 </span></a>
                         </h3>
-                        <f:if condition="{file.properties.description}">
-                            <f:format.html>{file.properties.description}</f:format.html>
+                        <f:if condition="{file.description}">
+                            <f:format.html>{file.description}</f:format.html>
                         </f:if>
                     </div>
                 </li>

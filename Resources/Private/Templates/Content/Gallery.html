@@ -122,7 +122,7 @@
                         </div>
                     </f:for>
                 </section>
-                <f:if condition="{file.originalFile.properties.description} || {file.properties.description}">
+                <f:if condition="{file.description}">
                     <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="modal-description-{data.uid}" tabindex="-1">
                         <div class="modal-dialog modal-md modal-dialog-scrollable modal-dialog-centered text-left" role="document">
                             <div class="modal-content">
@@ -141,15 +141,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-body">
-                                    <f:if condition="{file.properties.description}">
-                                        <f:then>
-                                            <f:format.html>{file.properties.description}</f:format.html>
-                                        </f:then>
-                                        <f:else>
-                                            <f:if condition="{file.originalFile.properties.description}">
-                                                <f:format.html>{file.originalFile.properties.description}</f:format.html>
-                                            </f:if>
-                                        </f:else>
+                                    <f:if condition="{file.description}">
+                                        <f:format.html>{file.description}</f:format.html>
                                     </f:if>
                                 </div>
                             </div>
@@ -260,23 +253,14 @@
             <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-slide-to: '{i.index}', bs-target: '#galleryCarousel-{data.uid}'}" decoding="async" fileExtension="webp" height="675c" loading="lazy" maxHeight="675c" maxWidth="1200c" src="{file.properties.uid}" treatIdAsReference="1" width="1200c"/>
         </picture>
         <f:if condition="{file.properties.caption}">
-            <f:then>
-                <figcaption class="figure-caption">
-                    <p class="caption container mb-0 fs-base">{file.properties.caption}</p>
-                </figcaption>
-            </f:then>
-            <f:else>
-                <f:if condition="{file.originalFile.properties.caption}">
-                    <figcaption class="figure-caption">
-                        <p class="caption container mb-0 fs-base">{file.originalFile.properties.caption}</p>
-                    </figcaption>
-                </f:if>
-            </f:else>
+            <figcaption class="figure-caption">
+                <p class="caption container mb-0 fs-base">{file.properties.caption}</p>
+            </figcaption>
         </f:if>
     </figure>
-    <f:if condition="{file.originalFile.properties.copyright} || {file.properties.allow_download} || {file.originalFile.properties.description} || {file.properties.description}">
+    <f:if condition="{file.properties.copyright} || {file.properties.allow_download} || {file.description}">
         <ul class="image-buttons d-flex list-unstyled">
-            <f:if condition="{file.originalFile.properties.description} || {file.properties.description}">
+            <f:if condition="{file.description}">
                 <li>
                     <button class="btn btn-image btn-info rounded" data-bs-target="#modal-description-{data.uid}" data-bs-toggle="modal" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_longdescription')}" type="button">
                         <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_longdescription')}</span>
@@ -293,13 +277,13 @@
                     </div>
                 </li>
             </f:if>
-            <f:if condition="{file.originalFile.properties.copyright}">
+            <f:if condition="{file.properties.copyright}">
                 <li class="btn-group dropstart">
                     <button aria-expanded="false" class="btn btn-image btn-copyright rounded" data-bs-auto-close="outside" data-bs-toggle="dropdown" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}" type="button">
                         <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}</span>
                     </button>
                     <div class="dropdown-menu dropdown-copyright p-0 rounded">
-                        <p>© {file.originalFile.properties.copyright}</p>
+                        <p>© {file.properties.copyright}</p>
                     </div>
                 </li>
             </f:if>
@@ -319,22 +303,13 @@
             <picture>
                 <f:image class="figure-img img-fluid rounded" crop="false" decoding="async" fileExtension="webp" loading="lazy" maxWidth="1920" src="{file.uid}" treatIdAsReference="1"/>
             </picture>
-            <f:if condition="{file.originalFile.properties.caption} || {file.properties.caption}">
+            <f:if condition="{file.properties.caption}">
                 <figcaption class="figure-caption">
-                    <f:if condition="{file.properties.caption}">
-                        <f:then>
-                            <p class="caption container mb-0 fs-base">{file.properties.caption}</p>
-                        </f:then>
-                        <f:else>
-                            <f:if condition="{file.originalFile.properties.caption}">
-                                <p class="caption container mb-0 fs-base">{file.originalFile.properties.caption}</p>
-                            </f:if>
-                        </f:else>
-                    </f:if>
+                    <p class="caption container mb-0 fs-base">{file.properties.caption}</p>
                 </figcaption>
             </f:if>
         </figure>
-        <f:if condition="{file.originalFile.properties.copyright} || {file.properties.allow_download}">
+        <f:if condition="{file.properties.copyright} || {file.properties.allow_download}">
             <ul class="image-buttons d-flex list-unstyled">
                 <f:if condition="{file.properties.allow_download}">
                     <li class="btn-group dropstart">
@@ -348,13 +323,13 @@
                         </div>
                     </li>
                 </f:if>
-                <f:if condition="{file.originalFile.properties.copyright}">
+                <f:if condition="{file.properties.copyright}">
                     <li class="btn-group dropstart">
                         <button aria-expanded="false" class="btn btn-image btn-copyright rounded" data-bs-auto-close="outside" data-bs-toggle="dropdown" type="button">
                             <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}</span>
                         </button>
                         <div class="dropdown-menu dropdown-copyright p-0 rounded">
-                            <p>© {file.originalFile.properties.copyright}</p>
+                            <p>© {file.properties.copyright}</p>
                         </div>
                     </li>
                 </f:if>

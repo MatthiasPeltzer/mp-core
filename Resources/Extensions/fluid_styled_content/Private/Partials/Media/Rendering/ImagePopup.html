@@ -24,16 +24,19 @@
                             <picture>
                                 <f:image class="figure-img img-fluid rounded" crop="false" decoding="async" fileExtension="webp" image="{file}" loading="lazy" maxWidth="1920"/>
                             </picture>
-                            <f:if condition="{column.media.description} || {column.media.originalFile.properties.caption} || {column.media.originalFile.properties.copyright}">
+                            <f:if condition="{file.description} || {file.properties.caption} || {file.properties.copyright}">
                                 <figcaption class="image-caption">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12">
-                                                <f:if condition="{column.media.description}">
-                                                    <span class="description">{column.media.description} </span>
+                                                <f:if condition="{file.description}">
+                                                    <span class="description">{file.description} </span>
                                                 </f:if>
-                                                <f:if condition="{column.media.originalFile.properties.copyright}">
-                                                    <span class="copyright">© {column.media.originalFile.properties.copyright}</span>
+                                                <f:if condition="{file.properties.caption}">
+                                                    <span class="caption">{file.properties.caption} </span>
+                                                </f:if>
+                                                <f:if condition="{file.properties.copyright}">
+                                                    <span class="copyright">© {file.properties.copyright}</span>
                                                 </f:if>
                                             </div>
                                         </div>

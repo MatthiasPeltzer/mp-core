@@ -24,17 +24,14 @@
             </f:if>
         </f:else>
     </f:if>
-    <f:if condition="{file.originalFile.properties.caption}">
+    <f:if condition="{file.properties.caption}">
         <figcaption class="figure-caption">
-            <f:if condition="{file.originalFile.properties.caption}">
-                <span class="caption">{file.originalFile.properties.caption} </span>
-            </f:if>
+            <span class="caption">{file.properties.caption} </span>
         </figcaption>
     </f:if>
 </figure>
-<f:if condition="{file.originalFile.properties.description}
-            || {file.properties.description}
-            || {file.originalFile.properties.copyright}
+<f:if condition="{file.description}
+            || {file.properties.copyright}
             || {file.properties.allow_download}
             || {data.image_zoom}">
     <ul class="image-buttons d-flex list-unstyled">
@@ -45,7 +42,7 @@
                 </a>
             </li>
         </f:if>
-        <f:if condition="{file.originalFile.properties.description} || {file.properties.description}">
+        <f:if condition="{file.description}">
             <li class="btn-group dropstart">
                 <button class="btn btn-image btn-info rounded" data-bs-target="#modal-description-{data.uid}" data-bs-toggle="modal" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_longdescription')}" type="button">
                     <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_longdescription')}</span>
@@ -64,13 +61,13 @@
                 </div>
             </li>
         </f:if>
-        <f:if condition="{file.originalFile.properties.copyright}">
+        <f:if condition="{file.properties.copyright}">
             <li class="btn-group dropstart">
                 <button aria-expanded="false" class="btn btn-image btn-copyright rounded" data-bs-auto-close="outside" data-bs-toggle="dropdown" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}" type="button">
                     <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}</span>
                 </button>
                 <div class="dropdown-menu dropdown-copyright p-0 rounded">
-                    <p>© {file.originalFile.properties.copyright}</p>
+                    <p>© {file.properties.copyright}</p>
                 </div>
             </li>
         </f:if>
@@ -78,7 +75,7 @@
     <f:if condition="{data.image_zoom}">
         <f:render arguments="{_all}" partial="Media/Rendering/ImagePopup"/>
     </f:if>
-    <f:if condition="{file.originalFile.properties.description} || {file.properties.description}">
+    <f:if condition="{file.description}">
         <div aria-hidden="true" class="modal fade" data-bs-backdrop="static" id="modal-description-{data.uid}" tabindex="-1">
             <div class="modal-dialog modal-md modal-dialog-scrollable modal-dialog-centered text-left" role="document">
                 <div class="modal-content">
@@ -97,15 +94,8 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <f:if condition="{file.properties.description}">
-                            <f:then>
-                                <f:format.html>{file.properties.description}</f:format.html>
-                            </f:then>
-                            <f:else>
-                                <f:if condition="{file.originalFile.properties.description}">
-                                    <f:format.html>{file.originalFile.properties.description}</f:format.html>
-                                </f:if>
-                            </f:else>
+                        <f:if condition="{file.description}">
+                            <f:format.html>{file.description}</f:format.html>
                         </f:if>
                     </div>
                 </div>

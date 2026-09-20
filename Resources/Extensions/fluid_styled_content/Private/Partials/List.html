@@ -6,16 +6,16 @@
                     <picture data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
                         <f:image class="figure-img img-fluid rounded" cropVariant="default" decoding="async" fileExtension="webp" image="{file}" loading="lazy" maxWidth="650"/>
                     </picture>
-                    <f:if condition="{file.description} || {file.originalFile.properties.copyright} || {file.originalFile.properties.caption}">
+                    <f:if condition="{file.description} || {file.properties.copyright} || {file.properties.caption}">
                         <figcaption class="image-caption">
                             <f:if condition="{file.description}">
                                 <span class="description">{file.description} </span>
                             </f:if>
-                            <f:if condition="{file.originalFile.properties.caption}">
-                                <span class="caption">{file.originalFile.properties.caption} </span>
+                            <f:if condition="{file.properties.caption}">
+                                <span class="caption">{file.properties.caption} </span>
                             </f:if>
-                            <f:if condition="{file.originalFile.properties.copyright}">
-                                <span class="copyright">{file.originalFile.properties.copyright} </span>
+                            <f:if condition="{file.properties.copyright}">
+                                <span class="copyright">{file.properties.copyright} </span>
                             </f:if>
                         </figcaption>
                     </f:if>

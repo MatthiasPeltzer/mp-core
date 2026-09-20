@@ -9,18 +9,18 @@
 // =============================================================================
 
 :root {
-  --swiper-navigation-color: var(--bs-body-color, #fff);
-  --swiper-navigation-size: 44px;
-  --swiper-pagination-bottom: auto;
-  --swiper-pagination-bullet-height: 20px;
-  --swiper-pagination-bullet-inactive-color: rgb(255 255 255 / 70%);
-  --swiper-pagination-bullet-width: 20px;
-  --swiper-pagination-color: var(--bs-body-color, #fff);
-  --swiper-theme-color: var(--bs-primary);
+    --swiper-navigation-color: var(--bs-body-color, #fff);
+    --swiper-navigation-size: 44px;
+    --swiper-pagination-bottom: auto;
+    --swiper-pagination-bullet-height: 20px;
+    --swiper-pagination-bullet-inactive-color: rgb(255 255 255 / 70%);
+    --swiper-pagination-bullet-width: 20px;
+    --swiper-pagination-color: var(--bs-body-color, #fff);
+    --swiper-theme-color: var(--bs-primary);
 }
 
 html[data-bs-theme="light"] {
-  --swiper-pagination-bullet-inactive-color: rgb(0 0 0 / 70%);
+    --swiper-pagination-bullet-inactive-color: rgb(0 0 0 / 70%);
 }
 
 // =============================================================================
@@ -28,47 +28,47 @@ html[data-bs-theme="light"] {
 // =============================================================================
 
 .swiper {
-  height: 100%;
-  max-width: 100%;
-  width: 100%;
+    height: 100%;
+    max-width: 100%;
+    width: 100%;
 
-  &-pagination {
-    z-index: 0;
-  }
+    &-pagination {
+        z-index: 0;
+    }
 }
 
 .swiper-wrapper {
-  align-items: stretch;
-  height: 100%;
-  margin: 3px;
+    align-items: stretch;
+    height: 100%;
+    margin: 0;
 }
 
 .swiper-slide {
-  align-self: stretch;
-  box-sizing: border-box;
-  height: 100%;
-  right: 2px;
-
-  > div {
+    align-self: stretch;
+    box-sizing: border-box;
     height: 100%;
-  }
+    right: 2px;
 
-  img {
-    display: block;
-    height: auto;
-    width: 100%;
-  }
+    > div {
+        height: 100%;
+    }
 
-  .teaser {
-    height: 100%;
-  }
+    img {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+
+    .teaser {
+        height: 100%;
+    }
 }
 
 // Keep thumb strip slides content-sized (main gallery swipers stay at 100%).
 .gallery-thumbs-swiper .swiper-slide,
 .gallery-thumb-slide {
-  align-self: auto;
-  height: auto;
+    align-self: auto;
+    height: auto;
 }
 
 // =============================================================================
@@ -78,45 +78,45 @@ html[data-bs-theme="light"] {
 .swiper-button-prev,
 .swiper-button-next,
 .swiper-button-autoplay {
-  align-items: center;
-  background-color: var(--bs-primary);
-  border: 2px solid var(--bs-body-color, #fff);
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  height: var(--swiper-navigation-size);
-  justify-content: center;
-  top: auto !important;
-  transition: all 0.3s ease;
-  width: var(--swiper-navigation-size);
+    align-items: center;
+    background-color: var(--bs-primary);
+    border: 2px solid var(--bs-body-color, #fff);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    height: var(--swiper-navigation-size);
+    justify-content: center;
+    top: auto !important;
+    transition: all 0.3s ease;
+    width: var(--swiper-navigation-size);
 
-  // Hide Swiper's default arrows when we have SVG icons
-  &::after {
-    display: none;
-  }
-
-  .swiper-navigation-icon {
-    height: 50%;
-    pointer-events: none;
-    width: auto;
-  }
-
-  svg {
-    height: 100%;
-    object-fit: contain;
-    pointer-events: none;
-    width: 100%;
-
-    path,
-    rect {
-      fill: #fff;
+    // Hide Swiper's default arrows when we have SVG icons
+    &::after {
+        display: none;
     }
-  }
+
+    .swiper-navigation-icon {
+        height: 50%;
+        pointer-events: none;
+        width: auto;
+    }
+
+    svg {
+        height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+        width: 100%;
+
+        path,
+        rect {
+            fill: #fff;
+        }
+    }
 }
 
 // Rotate prev button icon to point left
 .swiper-button-prev .swiper-navigation-icon {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 // =============================================================================
@@ -124,68 +124,68 @@ html[data-bs-theme="light"] {
 // =============================================================================
 
 .swiper-navigation {
-  align-items: center;
-  display: flex;
-  height: 44px;
-  justify-content: center;
-  margin: 16px 0;
-  padding: 0;
-  position: relative;
+    align-items: center;
+    display: flex;
+    height: 44px;
+    justify-content: center;
+    margin: 16px 0;
+    padding: 0;
+    position: relative;
 
-  // Beat vendor-swiper.css (loads after vue.css): buttons and pagination both use
-  // z-index: 10 there, so the overlay wins hit-testing in the button center.
-  .swiper-button-prev,
-  .swiper-button-next,
-  .swiper-button-autoplay {
-    z-index: 20;
-  }
-
-  // Autoplay sits after next without joining the prev/next flex pair.
-  .swiper-button-autoplay {
-    position: absolute;
-    right: auto;
-    top: 0;
-  }
-
-  // Let clicks pass through the full-width pagination strip except on bullets /
-  // fraction text (production layout unchanged).
-  .swiper-pagination {
-    pointer-events: none;
-  }
-
-  .swiper-pagination-bullet {
-    pointer-events: auto;
-  }
-
-  &:has(.swiper-pagination-fraction) .swiper-pagination,
-  &:has(.swiper-pagination-custom) .swiper-pagination {
-    pointer-events: auto;
-  }
-
-  &:has(.swiper-pagination-bullets-dynamic),
-  &:has(.swiper-pagination-fraction) {
-    gap: 160px;
-
+    // Beat vendor-swiper.css (loads after vue.css): buttons and pagination both use
+    // z-index: 10 there, so the overlay wins hit-testing in the button center.
     .swiper-button-prev,
-    .swiper-button-next {
-      position: static;
-    }
-
+    .swiper-button-next,
     .swiper-button-autoplay {
-      // Centered prev/next pair is 248px wide (44 + 160 + 44); place autoplay 8px after next.
-      left: calc(50% + 132px);
-    }
-  }
-
-  &:not(:has(.swiper-pagination-bullets-dynamic, .swiper-pagination-fraction)) {
-    &:has(.swiper-button-autoplay) .swiper-button-next {
-      right: calc(var(--swiper-navigation-sides-offset, 4px) + var(--swiper-navigation-size) + 8px);
+        z-index: 20;
     }
 
+    // Autoplay sits after next without joining the prev/next flex pair.
     .swiper-button-autoplay {
-      right: var(--swiper-navigation-sides-offset, 4px);
+        position: absolute;
+        right: auto;
+        top: 0;
     }
-  }
+
+    // Let clicks pass through the full-width pagination strip except on bullets /
+    // fraction text (production layout unchanged).
+    .swiper-pagination {
+        pointer-events: none;
+    }
+
+    .swiper-pagination-bullet {
+        pointer-events: auto;
+    }
+
+    &:has(.swiper-pagination-fraction) .swiper-pagination,
+    &:has(.swiper-pagination-custom) .swiper-pagination {
+        pointer-events: auto;
+    }
+
+    &:has(.swiper-pagination-bullets-dynamic),
+    &:has(.swiper-pagination-fraction) {
+        gap: 160px;
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            position: static;
+        }
+
+        .swiper-button-autoplay {
+            // Centered prev/next pair is 248px wide (44 + 160 + 44); place autoplay 8px after next.
+            left: calc(50% + 132px);
+        }
+    }
+
+    &:not(:has(.swiper-pagination-bullets-dynamic, .swiper-pagination-fraction)) {
+        &:has(.swiper-button-autoplay) .swiper-button-next {
+            right: calc(var(--swiper-navigation-sides-offset, 4px) + var(--swiper-navigation-size) + 8px);
+        }
+
+        .swiper-button-autoplay {
+            right: var(--swiper-navigation-sides-offset, 4px);
+        }
+    }
 }
 
 // =============================================================================
@@ -196,71 +196,71 @@ html[data-bs-theme="light"] {
 // horizontal clipping and add vertical padding so rotated top/bottom edges stay visible.
 // content-box keeps equal-height sizing on the slide area; padding sits outside it.
 .swiper.swiper-coverflow {
-  box-sizing: content-box;
-  overflow: hidden;
-  padding-block: clamp(2rem, 12%, 5rem);
+    box-sizing: content-box;
+    overflow: hidden;
+    padding-block: clamp(2rem, 12%, 5rem);
 
-  &.swiper-equal-heights {
-    .swiper-wrapper {
-      align-items: stretch;
-      height: 100%;
+    &.swiper-equal-heights {
+        .swiper-wrapper {
+            align-items: stretch;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            align-self: stretch;
+            height: 100%;
+        }
     }
 
-    .swiper-slide {
-      align-self: stretch;
-      height: 100%;
+    // Fill equal-height gaps only on the slide wrapper; teaser keeps its own bgcolor-* styling.
+    .swiper-slide > div {
+        background-color: var(--bs-body-bg);
+        height: 100%;
+        min-height: 100%;
     }
-  }
 
-  // Fill equal-height gaps only on the slide wrapper; teaser keeps its own bgcolor-* styling.
-  .swiper-slide > div {
-    background-color: var(--bs-body-bg);
-    height: 100%;
-    min-height: 100%;
-  }
-
-  // Swiper maps shadow opacity to offsetMultiplier (often > 1) → fully opaque overlay on side slides.
-  .swiper-slide-shadow-left,
-  .swiper-slide-shadow-right,
-  .swiper-slide-shadow-top,
-  .swiper-slide-shadow-bottom {
-    display: none;
-  }
+    // Swiper maps shadow opacity to offsetMultiplier (often > 1) → fully opaque overlay on side slides.
+    .swiper-slide-shadow-left,
+    .swiper-slide-shadow-right,
+    .swiper-slide-shadow-top,
+    .swiper-slide-shadow-bottom {
+        display: none;
+    }
 }
 
 .swiper-vue-wrapper.is-swiper-effect-coverflow,
 .gallery-swiper-wrapper.is-swiper-effect-coverflow {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 // Gallery coverflow: full-width slides hide neighbours (only ~1px peeks in). Use auto
 // width so prev/next stay visible; natural height instead of equal-heights lock.
 .gallery-swiper-wrapper.is-swiper-effect-coverflow {
-  .gallery-swiper.swiper-coverflow {
-    height: auto;
-    padding-inline: clamp(1rem, 8%, 2.5rem);
-  }
-
-  .gallery-swiper.swiper-coverflow .swiper-wrapper {
-    align-items: center;
-    height: auto;
-  }
-
-  .gallery-swiper.swiper-coverflow .swiper-slide {
-    align-self: center;
-    height: auto;
-    width: clamp(260px, 62%, 600px);
-
-    > div {
-      height: auto;
-      min-height: 0;
+    .gallery-swiper.swiper-coverflow {
+        height: auto;
+        padding-inline: clamp(1rem, 8%, 2.5rem);
     }
 
-    img {
-      height: auto;
-      width: 100%;
+    .gallery-swiper.swiper-coverflow .swiper-wrapper {
+        align-items: center;
+        height: auto;
     }
-  }
+
+    .gallery-swiper.swiper-coverflow .swiper-slide {
+        align-self: center;
+        height: auto;
+        width: clamp(260px, 62%, 600px);
+
+        > div {
+            height: auto;
+            min-height: 0;
+        }
+
+        img {
+            height: auto;
+            width: 100%;
+        }
+    }
 }
 
 // =============================================================================
@@ -271,17 +271,17 @@ html[data-bs-theme="light"] {
 .swiper-slide-active,
 .swiper-slide-prev,
 .swiper-slide-next {
-  pointer-events: auto;
+    pointer-events: auto;
 }
 
 // Fade effect - ensure transitions complete properly
 .swiper-fade .swiper-slide {
-  pointer-events: none;
-  transition-property: opacity;
+    pointer-events: none;
+    transition-property: opacity;
 
-  &.swiper-slide-active {
-    pointer-events: auto;
-  }
+    &.swiper-slide-active {
+        pointer-events: auto;
+    }
 }
 
 // =============================================================================
@@ -289,32 +289,32 @@ html[data-bs-theme="light"] {
 // =============================================================================
 
 .gallery-thumbs .swiper-wrapper {
-  margin: 0;
+    margin: 0;
 }
 
 .swiper-gallery {
-  .swiper-wrapper {
-    margin: 5px;
-  }
+    .swiper-wrapper {
+        margin: 5px;
+    }
 }
 
 // Thumb slide states (both li and div)
 .swiper-thumbs li,
 .gallery-thumb-slide {
-  cursor: pointer;
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
 
-  &:is(:hover, :focus, :active),
-  &.swiper-slide-thumb-active {
-    opacity: 1;
-  }
+    &:is(:hover, :focus, :active),
+    &.swiper-slide-thumb-active {
+        opacity: 1;
+    }
 }
 
 .gallery-thumb-content img {
-  border-radius: 4px;
-  height: auto;
-  width: 100%;
+    border-radius: 4px;
+    height: auto;
+    width: 100%;
 }
 
 // =============================================================================
@@ -324,96 +324,96 @@ html[data-bs-theme="light"] {
 // Shared wrapper styles for both SwiperSlider and GallerySwiper
 .swiper-vue-wrapper,
 .gallery-swiper-wrapper {
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
 
-  // Beat vendor-swiper.css slide sizing — equal height across all slides.
-  .swiper:not(.gallery-thumbs-swiper) {
-    &.swiper-equal-heights {
-      .swiper-wrapper {
+    // Beat vendor-swiper.css slide sizing — equal height across all slides.
+    .swiper:not(.gallery-thumbs-swiper) {
+        &.swiper-equal-heights {
+            .swiper-wrapper {
+                align-items: stretch;
+                height: 100%;
+            }
+
+            .swiper-slide {
+                align-self: stretch;
+                height: 100%;
+            }
+        }
+
+        .swiper-wrapper {
+            align-items: stretch;
+        }
+
+        .swiper-slide {
+            height: 100%;
+        }
+    }
+
+    .swiper-autoheight:not(.gallery-thumbs-swiper),
+    .swiper-autoheight:not(.gallery-thumbs-swiper) .swiper-slide {
+        height: 100%;
+    }
+
+    .swiper-autoheight:not(.gallery-thumbs-swiper) .swiper-wrapper {
         align-items: stretch;
-        height: 100%;
-      }
-
-      .swiper-slide {
-        align-self: stretch;
-        height: 100%;
-      }
     }
-
-    .swiper-wrapper {
-      align-items: stretch;
-    }
-
-    .swiper-slide {
-      height: 100%;
-    }
-  }
-
-  .swiper-autoheight:not(.gallery-thumbs-swiper),
-  .swiper-autoheight:not(.gallery-thumbs-swiper) .swiper-slide {
-    height: 100%;
-  }
-
-  .swiper-autoheight:not(.gallery-thumbs-swiper) .swiper-wrapper {
-    align-items: stretch;
-  }
 }
 
 .gallery-swiper-wrapper {
-  // Slider layout: allow vertical breathing room for inset focus rings (Swiper keeps overflow-x hidden).
-  &:not(.is-swiper-effect-coverflow) {
-    overflow: visible;
-  }
-
-  // Inner padding + slide gutter so focus rings are not clipped at the bottom edge.
-  .gallery-swiper:not(.swiper-coverflow),
-  .gallery-main-swiper {
-    box-sizing: content-box;
-    padding: 6px 10px 10px 6px;
-
-    .swiper-slide > div {
-      padding-bottom: 4px;
+    // Slider layout: allow vertical breathing room for inset focus rings (Swiper keeps overflow-x hidden).
+    &:not(.is-swiper-effect-coverflow) {
+        overflow: visible;
     }
-  }
 
-  .gallery-thumbs-swiper {
-    box-sizing: content-box;
-    padding: 4px;
-  }
+    // Inner padding + slide gutter so focus rings are not clipped at the bottom edge.
+    .gallery-swiper:not(.swiper-coverflow),
+    .gallery-main-swiper {
+        box-sizing: content-box;
+        padding: 6px 10px 10px 6px;
+
+        .swiper-slide > div {
+            padding-bottom: 4px;
+        }
+    }
+
+    .gallery-thumbs-swiper {
+        box-sizing: content-box;
+        padding: 4px;
+    }
 }
 
 // Gallery slider mount target (section.swiper-gallery.gallery-slider).
 .swiper-gallery.gallery-slider {
-  overflow: visible;
+    overflow: visible;
 
-  &.swiper-vue-ready:not(:has(.is-swiper-effect-coverflow)) {
-    padding-bottom: 4px;
-  }
+    &.swiper-vue-ready:not(:has(.is-swiper-effect-coverflow)) {
+        padding-bottom: 4px;
+    }
 }
 
 .swiper-vue-wrapper {
-  padding: 1px 1px 2px 3px;
+    padding: 1px 1px 2px 3px;
 
-  .swiper:not(.swiper-coverflow) {
-    box-sizing: content-box;
-    padding: 4px;
-  }
-
-  .swiper-slide {
-    > div {
-      margin-right: 2px;
+    .swiper:not(.swiper-coverflow) {
+        box-sizing: content-box;
+        padding: 0;
     }
-  }
+
+    .swiper-slide {
+        > div {
+            margin-right: 2px;
+        }
+    }
 }
 
 // Gallery thumbs strip
 .gallery-thumbs-strip {
-  margin-top: 16px;
-  width: 100%;
+    margin-top: 16px;
+    width: 100%;
 }
 
