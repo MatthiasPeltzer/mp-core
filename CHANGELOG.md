@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.27] - 2026-09-20
+
+### Fixed
+- Image metadata in Fluid templates now consistently uses merged FAL file-reference properties (reference override, then original file) for alt text, captions, descriptions, and copyright across gallery, image, list, popup, uploads, and news list partials.
+
+### Accessibility
+- News list teasers resolve image `alt` from the file reference overlay instead of the original FAL file only.
+
+### Changed
+- Updated Build npm dependencies (`vue`, `autoprefixer`, `eslint`, `jsdom`, `stylelint-scss`, `vitest`) and rebuilt public JavaScript/CSS assets.
+
 ## [1.2.26] - 2026-09-14
 
 ### Fixed
@@ -871,6 +882,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.27]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.26...v1.2.27
 [1.2.26]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.25...v1.2.26
 [1.2.25]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.24...v1.2.25
 [1.2.24]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.23...v1.2.24
