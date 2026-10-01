@@ -408,6 +408,13 @@ html[data-bs-theme="light"] {
         > div {
             margin-right: 2px;
         }
+
+        // Swiper clips overflow — inset slide content so outer focus rings (e.g. teaser outline) stay visible.
+        // Extra left inset compensates the global `.swiper-slide { right: 2px; }` shift.
+        // Stages are full-bleed and keep their own focus styling.
+        > div:not(:has(> .stage)) {
+            padding: 4px 4px 4px 6px;
+        }
     }
 }
 

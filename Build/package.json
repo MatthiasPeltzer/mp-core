@@ -25,7 +25,7 @@
 		"@popperjs/core": "^2.11.8",
 		"bootstrap": "5.3.8",
 		"jarallax": "^3.1.0",
-		"swiper": "^14.2.0",
+		"swiper": "^14.3.0",
 		"vue": "^3.5.43"
 	},
 	"devDependencies": {
@@ -33,21 +33,21 @@
 		"@vitejs/plugin-vue": "^6.0.9",
 		"autoprefixer": "^10.6.1",
 		"eslint": "^10.11.0",
-		"eslint-plugin-vue": "^10.11.0",
-		"globals": "^17.12.0",
-		"jsdom": "^30.1.0",
+		"eslint-plugin-vue": "^10.11.1",
+		"globals": "^17.13.0",
+		"jsdom": "^30.1.1",
 		"postcss": "^8.5.28",
-		"postcss-preset-env": "^11.5.3",
+		"postcss-preset-env": "^11.5.4",
 		"postcss-pxtorem": "^6.1.0",
-		"sass": "1.104.1",
+		"sass": "1.105.1",
 		"stylelint": "^17.15.0",
 		"stylelint-config-recommended": "^18.0.0",
 		"stylelint-config-recommended-scss": "^17.0.1",
 		"stylelint-config-standard": "^40.0.0",
 		"stylelint-order": "^8.1.1",
 		"stylelint-scss": "^7.3.0",
-		"vite": "^8.3.0",
-		"vitest": "^5.0.1"
+		"vite": "^8.3.1",
+		"vitest": "^5.0.3"
 	},
 	"allowScripts": {
 		"@parcel/watcher@2.6.0": true

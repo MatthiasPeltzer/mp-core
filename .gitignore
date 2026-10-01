@@ -5,6 +5,7 @@
 /sync-sitesets-to-vendor.sh
 /webpage/
 /Configuration/Services.local.yaml
+/.github/instructions/
 
 # Standalone test build (composer install inside the extension) + test caches
 /.Build/
