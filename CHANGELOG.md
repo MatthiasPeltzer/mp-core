@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.29] - 2026-10-01
+
+### Fixed
+- Navigate teaser “read more” labels (non-interactive spans for internal/external/download layouts and button layouts) now receive the same icon and button styling as real links on singleteaser and stage content elements.
+
 ## [1.2.28] - 2026-10-01
 
 ### Accessibility
@@ -890,6 +895,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.2.29]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.28...v1.2.29
 [1.2.28]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.27...v1.2.28
 [1.2.27]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.26...v1.2.27
 [1.2.26]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.25...v1.2.26
