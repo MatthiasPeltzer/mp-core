@@ -17,6 +17,20 @@
 
   &-link {
     margin-top: revert;
+
+    // Same decorative labels as singleteaser (see _teaser.scss).
+    > span {
+      cursor: inherit;
+      pointer-events: none;
+
+      @include on-interact {
+        outline: none !important;
+      }
+
+      &.btn {
+        display: inline-block;
+      }
+    }
   }
 
   &-content-wrapper {

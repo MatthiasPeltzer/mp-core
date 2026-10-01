@@ -18,6 +18,20 @@
     }
   }
 
+  // Navigate teasers: link text is a visual label only (headline stretched-link is the control).
+  &-link > span {
+    cursor: inherit;
+    pointer-events: none;
+
+    @include on-interact {
+      outline: none !important;
+    }
+
+    &.btn {
+      display: inline-block;
+    }
+  }
+
   .frame-type-menu_subpages & {
     border-radius: var(--bs-border-radius);
   }
