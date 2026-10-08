@@ -312,7 +312,7 @@ function clearCompleted() {
             @change="filter = 'all'"
             :aria-label="t.showAll"
           >
-          <label class="btn btn-outline-secondary me-2" for="filter-all">
+          <label class="btn btn-outline theme-secondary me-2" for="filter-all">
             {{ t.all }} <span class="badge bg-secondary badge-circle" :aria-label="`${todos.length} ${t.totalTasks}`">{{ todos.length }}</span>
           </label>
 
@@ -326,7 +326,7 @@ function clearCompleted() {
             @change="filter = 'active'"
             :aria-label="t.showActive"
           >
-          <label class="btn btn-outline-secondary me-2" for="filter-active">
+          <label class="btn btn-outline theme-secondary me-2" for="filter-active">
             {{ t.active }} <span class="badge badge-warning badge-circle" :aria-label="`${activeTodosCount} ${t.activeTasks}`">{{ activeTodosCount }}</span>
           </label>
 
@@ -340,14 +340,14 @@ function clearCompleted() {
             @change="filter = 'completed'"
             :aria-label="t.showCompleted"
           >
-          <label class="btn btn-outline-secondary" for="filter-completed">
+          <label class="btn btn-outline theme-secondary" for="filter-completed">
             {{ t.done }} <span class="badge badge-success badge-circle" :aria-label="`${todos.length - activeTodosCount} ${t.completedTasks}`">{{ todos.length - activeTodosCount }}</span>
           </label>
         </div>
       </div>
 
       <!-- Todo list -->
-      <div v-if="filteredTodos.length === 0" class="text-center text-muted py-5" role="status" aria-live="polite">
+      <div v-if="filteredTodos.length === 0" class="text-center fg-secondary py-5" role="status" aria-live="polite">
         <p class="fs-5">{{ filter === 'all' ? t.emptyAll : filter === 'active' ? t.emptyActive : t.emptyCompleted }}</p>
       </div>
 
@@ -359,31 +359,29 @@ function clearCompleted() {
           :class="{ 'todo-completed': todo.completed }"
           role="listitem"
         >
-          <div class="form-check form-switch">
+          <div class="switch">
             <input
               type="checkbox"
               :id="`todo-${todo.id}`"
               :checked="todo.completed"
               @change="toggleTodo(todo.id)"
-              class="form-check-input"
               role="switch"
               :aria-label="t.markAs.replace('{text}', todo.text).replace('{state}', todo.completed ? t.active : t.done)"
               :aria-checked="todo.completed"
-              style="cursor: pointer; width: 3em; height: 1.5em;"
             />
           </div>
           <label
             :for="`todo-${todo.id}`"
             class="flex-grow-1 mb-0 user-select-none"
             style="cursor: pointer;"
-            :class="{ 'text-decoration-line-through text-muted': todo.completed, 'fw-semibold': !todo.completed }"
+            :class="{ 'text-decoration-line-through fg-secondary': todo.completed, 'fw-semibold': !todo.completed }"
           >
             {{ todo.text }}
           </label>
           <button
             v-if="config.showDelete"
             @click="deleteTodo(todo.id)"
-            class="btn btn-sm btn-outline-primary opacity-75 hover-opacity-100"
+            class="btn btn-sm btn-outline theme-primary opacity-75 hover-opacity-100"
             style="min-width: 70px; white-space: nowrap;"
             :aria-label="`${t.delete} ${todo.text}`"
             :title="`${t.delete} ${todo.text}`"
@@ -395,14 +393,14 @@ function clearCompleted() {
 
       <!-- Footer with stats -->
       <div v-if="todos.length > 0" class="d-flex justify-content-between align-items-center pt-4 mt-3 border-top" role="status" aria-live="polite" aria-atomic="true">
-        <span class="text-muted" aria-label="Task summary">
+        <span class="fg-secondary" aria-label="Task summary">
           <strong>{{ activeTodosCount }}</strong> {{ activeTodosCount === 1 ? t.task : t.tasks }} {{ t.remaining }}
           <span v-if="config.maxItems" class="ms-2">({{ t.max }}: {{ config.maxItems }})</span>
         </span>
         <button
           v-if="config.showClear && hasCompletedTodos"
           @click="clearCompleted"
-          class="btn btn-sm btn-primary"
+          class="btn btn-sm btn-solid theme-primary"
           style="min-width: 140px; white-space: nowrap;"
           :aria-label="`${t.clearCompleted} (${todos.length - activeTodosCount})`"
         >
@@ -436,7 +434,7 @@ function clearCompleted() {
   opacity: 1 !important;
 }
 
-.btn-check:checked + .btn-outline-secondary {
+.btn-check:checked + .btn-outline theme-secondary {
   background-color: var(--bs-secondary);
   color: var(--bs-white);
 }
@@ -558,18 +556,18 @@ function clearCompleted() {
 }
 
 /* Dark mode button styling - better contrast */
-[data-bs-theme="dark"] .btn-outline-secondary {
+[data-bs-theme="dark"] .btn-outline theme-secondary {
   border-color: rgba(108, 117, 125, 0.5);
   color: rgba(255, 255, 255, 0.75);
 }
 
-[data-bs-theme="dark"] .btn-outline-secondary:hover {
+[data-bs-theme="dark"] .btn-outline theme-secondary:hover {
   background-color: rgba(108, 117, 125, 0.2);
   border-color: rgba(108, 117, 125, 0.7);
   color: rgba(255, 255, 255, 0.9);
 }
 
-[data-bs-theme="dark"] .btn-check:checked + .btn-outline-secondary {
+[data-bs-theme="dark"] .btn-check:checked + .btn-outline theme-secondary {
   background-color: #6c757d;
   border-color: #6c757d;
   color: #fff;

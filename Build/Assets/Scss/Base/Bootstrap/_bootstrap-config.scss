@@ -1,11 +1,33 @@
 // Shared Bootstrap SCSS configuration for mp-core bundles.
-// Import this wherever custom SCSS needs Bootstrap variables, maps, or mixins.
-// Only bootstrap.scss should additionally import utilities + component partials.
+// Legacy @import entry points delegate breakpoint mixins to configured Bootstrap 6 maps.
 
-@import "~bootstrap/scss/functions";
-@import "custom-variables";
-@import "~bootstrap/scss/variables";
-@import "custom-variables-dark";
-@import "~bootstrap/scss/variables-dark";
-@import "~bootstrap/scss/maps";
-@import "~bootstrap/scss/mixins";
+@use "mpc-bs6-breakpoints" as mpc-bp;
+@use "bootstrap/scss/config" with (
+  $breakpoints: mpc-bp.$mpc-breakpoints,
+  $container-max-widths: mpc-bp.$mpc-container-max-widths,
+);
+@use "bootstrap/scss/layout/breakpoints" as bp;
+
+@mixin media-breakpoint-up($name, $breakpoints: mpc-bp.$mpc-breakpoints) {
+  @include bp.media-breakpoint-up($name, $breakpoints) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($name, $breakpoints: mpc-bp.$mpc-breakpoints) {
+  @include bp.media-breakpoint-down($name, $breakpoints) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-only($name, $breakpoints: mpc-bp.$mpc-breakpoints) {
+  @include bp.media-breakpoint-only($name, $breakpoints) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: mpc-bp.$mpc-breakpoints) {
+  @include bp.media-breakpoint-between($lower, $upper, $breakpoints) {
+    @content;
+  }
+}

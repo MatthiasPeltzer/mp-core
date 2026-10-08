@@ -4,7 +4,7 @@
  */
 
 import Collapse from 'bootstrap/js/dist/collapse.js';
-import Dropdown from 'bootstrap/js/dist/dropdown.js';
+import Menu from 'bootstrap/js/dist/menu.js';
 import { isDropdownNavLinkClick } from './domUtils.js';
 
 const FOCUSABLE_SELECTOR = [
@@ -153,7 +153,7 @@ function closeDropdownMenu(menu) {
     return false;
   }
 
-  Dropdown.getOrCreateInstance(toggle).hide();
+  Menu.getOrCreateInstance(toggle).hide();
   focusElement(toggle);
 
   return true;
@@ -263,7 +263,7 @@ function handleEscape(event, config) {
     mobileToggle instanceof HTMLElement &&
     mobileMenu.classList.contains('show')
   ) {
-    Dropdown.getOrCreateInstance(mobileToggle).hide();
+    Menu.getOrCreateInstance(mobileToggle).hide();
     focusElement(mobileToggle);
     event.preventDefault();
     event.stopImmediatePropagation();
@@ -284,7 +284,7 @@ function registerUserIntentListeners() {
       const target = event.target;
       if (
         target instanceof Element &&
-        target.closest('[data-bs-toggle="collapse"], [data-bs-toggle="dropdown"]')
+        target.closest('[data-bs-toggle="collapse"], [data-bs-toggle="menu"]')
       ) {
         markUserTriggeredPanelOpen();
       }
@@ -318,11 +318,11 @@ function handleNavToggleKey(event) {
     return;
   }
 
-  if (eventTarget.matches('[data-bs-toggle="dropdown"]')) {
+  if (eventTarget.matches('[data-bs-toggle="menu"]')) {
     event.preventDefault();
     event.stopPropagation();
     markUserTriggeredPanelOpen();
-    Dropdown.getOrCreateInstance(eventTarget).toggle();
+    Menu.getOrCreateInstance(eventTarget).toggle();
   }
 }
 
@@ -363,7 +363,7 @@ export function initNavKeyboard(config) {
     );
   }
 
-  document.addEventListener('shown.bs.dropdown', (event) => {
+  document.addEventListener('shown.bs.menu', (event) => {
     const toggle = event.target;
     if (!(toggle instanceof HTMLElement) || !roots.some((root) => isNavEvent(root, event))) {
       return;
@@ -377,7 +377,7 @@ export function initNavKeyboard(config) {
     focusPanelForToggle(toggle);
   });
 
-  document.addEventListener('hidden.bs.dropdown', (event) => {
+  document.addEventListener('hidden.bs.menu', (event) => {
     const toggle = event.target;
     if (!(toggle instanceof HTMLElement) || !roots.some((root) => isNavEvent(root, event))) {
       return;

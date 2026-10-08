@@ -36,7 +36,7 @@
                   additionalAttributes="{autocomplete: 'off'}" />
               </f:else>
             </f:if>
-            <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-primary tx-indexedsearch-searchbox-button" />
+            <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-solid theme-primary tx-indexedsearch-searchbox-button" />
           </div>
           <f:if condition="{settings.autosuggest}">
             <ul id="tx-indexedsearch-suggest-list" class="tx-indexedsearch-suggest-list" role="listbox" aria-label="{searchSuggestLabel}" hidden="hidden"></ul>
@@ -46,17 +46,17 @@
 
       <f:if condition="{allSortDescendings}">
         <div class="row mb-3 justify-content-end">
-          <div class="col-md-4">
+          <div class="md:col-4">
             <label class="form-label" for="tx-indexedsearch-selectbox-desc">
               <f:translate key="form.orderBy" />:</label>
-            <f:form.select name="search[sortDesc]" options="{allSortDescendings}" value="{searchParams.sortDesc}" id="tx-indexedsearch-selectbox-desc" class="form-select" />
+            <f:form.select name="search[sortDesc]" options="{allSortDescendings}" value="{searchParams.sortDesc}" id="tx-indexedsearch-selectbox-desc" class="form-control" />
           </div>
         </div>
       </f:if>
 
       <f:if condition="{settings.displayAdvancedSearchLink}">
         <p class="mb-2 tx-indexedsearch-advanced-search-button">
-          <a class="btn btn-primary" data-bs-toggle="collapse" href="#tx-indexedsearch-advanced" role="button" aria-expanded="false" aria-controls="tx-indexedsearch-advanced">
+          <a class="btn btn-solid theme-primary" data-bs-toggle="collapse" href="#tx-indexedsearch-advanced" role="button" aria-expanded="false" aria-controls="tx-indexedsearch-advanced">
             <f:translate key="form.linkToAdvancedSearch" />
           </a>
         </p>
@@ -68,67 +68,67 @@
                 <div class="mb-3">
                   <label class="form-label" for="tx-indexedsearch-selectbox-order">
                     <f:translate key="form.orderBy" />:</label>
-                  <f:form.select name="search[sortOrder]" options="{allSortOrders}" value="{searchParams.sortOrder}" id="tx-indexedsearch-selectbox-order" class="form-select" />
+                  <f:form.select name="search[sortOrder]" options="{allSortOrders}" value="{searchParams.sortOrder}" id="tx-indexedsearch-selectbox-order" class="form-control" />
                 </div>
               </f:if>
 
               <div class="row mb-3">
                 <f:if condition="{showTypeSearch}">
                     <f:if condition="{allSearchTypes}">
-                      <div class="col-md-6 mb-3">
+                      <div class="md:col-6 mb-3">
                         <label class="form-label" for="tx-indexedsearch-selectbox-searchtype">
                           <f:translate key="form.match" />:</label>
-                        <f:form.select name="search[searchType]" options="{allSearchTypes}" value="{searchParams.searchType}" id="tx-indexedsearch-selectbox-searchtype" class="form-select" />
+                        <f:form.select name="search[searchType]" options="{allSearchTypes}" value="{searchParams.searchType}" id="tx-indexedsearch-selectbox-searchtype" class="form-control" />
                       </div>
                     </f:if>
                     <f:if condition="{allDefaultOperands}">
-                      <div class="col-md-6 mb-3">
+                      <div class="md:col-6 mb-3">
                         <label class="form-label" for="tx-indexedsearch-selectbox-defaultoperand">&nbsp;</label>
-                        <f:form.select name="search[defaultOperand]" options="{allDefaultOperands}" value="{searchParams.defaultOperand}" id="tx-indexedsearch-selectbox-defaultoperand" class="form-select" />
+                        <f:form.select name="search[defaultOperand]" options="{allDefaultOperands}" value="{searchParams.defaultOperand}" id="tx-indexedsearch-selectbox-defaultoperand" class="form-control" />
                       </div>
                     </f:if>
                 </f:if>
                 <f:if condition="{allMediaTypes}">
-                  <div class="col-md-4 mb-3">
+                  <div class="md:col-4 mb-3">
                     <label class="form-label" for="tx-indexedsearch-selectbox-media">
                       <f:translate key="form.searchIn" />:</label>
-                    <f:form.select name="search[mediaType]" options="{allMediaTypes}" value="{searchParams.mediaType}" id="tx-indexedsearch-selectbox-media" class="form-select" />
+                    <f:form.select name="search[mediaType]" options="{allMediaTypes}" value="{searchParams.mediaType}" id="tx-indexedsearch-selectbox-media" class="form-control" />
                   </div>
                 </f:if>
                 <f:if condition="{allSections}">
-                  <div class="col-md-4 mb-3">
+                  <div class="md:col-4 mb-3">
                     <label class="form-label" for="tx-indexedsearch-selectbox-sections">
                       <f:translate key="form.fromSection" />:</label>
-                    <f:form.select name="search[sections]" options="{allSections}" value="{searchParams.sections}" id="tx-indexedsearch-selectbox-sections" class="form-select" />
+                    <f:form.select name="search[sections]" options="{allSections}" value="{searchParams.sections}" id="tx-indexedsearch-selectbox-sections" class="form-control" />
                   </div>
                 </f:if>
                 <f:if condition="{allIndexConfigurations}">
-                  <div class="col-md-4 mb-3">
+                  <div class="md:col-4 mb-3">
                     <label class="form-label" for="tx-indexedsearch-selectbox-freeIndexUid">
                       <f:translate key="form.freeIndexUid" />:</label>
-                    <f:form.select name="search[freeIndexUid]" options="{allIndexConfigurations}" value="{searchParams.freeIndexUid}" id="tx-indexedsearch-selectbox-freeIndexUid" class="form-select" />
+                    <f:form.select name="search[freeIndexUid]" options="{allIndexConfigurations}" value="{searchParams.freeIndexUid}" id="tx-indexedsearch-selectbox-freeIndexUid" class="form-control" />
                   </div>
                 </f:if>
               </div>
               <div class="row mb-3">
                 <f:if condition="{allNumberOfResults}">
-                  <div class="col-md-6 mb-3">
+                  <div class="md:col-6 mb-3">
                     <label class="form-label" for="tx-indexedsearch-selectbox-results">
                       <f:translate key="form.atATime" /></label>
-                    <f:form.select name="search[numberOfResults]" options="{allNumberOfResults}" value="{searchParams.numberOfResults}" id="tx-indexedsearch-selectbox-results" class="form-select" />
+                    <f:form.select name="search[numberOfResults]" options="{allNumberOfResults}" value="{searchParams.numberOfResults}" id="tx-indexedsearch-selectbox-results" class="form-control" />
                   </div>
                 </f:if>
                 <f:if condition="{allGroups}">
-                  <div class="col-md-6 mb-3">
+                  <div class="md:col-6 mb-3">
                     <label class="form-label" for="tx-indexedsearch-selectbox-group">
                       <f:translate key="form.style" />:</label>
-                    <f:form.select name="search[group]" options="{allGroups}" value="{searchParams.group}" id="tx-indexedsearch-selectbox-group" class="form-select" />
+                    <f:form.select name="search[group]" options="{allGroups}" value="{searchParams.group}" id="tx-indexedsearch-selectbox-group" class="form-control" />
                   </div>
                 </f:if>
               </div>
 
               <div class="d-grid">
-                <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" class="btn btn-primary mb-5 tx-indexedsearch-searchbox-button" />
+                <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" class="btn btn-solid theme-primary mb-5 tx-indexedsearch-searchbox-button" />
               </div>
             </div>
           </div>

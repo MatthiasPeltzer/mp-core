@@ -53,7 +53,7 @@ let navOverlaySyncFrame = 0;
  */
 export function hasOpenDesktopOrMobileNav(desktopSelector = '.mainnav-desktop') {
   return !!document.querySelector(
-    `${desktopSelector} .dropdown-menu.show, #nav-desktop .dropdown-menu.show, #main-menu.show`
+    `${desktopSelector} .menu.show, #nav-desktop .menu.show, #main-menu.show`
   );
 }
 
@@ -99,8 +99,8 @@ export function scheduleNavOverlaySync(body, headerWrapper, hasOpenNav) {
  */
 export function handleDropdownVisibility(element, showCallback, hideCallback) {
   if (!element) return;
-  element.addEventListener('show.bs.dropdown', showCallback);
-  element.addEventListener('hide.bs.dropdown', (event) => hideCallback(event));
+  element.addEventListener('show.bs.menu', showCallback);
+  element.addEventListener('hide.bs.menu', (event) => hideCallback(event));
 }
 
 /**

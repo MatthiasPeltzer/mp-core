@@ -16,7 +16,7 @@ legend {
   }
 }
 
-.form-select,
+.form-control,
 .form-check-input,
 .form-control {
   &:focus {
@@ -58,6 +58,6 @@ textarea.form-control-lg {
   font-weight: 700;
 }
 
-.btn-outline-primary {
+.btn-outline theme-primary {
   background-color: var(--bs-white);
 }

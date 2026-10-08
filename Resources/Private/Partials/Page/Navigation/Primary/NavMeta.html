@@ -51,16 +51,18 @@
                     </li>
                 </f:for>
                 <f:if condition="{site.settings.search.headerSearch}">
-                    <li class="nav-item searchbox d-none d-lg-flex">
+                    <li class="nav-item searchbox d-none lg:d-flex">
                         <f:render arguments="{_all}" partial="Navigation/Search"/>
                     </li>
                 </f:if>
             </ul>
         </nav>
 
-        <div class="form-check form-switch">
-            <input class="form-check-input" id="themeSwitch" role="switch" type="checkbox">
-            <label class="form-check-label" for="themeSwitch"> <span aria-hidden="true" class="switch-icon sun"></span>
+        <div class="form-switch">
+            <div class="switch">
+                <input id="themeSwitch" role="switch" type="checkbox">
+            </div>
+            <label for="themeSwitch"> <span aria-hidden="true" class="switch-icon sun"></span>
                 <span aria-hidden="true" class="switch-icon moon"></span>
                 <span class="visually-hidden">{f:translate(key: 'header.switch', extensionName: 'mp_core')}</span>
             </label>

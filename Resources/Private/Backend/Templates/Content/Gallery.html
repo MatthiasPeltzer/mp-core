@@ -5,7 +5,7 @@
 <f:if condition="{record.image}">
     <ul aria-hidden="true" class="row list-unstyled">
         <f:for as="file" each="{record.image}">
-            <li class="col-4 col-sm-3 col-md-2 col-lg-1">
+            <li class="col-4 sm:col-3 md:col-2 lg:col-1">
                 <f:image class="figure-img img-fluid" cropVariant="default" height="64c" image="{file}" fileExtension="webp" maxWidth="64" treatIdAsReference="1" width="64c"/>
             </li>
         </f:for>

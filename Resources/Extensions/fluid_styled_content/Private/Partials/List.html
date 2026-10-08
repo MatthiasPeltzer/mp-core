@@ -1,4 +1,4 @@
-<li class="teaser-item col-12 col-md-6 {f:if(condition:'{iterator.isFirst}', then:' first')}{f:if(condition:'{iterator.isLast}', then:' last')}">
+<li class="teaser-item col-12 md:col-6 {f:if(condition:'{iterator.isFirst}', then:' first')}{f:if(condition:'{iterator.isLast}', then:' last')}">
     <div class="teaser-item-wrapper">
         <f:for as="file" each="{page.files}" iteration="counter">
             <f:if condition="{counter.cycle} == 1">

@@ -4,19 +4,19 @@
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 <f:if condition="{menuMain}">
     <div class="main-nav-wrapper" id="main-menu-list">
-        <div class="container-md">
+        <div class="md:container">
             <ul class="main-menu list-unstyled row">
                 <f:for as="mainItem" each="{menuMain}">
                     <li class="col{f:if(condition:'{mainItem.data.doktype} == 4', then:' shortcut')}">
                         <f:if condition="{mainItem.children}">
                             <f:then>
                                 <f:if condition="{mainItem.children}">
-                                    <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-child dropdown-item{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
+                                    <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-child menu-item{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
                                     <button
                                         aria-controls="menu-{mainItem.data.uid}"
                                         aria-expanded="false"
                                         aria-label="{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}"
-                                        class="dropdown-item-button collapsed dropdown-item{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}"
+                                        class="menu-item-button collapsed menu-item{f:if(condition:mainItem.active, then:' act')}{f:if(condition:mainItem.current, then:' current')}{f:if(condition:mainItem.hasSubpages, then:' hassub')}"
                                         data-bs-target="#menu-{mainItem.data.uid}"
                                         data-bs-toggle="collapse"
                                         type="button">
@@ -33,7 +33,7 @@
                                 </f:if>
                             </f:then>
                             <f:else>
-                                <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-child dropdown-item{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
+                                <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-child menu-item{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
                             </f:else>
                         </f:if>
                     </li>

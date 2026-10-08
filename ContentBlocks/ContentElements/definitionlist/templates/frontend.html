@@ -82,8 +82,8 @@
     </f:if>
     <dl class="{f:if(condition: data.dl_definitionlist_radioboxes, then: ' row', else: 'd-flex flex-column')} mb-3">
         <f:for each="{data.dl_definitionlist_item}" as="item">
-            <dt class="mb-2{f:if(condition: data.dl_definitionlist_radioboxes, then: ' col-12 col-lg-3')}">{item.text}</dt>
-            <dd class="mb-2{f:if(condition: data.dl_definitionlist_radioboxes, then: ' col-12 col-lg-9')}">{item.textarea -> f:format.html()}</dd>
+            <dt class="mb-2{f:if(condition: data.dl_definitionlist_radioboxes, then: ' col-12 lg:col-3')}">{item.text}</dt>
+            <dd class="mb-2{f:if(condition: data.dl_definitionlist_radioboxes, then: ' col-12 lg:col-9')}">{item.textarea -> f:format.html()}</dd>
         </f:for>
     </dl>
 </div>

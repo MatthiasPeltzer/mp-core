@@ -27,7 +27,7 @@
             <button
                 type="button"
                 class="modal-trigger{f:if(condition: hasStackedTrigger, then: ' card p-0 bg-transparent overflow-hidden rounded')}{f:if(condition: '{hasImageTrigger} && {hasLinkTrigger} != 1', then: ' overflow-hidden rounded')}{f:if(condition: '{hasImageTrigger} && {hasStackedTrigger}', then: '{triggerBorderClass}')}{f:if(condition: '{hasImageTrigger} && {hasLinkTrigger} != 1', then: '{triggerBorderClass}')}{f:if(condition: '{hasLinkTrigger} && {hasStackedTrigger} != 1', then: ' {linkStyleClass}')}{f:if(condition: '{hasLinkTrigger} && {hasStackedTrigger} != 1 && {useTeaserLinkStyle} == 1', then: ' teaser-link')}"
-                data-bs-toggle="modal"
+                data-bs-toggle="dialog"
                 data-bs-target="#{modalId}"
                 title="{f:if(condition: data.tx_link_text, then: data.tx_link_text, else: data.header)}"
             >
@@ -50,7 +50,7 @@
                     <f:if condition="{hasStackedTrigger}">
                         <f:then>
                             <span class="card-body">
-                                <span class="modal-trigger-label w-100{f:if(condition: linkStyleClass, then: ' {linkStyleClass}', else: ' btn btn-primary')}{f:if(condition: useTeaserLinkStyle, then: ' teaser-link')}">
+                                <span class="modal-trigger-label w-100{f:if(condition: linkStyleClass, then: ' {linkStyleClass}', else: ' btn btn-solid theme-primary')}{f:if(condition: useTeaserLinkStyle, then: ' teaser-link')}">
                                     <f:if condition="{useTeaserLinkStyle}">
                                         <span class="icon"></span>
                                     </f:if>
@@ -70,43 +70,36 @@
         </div>
     </f:if>
 
-    <div
-        aria-hidden="true"
+    <dialog
         aria-labelledby="{f:if(condition: modalTitle, then: modalLabelId)}"
-        class="modal fade"
+        class="dialog dialog-{modalSize} dialog-scrollable text-start"
         data-bs-backdrop="static"
         id="{modalId}"
-        role="dialog"
-        tabindex="-1"
     >
-        <div class="modal-dialog modal-{modalSize} modal-dialog-scrollable modal-dialog-centered text-left" role="document">
-            <div class="modal-content">
-                <f:if condition="{modalTitle}">
-                    <div class="modal-header">
-                        <div class="container">
-                            <div class="row g-0">
-                                <div class="col-10 title">
-                                    <h3 class="modal-title h3" id="{modalLabelId}">{modalTitle}</h3>
-                                </div>
-                                <div class="col-2 close text-end">
-                                    <button class="btn-close" data-bs-dismiss="modal" title="{closeLabel}" type="button">
-                                        <span class="visually-hidden">{closeLabel}</span>
-                                    </button>
-                                </div>
-                            </div>
+        <f:if condition="{modalTitle}">
+            <div class="dialog-header">
+                <div class="container">
+                    <div class="row g-0">
+                        <div class="col-10 title">
+                            <h3 class="dialog-title h3" id="{modalLabelId}">{modalTitle}</h3>
+                        </div>
+                        <div class="col-2 close text-end">
+                            <button class="btn-close" data-bs-dismiss="dialog" title="{closeLabel}" type="button">
+                                <span class="visually-hidden">{closeLabel}</span>
+                            </button>
                         </div>
                     </div>
-                </f:if>
-                <div class="modal-body" data-modal-content-root>
-                    <f:if condition="{children_101}">
-                        <f:for as="child" each="{children_101}">
-                            <f:format.raw>{child.renderedContent}</f:format.raw>
-                        </f:for>
-                    </f:if>
                 </div>
             </div>
+        </f:if>
+        <div class="dialog-body" data-modal-content-root>
+            <f:if condition="{children_101}">
+                <f:for as="child" each="{children_101}">
+                    <f:format.raw>{child.renderedContent}</f:format.raw>
+                </f:for>
+            </f:if>
         </div>
-    </div>
+    </dialog>
 </f:section>
 
 </html>

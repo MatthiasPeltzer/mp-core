@@ -5,12 +5,13 @@
 <f:section name="Main">
     <f:if condition="{children_101}">
         <f:variable name="bp" value="{f:if(condition: '{data.grid_breakpoint}', then: '{data.grid_breakpoint}', else: 'xl')}" />
+        <f:variable name="bpClass" value="{f:if(condition: '{bp} == \'xxl\'', then: '2xl', else: '{bp}')}" />
         <f:variable name="hasCustomLayout"
                     value="{data.grid_col1} || {data.grid_col2} || {data.grid_col3} || {data.grid_col4} || {data.grid_offset1} || {data.grid_offset2} || {data.grid_offset3} || {data.grid_offset4}" />
         <f:variable name="rowClasses">
             row
             row-cols-1
-            {f:if(condition: '!{hasCustomLayout}', then: ' row-cols-{bp}-{f:if(condition: \'{data.grid_columns}\', then: \'{data.grid_columns}\', else: \'1\')}')}
+            {f:if(condition: '!{hasCustomLayout}', then: ' {bpClass}:row-cols-{f:if(condition: \'{data.grid_columns}\', then: \'{data.grid_columns}\', else: \'1\')}')}
             {f:if(condition: '{data.grid_gutter} != \'\'', then: ' g-{data.grid_gutter}')}
         </f:variable>
 
@@ -29,9 +30,9 @@
                         </f:switch>
 
                         <f:variable name="colBaseClass"
-                                    value="{f:if(condition: '{colSize} != \'\'', then: 'col-12 col-{bp}-{colSize} mb-4', else: '{f:if(condition: \'{hasCustomLayout}\', then: \'col-12 col-{bp} mb-4\', else: \'col mb-4\')}')}" />
+                                    value="{f:if(condition: '{colSize} != \'\'', then: 'col-12 {bpClass}:col-{colSize} mb-4', else: '{f:if(condition: \'{hasCustomLayout}\', then: \'col-12 {bpClass}:col mb-4\', else: \'col mb-4\')}')}" />
                         <f:variable name="colClass"
-                                    value="{colBaseClass}{f:if(condition: '{colOffset} != \'\'', then: ' offset-{bp}-{colOffset}')}" />
+                                    value="{colBaseClass}{f:if(condition: '{colOffset} != \'\'', then: ' {bpClass}:offset-{colOffset}')}" />
 
                         <li class="{colClass}">
                             <f:format.raw>{child.renderedContent}</f:format.raw>
@@ -56,9 +57,9 @@
                         </f:switch>
 
                         <f:variable name="colBaseClass"
-                                    value="{f:if(condition: '{colSize} != \'\'', then: 'col-12 col-{bp}-{colSize} mb-4', else: '{f:if(condition: \'{hasCustomLayout}\', then: \'col-12 col-{bp} mb-4\', else: \'col mb-4\')}')}" />
+                                    value="{f:if(condition: '{colSize} != \'\'', then: 'col-12 {bpClass}:col-{colSize} mb-4', else: '{f:if(condition: \'{hasCustomLayout}\', then: \'col-12 {bpClass}:col mb-4\', else: \'col mb-4\')}')}" />
                         <f:variable name="colClass"
-                                    value="{colBaseClass}{f:if(condition: '{colOffset} != \'\'', then: ' offset-{bp}-{colOffset}')}" />
+                                    value="{colBaseClass}{f:if(condition: '{colOffset} != \'\'', then: ' {bpClass}:offset-{colOffset}')}" />
 
                         <div class="{colClass}">
                             <f:format.raw>{child.renderedContent}</f:format.raw>

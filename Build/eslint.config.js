@@ -55,7 +55,9 @@ export default [
     // These run via `node scripts/*.js`, not in the browser.
     files: [
       "scripts/**/*.js",
+      "scripts/**/*.mjs",
       "Scripts/**/*.js",
+      "Scripts/**/*.mjs",
       "vite.config.js",
       "postcss.config.js",
       "stylelint.config.js",

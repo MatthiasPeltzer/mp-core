@@ -1,0 +1,13 @@
+// MPC overrides passed into Bootstrap 6 `$root-tokens` (merged via defaults()).
+
+$root-tokens: (
+  --body-font-family: "OpenSans, system-ui, Segoe UI, Ubuntu, Cantarell, Noto Sans, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+  --fg-body: light-dark(#222, #fff),
+  --bg-body: light-dark(#fff, #000),
+  --heading-font-family: "SpecialElite, Courier New, Courier, ui-monospace, monospace",
+  --heading-font-weight: 400,
+  --heading-color: light-dark(#222, #fff),
+  --link-color: light-dark(#222, #fff),
+  --link-decoration: none,
+  --link-hover-color: light-dark(color-mix(in oklch, #222 90%, #000), color-mix(in oklch, #fff 90%, #000)),
+);

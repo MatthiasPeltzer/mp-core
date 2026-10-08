@@ -3,18 +3,18 @@
       xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 <f:if condition="{mainNav}">
-    <nav aria-label="{f:translate(key: 'header.mainnavigation', extensionName: 'mp_core')}" class="col main-menu-layer dropdown flex-grow-0" id="main-menu">
+    <nav aria-label="{f:translate(key: 'header.mainnavigation', extensionName: 'mp_core')}" class="col main-menu-layer flex-grow-0" id="main-menu">
         <button aria-controls="menu" aria-expanded="false" class="navbar-toggler" data-bs-auto-close="outside"
                 data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent"
-                data-bs-toggle="dropdown" id="main-menu-button"
+                data-bs-toggle="menu" id="main-menu-button"
                 title="{f:translate(key: 'header.openMenuTitle', extensionName: 'mp_core')}" type="button">
             <span class="line"></span> <span class="txt">{f:translate(key: 'header.openMenu', extensionName: 'mp_core')}</span>
         </button>
-        <div class="dropdown-menu" id="menu">
+        <div class="menu" id="menu">
             <div class="navbar-wrapper">
                 <div class="meta-mobile" id="meta-mobile"></div>
                 <f:if condition="{site.settings.search.headerSearch}">
-                    <div class="mobile-search container-md d-lg-none">
+                    <div class="mobile-search md:container lg:d-none">
                         <f:variable name="searchIdSuffix" value="-mobile"/>
                         <f:variable name="searchInline" value="1"/>
                         <f:render arguments="{_all}" partial="Navigation/Search"/>
@@ -24,14 +24,14 @@
                     <div class="container">
                         <ul class="main-menu list-unstyled row" id="mainNav">
                             <f:for as="mainItem" each="{mainNav}">
-                                <li class="col-12 col-md-6 col-xl-3">
+                                <li class="col-12 md:col-6 xl:col-3">
                                     <f:if condition="{mainItem.current}">
                                         <f:then>
                                             <f:link.typolink
                                                 parameter="{mainItem.link}"
                                                 target="{mainItem.data.target}"
                                                 title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
-                                                class="first-child gradient-line-after dropdown-item{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.data.target, then:' external-link')}"
+                                                class="first-child gradient-line-after menu-item{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.data.target, then:' external-link')}"
                                                 additionalAttributes="{'aria-current': 'page'}">
                                                 <f:if condition="{mainItem.files.0}">
                                                     <f:then>
@@ -49,7 +49,7 @@
                                                 parameter="{mainItem.link}"
                                                 target="{mainItem.data.target}"
                                                 title="{f:if(condition: mainItem.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
-                                                class="first-child gradient-line-after dropdown-item{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.data.target, then:' external-link')}">
+                                                class="first-child gradient-line-after menu-item{f:if(condition: mainItem.active, then:' active')}{f:if(condition: mainItem.data.target, then:' external-link')}">
                                                 <f:if condition="{mainItem.files.0}">
                                                     <f:then>
                                                       <mpc:svgInline image="{mainItem.files.0}" width="16" height="16" class="nav-icon" viewBox="0 0 16 16" additionalAttributes="{aria-hidden:'true'}"/>
@@ -87,7 +87,7 @@
                 <f:link.typolink
                     parameter="{mainChild.link}"
                     target="{mainChild.data.target}"
-                    class="sub dropdown-item{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.data.target, then:' external-link')}"
+                    class="sub menu-item{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.data.target, then:' external-link')}"
                     title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}"
                     additionalAttributes="{'aria-current': 'page'}">
                     <f:if condition="{mainChild.files.0}">
@@ -105,7 +105,7 @@
                 <f:link.typolink
                     parameter="{mainChild.link}"
                     target="{mainChild.data.target}"
-                    class="sub dropdown-item{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.data.target, then:' external-link')}"
+                    class="sub menu-item{f:if(condition: mainChild.active, then:' active')}{f:if(condition: mainChild.data.target, then:' external-link')}"
                     title="{f:if(condition: mainChild.data.target, then:'{f:translate(key: \'link.newwindow\', extensionName: \'mp_core\')}')}">
                     <f:if condition="{mainChild.files.0}">
                       <f:then>
@@ -120,7 +120,7 @@
             </f:else>
         </f:if>
         <f:if condition="{mainChild.children}">
-            <button aria-controls="menu-{mainChild.data.uid}" aria-expanded="false" class="btn-open collapsed dropdown-item" data-bs-target="#menu-{mainChild.data.uid}" data-bs-toggle="collapse" type="button">
+            <button aria-controls="menu-{mainChild.data.uid}" aria-expanded="false" class="btn-open collapsed menu-item" data-bs-target="#menu-{mainChild.data.uid}" data-bs-toggle="collapse" type="button">
                 <span class="visually-hidden">{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}</span>
             </button>
             <ul class="list-unstyled collapse" id="menu-{mainChild.data.uid}">

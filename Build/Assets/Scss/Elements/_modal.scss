@@ -1,6 +1,6 @@
 // modal
 
-.modal {
+.dialog {
   &-title {
     @include font-size(map-get($font-size-scale, md));
 
@@ -63,6 +63,7 @@
 
     // Gallery modal prev/next: excluded from global link outline (_links.scss).
     // filter:none on controls (_carousel.scss) keeps the white ring visible in dark mode.
+    .btn-icon,
     .carousel-control-prev,
     .carousel-control-next {
       &:is(:hover, :focus, :focus-visible, :active) {
@@ -78,7 +79,7 @@
       justify-content: center;
     }
 
-    .image-buttons .btn-image + .dropdown-menu.dropdown-download {
+    .image-buttons .btn-image + .menu.dropdown-download {
       margin-top: -9px !important;
     }
 
@@ -146,7 +147,8 @@
   }
 }
 
-html[data-bs-theme="light"] .modal-footer {
+html[data-bs-theme="light"] .dialog-footer {
+  .btn-icon,
   .carousel-control-prev,
   .carousel-control-next {
     &:is(:hover, :focus, :focus-visible, :active) {

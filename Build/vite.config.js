@@ -27,7 +27,7 @@ const vendorChunks = {
   'vendor-vue': ['/node_modules/vue/', '/node_modules/@vue/'],
   'vendor-swiper': ['/node_modules/swiper/'],
   'vendor-bootstrap': ['/node_modules/bootstrap/'],
-  'vendor-popper': ['/node_modules/@popperjs/'],
+  'vendor-floating-ui': ['/node_modules/@floating-ui/'],
   'vendor-jarallax': ['/node_modules/jarallax/']
 };
 
@@ -117,6 +117,7 @@ export default defineConfig(async ({mode}) => {
     // Resolve aliases (optional, but helpful)
     resolve: {
       alias: {
+        '@floating-ui/dom': resolve(__dirname, 'node_modules/@floating-ui/dom'),
         '~bootstrap': resolve(__dirname, 'node_modules/bootstrap'),
         '@assets': resolve(__dirname, 'Assets'),
         '@components': resolve(__dirname, 'Assets/Scripts/components')

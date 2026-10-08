@@ -4,7 +4,7 @@
 
 <li class="news-list-item">
     <article class="row teaser pt-2 pb-2">
-        <div class="col-12 col-md-8 order-1 pt-0{f:if(condition: newsItem.istopnews, then: ' topnews')}">
+        <div class="col-12 md:col-8 order-1 pt-0{f:if(condition: newsItem.istopnews, then: ' topnews')}">
             <header>
                 <h2 class="lh-1"><span>{newsItem.title}</span></h2>
                 <f:render arguments="{settings:settings,newsItem:newsItem}" partial="General/AdditionalInformation"/>
@@ -25,7 +25,7 @@
             </n:link>
         </div>
         <f:if condition="{newsItem.mediaPreviews}">
-            <div class="col-12 col-md-4 order-0">
+            <div class="col-12 md:col-4 order-0">
                 <f:alias map="{mpc:format.json.decode(json: newsItem.mediaPreviews.0.originalResource.properties.crop)}">
                     <picture data-aspectratio-lg="{large.selectedRatio}" data-aspectratio-md="{medium.selectedRatio}" data-aspectratio-sm="{small.selectedRatio}" data-aspectratio-xl="{default.selectedRatio}" data-aspectratio-xs="{xsmall.selectedRatio}">
                         <f:image class="figure-img img-fluid rounded" cropVariant="default" decoding="async" fileExtension="webp" height="{f:if(condition: settings.list.media.image.maxHeight, then: settings.list.media.image.maxHeight, else:'')}" image="{newsItem.mediaPreviews.0.originalResource}" loading="lazy" maxWidth="{settings.list.media.image.maxWidth}" width="{f:if(condition: settings.list.media.image.maxWidth, then: settings.list.media.image.maxWidth, else: settings.list.media.image.width)}"/>

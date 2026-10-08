@@ -1,0 +1,126 @@
+// Maps Bootstrap 5 `--bs-*` custom properties (used across MPC SCSS and site config)
+// to Bootstrap 6 unprefixed tokens and MPC brand defaults.
+
+@use "mpc-design-tokens" as mpc;
+
+@layer custom {
+  :root,
+  :host {
+    // Brand defaults (site Styles.html overrides `--bs-primary` et al. when configured).
+    --bs-primary: #154d3b;
+    --bs-secondary: #0a406e;
+    --bs-tertiary: #300;
+    --bs-quaternary: #777;
+    --bs-danger: #900;
+
+    // Bridge site / legacy tokens into Bootstrap 6 theme variables.
+    --primary-base: var(--bs-primary);
+    --primary-bg: var(--bs-primary);
+    --secondary-base: var(--bs-secondary);
+    --secondary-bg: var(--bs-secondary);
+    --danger-base: var(--bs-danger);
+    --danger-bg: var(--bs-danger);
+    --bs-body-bg: var(--bg-body);
+    --bs-body-color: var(--fg-body);
+    --bs-secondary-color: light-dark(rgb(34 34 34 / 75%), rgb(255 255 255 / 75%));
+    --bs-white: #{mpc.$white};
+    --bs-black: #{mpc.$black};
+    --gray-100: #{mpc.$gray-100};
+    --gray-200: #{mpc.$gray-200};
+    --gray-300: #{mpc.$gray-300};
+    --gray-400: #{mpc.$gray-400};
+    --gray-500: #{mpc.$gray-500};
+    --gray-600: #{mpc.$gray-600};
+    --gray-700: #{mpc.$gray-700};
+    --gray-800: #{mpc.$gray-800};
+    --gray-900: #{mpc.$gray-900};
+    --bs-gray-100: #{mpc.$gray-100};
+    --bs-gray-200: #{mpc.$gray-200};
+    --bs-gray-300: #{mpc.$gray-300};
+    --bs-gray-400: #{mpc.$gray-400};
+    --bs-gray-500: #{mpc.$gray-500};
+    --bs-gray-600: #{mpc.$gray-600};
+    --bs-gray-700: #{mpc.$gray-700};
+    --bs-gray-800: #{mpc.$gray-800};
+    --bs-gray-900: #{mpc.$gray-900};
+    --bs-green: #154d3b;
+    --bs-gray-dark: var(--bs-gray-800);
+    --bs-red-700: #900;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-border-color: var(--border-color, #{mpc.$gray-200});
+    --bs-border-radius: var(--radius-5, 0.375rem);
+    --bs-border-radius-sm: var(--radius-4, 0.25rem);
+    --bs-box-shadow: var(--box-shadow, 0 0.5rem 1rem rgb(0 0 0 / 15%));
+    --bs-font-sans-serif: specialelite, "Courier New", courier, ui-monospace, monospace;
+    --bs-body-font-family: var(--body-font-family);
+    --bs-zindex-dropdown: var(--z-menu, 1000);
+
+    // Editor frame colour defaults (site Styles.html overrides when configured).
+    --bs-color-1: #fff;
+    --bs-color-2: #efefef;
+    --bs-color-3: #ccc;
+    --bs-color-4: #999;
+    --bs-color-5: #888;
+    --bs-color-6: #777;
+    --bs-color-7: #666;
+    --bs-color-8: #555;
+  }
+
+  // Bootstrap 5 utility class names still present in Fluid, RTE, and Vue demos.
+  .bg-primary {
+    background-color: var(--bs-primary) !important;
+  }
+
+  .bg-secondary {
+    background-color: var(--bs-secondary) !important;
+  }
+
+  .bg-tertiary {
+    background-color: var(--bs-tertiary) !important;
+  }
+
+  .bg-quaternary {
+    background-color: var(--bs-quaternary) !important;
+  }
+
+  .bg-danger {
+    background-color: var(--bs-danger) !important;
+  }
+
+  .bg-light {
+    background-color: var(--bs-gray-100) !important;
+  }
+
+  .bg-dark {
+    background-color: var(--bs-gray-900) !important;
+  }
+
+  .bg-white {
+    background-color: var(--bs-white) !important;
+  }
+
+  .bg-transparent {
+    background-color: transparent !important;
+  }
+
+  .text-white {
+    color: var(--bs-white) !important;
+  }
+
+  .text-black {
+    color: var(--bs-black) !important;
+  }
+
+  .fg-secondary {
+    color: var(--bs-secondary-color) !important;
+  }
+
+  body {
+    color: var(--bs-body-color);
+  }
+
+  .btn.btn-solid {
+    font-weight: 700;
+  }
+}

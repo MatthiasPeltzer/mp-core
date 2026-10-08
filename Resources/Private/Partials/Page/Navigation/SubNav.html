@@ -4,7 +4,7 @@
       xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers">
 
 <f:if condition="{menuSub}">
-    <nav aria-label="{f:translate(key: 'supplement.areamenu', extensionName: 'mp_core')}" class="d-none d-lg-block">
+    <nav aria-label="{f:translate(key: 'supplement.areamenu', extensionName: 'mp_core')}" class="d-none lg:d-block">
         <ul class="nav flex-column hidden-md-down" id="subnav">
             <f:for as="mainItem" each="{menuSub}" iteration="i">
                 <li class="nav-item mb-1">

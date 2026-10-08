@@ -22,51 +22,30 @@
     <div class="accordion-wrapper">
         <ul class="accordion list-unstyled" id="accordion-{data.uid}">
             <f:for each="{children_101}" as="record" iteration="iterator">
-                <li class="accordion-item">
-                    <f:if condition="{data.container_headline} > 1">
-                        <f:then>
-                            <f:switch expression="{data.container_headline}">
-                                <f:case value="2"><h2 class="accordion-header" id="heading-{record.uid}"></f:case>
-                                <f:case value="3"><h3 class="accordion-header" id="heading-{record.uid}"></f:case>
-                                <f:case value="4"><h4 class="accordion-header" id="heading-{record.uid}"></f:case>
-                                <f:case value="5"><h5 class="accordion-header" id="heading-{record.uid}"></f:case>
-                                <f:case value="6"><h6 class="accordion-header" id="heading-{record.uid}"></f:case>
-                            </f:switch>
-                        </f:then>
-                        <f:else>
-                            <div class="accordion-header" id="heading-{record.uid}">
-                        </f:else>
-                    </f:if>
-                    <button type="button" class="accordion-button {f:if(condition: '{data.container_accordion_toggle} == 1 && {iterator.cycle} != {data.container_accordion_open}', then: ' collapsed')}{f:if(condition: '{data.container_accordion_toggle} == 0', then: ' collapsed')}"
-                       data-bs-toggle="collapse"
-                       data-bs-target="#accordion-{record.uid}"
-                       data-bs-parent="{f:if(condition: '{data.container_accordion_toggle_all} != 1', then: '#accordion-{data.uid}')}"
-                       aria-expanded="{f:if(condition: '{data.container_accordion_toggle} == 1 && {iterator.cycle}=={data.container_accordion_open}', then: 'true', else: 'false')}"
-                       aria-controls="accordion-{record.uid}"
-                    >{record.header}</button>
-                    <f:if condition="{data.container_headline} > 1">
-                        <f:then>
-                            <f:switch expression="{data.container_headline}">
-                                <f:case value="2"></h2></f:case>
-                                <f:case value="3"></h3></f:case>
-                                <f:case value="4"></h4></f:case>
-                                <f:case value="5"></h5></f:case>
-                                <f:case value="6"></h6></f:case>
-                            </f:switch>
-                        </f:then>
-                        <f:else>
+                <li>
+                    <details
+                        class="accordion-item"
+                        id="heading-{record.uid}"
+                        {f:if(condition: '{data.container_accordion_toggle_all} != 1', then: ' name="accordion-{data.uid}"')}
+                        {f:if(condition: '{data.container_accordion_toggle} == 1 && {iterator.cycle} == {data.container_accordion_open}', then: ' open')}
+                    >
+                        <summary class="accordion-header" aria-controls="panel-{record.uid}">
+                            <f:if condition="{data.container_headline} == 2"><span class="h2 mb-0">{record.header}</span></f:if>
+                            <f:if condition="{data.container_headline} == 3"><span class="h3 mb-0">{record.header}</span></f:if>
+                            <f:if condition="{data.container_headline} == 4"><span class="h4 mb-0">{record.header}</span></f:if>
+                            <f:if condition="{data.container_headline} == 5"><span class="h5 mb-0">{record.header}</span></f:if>
+                            <f:if condition="{data.container_headline} == 6"><span class="h6 mb-0">{record.header}</span></f:if>
+                            <f:if condition="{data.container_headline} <= 1"><span>{record.header}</span></f:if>
+                            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 5 6 6 6-6"/></svg>
+                        </summary>
+                        <div class="accordion-body" id="panel-{record.uid}">
+                            <f:format.raw>{record.renderedContent}</f:format.raw>
+                        </div>
+                    </details>
+                </li>
+            </f:for>
+        </ul>
     </div>
-    </f:else></f:if>
-
-    <div id="accordion-{record.uid}"
-         class="accordion-collapse collapse{f:if(condition: '{data.container_accordion_toggle} == 1 && {iterator.cycle} == {data.container_accordion_open}', then: ' show')}"
-         aria-labelledby="heading-{record.uid}"
-         data-bs-parent="{f:if(condition: '{data.container_accordion_toggle_all} != 1', then: '#accordion-{data.uid}')}">
-        <div class="accordion-body">
-            <f:format.raw>{record.renderedContent}</f:format.raw>
-        </div>
-    </div>
-    </li></f:for></ul></div>
 </f:section>
 
 <f:section name="AccordionDetails">
@@ -75,7 +54,7 @@
             <f:for as="record" each="{children_101}" iteration="iterator">
                 <li>
                     <details class="details-item"{f:if(condition:'{data.container_accordion_toggle} == 1 && {iterator.cycle} == {data.container_accordion_open}', then: ' open')}{f:if(condition:'{data.container_accordion_toggle_all} == 0', then:' name="details-item-{data.uid}"')}>
-                        <summary data-bs-target="#accordion-{record.uid}">{record.header}</summary>
+                        <summary>{record.header}</summary>
                         <f:format.raw>{record.renderedContent}</f:format.raw>
                     </details>
                 </li>

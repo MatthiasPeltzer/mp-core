@@ -67,16 +67,16 @@ function initPrimaryNavigation() {
   const navbarToggler = document.querySelector('.navbar-toggler');
   const navbarTogglerText = document.querySelector('.navbar-toggler span.txt > .visually-hidden');
 
-  dropdown.addEventListener('show.bs.dropdown', () => {
+  dropdown.addEventListener('show.bs.menu', () => {
     toggleNavState(true, body, headerWrapper, navbarToggler, navbarTogglerText, 
                    openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
   });
 
-  dropdown.addEventListener('shown.bs.dropdown', () => {
+  dropdown.addEventListener('shown.bs.menu', () => {
     scrollToCurrentElement(CONFIG.container);
   });
   
-  dropdown.addEventListener('hide.bs.dropdown', () => {
+  dropdown.addEventListener('hide.bs.menu', () => {
     toggleNavState(false, body, headerWrapper, navbarToggler, navbarTogglerText, 
                    openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
   });

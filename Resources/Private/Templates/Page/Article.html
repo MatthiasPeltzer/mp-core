@@ -53,7 +53,7 @@
 
             <div class="row">
 
-                <div class="col-12{f:if(condition: site.configuration.subnav, then: ' col-lg-8 col-xl-9')}{f:if(condition: '!{site.configuration.subnavOrder}', then: ' order-1')}">
+                <div class="col-12{f:if(condition: site.configuration.subnav, then: ' lg:col-8 xl:col-9')}{f:if(condition: '!{site.configuration.subnavOrder}', then: ' order-1')}">
                     <div class="article">
                         <!--TYPO3SEARCH_begin-->
                         <f:format.raw>{main}</f:format.raw>
@@ -66,7 +66,7 @@
                 </div>
 
                 <f:if condition="{site.configuration.subnav}">
-                    <section aria-label="{f:translate(key: 'supplement.aside', extensionName: 'mp_core')}" class="col-12 col-lg-4 col-xl-3 supplement{f:if(condition: data.headercontainer, then: ' frame-space-before-medium')}{f:if(condition: '!{site.configuration.subnavOrder}', then: ' order-0')}">
+                    <section aria-label="{f:translate(key: 'supplement.aside', extensionName: 'mp_core')}" class="col-12 lg:col-4 xl:col-3 supplement{f:if(condition: data.headercontainer, then: ' frame-space-before-medium')}{f:if(condition: '!{site.configuration.subnavOrder}', then: ' order-0')}">
                         <f:render arguments="{menuSub: menuSub}" partial="Navigation/SubNav"/>
 
                         <f:if condition="{supplement} || {teaser}">

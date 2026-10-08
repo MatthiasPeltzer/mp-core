@@ -402,12 +402,12 @@ function initSearchAutosuggest() {
  * Works whether autosuggest is enabled or not.
  */
 function initHeaderSearchFocus() {
-  document.addEventListener('shown.bs.dropdown', (event) => {
+  document.addEventListener('shown.bs.menu', (event) => {
     const toggle = event.target;
     if (!(toggle instanceof Element)) {
       return;
     }
-    const menu = toggle.parentElement?.querySelector('.dropdown-menu');
+    const menu = toggle.parentElement?.querySelector('.menu');
     const input = menu?.querySelector('input[type="search"], input[data-autosuggest-url]');
     if (input instanceof HTMLInputElement) {
       input.focus();

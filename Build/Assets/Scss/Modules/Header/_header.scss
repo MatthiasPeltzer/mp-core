@@ -93,8 +93,8 @@
   }
 }
 
-.header-wrapper:has(.mainnav-desktop .dropdown-menu.show) .layer,
-.header-wrapper:has(#nav-desktop .dropdown-menu.show) .layer,
+.header-wrapper:has(.mainnav-desktop .menu.show) .layer,
+.header-wrapper:has(#nav-desktop .menu.show) .layer,
 .header-wrapper:has(.navtype-1 .main-menu-desktop.show) .layer,
 .header-wrapper:has(#main-menu.show) .layer {
   display: block;
@@ -147,7 +147,7 @@
     width: 1420px;
   }
 
-  @include media-breakpoint-up(xxl) {
+  @include media-breakpoint-up(2xl) {
     height: 1920px;
     width: 1920px;
   }

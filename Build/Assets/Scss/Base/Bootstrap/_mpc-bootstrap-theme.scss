@@ -1,0 +1,26 @@
+// MPC brand colours for Bootstrap 6 @use … with ($theme-colors: …).
+// Keys merge with Bootstrap defaults via defaults() — only override roles we care about.
+
+$theme-colors: (
+  "primary": (
+    "base": #154d3b,
+    "bg": #154d3b,
+    "fg": #fff,
+    "contrast": #fff,
+    "border": #154d3b,
+  ),
+  "secondary": (
+    "base": #0a406e,
+    "bg": #0a406e,
+    "fg": #fff,
+    "contrast": #fff,
+    "border": #0a406e,
+  ),
+  "danger": (
+    "base": #900,
+    "bg": #900,
+    "fg": #fff,
+    "contrast": #fff,
+    "border": #900,
+  ),
+);

@@ -29,14 +29,14 @@ import {
 const CONFIG = {
   desktop: {
     container: '.mainnav-desktop',
-    buttonSelector: '.dropdown-item-button',
+    buttonSelector: '.menu-item-button',
     dropdownButtonSelector: '.first-nav-button',
     menuSelector: '.collapse',
     parentMenuSelector: '.subnav-children'
   },
   mobile: {
     container: '#main-menu',
-    buttonSelector: '.dropdown-item-button',
+    buttonSelector: '.menu-item-button',
     menuSelector: '.collapse',
     parentMenuSelector: '.collapse'
   },
@@ -188,25 +188,25 @@ function syncDesktopDropdownButtonStates() {
 function initDesktopNavigation() {
   const desktopRoot = CONFIG.desktop.container;
 
-  document.addEventListener('show.bs.dropdown', (event) => {
+  document.addEventListener('show.bs.menu', (event) => {
     if (!event.target.closest(desktopRoot)) return;
     syncDesktopNavOverlay();
   });
 
-  document.addEventListener('shown.bs.dropdown', (event) => {
+  document.addEventListener('shown.bs.menu', (event) => {
     if (!event.target.closest(desktopRoot)) return;
     scrollToCurrentElement(CONFIG.desktop.container);
     syncDesktopNavOverlay();
     syncDesktopDropdownButtonStates();
   });
 
-  document.addEventListener('hide.bs.dropdown', (event) => {
+  document.addEventListener('hide.bs.menu', (event) => {
     if (!event.target.closest(desktopRoot)) return;
     if (isDropdownNavLinkClick(event.clickEvent)) return;
     syncDesktopNavOverlay();
   });
 
-  document.addEventListener('hidden.bs.dropdown', (event) => {
+  document.addEventListener('hidden.bs.menu', (event) => {
     if (!event.target.closest(desktopRoot)) return;
     if (isDropdownNavLinkClick(event.clickEvent)) return;
     syncDesktopNavOverlay();
@@ -284,7 +284,7 @@ function closeMobileMenus() {
 }
 
 function closeDesktopMenus() {
-  document.querySelectorAll('.first-nav-button.show, .mainnav-desktop .dropdown-toggle.show').forEach(button => {
+  document.querySelectorAll('.first-nav-button.show, .mainnav-desktop [data-bs-toggle="menu"].show').forEach(button => {
     button.click();
   });
   

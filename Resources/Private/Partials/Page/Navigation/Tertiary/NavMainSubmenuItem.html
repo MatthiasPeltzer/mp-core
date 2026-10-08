@@ -2,7 +2,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
-<f:variable name="submenuLinkClass" value="sub{f:if(condition: '{variant} == \'desktop\'', then: ' collapsed')} dropdown-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}" />
+<f:variable name="submenuLinkClass" value="sub{f:if(condition: '{variant} == \'desktop\'', then: ' collapsed')} menu-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}" />
 <f:variable name="menuIdPrefix" value="{f:if(condition: '{variant} == \'desktop\'', then: 'menu-desktop', else: 'menu')}" />
 <f:variable name="menuId" value="{menuIdPrefix}-{mainChild.data.uid}" />
 <f:variable name="childParentMenuId" value="{menuIdPrefix}-{mainChild.data.uid}" />
@@ -20,7 +20,7 @@
                 aria-controls="{menuId}"
                 aria-expanded="false"
                 aria-label="{f:translate(key: 'header.submenuOpen', extensionName: 'mp_core')}"
-                class="dropdown-item-button{f:if(condition: '{variant} == \'desktop\'', then: ' sub collapsed')} dropdown-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}"
+                class="menu-item-button{f:if(condition: '{variant} == \'desktop\'', then: ' sub collapsed')} menu-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}"
                 data-bs-target="#{menuId}"
                 data-bs-toggle="collapse"
                 type="button">

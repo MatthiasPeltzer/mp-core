@@ -23,8 +23,8 @@
 </f:section>
 
 <f:section name="logoVisuals">
-    <span class="header-image d-none d-md-block"><f:render partial="Header.LogoImage" arguments="{logoFile: logoBig, preferSvg: logoSvgBig, imageClass: 'logo-svg', maxHeight: 300}"/></span>
-    <span class="header-image-small d-block d-md-none"><f:render partial="Header.LogoImage" arguments="{logoFile: logoSmall, preferSvg: logoSvgSmall, imageClass: 'logo-svg', maxHeight: 96}"/></span>
+    <span class="header-image d-none md:d-block"><f:render partial="Header.LogoImage" arguments="{logoFile: logoBig, preferSvg: logoSvgBig, imageClass: 'logo-svg', maxHeight: 300}"/></span>
+    <span class="header-image-small d-block md:d-none"><f:render partial="Header.LogoImage" arguments="{logoFile: logoSmall, preferSvg: logoSvgSmall, imageClass: 'logo-svg', maxHeight: 96}"/></span>
     <f:if condition="{logoText}">
         <f:if condition="{logoTextHidden}">
             <f:then><span class="visually-hidden">{logoText}</span></f:then>

@@ -17,7 +17,7 @@
                         <label for="mode" class="form-label">
                             <f:translate key="LLL:EXT:indexed_search/Resources/Private/Language/locallang.xlf:administration.moduleFunctions.mode" />
                         </label>
-                        <f:form.select class="form-select" id="mode" name="mode" options="{
+                        <f:form.select class="form-control" id="mode" name="mode" options="{
                             overview:'{f:translate(key:\'administration.statistics.view.overview\')}',
                             content:'{f:translate(key:\'administration.statistics.view.content\')}'
                             }" value="{mode}" additionalAttributes="{data-global-event='change', data-action-submit: '$form'}" />
@@ -26,7 +26,7 @@
                         <label for="depth" class="form-label">
                             <f:translate key="LLL:EXT:indexed_search/Resources/Private/Language/locallang.xlf:administration.moduleFunctions.depth" />
                         </label>
-                        <f:form.select class="form-select" id="depth" name="depth" options="{levelTranslations}" value="{depth}" additionalAttributes="{data-global-event='change', data-action-submit: '$form'}" />
+                        <f:form.select class="form-control" id="depth" name="depth" options="{levelTranslations}" value="{depth}" additionalAttributes="{data-global-event='change', data-action-submit: '$form'}" />
                     </div>
                 </div>
             </f:form>

@@ -1,14 +1,14 @@
 <html data-namespace-typo3-fluid="true" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
-<nav aria-label="{f:translate(key: 'header.mainnavigation', extensionName: 'mp_core')}" class="main-menu-layer dropdown flex-shrink-1 d-lg-none" id="main-menu">
-    <button class="navbar-toggler ms-auto" data-bs-auto-close="outside" data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent" data-bs-toggle="dropdown" id="main-menu-button" title="{f:translate(key: 'header.openMenuTitle', extensionName: 'mp_core')}" type="button">
+<nav aria-label="{f:translate(key: 'header.mainnavigation', extensionName: 'mp_core')}" class="main-menu-layer flex-shrink-1 lg:d-none" id="main-menu">
+    <button class="navbar-toggler ms-auto" data-bs-auto-close="outside" data-bs-boundary="scrollParent" data-bs-display="static" data-bs-reference="parent" data-bs-toggle="menu" id="main-menu-button" title="{f:translate(key: 'header.openMenuTitle', extensionName: 'mp_core')}" type="button">
         <span class="line"></span> <span class="txt">{f:translate(key: 'header.openMenu', extensionName: 'mp_core')}</span>
     </button>
-    <div class="dropdown-menu" id="menu">
+    <div class="menu" id="menu">
         <div class="navbar-wrapper">
             <div class="meta-mobile"></div>
             <f:if condition="{site.settings.search.headerSearch}">
-                <div class="mobile-search container-md">
+                <div class="mobile-search md:container">
                     <f:variable name="searchIdSuffix" value="-mobile"/>
                     <f:variable name="searchInline" value="1"/>
                     <f:render arguments="{_all}" partial="Navigation/Search"/>

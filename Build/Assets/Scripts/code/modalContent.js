@@ -4,20 +4,20 @@ import { notifyDynamicContentReady, pausePlayersInside } from './vidply-dynamic-
  * Initialise VidPly inside modals on open and pause players when closed.
  */
 export function initModalContent() {
-  document.querySelectorAll('.modal[data-bs-backdrop]').forEach((modal) => {
-    if (!(modal instanceof HTMLElement) || modal.dataset.mpcModalBound === '1') {
+  document.querySelectorAll('.dialog[data-bs-backdrop]').forEach((dialog) => {
+    if (!(dialog instanceof HTMLElement) || dialog.dataset.mpcModalBound === '1') {
       return;
     }
 
-    modal.dataset.mpcModalBound = '1';
+    dialog.dataset.mpcModalBound = '1';
 
-    modal.addEventListener('shown.bs.modal', () => {
-      const root = modal.querySelector('[data-modal-content-root]');
+    dialog.addEventListener('shown.bs.dialog', () => {
+      const root = dialog.querySelector('[data-modal-content-root]');
       notifyDynamicContentReady(root);
     });
 
-    modal.addEventListener('hide.bs.modal', () => {
-      const root = modal.querySelector('[data-modal-content-root]') ?? modal.querySelector('.modal-body');
+    dialog.addEventListener('hide.bs.dialog', () => {
+      const root = dialog.querySelector('[data-modal-content-root]') ?? dialog.querySelector('.dialog-body');
       pausePlayersInside(root);
     });
   });

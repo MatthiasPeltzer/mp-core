@@ -11,13 +11,53 @@
     }
   }
 
-  &-primary {
+  &-primary,
+  &.btn-solid.theme-primary {
     background-color: var(--bs-primary);
     border-color: var(--bs-body-color);
+    color: var(--bs-white);
 
     @include on-interact {
       background-color: var(--bs-primary);
       border-color: var(--bs-body-color);
+      color: var(--bs-white);
+    }
+  }
+
+  &-secondary,
+  &.btn-solid.theme-secondary {
+    background-color: var(--bs-secondary);
+    border-color: var(--bs-body-color);
+    color: var(--bs-white);
+
+    @include on-interact {
+      background-color: var(--bs-secondary);
+      border-color: var(--bs-body-color);
+      color: var(--bs-white);
+    }
+  }
+
+  &-tertiary {
+    background-color: var(--bs-tertiary);
+    border-color: var(--bs-body-color);
+    color: var(--bs-white);
+
+    @include on-interact {
+      background-color: var(--bs-tertiary);
+      border-color: var(--bs-body-color);
+      color: var(--bs-white);
+    }
+  }
+
+  &-quaternary {
+    background-color: var(--bs-quaternary);
+    border-color: var(--bs-body-color);
+    color: var(--bs-white);
+
+    @include on-interact {
+      background-color: var(--bs-quaternary);
+      border-color: var(--bs-body-color);
+      color: var(--bs-white);
     }
   }
 }
@@ -92,7 +132,7 @@
         outline-offset: 1px !important;
       }
 
-      + .dropdown-menu {
+      + .menu {
         background-color: var(--bs-primary);
         color: var(--bs-white);
         margin-top: -1px !important;
@@ -129,7 +169,7 @@
         }
       }
 
-      .dropdown-menu & {
+      .menu & {
         background-position: 4px center;
         font-weight: 400;
         height: auto;
@@ -145,7 +185,7 @@
     }
 
     &-copyright {
-      + .dropdown-menu {
+      + .menu {
         margin-top: 0 !important;
       }
 
@@ -159,7 +199,7 @@
     }
 
     &-download {
-      + .dropdown-menu {
+      + .menu {
         .btn-download {
           @include font-size(map-get($font-size-scale, base));
 

@@ -35,7 +35,7 @@ const CONFIG = {
     container: '#main-menu',
     menuButton: '#main-menu-button',
     solrButton: '#solr-button',
-    dropdownSelector: '#main-menu .dropdown-menu',
+    dropdownSelector: '#main-menu .menu',
     collapseButtonSelector: '[data-bs-toggle="collapse"]',
     menuSelector: '.collapse'
   },
@@ -98,25 +98,25 @@ function syncActiveNavClasses() {
 }
 
 function initDesktopNavigation() {
-  document.addEventListener('show.bs.dropdown', (event) => {
+  document.addEventListener('show.bs.menu', (event) => {
     if (!event.target.closest(CONFIG.desktop.container)) return;
     syncActiveNavClasses();
   });
 
-  document.addEventListener('shown.bs.dropdown', (event) => {
+  document.addEventListener('shown.bs.menu', (event) => {
     if (!event.target.closest(CONFIG.desktop.container)) return;
     syncActiveNavClasses();
     updateDesktopButtonTitles();
     scrollToCurrentElement(CONFIG.desktop.container);
   });
 
-  document.addEventListener('hide.bs.dropdown', (event) => {
+  document.addEventListener('hide.bs.menu', (event) => {
     if (!event.target.closest(CONFIG.desktop.container)) return;
     if (isDropdownNavLinkClick(event.clickEvent)) return;
     syncActiveNavClasses();
   });
 
-  document.addEventListener('hidden.bs.dropdown', (event) => {
+  document.addEventListener('hidden.bs.menu', (event) => {
     if (!event.target.closest(CONFIG.desktop.container)) return;
     if (isDropdownNavLinkClick(event.clickEvent)) return;
     syncActiveNavClasses();
@@ -222,8 +222,8 @@ function handleMobileDropdown(event, isOpening) {
 }
 
 function initMobileNavigation() {
-  document.addEventListener('show.bs.dropdown', (event) => handleMobileDropdown(event, true));
-  document.addEventListener('hide.bs.dropdown', (event) => handleMobileDropdown(event, false));
+  document.addEventListener('show.bs.menu', (event) => handleMobileDropdown(event, true));
+  document.addEventListener('hide.bs.menu', (event) => handleMobileDropdown(event, false));
 
   document.addEventListener('click', (event) => {
     const button = event.target.closest(`${CONFIG.mobile.container} ${CONFIG.mobile.collapseButtonSelector}`);
@@ -304,7 +304,7 @@ function closeMobileMenus() {
 }
 
 function closeDesktopMenus() {
-  document.querySelectorAll('.first-nav-button.show, .first-nav-btn.show, #nav-desktop .dropdown-toggle.show').forEach(button => {
+  document.querySelectorAll('.first-nav-button.show, .first-nav-btn.show, #nav-desktop [data-bs-toggle="menu"].show').forEach(button => {
     button.click();
   });
   

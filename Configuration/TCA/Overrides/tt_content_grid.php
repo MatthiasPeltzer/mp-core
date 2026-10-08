@@ -59,7 +59,7 @@ defined('TYPO3') or die('Access denied.');
         ],
         [
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:grid.breakpoint.xxl',
-            'value' => 'xxl',
+            'value' => '2xl',
         ],
     ];
 

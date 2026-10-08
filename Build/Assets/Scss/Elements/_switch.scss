@@ -1,4 +1,4 @@
-// switch
+// Theme switch (Bootstrap 6 `.switch` + MPC icon layout)
 
 .form-switch {
   display: inline-block;
@@ -6,60 +6,49 @@
   margin-right: 30px;
   position: relative;
 
-  .form-check-label {
+  .switch {
+    --switch-height: 24px;
+    --switch-bg: var(--bs-gray-900);
+    --switch-border-color: var(--bs-primary);
+    --switch-border-width: 2px;
+    --switch-checked-bg: var(--bs-gray-900);
+    --switch-checked-border-color: var(--bs-primary);
+
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  label {
     @include font-size(map-get($font-size-scale, base));
 
     cursor: pointer;
     font-weight: 700;
     line-height: 1;
+    vertical-align: middle;
   }
 
-  .form-check-input {
-    background-color: var(--bs-gray-900);
-    border-color: var(--bs-primary);
-    border-width: 2px;
-    cursor: pointer;
+  .switch:focus-within {
+    outline: 1px solid var(--bs-body-color);
+    outline-offset: 2px;
+  }
 
-    // WCAG 2.2 SC 2.5.8 Target Size (Minimum): the toggle must offer at least a
-    // 24x24 CSS px pointer target. Bootstrap's default form-switch input is only
-    // ~1em (16px) tall, so bump the height to 24px. The default width (2em) is
-    // already wide enough, so it is left untouched to preserve the icon layout.
-    height: 24px;
-    min-height: 24px;
+  .switch:has(input:checked) ~ label {
+    .switch-icon {
+      &.sun {
+        background-color: var(--bs-body-color);
+        mask: url("@assets/Images/Icons/icon-sun.svg") no-repeat center;
 
-    @include on-interact {
-      box-shadow: none;
-      outline: 1px solid var(--bs-body-color);
-      outline-offset: 2px;
-    }
+        @include forced-colors {
+          background: url("@assets/Images/Icons/icon-sun.svg") no-repeat center;
+        }
+      }
 
-    &:checked[type="checkbox"],
-    &:focus {
-      outline-color: var(--bs-body-color);
-    }
+      &.moon {
+        background-color: var(--bs-yellow);
+        mask: url("@assets/Images/Icons/icon-moon-fill.svg") no-repeat center;
 
-    &:checked[type="checkbox"] {
-      background-color: var(--bs-gray-900);
-
-      + .form-check-label {
-        .switch-icon {
-          &.sun {
-            background-color: var(--bs-body-color);
-            mask: url("@assets/Images/Icons/icon-sun.svg") no-repeat center;
-
-            @include forced-colors {
-              background: url("@assets/Images/Icons/icon-sun.svg") no-repeat center;
-            }
-          }
-
-          &.moon {
-            background-color: var(--bs-yellow);
-            mask: url("@assets/Images/Icons/icon-moon-fill.svg") no-repeat center;
-
-            @include forced-colors {
-              background: url("@assets/Images/Icons/icon-moon-fill.svg") no-repeat center;
-            }
-          }
+        @include forced-colors {
+          background: url("@assets/Images/Icons/icon-moon-fill.svg") no-repeat center;
         }
       }
     }

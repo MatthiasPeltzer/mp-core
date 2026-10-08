@@ -14,7 +14,7 @@
                 </div>
             </f:then>
         </f:if>
-        <div class="col-md-5">
+        <div class="md:col-5">
             <n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
                 <f:if condition="{newsItem.mediaPreviews}">
                     <f:then>
@@ -33,7 +33,7 @@
             </n:link>
         </div>
 
-        <div class="col-md-7 articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}">
+        <div class="md:col-7 articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}">
             <p class="date">
                 <f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
             </p>
@@ -58,7 +58,7 @@
                 </n:removeMediaTags>
             </p>
 
-            <n:link class="btn btn-primary btn-read-more" newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+            <n:link class="btn btn-solid theme-primary btn-read-more" newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
                 <f:translate key="more-link"/>
             </n:link>
         </div>

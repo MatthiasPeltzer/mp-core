@@ -13,7 +13,7 @@ Build system, asset pipeline, JavaScript/SCSS architecture, and best practices.
 
 - **Vite 8** -- Build tool with HMR
 - **Vue.js 3.5** -- Interactive components (TodoList, GallerySwiper, SwiperSlider)
-- **Bootstrap 5.3** -- UI framework
+- **Bootstrap 6** (`v6-dev` via `.libs/bootstrap`) -- UI framework
 - **Sass 1.99** -- CSS preprocessing (modern-compiler API)
 - **PostCSS** -- preset-env, pxtorem
 - **ESLint 10** / **Stylelint 17** -- Code quality
@@ -108,7 +108,7 @@ change. Never raise a budget just to silence the gate.
 
 ### Baseline (2026-06-03)
 
-Captured against Vite 8, Bootstrap 5.3.8, Vue 3.5, Swiper 12.
+Captured against Vite 8, Bootstrap 6 (alpha), Vue 3.5, Swiper 14.
 
 | Bundle | Raw | Gzip | Brotli |
 |---|---:|---:|---:|
@@ -316,7 +316,7 @@ Template path precedence: higher numbers override lower (`0` = core, `10` = exte
 
 | Extension | Path | Notes |
 |-----------|------|-------|
-| fluid_styled_content | `Resources/Extensions/fluid_styled_content/Private/` | Bootstrap 5 styled |
+| fluid_styled_content | `Resources/Extensions/fluid_styled_content/Private/` | Bootstrap 6 styled |
 | form | `Resources/Extensions/form/` | Bootstrap forms + YAML config |
 | news | `Resources/Extensions/news/` | List, detail, category views |
 | indexed_search | `Resources/Extensions/indexed_search/` | Bootstrap search results + autosuggest combobox |
@@ -378,4 +378,4 @@ Frontend module: `Build/Assets/Scripts/code/searchAutosuggest.js` (bundled in `s
 
 - [Favicons](Favicons.md) -- Favicon assets and Fluid partial (do not overwrite with `output.html`)
 - [Configuration](Configuration.md) -- Site Sets, TypoScript, TCA
-- [Vite](https://vitejs.dev/) | [Vue.js](https://vuejs.org/) | [Bootstrap 5](https://getbootstrap.com/docs/5.3/) | [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
+- [Vite](https://vitejs.dev/) | [Vue.js](https://vuejs.org/) | [Bootstrap 6](https://getbootstrap.com/docs/6.0/) | [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
