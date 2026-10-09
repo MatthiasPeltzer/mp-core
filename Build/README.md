@@ -27,7 +27,7 @@ In an mpc monorepo with DDEV: `ddev mp-core-build` from the site root.
 | `build` | Typecheck + ESLint + Stylelint + Vite production build |
 | `typecheck` | `vue-tsc --noEmit` (strict TypeScript, Bootstrap upstream style) |
 | `test:unit` | Vitest browser mode (Playwright / Chromium) |
-| `test:e2e:install` | Install Playwright Chromium for browser tests |
+| `test:browser:install` | Install Playwright Chromium for Vitest browser tests |
 | `dev` | Lint + development build (source maps) |
 | `watch` | Development build with watcher |
 | `lint` | ESLint + Stylelint |

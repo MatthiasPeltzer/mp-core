@@ -35,7 +35,6 @@ const allowlist = [
   /Classes\/Service\/Bootstrap6ContentMigrationService\.php$/,
   /Tests\/Unit\/Service\/Bootstrap6ContentMigrationServiceTest\.php$/,
   /Documentation\//,
-  /_custom-variables\.scss$/,
   /CHANGELOG\.md$/,
 ];
 

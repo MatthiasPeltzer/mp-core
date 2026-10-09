@@ -118,10 +118,8 @@ export default defineConfig(async ({mode}) => {
     // Resolve aliases (optional, but helpful)
     resolve: {
       alias: {
-        '@floating-ui/dom': resolve(__dirname, 'node_modules/@floating-ui/dom'),
         '~bootstrap': resolve(__dirname, 'node_modules/bootstrap'),
-        '@assets': resolve(__dirname, 'Assets'),
-        '@components': resolve(__dirname, 'Assets/Scripts/components')
+        '@assets': resolve(__dirname, 'Assets')
       }
     }
   }

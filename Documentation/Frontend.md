@@ -86,7 +86,7 @@ On this branch, **prefer Bootstrap 6 defaults** (compiled tokens, component mark
 | Flyouts | `.dropdown`, `.dropdown-menu`, `data-bs-toggle="dropdown"`, `*.bs.dropdown` | `.menu`, `data-bs-toggle="menu"`, `*.bs.menu` (toggle and `.menu` are siblings) |
 | Responsive utilities | `col-md-6`, `d-lg-none`, … | `md:col-6`, `lg:d-none`, … |
 
-MPC SCSS reads **BS6 tokens** (`--primary-base`, `--bg-body`, `--gray-*`, …) and MPC frame tokens (`--mpc-color-*`). Override BS6 **token maps** where possible (`$root-tokens`, `$theme-colors` in `_mpc-bootstrap-theme.scss`). Legacy **`_custom-variables*.scss`** apply to Bootstrap 5 on `main`, not the BS6 `bootstrap.scss` entry.
+MPC SCSS reads **BS6 tokens** (`--primary-base`, `--bg-body`, `--gray-*`, …) and MPC frame tokens (`--mpc-color-*`). Override BS6 **token maps** where possible (`$root-tokens`, `$theme-colors` in `_mpc-bootstrap-theme.scss`, shared greys/spacing in `_mpc-design-tokens.scss`). Bootstrap 5 **`_custom-variables*.scss`** remain on **`main`** only; they are not part of the BS6 branch build.
 
 ---
 
@@ -261,7 +261,7 @@ Defined in `Build/vite.config.js`:
 Page-facing scripts under `Build/Assets/Scripts/` are **strict TypeScript** (`.ts` / Vue SFC `<script setup lang="ts">`), following Bootstrap 6 upstream conventions: `moduleResolution: nodenext`, relative imports with a **`.js` extension** (resolved to `.ts` at build time), no semicolons, erasable syntax only.
 
 - **Typecheck:** `npm run typecheck` (`vue-tsc --noEmit`) — runs before production `npm run build`.
-- **Unit tests:** `npm run test:unit` — Vitest **browser mode** with Playwright (Chromium). One-time setup: `npm run test:e2e:install`.
+- **Unit tests:** `npm run test:unit` — Vitest **browser mode** with Playwright (Chromium). One-time setup: `npm run test:browser:install`.
 - **Larger UI modules** extend Bootstrap `BaseComponent` (navigation variants, search autosuggest, modals, sticky header, back-to-top).
 - **Backend stubs** `backend.js` / `ckeditor.js` stay plain JavaScript.
 
@@ -328,10 +328,9 @@ Layers from low to high specificity:
 
 ### Bootstrap Customization
 
-- Light theme: `Build/Assets/Scss/Base/Bootstrap/_custom-variables.scss`
-- Dark theme: `Build/Assets/Scss/Base/Bootstrap/_custom-variables-dark.scss`
+On **`feature/bootstrap-6`**, theme and layout tokens live under `Build/Assets/Scss/Base/Bootstrap/` — e.g. `_mpc-bootstrap-theme.scss`, `_mpc-bs6-root-overrides.scss`, `_mpc-bs6-config-overrides.scss`, `_mpc-bootstrap-bundle.scss`, `_mpc-bs6-breakpoints.scss`, `_mpc-design-tokens.scss`.
 
-On **`feature/bootstrap-6`**, the compiled bundle also uses MPC-specific partials under `Build/Assets/Scss/Base/Bootstrap/` (`_mpc-bootstrap-bundle.scss`, `_mpc-bs6-breakpoints.scss`, compat/root overrides, design tokens). On **`main`**, customization follows the Bootstrap 5 variable files above.
+On **`main`**, Bootstrap 5 uses `_custom-variables.scss` and `_custom-variables-dark.scss` (not shipped on the BS6 branch).
 
 ---
 
