@@ -33,7 +33,7 @@
   }
 
   .frame-type-menu_subpages & {
-    border-radius: var(--bs-border-radius);
+    border-radius: var(--radius-5);
   }
 
   &-image {
@@ -51,7 +51,7 @@
   h5,
   h6 {
     span {
-      background-image: linear-gradient(0deg, var(--bs-gray-200) 40%, transparent 0);
+      background-image: linear-gradient(0deg, var(--gray-200) 40%, transparent 0);
       background-repeat: no-repeat;
       background-size: 0 100%;
       border-bottom-right-radius: 12px;
@@ -59,16 +59,16 @@
       transition: background-size .4s ease;
 
       @include dark-theme {
-        background-image: linear-gradient(0deg, var(--bs-primary) 40%, transparent 0);
+        background-image: linear-gradient(0deg, var(--primary-base) 40%, transparent 0);
       }
     }
   }
 
   &:has(.teaser-link:is(:hover, :focus, :focus-visible, :active)),
   &:has(.teaser-link :is(:hover, :focus, :focus-visible, :active)) {
-    border-radius: var(--bs-border-radius);
+    border-radius: var(--radius-5);
     box-shadow: rgb(9 30 66 / 25%) 0 4px 8px -2px, rgb(9 30 66 / 8%) 0 0 0 1px;
-    outline: 1px solid var(--bs-body-color);
+    outline: 1px solid var(--fg-body);
     outline-offset: 2px;
 
     h1,

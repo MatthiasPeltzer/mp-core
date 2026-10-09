@@ -6,7 +6,7 @@
 
   &-caption {
     .caption {
-      background-color: var(--bs-gray-900);
+      background-color: var(--gray-900);
       border-radius: 8px;
       display: block;
       margin: -24px auto 0;
@@ -21,7 +21,7 @@
       }
 
       @include light-theme {
-        background-color: var(--bs-gray-100);
+        background-color: var(--gray-100);
       }
     }
   }
@@ -32,10 +32,10 @@
 }
 
 .count {
-  background-color: var(--bs-primary);
+  background-color: var(--primary-base);
   border-radius: 5px;
   bottom: 5px;
-  color: var(--bs-white);
+  color: var(--white);
   display: inline-block;
 
   @include font-size(map-get($font-size-scale, base));
@@ -61,7 +61,7 @@
 
 .toplogo-container {
   &::after {
-    background-color: var(--bs-primary);
+    background-color: var(--primary-base);
     content: "";
     display: block;
     height: 2px;
@@ -87,6 +87,6 @@
 }
 
 .outline {
-  outline: 2px solid var(--bs-body-color);
+  outline: 2px solid var(--fg-body);
   outline-offset: -2px;
 }

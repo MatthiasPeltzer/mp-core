@@ -129,7 +129,7 @@ final class WebFontProcessorTest extends FunctionalTestCase
         self::assertStringContainsString('inter.woff2', $css);
         self::assertStringContainsString('format("woff2")', $css);
         // body role maps onto the Bootstrap body font custom property.
-        self::assertStringContainsString('--bs-body-font-family', $css);
+        self::assertStringContainsString('--body-font-family', $css);
     }
 
     private function attachFontFile(int $faceUid, string $fileName, string $contents): void

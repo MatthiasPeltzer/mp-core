@@ -27,6 +27,8 @@ const reps = [
   [/btn-secondary/g, 'btn-solid theme-secondary'],
   [/text-muted/g, 'fg-secondary'],
   [/form-select/g, 'form-control'],
+  [/data-bs-popper="static"/g, ''],
+  [/\bdropstart\b/g, ''],
 ];
 
 function walk(dir) {

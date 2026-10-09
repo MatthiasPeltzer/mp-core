@@ -17,11 +17,22 @@ legend {
 }
 
 .form-control,
-.form-check-input,
-.form-control {
+.check,
+.radio {
   &:focus {
-    outline: 1px solid var(--bs-body-color);
+    outline: 1px solid var(--fg-body);
     outline-offset: 3px;
+  }
+}
+
+.form-field {
+  + .invalid-feedback {
+    display: block;
+  }
+
+  .check,
+  .radio {
+    margin-right: 8px;
   }
 }
 
@@ -41,23 +52,12 @@ textarea.form-control-lg {
   font-weight: 700;
 }
 
-.form-check {
-  + .invalid-feedback {
-    display: block;
-    padding-left: 26px;
-  }
-
-  &-input {
-    margin-right: 8px;
-  }
-}
-
 .description {
   @include font-size(map-get($font-size-scale, base));
 
   font-weight: 700;
 }
 
-.btn-outline theme-primary {
-  background-color: var(--bs-white);
+.btn-outline.theme-primary {
+  background-color: var(--white);
 }

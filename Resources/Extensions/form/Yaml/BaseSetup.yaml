@@ -49,3 +49,21 @@ TYPO3:
                   200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Partials/'
                 layoutRootPaths:
                   200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Layouts/'
+            Checkbox:
+              properties:
+                containerClassAttribute: 'mb-3'
+                elementClassAttribute: ''
+                labelClassAttribute: ''
+                labelTextClassAttribute: ''
+            MultiCheckbox:
+              properties:
+                containerClassAttribute: 'mb-2'
+                elementClassAttribute: ''
+                labelClassAttribute: ''
+                labelTextClassAttribute: ''
+            RadioButton:
+              properties:
+                containerClassAttribute: 'mb-2'
+                elementClassAttribute: 'radio'
+                labelClassAttribute: ''
+                labelTextClassAttribute: ''

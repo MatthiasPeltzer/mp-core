@@ -1,5 +1,5 @@
-import postcssPresetEnv from 'postcss-preset-env';
-import pxtorem from 'postcss-pxtorem';
+import postcssPresetEnv from 'postcss-preset-env'
+import pxtorem from 'postcss-pxtorem'
 
 /** @type {import('postcss').Config} */
 
@@ -9,11 +9,11 @@ const removeVendorPrefixes = () => ({
   Declaration(decl) {
     // Remove properties starting with -webkit-, -moz-, -ms-, -o-
     if (/^-(webkit|moz|ms|o)-/.test(decl.prop)) {
-      decl.remove();
+      decl.remove()
     }
   }
-});
-removeVendorPrefixes.postcss = true;
+})
+removeVendorPrefixes.postcss = true
 
 export default {
   map: {
@@ -41,4 +41,4 @@ export default {
       propList: ['*']
     })
   ]
-};
+}

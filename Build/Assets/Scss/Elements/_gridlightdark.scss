@@ -34,7 +34,7 @@
 
 .grid {
   &-light {
-    @include grid-colors(var(--bs-body-bg));
+    @include grid-colors(var(--bg-body));
 
     h1 a span,
     h2 a span,
@@ -42,7 +42,7 @@
     h4 a span,
     h5 a span,
     h6 a span {
-      background-image: linear-gradient(0deg, var(--bs-yellow) 40%, transparent 0) !important;
+      background-image: linear-gradient(0deg, var(--mpc-accent-yellow) 40%, transparent 0) !important;
     }
   }
 }

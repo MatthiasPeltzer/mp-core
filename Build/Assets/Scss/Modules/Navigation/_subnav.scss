@@ -1,22 +1,56 @@
 // sub nav
 
 #subnav {
+  flex-flow: column nowrap;
+  align-items: stretch;
   margin-bottom: 32px;
 
+  // Nested section menus (BS6 `.nav` adds flex gap and wrap).
+  .nav {
+    flex-flow: column nowrap;
+    gap: 0;
+  }
+
+  // BS6 `.nav-link` defaults (pill, centered) differ from MPC vertical subnav.
+  .nav-item .nav-link {
+    --nav-link-align: flex-start;
+    --nav-link-justify: flex-start;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: transparent;
+    white-space: normal;
+
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:active {
+      background-color: transparent;
+    }
+
+    &.active {
+      font-weight: 700;
+      background-color: transparent;
+    }
+  }
+
   .nav-item {
-    background-color: var(--bs-gray-900);
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    background-color: var(--gray-900);
     border-radius: 4px;
 
     @include light-theme {
-      background-color: var(--bs-gray-200);
+      background-color: var(--gray-200);
     }
 
     .nav-link {
+      width: 100%;
       text-underline-position: under;
 
       &.active {
-        font-weight: 700;
-        text-shadow: var(--bs-gray-300) 1px 4px 4px;
+        text-shadow: var(--gray-300) 1px 4px 4px;
         transition: text-shadow 0.15s ease-in-out;
 
         @include on-interact {

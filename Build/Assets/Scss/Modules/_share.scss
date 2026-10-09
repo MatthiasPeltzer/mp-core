@@ -50,7 +50,7 @@ $social-networks: (
     }
 
     .icon-share {
-      background-color: var(--bs-white);
+      background-color: var(--white);
       border-radius: 50%;
       display: block;
       height: 56px;
@@ -80,11 +80,11 @@ $social-networks: (
     }
 
     > a {
-      background-color: var(--bs-gray-800);
-      border: 2px solid var(--bs-gray-800);
+      background-color: var(--gray-800);
+      border: 2px solid var(--gray-800);
       border-radius: 50%;
       box-sizing: border-box;
-      color: var(--bs-white);
+      color: var(--white);
       display: block;
       height: 60px;
       position: relative;
@@ -98,7 +98,7 @@ $social-networks: (
       }
 
       @include on-interact {
-        background-color: var(--bs-white);
+        background-color: var(--white);
         outline-offset: 2px;
       }
     }

@@ -1,12 +1,12 @@
 // headlines
 
 .header-text {
-  font-family: var(--#{$prefix}font-sans-serif);
+  font-family: var(--heading-font-family);
   font-weight: 700;
   padding-left: 4px;
   padding-right: 0;
   position: relative;
-  text-shadow: var(--bs-secondary) 1px 1px 1px;
+  text-shadow: var(--secondary-base) 1px 1px 1px;
   top: -1px;
 }
 
@@ -16,7 +16,7 @@ h2,
 .h2,
 h3,
 .h3 {
-  font-family: var(--#{$prefix}font-sans-serif);
+  font-family: var(--heading-font-family);
 
   .ce-uploads & {
     @include font-size(map-get($font-size-scale, md));
@@ -54,9 +54,9 @@ h6,
 }
 
 .kicker {
-  background-color: var(--bs-primary);
+  background-color: var(--primary-base);
   border-radius: 20px;
-  color: var(--bs-white);
+  color: var(--white);
   display: inline-block;
   font-weight: 700;
   letter-spacing: normal;
@@ -66,7 +66,7 @@ h6,
 }
 
 .main-category {
-  border-radius: var(--bs-border-radius);
+  border-radius: var(--radius-5);
   display: inline-block;
   left: -10px;
   padding: 4px 8px;

@@ -394,8 +394,8 @@
     }
 
     &-primary {
-      background-color: var(--bs-red-700);
-      border-color: var(--bs-red-700);
+      background-color: var(--danger-base);
+      border-color: var(--danger-base);
       color: var(--typo3-surface-base);
     }
 
@@ -505,11 +505,11 @@
         padding-left: 8px;
 
         &::marker {
-          color: var(--bs-white);
+          color: var(--white);
           font-weight: 700;
 
           @include light-theme {
-            color: var(--bs-black);
+            color: var(--black);
           }
         }
 
@@ -616,39 +616,39 @@
   .ck {
     &.ck-editor__main {
       > .ck-editor__editable {
-        background-color: var(--bs-gray-900) !important;
-        color: var(--bs-white) !important;
+        background-color: var(--gray-900) !important;
+        color: var(--white) !important;
 
         h1, h2, h3, h4, h5, h6, p, a, strong, b, em, i, blockquote, code, pre {
-          color: var(--bs-white);
+          color: var(--white);
         }
 
         a {
-          color: var(--bs-white);
+          color: var(--white);
 
           &:hover {
-            color: var(--bs-white);
+            color: var(--white);
           }
         }
 
         ul, ol {
           li {
-            color: var(--bs-white);
+            color: var(--white);
           }
         }
 
         dl, dt, dd {
-          color: var(--bs-white);
+          color: var(--white);
         }
 
         table {
           td, th {
-            color: var(--bs-white);
+            color: var(--white);
           }
         }
 
         hr {
-          border-top-color: var(--bs-white);
+          border-top-color: var(--white);
         }
       }
     }
@@ -660,39 +660,39 @@
   .ck {
     &.ck-editor__main {
       > .ck-editor__editable {
-        background-color: var(--bs-gray-900) !important;
-        color: var(--bs-white) !important;
+        background-color: var(--gray-900) !important;
+        color: var(--white) !important;
 
         h1, h2, h3, h4, h5, h6, p, a, strong, b, em, i, blockquote, code, pre {
-          color: var(--bs-white);
+          color: var(--white);
         }
 
         a {
-          color: var(--bs-white);
+          color: var(--white);
 
           &:hover {
-            color: var(--bs-white);
+            color: var(--white);
           }
         }
 
         ul, ol {
           li {
-            color: var(--bs-white);
+            color: var(--white);
           }
         }
 
         dl, dt, dd {
-          color: var(--bs-white);
+          color: var(--white);
         }
 
         table {
           td, th {
-            color: var(--bs-white);
+            color: var(--white);
           }
         }
 
         hr {
-          border-top-color: var(--bs-white);
+          border-top-color: var(--white);
         }
       }
     }

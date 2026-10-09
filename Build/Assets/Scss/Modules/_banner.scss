@@ -39,7 +39,7 @@
     position: relative;
 
     &::after {
-      background-color: var(--bs-body-color);
+      background-color: var(--fg-body);
       content: "";
       display: block;
       height: 24px;

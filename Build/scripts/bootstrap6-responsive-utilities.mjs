@@ -19,6 +19,9 @@ function v6Breakpoint(bp) {
   return bp === 'xxl' ? '2xl' : bp;
 }
 
+/** Spacing / layout utilities: {bp}-infix → {v6}:prefix-value */
+const SPACING_PROPS = ['m', 'p', 'ms', 'me', 'ps', 'pe', 'mt', 'mb', 'mx', 'my', 'pt', 'pb', 'px', 'py'];
+
 function migrateResponsiveUtilities(text) {
   let out = text;
 
@@ -36,6 +39,19 @@ function migrateResponsiveUtilities(text) {
     out = out.replace(new RegExp(`\\bgy-${reBp}-(\\d+)\\b`, 'g'), `${v6}:gy-$1`);
     out = out.replace(new RegExp(`\\bg-${reBp}-(\\d+)\\b`, 'g'), `${v6}:g-$1`);
     out = out.replace(new RegExp(`\\bcol-${reBp}\\b(?!-)`, 'g'), `${v6}:col`);
+
+    for (const prop of SPACING_PROPS) {
+      out = out.replace(
+        new RegExp(`\\b${prop}-${reBp}-(\\d+|auto)\\b`, 'g'),
+        `${v6}:${prop}-$1`,
+      );
+    }
+
+    out = out.replace(new RegExp(`\\border-${reBp}-(\\d+)\\b`, 'g'), `${v6}:order-$1`);
+    out = out.replace(new RegExp(`\\bflex-${reBp}-([a-z][\\w-]*)\\b`, 'g'), `${v6}:flex-$1`);
+    out = out.replace(new RegExp(`\\bw-${reBp}-(\\d+|auto)\\b`, 'g'), `${v6}:w-$1`);
+    out = out.replace(new RegExp(`\\bfloat-${reBp}-(start|end|none)\\b`, 'g'), `${v6}:float-$1`);
+    out = out.replace(new RegExp(`\\btable-responsive-${reBp}\\b`, 'g'), `${v6}:table-responsive`);
   }
 
   return out;

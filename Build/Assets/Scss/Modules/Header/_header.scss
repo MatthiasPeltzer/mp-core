@@ -9,7 +9,7 @@
 
 .header {
   &-text {
-    color: var(--bs-body-color);
+    color: var(--fg-body);
     padding-right: 0;
   }
 
@@ -21,7 +21,7 @@
 
     a,
     .nav-link {
-      color: var(--bs-body-color);
+      color: var(--fg-body);
     }
 
     &.active-nav {
@@ -104,7 +104,7 @@
   appearance: none;
   background: none;
   border: none;
-  color: var(--bs-body-color);
+  color: var(--fg-body);
   margin-right: 8px;
   padding: 7px 16px;
 }

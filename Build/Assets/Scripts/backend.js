@@ -1,2 +1,2 @@
 // screen.js
-import '../Scss/backend.scss';
+import '../Scss/backend.scss'

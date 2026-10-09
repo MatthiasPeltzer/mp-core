@@ -1,0 +1,1 @@
+function e(e){return e instanceof HTMLElement?e:null}function t(e){let t=e.target;return t instanceof Element?t:null}export{t as n,e as t};

@@ -10,4 +10,6 @@ $root-tokens: (
   --link-color: light-dark(#222, #fff),
   --link-decoration: none,
   --link-hover-color: light-dark(color-mix(in oklch, #222 90%, #000), color-mix(in oklch, #fff 90%, #000)),
+  --mpc-accent-orange: #fd7e14,
+  --mpc-accent-yellow: #ffc107,
 );

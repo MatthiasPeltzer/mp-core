@@ -94,22 +94,22 @@ defined('TYPO3') || die();
                                 1 =>
                                     [
                                         'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_layout.I.0',
-                                        'value' => 'btn btn-primary',
+                                        'value' => 'btn btn-solid theme-primary',
                                     ],
                                 2 =>
                                     [
                                         'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_layout.I.1',
-                                        'value' => 'btn btn-secondary',
+                                        'value' => 'btn btn-solid theme-secondary',
                                     ],
                                 3 =>
                                     [
                                         'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_layout.I.2',
-                                        'value' => 'btn btn-tertiary',
+                                        'value' => 'btn btn-solid theme-tertiary',
                                     ],
                                 4 =>
                                     [
                                         'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:tt_content.tx_link_layout.I.3',
-                                        'value' => 'btn btn-quaternary',
+                                        'value' => 'btn btn-solid theme-quaternary',
                                     ],
                                 5 =>
                                     [

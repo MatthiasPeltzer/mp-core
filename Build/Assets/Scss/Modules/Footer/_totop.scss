@@ -24,7 +24,7 @@
   }
 
   .bg {
-    background: var(--bs-body-bg);
+    background: var(--bg-body);
     background-size: 32px;
     border-radius: 50%;
     height: 60px;
@@ -32,14 +32,14 @@
   }
 
   .ol {
-    background-color: var(--bs-gray-200);
+    background-color: var(--gray-200);
     border-radius: 50%;
     height: 50px;
     position: absolute;
     width: 50px;
 
     &::before {
-      background-color: var(--bs-primary);
+      background-color: var(--primary-base);
       border-radius: 50%;
       content: "";
       display: block;

@@ -5,10 +5,10 @@
 
 // Primary-specific navbar wrapper
 .navbar-wrapper {
-  background-color: var(--bs-body-bg);
+  background-color: var(--bg-body);
 
   @include light-theme {
-    background-color: var(--bs-gray-100);
+    background-color: var(--gray-100);
   }
 
   ul {
@@ -33,9 +33,9 @@
 
   .first-child {
     background-color: transparent;
-    color: var(--bs-body-color);
+    color: var(--fg-body);
     display: block;
-    font-family: var(--#{$prefix}font-sans-serif);
+    font-family: var(--heading-font-family);
     font-weight: 700;
     margin-bottom: 30px;
     padding: 0;
@@ -43,7 +43,7 @@
     @include font-size(map-get($font-size-scale, xl));
 
     @include on-interact {
-      color: var(--bs-body-color);
+      color: var(--fg-body);
       text-decoration: none;
     }
   }
@@ -83,7 +83,7 @@
 
   .active {
     font-weight: 700;
-    text-shadow: var(--bs-gray-300) 1px 4px 4px;
+    text-shadow: var(--gray-300) 1px 4px 4px;
     transition: text-shadow 0.15s ease-in-out;
 
     @include on-interact {

@@ -6,13 +6,13 @@
  * Run via `npm run build:analyze` from `Build/`. Output is written to
  * `Build/reports/bundle-stats.html` by rollup-plugin-visualizer.
  */
-import {spawn} from 'node:child_process';
-import {fileURLToPath} from 'node:url';
-import {dirname, resolve} from 'node:path';
+import {spawn} from 'node:child_process'
+import {fileURLToPath} from 'node:url'
+import {dirname, resolve} from 'node:path'
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const buildRoot = resolve(__dirname, '..');
-const viteBin = resolve(buildRoot, 'node_modules/vite/bin/vite.js');
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const buildRoot = resolve(__dirname, '..')
+const viteBin = resolve(buildRoot, 'node_modules/vite/bin/vite.js')
 
 const child = spawn(
   process.execPath,
@@ -22,12 +22,12 @@ const child = spawn(
     stdio: 'inherit',
     env: {...process.env, ANALYZE: '1'}
   }
-);
+)
 
 child.on('exit', (code, signal) => {
   if (signal) {
-    process.kill(process.pid, signal);
-    return;
+    process.kill(process.pid, signal)
+    return
   }
-  process.exit(code ?? 0);
-});
+  process.exit(code ?? 0)
+})

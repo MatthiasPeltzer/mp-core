@@ -9,14 +9,14 @@
 // =============================================================================
 
 :root {
-    --swiper-navigation-color: var(--bs-body-color, #fff);
+    --swiper-navigation-color: var(--fg-body, #fff);
     --swiper-navigation-size: 44px;
     --swiper-pagination-bottom: auto;
     --swiper-pagination-bullet-height: 20px;
     --swiper-pagination-bullet-inactive-color: rgb(255 255 255 / 70%);
     --swiper-pagination-bullet-width: 20px;
-    --swiper-pagination-color: var(--bs-body-color, #fff);
-    --swiper-theme-color: var(--bs-primary);
+    --swiper-pagination-color: var(--fg-body, #fff);
+    --swiper-theme-color: var(--primary-base);
 }
 
 html[data-bs-theme="light"] {
@@ -79,8 +79,8 @@ html[data-bs-theme="light"] {
 .swiper-button-next,
 .swiper-button-autoplay {
     align-items: center;
-    background-color: var(--bs-primary);
-    border: 2px solid var(--bs-body-color, #fff);
+    background-color: var(--primary-base);
+    border: 2px solid var(--fg-body, #fff);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -214,7 +214,7 @@ html[data-bs-theme="light"] {
 
     // Fill equal-height gaps only on the slide wrapper; teaser keeps its own bgcolor-* styling.
     .swiper-slide > div {
-        background-color: var(--bs-body-bg);
+        background-color: var(--bg-body);
         height: 100%;
         min-height: 100%;
     }

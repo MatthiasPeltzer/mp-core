@@ -5,25 +5,25 @@
 <f:if condition="{site.configuration.color-toggle}">
     <f:asset.css identifier="additionalStyles" priority="true" useNonce="1">
         <f:comment><!--
-            Each --bs-* token is emitted only if mpc:format.cssColor accepts the
+            Each CSS custom property is emitted only if mpc:format.cssColor accepts the
             site-config value as a syntactically safe CSS colour. Invalid /
             attacker-supplied values are silently dropped at the trust boundary
             so they can never break out of the inline <style> block.
         --></f:comment>
-        <f:format.raw>:root {</f:format.raw>
-            <f:variable name="c1"  value="{site.configuration.color-1            -> mpc:format.cssColor()}"/><f:if condition="{c1}">--bs-color-1: {c1};</f:if>
-            <f:variable name="c2"  value="{site.configuration.color-2            -> mpc:format.cssColor()}"/><f:if condition="{c2}">--bs-color-2: {c2};</f:if>
-            <f:variable name="c3"  value="{site.configuration.color-3            -> mpc:format.cssColor()}"/><f:if condition="{c3}">--bs-color-3: {c3};</f:if>
-            <f:variable name="c4"  value="{site.configuration.color-4            -> mpc:format.cssColor()}"/><f:if condition="{c4}">--bs-color-4: {c4};</f:if>
-            <f:variable name="c5"  value="{site.configuration.color-5            -> mpc:format.cssColor()}"/><f:if condition="{c5}">--bs-color-5: {c5};</f:if>
-            <f:variable name="c6"  value="{site.configuration.color-6            -> mpc:format.cssColor()}"/><f:if condition="{c6}">--bs-color-6: {c6};</f:if>
-            <f:variable name="c7"  value="{site.configuration.color-7            -> mpc:format.cssColor()}"/><f:if condition="{c7}">--bs-color-7: {c7};</f:if>
-            <f:variable name="c8"  value="{site.configuration.color-8            -> mpc:format.cssColor()}"/><f:if condition="{c8}">--bs-color-8: {c8};</f:if>
-            <f:variable name="cp"  value="{site.configuration.color-primary      -> mpc:format.cssColor()}"/><f:if condition="{cp}">--bs-primary: {cp};</f:if>
-            <f:variable name="cs"  value="{site.configuration.color-secondary    -> mpc:format.cssColor()}"/><f:if condition="{cs}">--bs-secondary: {cs};</f:if>
-            <f:variable name="csr" value="{site.configuration.color-secondary-rgba -> mpc:format.cssColor()}"/><f:if condition="{csr}">--bs-secondary-rgba: {csr};</f:if>
-            <f:variable name="ct"  value="{site.configuration.color-tertiary     -> mpc:format.cssColor()}"/><f:if condition="{ct}">--bs-tertiary: {ct};</f:if>
-            <f:variable name="cq"  value="{site.configuration.color-quaternary   -> mpc:format.cssColor()}"/><f:if condition="{cq}">--bs-quaternary: {cq};</f:if>
+        <f:format.raw>html, :root {</f:format.raw>
+            <f:variable name="c1"  value="{site.configuration.color-1            -> mpc:format.cssColor()}"/><f:if condition="{c1}">--mpc-color-1: {c1};</f:if>
+            <f:variable name="c2"  value="{site.configuration.color-2            -> mpc:format.cssColor()}"/><f:if condition="{c2}">--mpc-color-2: {c2};</f:if>
+            <f:variable name="c3"  value="{site.configuration.color-3            -> mpc:format.cssColor()}"/><f:if condition="{c3}">--mpc-color-3: {c3};</f:if>
+            <f:variable name="c4"  value="{site.configuration.color-4            -> mpc:format.cssColor()}"/><f:if condition="{c4}">--mpc-color-4: {c4};</f:if>
+            <f:variable name="c5"  value="{site.configuration.color-5            -> mpc:format.cssColor()}"/><f:if condition="{c5}">--mpc-color-5: {c5};</f:if>
+            <f:variable name="c6"  value="{site.configuration.color-6            -> mpc:format.cssColor()}"/><f:if condition="{c6}">--mpc-color-6: {c6};</f:if>
+            <f:variable name="c7"  value="{site.configuration.color-7            -> mpc:format.cssColor()}"/><f:if condition="{c7}">--mpc-color-7: {c7};</f:if>
+            <f:variable name="c8"  value="{site.configuration.color-8            -> mpc:format.cssColor()}"/><f:if condition="{c8}">--mpc-color-8: {c8};</f:if>
+            <f:variable name="cp"  value="{site.configuration.color-primary      -> mpc:format.cssColor()}"/><f:if condition="{cp}">--primary-base: {cp};</f:if>
+            <f:variable name="cs"  value="{site.configuration.color-secondary    -> mpc:format.cssColor()}"/><f:if condition="{cs}">--secondary-base: {cs};</f:if>
+            <f:variable name="csr" value="{site.configuration.color-secondary-rgba -> mpc:format.cssColor()}"/><f:if condition="{csr}">--mpc-secondary-rgba: {csr};</f:if>
+            <f:variable name="ct"  value="{site.configuration.color-tertiary     -> mpc:format.cssColor()}"/><f:if condition="{ct}">--tertiary-base: {ct};</f:if>
+            <f:variable name="cq"  value="{site.configuration.color-quaternary   -> mpc:format.cssColor()}"/><f:if condition="{cq}">--quaternary-base: {cq};</f:if>
             <f:if condition="{site.configuration.styles}"><mpc:format.cssSanitize value="{site.configuration.styles}"/></f:if>
         <f:format.raw>}</f:format.raw>
     </f:asset.css>
@@ -33,7 +33,7 @@
     Editor-managed web fonts. WebFontProcessor resolves the font-family records
     (tx_mpcore_domain_model_webfontfamily) and their FAL font files into a fully
     validated CSS string of @font-face rules plus the :root custom-property
-    mapping (--bs-body-font-family / --bs-font-sans-serif / custom variable).
+    mapping (--body-font-family / --heading-font-family / custom variable).
     The string is built behind a strict allow-list trust boundary in PHP and
     additionally passed through mpc:format.cssSanitize so it can never break out
     of the nonce'd inline <style> block.

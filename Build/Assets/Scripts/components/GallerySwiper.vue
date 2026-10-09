@@ -1,6 +1,8 @@
-<script setup>
-import { ref, computed, onBeforeMount, onMounted, nextTick, inject } from 'vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
+<script setup lang="ts">
+import { ref, computed, onBeforeMount, onMounted, nextTick, inject } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import type { Swiper as SwiperInstance } from 'swiper'
+import type { SwiperOptions } from 'swiper/types'
 import {
   A11y,
   Autoplay,
@@ -15,7 +17,7 @@ import {
   Navigation,
   Pagination,
   Thumbs
-} from 'swiper/modules';
+} from 'swiper/modules'
 import {
   prevSlideMessage,
   nextSlideMessage,
@@ -26,23 +28,59 @@ import {
   itemRoleDescriptionMessage,
   pauseAutoplayMessage,
   playAutoplayMessage
-} from '../code/i18n.js';
-import { bindEqualSwiperSlideHeights } from '../code/swiper-equal-heights.js';
-import { bindSwiperEffectParams } from '../code/swiper-effect-params.js';
-import { bindVidplySwiperLifecycle, notifyDynamicContentReady } from '../code/vidply-dynamic-content.js';
+} from '../code/i18n.js'
+import { bindEqualSwiperSlideHeights } from '../code/swiper-equal-heights.js'
+import { bindSwiperEffectParams } from '../code/swiper-effect-params.js'
+import { bindVidplySwiperLifecycle, notifyDynamicContentReady } from '../code/vidply-dynamic-content.js'
+
+type PaginationType = 'bullets' | 'fraction' | 'progressbar' | 'custom'
+
+interface GallerySlide {
+  id: number
+  content: string
+  thumbnail?: string
+}
+
+interface GalleryConfig {
+  galleryId: string
+  layout: 'slider' | 'thumbs'
+  effect: string
+  columns: number
+  spaceBetween: number
+  loop: boolean
+  speed: number
+  navigationEnabled: boolean
+  paginationEnabled: boolean
+  paginationType: PaginationType
+  paginationClickable: boolean
+  paginationDynamicBullets: boolean
+  autoplayEnabled: boolean
+  autoplayDelay: number
+  autoplayDisableOnInteraction: boolean
+  keyboardEnabled: boolean
+  fadeCrossFade: boolean
+  cubeShadow: boolean
+  cubeSlideShadows: boolean
+  coverflowRotate: number
+  coverflowStretch: number
+  coverflowDepth: number
+  coverflowModifier: number
+  thumbsPerView: number
+  thumbsSpaceBetween: number
+}
 
 /** TYPO3 mount target injected by vue-initialisation.js (avoids DOM query races). */
-const mountElement = inject('mpcMountElement', null);
+const mountElement = inject<HTMLElement | null>('mpcMountElement', null)
 
 // =============================================================================
 // STATE
 // =============================================================================
 
-const mainSwiperRef = ref(null);
-const thumbsSwiperRef = ref(null);
-const autoplayPausedByUser = ref(false);
-const slides = ref([]);
-const config = ref({
+const mainSwiperRef = ref<SwiperInstance | null>(null)
+const thumbsSwiperRef = ref<SwiperInstance | null>(null)
+const autoplayPausedByUser = ref(false)
+const slides = ref<GallerySlide[]>([])
+const config = ref<GalleryConfig>({
   galleryId: 'default',
   layout: 'slider', // 'slider' or 'thumbs'
   effect: 'slide',
@@ -68,37 +106,42 @@ const config = ref({
   coverflowModifier: 1,
   thumbsPerView: 4,
   thumbsSpaceBetween: 10
-});
+})
+
+function parsePaginationType(value: string | undefined): PaginationType {
+  if (value === 'fraction' || value === 'progressbar' || value === 'custom') {
+    return value
+  }
+  return 'bullets'
+}
 
 // =============================================================================
 // CONFIGURATION PARSING
 // =============================================================================
 
-function parseNumber(value, defaultValue = 0) {
-  if (typeof value === 'number') return value;
+function parseNumber(value: unknown, defaultValue = 0): number {
+  if (typeof value === 'number') return value
   if (typeof value === 'string') {
-    const parsed = parseInt(value, 10);
-    return isNaN(parsed) ? defaultValue : parsed;
+    const parsed = parseInt(value, 10)
+    return Number.isNaN(parsed) ? defaultValue : parsed
   }
-  return defaultValue;
+  return defaultValue
 }
 
-function parseBool(value) {
-  if (typeof value === 'boolean') return value;
+function parseBool(value: unknown): boolean {
+  if (typeof value === 'boolean') return value
   if (typeof value === 'string') {
-    return value === '1' || value === 'true' || value === 'yes';
+    return value === '1' || value === 'true' || value === 'yes'
   }
-  return false;
+  return false
 }
 
-function loadConfig(container) {
-  if (!container) return;
-  
-  const dataAttrs = container.dataset;
-  
+function loadConfig(container: HTMLElement): void {
+  const dataAttrs = container.dataset
+
   config.value = {
     galleryId: dataAttrs.galleryId || 'default',
-    layout: dataAttrs.layout || 'slider',
+    layout: (dataAttrs.layout === 'thumbs' ? 'thumbs' : 'slider'),
     effect: dataAttrs.effect || 'slide',
     columns: parseNumber(dataAttrs.columns, 1),
     spaceBetween: parseNumber(dataAttrs.spaceBetween, 10),
@@ -106,7 +149,7 @@ function loadConfig(container) {
     speed: parseNumber(dataAttrs.speed, 300),
     navigationEnabled: parseBool(dataAttrs.navigationEnabled ?? '1'),
     paginationEnabled: parseBool(dataAttrs.paginationEnabled ?? '1'),
-    paginationType: dataAttrs.paginationType || 'bullets',
+    paginationType: parsePaginationType(dataAttrs.paginationType),
     paginationClickable: parseBool(dataAttrs.paginationClickable ?? '1'),
     paginationDynamicBullets: parseBool(dataAttrs.paginationDynamicBullets ?? '1'),
     autoplayEnabled: parseBool(dataAttrs.autoplayEnabled),
@@ -122,7 +165,7 @@ function loadConfig(container) {
     coverflowModifier: parseNumber(dataAttrs.coverflowModifier, 1),
     thumbsPerView: parseNumber(dataAttrs.thumbsPerView, 4),
     thumbsSpaceBetween: parseNumber(dataAttrs.thumbsSpaceBetween, 10)
-  };
+  }
 }
 
 // =============================================================================
@@ -130,95 +173,95 @@ function loadConfig(container) {
 // =============================================================================
 
 const modules = computed(() => {
-  const mods = [A11y, EffectFade, Keyboard, Pagination];
+  const mods = [A11y, EffectFade, Keyboard, Pagination]
   if (config.value.layout === 'thumbs') {
-    mods.push(Thumbs, FreeMode);
+    mods.push(Thumbs, FreeMode)
   }
   if (config.value.autoplayEnabled) {
-    mods.push(Autoplay);
+    mods.push(Autoplay)
   }
   if (config.value.navigationEnabled) {
-    mods.push(Navigation);
+    mods.push(Navigation)
   }
-  if (config.value.effect === 'cube') mods.push(EffectCube);
-  if (config.value.effect === 'coverflow') mods.push(EffectCoverflow);
-  if (config.value.effect === 'flip') mods.push(EffectFlip);
-  if (config.value.effect === 'cards') mods.push(EffectCards);
-  if (config.value.effect === 'creative') mods.push(EffectCreative);
-  return mods;
-});
+  if (config.value.effect === 'cube') mods.push(EffectCube)
+  if (config.value.effect === 'coverflow') mods.push(EffectCoverflow)
+  if (config.value.effect === 'flip') mods.push(EffectFlip)
+  if (config.value.effect === 'cards') mods.push(EffectCards)
+  if (config.value.effect === 'creative') mods.push(EffectCreative)
+  return mods
+})
 
-const thumbsModules = [A11y, FreeMode];
+const thumbsModules = [A11y, FreeMode]
 
 const navigationConfig = computed(() => {
-  if (!config.value.navigationEnabled) return false;
+  if (!config.value.navigationEnabled) return false
   return {
     nextEl: `.swiper-button-next[data-gallery-id="${config.value.galleryId}"]`,
     prevEl: `.swiper-button-prev[data-gallery-id="${config.value.galleryId}"]`
-  };
-});
+  }
+})
 
 const paginationConfig = computed(() => {
-  if (!config.value.paginationEnabled) return false;
+  if (!config.value.paginationEnabled) return false
   return {
     el: `.swiper-pagination[data-gallery-id="${config.value.galleryId}"]`,
     type: config.value.paginationType,
     clickable: config.value.paginationClickable,
     dynamicBullets: config.value.paginationType === 'bullets' && config.value.paginationDynamicBullets
-  };
-});
+  }
+})
 
 const autoplayConfig = computed(() => {
-  if (!config.value.autoplayEnabled) return false;
+  if (!config.value.autoplayEnabled) return false
   return {
     delay: config.value.autoplayDelay,
     disableOnInteraction: config.value.autoplayDisableOnInteraction,
     pauseOnMouseEnter: true
-  };
-});
+  }
+})
 
 const keyboardConfig = computed(() => (
   config.value.keyboardEnabled ? { enabled: true } : false
-));
+))
 
 // Coverflow needs narrower slides (slidesPerView auto) so side slides stay in view.
 const mainSlidesPerView = computed(() => (
   config.value.effect === 'coverflow' ? 'auto' : 1
-));
+))
 
 // Multi-column breakpoints apply only to the default slide effect.
-const mainBreakpoints = computed(() => {
-  if (config.value.effect !== 'slide') return undefined;
+const mainBreakpoints = computed((): Record<number, SwiperOptions> | undefined => {
+  if (config.value.effect !== 'slide') return undefined
 
-  const cols = config.value.columns;
-  if (cols === 1) return undefined;
-  
+  const cols = config.value.columns
+  if (cols === 1) return undefined
+
   if (cols === 2) {
     return {
       576: { slidesPerView: 2, slidesPerGroup: 2 }
-    };
+    }
   }
   if (cols === 3) {
     return {
       576: { slidesPerView: 2, slidesPerGroup: 2 },
       992: { slidesPerView: 3, slidesPerGroup: 3 }
-    };
+    }
   }
   if (cols >= 4) {
     return {
       576: { slidesPerView: 2, slidesPerGroup: 2 },
       992: { slidesPerView: 3, slidesPerGroup: 3 },
       1200: { slidesPerView: 4, slidesPerGroup: 4 }
-    };
+    }
   }
-  return undefined;
-});
+  return undefined
+})
 
 // Dynamic thumbs breakpoints based on config
 const thumbsBreakpoints = computed(() => ({
   576: { slidesPerView: Math.min(config.value.thumbsPerView, 3) },
   992: { slidesPerView: config.value.thumbsPerView }
-}));
+}))
 
 // A11y configuration (with i18n translations)
 const a11yConfig = computed(() => ({
@@ -230,23 +273,23 @@ const a11yConfig = computed(() => ({
   paginationBulletMessage: paginationBulletMessage,
   slideLabelMessage: slideLabelMessage,
   itemRoleDescriptionMessage: itemRoleDescriptionMessage
-}));
+}))
 
 // =============================================================================
 // LIFECYCLE
 // =============================================================================
 
 onBeforeMount(() => {
-  const element = mountElement;
+  const element = mountElement
   if (!element) {
-    return;
+    return
   }
 
   // Try data attribute first
-  const slidesDataAttr = element.getAttribute('data-slides-data');
+  const slidesDataAttr = element.getAttribute('data-slides-data')
   if (slidesDataAttr) {
     try {
-      slides.value = JSON.parse(slidesDataAttr);
+      slides.value = JSON.parse(slidesDataAttr) as GallerySlide[]
     } catch {
       // Failed to parse - will try DOM extraction
     }
@@ -254,94 +297,108 @@ onBeforeMount(() => {
 
   // Fallback: extract from DOM
   if (slides.value.length === 0) {
-    const slideElements = element.querySelectorAll('.gallery-slide-content');
+    const slideElements = element.querySelectorAll('.gallery-slide-content')
     if (slideElements.length > 0) {
-      slides.value = Array.from(slideElements).map((el, index) => ({
-        id: index,
-        content: el.innerHTML.trim(),
-        thumbnail: el.dataset.thumbnail || ''
-      }));
+      slides.value = Array.from(slideElements).map((el, index) => {
+        const htmlEl = el as HTMLElement
+        return {
+          id: index,
+          content: htmlEl.innerHTML.trim(),
+          thumbnail: htmlEl.dataset.thumbnail || ''
+        }
+      })
     }
   }
 
-  loadConfig(element);
+  loadConfig(element)
 
   if (element.hasAttribute('data-slides-data')) {
-    element.removeAttribute('data-slides-data');
+    element.removeAttribute('data-slides-data')
   }
-});
+})
 
 onMounted(() => {
   nextTick(() => {
-    notifyDynamicContentReady(mountElement);
-  });
-});
+    notifyDynamicContentReady(mountElement)
+  })
+})
 
 // =============================================================================
 // EVENTS
 // =============================================================================
 
-function observeRedundantAria(swiper) {
-  const wrapper = swiper.el?.closest('.gallery-swiper-wrapper') || swiper.el?.parentElement;
-  if (!wrapper) return;
+function observeRedundantAria(swiper: SwiperInstance): void {
+  const wrapper = swiper.el?.closest('.gallery-swiper-wrapper') || swiper.el?.parentElement
+  if (!wrapper) return
   new MutationObserver((mutations) => {
     for (const m of mutations) {
-      if (m.type === 'attributes' && m.attributeName === 'aria-disabled' && m.target.hasAttribute('disabled')) {
-        m.target.removeAttribute('aria-disabled');
+      if (
+        m.type === 'attributes'
+        && m.attributeName === 'aria-disabled'
+        && m.target instanceof Element
+        && m.target.hasAttribute('disabled')
+      ) {
+        m.target.removeAttribute('aria-disabled')
       }
     }
-  }).observe(wrapper, { attributes: true, attributeFilter: ['aria-disabled'], subtree: true });
+  }).observe(wrapper, { attributes: true, attributeFilter: ['aria-disabled'], subtree: true })
   wrapper.querySelectorAll('button[disabled][aria-disabled]')
-    .forEach(btn => btn.removeAttribute('aria-disabled'));
+    .forEach((btn: Element) => {
+      btn.removeAttribute('aria-disabled')
+    })
 }
 
-function toggleAutoplay() {
-  const swiper = mainSwiperRef.value;
-  if (!swiper?.autoplay) return;
+function toggleAutoplay(): void {
+  const swiper = mainSwiperRef.value
+  if (!swiper?.autoplay) return
 
   if (!autoplayPausedByUser.value) {
-    swiper.autoplay.stop();
-    autoplayPausedByUser.value = true;
+    swiper.autoplay.stop()
+    autoplayPausedByUser.value = true
   } else {
-    swiper.autoplay.start();
-    autoplayPausedByUser.value = false;
+    swiper.autoplay.start()
+    autoplayPausedByUser.value = false
   }
 }
 
-function bindAutoplayState(swiperInstance) {
-  if (!config.value.autoplayEnabled || !swiperInstance.autoplay) return;
+function bindAutoplayState(swiperInstance: SwiperInstance): void {
+  if (!config.value.autoplayEnabled || !swiperInstance.autoplay) return
 
   // Only reflect explicit stops (pause button or disableOnInteraction).
   // Ignore autoplayPause/autoplayResume — Swiper fires those during transitions.
   swiperInstance.on('autoplayStop', () => {
-    autoplayPausedByUser.value = true;
-  });
+    autoplayPausedByUser.value = true
+  })
   swiperInstance.on('autoplayStart', () => {
-    autoplayPausedByUser.value = false;
-  });
+    autoplayPausedByUser.value = false
+  })
 }
 
-const onMainSwiper = (swiper) => {
-  mainSwiperRef.value = swiper;
-  observeRedundantAria(swiper);
-  bindAutoplayState(swiper);
-  bindSwiperEffectParams(swiper, config.value);
+const onMainSwiper = (swiper: SwiperInstance): void => {
+  mainSwiperRef.value = swiper
+  observeRedundantAria(swiper)
+  bindAutoplayState(swiper)
+  bindSwiperEffectParams(swiper, config.value)
   if (config.value.effect !== 'coverflow') {
-    bindEqualSwiperSlideHeights(swiper);
+    bindEqualSwiperSlideHeights(swiper)
   }
-  bindVidplySwiperLifecycle(swiper);
-  notifyDynamicContentReady(mountElement);
-};
+  bindVidplySwiperLifecycle(swiper)
+  notifyDynamicContentReady(mountElement)
+}
 
-const onThumbsSwiper = (swiper) => {
-  thumbsSwiperRef.value = swiper;
-};
+const onThumbsSwiper = (swiper: SwiperInstance): void => {
+  thumbsSwiperRef.value = swiper
+}
 
 // Note: Navigation is handled by Swiper's Navigation module via CSS selectors
 // No manual slidePrev/slideNext handlers needed - Swiper handles button clicks automatically
 
-// For thumbs layout, we need thumbs swiper ready first
-const thumbsSwiper = computed(() => thumbsSwiperRef.value);
+// For thumbs layout, main swiper mounts after thumbs instance exists (vue-tsc-safe link object)
+const thumbsLinkConfig = computed((): { swiper: SwiperInstance } | null => {
+  const swiper = thumbsSwiperRef.value
+  if (!swiper) return null
+  return { swiper: swiper as unknown as SwiperInstance }
+})
 </script>
 
 <template>
@@ -378,7 +435,7 @@ const thumbsSwiper = computed(() => thumbsSwiperRef.value);
       
       <!-- Main swiper with thumbs -->
       <swiper
-        v-if="thumbsSwiper"
+        v-if="thumbsLinkConfig"
         :modules="modules"
         :a11y="a11yConfig"
         :slides-per-view="1"
@@ -389,7 +446,7 @@ const thumbsSwiper = computed(() => thumbsSwiperRef.value);
         :navigation="navigationConfig"
         :pagination="paginationConfig"
         :autoplay="autoplayConfig"
-        :thumbs="{ swiper: thumbsSwiper }"
+        :thumbs="thumbsLinkConfig"
         @swiper="onMainSwiper"
         class="swiper gallery-main-swiper"
         style="order: 1;"

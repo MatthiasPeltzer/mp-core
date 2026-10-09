@@ -1,4 +1,4 @@
-# Render RTE / link browser modal record links as Bootstrap modal triggers.
+# Render RTE / link browser modal record links as Bootstrap 6 Dialog triggers.
 config {
   recordLinks {
     tx_mpcore_modal {
@@ -12,7 +12,7 @@ config {
         ATagParams.cObject = TEXT
         ATagParams.cObject {
           data = field:uid
-          wrap = class="modal-link" data-bs-toggle="modal" data-bs-target="#modal-|"
+          wrap = class="modal-link" data-bs-toggle="dialog" data-bs-target="#modal-|"
         }
       }
     }

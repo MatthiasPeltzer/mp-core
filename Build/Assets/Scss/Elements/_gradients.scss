@@ -16,7 +16,7 @@ $gradient-light: $gray-100;
       height: 3px;
       width: 100%;
 
-      @include gradient(right, transparent, var(--bs-primary));
+      @include gradient(right, transparent, var(--primary-base));
     }
   }
 
@@ -27,7 +27,7 @@ $gradient-light: $gray-100;
       height: 3px;
       width: 100%;
 
-      @include gradient(right, var(--bs-primary), transparent);
+      @include gradient(right, var(--primary-base), transparent);
     }
   }
 }

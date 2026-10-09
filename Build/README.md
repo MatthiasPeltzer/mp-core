@@ -24,11 +24,14 @@ In an mpc monorepo with DDEV: `ddev mp-core-build` from the site root.
 
 | Script | Description |
 |--------|-------------|
-| `build` | ESLint + Stylelint + Vite production build |
+| `build` | Typecheck + ESLint + Stylelint + Vite production build |
+| `typecheck` | `vue-tsc --noEmit` (strict TypeScript, Bootstrap upstream style) |
+| `test:unit` | Vitest browser mode (Playwright / Chromium) |
+| `test:e2e:install` | Install Playwright Chromium for browser tests |
 | `dev` | Lint + development build (source maps) |
 | `watch` | Development build with watcher |
 | `lint` | ESLint + Stylelint |
-| `eslint` / `eslint.fix` | JavaScript |
+| `eslint` / `eslint.fix` | JavaScript and TypeScript (`Assets/Scripts`) |
 | `stylelint` / `stylelint.fix` | SCSS |
 
 ---
@@ -40,6 +43,8 @@ In an mpc monorepo with DDEV: `ddev mp-core-build` from the site root.
 - Entry points: `bootstrap`, `screen`, `navigationPrimary|Secondary|Tertiary`, `ckeditor`, `backend`, `print`, `vue`
 
 See **[Documentation/Frontend.md](../Documentation/Frontend.md)** for architecture, SCSS layers, and Vue components.
+
+**Bootstrap:** `main` uses Bootstrap **5.3**; migration work happens on **`feature/bootstrap-6`** (Bootstrap **6.0.0-alpha.1**). Keep all BS6 changes on that branch — **do not merge into `main`**. Details in [Frontend.md — Bootstrap version and Git branches](../Documentation/Frontend.md#bootstrap-version-and-git-branches).
 
 ---
 

@@ -1,63 +1,61 @@
 // buttons
 
 .btn {
-  border: 1px solid var(--bs-body-color);
+  border: 1px solid var(--fg-body);
   font-weight: 700;
   transition: outline-offset .2s ease-in-out;
 
   > .icon {
     &::before {
-      background-color: var(--bs-white);
+      background-color: var(--white);
     }
   }
 
-  &-primary,
   &.btn-solid.theme-primary {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-body-color);
-    color: var(--bs-white);
+    background-color: var(--primary-base);
+    border-color: var(--fg-body);
+    color: var(--white);
 
     @include on-interact {
-      background-color: var(--bs-primary);
-      border-color: var(--bs-body-color);
-      color: var(--bs-white);
+      background-color: var(--primary-base);
+      border-color: var(--fg-body);
+      color: var(--white);
     }
   }
 
-  &-secondary,
   &.btn-solid.theme-secondary {
-    background-color: var(--bs-secondary);
-    border-color: var(--bs-body-color);
-    color: var(--bs-white);
+    background-color: var(--secondary-base);
+    border-color: var(--fg-body);
+    color: var(--white);
 
     @include on-interact {
-      background-color: var(--bs-secondary);
-      border-color: var(--bs-body-color);
-      color: var(--bs-white);
+      background-color: var(--secondary-base);
+      border-color: var(--fg-body);
+      color: var(--white);
     }
   }
 
-  &-tertiary {
-    background-color: var(--bs-tertiary);
-    border-color: var(--bs-body-color);
-    color: var(--bs-white);
+  &.btn-solid.theme-tertiary {
+    background-color: var(--tertiary-base);
+    border-color: var(--fg-body);
+    color: var(--white);
 
     @include on-interact {
-      background-color: var(--bs-tertiary);
-      border-color: var(--bs-body-color);
-      color: var(--bs-white);
+      background-color: var(--tertiary-base);
+      border-color: var(--fg-body);
+      color: var(--white);
     }
   }
 
-  &-quaternary {
-    background-color: var(--bs-quaternary);
-    border-color: var(--bs-body-color);
-    color: var(--bs-white);
+  &.btn-solid.theme-quaternary {
+    background-color: var(--quaternary-base);
+    border-color: var(--fg-body);
+    color: var(--white);
 
     @include on-interact {
-      background-color: var(--bs-quaternary);
-      border-color: var(--bs-body-color);
-      color: var(--bs-white);
+      background-color: var(--quaternary-base);
+      border-color: var(--fg-body);
+      color: var(--white);
     }
   }
 }
@@ -81,10 +79,10 @@
 
     &-image {
       align-items: center;
-      background-color: var(--bs-primary);
-      border-color: var(--bs-primary);
+      background-color: var(--primary-base);
+      border-color: var(--primary-base);
       border-radius: 0;
-      color: var(--bs-white);
+      color: var(--white);
       display: flex;
 
       @include font-size(map-get($font-size-scale, xs));
@@ -97,7 +95,7 @@
       width: 32px;
 
       &::after {
-        background-color: var(--bs-white);
+        background-color: var(--white);
         content: "";
         display: block;
         height: 32px;
@@ -126,15 +124,15 @@
 
       &.show,
       &:is(:hover, :focus, :active) {
-        background-color: var(--bs-primary) !important;
-        border-color: var(--bs-primary) !important;
-        color: var(--bs-white) !important;
+        background-color: var(--primary-base) !important;
+        border-color: var(--primary-base) !important;
+        color: var(--white) !important;
         outline-offset: 1px !important;
       }
 
       + .menu {
-        background-color: var(--bs-primary);
-        color: var(--bs-white);
+        background-color: var(--primary-base);
+        color: var(--white);
         margin-top: -1px !important;
 
         p {
@@ -151,7 +149,7 @@
         }
       }
 
-      .modal-header & {
+      .dialog-header & {
         background-position: 4px center;
         font-weight: 400;
         height: auto;
@@ -258,7 +256,7 @@
 
 .navbar {
   &-toggler {
-    background-color: var(--bs-primary);
+    background-color: var(--primary-base);
     border: 0;
     display: block;
     height: 40px;
@@ -277,7 +275,7 @@
     .line,
     &::before,
     &::after {
-      background-color: var(--bs-white);
+      background-color: var(--white);
       color: transparent;
       display: block;
       font-size: 0;
@@ -326,7 +324,7 @@
       display: none;
 
       @include media-breakpoint-up(md) {
-        color: var(--bs-body-color);
+        color: var(--fg-body);
         display: block;
 
         @include font-size(map-get($font-size-scale, base));
@@ -339,7 +337,7 @@
         width: auto;
 
         @include forced-colors {
-          background-color: var(--bs-black);
+          background-color: var(--black);
         }
       }
     }
@@ -347,8 +345,8 @@
 }
 
 .btn-open {
-  background-color: var(--bs-primary);
-  border: 1px solid var(--bs-body-color);
+  background-color: var(--primary-base);
+  border: 1px solid var(--fg-body);
   display: block;
   height: 29px;
   margin: 0;
@@ -364,7 +362,7 @@
   }
 
   &::before {
-    background-color: var(--bs-body-color);
+    background-color: var(--fg-body);
     content: "";
     display: block;
     height: 27px;
@@ -377,7 +375,7 @@
     z-index: 1;
 
     @include light-theme {
-      background-color: var(--bs-body-bg);
+      background-color: var(--bg-body);
     }
   }
 
@@ -386,7 +384,7 @@
   }
 
   &.active {
-    background-color: var(--bs-primary) !important;
+    background-color: var(--primary-base) !important;
   }
 
   &.collapsed {
@@ -397,7 +395,7 @@
     }
 
     @include on-interact {
-      background-color: var(--bs-primary);
+      background-color: var(--primary-base);
     }
   }
 }

@@ -52,14 +52,14 @@ final readonly class WebFontCssBuilder
 
     /**
      * Built-in Bootstrap custom properties a family role maps onto. The current
-     * theme overrides `--bs-body-font-family` for body copy and
-     * `--bs-font-sans-serif` for headings (see Bootstrap variable cascade).
+     * theme overrides `--body-font-family` for body copy and
+     * `--heading-font-family` for headings (see Bootstrap variable cascade).
      *
      * @var array<string, string>
      */
     private const ROLE_VARIABLES = [
-        'body' => '--bs-body-font-family',
-        'heading' => '--bs-font-sans-serif',
+        'body' => '--body-font-family',
+        'heading' => '--heading-font-family',
     ];
 
     /**

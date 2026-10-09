@@ -3,46 +3,46 @@
  *
  * Provides <dl>, <dt>, <dd> support in CKEditor 5
  */
-import {Command, Plugin} from '@ckeditor/ckeditor5-core';
-import {addListToDropdown, ButtonView, createDropdown, ViewModel} from '@ckeditor/ckeditor5-ui';
-import {Collection} from '@ckeditor/ckeditor5-utils';
-import {Enter} from '@ckeditor/ckeditor5-enter';
-import {Delete} from '@ckeditor/ckeditor5-typing';
+import {Command, Plugin} from '@ckeditor/ckeditor5-core'
+import {addListToDropdown, ButtonView, createDropdown, ViewModel} from '@ckeditor/ckeditor5-ui'
+import {Collection} from '@ckeditor/ckeditor5-utils'
+import {Enter} from '@ckeditor/ckeditor5-enter'
+import {Delete} from '@ckeditor/ckeditor5-typing'
 
 // SVG icon for the definition list button
-const definitionListIcon = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3h3v2H2V3zm5 0h11v2H7V3zM2 8h3v2H2V8zm5 0h11v2H7V8zM2 13h3v2H2v-2zm5 0h11v2H7v-2z"/></svg>';
+const definitionListIcon = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3h3v2H2V3zm5 0h11v2H7V3zM2 8h3v2H2V8zm5 0h11v2H7V8zM2 13h3v2H2v-2zm5 0h11v2H7v-2z"/></svg>'
 
 /**
  * Command to insert a new definition list
  */
 class InsertDefinitionListCommand extends Command {
   execute() {
-    const model = this.editor.model;
+    const model = this.editor.model
 
     model.change(writer => {
-      const definitionList = writer.createElement('definitionList');
-      const definitionTerm = writer.createElement('definitionTerm');
-      const definitionDesc = writer.createElement('definitionDescription');
+      const definitionList = writer.createElement('definitionList')
+      const definitionTerm = writer.createElement('definitionTerm')
+      const definitionDesc = writer.createElement('definitionDescription')
 
-      writer.append(definitionTerm, definitionList);
-      writer.append(definitionDesc, definitionList);
+      writer.append(definitionTerm, definitionList)
+      writer.append(definitionDesc, definitionList)
 
-      model.insertContent(definitionList);
+      model.insertContent(definitionList)
 
       // Set selection to the term
-      writer.setSelection(definitionTerm, 'in');
-    });
+      writer.setSelection(definitionTerm, 'in')
+    })
   }
 
   refresh() {
-    const model = this.editor.model;
-    const selection = model.document.selection;
+    const model = this.editor.model
+    const selection = model.document.selection
     const allowedIn = model.schema.findAllowedParent(
       selection.getFirstPosition(),
       'definitionList'
-    );
+    )
 
-    this.isEnabled = allowedIn !== null;
+    this.isEnabled = allowedIn !== null
   }
 }
 
@@ -51,52 +51,52 @@ class InsertDefinitionListCommand extends Command {
  */
 class InsertDefinitionTermCommand extends Command {
   execute() {
-    const model = this.editor.model;
-    const selection = model.document.selection;
+    const model = this.editor.model
+    const selection = model.document.selection
 
     model.change(writer => {
-      const definitionList = this._findDefinitionList(selection.getFirstPosition());
+      const definitionList = this._findDefinitionList(selection.getFirstPosition())
 
       if (definitionList) {
-        const newTerm = writer.createElement('definitionTerm');
-        const position = selection.getFirstPosition();
+        const newTerm = writer.createElement('definitionTerm')
+        const position = selection.getFirstPosition()
 
         // Find the current element and insert after it
-        let currentElement = position.parent;
+        let currentElement = position.parent
         while (currentElement && currentElement.name !== 'definitionTerm' && currentElement.name !== 'definitionDescription') {
-          currentElement = currentElement.parent;
+          currentElement = currentElement.parent
         }
 
         if (currentElement) {
-          writer.insert(newTerm, currentElement, 'after');
+          writer.insert(newTerm, currentElement, 'after')
         } else {
-          writer.append(newTerm, definitionList);
+          writer.append(newTerm, definitionList)
         }
 
-        writer.setSelection(newTerm, 'in');
+        writer.setSelection(newTerm, 'in')
       }
-    });
+    })
   }
 
   refresh() {
-    const model = this.editor.model;
-    const selection = model.document.selection;
-    const position = selection.getFirstPosition();
+    const model = this.editor.model
+    const selection = model.document.selection
+    const position = selection.getFirstPosition()
 
-    this.isEnabled = this._findDefinitionList(position) !== null;
+    this.isEnabled = this._findDefinitionList(position) !== null
   }
 
   _findDefinitionList(position) {
-    let element = position.parent;
+    let element = position.parent
 
     while (element) {
       if (element.name === 'definitionList') {
-        return element;
+        return element
       }
-      element = element.parent;
+      element = element.parent
     }
 
-    return null;
+    return null
   }
 }
 
@@ -105,52 +105,52 @@ class InsertDefinitionTermCommand extends Command {
  */
 class InsertDefinitionDescriptionCommand extends Command {
   execute() {
-    const model = this.editor.model;
-    const selection = model.document.selection;
+    const model = this.editor.model
+    const selection = model.document.selection
 
     model.change(writer => {
-      const definitionList = this._findDefinitionList(selection.getFirstPosition());
+      const definitionList = this._findDefinitionList(selection.getFirstPosition())
 
       if (definitionList) {
-        const newDesc = writer.createElement('definitionDescription');
-        const position = selection.getFirstPosition();
+        const newDesc = writer.createElement('definitionDescription')
+        const position = selection.getFirstPosition()
 
         // Find the current element and insert after it
-        let currentElement = position.parent;
+        let currentElement = position.parent
         while (currentElement && currentElement.name !== 'definitionTerm' && currentElement.name !== 'definitionDescription') {
-          currentElement = currentElement.parent;
+          currentElement = currentElement.parent
         }
 
         if (currentElement) {
-          writer.insert(newDesc, currentElement, 'after');
+          writer.insert(newDesc, currentElement, 'after')
         } else {
-          writer.append(newDesc, definitionList);
+          writer.append(newDesc, definitionList)
         }
 
-        writer.setSelection(newDesc, 'in');
+        writer.setSelection(newDesc, 'in')
       }
-    });
+    })
   }
 
   refresh() {
-    const model = this.editor.model;
-    const selection = model.document.selection;
-    const position = selection.getFirstPosition();
+    const model = this.editor.model
+    const selection = model.document.selection
+    const position = selection.getFirstPosition()
 
-    this.isEnabled = this._findDefinitionList(position) !== null;
+    this.isEnabled = this._findDefinitionList(position) !== null
   }
 
   _findDefinitionList(position) {
-    let element = position.parent;
+    let element = position.parent
 
     while (element) {
       if (element.name === 'definitionList') {
-        return element;
+        return element
       }
-      element = element.parent;
+      element = element.parent
     }
 
-    return null;
+    return null
   }
 }
 
@@ -159,57 +159,57 @@ class InsertDefinitionDescriptionCommand extends Command {
  */
 class RemoveDefinitionListCommand extends Command {
   execute() {
-    const model = this.editor.model;
-    const selection = model.document.selection;
+    const model = this.editor.model
+    const selection = model.document.selection
 
     model.change(writer => {
-      const definitionList = this._findDefinitionList(selection.getFirstPosition());
+      const definitionList = this._findDefinitionList(selection.getFirstPosition())
 
       if (definitionList) {
         // Get all text content before removing
-        let textContent = '';
+        let textContent = ''
         for (const child of definitionList.getChildren()) {
           const text = Array.from(child.getChildren())
             .filter(item => item.is('$text'))
             .map(item => item.data)
-            .join('');
+            .join('')
           if (text) {
-            textContent += text + '\n';
+            textContent += text + '\n'
           }
         }
 
         // Remove the definition list
-        writer.remove(definitionList);
+        writer.remove(definitionList)
 
         // Insert a paragraph with the extracted content
         if (textContent.trim()) {
-          const paragraph = writer.createElement('paragraph');
-          writer.insertText(textContent.trim(), paragraph);
-          model.insertContent(paragraph);
+          const paragraph = writer.createElement('paragraph')
+          writer.insertText(textContent.trim(), paragraph)
+          model.insertContent(paragraph)
         }
       }
-    });
+    })
   }
 
   refresh() {
-    const model = this.editor.model;
-    const selection = model.document.selection;
-    const position = selection.getFirstPosition();
+    const model = this.editor.model
+    const selection = model.document.selection
+    const position = selection.getFirstPosition()
 
-    this.isEnabled = this._findDefinitionList(position) !== null;
+    this.isEnabled = this._findDefinitionList(position) !== null
   }
 
   _findDefinitionList(position) {
-    let element = position.parent;
+    let element = position.parent
 
     while (element) {
       if (element.name === 'definitionList') {
-        return element;
+        return element
       }
-      element = element.parent;
+      element = element.parent
     }
 
-    return null;
+    return null
   }
 }
 
@@ -219,131 +219,131 @@ class RemoveDefinitionListCommand extends Command {
  */
 class DefinitionListEditing extends Plugin {
   static get pluginName() {
-    return 'DefinitionListEditing';
+    return 'DefinitionListEditing'
   }
 
   static get requires() {
-    return [Enter, Delete];
+    return [Enter, Delete]
   }
 
   init() {
-    const editor = this.editor;
-    const schema = editor.model.schema;
+    const editor = this.editor
+    const schema = editor.model.schema
 
     // Define schema for definition list elements
     schema.register('definitionList', {
       inheritAllFrom: '$container',
       allowIn: ['$root', '$container'],
       isBlock: true
-    });
+    })
 
     schema.register('definitionTerm', {
       inheritAllFrom: '$block',
       allowIn: 'definitionList',
       isBlock: true,
       allowContentOf: '$block'
-    });
+    })
 
     schema.register('definitionDescription', {
       inheritAllFrom: '$block',
       allowIn: 'definitionList',
       isBlock: true,
       allowContentOf: '$block'
-    });
+    })
 
     // Define conversion from model to view (editing view and data view)
-    this._defineConverters();
+    this._defineConverters()
 
     // Define commands
-    this._defineCommands();
+    this._defineCommands()
   }
 
   _defineConverters() {
-    const conversion = this.editor.conversion;
+    const conversion = this.editor.conversion
 
     // Definition List <dl>
     conversion.for('upcast').elementToElement({
       model: 'definitionList',
       view: 'dl'
-    });
+    })
 
     conversion.for('dataDowncast').elementToElement({
       model: 'definitionList',
       view: (modelElement, {writer: viewWriter}) => {
         return viewWriter.createContainerElement('dl', {
           class: 'description-list'
-        });
+        })
       }
-    });
+    })
 
     conversion.for('editingDowncast').elementToElement({
       model: 'definitionList',
       view: (modelElement, {writer: viewWriter}) => {
         const dl = viewWriter.createContainerElement('dl', {
           class: 'description-list ck-definition-list'
-        });
-        return dl;
+        })
+        return dl
       }
-    });
+    })
 
     // Definition Term <dt>
     conversion.for('upcast').elementToElement({
       model: 'definitionTerm',
       view: 'dt'
-    });
+    })
 
     conversion.for('dataDowncast').elementToElement({
       model: 'definitionTerm',
       view: (modelElement, {writer: viewWriter}) => {
         return viewWriter.createContainerElement('dt', {
           class: 'description-term'
-        });
+        })
       }
-    });
+    })
 
     conversion.for('editingDowncast').elementToElement({
       model: 'definitionTerm',
       view: (modelElement, {writer: viewWriter}) => {
         const dt = viewWriter.createContainerElement('dt', {
           class: 'description-term ck-definition-term'
-        });
-        return dt;
+        })
+        return dt
       }
-    });
+    })
 
     // Definition Description <dd>
     conversion.for('upcast').elementToElement({
       model: 'definitionDescription',
       view: 'dd'
-    });
+    })
 
     conversion.for('dataDowncast').elementToElement({
       model: 'definitionDescription',
       view: (modelElement, {writer: viewWriter}) => {
         return viewWriter.createContainerElement('dd', {
           class: 'description-element'
-        });
+        })
       }
-    });
+    })
 
     conversion.for('editingDowncast').elementToElement({
       model: 'definitionDescription',
       view: (modelElement, {writer: viewWriter}) => {
         const dd = viewWriter.createContainerElement('dd', {
           class: 'description-element ck-definition-description'
-        });
-        return dd;
+        })
+        return dd
       }
-    });
+    })
   }
 
   _defineCommands() {
-    const editor = this.editor;
+    const editor = this.editor
 
-    editor.commands.add('insertDefinitionList', new InsertDefinitionListCommand(editor));
-    editor.commands.add('insertDefinitionTerm', new InsertDefinitionTermCommand(editor));
-    editor.commands.add('insertDefinitionDescription', new InsertDefinitionDescriptionCommand(editor));
-    editor.commands.add('removeDefinitionList', new RemoveDefinitionListCommand(editor));
+    editor.commands.add('insertDefinitionList', new InsertDefinitionListCommand(editor))
+    editor.commands.add('insertDefinitionTerm', new InsertDefinitionTermCommand(editor))
+    editor.commands.add('insertDefinitionDescription', new InsertDefinitionDescriptionCommand(editor))
+    editor.commands.add('removeDefinitionList', new RemoveDefinitionListCommand(editor))
   }
 }
 
@@ -353,25 +353,25 @@ class DefinitionListEditing extends Plugin {
  */
 class DefinitionListUI extends Plugin {
   static get pluginName() {
-    return 'DefinitionListUI';
+    return 'DefinitionListUI'
   }
 
   /**
    * Get label from config or use fallback with translation function
    */
   _getLabel(key, fallback) {
-    const config = this.editor.config.get('definitionList') || {};
-    const labels = config.labels || {};
-    return labels[key] || this.editor.t(fallback);
+    const config = this.editor.config.get('definitionList') || {}
+    const labels = config.labels || {}
+    return labels[key] || this.editor.t(fallback)
   }
 
   init() {
-    const editor = this.editor;
+    const editor = this.editor
 
     // Register the main dropdown button
     editor.ui.componentFactory.add('definitionList', locale => {
-      const dropdownView = createDropdown(locale);
-      const items = new Collection();
+      const dropdownView = createDropdown(locale)
+      const items = new Collection()
 
       // Add dropdown items with configurable labels
       items.add({
@@ -381,7 +381,7 @@ class DefinitionListUI extends Plugin {
           label: this._getLabel('insert', 'Insert Definition List'),
           withText: true
         })
-      });
+      })
 
       items.add({
         type: 'button',
@@ -390,7 +390,7 @@ class DefinitionListUI extends Plugin {
           label: this._getLabel('addTerm', 'Add Term (dt)'),
           withText: true
         })
-      });
+      })
 
       items.add({
         type: 'button',
@@ -399,11 +399,11 @@ class DefinitionListUI extends Plugin {
           label: this._getLabel('addDescription', 'Add Description (dd)'),
           withText: true
         })
-      });
+      })
 
       items.add({
         type: 'separator'
-      });
+      })
 
       items.add({
         type: 'button',
@@ -412,60 +412,60 @@ class DefinitionListUI extends Plugin {
           label: this._getLabel('remove', 'Remove Definition List'),
           withText: true
         })
-      });
+      })
 
-      addListToDropdown(dropdownView, items);
+      addListToDropdown(dropdownView, items)
 
       // Configure dropdown button with configurable label
       dropdownView.buttonView.set({
         label: this._getLabel('title', 'Definition List'),
         icon: definitionListIcon,
         tooltip: true
-      });
+      })
 
       // Bind dropdown items to commands
       dropdownView.on('execute', evt => {
-        const commandName = evt.source.id;
+        const commandName = evt.source.id
 
         if (commandName) {
-          editor.execute(commandName);
-          editor.editing.view.focus();
+          editor.execute(commandName)
+          editor.editing.view.focus()
         }
-      });
+      })
 
       // Bind isEnabled to commands
-      const insertCommand = editor.commands.get('insertDefinitionList');
-      dropdownView.bind('isEnabled').to(insertCommand, 'isEnabled');
+      const insertCommand = editor.commands.get('insertDefinitionList')
+      dropdownView.bind('isEnabled').to(insertCommand, 'isEnabled')
 
-      return dropdownView;
-    });
+      return dropdownView
+    })
 
     // Register individual buttons for keyboard shortcuts or alternative UI
-    this._registerButton('insertDefinitionList', this._getLabel('insert', 'Insert Definition List'), definitionListIcon);
+    this._registerButton('insertDefinitionList', this._getLabel('insert', 'Insert Definition List'), definitionListIcon)
   }
 
   _registerButton(commandName, label, icon) {
-    const editor = this.editor;
+    const editor = this.editor
 
     editor.ui.componentFactory.add(commandName, locale => {
-      const command = editor.commands.get(commandName);
-      const buttonView = new ButtonView(locale);
+      const command = editor.commands.get(commandName)
+      const buttonView = new ButtonView(locale)
 
       buttonView.set({
         label: label,
         icon: icon,
         tooltip: true
-      });
+      })
 
-      buttonView.bind('isEnabled').to(command, 'isEnabled');
+      buttonView.bind('isEnabled').to(command, 'isEnabled')
 
       buttonView.on('execute', () => {
-        editor.execute(commandName);
-        editor.editing.view.focus();
-      });
+        editor.execute(commandName)
+        editor.editing.view.focus()
+      })
 
-      return buttonView;
-    });
+      return buttonView
+    })
   }
 }
 
@@ -475,13 +475,13 @@ class DefinitionListUI extends Plugin {
  */
 export class DefinitionList extends Plugin {
   static get pluginName() {
-    return 'DefinitionList';
+    return 'DefinitionList'
   }
 
   static get requires() {
-    return [DefinitionListEditing, DefinitionListUI];
+    return [DefinitionListEditing, DefinitionListUI]
   }
 }
 
 // Export for TYPO3 module system
-export default DefinitionList;
+export default DefinitionList

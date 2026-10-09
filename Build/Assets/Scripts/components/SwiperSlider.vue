@@ -1,6 +1,8 @@
-<script setup>
-import { ref, computed, onBeforeMount, onMounted, nextTick, inject } from 'vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
+<script setup lang="ts">
+import { ref, computed, onBeforeMount, onMounted, nextTick, inject } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import type { Swiper as SwiperInstance } from 'swiper'
+import type { SwiperOptions } from 'swiper/types'
 import {
   A11y,
   Autoplay,
@@ -18,7 +20,7 @@ import {
   Pagination,
   Scrollbar,
   Zoom
-} from 'swiper/modules';
+} from 'swiper/modules'
 import {
   prevSlideMessage,
   nextSlideMessage,
@@ -29,10 +31,57 @@ import {
   paginationBulletMessage,
   slideLabelMessage,
   itemRoleDescriptionMessage
-} from '../code/i18n.js';
-import { bindEqualSwiperSlideHeights } from '../code/swiper-equal-heights.js';
-import { bindSwiperEffectParams } from '../code/swiper-effect-params.js';
-import { bindVidplySwiperLifecycle, notifyDynamicContentReady } from '../code/vidply-dynamic-content.js';
+} from '../code/i18n.js'
+import { bindEqualSwiperSlideHeights } from '../code/swiper-equal-heights.js'
+import { bindSwiperEffectParams } from '../code/swiper-effect-params.js'
+import { bindVidplySwiperLifecycle, notifyDynamicContentReady } from '../code/vidply-dynamic-content.js'
+
+type PaginationType = 'bullets' | 'fraction' | 'progressbar' | 'custom'
+type SlidesPerView = number | 'auto'
+
+interface SliderSlide {
+  id: number
+  content: string
+}
+
+interface SliderConfig {
+  effect: string
+  slidesPerView: SlidesPerView
+  spaceBetween: number
+  slidesPerGroup: number
+  loop: boolean
+  speed: number
+  autoplayEnabled: boolean
+  autoplayDelay: number
+  autoplayDisableOnInteraction: boolean
+  autoplayPauseOnMouseEnter: boolean
+  navigationEnabled: boolean
+  paginationEnabled: boolean
+  paginationType: PaginationType
+  paginationClickable: boolean
+  paginationDynamicBullets: boolean
+  scrollbarEnabled: boolean
+  scrollbarDraggable: boolean
+  keyboardEnabled: boolean
+  mousewheelEnabled: boolean
+  mousewheelForceToAxis: boolean
+  gridEnabled: boolean
+  gridRows: number
+  freeModeEnabled: boolean
+  freeModeSticky: boolean
+  zoomEnabled: boolean
+  zoomMaxRatio: number
+  fadeCrossFade: boolean
+  cubeShadow: boolean
+  cubeSlideShadows: boolean
+  coverflowRotate: number
+  coverflowStretch: number
+  coverflowDepth: number
+  coverflowModifier: number
+  containerClass: string
+  breakpoints: string
+  sliderId: string
+}
 
 // Swiper CSS is imported in vue.js entry point (swiper/css/bundle)
 // This ensures all Swiper CSS is bundled into vue.css
@@ -42,24 +91,24 @@ import { bindVidplySwiperLifecycle, notifyDynamicContentReady } from '../code/vi
 // =============================================================================
 
 // No props needed - we read everything from data attributes
-defineProps({});
+defineProps({})
 
 /** TYPO3 mount target injected by vue-initialisation.js (avoids DOM query races). */
-const mountElement = inject('mpcMountElement', null);
+const mountElement = inject<HTMLElement | null>('mpcMountElement', null)
 
 // =============================================================================
 // STATE
 // =============================================================================
 
-const swiperRef = ref(null);
-const containerRef = ref(null);
-const navigationNextRef = ref(null);
-const navigationPrevRef = ref(null);
-const paginationRef = ref(null);
-const scrollbarRef = ref(null);
-const autoplayPausedByUser = ref(false);
-const slides = ref([]);
-const config = ref({
+const swiperRef = ref<SwiperInstance | null>(null)
+const containerRef = ref<HTMLElement | null>(null)
+const navigationNextRef = ref<HTMLElement | null>(null)
+const navigationPrevRef = ref<HTMLElement | null>(null)
+const paginationRef = ref<HTMLElement | null>(null)
+const scrollbarRef = ref<HTMLElement | null>(null)
+const autoplayPausedByUser = ref(false)
+const slides = ref<SliderSlide[]>([])
+const config = ref<SliderConfig>({
   effect: 'slide',
   slidesPerView: 1,
   spaceBetween: 0,
@@ -69,6 +118,7 @@ const config = ref({
   autoplayEnabled: false,
   autoplayDelay: 3000,
   autoplayDisableOnInteraction: true,
+  autoplayPauseOnMouseEnter: false,
   navigationEnabled: true,
   paginationEnabled: true,
   paginationType: 'bullets',
@@ -78,8 +128,13 @@ const config = ref({
   scrollbarDraggable: true,
   keyboardEnabled: true,
   mousewheelEnabled: false,
+  mousewheelForceToAxis: false,
+  gridEnabled: false,
+  gridRows: 1,
   freeModeEnabled: false,
+  freeModeSticky: false,
   zoomEnabled: false,
+  zoomMaxRatio: 3,
   fadeCrossFade: true,
   cubeShadow: true,
   cubeSlideShadows: true,
@@ -90,7 +145,14 @@ const config = ref({
   containerClass: '',
   breakpoints: '',
   sliderId: 'default'
-});
+})
+
+function parsePaginationType(value: string | undefined): PaginationType {
+  if (value === 'fraction' || value === 'progressbar' || value === 'custom') {
+    return value
+  }
+  return 'bullets'
+}
 
 // =============================================================================
 // CONFIGURATION PARSING
@@ -99,66 +161,47 @@ const config = ref({
 /**
  * Parse boolean from string or return boolean
  */
-function parseBool(value) {
-  if (typeof value === 'boolean') return value;
+function parseBool(value: unknown): boolean {
+  if (typeof value === 'boolean') return value
   if (typeof value === 'string') {
-    return value === '1' || value === 'true' || value === 'yes';
+    return value === '1' || value === 'true' || value === 'yes'
   }
-  return false;
+  return false
 }
 
-/**
- * Parse number from string or return number
- * Also handles special 'auto' value for slidesPerView
- */
-function parseNumber(value, defaultValue = 0) {
-  if (typeof value === 'number') return value;
+function parseNumber(value: unknown, defaultValue = 0): number {
+  if (typeof value === 'number') return value
   if (typeof value === 'string') {
-    // Handle 'auto' as a special case (used by Swiper for slidesPerView)
-    if (value.toLowerCase() === 'auto') return 'auto';
-    const parsed = parseInt(value, 10);
-    return isNaN(parsed) ? defaultValue : parsed;
+    const parsed = parseInt(value, 10)
+    return Number.isNaN(parsed) ? defaultValue : parsed
   }
-  return defaultValue;
+  return defaultValue
 }
 
-/**
- * Parse slidesPerView which can be a number or 'auto'
- */
-function parseSlidesPerView(value, defaultValue = 1) {
-  if (typeof value === 'number') return value;
+function parseSlidesPerView(value: unknown, defaultValue: SlidesPerView = 1): SlidesPerView {
+  if (typeof value === 'number') return value
   if (typeof value === 'string') {
-    if (value.toLowerCase() === 'auto') return 'auto';
-    const parsed = parseFloat(value); // Use parseFloat to support decimals like 1.5
-    return isNaN(parsed) ? defaultValue : parsed;
+    if (value.toLowerCase() === 'auto') return 'auto'
+    const parsed = parseFloat(value)
+    return Number.isNaN(parsed) ? defaultValue : parsed
   }
-  return defaultValue;
+  return defaultValue
 }
 
-/**
- * Load configuration from data attributes
- * @param {HTMLElement} container - The container element (Vue root)
- */
-function loadConfig(container) {
-  if (!container) return;
+function loadConfig(container: HTMLElement): void {
+  const dataAttrs = container.dataset
 
-  // Read all data attributes
-  const dataAttrs = container.dataset;
-  
-  // Parse slidesPerView first as slidesPerGroup may depend on it
-  const slidesPerView = parseSlidesPerView(dataAttrs.slidesPerView, 1);
-  
-  // slidesPerGroup defaults to 1, but can be explicitly set
-  // This ensures when slidesPerView=1, only 1 slide moves at a time
-  const slidesPerGroup = dataAttrs.slidesPerGroup 
+  const slidesPerView = parseSlidesPerView(dataAttrs.slidesPerView, 1)
+
+  const slidesPerGroup = dataAttrs.slidesPerGroup
     ? parseNumber(dataAttrs.slidesPerGroup, 1)
-    : 1; // Always default to 1 to ensure predictable navigation
-  
+    : 1
+
   config.value = {
     effect: dataAttrs.effect || 'slide',
-    slidesPerView: slidesPerView,
+    slidesPerView,
     spaceBetween: parseNumber(dataAttrs.spaceBetween, 0),
-    slidesPerGroup: slidesPerGroup,
+    slidesPerGroup,
     loop: parseBool(dataAttrs.loop),
     speed: parseNumber(dataAttrs.speed, 300),
     autoplayEnabled: parseBool(dataAttrs.autoplayEnabled),
@@ -167,7 +210,7 @@ function loadConfig(container) {
     autoplayPauseOnMouseEnter: parseBool(dataAttrs.autoplayPauseOnMouseEnter),
     navigationEnabled: parseBool(dataAttrs.navigationEnabled ?? '1'),
     paginationEnabled: parseBool(dataAttrs.paginationEnabled ?? '1'),
-    paginationType: dataAttrs.paginationType || 'bullets',
+    paginationType: parsePaginationType(dataAttrs.paginationType),
     paginationClickable: parseBool(dataAttrs.paginationClickable),
     paginationDynamicBullets: parseBool(dataAttrs.paginationDynamicBullets),
     scrollbarEnabled: parseBool(dataAttrs.scrollbarEnabled),
@@ -191,7 +234,7 @@ function loadConfig(container) {
     containerClass: dataAttrs.containerClass || '',
     breakpoints: dataAttrs.breakpoints || '',
     sliderId: dataAttrs.sliderId || 'default'
-  };
+  }
 }
 
 // =============================================================================
@@ -199,54 +242,49 @@ function loadConfig(container) {
 // =============================================================================
 
 const modules = computed(() => {
-  const activeModules = [A11y]; // Always include A11y for accessibility
+  const activeModules = [A11y]
 
-  if (config.value.autoplayEnabled) activeModules.push(Autoplay);
-  if (config.value.navigationEnabled) activeModules.push(Navigation);
-  if (config.value.paginationEnabled) activeModules.push(Pagination);
-  if (config.value.scrollbarEnabled) activeModules.push(Scrollbar);
-  if (config.value.keyboardEnabled) activeModules.push(Keyboard);
-  if (config.value.mousewheelEnabled) activeModules.push(Mousewheel);
-  if (config.value.gridEnabled) activeModules.push(Grid);
-  if (config.value.freeModeEnabled) activeModules.push(FreeMode);
-  if (config.value.zoomEnabled) activeModules.push(Zoom);
+  if (config.value.autoplayEnabled) activeModules.push(Autoplay)
+  if (config.value.navigationEnabled) activeModules.push(Navigation)
+  if (config.value.paginationEnabled) activeModules.push(Pagination)
+  if (config.value.scrollbarEnabled) activeModules.push(Scrollbar)
+  if (config.value.keyboardEnabled) activeModules.push(Keyboard)
+  if (config.value.mousewheelEnabled) activeModules.push(Mousewheel)
+  if (config.value.gridEnabled) activeModules.push(Grid)
+  if (config.value.freeModeEnabled) activeModules.push(FreeMode)
+  if (config.value.zoomEnabled) activeModules.push(Zoom)
 
-  // Effect modules - always include EffectFade as it's commonly used
-  activeModules.push(EffectFade);
-  if (config.value.effect === 'cube') activeModules.push(EffectCube);
-  if (config.value.effect === 'coverflow') activeModules.push(EffectCoverflow);
-  if (config.value.effect === 'flip') activeModules.push(EffectFlip);
-  if (config.value.effect === 'cards') activeModules.push(EffectCards);
-  if (config.value.effect === 'creative') activeModules.push(EffectCreative);
+  activeModules.push(EffectFade)
+  if (config.value.effect === 'cube') activeModules.push(EffectCube)
+  if (config.value.effect === 'coverflow') activeModules.push(EffectCoverflow)
+  if (config.value.effect === 'flip') activeModules.push(EffectFlip)
+  if (config.value.effect === 'cards') activeModules.push(EffectCards)
+  if (config.value.effect === 'creative') activeModules.push(EffectCreative)
 
-  return activeModules;
-});
+  return activeModules
+})
 
 // =============================================================================
 // BREAKPOINTS
 // =============================================================================
 
-const breakpoints = computed(() => {
-  if (!config.value.breakpoints) return undefined;
+const breakpoints = computed((): Record<number, SwiperOptions> | undefined => {
+  if (!config.value.breakpoints) return undefined
   try {
-    const parsed = JSON.parse(config.value.breakpoints);
-    
-    // Ensure each breakpoint has slidesPerGroup set to 1 if slidesPerView is set
-    // but slidesPerGroup is not explicitly defined
-    // This prevents the issue where slidesPerView changes but slidesPerGroup doesn't
-    Object.keys(parsed).forEach(key => {
-      const bp = parsed[key];
-      if (bp.slidesPerView !== undefined && bp.slidesPerGroup === undefined) {
-        // Default to 1 slide per group for predictable navigation
-        bp.slidesPerGroup = 1;
+    const parsed = JSON.parse(config.value.breakpoints) as Record<number, SwiperOptions>
+
+    Object.keys(parsed).forEach((key) => {
+      const bp = parsed[Number(key)]
+      if (bp && bp.slidesPerView !== undefined && bp.slidesPerGroup === undefined) {
+        bp.slidesPerGroup = 1
       }
-    });
-    
-    return parsed;
+    })
+
+    return parsed
   } catch {
-    return undefined;
+    return undefined
   }
-});
+})
 
 
 // =============================================================================
@@ -254,33 +292,33 @@ const breakpoints = computed(() => {
 // =============================================================================
 
 const navigationConfig = computed(() => {
-  if (!config.value.navigationEnabled) return false;
-  const sliderId = config.value.sliderId || 'default';
+  if (!config.value.navigationEnabled) return false
+  const sliderId = config.value.sliderId || 'default'
   return {
     nextEl: `.swiper-button-next[data-slider-id="${sliderId}"]`,
     prevEl: `.swiper-button-prev[data-slider-id="${sliderId}"]`
-  };
-});
+  }
+})
 
 const paginationSelectorConfig = computed(() => {
-  if (!config.value.paginationEnabled) return false;
-  const sliderId = config.value.sliderId || 'default';
+  if (!config.value.paginationEnabled) return false
+  const sliderId = config.value.sliderId || 'default'
   return {
     el: `.swiper-pagination[data-slider-id="${sliderId}"]`,
-    type: config.value.paginationType || 'bullets',
+    type: config.value.paginationType,
     clickable: config.value.paginationClickable,
     dynamicBullets: config.value.paginationDynamicBullets
-  };
-});
+  }
+})
 
 const scrollbarConfig = computed(() => {
-  if (!config.value.scrollbarEnabled) return false;
-  const sliderId = config.value.sliderId || 'default';
+  if (!config.value.scrollbarEnabled) return false
+  const sliderId = config.value.sliderId || 'default'
   return {
     el: `.swiper-scrollbar[data-slider-id="${sliderId}"]`,
     draggable: config.value.scrollbarDraggable
-  };
-});
+  }
+})
 
 // =============================================================================
 // A11Y CONFIGURATION (with i18n translations)
@@ -295,115 +333,121 @@ const a11yConfig = computed(() => ({
   paginationBulletMessage: paginationBulletMessage,
   slideLabelMessage: slideLabelMessage,
   itemRoleDescriptionMessage: itemRoleDescriptionMessage
-}));
+}))
 
 // =============================================================================
 // LIFECYCLE
 // =============================================================================
 
 // Extract slides and config before Vue renders
+interface ParsedSlidePayload {
+  id: number
+  content: string
+}
+
 onBeforeMount(() => {
-  const element = mountElement;
+  const element = mountElement
   if (!element) {
-    return;
+    return
   }
 
-  // Try to get slides from data attribute first (set by initialization)
-  const slidesDataAttr = element.getAttribute('data-slides-data');
+  const slidesDataAttr = element.getAttribute('data-slides-data')
   if (slidesDataAttr) {
     try {
-      const parsedSlides = JSON.parse(slidesDataAttr);
-      slides.value = parsedSlides.map(slide => ({
+      const parsedSlides = JSON.parse(slidesDataAttr) as ParsedSlidePayload[]
+      slides.value = parsedSlides.map((slide) => ({
         id: slide.id,
         content: slide.content.trim()
-      }));
+      }))
     } catch {
       // Failed to parse slides data - will try DOM extraction
     }
   }
 
-  // Fallback: extract from DOM if data attribute not available
   if (slides.value.length === 0) {
-    const slideElements = element.querySelectorAll('.swiper-slide-content');
+    const slideElements = element.querySelectorAll('.swiper-slide-content')
     if (slideElements.length > 0) {
       slides.value = Array.from(slideElements).map((el, index) => {
-        const content = el.innerHTML.trim();
+        const htmlEl = el as HTMLElement
         return {
           id: index,
-          content: content
-        };
-      });
+          content: htmlEl.innerHTML.trim()
+        }
+      })
     }
   }
 
-  // Load config from the element's data attributes
-  loadConfig(element);
+  loadConfig(element)
 
-  // Clean up the data attribute after use
   if (element.hasAttribute('data-slides-data')) {
-    element.removeAttribute('data-slides-data');
+    element.removeAttribute('data-slides-data')
   }
-});
+})
 
 onMounted(() => {
   nextTick(() => {
-    notifyDynamicContentReady(mountElement);
-  });
-});
+    notifyDynamicContentReady(mountElement)
+  })
+})
 
 // =============================================================================
 // EVENTS
 // =============================================================================
 
-function observeRedundantAria(swiper) {
-  const wrapper = swiper.el?.closest('.swiper-vue-wrapper') || swiper.el?.parentElement;
-  if (!wrapper) return;
+function observeRedundantAria(swiper: SwiperInstance): void {
+  const wrapper = swiper.el?.closest('.swiper-vue-wrapper') || swiper.el?.parentElement
+  if (!wrapper) return
   new MutationObserver((mutations) => {
     for (const m of mutations) {
-      if (m.type === 'attributes' && m.attributeName === 'aria-disabled' && m.target.hasAttribute('disabled')) {
-        m.target.removeAttribute('aria-disabled');
+      if (
+        m.type === 'attributes'
+        && m.attributeName === 'aria-disabled'
+        && m.target instanceof Element
+        && m.target.hasAttribute('disabled')
+      ) {
+        m.target.removeAttribute('aria-disabled')
       }
     }
-  }).observe(wrapper, { attributes: true, attributeFilter: ['aria-disabled'], subtree: true });
+  }).observe(wrapper, { attributes: true, attributeFilter: ['aria-disabled'], subtree: true })
   wrapper.querySelectorAll('button[disabled][aria-disabled]')
-    .forEach(btn => btn.removeAttribute('aria-disabled'));
+    .forEach((btn: Element) => {
+      btn.removeAttribute('aria-disabled')
+    })
 }
 
-function toggleAutoplay() {
-  const swiper = swiperRef.value;
-  if (!swiper?.autoplay) return;
+function toggleAutoplay(): void {
+  const swiper = swiperRef.value
+  if (!swiper?.autoplay) return
 
   if (!autoplayPausedByUser.value) {
-    swiper.autoplay.stop();
-    autoplayPausedByUser.value = true;
+    swiper.autoplay.stop()
+    autoplayPausedByUser.value = true
   } else {
-    swiper.autoplay.start();
-    autoplayPausedByUser.value = false;
+    swiper.autoplay.start()
+    autoplayPausedByUser.value = false
   }
 }
 
-function bindAutoplayState(swiperInstance) {
-  if (!config.value.autoplayEnabled || !swiperInstance.autoplay) return;
+function bindAutoplayState(swiperInstance: SwiperInstance): void {
+  if (!config.value.autoplayEnabled || !swiperInstance.autoplay) return
 
-  // Only reflect explicit stops (pause button or disableOnInteraction).
-  // Ignore autoplayPause/autoplayResume — Swiper fires those during transitions.
   swiperInstance.on('autoplayStop', () => {
-    autoplayPausedByUser.value = true;
-  });
+    autoplayPausedByUser.value = true
+  })
   swiperInstance.on('autoplayStart', () => {
-    autoplayPausedByUser.value = false;
-  });
+    autoplayPausedByUser.value = false
+  })
 }
 
-const onSwiper = (swiperInstance) => {
-  swiperRef.value = swiperInstance;
-  observeRedundantAria(swiperInstance);
-  bindAutoplayState(swiperInstance);
-  bindSwiperEffectParams(swiperInstance, config.value);
-  bindEqualSwiperSlideHeights(swiperInstance);
-  bindVidplySwiperLifecycle(swiperInstance);
-  notifyDynamicContentReady(mountElement);
-};
+const onSwiper = (swiperInstance: SwiperInstance): void => {
+  swiperRef.value = swiperInstance
+  observeRedundantAria(swiperInstance)
+  bindAutoplayState(swiperInstance)
+  bindSwiperEffectParams(swiperInstance, config.value)
+  bindEqualSwiperSlideHeights(swiperInstance)
+  bindVidplySwiperLifecycle(swiperInstance)
+  notifyDynamicContentReady(mountElement)
+}
 
 // Note: Navigation is handled by Swiper's Navigation module via CSS selectors
 // No manual slidePrev/slideNext handlers needed - Swiper handles button clicks automatically

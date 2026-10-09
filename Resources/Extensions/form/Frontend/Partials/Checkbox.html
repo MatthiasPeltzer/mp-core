@@ -8,17 +8,17 @@
             <f:variable name="aria" value="{invalid: 'true', describedby: '{element.uniqueIdentifier}-errors'}" />
         </f:if>
         <f:render partial="Field/Field" arguments="{element: element, doNotShowLabel: 1}" contentAs="elementContent">
-            <div class="{element.properties.labelClassAttribute} d-flex">
+            <div class="form-field {element.properties.containerClassAttribute}">
                 <f:form.checkbox
                     property="{element.identifier}"
                     id="{element.uniqueIdentifier}"
-                    class="{element.properties.elementClassAttribute}"
+                    class="check {element.properties.elementClassAttribute}"
                     value="{element.properties.value}"
                     errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
                     additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
                     aria="{aria}"
                 />
-                <label class="{element.properties.labelTextClassAttribute}" for="{element.uniqueIdentifier}">{formvh:translateElementProperty(element: element, property: 'label') -> f:sanitize.html() -> f:transform.html() -> f:format.stripTags(allowedTags: '<a><br><i><strong>')}<f:if condition="{element.required}"><f:render partial="Field/Required" arguments="{element: element}"/></f:if></label>
+                <label for="{element.uniqueIdentifier}">{formvh:translateElementProperty(element: element, property: 'label') -> f:sanitize.html() -> f:transform.html() -> f:format.stripTags(allowedTags: '<a><br><i><strong>')}<f:if condition="{element.required}"><f:render partial="Field/Required" arguments="{element: element}"/></f:if></label>
             </div>
         </f:render>
     </f:form.validationResults>

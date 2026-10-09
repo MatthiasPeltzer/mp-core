@@ -10,8 +10,8 @@ img {
 }
 
 picture {
-  background-color: var(--bs-body-bg);
-  border-radius: var(--bs-border-radius);
+  background-color: var(--bg-body);
+  border-radius: var(--radius-5);
 
   &[data-aspectratio-xl],
   &[data-aspectratio-lg],

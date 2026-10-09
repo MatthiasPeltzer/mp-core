@@ -2,12 +2,12 @@
 
 .supplement-wrapper {
   .ce-bodytext {
-    background: linear-gradient(to bottom, transparent 0%, var(--bs-secondary-bg-subtle) 100%);
-    border-radius: var(--bs-border-radius);
+    background: linear-gradient(to bottom, transparent 0%, var(--secondary-bg-subtle) 100%);
+    border-radius: var(--radius-5);
     padding: 16px;
 
     @include light-theme {
-      background: linear-gradient(to bottom, transparent 0%, var(--bs-secondary-bg-subtle) 100%);
+      background: linear-gradient(to bottom, transparent 0%, var(--secondary-bg-subtle) 100%);
     }
   }
 }

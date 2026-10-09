@@ -1,2 +1,2 @@
 // screen.js
-import '../Scss/ckeditor.scss';
+import '../Scss/ckeditor.scss'

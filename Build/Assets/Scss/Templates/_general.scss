@@ -14,7 +14,7 @@ html {
 
 .main-wrapper,
 .header-wrapper-bg {
-  background-color: var(--bs-body-bg);
+  background-color: var(--bg-body);
 
   &::after {
     bottom: 0;
@@ -30,7 +30,7 @@ html {
 
 .header-wrapper-bg {
   &::after {
-    background-image: linear-gradient(to right, transparent 0%, var(--bs-primary) 50%);
+    background-image: linear-gradient(to right, transparent 0%, var(--primary-base) 50%);
   }
 }
 
@@ -43,7 +43,7 @@ html {
   }
 
   &::after {
-    background-image: linear-gradient(to left, transparent 0%, var(--bs-primary) 50%);
+    background-image: linear-gradient(to left, transparent 0%, var(--primary-base) 50%);
     inset: auto auto 0 0;
     transform: none;
   }
@@ -54,6 +54,19 @@ html {
     margin: 0 auto;
     max-width: 1920px;
   }
+}
+
+// Frame colours: site `Styles.html` overrides when color-toggle is on (must not live in
+// bootstrap.css — BS6 :root specificity would win over inline site config).
+:root {
+  --mpc-color-1: #fff;
+  --mpc-color-2: #efefef;
+  --mpc-color-3: #ccc;
+  --mpc-color-4: #999;
+  --mpc-color-5: #888;
+  --mpc-color-6: #777;
+  --mpc-color-7: #666;
+  --mpc-color-8: #555;
 }
 
 .bgcolor-1,
@@ -67,7 +80,7 @@ html {
   isolation: isolate;
 
   &::before {
-    border-radius: var(--bs-border-radius);
+    border-radius: var(--radius-5);
     content: "";
     height: calc(100% + 1px);
     left: 0;
@@ -88,49 +101,49 @@ html {
 
 .bgcolor-1 {
   &::before {
-    background-color: var(--bs-color-1);
+    background-color: var(--mpc-color-1);
   }
 }
 
 .bgcolor-2 {
   &::before {
-    background-color: var(--bs-color-2);
+    background-color: var(--mpc-color-2);
   }
 }
 
 .bgcolor-3 {
   &::before {
-    background-color: var(--bs-color-3);
+    background-color: var(--mpc-color-3);
   }
 }
 
 .bgcolor-4 {
   &::before {
-    background-color: var(--bs-color-4);
+    background-color: var(--mpc-color-4);
   }
 }
 
 .bgcolor-5 {
   &::before {
-    background-color: var(--bs-color-5);
+    background-color: var(--mpc-color-5);
   }
 }
 
 .bgcolor-6 {
   &::before {
-    background-color: var(--bs-color-6);
+    background-color: var(--mpc-color-6);
   }
 }
 
 .bgcolor-7 {
   &::before {
-    background-color: var(--bs-color-7);
+    background-color: var(--mpc-color-7);
   }
 }
 
 .bgcolor-8 {
   &::before {
-    background-color: var(--bs-color-8);
+    background-color: var(--mpc-color-8);
   }
 }
 

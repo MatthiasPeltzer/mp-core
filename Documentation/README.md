@@ -8,6 +8,8 @@ Documentation hub for **mpc/mp-core** — the TYPO3 13.4 / 14.3 site package (`e
 
 - **[Installation & Quick Start](../README.md)** -- Composer install, extension activation, first build
 - **[Feature Overview](OVERVIEW.md)** -- Content elements, Site Sets, PHP stack, integrations
+- **[Frontend — Bootstrap branches](Frontend.md#bootstrap-version-and-git-branches)** -- `main` stays on Bootstrap 5; Bootstrap 6 migration on `feature/bootstrap-6`
+- **[Bootstrap 6 migration](Bootstrap6Migration.md)** -- upgrade wizards, codemods, verification
 
 ## Guides
 

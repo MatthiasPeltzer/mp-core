@@ -128,7 +128,7 @@ defined('TYPO3') || die();
         'description' => $lll . 'styles.description',
         'config' => [
             'type' => 'text',
-            'placeholder' => ':root {' . LF . '  --bs-primary: #000' . LF . '}',
+            'placeholder' => ':root {' . LF . '  --primary-base: #000' . LF . '}',
             'rows' => 5,
             'cols' => 30,
             'max' => 5000,

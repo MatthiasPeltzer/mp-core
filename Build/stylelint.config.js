@@ -17,4 +17,4 @@ export default {
     'import-notation': null,
     'color-function-alias-notation': null
   }
-};
+}

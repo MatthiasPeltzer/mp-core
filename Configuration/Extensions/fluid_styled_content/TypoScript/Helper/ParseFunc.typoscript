@@ -6,7 +6,7 @@ lib.parseFunc_RTE {
                     replacement {
                         10 {
                             search = class="table"
-                            replace = class="table-responsive" tabindex="0"
+                            replace = class="md:table-responsive" tabindex="0"
                         }
                     }
                 }

@@ -5,7 +5,7 @@
 
 <f:if condition="{menuSub}">
     <nav aria-label="{f:translate(key: 'supplement.areamenu', extensionName: 'mp_core')}" class="d-none lg:d-block">
-        <ul class="nav flex-column hidden-md-down" id="subnav">
+        <ul class="nav flex-column" id="subnav">
             <f:for as="mainItem" each="{menuSub}" iteration="i">
                 <li class="nav-item mb-1">
                     <f:if condition="{mainItem.current}">

@@ -1,5 +1,25 @@
-<script setup>
-import { ref, computed, watch, nextTick, onMounted } from 'vue';
+<script setup lang="ts">
+import { ref, computed, watch, nextTick, onMounted } from 'vue'
+
+type LangCode = 'en' | 'de'
+
+interface TodoItem {
+  id: number
+  text: string
+  completed: boolean
+}
+
+interface TodoConfig {
+  showDelete: boolean
+  showFilter: boolean
+  showClear: boolean
+  maxItems: number
+  cardTitle: string
+  colorScheme: string
+  predefinedItems: string
+}
+
+type TodoFilter = 'all' | 'active' | 'completed'
 
 // i18n translations
 const translations = {
@@ -63,20 +83,23 @@ const translations = {
     markAs: '{text} als {state} markieren',
     max: 'max'
   }
-};
+}
 
 // Detect language from HTML lang attribute
-const getLanguage = () => {
-  const htmlLang = document.documentElement.lang || 'en';
-  const lang = htmlLang.split('-')[0].toLowerCase();
-  return translations[lang] ? lang : 'en';
-};
+const getLanguage = (): LangCode => {
+  const htmlLang = document.documentElement.lang || 'en'
+  const lang = htmlLang.split('-')[0].toLowerCase()
+  if (lang === 'en' || lang === 'de') {
+    return lang
+  }
+  return 'en'
+}
 
-const currentLang = ref(getLanguage());
-const t = computed(() => translations[currentLang.value]);
+const currentLang = ref<LangCode>(getLanguage())
+const t = computed(() => translations[currentLang.value])
 
 // Configuration from TYPO3 backend with defaults
-const config = ref({
+const config = ref<TodoConfig>({
   showDelete: true,
   showFilter: true,
   showClear: true,
@@ -84,18 +107,20 @@ const config = ref({
   cardTitle: '',
   colorScheme: 'primary',
   predefinedItems: ''
-});
+})
 
 // Initialize todos (will be loaded after config is read)
-const todos = ref([]);
+const todos = ref<TodoItem[]>([])
 
 // Load todos from sessionStorage or use predefined/default items
-const loadTodos = () => {
-  const saved = sessionStorage.getItem('todos');
+const loadTodos = (): TodoItem[] => {
+  const saved = sessionStorage.getItem('todos')
   if (saved) {
     try {
-      const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed)) return parsed;
+      const parsed: unknown = JSON.parse(saved)
+      if (Array.isArray(parsed)) {
+        return parsed as TodoItem[]
+      }
     } catch { /* corrupt storage — fall through to defaults */ }
   }
 
@@ -109,8 +134,8 @@ const loadTodos = () => {
         id: index + 1,
         text,
         completed: false
-      }));
-    if (items.length > 0) return items;
+      }))
+    if (items.length > 0) return items
   }
 
   // Default items
@@ -118,146 +143,146 @@ const loadTodos = () => {
     { id: 1, text: 'Learn Vue 3', completed: false },
     { id: 2, text: 'Build something awesome', completed: false },
     { id: 3, text: 'Integrate with TYPO3', completed: true }
-  ];
-};
+  ]
+}
 
 // Calculate next ID based on existing todos
-let nextId = 1;
+let nextId = 1
 
 // Load configuration from data attributes
 onMounted(() => {
-  const container = document.querySelector('[data-component="TodoList"]');
+  const container = document.querySelector('[data-component="TodoList"]') as HTMLElement | null
   if (container) {
     // Read individual data attributes
     if (container.dataset.showDelete !== undefined && container.dataset.showDelete !== '') {
-      config.value.showDelete = container.dataset.showDelete === '1';
+      config.value.showDelete = container.dataset.showDelete === '1'
     }
     if (container.dataset.showFilter !== undefined && container.dataset.showFilter !== '') {
-      config.value.showFilter = container.dataset.showFilter === '1';
+      config.value.showFilter = container.dataset.showFilter === '1'
     }
     if (container.dataset.showClear !== undefined && container.dataset.showClear !== '') {
-      config.value.showClear = container.dataset.showClear === '1';
+      config.value.showClear = container.dataset.showClear === '1'
     }
     if (container.dataset.maxItems) {
-      config.value.maxItems = parseInt(container.dataset.maxItems) || 50;
+      config.value.maxItems = parseInt(container.dataset.maxItems, 10) || 50
     }
     if (container.dataset.cardTitle) {
-      config.value.cardTitle = container.dataset.cardTitle;
+      config.value.cardTitle = container.dataset.cardTitle
     }
     if (container.dataset.colorScheme) {
-      config.value.colorScheme = container.dataset.colorScheme;
+      config.value.colorScheme = container.dataset.colorScheme
     }
     if (container.dataset.predefinedItems) {
-      config.value.predefinedItems = container.dataset.predefinedItems;
+      config.value.predefinedItems = container.dataset.predefinedItems
     }
   }
 
   // Load todos after config is loaded
-  const loadedTodos = loadTodos();
-  
+  const loadedTodos = loadTodos()
+
   // Reassign all IDs sequentially to prevent any duplicate ID issues
   const fixedTodos = loadedTodos.map((todo, index) => ({
     ...todo,
     id: index + 1
-  }));
-  
-  todos.value = fixedTodos;
-  
+  }))
+
+  todos.value = fixedTodos
+
   // Save the fixed todos to sessionStorage
   if (fixedTodos.length > 0) {
-    sessionStorage.setItem('todos', JSON.stringify(fixedTodos));
+    sessionStorage.setItem('todos', JSON.stringify(fixedTodos))
   }
-  
-  // Set nextId to count + 1
-  nextId = fixedTodos.length + 1;
-});
 
-const newTodo = ref('');
-const filter = ref('all'); // 'all', 'active', 'completed'
-const inputRef = ref(null);
-const announcement = ref(''); // For screen reader announcements
+  // Set nextId to count + 1
+  nextId = fixedTodos.length + 1
+})
+
+const newTodo = ref('')
+const filter = ref<TodoFilter>('all')
+const inputRef = ref<HTMLInputElement | null>(null)
+const announcement = ref('')
 
 // Watch todos and save to sessionStorage whenever they change
 watch(todos, (newTodos) => {
-  sessionStorage.setItem('todos', JSON.stringify(newTodos));
-}, { deep: true });
+  sessionStorage.setItem('todos', JSON.stringify(newTodos))
+}, { deep: true })
 
 const filteredTodos = computed(() => {
   switch (filter.value) {
     case 'active':
-      return todos.value.filter(todo => !todo.completed);
+      return todos.value.filter(todo => !todo.completed)
     case 'completed':
-      return todos.value.filter(todo => todo.completed);
+      return todos.value.filter(todo => todo.completed)
     default:
-      return todos.value;
+      return todos.value
   }
-});
+})
 
 const activeTodosCount = computed(() => {
-  return todos.value.filter(todo => !todo.completed).length;
-});
+  return todos.value.filter(todo => !todo.completed).length
+})
 
 const hasCompletedTodos = computed(() => {
-  return todos.value.some(todo => todo.completed);
-});
+  return todos.value.some(todo => todo.completed)
+})
 
 function addTodo() {
-  const text = newTodo.value.trim();
+  const text = newTodo.value.trim()
   if (text) {
     // Check max items limit
     if (config.value.maxItems && todos.value.length >= config.value.maxItems) {
-      announcement.value = t.value.maxReached.replace('{max}', config.value.maxItems);
-      return;
+      announcement.value = t.value.maxReached.replace('{max}', String(config.value.maxItems))
+      return
     }
 
     todos.value.push({
       id: nextId++,
       text,
       completed: false
-    });
-    announcement.value = `${t.value.addedTask}: ${text}`;
-    newTodo.value = '';
+    })
+    announcement.value = `${t.value.addedTask}: ${text}`
+    newTodo.value = ''
 
     // Return focus to input after adding
     nextTick(() => {
-      inputRef.value?.focus();
-    });
+      inputRef.value?.focus()
+    })
   }
 }
 
-function toggleTodo(id) {
-  const todo = todos.value.find(t => t.id === id);
+function toggleTodo(id: number) {
+  const todo = todos.value.find(t => t.id === id)
   if (todo) {
-    todo.completed = !todo.completed;
+    todo.completed = !todo.completed
     announcement.value = todo.completed
       ? `${t.value.markedCompleted}: "${todo.text}"`
-      : `${t.value.markedActive}: "${todo.text}"`;
+      : `${t.value.markedActive}: "${todo.text}"`
   }
 }
 
-function deleteTodo(id) {
-  const todo = todos.value.find(t => t.id === id);
+function deleteTodo(id: number) {
+  const todo = todos.value.find(t => t.id === id)
   if (todo) {
-    announcement.value = `${t.value.deletedTask}: ${todo.text}`;
-    todos.value = todos.value.filter(t => t.id !== id);
+    announcement.value = `${t.value.deletedTask}: ${todo.text}`
+    todos.value = todos.value.filter(t => t.id !== id)
 
     // Return focus to input after deleting
     nextTick(() => {
-      inputRef.value?.focus();
-    });
+      inputRef.value?.focus()
+    })
   }
 }
 
 function clearCompleted() {
-  const count = todos.value.filter(t => t.completed).length;
-  todos.value = todos.value.filter(todo => !todo.completed);
-  const taskWord = count === 1 ? t.value.task : t.value.tasks;
-  announcement.value = `${t.value.cleared} ${count} ${taskWord}`;
+  const count = todos.value.filter(t => t.completed).length
+  todos.value = todos.value.filter(todo => !todo.completed)
+  const taskWord = count === 1 ? t.value.task : t.value.tasks
+  announcement.value = `${t.value.cleared} ${count} ${taskWord}`
 
   // Return focus to input after clearing
   nextTick(() => {
-    inputRef.value?.focus();
-  });
+    inputRef.value?.focus()
+  })
 }
 </script>
 
@@ -416,27 +441,22 @@ function clearCompleted() {
 
 /* Card background - adapts to theme */
 .card {
-  background-color: var(--bs-body-bg);
-  color: var(--bs-body-color);
-  border-color: var(--bs-border-color);
+  background-color: var(--bg-body);
+  color: var(--fg-body);
+  border-color: var(--border-color);
 }
 
 .card-body {
-  background-color: var(--bs-body-bg);
-}
-
-.form-check-input:checked {
-  background-color: var(--bs-success);
-  border-color: var(--bs-success);
+  background-color: var(--bg-body);
 }
 
 .hover-opacity-100:hover {
   opacity: 1 !important;
 }
 
-.btn-check:checked + .btn-outline theme-secondary {
-  background-color: var(--bs-secondary);
-  color: var(--bs-white);
+.btn-check:checked + .btn-outline.theme-secondary {
+  background-color: var(--secondary-base);
+  color: var(--white);
 }
 
 .input-group-lg .form-control {
@@ -445,38 +465,38 @@ function clearCompleted() {
 
 .list-group-item {
   transition: background-color 0.2s ease;
-  background-color: var(--bs-body-bg);
-  border-color: var(--bs-border-color);
-  color: var(--bs-body-color);
+  background-color: var(--bg-body);
+  border-color: var(--border-color);
+  color: var(--fg-body);
 }
 
 /* Theme-aware hover states */
 .list-group-item:hover {
-  background-color: var(--bs-secondary-bg);
+  background-color: var(--secondary-bg);
 }
 
 /* Completed todo styling - adapts to light/dark mode */
 .list-group-item.todo-completed {
-  background-color: var(--bs-tertiary-bg);
+  background-color: var(--tertiary-bg);
 }
 
 .list-group-item.todo-completed:hover {
-  background-color: var(--bs-secondary-bg);
+  background-color: var(--secondary-bg);
 }
 
 /* Dark mode specific styling */
 [data-bs-theme="dark"] .card {
-  background-color: var(--bs-dark);
-  border-color: var(--bs-border-color);
+  background-color: var(--gray-900);
+  border-color: var(--border-color);
 }
 
 [data-bs-theme="dark"] .card-body {
-  background-color: var(--bs-dark);
+  background-color: var(--gray-900);
 }
 
 [data-bs-theme="dark"] .list-group-item {
-  background-color: var(--bs-dark);
-  border-color: var(--bs-border-color);
+  background-color: var(--gray-900);
+  border-color: var(--border-color);
 }
 
 [data-bs-theme="dark"] .list-group-item:hover {
@@ -493,17 +513,17 @@ function clearCompleted() {
 
 /* Light mode specific styling */
 [data-bs-theme="light"] .card {
-  background-color: var(--bs-white);
-  border-color: var(--bs-border-color);
+  background-color: var(--white);
+  border-color: var(--border-color);
 }
 
 [data-bs-theme="light"] .card-body {
-  background-color: var(--bs-white);
+  background-color: var(--white);
 }
 
 [data-bs-theme="light"] .list-group-item {
-  background-color: var(--bs-white);
-  border-color: var(--bs-border-color);
+  background-color: var(--white);
+  border-color: var(--border-color);
 }
 
 [data-bs-theme="light"] .list-group-item:hover {
@@ -567,7 +587,7 @@ function clearCompleted() {
   color: rgba(255, 255, 255, 0.9);
 }
 
-[data-bs-theme="dark"] .btn-check:checked + .btn-outline theme-secondary {
+[data-bs-theme="dark"] .btn-check:checked + .btn-outline.theme-secondary {
   background-color: #6c757d;
   border-color: #6c757d;
   color: #fff;

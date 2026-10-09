@@ -1,7 +1,7 @@
 // MPC design tokens shared by SCSS bundles (independent of Bootstrap variable overrides).
 
-// Legacy Bootstrap 5 SCSS prefix for MPC rules that build `var(--#{$prefix}…)` names.
-$prefix: bs-;
+// Deprecated: prefer explicit BS6 token names (`--body-font-family`, `--heading-font-family`).
+$prefix: '';
 
 $white: #fff;
 $gray-100: #efefef;

@@ -1,13 +1,18 @@
-import js from "@eslint/js";
-import pluginVue from "eslint-plugin-vue";
-import globals from "globals";
+import js from "@eslint/js"
+import pluginVue from "eslint-plugin-vue"
+import globals from "globals"
+import tseslint from "typescript-eslint"
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   js.configs.recommended,
   ...pluginVue.configs["flat/recommended"],
+  ...tseslint.configs.recommended.map((config) => ({
+    ...config,
+    files: ["**/*.ts"],
+  })),
   {
-    files: ["**/*.js"],
+    files: ["**/*.{js,ts}"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
@@ -16,7 +21,7 @@ export default [
       }
     },
     rules: {
-      semi: "error",
+      semi: ["error", "never"],
       "prefer-const": "error",
       "no-undef": "warn",
       "no-console": [
@@ -26,21 +31,37 @@ export default [
     },
   },
   {
+    files: ["**/*.ts"],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname
+      }
+    },
+    rules: {
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }]
+    }
+  },
+  {
     files: ["**/*.vue"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
+      parserOptions: {
+        parser: tseslint.parser,
+        extraFileExtensions: [".vue"]
+      },
       globals: {
         ...globals.browser
       }
     },
     rules: {
-      semi: "error",
+      semi: ["error", "never"],
       "prefer-const": "error",
       "no-unused-vars": "off",
       "vue/no-unused-vars": ["error", { ignorePattern: "^_" }],
       "vue/multi-word-component-names": "off",
-      // Trusted editor/server HTML only; CSP is the primary control (see component comments).
       "vue/no-v-html": "off",
       "vue/max-attributes-per-line": "off",
       "vue/html-self-closing": "off",
@@ -51,8 +72,13 @@ export default [
     },
   },
   {
-    // Node-only build tooling (analyzer wrapper, bundle-size gate, etc.).
-    // These run via `node scripts/*.js`, not in the browser.
+    files: ["Assets/Static/**/*.js"],
+    rules: {
+      "@typescript-eslint/no-unused-expressions": "off",
+      "no-unused-expressions": "off",
+    },
+  },
+  {
     files: [
       "scripts/**/*.js",
       "scripts/**/*.mjs",
@@ -61,16 +87,17 @@ export default [
       "vite.config.js",
       "postcss.config.js",
       "stylelint.config.js",
-      "eslint.config.js"
+      "eslint.config.js",
+      "vitest.config.mts"
     ],
     languageOptions: {
+      parser: tseslint.parser,
       globals: {
         ...globals.node
       }
     },
     rules: {
-      // Build scripts intentionally write to stdout/stderr.
       "no-console": "off"
     }
   }
-];
+]

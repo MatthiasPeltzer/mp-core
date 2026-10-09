@@ -1,23 +1,24 @@
-import {defineConfig} from 'vite';
-import {resolve} from 'path';
-import {fileURLToPath} from 'url';
-import vue from '@vitejs/plugin-vue';
+import {defineConfig} from 'vite'
+import {resolve} from 'path'
+import {fileURLToPath} from 'url'
+import vue from '@vitejs/plugin-vue'
+import {tsResolvePlugin} from './scripts/ts-resolve-vite-plugin.mjs'
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 // Define all entry points
 // Note: Swiper is now integrated into Vue component (vue.js) - no separate entry point needed
 const entryPoints = {
-  bootstrap: resolve(__dirname, 'Assets/Scripts/bootstrap.js'),
-  screen: resolve(__dirname, 'Assets/Scripts/screen.js'),
-  navigationPrimary: resolve(__dirname, 'Assets/Scripts/navigationPrimary.js'),
-  navigationSecondary: resolve(__dirname, 'Assets/Scripts/navigationSecondary.js'),
-  navigationTertiary: resolve(__dirname, 'Assets/Scripts/navigationTertiary.js'),
+  bootstrap: resolve(__dirname, 'Assets/Scripts/bootstrap.ts'),
+  screen: resolve(__dirname, 'Assets/Scripts/screen.ts'),
+  navigationPrimary: resolve(__dirname, 'Assets/Scripts/navigationPrimary.ts'),
+  navigationSecondary: resolve(__dirname, 'Assets/Scripts/navigationSecondary.ts'),
+  navigationTertiary: resolve(__dirname, 'Assets/Scripts/navigationTertiary.ts'),
   ckeditor: resolve(__dirname, 'Assets/Scripts/ckeditor.js'),
   backend: resolve(__dirname, 'Assets/Scripts/backend.js'),
-  print: resolve(__dirname, 'Assets/Scripts/print.js'),
-  vue: resolve(__dirname, 'Assets/Scripts/vue.js')
-};
+  print: resolve(__dirname, 'Assets/Scripts/print.ts'),
+  vue: resolve(__dirname, 'Assets/Scripts/vue.ts')
+}
 
 // Vendor splitting groups. Keys become the chunk file name; values are the
 // node_modules subpaths that should land in that chunk. Splitting yields
@@ -29,22 +30,22 @@ const vendorChunks = {
   'vendor-bootstrap': ['/node_modules/bootstrap/'],
   'vendor-floating-ui': ['/node_modules/@floating-ui/'],
   'vendor-jarallax': ['/node_modules/jarallax/']
-};
+}
 
 function vendorChunkFor(id) {
-  const normalized = id.replace(/\\/g, '/');
+  const normalized = id.replace(/\\/g, '/')
   for (const [chunk, matchers] of Object.entries(vendorChunks)) {
     if (matchers.some((m) => normalized.includes(m))) {
-      return chunk;
+      return chunk
     }
   }
-  return undefined;
+  return undefined
 }
 
 export default defineConfig(async ({mode}) => {
-  const isDev = mode === 'development';
+  const isDev = mode === 'development'
 
-  const plugins = [vue()];
+  const plugins = [tsResolvePlugin(), vue()]
 
   return {
     root: resolve(__dirname),
@@ -78,23 +79,23 @@ export default defineConfig(async ({mode}) => {
           entryFileNames: 'JavaScripts/[name].js',
           chunkFileNames: 'JavaScripts/[name]-[hash].js',
           manualChunks(id) {
-            return vendorChunkFor(id);
+            return vendorChunkFor(id)
           },
           assetFileNames: (assetInfo) => {
-            const name = assetInfo.names?.[0] ?? assetInfo.name ?? '';
+            const name = assetInfo.names?.[0] ?? assetInfo.name ?? ''
             if (name.endsWith('.css')) {
-              return 'StyleSheets/[name][extname]';
+              return 'StyleSheets/[name][extname]'
             }
             if (/\.(woff2?|ttf|eot)$/.test(name)) {
-              return 'Fonts/[name][extname]';
+              return 'Fonts/[name][extname]'
             }
             if (/\.(png|jpe?g|gif|webp|avif)$/.test(name)) {
-              return 'Images/[name][extname]';
+              return 'Images/[name][extname]'
             }
             if (/\.svg$/.test(name)) {
-              return 'Icons/[name][extname]';
+              return 'Icons/[name][extname]'
             }
-            return '[name][extname]';
+            return '[name][extname]'
           }
         }
       },
@@ -123,6 +124,6 @@ export default defineConfig(async ({mode}) => {
         '@components': resolve(__dirname, 'Assets/Scripts/components')
       }
     }
-  };
-});
+  }
+})
 

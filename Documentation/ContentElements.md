@@ -43,7 +43,7 @@ Used by stage, banner, singleteaser, and others.
 | `tx_link_switch` | check | Enable link button |
 | `tx_link` | link | Page, file, URL, record, or `ce_modal` content element (when action = modal) |
 | `tx_link_text` | input | Custom link label (`displayCond`: switch on) |
-| `tx_link_layout` | select | `btn btn-primary/secondary/tertiary/quaternary`, `internal-link`, `external-link`, `download` |
+| `tx_link_layout` | select | `btn btn-solid theme-primary/secondary/tertiary/quaternary`, `internal-link`, `external-link`, `download` |
 | `tx_link_position` | select | `btn-center`, `btn-left`, `btn-right` |
 
 ### Header palette (`header_config`)

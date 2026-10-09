@@ -83,7 +83,7 @@ final class WebFontCssBuilderTest extends TestCase
         self::assertStringContainsString('font-style: normal', $css);
         self::assertStringContainsString('font-display: swap', $css);
         self::assertStringContainsString(':root {', $css);
-        self::assertStringContainsString('--bs-body-font-family: "Roboto";', $css);
+        self::assertStringContainsString('--body-font-family: "Roboto";', $css);
     }
 
     #[Test]
@@ -192,6 +192,6 @@ final class WebFontCssBuilderTest extends TestCase
             $this->family(fallback: 'Arial, sans-serif'),
         ]);
 
-        self::assertStringContainsString('--bs-body-font-family: "Roboto", Arial, sans-serif;', $css);
+        self::assertStringContainsString('--body-font-family: "Roboto", Arial, sans-serif;', $css);
     }
 }

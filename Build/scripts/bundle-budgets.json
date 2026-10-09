@@ -1,5 +1,5 @@
 {
-  "$comment": "Size budgets for the compiled mp-core bundles. Numbers are bytes. Update intentionally when a bundle legitimately grows, never as a workaround for accidental bloat. Baseline captured 2026-06-03 (BS5); bootstrap.css/js budgets raised 2026-10-08 for Bootstrap 6 full SCSS bundle pending cherry-pick trim.",
+  "$comment": "Size budgets for the compiled mp-core bundles. Numbers are bytes. Update intentionally when a bundle legitimately grows, never as a workaround for accidental bloat. Baseline captured 2026-06-03 (BS5); bootstrap.css rebaselined 2026-10-08 after BS6 bundle + compat trim (~53 KiB gzip).",
   "warnRatio": 0.9,
   "perFile": {
     "bootstrap.js":            { "gzip": 25000, "brotli": 22000 },

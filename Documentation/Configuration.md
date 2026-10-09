@@ -315,8 +315,8 @@ A family's **Applies to** field maps it to a CSS custom property:
 
 | Role | CSS variable |
 |------|--------------|
-| Body text | `--bs-body-font-family` |
-| Headings | `--bs-font-sans-serif` |
+| Body text | `--body-font-family` |
+| Headings | `--heading-font-family` |
 | Custom CSS variable | the `--…` name entered in the family record |
 
 ### Editor workflow

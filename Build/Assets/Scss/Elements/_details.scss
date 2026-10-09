@@ -11,7 +11,7 @@ $padding-summary: 16px 60px 18px $padding-horizontal;
 
 // Platzhalter
 %summary-base {
-  color: var(--bs-body-color);
+  color: var(--fg-body);
   font-weight: 400;
   letter-spacing: -2px;
   line-height: 1;
@@ -24,9 +24,9 @@ $padding-summary: 16px 60px 18px $padding-horizontal;
 
 // Details-Styling
 details:not(.extbase-debugger-tree) {
-  background-color: var(--bs-gray-900);
-  border-bottom: 1px solid var(--bs-body-bg);
-  border-radius: var(--bs-border-radius);
+  background-color: var(--gray-900);
+  border-bottom: 1px solid var(--bg-body);
+  border-radius: var(--radius-5);
   margin-bottom: 2px;
   max-height: 200px;
 
@@ -39,18 +39,18 @@ details:not(.extbase-debugger-tree) {
   @include transition(max-height, .35s, ease-in-out);
 
   @include light-theme {
-    background-color: var(--bs-gray-100);
+    background-color: var(--gray-100);
   }
 
   summary {
     @extend %summary-base;
 
-    font-family: var(--#{$prefix}font-sans-serif);
+    font-family: var(--heading-font-family);
 
     @include font-size(map-get($font-size-scale, 2xl));
 
     &::after {
-      background-color: var(--bs-body-color);
+      background-color: var(--fg-body);
       content: "";
       display: block;
       height: $icon-container-size;

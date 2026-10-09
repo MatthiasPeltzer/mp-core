@@ -1,9 +1,9 @@
 // carousel
 
-$carousel-border-radius: var(--bs-border-radius);
-$carousel-body-color: var(--bs-body-color);
-$carousel-bg-dark: var(--bs-gray-900);
-$carousel-bg-light: var(--bs-gray-100);
+$carousel-border-radius: var(--radius-5);
+$carousel-body-color: var(--fg-body);
+$carousel-bg-dark: var(--gray-900);
+$carousel-bg-light: var(--gray-100);
 
 @mixin position-absolute($top: null, $right: null, $bottom: null, $left: null) {
   position: absolute;
@@ -108,6 +108,6 @@ $carousel-bg-light: var(--bs-gray-100);
   // Custom primary circle buttons use white SVG icons; Bootstrap’s dark-mode
   // filter also inverts focus outlines (white → black).
   filter: none;
-  background-color: var(--bs-primary);
+  background-color: var(--primary-base);
   border-radius: 50%;
 }

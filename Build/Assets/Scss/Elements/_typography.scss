@@ -12,11 +12,11 @@
   p {
     a:not(.btn) {
       line-height: 1.7;
-      text-decoration: underline dotted var(--bs-orange);
+      text-decoration: underline dotted var(--mpc-accent-orange);
       text-underline-offset: 7px;
 
       @include light-theme {
-        text-decoration: underline dotted var(--bs-green);
+        text-decoration: underline dotted var(--primary-base);
       }
     }
   }

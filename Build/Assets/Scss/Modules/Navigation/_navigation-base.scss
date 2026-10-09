@@ -99,7 +99,7 @@
   }
 
   .sub {
-    color: var(--bs-body-color);
+    color: var(--fg-body);
     display: block;
     font-weight: 400;
     position: relative;
@@ -108,12 +108,12 @@
 
     @include on-interact {
       background-color: transparent;
-      color: var(--bs-body-color);
+      color: var(--fg-body);
     }
   }
 
   .act {
-    color: var(--bs-body-color);
+    color: var(--fg-body);
     text-decoration: underline;
   }
 
@@ -123,10 +123,9 @@
   }
 }
 
-// Desktop mega-menu flyouts (Secondary/Tertiary): Bootstrap 5 positioned
-// `.dropdown-menu[data-bs-popper]` full-bleed under `.header-wrapper-bg`. Bootstrap 6
-// `.menu` stays `position: absolute` with `data-bs-display="static"` but does not
-// apply those offsets — restore parity here.
+// Desktop mega-menu flyouts (Secondary/Tertiary): toggles use Menu with
+// `data-bs-display="static"` (Floating UI sets `data-bs-display="static"` on the
+// `.menu`). Full-bleed placement under `.header-wrapper-bg` is MPC layout, not BS6 default.
 .header-wrapper-bg {
   .mainnav-desktop .menu.main-menu-desktop {
     --menu-min-width: 0;
@@ -219,6 +218,6 @@ $nav-transition-bounce: transform 0.5s cubic-bezier(0, 1.56, 0.64, 1);
 // Only show focus ring for keyboard navigation (not touch/click)
 .main-menu :is(a, button):focus-visible {
   border-radius: 4px;
-  outline: 2px solid var(--bs-primary);
+  outline: 2px solid var(--primary-base);
   outline-offset: -2px;
 }

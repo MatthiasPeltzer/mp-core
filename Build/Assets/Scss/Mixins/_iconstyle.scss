@@ -31,7 +31,7 @@
 
 // Mixin for masked icons with forced-colors accessibility fallback
 @mixin masked-icon($icon-url, $size: 24px) {
-  background-color: var(--bs-body-color);
+  background-color: var(--fg-body);
   content: '';
   display: block;
   height: $size;

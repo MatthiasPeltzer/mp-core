@@ -2,19 +2,19 @@
 
 .breadcrumb {
   @include light-theme {
-    background-color: var(--bs-gray-100);
+    background-color: var(--gray-100);
   }
 
   &-wrapper {
-    background-color: var(--bs-gray-800);
+    background-color: var(--gray-800);
 
     @include light-theme {
-      background-color: var(--bs-gray-100);
+      background-color: var(--gray-100);
     }
   }
 
   &-link {
-    color: var(--bs-body-color);
+    color: var(--fg-body);
     padding: 4px;
 
     @include on-interact {
@@ -32,7 +32,7 @@
         width: 24px;
 
         &::before {
-          background-color: var(--bs-body-color);
+          background-color: var(--fg-body);
           content: "";
           display: block;
           height: 24px;
@@ -50,7 +50,7 @@
     }
 
     &::before {
-      background-color: var(--bs-body-color);
+      background-color: var(--fg-body);
       display: inline-block;
       height: 24px;
       mask: url("@assets/Images/Icons/icon-chevron-right.svg") no-repeat center;

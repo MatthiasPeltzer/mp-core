@@ -260,21 +260,21 @@
                 </li>
             </f:if>
             <f:if condition="{file.properties.allow_download}">
-                <li class="btn-group dropstart">
-                    <button aria-expanded="false" class="btn btn-image btn-download rounded" data-bs-auto-close="outside" data-bs-toggle="menu" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now.button')}" type="button">
+                <li class="btn-group">
+                    <button aria-expanded="false" class="btn btn-image btn-download rounded" data-bs-auto-close="outside" data-bs-placement="left-start" data-bs-toggle="menu" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now.button')}" type="button">
                         <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now.button')}</span>
                     </button>
-                    <div class="menu dropdown-download p-0 rounded">
+                    <div class="menu menu-download p-0 rounded">
                         <f:link.file class="btn btn-image btn-download rounded" download="true" file="{file.originalFile}" filename="{file.originalFile.name}">{file.originalFile.size -> f:format.bytes()} ({file.originalFile.extension -> f:format.case(mode: 'upper')}) | {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now')}</f:link.file>
                     </div>
                 </li>
             </f:if>
             <f:if condition="{file.properties.copyright}">
-                <li class="btn-group dropstart">
-                    <button aria-expanded="false" class="btn btn-image btn-copyright rounded" data-bs-auto-close="outside" data-bs-toggle="menu" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}" type="button">
+                <li class="btn-group">
+                    <button aria-expanded="false" class="btn btn-image btn-copyright rounded" data-bs-auto-close="outside" data-bs-placement="left-start" data-bs-toggle="menu" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}" type="button">
                         <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}</span>
                     </button>
-                    <div class="menu dropdown-copyright p-0 rounded">
+                    <div class="menu menu-copyright p-0 rounded">
                         <p>© {file.properties.copyright}</p>
                     </div>
                 </li>
@@ -304,11 +304,11 @@
         <f:if condition="{file.properties.copyright} || {file.properties.allow_download}">
             <ul class="image-buttons d-flex list-unstyled">
                 <f:if condition="{file.properties.allow_download}">
-                    <li class="btn-group dropstart">
-                        <button aria-expanded="false" class="btn btn-image btn-download rounded" data-bs-auto-close="outside" data-bs-toggle="menu" type="button">
+                    <li class="btn-group">
+                        <button aria-expanded="false" class="btn btn-image btn-download rounded" data-bs-auto-close="outside" data-bs-placement="left-start" data-bs-toggle="menu" type="button">
                             <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now.button')}</span>
                         </button>
-                        <div class="menu dropdown-download p-0 rounded">
+                        <div class="menu menu-download p-0 rounded">
                             <f:link.file class="btn btn-image btn-download rounded" download="true" file="{file.originalFile}" filename="{file.originalFile.name}">
                                 <span>{file.originalFile.size -> f:format.bytes()} ({file.originalFile.extension -> f:format.case(mode: 'upper')})</span> | {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_download_now')}
                             </f:link.file>
@@ -316,11 +316,11 @@
                     </li>
                 </f:if>
                 <f:if condition="{file.properties.copyright}">
-                    <li class="btn-group dropstart">
-                        <button aria-expanded="false" class="btn btn-image btn-copyright rounded" data-bs-auto-close="outside" data-bs-toggle="menu" type="button">
+                    <li class="btn-group">
+                        <button aria-expanded="false" class="btn btn-image btn-copyright rounded" data-bs-auto-close="outside" data-bs-placement="left-start" data-bs-toggle="menu" type="button">
                             <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:gallery.copyright.button')}</span>
                         </button>
-                        <div class="menu dropdown-copyright p-0 rounded">
+                        <div class="menu menu-copyright p-0 rounded">
                             <p>© {file.properties.copyright}</p>
                         </div>
                     </li>

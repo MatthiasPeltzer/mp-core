@@ -45,7 +45,7 @@ a.modal-link {
   &::before {
     @include masked-icon("#{$icon-base-path}icon-modal.svg", $icon-default-size);
 
-    background-color: var(--bs-body-color);
+    background-color: var(--fg-body);
     left: $icon-default-offset;
     top: 1px;
   }
@@ -62,7 +62,7 @@ a .icon,
   position: relative;
 
   &::before {
-    background-color: var(--bs-body-color);
+    background-color: var(--fg-body);
     content: "";
     display: block;
     height: 19px;

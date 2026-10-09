@@ -42,9 +42,9 @@ editor:
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.paragraph.subheader', element: 'p', classes: [ 'lead' ] }
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.blockquote.quote', element: 'blockquote', classes: [ 'quote-dot' ] }
 
-        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.button.primary', element: 'a', classes: [ 'btn', 'btn-primary' ] }
-        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.button.secondary', element: 'a', classes: [ 'btn', 'btn-secondary' ] }
-        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.button.tertiary', element: 'a', classes: [ 'btn', 'btn-tertiary' ] }
+        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.button.primary', element: 'a', classes: [ 'btn', 'btn-solid', 'theme-primary' ] }
+        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.button.secondary', element: 'a', classes: [ 'btn', 'btn-solid', 'theme-secondary' ] }
+        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.button.tertiary', element: 'a', classes: [ 'btn', 'btn-solid', 'theme-tertiary' ] }
 
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.list.unstyled', element: 'ul', classes: [ 'list-unstyled' ] }
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.list.scroll', element: 'ul', classes: [ 'list-scroll' ] }

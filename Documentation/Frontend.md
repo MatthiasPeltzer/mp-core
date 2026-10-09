@@ -13,7 +13,7 @@ Build system, asset pipeline, JavaScript/SCSS architecture, and best practices.
 
 - **Vite 8** -- Build tool with HMR
 - **Vue.js 3.5** -- Interactive components (TodoList, GallerySwiper, SwiperSlider)
-- **Bootstrap 6** (`v6-dev` via `.libs/bootstrap`) -- UI framework
+- **Bootstrap** -- **5.3** on `main` (production line); **6.0.0-alpha.1** (npm) on `feature/bootstrap-6` — see [Bootstrap version and Git branches](#bootstrap-version-and-git-branches)
 - **Sass 1.99** -- CSS preprocessing (modern-compiler API)
 - **PostCSS** -- preset-env, pxtorem
 - **ESLint 10** / **Stylelint 17** -- Code quality
@@ -46,6 +46,47 @@ Output goes to `Resources/Public/` (JavaScripts, StyleSheets, Fonts, Icons, Imag
 | `stylelint` / `stylelint.fix` | CSS/SCSS linting |
 
 Clean build: `rm -rf node_modules Resources/Public && npm ci && npm run build`
+
+---
+
+## Bootstrap version and Git branches
+
+The Bootstrap 6 migration is developed on a long-lived feature branch. **`main` stays on Bootstrap 5** for production releases. **Do not merge `feature/bootstrap-6` into `main`** — keep BS6 work on the feature branch only.
+
+| Git branch | Bootstrap (`Build/package.json`) | Role |
+|------------|----------------------------------|------|
+| **`main`** | `5.3.x` (npm) | Default branch; matches [mpcore.de](https://www.mpcore.de/) and receives version releases / hotfixes. |
+| **`feature/bootstrap-6`** | `6.0.0-alpha.1` (npm) | Work-in-progress: SCSS bundle, Fluid markup, JS (Menu/Dialog), and rebuilt public assets. |
+
+### Workflow
+
+1. **Bootstrap 6 work** — Check out **`feature/bootstrap-6`**, commit and push there until the frontend is updated and verified (local DDEV, visual/regression checks, tests).
+2. **Production and releases** — Branch from **`main`**, merge back to **`main`**. **Never merge `feature/bootstrap-6` into `main`.**
+3. **Stay current** — Periodically merge **`main`** into **`feature/bootstrap-6`** (or rebase the feature branch) so BS5-line fixes and dependency updates are not lost during the migration.
+4. **Local vs deployed** — DDEV (or any BS6 environment) checks out **`feature/bootstrap-6`**. Production and release tags stay on **`main`** (Bootstrap 5).
+
+After `git checkout`, confirm the active dependency:
+
+```bash
+grep '"bootstrap"' Build/package.json
+```
+
+Document migration notes in **`CHANGELOG.md`** under `[Unreleased]` on the feature branch; **`main`** release versioning stays manual and separate from the BS6 branch.
+
+**Upgrade wizards and DDEV steps:** [Bootstrap6Migration.md](Bootstrap6Migration.md).
+
+### Migration principles (`feature/bootstrap-6`)
+
+On this branch, **prefer Bootstrap 6 defaults** (compiled tokens, component markup, utilities, JS APIs) and migrate HTML, SCSS, and JavaScript off Bootstrap 5 patterns. Keep MPC-only layout/theming in site SCSS; avoid long-lived v5 class aliases when Fluid or RTE content can use v6 names.
+
+| Area | Bootstrap 5 (do not add) | Bootstrap 6 |
+|------|--------------------------|---------------|
+| Floating placement | `@popperjs/core`, `data-bs-popper`, `popperConfig` | `@floating-ui/dom` (peer dep + Vite chunk `vendor-floating-ui`), Menu `data-bs-display` / `data-bs-reference` / `data-bs-boundary` / `data-bs-placement`, optional `floatingConfig` in JS |
+| Overlays | `.modal`, `data-bs-toggle="modal"`, `*.bs.modal` | `.dialog`, `<dialog>`, `data-bs-toggle="dialog"`, `*.bs.dialog` |
+| Flyouts | `.dropdown`, `.dropdown-menu`, `data-bs-toggle="dropdown"`, `*.bs.dropdown` | `.menu`, `data-bs-toggle="menu"`, `*.bs.menu` (toggle and `.menu` are siblings) |
+| Responsive utilities | `col-md-6`, `d-lg-none`, … | `md:col-6`, `lg:d-none`, … |
+
+MPC SCSS reads **BS6 tokens** (`--primary-base`, `--bg-body`, `--gray-*`, …) and MPC frame tokens (`--mpc-color-*`). Override BS6 **token maps** where possible (`$root-tokens`, `$theme-colors` in `_mpc-bootstrap-theme.scss`). Legacy **`_custom-variables*.scss`** apply to Bootstrap 5 on `main`, not the BS6 `bootstrap.scss` entry.
 
 ---
 
@@ -146,7 +187,7 @@ the affected budgets in `scripts/bundle-budgets.json`.
 | `vendor-vue` | `vue`, `@vue/*` |
 | `vendor-swiper` | `swiper` |
 | `vendor-bootstrap` | `bootstrap` |
-| `vendor-popper` | `@popperjs/core` |
+| `vendor-floating-ui` | `@floating-ui/dom` (Menu / floating components; replaces v5 Popper) |
 | `vendor-jarallax` | `jarallax` |
 
 Vendor chunks change only when the pinned dependency changes, so they stay
@@ -215,21 +256,34 @@ Defined in `Build/vite.config.js`:
 
 ---
 
+## TypeScript frontend sources
+
+Page-facing scripts under `Build/Assets/Scripts/` are **strict TypeScript** (`.ts` / Vue SFC `<script setup lang="ts">`), following Bootstrap 6 upstream conventions: `moduleResolution: nodenext`, relative imports with a **`.js` extension** (resolved to `.ts` at build time), no semicolons, erasable syntax only.
+
+- **Typecheck:** `npm run typecheck` (`vue-tsc --noEmit`) — runs before production `npm run build`.
+- **Unit tests:** `npm run test:unit` — Vitest **browser mode** with Playwright (Chromium). One-time setup: `npm run test:e2e:install`.
+- **Larger UI modules** extend Bootstrap `BaseComponent` (navigation variants, search autosuggest, modals, sticky header, back-to-top).
+- **Backend stubs** `backend.js` / `ckeditor.js` stay plain JavaScript.
+
+Config: `Build/tsconfig.json`, `Build/env.d.ts`, `Build/vitest.config.mts`.
+
+---
+
 ## JavaScript Architecture
 
 ### Feature Modules (`Build/Assets/Scripts/code/`)
 
-**Core:** `main.js`, `i18n.js`, `i18nLinkHelper.js`
+**Core:** `main.ts`, `i18n.ts`, `i18nLinkHelper.ts`
 
-**UI:** `jarallax.js`, `modalGallery.js`, `openAccordionAndTabs.js`, `pagination.js`, `sticky.js`, `totop.js`
+**UI:** `jarallax.ts`, `modalGallery.ts`, `openAccordionAndTabs.ts`, `pagination.ts`, `sticky.ts`, `totop.ts`
 
-**Navigation:** `nav-toggle.js`, `Navigation/Primary/navigation.js`, `Navigation/Secondary/navigation.js`, `Navigation/Tertiary/navigation.js`
+**Navigation:** `nav-toggle.ts`, `Navigation/Primary/navigation.ts`, `Navigation/Secondary/navigation.ts`, `Navigation/Tertiary/navigation.ts`
 
-**Layout:** `moveHeaderDate.js`, `moveMeta.js`, `theme.js`
+**Layout:** `moveHeaderDate.ts`, `moveMeta.ts`, `theme.ts`
 
-**Search:** `searchAutosuggest.js` — type-ahead for `indexed_search` (header and `/suche` form)
+**Search:** `searchAutosuggest.ts` — type-ahead for `indexed_search` (header and `/suche` form)
 
-### Shared Utilities (`code/Utils/domUtils.js`)
+### Shared Utilities (`code/Utils/domUtils.ts`)
 
 - `debounce(func, wait)` -- Performance-safe resize/scroll handling
 - `toggleNavState(...)` -- Navigation open/closed state
@@ -248,7 +302,7 @@ Located in `Build/Assets/Scripts/components/`:
 | `GallerySwiper.vue` | Swiper-based gallery carousel for the gallery content element |
 | `SwiperSlider.vue` | Generic Swiper slider for container slider elements |
 
-Component registration is handled in `code/Vue/vue-initialisation.js`.
+Component registration is handled in `code/Vue/vue-initialisation.ts`.
 
 Vue mounts on elements with `data-container="vue"` and `data-component="ComponentName"` (see `VueComponents.typoscript` and content element templates). Optional `data-*` attributes pass props (e.g. `data-card-title` on TodoList).
 
@@ -276,6 +330,8 @@ Layers from low to high specificity:
 
 - Light theme: `Build/Assets/Scss/Base/Bootstrap/_custom-variables.scss`
 - Dark theme: `Build/Assets/Scss/Base/Bootstrap/_custom-variables-dark.scss`
+
+On **`feature/bootstrap-6`**, the compiled bundle also uses MPC-specific partials under `Build/Assets/Scss/Base/Bootstrap/` (`_mpc-bootstrap-bundle.scss`, `_mpc-bs6-breakpoints.scss`, compat/root overrides, design tokens). On **`main`**, customization follows the Bootstrap 5 variable files above.
 
 ---
 
@@ -316,7 +372,7 @@ Template path precedence: higher numbers override lower (`0` = core, `10` = exte
 
 | Extension | Path | Notes |
 |-----------|------|-------|
-| fluid_styled_content | `Resources/Extensions/fluid_styled_content/Private/` | Bootstrap 6 styled |
+| fluid_styled_content | `Resources/Extensions/fluid_styled_content/Private/` | Bootstrap markup aligned with the active branch (5 on `main`, 6 on `feature/bootstrap-6`) |
 | form | `Resources/Extensions/form/` | Bootstrap forms + YAML config |
 | news | `Resources/Extensions/news/` | List, detail, category views |
 | indexed_search | `Resources/Extensions/indexed_search/` | Bootstrap search results + autosuggest combobox |
