@@ -1,63 +1,102 @@
-// breadcrumb
+// breadcrumb (MPC trail: home mask icon + chevron dividers on gray bar)
 
-.breadcrumb {
+.breadcrumb-wrapper {
+  background-color: var(--gray-800);
+
   @include light-theme {
     background-color: var(--gray-100);
   }
 
-  &-wrapper {
-    background-color: var(--gray-800);
+  @include bs6-component-specificity {
+    .breadcrumb {
+      --breadcrumb-bg: transparent;
+      --breadcrumb-link-color: var(--fg-body);
+      --breadcrumb-link-hover-color: var(--fg-body);
+      --breadcrumb-link-hover-bg: transparent;
+      --breadcrumb-link-active-color: var(--fg-body);
+      --breadcrumb-link-padding-x: 4px;
+      --breadcrumb-link-padding-y: 4px;
+      --breadcrumb-link-border-radius: 0;
 
-    @include light-theme {
-      background-color: var(--gray-100);
+      align-items: normal;
+
+      @include light-theme {
+        background-color: var(--gray-100);
+      }
+    }
+
+    .breadcrumb-link {
+      justify-content: flex-start;
+      min-height: 0;
+      color: var(--fg-body);
+      padding: 4px;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        color: var(--fg-body);
+      }
+    }
+
+    // BS6 uses flex on items; keep chevrons inline (not stacked under link text).
+    .breadcrumb-item {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+    }
+
+    .breadcrumb-item:first-child .breadcrumb-link {
+      display: block;
+      width: 24px;
+      height: 24px;
+      min-height: 24px;
+      margin-right: 10px;
+      padding: 0;
+    }
+
+    .breadcrumb-item:first-child .breadcrumb-link::before {
+      background-color: var(--fg-body);
+      content: "";
+      display: block;
+      height: 24px;
+      mask: url("@assets/Images/Icons/icon-house-fill.svg") no-repeat center;
+      mask-size: 18px !important;
+      width: 24px;
+    }
+
+    .breadcrumb-item:first-child::before {
+      content: none;
+      display: none;
+    }
+
+    .breadcrumb-item:not(:first-child)::before {
+      background-color: var(--fg-body);
+      content: "";
+      flex: 0 0 24px;
+      display: block;
+      height: 24px;
+      mask: url("@assets/Images/Icons/icon-chevron-right.svg") no-repeat center;
+      mask-size: 14px !important;
+      width: 24px;
     }
   }
 
-  &-link {
-    color: var(--fg-body);
-    padding: 4px;
-
+  .breadcrumb-link {
     @include on-interact {
       outline-offset: 0;
     }
   }
 
-  &-item {
-    &:first-child {
-      a {
-        display: block;
-        height: 24px;
-        margin-right: 10px;
-        padding: 0;
-        width: 24px;
-
-        &::before {
-          background-color: var(--fg-body);
-          content: "";
-          display: block;
-          height: 24px;
-          mask: url("@assets/Images/Icons/icon-house-fill.svg") no-repeat center;
-          mask-size: 18px !important;
-          width: 24px;
-
-          @include forced-colors {
-            background: url("@assets/Images/Icons/icon-house-fill.svg") no-repeat center;
-            background-size: 24px;
-            mask: none;
-          }
-        }
+  @include forced-colors {
+    @include bs6-component-specificity {
+      .breadcrumb-item:first-child .breadcrumb-link::before {
+        background: url("@assets/Images/Icons/icon-house-fill.svg") no-repeat center;
+        background-size: 24px;
+        mask: none;
       }
-    }
 
-    &::before {
-      background-color: var(--fg-body);
-      display: inline-block;
-      height: 24px;
-      mask: url("@assets/Images/Icons/icon-chevron-right.svg") no-repeat center;
-      mask-size: 14px !important;
-      width: 24px;
-
-      @include forced-colors {
+      .breadcrumb-item:not(:first-child)::before {
         background: url("@assets/Images/Icons/icon-chevron-right.svg") no-repeat center;
         background-size: 14px;
         mask: none;
