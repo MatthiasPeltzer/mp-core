@@ -4,6 +4,21 @@
 // =============================================================================
 
 // -----------------------------------------------------------------------------
+// BOOTSTRAP 6 SPECIFICITY
+// Compiled bootstrap.css bumps component selectors with seven `:not(#\#)` repeats
+// so layered rules beat typical theme overrides. Match that when overriding BS6
+// components (e.g. `.nav-link { white-space: nowrap; }`).
+// -----------------------------------------------------------------------------
+
+/* stylelint-disable selector-id-pattern, selector-not-notation -- mirrors BS6 compiled selectors */
+@mixin bs6-component-specificity {
+  &:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#) {
+    @content;
+  }
+}
+/* stylelint-enable selector-id-pattern, selector-not-notation */
+
+// -----------------------------------------------------------------------------
 // INTERACTIVE STATES
 // Shorthand for :is(:hover, :focus, :active) pattern
 // -----------------------------------------------------------------------------

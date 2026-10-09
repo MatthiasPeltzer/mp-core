@@ -11,15 +11,34 @@
     gap: 0;
   }
 
-  // BS6 `.nav-link` defaults (pill, centered) differ from MPC vertical subnav.
+  // BS6 `.nav-link` defaults (pill, centered, nowrap) differ from MPC vertical subnav.
   .nav-item .nav-link {
     --nav-link-align: flex-start;
     --nav-link-justify: flex-start;
 
     align-items: flex-start;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    max-width: 100%;
+    min-width: 0;
     background-color: transparent;
-    white-space: normal;
+    overflow-wrap: anywhere;
+
+    @include bs6-component-specificity {
+      white-space: normal;
+    }
+
+    // Flex items default to min-width: auto, which blocks multi-line titles.
+    > span {
+      min-width: 0;
+      flex: 1 1 auto;
+      overflow-wrap: anywhere;
+    }
+
+    .nav-icon,
+    > .icon {
+      flex: 0 0 auto;
+    }
 
     &:hover,
     &:focus,
