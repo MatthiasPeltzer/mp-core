@@ -1,6 +1,6 @@
 # Build folder
 
-Frontend asset pipeline for **mpc/mp-core**. Requires **Node.js 22+** and npm.
+Frontend asset pipeline for **mpc/mp-core**. Requires **Node.js 22+** and npm. On **`feature/bootstrap-6`**, dependencies target **Bootstrap 6.0.0-alpha.1** (see `package.json`).
 
 Output is written to **`../Resources/Public/`** (JavaScripts, StyleSheets, Fonts, Icons, Images, Favicons, BackendLayouts).
 
@@ -31,6 +31,7 @@ In an mpc monorepo with DDEV: `ddev mp-core-build` from the site root.
 | `dev` | Lint + development build (source maps) |
 | `watch` | Development build with watcher |
 | `lint` | ESLint + Stylelint |
+| `audit:bs6` | Scan sources for leftover Bootstrap 5 class/API patterns |
 | `eslint` / `eslint.fix` | JavaScript and TypeScript (`Assets/Scripts`) |
 | `stylelint` / `stylelint.fix` | SCSS |
 
@@ -44,7 +45,7 @@ In an mpc monorepo with DDEV: `ddev mp-core-build` from the site root.
 
 See **[Documentation/Frontend.md](../Documentation/Frontend.md)** for architecture, SCSS layers, and Vue components.
 
-**Bootstrap:** `main` uses Bootstrap **5.3**; migration work happens on **`feature/bootstrap-6`** (Bootstrap **6.0.0-alpha.1**). Keep all BS6 changes on that branch — **do not merge into `main`**. Details in [Frontend.md — Bootstrap version and Git branches](../Documentation/Frontend.md#bootstrap-version-and-git-branches).
+**Bootstrap:** This branch builds **Bootstrap 6** (Menu, Dialog, BS6 utilities/tokens, Floating UI). Git **`main`** remains on **Bootstrap 5.3** for tagged releases — **do not merge `feature/bootstrap-6` into `main`**. Branch policy and markup differences: [Frontend.md — Bootstrap version and Git branches](../Documentation/Frontend.md#bootstrap-version-and-git-branches), [Bootstrap6Migration.md](../Documentation/Bootstrap6Migration.md).
 
 ---
 
@@ -55,7 +56,8 @@ All guides live in **`../Documentation/`**:
 | Guide | Topic |
 |-------|--------|
 | [Documentation/README.md](../Documentation/README.md) | Hub |
-| [Frontend.md](../Documentation/Frontend.md) | Vite, JS, SCSS, Vue |
+| [Frontend.md](../Documentation/Frontend.md) | Vite, TypeScript, SCSS, Vue |
+| [Bootstrap6Migration.md](../Documentation/Bootstrap6Migration.md) | BS6 upgrade wizards and verification |
 | [Favicons.md](../Documentation/Favicons.md) | Icon files + `Favicons.html` (not static HTML injection) |
 | [Backend.md](../Documentation/Backend.md) | RTE, TSconfig |
 | [Configuration.md](../Documentation/Configuration.md) | Site Sets, settings |
