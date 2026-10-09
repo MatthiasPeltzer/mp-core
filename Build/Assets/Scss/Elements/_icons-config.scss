@@ -1,0 +1,25 @@
+// Icon paths and class map (shared by Elements/icons and Mixins/iconstyle).
+
+$icon-base-path: "../Images/Icons/";
+$icon-default-size: 18px;
+$icon-default-offset: 3px;
+
+$icon-mapping: (
+  "audio": "icon-audio",
+  "chart": "icon-chart",
+  "download": "icon-download",
+  "email": "icon-email",
+  "external-link": "icon-external",
+  "external-link-new": "icon-external",
+  "gallery": "icon-gallery",
+  "glossary": "icon-glossary",
+  "icon-link": "icon-link",
+  "internal-link": "icon-internal",
+  "internal-link-new": "icon-internal",
+  "legal": "icon-law",
+  "list-scroll": "icon-scroll",
+  "phone": "icon-phone",
+  "press": "icon-internal",
+  "public": "icon-public",
+  "video": "icon-play"
+);

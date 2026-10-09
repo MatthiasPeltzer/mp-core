@@ -1,3 +1,5 @@
+@use "Base/Bootstrap/bootstrap-config";
+
 // responsive
 
 img {
@@ -22,7 +24,7 @@ picture {
     width: 100%;
   }
 
-  @include media-breakpoint-down(sm) {
+  @include bootstrap-config.media-breakpoint-down(sm) {
     &[data-aspectratio-xs="21:9"] {
       aspect-ratio: 21 / 9;
     }
@@ -52,7 +54,7 @@ picture {
     }
   }
 
-  @include media-breakpoint-only(sm) {
+  @include bootstrap-config.media-breakpoint-only(sm) {
     &[data-aspectratio-sm="21:9"] {
       aspect-ratio: 21 / 9;
     }
@@ -82,7 +84,7 @@ picture {
     }
   }
 
-  @include media-breakpoint-only(md) {
+  @include bootstrap-config.media-breakpoint-only(md) {
     &[data-aspectratio-md="21:9"] {
       aspect-ratio: 21 / 9;
     }
@@ -112,7 +114,7 @@ picture {
     }
   }
 
-  @include media-breakpoint-only(lg) {
+  @include bootstrap-config.media-breakpoint-only(lg) {
     &[data-aspectratio-lg="21:9"] {
       aspect-ratio: 21 / 9;
     }
@@ -142,7 +144,7 @@ picture {
     }
   }
 
-  @include media-breakpoint-up(xl) {
+  @include bootstrap-config.media-breakpoint-up(xl) {
     &[data-aspectratio-xl="21:9"] {
       aspect-ratio: 21 / 9;
     }

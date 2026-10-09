@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "Base/Bootstrap/bootstrap-config";
+@use "Mixins/utilities" as *;
+@use "Base/Bootstrap/mpc-design-tokens" as *;
+
 // =============================================================================
 // TERTIARY MAINNAV - Variant-specific styles
 // Base styles are in ../navigation-base.scss
@@ -116,7 +121,7 @@
         display: flex;
         width: 33.3333%;
 
-        @include font-size(map-get($font-size-scale, xl));
+        @include font-size(map.get($font-size-scale, xl));
 
         a,
         button {
@@ -244,7 +249,7 @@
       }
     }
 
-    @include font-size(map-get($font-size-scale, lg));
+    @include font-size(map.get($font-size-scale, lg));
 
     &[aria-expanded="true"],
     &.act,
@@ -319,7 +324,7 @@
     position: relative;
     text-transform: uppercase;
 
-    @include font-size(map-get($font-size-scale, md));
+    @include font-size(map.get($font-size-scale, md));
 
     @include on-interact {
       color: var(--fg-body);
@@ -338,11 +343,11 @@
     min-width: 100%;
     z-index: 2;
 
-    @include media-breakpoint-up(lg) {
+    @include bootstrap-config.media-breakpoint-up(lg) {
       min-width: 50%;
     }
 
-    @include media-breakpoint-up(xl) {
+    @include bootstrap-config.media-breakpoint-up(xl) {
       min-width: 25%;
     }
 
@@ -425,7 +430,7 @@
   }
 
   .sub {
-    @include font-size(map-get($font-size-scale, md));
+    @include font-size(map.get($font-size-scale, md));
 
     margin-bottom: 0;
     outline-offset: -2px;

@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "Base/fonts" as *;
+@use "Mixins/utilities" as *;
+@use "Base/Bootstrap/mpc-design-tokens" as *;
+
 // ckeditor
 .ck {
   @extend %opensansweb;
@@ -210,7 +215,7 @@
     border-radius: 4px;
     color: var(--token-color-neutral-0);
     display: inline-block;
-    font-size: map-get($font-size-scale, base) !important;
+    font-size: map.get($font-size-scale, base) !important;
     font-weight: 500 !important;
     line-height: 1;
     margin-bottom: 8px;
@@ -228,7 +233,7 @@
 
     color: var(--typo3-text-color-base);
 
-    @include font-size(map-get($font-size-scale, 5xl));
+    @include font-size(map.get($font-size-scale, 5xl));
 
     font-weight: 400;
     hyphens: auto;
@@ -243,7 +248,7 @@
 
     color: var(--typo3-text-color-base);
 
-    @include font-size(map-get($font-size-scale, 3xl));
+    @include font-size(map.get($font-size-scale, 3xl));
 
     font-weight: 400;
     hyphens: auto;
@@ -258,7 +263,7 @@
 
     color: var(--typo3-text-color-base);
 
-    @include font-size(map-get($font-size-scale, 2xl));
+    @include font-size(map.get($font-size-scale, 2xl));
 
     font-weight: 400;
     hyphens: auto;
@@ -273,7 +278,7 @@
 
     color: var(--typo3-text-color-base);
 
-    @include font-size(map-get($font-size-scale, md));
+    @include font-size(map.get($font-size-scale, md));
 
     font-weight: 700;
     hyphens: auto;
@@ -287,7 +292,7 @@
 
     color: var(--typo3-text-color-base);
 
-    @include font-size(map-get($font-size-scale, base));
+    @include font-size(map.get($font-size-scale, base));
 
     font-weight: 700;
     hyphens: auto;
@@ -301,7 +306,7 @@
 
     color: var(--typo3-text-color-base);
 
-    @include font-size(map-get($font-size-scale, base));
+    @include font-size(map.get($font-size-scale, base));
 
     font-weight: 400;
     hyphens: auto;
@@ -314,7 +319,7 @@
 
     display: block;
 
-    @include font-size(map-get($font-size-scale, 3xl));
+    @include font-size(map.get($font-size-scale, 3xl));
 
     font-style: italic;
     font-weight: 400;
@@ -328,7 +333,7 @@
   li {
     @extend %opensansweb;
 
-    @include font-size(map-get($font-size-scale, base));
+    @include font-size(map.get($font-size-scale, base));
 
     > a {
       text-decoration: underline;
@@ -347,7 +352,7 @@
     color: $gray-700;
     display: inline-block !important;
 
-    @include font-size(map-get($font-size-scale, base));
+    @include font-size(map.get($font-size-scale, base));
 
     font-style: italic;
     height: auto !important;
@@ -385,7 +390,7 @@
       border-style: solid;
       border-width: 2px;
 
-      @include font-size(map-get($font-size-scale, base));
+      @include font-size(map.get($font-size-scale, base));
 
       font-weight: 500;
       line-height: 1;
@@ -449,7 +454,7 @@
       p {
         display: block;
 
-        @include font-size(map-get($font-size-scale, 2xl));
+        @include font-size(map.get($font-size-scale, 2xl));
 
         font-style: italic;
         font-weight: 400;
@@ -457,7 +462,7 @@
         padding: 0 48px;
 
         &.small {
-          @include font-size(map-get($font-size-scale, md));
+          @include font-size(map.get($font-size-scale, md));
 
           letter-spacing: normal;
           text-transform: uppercase;
@@ -499,7 +504,7 @@
       }
 
       li {
-        @include font-size(map-get($font-size-scale, base));
+        @include font-size(map.get($font-size-scale, base));
 
         margin-bottom: 8px;
         padding-left: 8px;
@@ -533,7 +538,7 @@
     }
 
     table {
-      @include font-size(map-get($font-size-scale, md));
+      @include font-size(map.get($font-size-scale, md));
 
       tbody {
         tr {
@@ -581,7 +586,7 @@
       font-weight: 700;
       margin-bottom: 16px;
 
-      @include font-size(map-get($font-size-scale, base));
+      @include font-size(map.get($font-size-scale, base));
 
       &:first-child {
         margin-top: 0;
@@ -601,7 +606,7 @@
       position: relative;
 
 
-      @include font-size(map-get($font-size-scale, base));
+      @include font-size(map.get($font-size-scale, base));
 
       &:last-child {
         margin-bottom: 0;

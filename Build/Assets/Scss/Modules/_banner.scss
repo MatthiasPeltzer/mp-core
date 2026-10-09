@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "Base/Bootstrap/bootstrap-config";
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // banner
 
 .banner {
@@ -6,17 +11,17 @@
   &-image {
     display: none;
 
-    @include media-breakpoint-up(sm) {
+    @include bootstrap-config.media-breakpoint-up(sm) {
       display: block;
     }
   }
 
   &-link {
-    @include font-size(map-get($font-size-scale, md));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
 
     font-weight: 500;
 
-    @include on-interact {
+    @include utilities.on-interact {
       outline-offset: -2px;
       text-decoration: underline;
     }
@@ -26,7 +31,7 @@
         &::after {
           mask-image: url("@assets/Images/Icons/icon-arrow-up-right-circle.svg");
 
-          @include forced-colors {
+          @include utilities.forced-colors {
             background-image: url("@assets/Images/Icons/icon-arrow-up-right-circle.svg");
           }
         }
@@ -52,7 +57,7 @@
       top: 6px;
       width: 24px;
 
-      @include forced-colors {
+      @include utilities.forced-colors {
         background-image: url("@assets/Images/Icons/icon-arrow-right-circle.svg");
         background-position: right 0;
         background-repeat: no-repeat;

@@ -1,5 +1,5 @@
 {
-  "$comment": "Size budgets for the compiled mp-core bundles. Numbers are bytes. Update intentionally when a bundle legitimately grows, never as a workaround for accidental bloat. Baseline captured 2026-06-03 (BS5); bootstrap.css rebaselined 2026-10-08 after BS6 bundle + compat trim (~53 KiB gzip).",
+  "$comment": "Size budgets for the compiled mp-core bundles. Numbers are bytes. Update intentionally when a bundle legitimately grows, never as a workaround for accidental bloat. Baseline captured 2026-06-03 (BS5); bootstrap.css rebaselined 2026-10-08 after BS6 bundle + compat trim (~53 KiB gzip). navigation*.css rebaselined 2026-10-09 after BS6 Menu overrides + bs6-component-specificity selectors.",
   "warnRatio": 0.9,
   "perFile": {
     "bootstrap.js":            { "gzip": 25000, "brotli": 22000 },
@@ -13,9 +13,9 @@
     "bootstrap.css":           { "gzip": 75000, "brotli": 55000 },
     "screen.css":              { "gzip": 14000, "brotli": 12000 },
     "vue.css":                 { "gzip":  5000, "brotli":  4500 },
-    "navigationPrimary.css":   { "gzip":  2400, "brotli":  2200 },
-    "navigationSecondary.css": { "gzip":  4500, "brotli":  4000 },
-    "navigationTertiary.css":  { "gzip":  4000, "brotli":  3600 },
+    "navigationPrimary.css":   { "gzip":  2900, "brotli":  2600 },
+    "navigationSecondary.css": { "gzip":  4700, "brotli":  4200 },
+    "navigationTertiary.css":  { "gzip":  4200, "brotli":  3800 },
     "ckeditor.css":            { "gzip":  3500, "brotli":  3000 },
     "print.css":               { "gzip":   800, "brotli":   700 }
   },

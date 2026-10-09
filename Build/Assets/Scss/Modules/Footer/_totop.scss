@@ -1,3 +1,6 @@
+@use "Base/Bootstrap/bootstrap-config";
+@use "Mixins/utilities";
+
 // to top
 
 .totop {
@@ -14,7 +17,7 @@
   width: 60px;
   z-index: 1;
 
-  @include media-breakpoint-up(lg) {
+  @include bootstrap-config.media-breakpoint-up(lg) {
     display: flex;
   }
 
@@ -52,7 +55,7 @@
       width: 50px;
       z-index: 1;
 
-      @include forced-colors {
+      @include utilities.forced-colors {
         background: currentcolor url("@assets/Images/Icons/icon-chevron-up.svg") no-repeat center;
         background-size: 24px;
         mask: none !important;

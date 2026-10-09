@@ -1,7 +1,10 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+
 // forms
 
 legend {
-  @include font-size(map-get($font-size-scale, base));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
 
   font-weight: 700;
 }
@@ -47,13 +50,13 @@ textarea.form-control-lg {
 }
 
 .invalid-feedback {
-  @include font-size(map-get($font-size-scale, base));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
 
   font-weight: 700;
 }
 
 .description {
-  @include font-size(map-get($font-size-scale, base));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
 
   font-weight: 700;
 }

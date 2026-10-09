@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // Variablen
 $icon-size: 24px;
 $icon-container-size: 66px;
@@ -19,7 +23,7 @@ $padding-summary: 16px 60px 18px $padding-horizontal;
   padding: $padding-summary;
   position: relative;
 
-  @include font-size(map-get($font-size-scale, 4xl));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 4xl));
 }
 
 // Details-Styling
@@ -38,7 +42,7 @@ details:not(.extbase-debugger-tree) {
 
   @include transition(max-height, .35s, ease-in-out);
 
-  @include light-theme {
+  @include utilities.light-theme {
     background-color: var(--gray-100);
   }
 
@@ -47,7 +51,7 @@ details:not(.extbase-debugger-tree) {
 
     font-family: var(--heading-font-family);
 
-    @include font-size(map-get($font-size-scale, 2xl));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 2xl));
 
     &::after {
       background-color: var(--fg-body);
@@ -64,7 +68,7 @@ details:not(.extbase-debugger-tree) {
 
       @include transition(rotate, .35s, ease-in-out);
 
-      @include forced-colors {
+      @include utilities.forced-colors {
         background: currentcolor url("@assets/Images/Icons/icon-chevron-up.svg") no-repeat center;
         background-size: $icon-size;
         mask: none;

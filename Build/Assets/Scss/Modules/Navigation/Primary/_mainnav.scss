@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "Base/Bootstrap/bootstrap-config";
+@use "Mixins/utilities" as *;
+@use "Base/Bootstrap/mpc-design-tokens" as *;
+
 // =============================================================================
 // PRIMARY MAINNAV - Variant-specific styles
 // Base styles are in ../navigation-base.scss
@@ -12,7 +17,7 @@
   }
 
   ul {
-    @include media-breakpoint-down(md) {
+    @include bootstrap-config.media-breakpoint-down(md) {
       ul {
         padding-bottom: 16px;
       }
@@ -40,7 +45,7 @@
     margin-bottom: 30px;
     padding: 0;
 
-    @include font-size(map-get($font-size-scale, xl));
+    @include font-size(map.get($font-size-scale, xl));
 
     @include on-interact {
       color: var(--fg-body);
@@ -53,13 +58,13 @@
 
     // Nested level indentation
     ul li .sub {
-      @include font-size(map-get($font-size-scale, base));
+      @include font-size(map.get($font-size-scale, base));
 
       padding-left: 8px;
     }
 
     ul ul li .sub {
-      @include font-size(map-get($font-size-scale, sm));
+      @include font-size(map.get($font-size-scale, sm));
 
       padding-left: 20px;
     }
@@ -74,7 +79,7 @@
   }
 
   .sub {
-    @include font-size(map-get($font-size-scale, base));
+    @include font-size(map.get($font-size-scale, base));
 
     margin: 5px 40px 5px 0;
     padding: 5px 0;

@@ -1,3 +1,5 @@
+@use "Base/Bootstrap/bootstrap-config";
+
 // =============================================================================
 // TERTIARY METANAV - Variant-specific overrides
 // Base styles are in ../metanav-base.scss
@@ -9,7 +11,7 @@
     display: none;
   }
 
-  @include media-breakpoint-up(lg) {
+  @include bootstrap-config.media-breakpoint-up(lg) {
     .sticky & {
       display: none;
     }

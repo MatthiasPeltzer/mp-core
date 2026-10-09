@@ -1,13 +1,13 @@
 // Shared base styles
-@import "../navigation-base";
-@import "../metanav-base";
+@use "../navigation-base";
+@use "../metanav-base";
 // MetaNav (Primary-specific overrides)
-@import "metanav";
+@use "metanav";
 // Breadcrumb
-@import "../breadcrumb";
+@use "../breadcrumb";
 // Mainnav (Primary-specific)
-@import "mainnav";
+@use "mainnav";
 // Subnav
-@import "../subnav";
+@use "../subnav";
 // Pagination
-@import "../pagination";
+@use "../pagination";

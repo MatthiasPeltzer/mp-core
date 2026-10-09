@@ -1,3 +1,5 @@
+@use "Mixins/utilities";
+
 // supplement
 
 .supplement-wrapper {
@@ -6,7 +8,7 @@
     border-radius: var(--radius-5);
     padding: 16px;
 
-    @include light-theme {
+    @include utilities.light-theme {
       background: linear-gradient(to bottom, transparent 0%, var(--secondary-bg-subtle) 100%);
     }
   }

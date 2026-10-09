@@ -1,3 +1,5 @@
+@use "Mixins/utilities" as *;
+
 // =============================================================================
 // BS6 `.menu` shell (mobile #menu + desktop mega-menu flyouts)
 // Bootstrap 6 adds border, radius, min-width, and box-shadow on `.menu`.
@@ -37,6 +39,7 @@
 
   ul.main-menu.row {
     --bs-gutter-x: 0;
+
     margin-inline: 0;
   }
 

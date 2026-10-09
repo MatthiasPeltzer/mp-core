@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // teaser
 .frame-type-singleteaser {
   text-align: left;
@@ -23,7 +27,7 @@
     cursor: inherit;
     pointer-events: none;
 
-    @include on-interact {
+    @include utilities.on-interact {
       outline: none !important;
     }
 
@@ -58,7 +62,7 @@
       display: inline;
       transition: background-size .4s ease;
 
-      @include dark-theme {
+      @include utilities.dark-theme {
         background-image: linear-gradient(0deg, var(--primary-base) 40%, transparent 0);
       }
     }
@@ -108,13 +112,13 @@
     }
 
     p.lead {
-      @include font-size(map-get($font-size-scale, lg));
+      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, lg));
 
       margin-bottom: 16px;
     }
 
     p:not(.lead, .date, .kicker) {
-      @include font-size(map-get($font-size-scale, md));
+      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
 
       margin-bottom: 24px;
     }

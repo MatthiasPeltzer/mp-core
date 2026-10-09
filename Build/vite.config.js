@@ -56,7 +56,8 @@ export default defineConfig(async ({mode}) => {
       preprocessorOptions: {
         scss: {
           api: 'modern-compiler',
-          silenceDeprecations: ['if-function', 'color-functions', 'global-builtin', 'import'],
+          loadPaths: [resolve(__dirname, 'Assets/Scss')],
+          silenceDeprecations: [],
           sourcemap: isDev ? 'inline' : false // SCSS sourcemaps
         }
       },

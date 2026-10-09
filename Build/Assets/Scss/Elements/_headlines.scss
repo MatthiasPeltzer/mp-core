@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+
 // headlines
 
 .header-text {
@@ -19,14 +22,14 @@ h3,
   font-family: var(--heading-font-family);
 
   .ce-uploads & {
-    @include font-size(map-get($font-size-scale, md));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
   }
 
   &.accordion-header {
-    @include font-size(map-get($font-size-scale, 3xl));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 3xl));
 
     a {
-      @include font-size(map-get($font-size-scale, 3xl));
+      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 3xl));
     }
   }
 }

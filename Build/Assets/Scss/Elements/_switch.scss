@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // Theme switch (Bootstrap 6 `.switch` + MPC icon layout)
 
 .theme-switch {
@@ -19,7 +23,7 @@
   }
 
   label {
-    @include font-size(map-get($font-size-scale, base));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
 
     cursor: pointer;
     font-weight: 700;
@@ -38,7 +42,7 @@
         background-color: var(--fg-body);
         mask: url("@assets/Images/Icons/icon-sun.svg") no-repeat center;
 
-        @include forced-colors {
+        @include utilities.forced-colors {
           background: url("@assets/Images/Icons/icon-sun.svg") no-repeat center;
         }
       }
@@ -47,7 +51,7 @@
         background-color: var(--mpc-accent-yellow);
         mask: url("@assets/Images/Icons/icon-moon-fill.svg") no-repeat center;
 
-        @include forced-colors {
+        @include utilities.forced-colors {
           background: url("@assets/Images/Icons/icon-moon-fill.svg") no-repeat center;
         }
       }
@@ -73,7 +77,7 @@
     left: -29px;
     mask: url("@assets/Images/Icons/icon-sun-fill.svg") no-repeat center;
 
-    @include forced-colors {
+    @include utilities.forced-colors {
       background: url("@assets/Images/Icons/icon-sun-fill.svg") no-repeat center;
     }
   }
@@ -82,7 +86,7 @@
     background-color: var(--fg-body);
     mask: url("@assets/Images/Icons/icon-moon.svg") no-repeat center;
 
-    @include forced-colors {
+    @include utilities.forced-colors {
       background: url("@assets/Images/Icons/icon-moon.svg") no-repeat center;
     }
   }

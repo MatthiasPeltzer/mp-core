@@ -1,3 +1,5 @@
+@use "Mixins/utilities";
+
 // Definiere ein Mix\-in, das die häufig verwendeten Eigenschaften übernimmt
 @mixin grid-colors($color) {
   h1,
@@ -16,7 +18,7 @@
   }
 
   a {
-    @include on-interact {
+    @include utilities.on-interact {
       outline-color: $color;
     }
   }

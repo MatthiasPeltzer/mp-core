@@ -1,6 +1,6 @@
 // Backend
 // Mixins
-@import "Mixins/mixins";
-@import "Base/Bootstrap/bootstrap-config";
+@use "Mixins/mixins";
+@use "Base/Bootstrap/bootstrap-config";
 // Templates
-@import "Extensions/backend";
+@use "Extensions/backend";

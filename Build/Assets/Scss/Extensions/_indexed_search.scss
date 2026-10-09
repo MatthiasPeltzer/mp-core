@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "Base/Bootstrap/bootstrap-config";
+@use "Base/Bootstrap/mpc-design-tokens";
+
 // indexed search
 
 .results {
@@ -9,7 +13,7 @@
     background-color: var(--primary-base);
     display: flex;
 
-    @include font-size(map-get($font-size-scale, lg));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, lg));
 
     letter-spacing: normal;
     padding: 10px;
@@ -31,7 +35,7 @@
     .tx-indexedsearch-percent {
       display: block;
 
-      @include font-size(map-get($font-size-scale, sm));
+      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, sm));
 
       padding-top: 3px;
       text-align: right;
@@ -47,13 +51,13 @@
 }
 
 .tx-indexedsearch-info-sword {
-  @include font-size(map-get($font-size-scale, xl));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, xl));
 
   text-align: center;
   width: 100%;
 
   + p {
-    @include font-size(map-get($font-size-scale, xl));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, xl));
 
     text-align: center;
     width: 100%;
@@ -76,7 +80,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  @include font-size(map-get($font-size-scale, sm));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, sm));
 
   gap: 4px 0;
   list-style: none;
@@ -118,7 +122,7 @@
 }
 
 .tx-indexedsearch-info-noresult {
-  @include font-size(map-get($font-size-scale, 2xl));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 2xl));
 
   font-weight: 700;
   margin-bottom: 30px;
@@ -129,11 +133,11 @@
 .tx-indexedsearch-searchbox {
   .input-group {
     .form-control {
-      @include font-size(map-get($font-size-scale, 2xl));
+      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 2xl));
     }
 
     .btn {
-      @include font-size(map-get($font-size-scale, lg));
+      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, lg));
 
       padding: 10px 30px;
     }
@@ -149,7 +153,7 @@
     }
 
     .d-grid .btn {
-      @include font-size(map-get($font-size-scale, lg));
+      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, lg));
 
       padding: 10px 30px;
     }
@@ -177,7 +181,7 @@
   }
 
   .tx-indexedsearch-percent {
-    @include font-size(map-get($font-size-scale, md));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
 
     flex: 0 1 auto;
     font-family: var(--body-font-family);
@@ -193,7 +197,7 @@
 }
 
 .tx-indexedsearch-advanced-search-button {
-  @include media-breakpoint-up(md) {
+  @include bootstrap-config.media-breakpoint-up(md) {
     margin-top: -54px;
   }
 }
@@ -207,7 +211,7 @@
 .tx-indexedsearch-info {
   display: flex;
 
-  @include font-size(map-get($font-size-scale, sm));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, sm));
 
   margin-bottom: 16px;
 
@@ -219,7 +223,7 @@
     padding-right: 15px;
 
     p {
-      @include font-size(map-get($font-size-scale, sm));
+      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, sm));
 
       margin-bottom: 0;
     }
@@ -277,7 +281,7 @@
   padding: 6px 10px 4px;
   text-transform: uppercase;
 
-  @include font-size(map-get($font-size-scale, sm));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, sm));
 }
 
 // Separator line above the "top results" group; only added when word
@@ -300,7 +304,7 @@
   min-height: 44px;
   padding: 8px 10px;
 
-  @include font-size(map-get($font-size-scale, md));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
 
   // All glyphs inherit the row's text colour via fill="currentColor", so they
   // adapt to light and dark mode automatically. Visual hierarchy comes from

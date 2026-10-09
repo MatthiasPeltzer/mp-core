@@ -1,6 +1,6 @@
 // Mixins
-@import "Mixins/mixins";
-@import "Base/fonts";
-@import "Base/Bootstrap/bootstrap-config";
+@use "Mixins/mixins";
+@use "Base/fonts";
+@use "Base/Bootstrap/bootstrap-config";
 // Templates
-@import "Modules/Navigation/Secondary/navigation";
+@use "Modules/Navigation/Secondary/navigation";

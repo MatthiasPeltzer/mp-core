@@ -1,6 +1,7 @@
-// Mixins
-@import "fontface";
-@import "iconstyle";
-@import "utilities";
-@import "bootstrap/scss/mixins/visually-hidden";
-@import "../Base/Bootstrap/mpc-design-tokens";
+// Mixins barrel (entry points: `@use "Mixins/mixins" as *` when needed).
+@forward "fontface";
+@forward "iconstyle";
+@forward "utilities";
+@forward "../Base/Bootstrap/mpc-design-tokens";
+
+@use "bootstrap/scss/mixins/visually-hidden" as *;

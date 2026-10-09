@@ -1,8 +1,12 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // modal
 
 .dialog {
   &-title {
-    @include font-size(map-get($font-size-scale, md));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
 
     font-weight: 400;
     letter-spacing: normal !important;
@@ -16,7 +20,7 @@
       padding-bottom: 6px;
       padding-top: 6px;
 
-      @include light-theme {
+      @include utilities.light-theme {
         background-color: var(--gray-100);
       }
     }
@@ -38,7 +42,7 @@
     padding-bottom: 6px;
     padding-top: 6px;
 
-    @include light-theme {
+    @include utilities.light-theme {
       background-color: var(--gray-100);
     }
 
@@ -90,7 +94,7 @@
   }
 
   &-trigger-wrapper {
-    margin-bottom: $spacer;
+    margin-bottom: mpc-design-tokens.$spacer;
     width: 100%;
 
     .modal-trigger {
@@ -108,7 +112,7 @@
       .modal-trigger-label.btn {
         pointer-events: none;
 
-        @include on-interact {
+        @include utilities.on-interact {
           outline: none !important;
         }
       }
@@ -141,7 +145,7 @@
   }
 
   &-backdrop {
-    @include light-theme {
+    @include utilities.light-theme {
       background-color: var(--fg-body);
     }
   }

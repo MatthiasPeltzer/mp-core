@@ -1,8 +1,12 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // accordion
 
 .accordion {
   .accordion-header {
-    @include font-size(map-get($font-size-scale, 2xl));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 2xl));
   }
 
   .accordion-item[open] > .accordion-header {
@@ -10,7 +14,7 @@
     color: var(--fg-body);
     font-weight: 700;
 
-    @include light-theme {
+    @include utilities.light-theme {
       background-color: var(--gray-200);
     }
   }

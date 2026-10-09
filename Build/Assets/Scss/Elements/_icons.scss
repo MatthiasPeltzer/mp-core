@@ -1,28 +1,6 @@
-// Variables: Definition of all global values
-$icon-base-path: "../Images/Icons/";
-$icon-default-size: 18px;
-$icon-default-offset: 3px;
-
-// Map: Assignment of classes to icons
-$icon-mapping: (
-  "audio": "icon-audio",
-  "chart": "icon-chart",
-  "download": "icon-download",
-  "email": "icon-email",
-  "external-link": "icon-external",
-  "external-link-new": "icon-external",
-  "gallery": "icon-gallery",
-  "glossary": "icon-glossary",
-  "icon-link": "icon-link",
-  "internal-link": "icon-internal",
-  "internal-link-new": "icon-internal",
-  "legal": "icon-law",
-  "list-scroll": "icon-scroll",
-  "phone": "icon-phone",
-  "press": "icon-internal",
-  "public": "icon-public",
-  "video": "icon-play"
-);
+@use "Elements/icons-config" as *;
+@use "Mixins/iconstyle";
+@use "Mixins/utilities";
 
 // Dynamic generation of icon classes
 @each $class, $icon in $icon-mapping {
@@ -33,7 +11,7 @@ $icon-mapping: (
   .stage span.#{$class}.teaser-link .icon {
     display: inline;
 
-    @include apply-icon-style($icon);
+    @include iconstyle.apply-icon-style($icon);
   }
 }
 
@@ -43,7 +21,7 @@ a.modal-link {
   position: relative;
 
   &::before {
-    @include masked-icon("#{$icon-base-path}icon-modal.svg", $icon-default-size);
+    @include iconstyle.masked-icon("#{$icon-base-path}icon-modal.svg", $icon-default-size);
 
     background-color: var(--fg-body);
     left: $icon-default-offset;
@@ -74,7 +52,7 @@ a .icon,
     top: 1px;
     width: 19px;
 
-    @include forced-colors {
+    @include utilities.forced-colors {
       background-position: center;
       background-repeat: no-repeat;
       background-size: $icon-default-size;
@@ -87,5 +65,5 @@ a .icon,
 ul.list-scroll a .icon {
   display: inline;
 
-  @include apply-icon-style("icon-scroll");
+  @include iconstyle.apply-icon-style("icon-scroll");
 }

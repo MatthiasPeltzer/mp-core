@@ -1,19 +1,23 @@
+@use "../Elements/icons-config" as icons;
+@use "../Modules/share-config" as share;
+@use "utilities";
+
 // Mixins: Reusable styles for socialmedia icons
 @mixin icon-style($name, $color) {
   .icon-#{$name} {
-    mask-image: url("#{$icon-path}icon-#{$name}.svg");
+    mask-image: url("#{share.$icon-path}icon-#{$name}.svg");
 
-    @include forced-colors {
-      background-image: url("#{$icon-path}icon-#{$name}.svg");
+    @include utilities.forced-colors {
+      background-image: url("#{share.$icon-path}icon-#{$name}.svg");
     }
   }
 
-  @include on-interact {
+  @include utilities.on-interact {
     border-color: $color;
 
     .icon-#{$name} {
       background-color: $color;
-      mask-image: url("#{$icon-path}icon-#{$name}.svg");
+      mask-image: url("#{share.$icon-path}icon-#{$name}.svg");
     }
   }
 }
@@ -21,10 +25,10 @@
 // Mixins: Reusable styles for icons
 @mixin apply-icon-style($icon-name) {
   &::before {
-    mask-image: url("#{$icon-base-path}#{$icon-name}.svg");
+    mask-image: url("#{icons.$icon-base-path}#{$icon-name}.svg");
 
-    @include forced-colors {
-      background-image: url("#{$icon-base-path}#{$icon-name}.svg");
+    @include utilities.forced-colors {
+      background-image: url("#{icons.$icon-base-path}#{$icon-name}.svg");
     }
   }
 }
@@ -43,7 +47,7 @@
   width: $size;
 
   /* stylelint-disable no-invalid-position-declaration */
-  @include forced-colors {
+  @include utilities.forced-colors {
     background: transparent url($icon-url) center / $size no-repeat;
     mask: none !important;
   }

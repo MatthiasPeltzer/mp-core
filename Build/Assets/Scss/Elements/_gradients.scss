@@ -1,6 +1,9 @@
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // Variablen
-$gradient-dark: $gray-900;
-$gradient-light: $gray-100;
+$gradient-dark: mpc-design-tokens.$gray-900;
+$gradient-light: mpc-design-tokens.$gray-100;
 
 // Mixin für Gradienten
 @mixin gradient($direction, $start-color, $end-color) {
@@ -42,7 +45,7 @@ $gradient-light: $gray-100;
 .gradient-bg {
   background-image: linear-gradient(to right, transparent 0%, $gradient-dark 100%);
 
-  @include light-theme {
+  @include utilities.light-theme {
     background-image: linear-gradient(to right, transparent 0%, $gradient-light 100%);
   }
 }
@@ -50,7 +53,7 @@ $gradient-light: $gray-100;
 .gradient-bottom {
   background-image: linear-gradient(to bottom, transparent 0%, $gradient-dark 100%);
 
-  @include light-theme {
+  @include utilities.light-theme {
     background-image: linear-gradient(to bottom, transparent 0%, $gradient-light 100%);
   }
 }
@@ -58,7 +61,7 @@ $gradient-light: $gray-100;
 .gradient-top {
   background-image: linear-gradient(to top, $gradient-dark 0%, transparent 100%);
 
-  @include light-theme {
+  @include utilities.light-theme {
     background-image: linear-gradient(to top, $gradient-light 0%, transparent 100%);
   }
 }

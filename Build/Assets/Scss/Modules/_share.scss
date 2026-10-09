@@ -1,34 +1,8 @@
+@use "share-config" as *;
+@use "../Mixins/iconstyle";
+@use "../Mixins/utilities";
+
 // share
-$icon-path: "../Images/Icons/";
-$social-networks: (
-  facebook: #3b5998,
-  x: #000,
-  instagram: #aa2fbb,
-  threads: #181818,
-  mastodon: #2b90d9,
-  bluesky: #1185fe,
-  tiktok: #fe2c55,
-  tumblr: #7c5cff,
-  reddit: #ff2e2e,
-  linkedin: #0073b1,
-  xing: #0698a0,
-  youtube: #f00,
-  vimeo: #00aacf,
-  spotify: #117a37,
-  bandcamp: #42a0bd,
-  soundcloud: #f50,
-  pinterest: #e60023,
-  whatsapp: #5cbe4a,
-  signal: #3b45Fd,
-  telegram: #28a7e8,
-  discord: #5865f2,
-  github: #24292f,
-  gitlab: #fc6d26,
-  opencode: #0891b2,
-  packagist: #f28d1a,
-  npmjs: #cb3837,
-  print: #000,
-);
 
 .share {
   margin-bottom: 0;
@@ -60,7 +34,7 @@ $social-networks: (
       position: relative;
       width: 56px;
 
-      @include forced-colors {
+      @include utilities.forced-colors {
         background-color: transparent;
         background-position: center;
         background-repeat: no-repeat;
@@ -97,7 +71,7 @@ $social-networks: (
         width: 70px;
       }
 
-      @include on-interact {
+      @include utilities.on-interact {
         background-color: var(--white);
         outline-offset: 2px;
       }
@@ -107,7 +81,7 @@ $social-networks: (
   @each $name, $color in $social-networks {
     .#{$name} {
       > a {
-        @include icon-style($name, $color);
+        @include iconstyle.icon-style($name, $color);
       }
     }
   }

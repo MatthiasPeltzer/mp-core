@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "Base/Bootstrap/bootstrap-config";
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // stage
 
 .stage {
@@ -23,7 +28,7 @@
       cursor: inherit;
       pointer-events: none;
 
-      @include on-interact {
+      @include utilities.on-interact {
         outline: none !important;
       }
 
@@ -40,7 +45,7 @@
     padding: 32px 16px;
     position: relative;
 
-    @include media-breakpoint-up(sm) {
+    @include bootstrap-config.media-breakpoint-up(sm) {
       height: 100%;
       left: 0;
       position: absolute;
@@ -118,7 +123,7 @@
           display: inline;
           padding: 4px 8px;
 
-          @include font-size(map-get($font-size-scale, display));
+          @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, display));
         }
       }
 

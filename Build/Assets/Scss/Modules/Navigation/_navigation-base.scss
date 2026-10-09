@@ -3,8 +3,10 @@
 // Shared styles for all navigation variants (Primary, Secondary, Tertiary)
 // =============================================================================
 
-@import "navigation-bs6-menu-item";
-@import "navigation-bs6-menu-shell";
+@use "navigation-bs6-menu-item";
+@use "navigation-bs6-menu-shell";
+@use "Base/Bootstrap/bootstrap-config";
+@use "Mixins/utilities" as *;
 
 // -----------------------------------------------------------------------------
 // NAVBAR CORE
@@ -64,7 +66,7 @@
   position: relative;
   z-index: 1;
 
-  @include media-breakpoint-up(lg) {
+  @include bootstrap-config.media-breakpoint-up(lg) {
     padding: 64px 0 79px;
   }
 
@@ -83,7 +85,7 @@
   &-layer {
     position: static;
 
-    @include media-breakpoint-down(md) {
+    @include bootstrap-config.media-breakpoint-down(md) {
       flex: 0 1 0;
     }
 

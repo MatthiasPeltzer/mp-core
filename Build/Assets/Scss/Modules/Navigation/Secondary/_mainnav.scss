@@ -1,10 +1,16 @@
+@use "sass:map";
+@use "Base/Bootstrap/bootstrap-config";
+@use "Mixins/utilities" as *;
+@use "Base/Bootstrap/mpc-design-tokens" as *;
+@use "../navigation-base";
+
 // =============================================================================
 // SECONDARY MAINNAV - Variant-specific styles
 // Base styles are in ../navigation-base.scss
 // =============================================================================
 
 // Use shared transition variable
-$transition-bounce: $nav-transition-bounce;
+$transition-bounce: navigation-base.$nav-transition-bounce;
 
 // -----------------------------------------------------------------------------
 // DESKTOP NAVIGATION
@@ -144,7 +150,7 @@ $transition-bounce: $nav-transition-bounce;
         top: -88px;
         width: calc(100% - 64px);
 
-        @include font-size(map-get($font-size-scale, 4xl));
+        @include font-size(map.get($font-size-scale, 4xl));
 
         button,
         a {
@@ -219,7 +225,7 @@ $transition-bounce: $nav-transition-bounce;
       li:not(.tx-indexedsearch-suggest-option, .tx-indexedsearch-suggest-heading) {
         width: 33.3333%;
 
-        @include font-size(map-get($font-size-scale, xl));
+        @include font-size(map.get($font-size-scale, xl));
 
         button,
         a {
@@ -375,7 +381,7 @@ $transition-bounce: $nav-transition-bounce;
     position: relative;
     top: 0;
 
-    @include font-size(map-get($font-size-scale, 2xl));
+    @include font-size(map.get($font-size-scale, 2xl));
 
     &[aria-expanded="true"],
     &.act,
@@ -503,7 +509,7 @@ $transition-bounce: $nav-transition-bounce;
     position: relative;
     text-transform: uppercase;
 
-    @include font-size(map-get($font-size-scale, md));
+    @include font-size(map.get($font-size-scale, md));
 
     @include on-interact {
       color: var(--fg-body);
@@ -516,11 +522,11 @@ $transition-bounce: $nav-transition-bounce;
     min-width: 100%;
     z-index: 2;
 
-    @include media-breakpoint-up(lg) {
+    @include bootstrap-config.media-breakpoint-up(lg) {
       min-width: 50%;
     }
 
-    @include media-breakpoint-up(xl) {
+    @include bootstrap-config.media-breakpoint-up(xl) {
       min-width: 25%;
     }
 
@@ -635,7 +641,7 @@ $transition-bounce: $nav-transition-bounce;
   }
 
   .sub {
-    @include font-size(map-get($font-size-scale, md));
+    @include font-size(map.get($font-size-scale, md));
 
     margin-bottom: 0;
     outline-offset: -2px;

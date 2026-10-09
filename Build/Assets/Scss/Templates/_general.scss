@@ -1,3 +1,6 @@
+@use "Base/Bootstrap/bootstrap-config";
+@use "Mixins/utilities";
+
 // general
 
 @media (prefers-reduced-motion: reduce) {
@@ -89,7 +92,7 @@ html {
     width: 100%;
     z-index: -1;
 
-    @include light-theme {
+    @include utilities.light-theme {
       filter: invert(1);
     }
   }
@@ -152,7 +155,7 @@ html {
   margin-right: 0;
 
   .nav-icon {
-    @include media-breakpoint-up(sm) {
+    @include bootstrap-config.media-breakpoint-up(sm) {
       margin-right: 5px;
     }
   }

@@ -1,3 +1,5 @@
+@use "Mixins/utilities" as *;
+
 // =============================================================================
 // BS6 Menu `.menu-item` vs MPC navigation markup
 // Bootstrap 6 styles `.menu-item` (width: 100%, compact padding, nowrap). MPC
@@ -72,7 +74,7 @@
 
     ul ul li a.menu-item,
     ul ul li a.sub.menu-item {
-      padding: 16px 16px 16px 16px;
+      padding: 16px;
     }
 
     ul ul ul li a.menu-item,

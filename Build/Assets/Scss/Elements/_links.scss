@@ -1,9 +1,11 @@
+@use "Mixins/utilities";
+
 // links
 
 button,
 .btn,
 a:not(.btn-icon, .carousel-control-prev, .carousel-control-next, .teaser-link) {
-  @include on-interact {
+  @include utilities.on-interact {
     outline: 1px solid var(--fg-body) !important;
     outline-offset: 2px;
 

@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // Variablen
 $blockquote-bg-dark: var(--gray-900);
 $blockquote-bg-light: var(--gray-100);
@@ -36,7 +40,7 @@ blockquote {
 
   @include blockquote-icon($blockquote-border-color);
 
-  @include light-theme {
+  @include utilities.light-theme {
     background-color: $blockquote-bg-light;
   }
 
@@ -56,14 +60,14 @@ blockquote {
   p {
     display: block;
 
-    @include font-size(map-get($font-size-scale, 2xl));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 2xl));
 
     font-style: italic;
     font-weight: 400;
     z-index: 1;
 
     &.small {
-      @include font-size(map-get($font-size-scale, md));
+      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
 
       letter-spacing: normal;
       text-transform: uppercase;

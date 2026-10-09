@@ -1,3 +1,8 @@
+@use "Base/Bootstrap/bootstrap-config";
+@use "Base/Bootstrap/mpc-design-tokens" as *;
+@use "Mixins/utilities" as *;
+@use "bootstrap/scss/mixins/visually-hidden" as *;
+
 // =============================================================================
 // METANAV BASE STYLES
 // Shared styles for all navigation variants
@@ -13,7 +18,7 @@
     padding: 0 16px;
   }
 
-  @include media-breakpoint-down(md) {
+  @include bootstrap-config.media-breakpoint-down(md) {
     .meta-item {
       margin-bottom: 16px;
     }
@@ -32,7 +37,7 @@
   &-desktop {
     display: none;
 
-    @include media-breakpoint-up(lg) {
+    @include bootstrap-config.media-breakpoint-up(lg) {
       display: block;
     }
   }
@@ -40,7 +45,7 @@
   &-mobile {
     display: block;
 
-    @include media-breakpoint-up(lg) {
+    @include bootstrap-config.media-breakpoint-up(lg) {
       display: none;
     }
   }
@@ -56,7 +61,7 @@
   }
 
   .nav-link {
-    @include media-breakpoint-down(sm) {
+    @include bootstrap-config.media-breakpoint-down(sm) {
       padding: 8px;
 
       > svg + span {

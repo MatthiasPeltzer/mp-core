@@ -1,7 +1,7 @@
 // Mixins
-@import "Mixins/mixins";
+@use "Mixins/mixins";
 // Base
-@import "Base/fonts";
-@import "Base/Bootstrap/bootstrap-config";
+@use "Base/fonts";
+@use "Base/Bootstrap/bootstrap-config";
 // Templates
-@import "Extensions/ckeditor";
+@use "Extensions/ckeditor";

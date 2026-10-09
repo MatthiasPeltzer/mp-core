@@ -1,3 +1,7 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // figures
 
 .figure {
@@ -20,7 +24,7 @@
         padding: 8px;
       }
 
-      @include light-theme {
+      @include utilities.light-theme {
         background-color: var(--gray-100);
       }
     }
@@ -38,7 +42,7 @@
   color: var(--white);
   display: inline-block;
 
-  @include font-size(map-get($font-size-scale, base));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
 
   font-weight: 500;
   margin-bottom: 0;

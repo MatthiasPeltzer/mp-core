@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+
 // header logo
 
 .logo-wrapper {
@@ -24,7 +27,7 @@
 
 .header {
   &-text {
-    @include font-size(map-get($font-size-scale, 6xl));
+    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 6xl));
   }
 
   &-image,

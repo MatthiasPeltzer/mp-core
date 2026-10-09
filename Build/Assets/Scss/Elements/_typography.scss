@@ -1,3 +1,5 @@
+@use "Mixins/utilities";
+
 // typography
 
 .bold {
@@ -15,7 +17,7 @@
       text-decoration: underline dotted var(--mpc-accent-orange);
       text-underline-offset: 7px;
 
-      @include light-theme {
+      @include utilities.light-theme {
         text-decoration: underline dotted var(--primary-base);
       }
     }

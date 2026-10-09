@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "Base/Bootstrap/bootstrap-config";
+@use "Base/Bootstrap/mpc-design-tokens";
+@use "Mixins/utilities";
+
 // buttons
 
 .btn {
@@ -16,7 +21,7 @@
     border-color: var(--fg-body);
     color: var(--white);
 
-    @include on-interact {
+    @include utilities.on-interact {
       background-color: var(--primary-base);
       border-color: var(--fg-body);
       color: var(--white);
@@ -28,7 +33,7 @@
     border-color: var(--fg-body);
     color: var(--white);
 
-    @include on-interact {
+    @include utilities.on-interact {
       background-color: var(--secondary-base);
       border-color: var(--fg-body);
       color: var(--white);
@@ -40,7 +45,7 @@
     border-color: var(--fg-body);
     color: var(--white);
 
-    @include on-interact {
+    @include utilities.on-interact {
       background-color: var(--tertiary-base);
       border-color: var(--fg-body);
       color: var(--white);
@@ -52,7 +57,7 @@
     border-color: var(--fg-body);
     color: var(--white);
 
-    @include on-interact {
+    @include utilities.on-interact {
       background-color: var(--quaternary-base);
       border-color: var(--fg-body);
       color: var(--white);
@@ -85,7 +90,7 @@
       color: var(--white);
       display: flex;
 
-      @include font-size(map-get($font-size-scale, xs));
+      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, xs));
 
       height: 32px;
       line-height: 1;
@@ -107,19 +112,19 @@
         top: 0;
         width: 32px;
 
-        @include forced-colors {
+        @include utilities.forced-colors {
           background-position: center;
           background-repeat: no-repeat;
           background-size: 20px;
         }
       }
 
-      @include media-breakpoint-up(sm) {
-        @include font-size(map-get($font-size-scale, sm));
+      @include bootstrap-config.media-breakpoint-up(sm) {
+        @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, sm));
       }
 
-      @include media-breakpoint-up(md) {
-        @include font-size(map-get($font-size-scale, base));
+      @include bootstrap-config.media-breakpoint-up(md) {
+        @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
       }
 
       &.show,
@@ -140,11 +145,11 @@
           padding: 3px 8px;
         }
 
-        @include media-breakpoint-down(md) {
+        @include bootstrap-config.media-breakpoint-down(md) {
           min-width: 260px;
         }
 
-        @include media-breakpoint-up(md) {
+        @include bootstrap-config.media-breakpoint-up(md) {
           white-space: nowrap;
         }
       }
@@ -157,7 +162,7 @@
         padding: 8px 16px 8px 40px;
         width: auto;
 
-        @include on-interact {
+        @include utilities.on-interact {
           text-decoration: underline;
         }
 
@@ -176,7 +181,7 @@
         text-align: left;
         width: auto;
 
-        @include on-interact {
+        @include utilities.on-interact {
           text-decoration: underline;
         }
       }
@@ -190,7 +195,7 @@
       &::after {
         mask-image: url("@assets/Images/Icons/icon-copyright.svg");
 
-        @include forced-colors {
+        @include utilities.forced-colors {
           background-image: url("@assets/Images/Icons/icon-copyright.svg");
         }
       }
@@ -199,7 +204,7 @@
     &-download {
       + .menu {
         .btn-download {
-          @include font-size(map-get($font-size-scale, base));
+          @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
 
           font-weight: 400;
           padding-left: 32px;
@@ -211,7 +216,7 @@
       &::after {
         mask-image: url("@assets/Images/Icons/icon-download-circle.svg");
 
-        @include forced-colors {
+        @include utilities.forced-colors {
           background-image: url("@assets/Images/Icons/icon-download-circle.svg");
         }
       }
@@ -221,7 +226,7 @@
       &::after {
         mask-image: url("@assets/Images/Icons/icon-info.svg");
 
-        @include forced-colors {
+        @include utilities.forced-colors {
           background-image: url("@assets/Images/Icons/icon-info.svg");
         }
       }
@@ -231,7 +236,7 @@
       &::after {
         mask-image: url("@assets/Images/Icons/icon-zoom-in.svg");
 
-        @include forced-colors {
+        @include utilities.forced-colors {
           background-image: url("@assets/Images/Icons/icon-zoom-in.svg");
         }
       }
@@ -245,7 +250,7 @@
         &::after {
           mask-image: url("@assets/Images/Icons/icon-close.svg");
 
-          @include forced-colors {
+          @include utilities.forced-colors {
             background-image: url("@assets/Images/Icons/icon-close.svg");
           }
         }
@@ -264,11 +269,11 @@
     position: relative;
     width: 40px;
 
-    @include forced-colors {
+    @include utilities.forced-colors {
       background-color: currentcolor;
     }
 
-    @include media-breakpoint-up(md) {
+    @include bootstrap-config.media-breakpoint-up(md) {
       margin-right: 74px;
     }
 
@@ -284,7 +289,7 @@
       transition: all .2s ease-in-out;
       width: 30px;
 
-      @include forced-colors {
+      @include utilities.forced-colors {
         color: currentcolor;
       }
     }
@@ -299,7 +304,7 @@
       width: 20px;
     }
 
-    @include on-interact {
+    @include utilities.on-interact {
       box-shadow: none;
     }
 
@@ -323,11 +328,11 @@
     .txt {
       display: none;
 
-      @include media-breakpoint-up(md) {
+      @include bootstrap-config.media-breakpoint-up(md) {
         color: var(--fg-body);
         display: block;
 
-        @include font-size(map-get($font-size-scale, base));
+        @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
 
         font-weight: bold;
         height: auto;
@@ -336,7 +341,7 @@
         top: 12px;
         width: auto;
 
-        @include forced-colors {
+        @include utilities.forced-colors {
           background-color: var(--black);
         }
       }
@@ -356,7 +361,7 @@
   top: 3px;
   width: 29px;
 
-  @include forced-colors {
+  @include utilities.forced-colors {
     background: url("@assets/Images/Icons/icon-square-fill-white.svg") no-repeat center;
     background-size: 20px;
   }
@@ -374,13 +379,13 @@
     width: 27px;
     z-index: 1;
 
-    @include light-theme {
+    @include utilities.light-theme {
       background-color: var(--bg-body);
     }
   }
 
-  @include on-interact {
-    background-color: $gray-900;
+  @include utilities.on-interact {
+    background-color: mpc-design-tokens.$gray-900;
   }
 
   &.active {
@@ -388,13 +393,13 @@
   }
 
   &.collapsed {
-    background-color: $gray-900;
+    background-color: mpc-design-tokens.$gray-900;
 
     &::before {
       mask: url("@assets/Images/Icons/icon-plus.svg") no-repeat center;
     }
 
-    @include on-interact {
+    @include utilities.on-interact {
       background-color: var(--primary-base);
     }
   }

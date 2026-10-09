@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "Base/Bootstrap/mpc-design-tokens";
+
 // lists
 
 ul {
@@ -118,7 +121,7 @@ ul {
   position: relative;
 
 
-  @include font-size(map-get($font-size-scale, base));
+  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
 
   &:last-child {
     margin-bottom: 0;
