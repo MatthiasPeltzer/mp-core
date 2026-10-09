@@ -232,7 +232,7 @@ defined('TYPO3') or die('Access denied.');
                 'type' => 'text',
                 'rows' => 5,
                 'eval' => 'trim',
-                'placeholder' => '{"576": {"slidesPerView": 2}, "992": {"slidesPerView": 3}}',
+                'placeholder' => '{"576": {"slidesPerView": 2}, "1024": {"slidesPerView": 3}}',
             ],
             'label' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.breakpoints',
             'description' => 'LLL:EXT:mp_core/Resources/Private/Language/locallang_db.xlf:slider.breakpoints.description',

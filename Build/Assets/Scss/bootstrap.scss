@@ -1,12 +1,9 @@
 @use "Mixins/mixins";
-@use "Base/Bootstrap/mpc-bs6-breakpoints" as mpc-bp;
 @use "Base/Bootstrap/mpc-bootstrap-theme" as mpc-theme;
 @use "Base/Bootstrap/mpc-bs6-config-overrides" as mpc-config;
 @use "Base/Bootstrap/mpc-bs6-root-overrides" as mpc-root;
 @use "Base/Bootstrap/mpc-bootstrap-bundle" with (
   $color-mode-type: "data",
-  $breakpoints: mpc-bp.$mpc-breakpoints,
-  $container-max-widths: mpc-bp.$mpc-container-max-widths,
   $theme-colors: mpc-theme.$theme-colors,
   $root-tokens: mpc-root.$root-tokens,
   $font-sizes: mpc-config.$font-sizes

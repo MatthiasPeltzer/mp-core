@@ -244,13 +244,13 @@ const mainBreakpoints = computed((): Record<number, SwiperOptions> | undefined =
   if (cols === 3) {
     return {
       576: { slidesPerView: 2, slidesPerGroup: 2 },
-      992: { slidesPerView: 3, slidesPerGroup: 3 }
+      1024: { slidesPerView: 3, slidesPerGroup: 3 }
     }
   }
   if (cols >= 4) {
     return {
       576: { slidesPerView: 2, slidesPerGroup: 2 },
-      992: { slidesPerView: 3, slidesPerGroup: 3 },
+      1024: { slidesPerView: 3, slidesPerGroup: 3 },
       1200: { slidesPerView: 4, slidesPerGroup: 4 }
     }
   }
@@ -260,7 +260,7 @@ const mainBreakpoints = computed((): Record<number, SwiperOptions> | undefined =
 // Dynamic thumbs breakpoints based on config
 const thumbsBreakpoints = computed(() => ({
   576: { slidesPerView: Math.min(config.value.thumbsPerView, 3) },
-  992: { slidesPerView: config.value.thumbsPerView }
+  1024: { slidesPerView: config.value.thumbsPerView }
 }))
 
 // A11y configuration (with i18n translations)

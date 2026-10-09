@@ -1,32 +1,28 @@
-// Shared Bootstrap SCSS configuration for mp-core bundles.
-// Legacy @import entry points delegate breakpoint mixins to configured Bootstrap 6 maps.
+// Shared Bootstrap SCSS configuration for mp-core bundles (BS6 default breakpoints from npm).
+// Legacy @import entry points delegate breakpoint mixins to Bootstrap's configured maps.
 
-@use "mpc-bs6-breakpoints" as mpc-bp;
-@use "bootstrap/scss/config" with (
-  $breakpoints: mpc-bp.$mpc-breakpoints,
-  $container-max-widths: mpc-bp.$mpc-container-max-widths,
-);
+@use "bootstrap/scss/config" as bs;
 @use "bootstrap/scss/layout/breakpoints" as bp;
 
-@mixin media-breakpoint-up($name, $breakpoints: mpc-bp.$mpc-breakpoints) {
+@mixin media-breakpoint-up($name, $breakpoints: bs.$breakpoints) {
   @include bp.media-breakpoint-up($name, $breakpoints) {
     @content;
   }
 }
 
-@mixin media-breakpoint-down($name, $breakpoints: mpc-bp.$mpc-breakpoints) {
+@mixin media-breakpoint-down($name, $breakpoints: bs.$breakpoints) {
   @include bp.media-breakpoint-down($name, $breakpoints) {
     @content;
   }
 }
 
-@mixin media-breakpoint-only($name, $breakpoints: mpc-bp.$mpc-breakpoints) {
+@mixin media-breakpoint-only($name, $breakpoints: bs.$breakpoints) {
   @include bp.media-breakpoint-only($name, $breakpoints) {
     @content;
   }
 }
 
-@mixin media-breakpoint-between($lower, $upper, $breakpoints: mpc-bp.$mpc-breakpoints) {
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: bs.$breakpoints) {
   @include bp.media-breakpoint-between($lower, $upper, $breakpoints) {
     @content;
   }

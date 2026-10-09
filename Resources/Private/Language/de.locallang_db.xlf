@@ -1343,8 +1343,8 @@
         <target>Responsive Breakpoints</target>
       </trans-unit>
       <trans-unit id="slider.breakpoints.description" resname="slider.breakpoints.description" approved="yes">
-        <source>JSON configuration for responsive breakpoints (e.g., {"576": {"slidesPerView": 2}, "992": {"slidesPerView": 3}})</source>
-        <target>JSON-Konfiguration für responsive Breakpoints (z.B., {"576": {"slidesPerView": 2}, "992": {"slidesPerView": 3}})</target>
+        <source>JSON configuration for responsive breakpoints (e.g., {"576": {"slidesPerView": 2}, "1024": {"slidesPerView": 3}})</source>
+        <target>JSON-Konfiguration für responsive Breakpoints (z.B., {"576": {"slidesPerView": 2}, "1024": {"slidesPerView": 3}})</target>
       </trans-unit>
       <trans-unit id="slider.description" resname="slider.description" approved="yes">
         <source>Container element for Slider</source>

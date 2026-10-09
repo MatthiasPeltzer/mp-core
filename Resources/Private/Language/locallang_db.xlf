@@ -988,7 +988,7 @@
         <source>Responsive breakpoints</source>
       </trans-unit>
       <trans-unit id="slider.breakpoints.description" resname="slider.breakpoints.description">
-        <source>JSON configuration for responsive breakpoints (e.g., {"576": {"slidesPerView": 2}, "992": {"slidesPerView": 3}})</source>
+        <source>JSON configuration for responsive breakpoints (e.g., {"576": {"slidesPerView": 2}, "1024": {"slidesPerView": 3}})</source>
       </trans-unit>
       <trans-unit id="slider.description" resname="slider.description">
         <source>Container element for Slider</source>

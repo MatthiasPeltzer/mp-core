@@ -328,7 +328,9 @@ Layers from low to high specificity:
 
 ### Bootstrap Customization
 
-On **`feature/bootstrap-6`**, theme and layout tokens live under `Build/Assets/Scss/Base/Bootstrap/` — e.g. `_mpc-bootstrap-theme.scss`, `_mpc-bs6-root-overrides.scss`, `_mpc-bs6-config-overrides.scss`, `_mpc-bootstrap-bundle.scss`, `_mpc-bs6-breakpoints.scss`, `_mpc-design-tokens.scss`.
+On **`feature/bootstrap-6`**, theme and layout tokens live under `Build/Assets/Scss/Base/Bootstrap/` — e.g. `_mpc-bootstrap-theme.scss`, `_mpc-bs6-root-overrides.scss`, `_mpc-bs6-config-overrides.scss`, `_mpc-bootstrap-bundle.scss`, `_bootstrap-config.scss`, `_mpc-design-tokens.scss`.
+
+Grid breakpoints and container max-widths are **Bootstrap 6 defaults** from npm (`bootstrap/scss/_config.scss`: `lg` 1024px, `xl` 1280px, `2xl` 1536px) — no separate MPC override file. Responsive `<picture>` sources and Swiper JSON use the same `lg` threshold (1024px).
 
 On **`main`**, Bootstrap 5 uses `_custom-variables.scss` and `_custom-variables-dark.scss` (not shipped on the BS6 branch).
 
