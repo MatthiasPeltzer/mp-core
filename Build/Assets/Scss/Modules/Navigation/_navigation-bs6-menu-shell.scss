@@ -1,0 +1,64 @@
+// =============================================================================
+// BS6 `.menu` shell (mobile #menu + desktop mega-menu flyouts)
+// Bootstrap 6 adds border, radius, min-width, and box-shadow on `.menu`.
+// =============================================================================
+
+.main-menu-layer > .menu {
+  @include bs6-component-specificity {
+    --menu-min-width: 0;
+    --menu-border-width: 0;
+    --menu-border-radius: 0;
+    --menu-box-shadow: none;
+
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .navbar-wrapper,
+  .main-nav-wrapper {
+    width: 100%;
+    max-width: none;
+  }
+
+  .main-nav-wrapper .container,
+  .main-nav-wrapper [class*="container"] {
+    width: 100%;
+    max-width: none;
+  }
+
+  ul.main-menu {
+    width: 100%;
+    max-width: none;
+  }
+
+  ul.main-menu.row {
+    --bs-gutter-x: 0;
+    margin-inline: 0;
+  }
+
+  ul.main-menu .col {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.header-wrapper-bg .mainnav-desktop .menu.main-menu-desktop {
+  @include bs6-component-specificity {
+    --menu-min-width: 0;
+    --menu-border-width: 0;
+    --menu-border-radius: 0;
+    --menu-box-shadow: none;
+
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

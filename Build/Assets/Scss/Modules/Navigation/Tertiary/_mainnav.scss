@@ -279,10 +279,6 @@
 // MOBILE NAVIGATION (Tertiary variant)
 // -----------------------------------------------------------------------------
 
-.navbar-wrapper {
-  background-color: var(--quaternary-base);
-}
-
 .main-menu {
   &-layer {
     flex: 0 1 0;
@@ -397,7 +393,7 @@
 
     ul {
       backdrop-filter: blur(16px);
-      border-radius: 6px;
+      border-radius: 0;
       position: relative;
 
       @supports not (backdrop-filter: blur(16px)) {

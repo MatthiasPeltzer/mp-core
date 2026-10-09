@@ -1,0 +1,160 @@
+// =============================================================================
+// BS6 Menu `.menu-item` vs MPC navigation markup
+// Bootstrap 6 styles `.menu-item` (width: 100%, compact padding, nowrap). MPC
+// reuses that class on mega-menu links and toggle buttons — restore layout here.
+// =============================================================================
+
+.mainnav-desktop .main-menu-desktop {
+  @include bs6-component-specificity {
+    a.menu-item,
+    a.sub.menu-item {
+      display: block;
+      width: auto;
+      max-width: none;
+      flex: 1 1 auto;
+      gap: 0;
+      white-space: normal;
+      border-radius: 0;
+      padding: 18px 40px;
+    }
+
+    button.menu-item-button.menu-item {
+      display: flex;
+      width: 50px;
+      min-width: 50px;
+      max-width: 50px;
+      flex: 0 0 50px;
+      gap: 0;
+      white-space: nowrap;
+      border-radius: 0;
+      padding: 0 !important;
+    }
+
+    // Secondary desktop: submenu title is a full-width toggle button, not a square icon.
+    button.menu-item-btn.menu-item {
+      width: auto;
+      max-width: none;
+      flex: 1 1 auto;
+      white-space: normal;
+      border-radius: 0;
+    }
+  }
+}
+
+.main-menu {
+  @include bs6-component-specificity {
+    a.first-child.menu-item {
+      display: block;
+      width: calc(100% - 50px);
+      max-width: none;
+      flex: none;
+      gap: 0;
+      white-space: normal;
+      border-radius: 0;
+      padding: 16px 0;
+    }
+
+    a.sub.menu-item {
+      display: block;
+      width: calc(100% - 50px);
+      max-width: none;
+      flex: none;
+      gap: 0;
+      white-space: normal;
+      border-radius: 0;
+      padding: 16px 0;
+    }
+
+    ul li a.menu-item,
+    ul li a.sub.menu-item {
+      padding: 16px 16px 16px 2px;
+    }
+
+    ul ul li a.menu-item,
+    ul ul li a.sub.menu-item {
+      padding: 16px 16px 16px 16px;
+    }
+
+    ul ul ul li a.menu-item,
+    ul ul ul li a.sub.menu-item {
+      padding-left: 24px;
+    }
+
+    ul ul ul ul li a.menu-item,
+    ul ul ul ul li a.sub.menu-item {
+      padding-left: 32px;
+    }
+
+    ul ul ul ul ul li a.menu-item,
+    ul ul ul ul ul li a.sub.menu-item {
+      padding-left: 48px;
+    }
+
+    a.menu-item,
+    a.sub.menu-item {
+      background-color: transparent;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.act,
+      &.active {
+        background-color: transparent;
+        color: var(--fg-body);
+      }
+    }
+
+    button.menu-item.menu-item-button,
+    button.menu-item.menu-item-btn,
+    button.menu-item.btn-open {
+      background-color: transparent;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.act,
+      &.active {
+        background-color: transparent;
+        color: var(--fg-body);
+      }
+    }
+
+    button.menu-item-button.menu-item {
+      width: 40px;
+      min-width: 40px;
+      max-width: 40px;
+      flex: 0 0 40px;
+      gap: 0;
+      padding: 0 !important;
+    }
+
+    button.first-child.menu-item,
+    button.sub.menu-item,
+    button.menu-item-btn.menu-item,
+    button.btn-open.menu-item {
+      display: block;
+      width: calc(100% - 50px);
+      max-width: none;
+      flex: none;
+      gap: 0;
+      white-space: normal;
+      border-radius: 0;
+      padding: 16px 0;
+      text-align: start;
+    }
+
+    button.first-child-btn.menu-item {
+      padding: 16px 0;
+    }
+  }
+}
+
+.menu-item-button {
+  @include bs6-component-specificity {
+    flex: 0 0 auto;
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+    padding: 0 !important;
+  }
+}

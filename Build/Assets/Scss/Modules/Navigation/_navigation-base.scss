@@ -3,6 +3,9 @@
 // Shared styles for all navigation variants (Primary, Secondary, Tertiary)
 // =============================================================================
 
+@import "navigation-bs6-menu-item";
+@import "navigation-bs6-menu-shell";
+
 // -----------------------------------------------------------------------------
 // NAVBAR CORE
 // -----------------------------------------------------------------------------
@@ -85,12 +88,25 @@
     }
 
     > .menu {
+      --menu-bg: var(--bg-body);
+      --menu-item-hover-bg: transparent;
+      --menu-item-active-bg: transparent;
+      --menu-item-hover-color: var(--fg-body);
+      --menu-item-active-color: var(--fg-body);
+
+      background-color: var(--bg-body);
       border: 0 none;
       border-radius: 0;
       margin: 0;
       padding: 0;
       right: 0;
       top: 101%;
+
+      // Variant SCSS sets `.navbar-wrapper { background: quaternary }`; inside the
+      // hamburger panel the shell should match `--bg-body` (see production dropdown).
+      .navbar-wrapper {
+        background-color: transparent;
+      }
     }
   }
 
@@ -135,15 +151,12 @@
     top: 100%;
     right: 0;
     left: 0;
-    width: auto;
+    width: 100%;
     max-width: none;
     min-width: 0;
     margin-top: 2px;
     padding: 0;
     background-color: transparent;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
     transform: none;
 
     &.show {
