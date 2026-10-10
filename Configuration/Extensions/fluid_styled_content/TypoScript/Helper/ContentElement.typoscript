@@ -9,6 +9,7 @@ lib.contentElement {
   }
 
   partialRootPaths {
+    15 = EXT:mp_core/Resources/Private/Partials/
     10 = {$styles.templates.partialRootPath}
   }
 }

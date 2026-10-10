@@ -39,9 +39,7 @@
 
   &-content-wrapper {
     align-items: center;
-    display: flex;
     order: 1;
-    padding: 32px 16px;
     position: relative;
 
     @include bootstrap-config.media-breakpoint-up(sm) {
@@ -63,18 +61,6 @@
 
     .stage-bottom & {
       align-items: flex-end;
-    }
-
-    &.btn-left {
-      justify-content: flex-start;
-    }
-
-    &.btn-center {
-      justify-content: center;
-    }
-
-    &.btn-right {
-      justify-content: flex-end;
     }
   }
 

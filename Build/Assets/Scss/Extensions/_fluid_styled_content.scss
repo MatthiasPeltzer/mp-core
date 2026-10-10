@@ -2,6 +2,7 @@
 @use "Mixins/utilities";
 
 // fluid styled content
+// Legacy alignment classes (RTE / migrated bodytext). New Fluid headers use text-start|center|end utilities.
 
 .align-left,
 .ce-align-left,

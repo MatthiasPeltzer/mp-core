@@ -14,7 +14,7 @@
         <h1 class="tx-indexedsearch-category fs-2xl">{result.categoryTitle}</h1>
     </f:if>
     <f:if condition="{result.count} > 0">
-        <div class="tx-indexedsearch-info-sword fs-xl">
+        <div class="tx-indexedsearch-info-sword fs-xl text-center w-100">
             <f:for each="{searchWords}" as="searchWord" key="key">
                 <f:if condition="{key} > 0">
                     <f:then>
@@ -55,7 +55,7 @@
             </div>
         </f:then>
         <f:else>
-            <div class="tx-indexedsearch-info-noresult fs-2xl">
+            <div class="tx-indexedsearch-info-noresult fs-2xl text-center w-100 fw-bold mb-4">
                 <f:translate key="result.noResult" />
             </div>
         </f:else>

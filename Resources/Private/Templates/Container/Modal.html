@@ -77,20 +77,7 @@
         id="{modalId}"
     >
         <f:if condition="{modalTitle}">
-            <div class="dialog-header">
-                <div class="container">
-                    <div class="row g-0">
-                        <div class="col-10 title">
-                            <h3 class="dialog-title h3" id="{modalLabelId}">{modalTitle}</h3>
-                        </div>
-                        <div class="col-2 close text-end">
-                            <button class="btn-close" data-bs-dismiss="dialog" title="{closeLabel}" type="button">
-                                <span class="visually-hidden">{closeLabel}</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <f:render partial="Dialog/Header" arguments="{title: modalTitle, labelId: modalLabelId, closeLabel: closeLabel, headingLevel: 3}"/>
         </f:if>
         <div class="dialog-body" data-modal-content-root>
             <f:if condition="{children_101}">

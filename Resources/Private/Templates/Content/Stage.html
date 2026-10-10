@@ -1,10 +1,29 @@
 <html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
+<f:if condition="{data.tx_link_position} == 'btn-center'">
+    <f:then><f:variable name="stageJustify">justify-content-center</f:variable></f:then>
+    <f:else>
+        <f:if condition="{data.tx_link_position} == 'btn-right'">
+            <f:then><f:variable name="stageJustify">justify-content-end</f:variable></f:then>
+            <f:else><f:variable name="stageJustify">justify-content-start</f:variable></f:else>
+        </f:if>
+    </f:else>
+</f:if>
+<f:if condition="{data.header_position} == 'center'">
+    <f:then><f:variable name="stageTextAlign">text-center</f:variable></f:then>
+    <f:else>
+        <f:if condition="{data.header_position} == 'right'">
+            <f:then><f:variable name="stageTextAlign">text-end</f:variable></f:then>
+            <f:else><f:variable name="stageTextAlign">text-start</f:variable></f:else>
+        </f:if>
+    </f:else>
+</f:if>
+
 <div class="frame frame-type-{data.CType} stage {data.tx_stage_position} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}{f:if(condition: data.tx_stage_bg, then: ' stage-bg')}{f:if(condition: data.tx_stage_bgcolor, then: ' stage-bg-dark', else: ' stage-bg-light')}">
     <f:if condition="{data.header} || {data.bodytext}">
         <f:if condition="{data.header_layout} != 100">
-            <div class="container stage-content-wrapper {data.tx_link_position}">
-                <div class="stage-content teaser{f:if(condition: data.header_position, then: ' text-{data.header_position}')}">
+            <div class="container stage-content-wrapper d-flex {stageJustify} py-4 px-3">
+                <div class="stage-content teaser {stageTextAlign}">
                     <div class="teaser-content{f:if(condition: data.grid_bgcolor, then: ' bg{data.grid_bgcolor}')}">
                         <f:if condition="{data.header}">
                             <f:variable name="headerHeadingSizeClass" value="fs-5xl"/>

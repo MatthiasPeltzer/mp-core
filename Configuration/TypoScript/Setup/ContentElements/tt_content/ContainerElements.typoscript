@@ -8,6 +8,7 @@ lib {
 
     partialRootPaths {
       0 = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/
+      5 = EXT:mp_core/Resources/Private/Partials/
       10 = {$plugin.containerContentElement.view.partialRootPath}
     }
 

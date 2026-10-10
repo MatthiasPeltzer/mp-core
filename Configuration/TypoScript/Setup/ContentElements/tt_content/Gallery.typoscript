@@ -3,6 +3,7 @@ tt_content {
 
   gallery {
     partialRootPaths {
+      210 = EXT:mp_core/Resources/Private/Partials/
       200 = EXT:mp_core/Resources/Extensions/fluid_styled_content/Private/Partials/
     }
 

@@ -95,8 +95,12 @@ Track fights against BS6 and shrink them:
 | `bs6-component-specificity` | `_modal.scss`, `_carousel.scss`, `_gallery.scss`, navigation BS6 shells | Prefer markup/utilities; keep for `btn-close` until BS6 token API covers gallery chrome |
 | `!important` | buttons, nav, print, ckeditor | Remove when token or utility replaces |
 | `light-theme` mixin | legacy SCSS modules | Replace with `light-dark()` / `data-bs-theme` tokens |
-| Hard-coded radii (25px pills) | `_modal.scss` | Prefer `--radius-*` / `rounded-pill` in templates where possible |
+| Hard-coded radii (25px pills) | `_modal.scss` | Dialog chrome uses `rounded-pill py-1 px-3` + `.dialog-chrome` token background |
 | Per-slide `.carousel-iterator` | removed from gallery | Counter lives in footer markup; `galleryDialog.ts` updates on `slid.bs.carousel` |
+| Dialog header row/col duplication | unified | `Partials/Dialog/Header.html` + flex utilities; `_modal.scss` footer 50% columns removed |
+| Figure `.count` / caption padding | `_figures.scss` | Gallery uses `badge` + position utilities; captions use `p-3 rounded text-center` |
+| `ce-headline-*` in new Fluid output | `_fluid_styled_content.scss` | Headers emit `text-start|center|end`; legacy SCSS kept for RTE bodytext |
+| Indexed search result summary | `_indexed_search.scss` | `Search.html` uses `text-center` / `fw-bold` utilities; brand result chrome stays in SCSS |
 
 Run `rg "bs6-component-specificity|!important" Build/Assets/Scss` after each parity pass.
 

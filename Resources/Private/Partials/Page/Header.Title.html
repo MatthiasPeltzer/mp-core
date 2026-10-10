@@ -5,12 +5,12 @@
 
 <f:variable name="file">{media.0}</f:variable>
 <div class="top-container pb-5">
-    <div class="stage">
-        <div class="container stage-content-wrapper justify-content-center{f:if(condition:data.media, then:'', else: ' position-relative')}">
+    <div class="stage stage-middle">
+        <div class="container stage-content-wrapper d-flex align-items-center justify-content-center{f:if(condition:data.media, then:'', else: ' position-relative')}">
             <div class="stage-content text-center teaser">
-                <div class="teaser-content bgcolor-1">
+                <div class="teaser-content bgcolor-1 pt-3">
                     <f:if condition="{data.title}">
-                        <h1 id="headerMain"><span class="fs-5xl">{data.title}</span></h1>
+                        <h1 class="mb-0" id="headerMain"><span class="fs-4xl">{data.title}</span></h1>
                     </f:if>
                     <f:if condition="{data.lastUpdated} || {mainCategory}">
                         <p class="date fs-sm">

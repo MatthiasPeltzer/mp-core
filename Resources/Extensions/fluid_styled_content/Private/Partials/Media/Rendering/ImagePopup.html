@@ -1,25 +1,14 @@
 <html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
+<f:variable name="closeLabel">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</f:variable>
+
 <dialog class="dialog dialog-fullscreen" data-bs-backdrop="static" id="Modal-{file.uid}">
-    <div class="dialog-header">
-        <div class="container">
-            <div class="row g-0">
-                <div class="col-10 title">
-                    <h3 class="dialog-title h3" id="modalLabel-{file.uid}">{file.alternative}</h3>
-                </div>
-                <div class="col-2 close text-end">
-                    <button class="btn-close" data-bs-dismiss="dialog" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}" type="button">
-                        <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <f:render partial="Dialog/Header" arguments="{title: file.alternative, labelId: 'modalLabel-{file.uid}', closeLabel: closeLabel, headingLevel: 3}"/>
     <div class="dialog-body">
         <div class="container">
             <div class="row g-0">
                 <figure class="image figure">
-                    <picture>
+                    <picture class="d-flex justify-content-center">
                         <f:image class="figure-img img-fluid rounded" crop="false" decoding="async" fileExtension="webp" image="{file}" loading="lazy" maxWidth="1920"/>
                     </picture>
                     <f:if condition="{file.description} || {file.properties.caption} || {file.properties.copyright}">

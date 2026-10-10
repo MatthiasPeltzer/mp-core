@@ -1,35 +1,43 @@
 <div class="frame frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}" id="c{data.uid}">
     <f:if condition="{data.header}">
-        <f:variable name="header_position">{f:if(condition: data.header_position, then: 'ce-headline-{data.header_position}', else: 'ce-headline-left')}</f:variable>
+        <f:if condition="{data.header_position} == 'center'">
+            <f:then><f:variable name="headerTextAlign">text-center</f:variable></f:then>
+            <f:else>
+                <f:if condition="{data.header_position} == 'right'">
+                    <f:then><f:variable name="headerTextAlign">text-end</f:variable></f:then>
+                    <f:else><f:variable name="headerTextAlign">text-start</f:variable></f:else>
+                </f:if>
+            </f:else>
+        </f:if>
 
         <f:switch expression="{data.header_layout}">
             <f:case value="1">
-                <h1 class="{header_position}" id="headerMain">
+                <h1 class="{headerTextAlign} ce-headline-{data.header_position}" id="headerMain">
                     <span>{data.header}</span>
                 </h1>
             </f:case>
             <f:case value="2">
-                <h2 class="{header_position}">
+                <h2 class="{headerTextAlign} ce-headline-{data.header_position}">
                     <span>{data.header}</span>
                 </h2>
             </f:case>
             <f:case value="3">
-                <h3 class="{header_position}">
+                <h3 class="{headerTextAlign} ce-headline-{data.header_position}">
                     <span>{data.header}</span>
                 </h3>
             </f:case>
             <f:case value="4">
-                <h4 class="{header_position}">
+                <h4 class="{headerTextAlign} ce-headline-{data.header_position}">
                     <span>{data.header}</span>
                 </h4>
             </f:case>
             <f:case value="5">
-                <h5 class="{header_position}">
+                <h5 class="{headerTextAlign} ce-headline-{data.header_position}">
                     <span>{data.header}</span>
                 </h5>
             </f:case>
             <f:case value="6">
-                <h6 class="{header_position}">
+                <h6 class="{headerTextAlign} ce-headline-{data.header_position}">
                     <span>{data.header}</span>
                 </h6>
             </f:case>

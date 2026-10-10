@@ -3,7 +3,22 @@
     <f:if condition="{data.header} || {data.subheader} || {data.date}">
         <f:comment><!-- ce_modal: tx_link styles the built-in trigger only (see ContentElements.md) --></f:comment>
         <f:variable name="headerTeaserLink">{f:if(condition: '{data.tx_link} && {data.CType} != \'ce_modal\' && {data.tx_link_action} != \'modal\'', then: data.tx_link)}</f:variable>
-        <header class="page-header ce-headline-{data.header_position}">
+        <f:if condition="{data.header_position} == 'center'">
+            <f:then>
+                <f:variable name="headerTextAlign">text-center</f:variable>
+            </f:then>
+            <f:else>
+                <f:if condition="{data.header_position} == 'right'">
+                    <f:then>
+                        <f:variable name="headerTextAlign">text-end</f:variable>
+                    </f:then>
+                    <f:else>
+                        <f:variable name="headerTextAlign">text-start</f:variable>
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+        <header class="page-header {headerTextAlign} ce-headline-{data.header_position}">
             <f:render arguments="{
 			header: data.header,
 			kicker: data.header_kicker,
@@ -13,19 +28,19 @@
 			linkText: data.tx_link_text,
 			linkAction: data.tx_link_action,
 			teaserLink: headerTeaserLink,
-			positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')} {f:if(condition: data.tx_header_style, then: data.tx_header_style)}',
+			positionClass: '{headerTextAlign} {f:if(condition: data.tx_header_style, then: data.tx_header_style)}',
 			headingSizeClass: headerHeadingSizeClass,
 			link: data.header_link,
 			default: settings.defaultHeaderType}" partial="Header/Header"/>
             <f:render arguments="{
 			date: data.date,
-			positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')}'}" partial="Header/Date"/>
+			positionClass: headerTextAlign}" partial="Header/Date"/>
             <f:render arguments="{
 			subheader: data.subheader,
 			layout: data.header_layout,
 			linkText: data.tx_link_text,
 			teaserLink: headerTeaserLink,
-			positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')}',
+			positionClass: headerTextAlign,
 			default: settings.defaultHeaderType}" partial="Header/SubHeader"/>
         </header>
     </f:if>

@@ -219,6 +219,15 @@ $nav-transition-bounce: transform 0.5s cubic-bezier(0, 1.56, 0.64, 1);
   }
 }
 
+// BS6 reboot sets body font on `button` with high :not(#\#) specificity. Anchor `.first-nav`
+// picks up heading font from variant mainnav SCSS; top-level nav buttons need the same.
+.mainnav-desktop :is(button.first-nav, button.first-nav-btn) {
+  @include bs6-component-specificity {
+    font-family: var(--heading-font-family);
+    font-weight: 700;
+  }
+}
+
 // Smooth hover effects on menu items
 .main-menu li :is(a, button) {
   transition: background-color 0.15s ease

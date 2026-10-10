@@ -10,17 +10,14 @@
   &-caption {
     .caption {
       background-color: var(--gray-900);
-      border-radius: 8px;
       display: block;
       margin: -24px auto 0;
       max-width: 80%;
-      padding: 16px;
       position: relative;
-      text-align: center;
 
       .textpic & {
         margin-top: -18px;
-        padding: 8px;
+        padding: 8px !important;
       }
 
       @include utilities.light-theme {
@@ -32,21 +29,6 @@
   .popup & {
     display: block;
   }
-}
-
-.count {
-  background-color: var(--primary-base);
-  border-radius: 5px;
-  bottom: 5px;
-  color: var(--white);
-  display: inline-block;
-  font-size: var(--font-size-md);
-    line-height: var(--line-height-md);
-  font-weight: 500;
-  margin-bottom: 0;
-  padding: 3px 5px;
-  position: absolute;
-  right: 5px;
 }
 
 .image {

@@ -1,6 +1,8 @@
 <html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
 <f:variable name="file">{files.0}</f:variable>
+<f:variable name="galleryCloseLabel">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</f:variable>
+<f:variable name="galleryDescriptionTitle">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_description')}</f:variable>
 
 <div class="frame frame-type-{data.CType} frame-layout-{data.layout}{f:if(condition: data.space_before_class, then: ' frame-space-before-{data.space_before_class}')}{f:if(condition: data.space_after_class, then: ' frame-space-after-{data.space_after_class}')}{f:if(condition: data.gallery_textcolor, then: ' gallery-text-white')}{f:if(condition: data.gallery_bg, then: ' gallery-bg-dark')}" id="c{data.uid}">
 
@@ -21,7 +23,7 @@
                     <a class="popup" data-bs-target="#galleryModal-{data.uid}" data-bs-toggle="dialog" href="#galleryModal-{data.uid}" title="{f:translate(key:'tt_content.gallery_enlarge_picture', extensionName: 'mp_core')}">
                         <f:render arguments="{_all}" section="GallerySingle"/>
                         <f:if condition="{files -> f:count()} > 1">
-                            <p class="count">{files -> f:count()} {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.images')}</p>
+                            <p class="badge theme-primary fs-sm fw-medium mb-0 position-absolute bottom-0 end-0 m-1">{files -> f:count()} {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.images')}</p>
                         </f:if>
                     </a>
                 </div>
@@ -124,20 +126,7 @@
                 </section>
                 <f:if condition="{file.description}">
                     <dialog class="dialog dialog-md dialog-scrollable text-start" data-bs-backdrop="static" id="modal-description-{data.uid}">
-                        <div class="dialog-header">
-                            <div class="container">
-                                <div class="row g-0">
-                                    <div class="col-10 title">
-                                        <h2 class="dialog-title h3">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_description')}</h2>
-                                    </div>
-                                    <div class="col-2 close text-end">
-                                        <button class="btn-close" data-bs-dismiss="dialog" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}" type="button">
-                                            <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <f:render partial="Dialog/Header" arguments="{title: galleryDescriptionTitle, closeLabel: galleryCloseLabel, headingLevel: 2}"/>
                         <div class="dialog-body">
                             <f:if condition="{file.description}">
                                 <f:format.html>{file.description}</f:format.html>
@@ -150,20 +139,7 @@
 
         <f:if condition="{data.gallery_layout} == 'gallery-single' || {data.gallery_layout} == 'gallery-tiles' || {data.gallery_layout} == 'gallery-slider'">
             <dialog aria-labelledby="modalLabel-{data.uid}" class="dialog dialog-fullscreen text-start" data-bs-backdrop="static" id="galleryModal-{data.uid}">
-                <div class="dialog-header">
-                    <div class="container">
-                        <div class="row g-0">
-                            <div class="col-10 title">
-                                <h3 class="dialog-title h3" id="modalLabel-{data.uid}">{data.header}</h3>
-                            </div>
-                            <div class="col-2 close text-end">
-                                <button class="btn-close" data-bs-dismiss="dialog" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}" type="button">
-                                    <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <f:render partial="Dialog/Header" arguments="{title: data.header, labelId: 'modalLabel-{data.uid}', closeLabel: galleryCloseLabel, headingLevel: 3}"/>
                 <div class="dialog-body">
                     <div class="carousel slide carousel-fade" data-bs-autoplay="false" data-bs-theme="dark" id="galleryCarousel-{data.uid}">
                                 <ul class="carousel-inner list-unstyled">
@@ -184,6 +160,7 @@
                                 </ul>
                             </div>
                     <div class="dialog-footer container">
+                        <div class="dialog-chrome rounded-pill py-1 px-3">
                         <nav aria-label="{f:translate(key: 'tt_content.gallery_navigation', extensionName: 'mp_core')}" class="w-100">
                             <ul class="list-unstyled d-flex align-items-center justify-content-between gap-2 mb-0">
                                 <li>
@@ -209,6 +186,7 @@
                                 </li>
                             </ul>
                         </nav>
+                        </div>
                     </div>
                 </div>
             </dialog>
@@ -249,7 +227,7 @@
         </picture>
         <f:if condition="{file.properties.caption}">
             <figcaption class="figure-caption">
-                <p class="caption container mb-0 fs-md">{file.properties.caption}</p>
+                <p class="caption mx-auto text-center p-3 rounded mb-0 fs-md">{file.properties.caption}</p>
             </figcaption>
         </f:if>
     </figure>
@@ -295,12 +273,12 @@
 <f:section name="GalleryOriginal">
     <div class="image-wrapper-original image figure">
         <figure class="image figure">
-            <picture>
+            <picture class="d-flex justify-content-center">
                 <f:image class="figure-img img-fluid rounded" crop="false" decoding="async" fileExtension="webp" loading="lazy" maxWidth="1920" src="{file.uid}" treatIdAsReference="1"/>
             </picture>
             <f:if condition="{file.properties.caption}">
                 <figcaption class="figure-caption">
-                    <p class="caption container mb-0 fs-md">{file.properties.caption}</p>
+                    <p class="caption mx-auto text-center p-3 rounded mb-0 fs-md">{file.properties.caption}</p>
                 </figcaption>
             </f:if>
         </figure>

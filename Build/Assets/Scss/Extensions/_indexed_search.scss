@@ -43,13 +43,7 @@
 }
 
 .tx-indexedsearch-info-sword {
-  text-align: center;
-  width: 100%;
-
   + p {
-    text-align: center;
-    width: 100%;
-
     + .tx-indexedsearch-browsebox {
       margin-bottom: 16px;
     }
@@ -104,13 +98,6 @@
   + .tx-indexedsearch-browsebox {
     margin-bottom: 16px;
   }
-}
-
-.tx-indexedsearch-info-noresult {
-  font-weight: 700;
-  margin-bottom: 30px;
-  text-align: center;
-  width: 100%;
 }
 
 .tx-indexedsearch-searchbox {

@@ -6,22 +6,9 @@
     data-bs-backdrop="static"
     id="{modalId}"
 >
-    <div class="dialog-header">
-        <div class="container">
-            <div class="row g-0">
-                <div class="col-10 title">
-                    <f:if condition="{title}">
-                        <h2 class="dialog-title h3" id="{labelId}">{title}</h2>
-                    </f:if>
-                </div>
-                <div class="col-2 close text-end">
-                    <button class="btn-close" data-bs-dismiss="dialog" title="{closeLabel}" type="button">
-                        <span class="visually-hidden">{closeLabel}</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <f:if condition="{title}">
+        <f:render partial="Dialog/Header" arguments="{title: title, labelId: labelId, closeLabel: closeLabel, headingLevel: 2}"/>
+    </f:if>
     <div class="dialog-body" data-modal-content-root>
         {bodyContent -> f:format.raw()}
     </div>

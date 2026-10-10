@@ -26,7 +26,7 @@
     </f:if>
     <f:if condition="{file.properties.caption}">
         <figcaption class="figure-caption">
-            <span class="caption fs-md">{file.properties.caption} </span>
+            <p class="caption mx-auto text-center p-3 rounded mb-0 fs-md">{file.properties.caption}</p>
         </figcaption>
     </f:if>
 </figure>
@@ -76,21 +76,10 @@
         <f:render arguments="{_all}" partial="Media/Rendering/ImagePopup"/>
     </f:if>
     <f:if condition="{file.description}">
+        <f:variable name="galleryCloseLabel">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</f:variable>
+        <f:variable name="galleryDescriptionTitle">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_description')}</f:variable>
         <dialog class="dialog dialog-md dialog-scrollable text-start" data-bs-backdrop="static" id="modal-description-{data.uid}">
-            <div class="dialog-header">
-                <div class="container">
-                    <div class="row g-0">
-                        <div class="col-10 title">
-                            <h2 class="dialog-title h3">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_picture_description')}</h2>
-                        </div>
-                        <div class="col-2 close text-end">
-                            <button class="btn-close" data-bs-dismiss="dialog" title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}" type="button">
-                                <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_close')}</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <f:render partial="Dialog/Header" arguments="{title: galleryDescriptionTitle, closeLabel: galleryCloseLabel, headingLevel: 2}"/>
             <div class="dialog-body">
                 <f:if condition="{file.description}">
                     <f:format.html>{file.description}</f:format.html>

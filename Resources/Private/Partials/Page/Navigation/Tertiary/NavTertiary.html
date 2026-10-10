@@ -22,6 +22,7 @@
 
             <f:if condition="{site.settings.search.headerSearch}">
                 <li class="mainnav-desktop-item searchbox">
+                    <f:variable name="searchNavLabelClass">fs-lg</f:variable>
                     <f:render arguments="{_all}" partial="Navigation/Search"/>
                 </li>
             </f:if>

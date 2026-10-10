@@ -16,10 +16,6 @@
   }
 
   &-link {
-    font-size: var(--font-size-md);
-    line-height: var(--line-height-md);
-    font-weight: 500;
-
     @include utilities.on-interact {
       outline-offset: -2px;
       text-decoration: underline;
