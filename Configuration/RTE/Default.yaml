@@ -38,8 +38,8 @@ editor:
 
     style:
       definitions:
-        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.paragraph.kicker', element: 'p', classes: [ 'kicker' ] }
-        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.paragraph.subheader', element: 'p', classes: [ 'lead' ] }
+        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.paragraph.kicker', element: 'p', classes: [ 'kicker', 'fs-sm' ] }
+        - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.paragraph.subheader', element: 'p', classes: [ 'lead', 'fs-lg' ] }
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.blockquote.quote', element: 'blockquote', classes: [ 'quote-dot' ] }
 
         - { name: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_rte.xlf:style.button.primary', element: 'a', classes: [ 'btn', 'btn-solid', 'theme-primary' ] }

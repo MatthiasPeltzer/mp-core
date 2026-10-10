@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // Theme switch (Bootstrap 6 `.switch` + MPC icon layout)
@@ -23,8 +22,7 @@
   }
 
   label {
-    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
-
+    font-size: var(--font-size-md);
     cursor: pointer;
     font-weight: 700;
     line-height: 1;

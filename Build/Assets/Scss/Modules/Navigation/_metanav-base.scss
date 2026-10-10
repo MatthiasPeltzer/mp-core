@@ -1,5 +1,4 @@
 @use "Base/Bootstrap/bootstrap-config";
-@use "Base/Bootstrap/mpc-design-tokens" as *;
 @use "Mixins/utilities" as *;
 @use "bootstrap/scss/mixins/visually-hidden" as *;
 
@@ -25,10 +24,10 @@
   }
 
   &-wrapper {
-    background: $gray-900;
+    background: var(--gray-900);
 
     @include light-theme {
-      background: $gray-200;
+      background: var(--gray-200);
     }
   }
 }

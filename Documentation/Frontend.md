@@ -86,7 +86,7 @@ On this branch, **prefer Bootstrap 6 defaults** (compiled tokens, component mark
 | Flyouts | `.dropdown`, `.dropdown-menu`, `data-bs-toggle="dropdown"`, `*.bs.dropdown` | `.menu`, `data-bs-toggle="menu"`, `*.bs.menu` (toggle and `.menu` are siblings) |
 | Responsive utilities | `col-md-6`, `d-lg-none`, … | `md:col-6`, `lg:d-none`, … |
 
-MPC SCSS reads **BS6 tokens** (`--primary-base`, `--bg-body`, `--gray-*`, …) and MPC frame tokens (`--mpc-color-*`). Override BS6 **token maps** where possible (`$root-tokens`, `$theme-colors` in `_mpc-bootstrap-theme.scss`, shared greys/spacing in `_mpc-design-tokens.scss`). Bootstrap 5 **`_custom-variables*.scss`** remain on **`main`** only; they are not part of the BS6 branch build.
+MPC SCSS reads **BS6 tokens** only: `--primary-base`, `--bg-body`, `--gray-*`, `--font-size-*`, `--line-height-*`, frame ladder `--bg-1` … `--bg-8` (from `$theme-bgs`). Override BS6 **token maps** in `_mpc-bootstrap-theme.scss` (`$theme-colors`, `$theme-bgs`) and `_mpc-bs6-root-overrides.scss` (`$root-tokens`). Typography uses Bootstrap 6’s default `$font-sizes` (fluid `clamp()` from `lg` upward). In Fluid/Vue markup prefer BS6 utilities (`fs-sm`, `fs-md`, `fs-lg`, … or `text-md` for size + line-height) — not legacy `fs-base` or BS5 numeric `fs-1`…`fs-6`. Bootstrap 5 **`_custom-variables*.scss`** remain on **`main`** only; they are not part of the BS6 branch build.
 
 ---
 
@@ -147,35 +147,29 @@ If a bundle grew legitimately (new component, intentional dependency upgrade),
 update `scripts/bundle-budgets.json` in the **same commit** as the size
 change. Never raise a budget just to silence the gate.
 
-### Baseline (2026-06-03)
+### Baseline (2026-10-10)
 
-Captured against Vite 8, Bootstrap 6 (alpha), Vue 3.5, Swiper 14.
+Captured after vendor chunking, BS6 Menu overrides, full `$theme-colors` semantic keys, and Sass module migration. Entry chunks below; vendor JS/CSS are separate (`vendor-bootstrap`, `vendor-vue`, `vendor-swiper`, …).
 
 | Bundle | Raw | Gzip | Brotli |
 |---|---:|---:|---:|
-| `bootstrap.js` | 65.9 KiB | 20.1 KiB | 17.9 KiB |
-| `screen.js` | 33.0 KiB | 9.6 KiB | 8.6 KiB |
-| `vue.js` | 239.8 KiB | 72.5 KiB | 63.8 KiB |
-| `navigationPrimary.js` | 1.7 KiB | 662 B | 560 B |
-| `navigationSecondary.js` | 5.6 KiB | 1.3 KiB | 1.2 KiB |
-| `navigationTertiary.js` | 4.4 KiB | 1.3 KiB | 1.1 KiB |
-| `paginationTruncate.js` | 1.7 KiB | 733 B | 579 B |
-| `theme-init.js` | 222 B | 183 B | 129 B |
-| `bootstrap.css` | 174.1 KiB | 24.2 KiB | 17.5 KiB |
-| `screen.css` | 67.4 KiB | 10.6 KiB | 9.1 KiB |
-| `vue.css` | 24.2 KiB | 3.9 KiB | 3.4 KiB |
-| `navigationPrimary.css` | 7.8 KiB | 1.8 KiB | 1.6 KiB |
-| `navigationSecondary.css` | 25.2 KiB | 3.6 KiB | 3.2 KiB |
-| `navigationTertiary.css` | 17.3 KiB | 3.2 KiB | 2.8 KiB |
-| `ckeditor.css` | 18.3 KiB | 2.7 KiB | 2.3 KiB |
-| `print.css` | 1.3 KiB | 559 B | 432 B |
-| **total** | -- | **158.7 KiB** | **135.8 KiB** |
+| `bootstrap.js` (stub) | 39 B | 59 B | 43 B |
+| `screen.js` | 16.7 KiB | 5.5 KiB | 4.9 KiB |
+| `vue.js` | 1.9 KiB | 936 B | 822 B |
+| `navigationPrimary.js` | 1.8 KiB | 838 B | 718 B |
+| `navigationSecondary.js` | 5.5 KiB | 1.6 KiB | 1.4 KiB |
+| `navigationTertiary.js` | 4.8 KiB | 1.5 KiB | 1.3 KiB |
+| `bootstrap.css` | 674.6 KiB | 53.8 KiB | 35.3 KiB |
+| `screen.css` | 79.8 KiB | 11.7 KiB | 10.0 KiB |
+| `vue.css` | 8.8 KiB | 1.6 KiB | 1.4 KiB |
+| `navigationPrimary.css` | 18.1 KiB | 2.7 KiB | 2.4 KiB |
+| `navigationSecondary.css` | 38.6 KiB | 4.5 KiB | 4.0 KiB |
+| `navigationTertiary.css` | 29.8 KiB | 4.0 KiB | 3.6 KiB |
+| `ckeditor.css` | 18.3 KiB | 2.6 KiB | 2.3 KiB |
+| `print.css` | 1.3 KiB | 558 B | 430 B |
+| **total (all JS+CSS in Public/)** | -- | **205.5 KiB** | **169.2 KiB** |
 
-After the manual-chunk + dynamic-import refactor (see "Vendor splitting"
-below), expect `vue.js` itself to shrink considerably as the Vue runtime,
-Swiper, and the three Vue SFCs move into long-lived `vendor-*` / per-SFC
-chunks. Re-run `npm run check-size` once after the next build and lower
-the affected budgets in `scripts/bundle-budgets.json`.
+Navigation CSS budgets in `scripts/bundle-budgets.json` include headroom for BS6 specificity overrides; WARN near 90% of budget is expected until the next trim pass.
 
 ### Vendor splitting
 
@@ -328,7 +322,7 @@ Layers from low to high specificity:
 
 ### Bootstrap Customization
 
-On **`feature/bootstrap-6`**, theme and layout tokens live under `Build/Assets/Scss/Base/Bootstrap/` — e.g. `_mpc-bootstrap-theme.scss`, `_mpc-bs6-root-overrides.scss`, `_mpc-bs6-config-overrides.scss`, `_mpc-bootstrap-bundle.scss`, `_bootstrap-config.scss`, `_mpc-design-tokens.scss`.
+On **`feature/bootstrap-6`**, theme and layout tokens live under `Build/Assets/Scss/Base/Bootstrap/` — e.g. `_mpc-bootstrap-theme.scss`, `_mpc-bs6-root-overrides.scss`, `_mpc-bootstrap-bundle.scss`, `_bootstrap-config.scss`.
 
 Grid breakpoints and container max-widths are **Bootstrap 6 defaults** from npm (`bootstrap/scss/_config.scss`: `lg` 1024px, `xl` 1280px, `2xl` 1536px) — no separate MPC override file. Responsive `<picture>` sources and Swiper JSON use the same `lg` threshold (1024px).
 

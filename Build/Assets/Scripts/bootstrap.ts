@@ -11,4 +11,7 @@ import Drawer from 'bootstrap/js/dist/drawer.js'
 import Menu from 'bootstrap/js/dist/menu.js'
 import Tab from 'bootstrap/js/dist/tab.js'
 
+// Keep component modules (data-api listeners) in the bootstrap bundle.
+void [Button, Carousel, Collapse, Dialog, Drawer, Menu, Tab]
+
 export { Button, Carousel, Collapse, Dialog, Drawer, Menu, Tab }

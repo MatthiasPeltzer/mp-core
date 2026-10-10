@@ -1,40 +1,33 @@
 // MPC brand colours for Bootstrap 6 @use … with ($theme-colors: …).
-// Keys merge with Bootstrap defaults via defaults() — only override roles we care about.
+// Full semantic roles (incl. bg-subtle) so :root emits --{role}-* tokens; partial
+// maps would replace Bootstrap defaults and drop bg-subtle (see supplement gradient).
+
+@function mpc-brand-role($base, $fg: #fff, $contrast: $fg) {
+  @return (
+    "base": $base,
+    "bg": $base,
+    "fg": $fg,
+    "contrast": $contrast,
+    "border": $base,
+    "fg-emphasis": light-dark(color-mix(in oklch, $base 75%, #000), color-mix(in oklch, $base 65%, #fff)),
+    "bg-subtle": light-dark(color-mix(in oklch, $base 12%, #fff), color-mix(in oklch, $base 52%, #000)),
+    "bg-muted": light-dark(color-mix(in oklch, $base 20%, #fff), color-mix(in oklch, $base 42%, #000)),
+    "focus-ring": light-dark(color-mix(in oklch, $base 50%, #fff), color-mix(in oklch, $base 75%, #000)),
+  );
+}
 
 $theme-colors: (
-  "primary": (
-    "base": #154d3b,
-    "bg": #154d3b,
-    "fg": #fff,
-    "contrast": #fff,
-    "border": #154d3b,
-  ),
-  "secondary": (
-    "base": #0a406e,
-    "bg": #0a406e,
-    "fg": #fff,
-    "contrast": #fff,
-    "border": #0a406e,
-  ),
-  "danger": (
-    "base": #900,
-    "bg": #900,
-    "fg": #fff,
-    "contrast": #fff,
-    "border": #900,
-  ),
-  "tertiary": (
-    "base": #300,
-    "bg": #300,
-    "fg": #fff,
-    "contrast": #fff,
-    "border": #300,
-  ),
-  "quaternary": (
-    "base": #777,
-    "bg": #777,
-    "fg": #fff,
-    "contrast": #fff,
-    "border": #777,
-  ),
+  "primary": mpc-brand-role(#154d3b),
+  "secondary": mpc-brand-role(#0a406e),
+  "danger": mpc-brand-role(#900),
+  "tertiary": mpc-brand-role(#300),
+  "quaternary": mpc-brand-role(#777),
+);
+
+// Editor frame ladder (classes `bgcolor-1` … `bgcolor-8`) — merged into BS6 `$theme-bgs` → `--bg-*`.
+$theme-bgs: (
+  "5": light-dark(var(--gray-400), var(--gray-600)),
+  "6": light-dark(var(--gray-500), var(--gray-500)),
+  "7": light-dark(var(--gray-600), var(--gray-400)),
+  "8": light-dark(var(--gray-700), var(--gray-300)),
 );

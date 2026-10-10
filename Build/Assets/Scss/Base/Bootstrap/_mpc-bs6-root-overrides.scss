@@ -2,14 +2,14 @@
 
 $root-tokens: (
   --body-font-family: "OpenSans, system-ui, Segoe UI, Ubuntu, Cantarell, Noto Sans, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
-  --fg-body: light-dark(#222, #fff),
-  --bg-body: light-dark(#fff, #000),
+  --fg-body: light-dark(var(--gray-900), var(--gray-050)),
+  --bg-body: light-dark(var(--white), var(--black)),
   --heading-font-family: "SpecialElite, Courier New, Courier, ui-monospace, monospace",
   --heading-font-weight: 400,
-  --heading-color: light-dark(#222, #fff),
-  --link-color: light-dark(#222, #fff),
+  --heading-color: light-dark(var(--gray-900), var(--gray-050)),
+  --link-color: light-dark(var(--gray-900), var(--gray-050)),
   --link-decoration: none,
-  --link-hover-color: light-dark(color-mix(in oklch, #222 90%, #000), color-mix(in oklch, #fff 90%, #000)),
-  --mpc-accent-orange: #fd7e14,
-  --mpc-accent-yellow: #ffc107,
+  --link-hover-color: light-dark(color-mix(in oklch, var(--gray-900) 90%, var(--black)), color-mix(in oklch, var(--gray-050) 90%, var(--black))),
+  --mpc-accent-orange: var(--orange-500),
+  --mpc-accent-yellow: var(--yellow-500),
 );

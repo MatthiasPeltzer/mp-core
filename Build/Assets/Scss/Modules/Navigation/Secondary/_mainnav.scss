@@ -1,7 +1,6 @@
 @use "sass:map";
 @use "Base/Bootstrap/bootstrap-config";
 @use "Mixins/utilities" as *;
-@use "Base/Bootstrap/mpc-design-tokens" as *;
 @use "../navigation-base";
 
 // =============================================================================
@@ -150,8 +149,6 @@ $transition-bounce: navigation-base.$nav-transition-bounce;
         top: -88px;
         width: calc(100% - 64px);
 
-        @include font-size(map.get($font-size-scale, 4xl));
-
         button,
         a {
           font-weight: 400;
@@ -224,8 +221,6 @@ $transition-bounce: navigation-base.$nav-transition-bounce;
       // vertical list with their own styling, not the three-column mega-menu grid.
       li:not(.tx-indexedsearch-suggest-option, .tx-indexedsearch-suggest-heading) {
         width: 33.3333%;
-
-        @include font-size(map.get($font-size-scale, xl));
 
         button,
         a {
@@ -373,15 +368,12 @@ $transition-bounce: navigation-base.$nav-transition-bounce;
     display: block;
     font-family: var(--heading-font-family);
     font-weight: 700;
-    line-height: 1;
     margin-bottom: 0;
     margin-right: 16px;
     outline-offset: 2px;
     padding: 4px 2px;
     position: relative;
     top: 0;
-
-    @include font-size(map.get($font-size-scale, 2xl));
 
     &[aria-expanded="true"],
     &.act,
@@ -508,8 +500,6 @@ $transition-bounce: navigation-base.$nav-transition-bounce;
     padding: 16px 0;
     position: relative;
     text-transform: uppercase;
-
-    @include font-size(map.get($font-size-scale, md));
 
     @include on-interact {
       color: var(--fg-body);
@@ -641,8 +631,6 @@ $transition-bounce: navigation-base.$nav-transition-bounce;
   }
 
   .sub {
-    @include font-size(map.get($font-size-scale, md));
-
     margin-bottom: 0;
     outline-offset: -2px;
     padding-bottom: 16px;

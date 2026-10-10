@@ -1,5 +1,9 @@
 @use "Mixins/utilities";
 
+// Grid tone helpers for container/teaser markup (`grid-light` / `grid-dark` in Fluid).
+// `.grid-light` inverts text to sit on a light panel (same as BS5). `.grid-dark` is
+// intentionally unstyled: default `--fg-body` on the frame background matches production.
+
 // Definiere ein Mix\-in, das die häufig verwendeten Eigenschaften übernimmt
 @mixin grid-colors($color) {
   h1,

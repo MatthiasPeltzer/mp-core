@@ -11,10 +11,10 @@
 </f:alias>
 <f:for each="{resultsets}" as="result" key="freeIndexUid">
     <f:if condition="{result.categoryTitle}">
-        <h1 class="tx-indexedsearch-category">{result.categoryTitle}</h1>
+        <h1 class="tx-indexedsearch-category fs-2xl">{result.categoryTitle}</h1>
     </f:if>
     <f:if condition="{result.count} > 0">
-        <div class="tx-indexedsearch-info-sword">
+        <div class="tx-indexedsearch-info-sword fs-xl">
             <f:for each="{searchWords}" as="searchWord" key="key">
                 <f:if condition="{key} > 0">
                     <f:then>
@@ -33,7 +33,7 @@
     {result.searchedInSectionInfo}
     <f:if condition="{result.count} > 0">
         <f:then>
-            <div class="tx-indexedsearch-browsebox">
+            <div class="tx-indexedsearch-browsebox fs-sm">
                 <f:render partial="Pagination" arguments="{pagination: result.pagination, searchParams: searchParams}" />
             </div>
             <ul class="tx-indexedsearch-list">
@@ -50,12 +50,12 @@
                   </f:if>
               </f:for>
             </ul>
-            <div class="tx-indexedsearch-browsebox">
+            <div class="tx-indexedsearch-browsebox fs-sm">
                 <f:render partial="Pagination" arguments="{pagination: result.pagination, searchParams: searchParams, freeIndexUid: freeIndexUid}" />
             </div>
         </f:then>
         <f:else>
-            <div class="tx-indexedsearch-info-noresult">
+            <div class="tx-indexedsearch-info-noresult fs-2xl">
                 <f:translate key="result.noResult" />
             </div>
         </f:else>

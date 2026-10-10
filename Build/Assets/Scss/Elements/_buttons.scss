@@ -1,6 +1,5 @@
 @use "sass:map";
 @use "Base/Bootstrap/bootstrap-config";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // buttons
@@ -89,9 +88,7 @@
       border-radius: 0;
       color: var(--white);
       display: flex;
-
-      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, xs));
-
+      font-size: var(--font-size-xs);
       height: 32px;
       line-height: 1;
       margin: 0 !important;
@@ -120,11 +117,13 @@
       }
 
       @include bootstrap-config.media-breakpoint-up(sm) {
-        @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, sm));
+        font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
       }
 
       @include bootstrap-config.media-breakpoint-up(md) {
-        @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
+        font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
       }
 
       &.show,
@@ -204,8 +203,8 @@
     &-download {
       + .menu {
         .btn-download {
-          @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
-
+          font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
           font-weight: 400;
           padding-left: 32px;
           padding-right: 8px;
@@ -331,9 +330,8 @@
       @include bootstrap-config.media-breakpoint-up(md) {
         color: var(--fg-body);
         display: block;
-
-        @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
-
+        font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
         font-weight: bold;
         height: auto;
         position: absolute;
@@ -385,7 +383,7 @@
   }
 
   @include utilities.on-interact {
-    background-color: mpc-design-tokens.$gray-900;
+    background-color: var(--gray-900);
   }
 
   &.active {
@@ -393,7 +391,7 @@
   }
 
   &.collapsed {
-    background-color: mpc-design-tokens.$gray-900;
+    background-color: var(--gray-900);
 
     &::before {
       mask: url("@assets/Images/Icons/icon-plus.svg") no-repeat center;

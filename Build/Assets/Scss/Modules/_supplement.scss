@@ -7,10 +7,6 @@
     background: linear-gradient(to bottom, transparent 0%, var(--secondary-bg-subtle) 100%);
     border-radius: var(--radius-5);
     padding: 16px;
-
-    @include utilities.light-theme {
-      background: linear-gradient(to bottom, transparent 0%, var(--secondary-bg-subtle) 100%);
-    }
   }
 }
 

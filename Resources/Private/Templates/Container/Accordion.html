@@ -29,7 +29,7 @@
                         {f:if(condition: '{data.container_accordion_toggle_all} != 1', then: ' name="accordion-{data.uid}"')}
                         {f:if(condition: '{data.container_accordion_toggle} == 1 && {iterator.cycle} == {data.container_accordion_open}', then: ' open')}
                     >
-                        <summary class="accordion-header" aria-controls="panel-{record.uid}">
+                        <summary class="accordion-header fs-2xl" aria-controls="panel-{record.uid}">
                             <f:if condition="{data.container_headline} == 2"><span class="h2 mb-0">{record.header}</span></f:if>
                             <f:if condition="{data.container_headline} == 3"><span class="h3 mb-0">{record.header}</span></f:if>
                             <f:if condition="{data.container_headline} == 4"><span class="h4 mb-0">{record.header}</span></f:if>

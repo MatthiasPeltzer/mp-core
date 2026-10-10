@@ -21,11 +21,21 @@ const FORBIDDEN = [
   {id: 'dropdown-hook', re: /\bdropdown-/},
   {id: 'dropdown-toggle', re: /data-bs-toggle="dropdown"/},
   {id: 'modal-toggle', re: /data-bs-toggle="modal"/},
+  {id: 'modal-class', re: /\bmodal-(dialog|header|body|footer|backdrop|fullscreen)\b/},
+  {id: 'modal-content-class', re: /\bmodal-content\b(?!-)/},
+  {id: 'modal-dismiss', re: /data-bs-dismiss="modal"/},
+  {id: 'carousel-control-class', re: /\bcarousel-control-(prev|next)\b/},
+  {id: 'carousel-control-icon-bs5', re: /\bcarousel-control-(prev|next)-icon\b/},
+  {id: 'carousel-dark', re: /\bcarousel-dark\b/},
+  {id: 'text-bg-bootstrap', re: /\btext-bg-(primary|secondary|success|danger|warning|info|light|dark)\b/},
+  {id: 'btn-outline-bs5', re: /\bbtn-outline-(primary|secondary|success|danger|warning|info|light|dark)\b/},
   {id: 'btn-primary-class', re: /\bbtn-primary\b/},
   {id: 'btn-secondary-class', re: /\bbtn-secondary\b/},
   {id: 'form-check-input', re: /\bform-check-input\b/},
   {id: 'popperjs', re: /@popperjs\/core/},
   {id: 'dropdown-menu', re: /\bdropdown-menu\b/},
+  {id: 'fs-base', re: /\bfs-base\b/},
+  {id: 'fs-bs5-numeric', re: /\bfs-[1-6]\b/},
 ];
 
 const allowlist = [
@@ -36,6 +46,7 @@ const allowlist = [
   /Tests\/Unit\/Service\/Bootstrap6ContentMigrationServiceTest\.php$/,
   /Documentation\//,
   /CHANGELOG\.md$/,
+  /Build\/Assets\/Scss\/Elements\/_(carousel|modal|links)\.scss$/,
 ];
 
 function isAllowlisted(relPath) {

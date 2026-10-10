@@ -3,17 +3,17 @@
     xmlns:is="http://typo3.org/ns/TYPO3/CMS/IndexedSearch/ViewHelpers"
     data-namespace-typo3-fluid="true">
 <li class="tx-indexedsearch-res">
-    <h2 class="tx-indexedsearch-res-header">
+    <h2 class="tx-indexedsearch-res-header fs-lg">
         <f:if condition="{settings.displayResultNumber}"><span class="tx-indexedsearch-result-number">{row.result_number}</span></f:if>
         <span class="tx-indexedsearch-title">{row.title -> f:format.raw()}</span>
-        <span class="tx-indexedsearch-percent">{is:searchResult.rating(firstRow: firstRow, sortOrder: searchParams.sortOrder, row: row)}</span>
+        <span class="tx-indexedsearch-percent fs-sm">{is:searchResult.rating(firstRow: firstRow, sortOrder: searchParams.sortOrder, row: row)}</span>
     </h2>
     <f:if condition="{row.headerOnly} == 0">
       <f:variable name="dateFormat" value="{f:translate(key: 'search.dateFormat', extensionName: 'MpCore')}" />
       <f:variable name="decSep" value="{f:translate(key: 'search.decimalSeparator', extensionName: 'MpCore')}" />
       <f:variable name="thousSep" value="{f:translate(key: 'search.thousandsSeparator', extensionName: 'MpCore')}" />
       <p class="tx-indexedsearch-description">{row.description -> f:format.raw()}</p>
-      <dl class="tx-indexedsearch-info">
+      <dl class="tx-indexedsearch-info fs-sm">
           <dt class="tx-indexedsearch-text-item-size"><f:translate key="result.size" />&nbsp;</dt>
           <dd class="tx-indexedsearch-text-item-size"><f:format.bytes decimals="0" decimalSeparator="{decSep}" thousandsSeparator="{thousSep}">{row.item_size}</f:format.bytes></dd>
           <dt class="tx-indexedsearch-text-item-crdate"><f:translate key="result.created" />&nbsp;</dt>

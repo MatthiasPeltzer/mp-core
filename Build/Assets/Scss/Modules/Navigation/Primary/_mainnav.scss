@@ -1,7 +1,5 @@
-@use "sass:map";
 @use "Base/Bootstrap/bootstrap-config";
 @use "Mixins/utilities" as *;
-@use "Base/Bootstrap/mpc-design-tokens" as *;
 
 // =============================================================================
 // PRIMARY MAINNAV - Variant-specific styles
@@ -45,8 +43,6 @@
     margin-bottom: 30px;
     padding: 0;
 
-    @include font-size(map.get($font-size-scale, xl));
-
     @include on-interact {
       color: var(--fg-body);
       text-decoration: none;
@@ -58,14 +54,10 @@
 
     // Nested level indentation
     ul li .sub {
-      @include font-size(map.get($font-size-scale, base));
-
       padding-left: 8px;
     }
 
     ul ul li .sub {
-      @include font-size(map.get($font-size-scale, sm));
-
       padding-left: 20px;
     }
 
@@ -79,8 +71,6 @@
   }
 
   .sub {
-    @include font-size(map.get($font-size-scale, base));
-
     margin: 5px 40px 5px 0;
     padding: 5px 0;
     width: calc(100% - 40px);

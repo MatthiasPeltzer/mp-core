@@ -338,7 +338,7 @@ function clearCompleted() {
             :aria-label="t.showAll"
           >
           <label class="btn btn-outline theme-secondary me-2" for="filter-all">
-            {{ t.all }} <span class="badge bg-secondary badge-circle" :aria-label="`${todos.length} ${t.totalTasks}`">{{ todos.length }}</span>
+            {{ t.all }} <span class="badge bg-secondary badge-circle fs-xs" :aria-label="`${todos.length} ${t.totalTasks}`">{{ todos.length }}</span>
           </label>
 
           <input
@@ -352,7 +352,7 @@ function clearCompleted() {
             :aria-label="t.showActive"
           >
           <label class="btn btn-outline theme-secondary me-2" for="filter-active">
-            {{ t.active }} <span class="badge badge-warning badge-circle" :aria-label="`${activeTodosCount} ${t.activeTasks}`">{{ activeTodosCount }}</span>
+            {{ t.active }} <span class="badge badge-warning badge-circle fs-xs" :aria-label="`${activeTodosCount} ${t.activeTasks}`">{{ activeTodosCount }}</span>
           </label>
 
           <input
@@ -366,14 +366,14 @@ function clearCompleted() {
             :aria-label="t.showCompleted"
           >
           <label class="btn btn-outline theme-secondary" for="filter-completed">
-            {{ t.done }} <span class="badge badge-success badge-circle" :aria-label="`${todos.length - activeTodosCount} ${t.completedTasks}`">{{ todos.length - activeTodosCount }}</span>
+            {{ t.done }} <span class="badge badge-success badge-circle fs-xs" :aria-label="`${todos.length - activeTodosCount} ${t.completedTasks}`">{{ todos.length - activeTodosCount }}</span>
           </label>
         </div>
       </div>
 
       <!-- Todo list -->
       <div v-if="filteredTodos.length === 0" class="text-center fg-secondary py-5" role="status" aria-live="polite">
-        <p class="fs-5">{{ filter === 'all' ? t.emptyAll : filter === 'active' ? t.emptyActive : t.emptyCompleted }}</p>
+        <p class="fs-lg">{{ filter === 'all' ? t.emptyAll : filter === 'active' ? t.emptyActive : t.emptyCompleted }}</p>
       </div>
 
       <ul v-else class="list-group list-group-flush" role="list" aria-label="Todo items">
@@ -558,7 +558,6 @@ function clearCompleted() {
   align-items: center;
   justify-content: center;
   padding: 0;
-  font-size: 0.75rem;
   font-weight: 600;
   line-height: 1;
   margin-left: 0.5rem;

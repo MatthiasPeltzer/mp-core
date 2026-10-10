@@ -249,7 +249,7 @@ class SearchAutosuggest extends BaseComponent {
 
       if (suggestion.type === 'page' && !headingRendered && this.pagesHeading !== '') {
         const heading = document.createElement('li')
-        heading.className = 'tx-indexedsearch-suggest-heading'
+        heading.className = 'tx-indexedsearch-suggest-heading fs-sm'
         if (this.options.length > 0) {
           heading.classList.add('tx-indexedsearch-suggest-heading-divided')
         }
@@ -264,7 +264,7 @@ class SearchAutosuggest extends BaseComponent {
       optionEl.id = `${listboxId}-option-${index}`
       optionEl.setAttribute('role', 'option')
       optionEl.setAttribute('aria-selected', 'false')
-      optionEl.className = 'tx-indexedsearch-suggest-option'
+      optionEl.className = 'tx-indexedsearch-suggest-option fs-md'
 
       if (suggestion.type === 'page') {
         optionEl.classList.add('tx-indexedsearch-suggest-option-page')

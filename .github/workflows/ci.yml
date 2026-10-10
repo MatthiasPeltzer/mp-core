@@ -171,7 +171,7 @@ jobs:
         run: bash Build/scripts/runTests.sh -b docker -s acceptance -d sqlite
 
   frontend:
-    name: Frontend lint & JS unit tests
+    name: Frontend lint, build & JS unit tests
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -192,5 +192,14 @@ jobs:
       - name: ESLint and Stylelint
         run: npm run lint
 
+      - name: Install Playwright Chromium for Vitest browser mode
+        run: npm run test:browser:install
+
       - name: Vitest unit tests
         run: npm run test:unit
+
+      - name: Bootstrap 6 source audit
+        run: npm run audit:bs6
+
+      - name: Production build and bundle size gate
+        run: npm run build

@@ -1,5 +1,4 @@
 @use "Base/Bootstrap/bootstrap-config";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // fluid styled content
@@ -102,7 +101,7 @@
 
 .frame-ruler-before {
   &::before {
-    background: linear-gradient(to right, mpc-design-tokens.$gray-700 0%, mpc-design-tokens.$gray-700 100%);
+    background: linear-gradient(to right, var(--gray-700) 0%, var(--gray-700) 100%);
     content: "";
     display: block;
     height: 3px;
@@ -114,7 +113,7 @@
 
 .frame-ruler-after {
   &::after {
-    background: linear-gradient(to right, mpc-design-tokens.$gray-700 0%, mpc-design-tokens.$gray-700 100%);
+    background: linear-gradient(to right, var(--gray-700) 0%, var(--gray-700) 100%);
     content: "";
     display: block;
     height: 3px;

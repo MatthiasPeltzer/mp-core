@@ -1,0 +1,16 @@
+// BS6 $font-sizes scale for CKEditor mirror rules (same values as .fs-* / .text-* on the frontend).
+@use "sass:map";
+@use "bootstrap/scss/config" as *;
+
+@mixin ck-text($size) {
+  $entry: map.get($font-sizes, $size);
+
+  font-size: map.get($entry, "font-size");
+  line-height: map.get($entry, "line-height");
+}
+
+@mixin ck-fs($size) {
+  $entry: map.get($font-sizes, $size);
+
+  font-size: map.get($entry, "font-size");
+}

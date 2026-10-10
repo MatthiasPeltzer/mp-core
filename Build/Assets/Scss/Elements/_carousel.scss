@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // carousel
@@ -85,10 +84,19 @@ $carousel-bg-light: var(--gray-100);
   margin: 0;
   text-align: center;
   width: 100%;
+
+  // Gallery lightbox: counter lives in .dialog-footer (not over the carousel slide).
+  .dialog-footer & {
+    bottom: auto;
+    position: static;
+    width: auto;
+  }
 }
 
 .carousel-imagetitle {
-  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, sm));
+  font-size: var(--font-size-sm);
+    line-height: var(--line-height-sm);
+
   @include position-absolute(null, null, 0, null);
 
   background-color: $carousel-bg-dark;
@@ -104,14 +112,46 @@ $carousel-bg-light: var(--gray-100);
   }
 }
 
-.dialog-footer .btn-icon,
-.carousel-control-prev,
-.carousel-control-next {
-  @include flex-center;
+// Gallery dialog: prev/next live in .dialog-footer (outside .carousel), so inherit
+// Bootstrap’s carousel icon masks here. Clicks must hit the <a>, not inner spans.
+.dialog-footer {
+  // Carousel icon tokens are scoped to .carousel; the footer is its sibling.
+  --carousel-control-icon-width: 1rem;
+  --carousel-control-prev-icon: url("@assets/Images/Icons/icon-chevron-left.svg");
+  --carousel-control-next-icon: url("@assets/Images/Icons/icon-chevron-right.svg");
 
-  // Custom primary circle buttons use white SVG icons; Bootstrap’s dark-mode
-  // filter also inverts focus outlines (white → black).
-  filter: none;
-  background-color: var(--primary-base);
-  border-radius: 50%;
+  .btn-icon {
+    text-decoration: none;
+
+    > * {
+      pointer-events: none;
+    }
+
+    @include utilities.bs6-component-specificity {
+      // BS6 `.btn-icon` is a button variant; beat its default surface colors.
+      filter: none;
+      color: var(--white);
+      background-color: var(--primary-base);
+      border-radius: 50%;
+    }
+  }
+
+  .carousel-icon-prev,
+  .carousel-icon-next {
+    background-color: currentcolor;
+    display: inline-block;
+    height: var(--carousel-control-icon-width, 1rem);
+    mask-position: 50%;
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    width: var(--carousel-control-icon-width, 1rem);
+  }
+
+  .carousel-icon-prev {
+    mask-image: var(--carousel-control-prev-icon);
+  }
+
+  .carousel-icon-next {
+    mask-image: var(--carousel-control-next-icon);
+  }
 }

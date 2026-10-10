@@ -1,6 +1,5 @@
 @use "sass:map";
 @use "Base/Bootstrap/bootstrap-config";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // stage
@@ -122,8 +121,6 @@
           color: var(--white);
           display: inline;
           padding: 4px 8px;
-
-          @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, display));
         }
       }
 

@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // figures
@@ -41,9 +40,8 @@
   bottom: 5px;
   color: var(--white);
   display: inline-block;
-
-  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, base));
-
+  font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
   font-weight: 500;
   margin-bottom: 0;
   padding: 3px 5px;

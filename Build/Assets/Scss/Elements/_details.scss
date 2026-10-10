@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // Variablen
@@ -18,12 +17,11 @@ $padding-summary: 16px 60px 18px $padding-horizontal;
   color: var(--fg-body);
   font-weight: 400;
   letter-spacing: -2px;
-  line-height: 1;
   list-style: none;
   padding: $padding-summary;
   position: relative;
-
-  @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 4xl));
+  font-size: var(--font-size-4xl);
+    line-height: var(--line-height-4xl);
 }
 
 // Details-Styling
@@ -50,8 +48,8 @@ details:not(.extbase-debugger-tree) {
     @extend %summary-base;
 
     font-family: var(--heading-font-family);
-
-    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 2xl));
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-2xl);
 
     &::after {
       background-color: var(--fg-body);

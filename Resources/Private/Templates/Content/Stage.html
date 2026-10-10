@@ -7,10 +7,11 @@
                 <div class="stage-content teaser{f:if(condition: data.header_position, then: ' text-{data.header_position}')}">
                     <div class="teaser-content{f:if(condition: data.grid_bgcolor, then: ' bg{data.grid_bgcolor}')}">
                         <f:if condition="{data.header}">
+                            <f:variable name="headerHeadingSizeClass" value="fs-5xl"/>
                             <f:render arguments="{_all}" partial="Header/All"/>
                         </f:if>
                         <f:if condition="{data.bodytext}">
-                            <div class="ce-bodytext">
+                            <div class="ce-bodytext fs-md">
                                 <f:format.html parseFuncTSPath="lib.parseFunc_RTE"><f:format.crop append="..." maxCharacters="100" respectHtml="true" respectWordBoundaries="true">{data.bodytext}</f:format.crop></f:format.html>
                             </div>
                         </f:if>

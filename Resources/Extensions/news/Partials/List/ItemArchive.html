@@ -34,7 +34,7 @@
         </div>
 
         <div class="md:col-7 articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}">
-            <p class="date">
+            <p class="date fs-sm">
                 <f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
             </p>
 
@@ -45,7 +45,7 @@
             </h3>
 
             <!-- teaser -->
-            <p class="lead">
+            <p class="lead fs-lg">
                 <n:removeMediaTags>
                     <f:if condition="{newsItem.teaser}">
                         <f:then>

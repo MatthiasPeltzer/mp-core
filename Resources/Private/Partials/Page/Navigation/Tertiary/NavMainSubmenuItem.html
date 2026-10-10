@@ -2,14 +2,15 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 
-<f:variable name="submenuLinkClass" value="sub{f:if(condition: '{variant} == \'desktop\'', then: ' collapsed')} menu-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}" />
+<f:variable name="submenuSizeClass" value="{f:if(condition: '{variant} == \'desktop\'', then: 'fs-xl', else: 'fs-md')}" />
+<f:variable name="submenuLinkClass" value="sub {submenuSizeClass}{f:if(condition: '{variant} == \'desktop\'', then: ' collapsed')} menu-item{f:if(condition: mainChild.active, then:' act')}{f:if(condition: mainChild.current, then:' current')}{f:if(condition: mainChild.hasSubpages, then:' hassub')}" />
 <f:variable name="menuIdPrefix" value="{f:if(condition: '{variant} == \'desktop\'', then: 'menu-desktop', else: 'menu')}" />
 <f:variable name="menuId" value="{menuIdPrefix}-{mainChild.data.uid}" />
 <f:variable name="childParentMenuId" value="{menuIdPrefix}-{mainChild.data.uid}" />
 
 <f:if condition="{mainChild.children}">
     <f:then>
-        <li{f:if(condition: '{mainChild.data.doktype} == 4', then: ' class="shortcut"')}>
+        <li class="fs-xl{f:if(condition: '{mainChild.data.doktype} == 4', then: ' shortcut')}">
             <f:if condition="{variant} == 'desktop'">
                 <f:render partial="Navigation/NavMenuLink" arguments="{item: mainChild, current: mainChild.current, linkClass: submenuLinkClass, wrapInSpan: 1}" />
             </f:if>
@@ -48,7 +49,7 @@
         </li>
     </f:then>
     <f:else>
-        <li{f:if(condition: '{mainChild.data.doktype} == 4', then: ' class="shortcut"')}>
+        <li class="fs-xl{f:if(condition: '{mainChild.data.doktype} == 4', then: ' shortcut')}">
             <f:if condition="{variant} == 'desktop'">
                 <f:render partial="Navigation/NavMenuLink" arguments="{item: mainChild, current: mainChild.current, linkClass: submenuLinkClass, wrapInSpan: 1}" />
             </f:if>

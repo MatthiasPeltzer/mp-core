@@ -141,7 +141,7 @@
                         </div>
                     </f:if>
                     <div class="col flex-grow-1">
-                        <h3 class="h6">
+                        <h3 class="h6 fs-md">
                             <a class="download" download="" href="{file.publicUrl}" {f:if(condition:data.target,then: ' target="{data.target}"')}{f:if(condition: file.title, then: ' title="{file.title}"')}>
                             <span class="icon" aria-hidden="true"></span> <span>
                                     {f:if(condition: file.title, then: file.title, else: file.name) -> f:format.htmlspecialchars()}

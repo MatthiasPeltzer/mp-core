@@ -14,6 +14,7 @@
 			linkAction: data.tx_link_action,
 			teaserLink: headerTeaserLink,
 			positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')} {f:if(condition: data.tx_header_style, then: data.tx_header_style)}',
+			headingSizeClass: headerHeadingSizeClass,
 			link: data.header_link,
 			default: settings.defaultHeaderType}" partial="Header/Header"/>
             <f:render arguments="{

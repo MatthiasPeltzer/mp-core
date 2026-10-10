@@ -59,18 +59,8 @@ html {
   }
 }
 
-// Frame colours: site `Styles.html` overrides when color-toggle is on (must not live in
-// bootstrap.css — BS6 :root specificity would win over inline site config).
-:root {
-  --mpc-color-1: #fff;
-  --mpc-color-2: #efefef;
-  --mpc-color-3: #ccc;
-  --mpc-color-4: #999;
-  --mpc-color-5: #888;
-  --mpc-color-6: #777;
-  --mpc-color-7: #666;
-  --mpc-color-8: #555;
-}
+// Frame colours: BS6 `--bg-1` … `--bg-8` from `$theme-bgs` in bootstrap.css; site
+// `Styles.html` overrides when color-toggle is on (inline beats bundled :root).
 
 .bgcolor-1,
 .bgcolor-2,
@@ -104,49 +94,49 @@ html {
 
 .bgcolor-1 {
   &::before {
-    background-color: var(--mpc-color-1);
+    background-color: var(--bg-1);
   }
 }
 
 .bgcolor-2 {
   &::before {
-    background-color: var(--mpc-color-2);
+    background-color: var(--bg-2);
   }
 }
 
 .bgcolor-3 {
   &::before {
-    background-color: var(--mpc-color-3);
+    background-color: var(--bg-3);
   }
 }
 
 .bgcolor-4 {
   &::before {
-    background-color: var(--mpc-color-4);
+    background-color: var(--bg-4);
   }
 }
 
 .bgcolor-5 {
   &::before {
-    background-color: var(--mpc-color-5);
+    background-color: var(--bg-5);
   }
 }
 
 .bgcolor-6 {
   &::before {
-    background-color: var(--mpc-color-6);
+    background-color: var(--bg-6);
   }
 }
 
 .bgcolor-7 {
   &::before {
-    background-color: var(--mpc-color-7);
+    background-color: var(--bg-7);
   }
 }
 
 .bgcolor-8 {
   &::before {
-    background-color: var(--mpc-color-8);
+    background-color: var(--bg-8);
   }
 }
 

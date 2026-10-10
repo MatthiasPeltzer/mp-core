@@ -1,6 +1,5 @@
 @use "sass:map";
 @use "Base/Bootstrap/bootstrap-config";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // banner
@@ -17,8 +16,8 @@
   }
 
   &-link {
-    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
-
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
     font-weight: 500;
 
     @include utilities.on-interact {

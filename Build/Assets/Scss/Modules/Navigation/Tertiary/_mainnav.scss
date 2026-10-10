@@ -1,7 +1,6 @@
 @use "sass:map";
 @use "Base/Bootstrap/bootstrap-config";
 @use "Mixins/utilities" as *;
-@use "Base/Bootstrap/mpc-design-tokens" as *;
 
 // =============================================================================
 // TERTIARY MAINNAV - Variant-specific styles
@@ -121,8 +120,6 @@
         display: flex;
         width: 33.3333%;
 
-        @include font-size(map.get($font-size-scale, xl));
-
         a,
         button {
           background-color: transparent;
@@ -206,7 +203,6 @@
     display: inline-block;
     font-family: var(--heading-font-family);
     font-weight: 700;
-    line-height: 1;
     margin-bottom: 0;
     margin-right: 4px;
     outline-offset: 2px;
@@ -248,8 +244,6 @@
         }
       }
     }
-
-    @include font-size(map.get($font-size-scale, lg));
 
     &[aria-expanded="true"],
     &.act,
@@ -323,8 +317,6 @@
     padding: 16px 0;
     position: relative;
     text-transform: uppercase;
-
-    @include font-size(map.get($font-size-scale, md));
 
     @include on-interact {
       color: var(--fg-body);
@@ -430,8 +422,6 @@
   }
 
   .sub {
-    @include font-size(map.get($font-size-scale, md));
-
     margin-bottom: 0;
     outline-offset: -2px;
     padding-bottom: 16px;

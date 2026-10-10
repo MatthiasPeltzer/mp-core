@@ -1,9 +1,8 @@
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
-// Variablen
-$gradient-dark: mpc-design-tokens.$gray-900;
-$gradient-light: mpc-design-tokens.$gray-100;
+// Gradient endpoints use BS6 :root grey scale (theme-aware via light-theme blocks below).
+$gradient-dark: var(--gray-900);
+$gradient-light: var(--gray-100);
 
 // Mixin für Gradienten
 @mixin gradient($direction, $start-color, $end-color) {

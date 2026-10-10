@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // teaser
@@ -112,14 +111,10 @@
     }
 
     p.lead {
-      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, lg));
-
       margin-bottom: 16px;
     }
 
     p:not(.lead, .date, .kicker) {
-      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
-
       margin-bottom: 24px;
     }
   }

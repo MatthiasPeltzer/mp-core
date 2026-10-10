@@ -1,13 +1,12 @@
 @use "sass:map";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // modal
 
 .dialog {
   &-title {
-    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
-
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
     font-weight: 400;
     letter-spacing: normal !important;
     margin-bottom: 0;
@@ -30,10 +29,24 @@
     }
 
     .btn-close {
-      background-color: var(--primary-base);
-      border-radius: 50%;
-      margin: 0;
-      padding: 10px;
+      // BS6 data-api dismiss: click target must be the button, not the label span.
+      > * {
+        pointer-events: none;
+      }
+
+      @include utilities.bs6-component-specificity {
+        --btn-close-color: var(--white);
+        --btn-close-opacity: 1;
+
+        box-sizing: content-box;
+        margin: 0;
+        min-width: auto;
+        min-height: auto;
+        padding: 10px;
+        background-color: var(--primary-base);
+        border-radius: 50%;
+        opacity: 1;
+      }
     }
   }
 
@@ -67,9 +80,7 @@
 
     // Gallery modal prev/next: excluded from global link outline (_links.scss).
     // filter:none on controls (_carousel.scss) keeps the white ring visible in dark mode.
-    .btn-icon,
-    .carousel-control-prev,
-    .carousel-control-next {
+    .btn-icon {
       &:is(:hover, :focus, :focus-visible, :active) {
         outline: 1px solid var(--white) !important;
         outline-offset: 2px;
@@ -94,7 +105,7 @@
   }
 
   &-trigger-wrapper {
-    margin-bottom: mpc-design-tokens.$spacer;
+    margin-bottom: var(--spacer);
     width: 100%;
 
     .modal-trigger {
@@ -144,17 +155,16 @@
     }
   }
 
-  &-backdrop {
+  // Native <dialog> backdrop (replaces BS5 .modal-backdrop).
+  &[open]::backdrop {
     @include utilities.light-theme {
-      background-color: var(--fg-body);
+      --dialog-backdrop-bg: color-mix(in oklch, var(--fg-body) 75%, transparent);
     }
   }
 }
 
 html[data-bs-theme="light"] .dialog-footer {
-  .btn-icon,
-  .carousel-control-prev,
-  .carousel-control-next {
+  .btn-icon {
     &:is(:hover, :focus, :focus-visible, :active) {
       outline-color: var(--fg-body) !important;
     }

@@ -26,17 +26,17 @@
           <div class="input-group">
             <f:if condition="{settings.autosuggest}">
               <f:then>
-                <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control tx-indexedsearch-searchbox-sword"
+                <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control fs-2xl tx-indexedsearch-searchbox-sword"
                   additionalAttributes="{role: 'combobox', autocomplete: 'off'}"
                   aria="{expanded: 'false', controls: 'tx-indexedsearch-suggest-list', autocomplete: 'list'}"
                   data="{autosuggest-url: searchSuggestUri, suggest-header: searchSuggestHeader}" />
               </f:then>
               <f:else>
-                <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control tx-indexedsearch-searchbox-sword"
+                <f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="form-control fs-2xl tx-indexedsearch-searchbox-sword"
                   additionalAttributes="{autocomplete: 'off'}" />
               </f:else>
             </f:if>
-            <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-solid theme-primary tx-indexedsearch-searchbox-button" />
+            <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" id="tx-indexedsearch-searchbox-button-submit" class="btn btn-solid theme-primary fs-lg tx-indexedsearch-searchbox-button" />
           </div>
           <f:if condition="{settings.autosuggest}">
             <ul id="tx-indexedsearch-suggest-list" class="tx-indexedsearch-suggest-list" role="listbox" aria-label="{searchSuggestLabel}" hidden="hidden"></ul>
@@ -128,7 +128,7 @@
               </div>
 
               <div class="d-grid">
-                <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" class="btn btn-solid theme-primary mb-5 tx-indexedsearch-searchbox-button" />
+                <f:form.submit name="search[submitButton]" value="{f:translate(key: 'form.submit')}" class="btn btn-solid theme-primary fs-lg mb-5 tx-indexedsearch-searchbox-button" />
               </div>
             </div>
           </div>

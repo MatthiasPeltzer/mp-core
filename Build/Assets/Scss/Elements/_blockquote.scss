@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "Base/Bootstrap/mpc-design-tokens";
 @use "Mixins/utilities";
 
 // Variablen
@@ -59,16 +58,15 @@ blockquote {
 
   p {
     display: block;
-
-    @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, 2xl));
-
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-2xl);
     font-style: italic;
     font-weight: 400;
     z-index: 1;
 
     &.small {
-      @include mpc-design-tokens.font-size(map.get(mpc-design-tokens.$font-size-scale, md));
-
+      font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
       letter-spacing: normal;
       text-transform: uppercase;
     }

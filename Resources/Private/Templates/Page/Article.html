@@ -17,7 +17,7 @@
             <f:if condition="{data.lastUpdated} || {categories} || {mainCategory}">
                 <div class="date-wrapper">
                     <f:if condition="{data.lastUpdated} || {mainCategory}">
-                        <p class="date">
+                        <p class="date fs-sm">
                             <f:if condition="{data.lastUpdated}">
                                 <time datetime="{f:format.date(date:data.lastUpdated, format:'Y-m-d')}">
                                     <f:format.date format="%e. %B %G">{data.lastUpdated}</f:format.date>

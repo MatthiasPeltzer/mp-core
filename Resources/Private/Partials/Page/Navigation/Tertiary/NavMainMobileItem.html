@@ -11,7 +11,7 @@
                         <f:if condition="{mainItem.children}">
                             <f:then>
                                 <f:if condition="{mainItem.children}">
-                                    <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-child menu-item{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
+                                    <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-child fs-md menu-item{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
                                     <button
                                         aria-controls="menu-{mainItem.data.uid}"
                                         aria-expanded="false"
@@ -33,7 +33,7 @@
                                 </f:if>
                             </f:then>
                             <f:else>
-                                <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-child menu-item{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
+                                <f:render partial="Navigation/NavMenuLink" arguments="{item: mainItem, current: mainItem.current, linkClass: 'first-child fs-md menu-item{f:if(condition:mainItem.active, then:\' act\')}{f:if(condition:mainItem.current, then:\' current\')}{f:if(condition:mainItem.hasSubpages, then:\' hassub\')}'}" />
                             </f:else>
                         </f:if>
                     </li>

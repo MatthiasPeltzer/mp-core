@@ -117,3 +117,57 @@ a.popup {
     }
   }
 }
+
+// Fullscreen gallery lightbox: transparent shell over native ::backdrop.
+dialog.dialog-fullscreen[id^="galleryModal"] {
+  --dialog-bg: transparent;
+  --dialog-box-shadow: none;
+
+  .dialog-header {
+    @include utilities.bs6-component-specificity {
+      border-block-end: none;
+    }
+  }
+
+  .dialog-body > .dialog-footer {
+    @include utilities.bs6-component-specificity {
+      border-block-start: none;
+    }
+
+    background-color: var(--gray-900);
+    border-radius: 25px;
+
+    @include utilities.light-theme {
+      background-color: var(--gray-100);
+    }
+
+    nav {
+      block-size: auto;
+      height: auto;
+
+      ul {
+        // Undo legacy 2-up footer rules from _modal.scss; markup uses flex + 3 columns.
+        li {
+          block-size: auto;
+          height: auto;
+          inline-size: auto;
+          width: auto;
+        }
+      }
+    }
+
+    .carousel-iterator {
+      bottom: auto;
+      color: var(--fg-body);
+      font-weight: 400;
+      position: static;
+      width: auto;
+    }
+
+    .btn-icon {
+      aspect-ratio: 1;
+      inline-size: auto;
+      min-inline-size: var(--btn-input-md-min-height, 2.5rem);
+    }
+  }
+}

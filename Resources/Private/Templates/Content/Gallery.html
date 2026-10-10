@@ -9,7 +9,7 @@
     </f:if>
 
     <f:if condition="{data.bodytext}">
-        <div class="ce-bodytext pb-1">
+        <div class="ce-bodytext fs-md pb-1">
             <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.bodytext}</f:format.html>
         </div>
     </f:if>
@@ -149,7 +149,7 @@
         </f:if>
 
         <f:if condition="{data.gallery_layout} == 'gallery-single' || {data.gallery_layout} == 'gallery-tiles' || {data.gallery_layout} == 'gallery-slider'">
-            <dialog aria-labelledby="modalLabel-{data.uid}" class="dialog dialog-fullscreen" data-bs-backdrop="static" id="galleryModal-{data.uid}">
+            <dialog aria-labelledby="modalLabel-{data.uid}" class="dialog dialog-fullscreen text-start" data-bs-backdrop="static" id="galleryModal-{data.uid}">
                 <div class="dialog-header">
                     <div class="container">
                         <div class="row g-0">
@@ -165,20 +165,18 @@
                     </div>
                 </div>
                 <div class="dialog-body">
-                    <div class="carousel slide carousel-fade" data-bs-autoplay="false" data-bs-interval="false" data-bs-pause="true" id="galleryCarousel-{data.uid}">
+                    <div class="carousel slide carousel-fade" data-bs-autoplay="false" data-bs-theme="dark" id="galleryCarousel-{data.uid}">
                                 <ul class="carousel-inner list-unstyled">
                                     <f:for as="file" each="{files}" iteration="iterator">
                                         <f:if condition="{iterator.index} == 0">
                                             <f:then>
                                                 <li class="carousel-item active">
                                                     <f:render arguments="{_all}" section="GalleryOriginal"/>
-                                                    <p class="carousel-iterator ">{iterator.cycle} {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_of')} {iterator.total}</p>
                                                 </li>
                                             </f:then>
                                             <f:else>
                                                 <li class="carousel-item">
                                                     <f:render arguments="{_all}" section="GalleryOriginal"/>
-                                                    <p class="carousel-iterator ">{iterator.cycle} {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_of')} {iterator.total}</p>
                                                 </li>
                                             </f:else>
                                         </f:if>
@@ -186,18 +184,23 @@
                                 </ul>
                             </div>
                     <div class="dialog-footer container">
-                        <nav aria-label="{f:translate(key: 'tt_content.gallery_navigation', extensionName: 'mp_core')}">
-                            <ul class="list-unstyled">
+                        <nav aria-label="{f:translate(key: 'tt_content.gallery_navigation', extensionName: 'mp_core')}" class="w-100">
+                            <ul class="list-unstyled d-flex align-items-center justify-content-between gap-2 mb-0">
                                 <li>
-                                    <a class="btn-icon" data-bs-slide="prev" href="#galleryCarousel-{data.uid}"
+                                    <a class="btn btn-solid theme-primary btn-icon" data-bs-slide="prev" href="#galleryCarousel-{data.uid}"
                                        role="button"
                                        title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_previous')}">
                                         <span aria-hidden="true" class="carousel-icon-prev"></span>
                                         <span class="visually-hidden">{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_previous')}</span>
                                     </a>
                                 </li>
+                                <li class="flex-grow-1 text-center">
+                                    <p aria-live="polite" class="carousel-iterator mb-0 fs-md" data-gallery-counter="1" data-gallery-label-of="{f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_of')}" id="galleryIterator-{data.uid}">
+                                        1 {f:translate(key:'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_of')} {files -> f:count()}
+                                    </p>
+                                </li>
                                 <li>
-                                    <a class="btn-icon" data-bs-slide="next" href="#galleryCarousel-{data.uid}"
+                                    <a class="btn btn-solid theme-primary btn-icon" data-bs-slide="next" href="#galleryCarousel-{data.uid}"
                                        role="button"
                                        title="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang.xlf:tt_content.gallery_next')}">
                                         <span aria-hidden="true" class="carousel-icon-next"></span>
@@ -215,7 +218,7 @@
 
 <f:section name="GallerySingle">
     <picture data-aspectratio-lg="16:9" data-aspectratio-md="16:9" data-aspectratio-sm="16:9" data-aspectratio-xl="16:9" data-aspectratio-xs="16:9">
-        <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-slide-to: '0', bs-target: '#galleryCarousel-0'}" decoding="async" fileExtension="webp" height="731c" image="{file}" loading="lazy" maxHeight="731" maxWidth="1300" width="1300c"/>
+        <f:image class="figure-img img-fluid rounded" cropVariant="default" data="{bs-slide-to: '0', bs-target: '#galleryCarousel-{data.uid}'}" decoding="async" fileExtension="webp" height="731c" image="{file}" loading="lazy" maxHeight="731" maxWidth="1300" width="1300c"/>
     </picture>
 </f:section>
 
@@ -246,7 +249,7 @@
         </picture>
         <f:if condition="{file.properties.caption}">
             <figcaption class="figure-caption">
-                <p class="caption container mb-0 fs-base">{file.properties.caption}</p>
+                <p class="caption container mb-0 fs-md">{file.properties.caption}</p>
             </figcaption>
         </f:if>
     </figure>
@@ -297,7 +300,7 @@
             </picture>
             <f:if condition="{file.properties.caption}">
                 <figcaption class="figure-caption">
-                    <p class="caption container mb-0 fs-base">{file.properties.caption}</p>
+                    <p class="caption container mb-0 fs-md">{file.properties.caption}</p>
                 </figcaption>
             </f:if>
         </figure>
