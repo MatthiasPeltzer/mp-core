@@ -71,7 +71,7 @@ node Documentation/scripts/sync-site-settings.mjs
 
 ### Core (shared — `mpc/mp-core` / registered via `mpc/mp-core-base`)
 
-Site Settings definitions and defaults live in `Configuration/Sets/mp-core/settings.definitions.yaml` and `settings.yaml`. The base set only references these files.
+Site Settings definitions and defaults live in `Configuration/Sets/mp-core/settings.definitions.yaml` and `settings.yaml`. TYPO3 loads `settings.definitions.yaml` and `settings.yaml` from each set directory by filename; do not declare a `settings:` block in `config.yaml`.
 
 Source: `Configuration/Sets/mp-core/`
 
@@ -283,7 +283,7 @@ Source: `Configuration/Sets/mp-core-seo/`
 
 ### Using Settings in TypoScript
 
-Site settings are exposed as flat TypoScript constants under their dotted key (no `settings.` prefix), e.g. `{$navigation.maxDepth}`, `{$config.admPanel}`, `{$PIDs.pidWebFonts}`. The path settings (`pageTemplates`, `basePath`, …) are additionally exposed with a `settings.` prefix, which is why the `mpcSitepackage.*` path constants reference `{$settings.pageTemplates}`.
+Site settings are exposed as flat TypoScript constants under their key, e.g. `{$navigation.maxDepth}`, `{$config.admPanel}`, `{$PIDs.pidWebFonts}`, `{$pageTemplates}`, `{$basePath}`. The `mpcSitepackage.*` path constants reference those same flat keys (`{$pageTemplates}`, …).
 
 For values that must be resolved at render time (e.g. inside `config`, `page.meta`, or DataProcessor properties), read them directly via the `site:settings.*` data getter instead of a constant:
 
@@ -528,15 +528,15 @@ page.10 = FLUIDTEMPLATE
 page.10 {
   templateRootPaths {
     0 = EXT:mp_core/Resources/Private/Templates/Page/
-    10 = {$settings.pageTemplates}
+    10 = {$pageTemplates}
   }
   partialRootPaths {
     0 = EXT:mp_core/Resources/Private/Partials/
-    10 = {$settings.pagePartials}
+    10 = {$pagePartials}
   }
   layoutRootPaths {
     0 = EXT:mp_core/Resources/Private/Layouts/
-    10 = {$settings.pageLayouts}
+    10 = {$pageLayouts}
   }
 }
 ```

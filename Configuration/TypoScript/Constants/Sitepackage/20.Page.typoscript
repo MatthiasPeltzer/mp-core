@@ -1,7 +1,7 @@
 mpcSitepackage {
     page {
-        templates = {$settings.pageTemplates}
-        partials = {$settings.pagePartials}
-        layouts = {$settings.pageLayouts}
+        templates = {$pageTemplates}
+        partials = {$pagePartials}
+        layouts = {$pageLayouts}
     }
 }
