@@ -1,0 +1,11 @@
+name: mpc/mp-core-page
+label: MP Core - Page rendering (without SEO)
+# Page TypoScript, constants and Page TSconfig of the site package. It loads after
+# the feature sets so its overrides win, and contains no SEO output: meta robots,
+# site verification, title separator and JSON-LD live in mpc/mp-core-seo. Use this
+# set instead of mpc/mp-core to combine mp-core with another SEO extension.
+dependencies:
+  - mpc/mp-core-base
+  - mpc/mp-core-news
+  - mpc/mp-core-form
+  - mpc/mp-core-container
