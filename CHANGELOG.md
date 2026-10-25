@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-10-25
+
+### Added
+- Site Set `mpc/mp-core-page` for page rendering without bundled SEO: same base/news/form/container stack as `mpc/mp-core`, but without `mpc/mp-core-seo`. Use with `mpc/mp-core-seo` (or another SEO extension) when meta robots, verification tags, title separator, and JSON-LD should not come from the `mpc/mp-core` aggregator.
+
+### Changed
+- Site path TypoScript constants (`mpcSitepackage.*`) now read flat site settings (`{$pageTemplates}`, `{$basePath}`, …) instead of a non-standard `{$settings.*}` prefix, so values from the backend Site Settings editor resolve correctly.
+- Updated Build npm dependencies (`vue`, `eslint`, `vite`, `vitest`, `sass`, `postcss`, `postcss-preset-env`, `stylelint`, and related dev tooling) and rebuilt public Vue/Swiper JavaScript bundles.
+
+### Fixed
+- Removed erroneous `settings:` blocks from Site Set `config.yaml` files that exposed stray `definitions` and `defaults` settings at runtime.
+- Open Graph `og:type` meta now outputs `website` or `article` instead of the literal string `TEXT`.
+
+### Upgrade
+- If a project sitepackage overrides path settings, use flat keys in the set's `settings.yaml` (not wrapped under a top-level `settings:` key). A wrapped `settings.yaml` no longer affects mp-core path constants.
+- To decouple SEO from the template stack, swap `mpc/mp-core` for `mpc/mp-core-page` plus `mpc/mp-core-seo` (or your SEO set) in the site configuration.
+
 ## [1.2.29] - 2026-10-01
 
 ### Fixed
@@ -895,6 +912,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.3.0]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.29...v1.3.0
 [1.2.29]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.28...v1.2.29
 [1.2.28]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.27...v1.2.28
 [1.2.27]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.26...v1.2.27
