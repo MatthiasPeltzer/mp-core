@@ -7,14 +7,14 @@ namespace Mpc\MpCore\Seo;
 use GeorgRinger\News\Seo\NewsXmlSitemapDataProvider as GeorgRingerNewsXmlSitemapDataProvider;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\CMS\Seo\XmlSitemap\AbstractXmlSitemapDataProvider;
+use TYPO3\CMS\Seo\XmlSitemap\XmlSitemapDataProviderInterface;
 
 /**
  * News sitemap provider that stays inactive until storage PID and detail page are configured.
  */
-final class NewsXmlSitemapDataProvider extends GeorgRingerNewsXmlSitemapDataProvider
+final class NewsXmlSitemapDataProvider implements XmlSitemapDataProviderInterface
 {
-    private bool $disabled = false;
+    private XmlSitemapDataProviderInterface $delegate;
 
     /**
      * @param array<string, mixed> $config
@@ -25,32 +25,35 @@ final class NewsXmlSitemapDataProvider extends GeorgRingerNewsXmlSitemapDataProv
         array $config = [],
         ?ContentObjectRenderer $cObj = null
     ) {
-        if (!$this->isConfigured($config)) {
-            $this->disabled = true;
-            AbstractXmlSitemapDataProvider::__construct($request, $key, $config, $cObj);
-
-            return;
+        if ($this->isConfigured($config) && class_exists(GeorgRingerNewsXmlSitemapDataProvider::class)) {
+            $this->delegate = new GeorgRingerNewsXmlSitemapDataProvider($request, $key, $config, $cObj);
+        } else {
+            $this->delegate = new EmptyXmlSitemapDataProvider($request, $key, $config, $cObj);
         }
+    }
 
-        parent::__construct($request, $key, $config, $cObj);
+    public function getKey(): string
+    {
+        return $this->delegate->getKey();
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    public function getItems(): array
+    {
+        /** @var list<array<string, mixed>> */
+        return array_values($this->delegate->getItems());
+    }
+
+    public function getLastModified(): int
+    {
+        return $this->delegate->getLastModified();
     }
 
     public function getNumberOfPages(): int
     {
-        if ($this->disabled) {
-            return 0;
-        }
-
-        return parent::getNumberOfPages();
-    }
-
-    public function getItems(): array
-    {
-        if ($this->disabled) {
-            return [];
-        }
-
-        return parent::getItems();
+        return $this->delegate->getNumberOfPages();
     }
 
     /**

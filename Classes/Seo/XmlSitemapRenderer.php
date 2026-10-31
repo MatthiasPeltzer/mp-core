@@ -8,6 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\Attribute\AsAllowedCallable;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
+use TYPO3\CMS\Core\Routing\PageArguments;
 use TYPO3\CMS\Core\Security\ContentSecurityPolicy\Directive;
 use TYPO3\CMS\Core\Security\ContentSecurityPolicy\HashValue;
 use TYPO3\CMS\Core\Security\ContentSecurityPolicy\Mutation;
@@ -16,15 +17,11 @@ use TYPO3\CMS\Core\Security\ContentSecurityPolicy\MutationMode;
 use TYPO3\CMS\Core\Security\ContentSecurityPolicy\PolicyRegistry;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
-use TYPO3\CMS\Core\SystemResource\Exception\CanNotResolvePublicResourceException;
-use TYPO3\CMS\Core\SystemResource\Exception\CanNotResolveSystemResourceException;
-use TYPO3\CMS\Core\SystemResource\Exception\SystemResourceDoesNotExistException;
-use TYPO3\CMS\Core\SystemResource\Publishing\SystemResourcePublisherInterface;
-use TYPO3\CMS\Core\SystemResource\SystemResourceFactory;
-use TYPO3\CMS\Core\SystemResource\Type\PublicResourceInterface;
-use TYPO3\CMS\Core\SystemResource\Type\SystemResourceInterface;
+use TYPO3\CMS\Core\TypoScript\AST\Node\ChildNodeInterface;
+use TYPO3\CMS\Core\TypoScript\FrontendTypoScript;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\View\ViewFactoryData;
 use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Core\View\ViewInterface;
@@ -34,6 +31,8 @@ use TYPO3\CMS\Seo\XmlSitemap\XmlSitemapDataProviderInterface;
 
 /**
  * Renders EXT:seo XML sitemaps and assigns site metadata for the mp-core XSL browser view.
+ *
+ * Compatible with TYPO3 13.4 and 14.x (uses filesystem XSL paths, not SystemResource).
  */
 #[Autoconfigure(public: true)]
 final readonly class XmlSitemapRenderer
@@ -43,8 +42,6 @@ final readonly class XmlSitemapRenderer
         private ErrorController $errorController,
         private ViewFactoryInterface $viewFactory,
         private PolicyRegistry $policyRegistry,
-        private SystemResourceFactory $resourceFactory,
-        private SystemResourcePublisherInterface $resourcePublisher,
         private SitemapViewMetadataResolver $viewMetadataResolver,
         private FlatXmlSitemapAggregator $flatSitemapAggregator,
     ) {}
@@ -57,8 +54,7 @@ final readonly class XmlSitemapRenderer
     #[AsAllowedCallable]
     public function render(string $_, array $typoScriptConfiguration, ServerRequestInterface $request): string
     {
-        $settingsTree = $request->getAttribute('frontend.typoscript')->getSetupTree()->getChildByName('plugin')->getChildByName('tx_seo');
-        $configurationArrayWithoutDots = $this->typoScriptService->convertTypoScriptArrayToPlainArray($settingsTree->toArray());
+        $configurationArrayWithoutDots = $this->resolvePluginConfiguration($request);
         $viewConfiguration = $configurationArrayWithoutDots['view'] ?? [];
         $viewFactoryData = new ViewFactoryData(
             templateRootPaths: $viewConfiguration['templateRootPaths'] ?? [],
@@ -71,21 +67,77 @@ final readonly class XmlSitemapRenderer
         $this->assignSiteMetadata($view, $request);
 
         $sitemapType = $typoScriptConfiguration['sitemapType'] ?? 'xmlSitemap';
-        $view->assign('type', $request->getAttribute('routing')->getPageType());
+        $view->assign('type', $this->resolvePageType($request));
         $view->assign('sitemapType', $sitemapType);
         $configConfiguration = $configurationArrayWithoutDots['config'] ?? [];
-        if (!empty($sitemapName = ($request->getQueryParams()['tx_seo']['sitemap'] ?? null))) {
-            $xslResource = $this->getXslResource($configConfiguration, $sitemapType, $sitemapName);
-            $this->applyDynamicContentSecurityPolicy($xslResource);
-            $view->assign('xslFile', (string)$this->resourcePublisher->generateUri($xslResource, $request));
+
+        $sitemapName = $this->resolveSitemapNameFromRequest($request);
+        if ($sitemapName !== null && $sitemapName !== '') {
+            $xslPath = $this->getXslFilePath($configConfiguration, $sitemapType, $sitemapName);
+            $this->applyDynamicContentSecurityPolicy($xslPath);
+            $view->assign('xslFile', $this->getUriFromFilePath($xslPath));
 
             return $this->renderPartialSitemap($request, $view, $configConfiguration, $sitemapType, $sitemapName);
         }
-        $xslResource = $this->getXslResource($configConfiguration, $sitemapType);
-        $this->applyDynamicContentSecurityPolicy($xslResource);
-        $view->assign('xslFile', (string)$this->resourcePublisher->generateUri($xslResource, $request));
+
+        $xslPath = $this->getXslFilePath($configConfiguration, $sitemapType);
+        $this->applyDynamicContentSecurityPolicy($xslPath);
+        $view->assign('xslFile', $this->getUriFromFilePath($xslPath));
 
         return $this->renderCombinedSitemap($request, $view, $configConfiguration, $sitemapType);
+    }
+
+    /**
+     * @return array<int|string, mixed>
+     */
+    private function resolvePluginConfiguration(ServerRequestInterface $request): array
+    {
+        $frontendTypoScript = $request->getAttribute('frontend.typoscript');
+        if (!$frontendTypoScript instanceof FrontendTypoScript) {
+            throw new \RuntimeException('Missing frontend TypoScript for XML sitemap rendering.', 1710000010);
+        }
+
+        $pluginNode = $frontendTypoScript->getSetupTree()->getChildByName('plugin');
+        if (!$pluginNode instanceof ChildNodeInterface) {
+            throw new \RuntimeException('Missing plugin TypoScript for XML sitemap rendering.', 1710000011);
+        }
+
+        $settingsTree = $pluginNode->getChildByName('tx_seo');
+        if (!$settingsTree instanceof ChildNodeInterface) {
+            throw new \RuntimeException('Missing plugin.tx_seo TypoScript for XML sitemap rendering.', 1710000012);
+        }
+
+        $settingsArray = $settingsTree->toArray();
+        if (!is_array($settingsArray)) {
+            throw new \RuntimeException('Invalid plugin.tx_seo TypoScript for XML sitemap rendering.', 1710000013);
+        }
+
+        return $this->typoScriptService->convertTypoScriptArrayToPlainArray($settingsArray);
+    }
+
+    private function resolvePageType(ServerRequestInterface $request): int
+    {
+        $routing = $request->getAttribute('routing');
+        if ($routing instanceof PageArguments) {
+            return (int)$routing->getPageType();
+        }
+
+        return 0;
+    }
+
+    private function resolveSitemapNameFromRequest(ServerRequestInterface $request): ?string
+    {
+        $queryParams = $request->getQueryParams();
+        $seoParams = $queryParams['tx_seo'] ?? null;
+        if (is_array($seoParams) && !empty($seoParams['sitemap'])) {
+            return (string)$seoParams['sitemap'];
+        }
+
+        if (!empty($queryParams['sitemap'])) {
+            return (string)$queryParams['sitemap'];
+        }
+
+        return null;
     }
 
     /**
@@ -159,35 +211,34 @@ final readonly class XmlSitemapRenderer
 
     /**
      * @param array<string, mixed> $configConfiguration
-     *
-     * @throws CanNotResolvePublicResourceException
-     * @throws CanNotResolveSystemResourceException
      */
-    private function getXslResource(array $configConfiguration, string $sitemapType, ?string $sitemapName = null): PublicResourceInterface&SystemResourceInterface
+    private function getXslFilePath(array $configConfiguration, string $sitemapType, ?string $sitemapName = null): string
     {
-        $resourceIdentifier = $configConfiguration[$sitemapType]['sitemaps'][$sitemapName ?? '']['config']['xslFile']
+        $path = $configConfiguration[$sitemapType]['sitemaps'][$sitemapName ?? '']['config']['xslFile']
             ?? $configConfiguration[$sitemapType]['sitemaps']['xslFile']
             ?? $configConfiguration['xslFile']
             ?? 'EXT:mp_core/Resources/Public/Seo/Sitemap.xsl';
-        $xslResource = $this->resourceFactory->createPublicResource($resourceIdentifier);
-        if (!$xslResource instanceof SystemResourceInterface) {
-            throw new \InvalidArgumentException('Can not resolve xslFile "%s" to a system resource', 1761032332);
-        }
 
-        return $xslResource;
+        return GeneralUtility::getFileAbsFileName((string)$path);
     }
 
-    private function applyDynamicContentSecurityPolicy(SystemResourceInterface $xslResource): void
+    private function getUriFromFilePath(string $filePath): string
     {
-        try {
-            $dom = new \DOMDocument();
-            $dom->loadXML($xslResource->getContents());
-        } catch (SystemResourceDoesNotExistException) {
+        return PathUtility::getAbsoluteWebPath($filePath);
+    }
+
+    private function applyDynamicContentSecurityPolicy(string $xslPath): void
+    {
+        if (!is_file($xslPath)) {
             return;
         }
+
+        $dom = new \DOMDocument();
+        $dom->load($xslPath);
+
         $hashes = [];
         foreach ($dom->getElementsByTagName('style') as $node) {
-            if ($node->getAttribute('type') !== 'text/css') {
+            if (!$node instanceof \DOMElement || $node->getAttribute('type') !== 'text/css') {
                 continue;
             }
             $hashes[] = HashValue::hash($node->textContent);

@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-10-31
+
+### Added
+- Site setting `seo.llmsTxt.menuDepth` (1–5, default `2`) to control how many page-tree levels appear in the generated `llms.txt` menu (third level and deeper render as nested bullet lists).
+- Multilingual XML sitemap: combined `/sitemap.xml` urlset per language (pages + EXT:news), browser preview via XSLT 1.0 (`Resources/Public/Seo/Sitemap.xsl`), site settings `seo.sitemap.news.storagePid` and `seo.sitemap.news.detailPageId`.
+
+### Changed
+- XML sitemap TypoScript lives in `Configuration/Sets/mp-core-seo/xml-sitemap.typoscript` (removed legacy `Configuration/Extensions/seo/…` and sitemap-index Fluid template). Root `/sitemap.xml` always merges providers; `/sitemap-type/…` remains for single-provider slices only.
+
 ## [1.3.0] - 2026-10-25
 
 ### Added
@@ -912,6 +921,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.3.1]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.29...v1.3.0
 [1.2.29]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.28...v1.2.29
 [1.2.28]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.27...v1.2.28
