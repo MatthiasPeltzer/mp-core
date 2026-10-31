@@ -651,6 +651,14 @@
         <source>llms.txt Intro Text</source>
         <target>llms.txt-Einleitungstext</target>
       </trans-unit>
+      <trans-unit id="seo.llmsTxt.menuDepth.form.description" resname="seo.llmsTxt.menuDepth.form.description" approved="yes">
+        <source>How many page-tree levels to list in llms.txt (1 = top-level sections only, 2 = sections plus direct children, 3 = one level deeper, up to 5).</source>
+        <target>Wie viele Ebenen des Seitenbaums in llms.txt erscheinen (1 = nur oberste Abschnitte, 2 = Abschnitte plus direkte Unterseiten, 3 = eine Ebene tiefer, maximal 5).</target>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.menuDepth.form.label" resname="seo.llmsTxt.menuDepth.form.label" approved="yes">
+        <source>llms.txt Menu Depth</source>
+        <target>llms.txt-Menütiefe</target>
+      </trans-unit>
       <trans-unit id="seo.llmsTxt.news.detailPageId.form.description" resname="seo.llmsTxt.news.detailPageId.form.description" approved="yes">
         <source>Page UID of the news detail page used to build article links (0 = disable the news section).</source>
         <target>Seiten-UID der News-Detailseite zum Erzeugen der Artikellinks (0 = News-Abschnitt deaktivieren).</target>
@@ -978,6 +986,22 @@
       <trans-unit id="seo.sitemap.priority.form.label" resname="seo.sitemap.priority.form.label" approved="yes">
         <source>Default Sitemap Priority</source>
         <target>Standard Sitemap-Priorität</target>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.news.storagePid.form.description" resname="seo.sitemap.news.storagePid.form.description" approved="yes">
+        <source>Comma-separated storage folder UIDs for EXT:news records included in the XML sitemap. Leave empty to omit the news section until configured.</source>
+        <target>Kommagetrennte Speicherordner-UIDs für EXT:news-Einträge in der XML-Sitemap. Leer lassen, bis konfiguriert — dann entfällt der News-Abschnitt.</target>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.news.storagePid.form.label" resname="seo.sitemap.news.storagePid.form.label" approved="yes">
+        <source>News Sitemap Storage PID(s)</source>
+        <target>News-Sitemap Speicher-PID(s)</target>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.news.detailPageId.form.description" resname="seo.sitemap.news.detailPageId.form.description" approved="yes">
+        <source>Page UID of the news detail view used to build article URLs in the sitemap (required together with storage PID).</source>
+        <target>Seiten-UID der News-Detailansicht für Artikel-URLs in der Sitemap (zusammen mit der Speicher-PID erforderlich).</target>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.news.detailPageId.form.label" resname="seo.sitemap.news.detailPageId.form.label" approved="yes">
+        <source>News Sitemap Detail Page UID</source>
+        <target>News-Sitemap Detailseiten-UID</target>
       </trans-unit>
       <trans-unit id="seo.twitter.cardType.form.description" resname="seo.twitter.cardType.form.description" approved="yes">
         <source>Twitter Card type (summary, summary_large_image, app, player)</source>

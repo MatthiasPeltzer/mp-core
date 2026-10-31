@@ -112,6 +112,20 @@ settings:
     category: MPCoreSEO
     type: string
     default: '0.5'
+
+  seo.sitemap.news.storagePid:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.sitemap.news.storagePid.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.sitemap.news.storagePid.form.description'
+    category: MPCoreSEO
+    type: string
+    default: ''
+
+  seo.sitemap.news.detailPageId:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.sitemap.news.detailPageId.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.sitemap.news.detailPageId.form.description'
+    category: MPCoreSEO
+    type: int
+    default: 0
   
   # Canonical URL Settings
   seo.canonical.enabled:
@@ -322,6 +336,13 @@ settings:
     category: MPCoreSEO
     type: text
     default: ''
+
+  seo.llmsTxt.menuDepth:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.menuDepth.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:seo.llmsTxt.menuDepth.form.description'
+    category: MPCoreSEO
+    type: int
+    default: 2
 
   # Latest-news section in llms.txt (requires EXT:news). Left empty = section omitted.
   seo.llmsTxt.news.storagePid:

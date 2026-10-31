@@ -3,134 +3,149 @@
                 xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
                 xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                version="2.0">
+                version="1.0">
     <xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
+
+    <xsl:variable name="metaComment" select="/comment()[contains(., 'mpcSitemapMeta ')][1]"/>
+    <xsl:variable name="metaPayload" select="normalize-space(substring-after($metaComment, 'mpcSitemapMeta '))"/>
+    <xsl:variable name="websiteTitle" select="normalize-space(substring-before(concat($metaPayload, ' :: '), ' :: '))"/>
+    <xsl:variable name="languageTitle" select="normalize-space(substring-after($metaPayload, ' :: '))"/>
+
+    <xsl:template name="titleText">
+        <xsl:choose>
+            <xsl:when test="string-length($websiteTitle) &gt; 0">
+                <xsl:value-of select="concat('XML Sitemap - ', $websiteTitle)"/>
+            </xsl:when>
+            <xsl:otherwise>XML Sitemap</xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
     <xsl:template match="/">
-        <html xmlns="http://www.w3.org/1999/xhtml">
+        <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
             <head>
-                <title>mpcore.de XML Sitemap</title>
+                <title>
+                    <xsl:call-template name="titleText"/>
+                </title>
                 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta name="robots" content="noindex" />
                 <style type="text/css">
                     body {
-                        font-family: Helvetica, Arial, sans-serif;
-                        font-size: 13px;
-                        color: #545353;
+                        font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+                        font-size: 14px;
+                        line-height: 1.45;
+                        color: #333;
+                        background: #f6f7f9;
+                        margin: 0;
+                        padding: 2rem 1rem;
+                    }
+                    #content {
+                        margin: 0 auto;
+                        max-width: 1100px;
+                        background: #fff;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        padding: 1.5rem 1.75rem 2rem;
+                        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+                    }
+                    h1 {
+                        font-size: 1.5rem;
+                        margin: 0 0 0.35rem;
+                    }
+                    .subtitle {
+                        color: #666;
+                        margin: 0 0 1.25rem;
                     }
                     table {
                         border: none;
                         border-collapse: collapse;
+                        width: 100%;
                     }
                     #sitemap tr:nth-child(odd) td {
-                        background-color: #eee !important;
+                        background-color: #f9fafb;
                     }
                     #sitemap tbody tr:hover td {
-                        background-color: #ccc;
+                        background-color: #eef2f7;
                     }
                     #sitemap tbody tr:hover td, #sitemap tbody tr:hover td a {
                         color: #000;
                     }
-                    #content {
-                        margin: 0 auto;
-                        width: 1000px;
-                    }
                     .expl {
-                        margin: 18px 3px;
-                        line-height: 1.2em;
+                        margin: 0 0 1rem;
+                        color: #555;
                     }
                     a {
-                        color: #000;
+                        color: #0a406e;
                         text-decoration: none;
-                    }
-                    a:visited {
-                        color: #777;
+                        word-break: break-all;
                     }
                     a:hover {
                         text-decoration: underline;
                     }
-                    td {
-                        font-size:11px;
+                    td, th {
+                        font-size: 12px;
+                        vertical-align: top;
+                        padding: 0.45rem 0.5rem;
                     }
                     th {
-                        text-align:left;
-                        padding-right:30px;
-                        font-size:11px;
+                        text-align: left;
+                        border-bottom: 2px solid #333;
                     }
-                    thead th {
-                        border-bottom: 1px solid #000;
+                    .footer {
+                        margin-top: 1.25rem;
+                        font-size: 12px;
+                        color: #777;
                     }
                 </style>
             </head>
             <body>
                 <div id="content">
-                    <h1>mpcore.de Sitemap</h1>
-                    <xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &gt; 0">
-                        <p class="expl">
-                            This XML Sitemap Index file contains <xsl:value-of select="count(sitemap:sitemapindex/sitemap:sitemap)"/> sitemaps.
-                        </p>
-                        <table id="sitemap" cellpadding="3" width="100%">
-                            <thead>
+                    <h1>
+                        <xsl:call-template name="titleText"/>
+                    </h1>
+                    <p class="subtitle">
+                        <xsl:if test="string-length($languageTitle) &gt; 0">
+                            <xsl:value-of select="$languageTitle"/>
+                            <xsl:text> · </xsl:text>
+                        </xsl:if>
+                        <xsl:text>Machine-readable sitemap for search engines</xsl:text>
+                    </p>
+
+                    <p class="expl">
+                        This URL list contains <strong><xsl:value-of select="count(/sitemap:urlset/sitemap:url)"/></strong> entries for this language (pages and news when configured).
+                    </p>
+                    <table id="sitemap">
+                        <thead>
+                            <tr>
+                                <th width="55%">URL</th>
+                                <th width="20%">Last modified</th>
+                                <th width="15%">Change freq.</th>
+                                <th width="10%">Priority</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <xsl:for-each select="/sitemap:urlset/sitemap:url">
+                                <xsl:variable name="itemURL" select="normalize-space(sitemap:loc)"/>
                                 <tr>
-                                    <th>Sitemap</th>
-                                    <th>Last modified</th>
+                                    <td>
+                                        <a href="{$itemURL}"><xsl:value-of select="$itemURL"/></a>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="sitemap:lastmod"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="sitemap:changefreq"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="sitemap:priority"/>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <xsl:for-each select="sitemap:sitemapindex/sitemap:sitemap">
-                                    <xsl:variable name="sitemapURL">
-                                        <xsl:value-of select="sitemap:loc"/>
-                                    </xsl:variable>
-                                    <tr>
-                                        <td>
-                                            <a href="{$sitemapURL}"><xsl:value-of select="sitemap:loc"/></a>
-                                        </td>
-                                        <td>
-                                            <a href="{$sitemapURL}"><xsl:value-of select="sitemap:lastmod"/></a>
-                                        </td>
-                                    </tr>
-                                </xsl:for-each>
-                            </tbody>
-                        </table>
-                    </xsl:if>
-                    <xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &lt; 1">
-                        <p class="expl">
-                            This XML Sitemap contains <xsl:value-of select="count(sitemap:urlset/sitemap:url)"/> URLs.
-                        </p>
-                        <table id="sitemap" cellpadding="3" width="100%">
-                            <thead>
-                                <tr>
-                                    <th width="40%">URL</th>
-                                    <th title="Last Modification Time" width="20%">Last Mod.</th>
-                                    <th title="Change frequency" width="20%">Change freq.</th>
-                                    <th title="Priority" width="20%">Priority</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyz'"/>
-                                <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
-                                <xsl:for-each select="sitemap:urlset/sitemap:url">
-                                    <tr>
-                                        <td>
-                                            <xsl:variable name="itemURL">
-                                                <xsl:value-of select="sitemap:loc"/>
-                                            </xsl:variable>
-                                            <a href="{$itemURL}">
-                                                <xsl:value-of select="sitemap:loc"/>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <xsl:value-of select="concat(substring(sitemap:lastmod,0,11),concat(' ', substring(sitemap:lastmod,12,5)),concat(' ', substring(sitemap:lastmod,20,6)))"/>
-                                        </td>
-                                        <td>
-                                            <xsl:value-of select="sitemap:changefreq"/>
-                                        </td>
-                                        <td>
-                                            <xsl:value-of select="sitemap:priority"/>
-                                        </td>
-                                    </tr>
-                                </xsl:for-each>
-                            </tbody>
-                        </table>
-                    </xsl:if>
+                            </xsl:for-each>
+                        </tbody>
+                    </table>
+
+                    <p class="footer">
+                        Generated automatically by TYPO3 (EXT:seo). Each site language has its own sitemap at <code>/sitemap.xml</code> or <code>/&lt;language&gt;/sitemap.xml</code>.
+                    </p>
                 </div>
             </body>
         </html>

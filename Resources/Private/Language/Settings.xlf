@@ -495,6 +495,12 @@
       <trans-unit id="seo.llmsTxt.intro.form.label" resname="seo.llmsTxt.intro.form.label">
         <source>llms.txt Intro Text</source>
       </trans-unit>
+      <trans-unit id="seo.llmsTxt.menuDepth.form.description" resname="seo.llmsTxt.menuDepth.form.description">
+        <source>How many page-tree levels to list in llms.txt (1 = top-level sections only, 2 = sections plus direct children, 3 = one level deeper, up to 5).</source>
+      </trans-unit>
+      <trans-unit id="seo.llmsTxt.menuDepth.form.label" resname="seo.llmsTxt.menuDepth.form.label">
+        <source>llms.txt Menu Depth</source>
+      </trans-unit>
       <trans-unit id="seo.llmsTxt.news.detailPageId.form.description" resname="seo.llmsTxt.news.detailPageId.form.description">
         <source>Page UID of the news detail page used to build article links (0 = disable the news section).</source>
       </trans-unit>
@@ -740,6 +746,18 @@
       </trans-unit>
       <trans-unit id="seo.sitemap.priority.form.label" resname="seo.sitemap.priority.form.label">
         <source>Default Sitemap Priority</source>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.news.storagePid.form.description" resname="seo.sitemap.news.storagePid.form.description">
+        <source>Comma-separated storage folder UIDs for EXT:news records included in the XML sitemap. Leave empty to omit the news section until configured.</source>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.news.storagePid.form.label" resname="seo.sitemap.news.storagePid.form.label">
+        <source>News Sitemap Storage PID(s)</source>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.news.detailPageId.form.description" resname="seo.sitemap.news.detailPageId.form.description">
+        <source>Page UID of the news detail view used to build article URLs in the sitemap (required together with storage PID).</source>
+      </trans-unit>
+      <trans-unit id="seo.sitemap.news.detailPageId.form.label" resname="seo.sitemap.news.detailPageId.form.label">
+        <source>News Sitemap Detail Page UID</source>
       </trans-unit>
       <trans-unit id="seo.twitter.cardType.form.description" resname="seo.twitter.cardType.form.description">
         <source>Twitter Card type (summary, summary_large_image, app, player)</source>

@@ -246,6 +246,8 @@ Source: `Configuration/Sets/mp-core-seo/`
 | `seo.sitemap.enabled` | bool | `true` |
 | `seo.sitemap.excludeHiddenPages` | bool | `true` |
 | `seo.sitemap.priority` | string | `0.5` |
+| `seo.sitemap.news.storagePid` | string | (empty; mpcore demo default `29`) |
+| `seo.sitemap.news.detailPageId` | int | `0` (mpcore demo default `31`) |
 | `seo.canonical.enabled` | bool | `true` |
 | `seo.schema.enabled` | bool | `true` |
 | `seo.schema.organizationType` | string | `Organization` |
@@ -274,6 +276,7 @@ Source: `Configuration/Sets/mp-core-seo/`
 | `seo.robots.crawlDelay` | int | `0` |
 | `seo.robots.additional` | string | (empty) |
 | `seo.llmsTxt.enabled` | bool | `true` |
+| `seo.llmsTxt.menuDepth` | int | `2` |
 | `seo.llmsTxt.intro` | text | (empty) |
 | `seo.llmsTxt.news.storagePid` | string | (empty) |
 | `seo.llmsTxt.news.detailPageId` | int | `0` |

@@ -18,6 +18,7 @@ use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Http\Uri;
+use TYPO3\CMS\Core\Routing\RouterInterface;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Core\Site\Entity\SiteSettings;
@@ -503,6 +504,97 @@ final class LlmsTxtMiddlewareTest extends TestCase
         $response = $middleware->process($this->request('/fr/llms.txt', $site), $this->passthroughHandler());
 
         self::assertSame('passthrough', $this->bodyOf($response));
+    }
+
+    #[Test]
+    public function menuDepthThreeIncludesNestedGrandchildPages(): void
+    {
+        $cache = $this->createMock(FrontendInterface::class);
+        $cache->method('get')->willReturn(false);
+
+        $pageRepository = $this->createMock(PageRepository::class);
+        $pageRepository->method('getMenu')->willReturnCallback(static function (int $parentPageId): array {
+            return match ($parentPageId) {
+                1 => [['uid' => 10, 'title' => 'Docs', 'nav_title' => '', 'doktype' => 1]],
+                10 => [['uid' => 11, 'title' => 'Vidply', 'nav_title' => '', 'doktype' => 1]],
+                11 => [['uid' => 12, 'title' => 'Settings', 'nav_title' => '', 'doktype' => 1]],
+                default => [],
+            };
+        });
+
+        $router = $this->createMock(RouterInterface::class);
+        $router->method('generateUri')->willReturnCallback(static fn (string $pageId): Uri => new Uri(
+            'https://example.com/page-' . $pageId
+        ));
+
+        $language = $this->createMock(SiteLanguage::class);
+        $language->method('getLanguageId')->willReturn(0);
+        $language->method('getBase')->willReturn(new Uri('https://example.com/'));
+
+        $site = $this->createMock(Site::class);
+        $site->method('getBase')->willReturn(new Uri('https://example.com/'));
+        $site->method('getIdentifier')->willReturn('main');
+        $site->method('getConfiguration')->willReturn(['websiteTitle' => 'Acme']);
+        $site->method('getSettings')->willReturn(SiteSettings::createFromSettingsTree([
+            'seo' => ['llmsTxt' => ['menuDepth' => 3]],
+        ]));
+        $site->method('getRootPageId')->willReturn(1);
+        $site->method('getDefaultLanguage')->willReturn($language);
+        $site->method('getLanguages')->willReturn([$language]);
+        $site->method('getRouter')->willReturn($router);
+
+        $middleware = $this->middleware($cache, $pageRepository);
+        $body = $this->bodyOf($middleware->process($this->request('/llms.txt', $site), $this->passthroughHandler()));
+
+        self::assertStringContainsString('## [Docs](https://example.com/page-10)', $body);
+        self::assertStringContainsString('- [Vidply](https://example.com/page-11)', $body);
+        self::assertStringContainsString('  - [Settings](https://example.com/page-12)', $body);
+    }
+
+    #[Test]
+    public function menuDepthOneOmitsChildPages(): void
+    {
+        $cache = $this->createMock(FrontendInterface::class);
+        $cache->method('get')->willReturn(false);
+
+        $pageRepository = $this->createMock(PageRepository::class);
+        $pageRepository->method('getMenu')->willReturnCallback(static function (int $parentPageId): array {
+            if ($parentPageId === 1) {
+                return [['uid' => 10, 'title' => 'Docs', 'nav_title' => '', 'doktype' => 1]];
+            }
+            if ($parentPageId === 10) {
+                return [['uid' => 11, 'title' => 'Vidply', 'nav_title' => '', 'doktype' => 1]];
+            }
+
+            return [];
+        });
+
+        $router = $this->createMock(RouterInterface::class);
+        $router->method('generateUri')->willReturnCallback(static fn (string $pageId): Uri => new Uri(
+            'https://example.com/page-' . $pageId
+        ));
+
+        $language = $this->createMock(SiteLanguage::class);
+        $language->method('getLanguageId')->willReturn(0);
+        $language->method('getBase')->willReturn(new Uri('https://example.com/'));
+
+        $site = $this->createMock(Site::class);
+        $site->method('getBase')->willReturn(new Uri('https://example.com/'));
+        $site->method('getIdentifier')->willReturn('main');
+        $site->method('getConfiguration')->willReturn(['websiteTitle' => 'Acme']);
+        $site->method('getSettings')->willReturn(SiteSettings::createFromSettingsTree([
+            'seo' => ['llmsTxt' => ['menuDepth' => 1]],
+        ]));
+        $site->method('getRootPageId')->willReturn(1);
+        $site->method('getDefaultLanguage')->willReturn($language);
+        $site->method('getLanguages')->willReturn([$language]);
+        $site->method('getRouter')->willReturn($router);
+
+        $middleware = $this->middleware($cache, $pageRepository);
+        $body = $this->bodyOf($middleware->process($this->request('/llms.txt', $site), $this->passthroughHandler()));
+
+        self::assertStringContainsString('## [Docs](https://example.com/page-10)', $body);
+        self::assertStringNotContainsString('Vidply', $body);
     }
 
     #[Test]
