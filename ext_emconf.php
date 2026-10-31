@@ -26,5 +26,5 @@ $EM_CONF['mp_core'] = [
     'author' => 'Matthias Peltzer',
     'author_email' => 'mail@mpcore.de',
     'author_company' => 'private',
-    'version' => '1.3.0',
+    'version' => '1.3.1',
 ];
