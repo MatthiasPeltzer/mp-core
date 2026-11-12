@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2] - 2026-11-12
+
+### Changed
+- Updated frontend dependencies to Bootstrap 5.3.9 and Vue 3.5.45.
+- Updated build tooling: `eslint-plugin-vue` 10.12.1, `globals` 17.14.0, `jsdom` 31.0.0, `sass` 1.108.2, `stylelint-order` 8.1.3, `vite` 8.3.8, and `vitest` 5.1.0.
+- Rebuilt the public JavaScript and CSS assets.
+
 ## [1.3.1] - 2026-10-31
 
 ### Added
@@ -921,6 +928,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.3.2]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.1...v1.3.2
 [1.3.1]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.29...v1.3.0
 [1.2.29]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.28...v1.2.29
