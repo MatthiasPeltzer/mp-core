@@ -3,6 +3,9 @@
 	"version": "1.0.0",
 	"description": "Bootstrap 5, Vite, PostCSS, Stylelint, ESLint",
 	"type": "module",
+	"engines": {
+		"node": ">=26"
+	},
 	"scripts": {
 		"build": "npm run eslint && npm run stylelint && vite build --mode production && npm run check-size",
 		"build:analyze": "node scripts/build-analyze.js",

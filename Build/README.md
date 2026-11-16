@@ -1,6 +1,6 @@
 # Build folder
 
-Frontend asset pipeline for **mpc/mp-core**. Requires **Node.js 22+** and npm.
+Frontend asset pipeline for **mpc/mp-core**. Requires **Node.js 26+** and npm (aligned with mpcore DDEV `nodejs_version`).
 
 Output is written to **`../Resources/Public/`** (JavaScripts, StyleSheets, Fonts, Icons, Images, Favicons, BackendLayouts).
 
