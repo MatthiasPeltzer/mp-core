@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.4] - 2026-11-19
+
+### Added
+- Branded HTML/plain form mail layouts (`MpcoreFormEmail`) and contact templates (`ContactReceiver`, `ContactSender`) with site logo, colours, and configurable footer (`form.email.footerText`, optional header/footer colour overrides).
+- `FormEmailBrandingListener` injects per-site branding into `EmailToReceiver` / `EmailToSender` FluidEmail templates.
+- Form **Fieldset**: editor options for visible heading level (H2–H4 or legend-only) and optional subheader; rendered on the page and in mpcore contact e-mails (`Fieldset/SectionHeading` partial).
+- Form **Page** partial: no automatic page-label `<h2>` (TYPO3 page title / fieldset legends carry section headings instead).
+- Form **Summary** step: intro title + required-fields hint once above overview (div, same styles as step 1); not repeated in the summary list; then “Summary” H2 and section groups.
+
+### Changed
+- Contact form definitions (`kontakt_1`, `contact_1`): site sender address, visitor `Reply-To`, staff + visitor confirmation mails; English `contact_1` aligned with German fieldsets, labels, subject options, and spam validator.
+- Form mail logo: dedicated site setting `form.email.logo` (no fallback to site header logos); mail logo links to the language homepage.
+- Form mail HTML: Outlook-oriented layout (MSO conditionals, 600px tables, `bgcolor`, inline typography) aligned with TYPO3 `SystemEmail`; minimal `<style>` block (rounded corners in `@media` only).
+- Form mail layout: fluid `width="100%"` shell with `max-width:600px` in CSS only (no fixed 600px table attribute); tighter horizontal padding to avoid mobile overflow without `word-break` / `!important`.
+
+### Fixed
+- Form mail branding: cast `Site::getBase()` to string for TYPO3 14 (`Uri` object).
+
 ## [1.3.3] - 2026-11-18
 
 ### Changed
@@ -934,6 +952,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.3.4]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.3...v1.3.4
 [1.3.3]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.1...v1.3.2
 [1.3.1]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.0...v1.3.1
