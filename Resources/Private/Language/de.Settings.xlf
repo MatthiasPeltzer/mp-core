@@ -355,6 +355,46 @@
         <source>Email Sender Name</source>
         <target>E-Mail Absendername</target>
       </trans-unit>
+      <trans-unit id="form.email.logo.form.description" resname="form.email.logo.form.description" approved="yes">
+        <source>FAL file reference for the mail header only (e.g. t3://file?uid=123). Empty = no logo in form mails. Does not use the site header logo.</source>
+        <target>FAL-Dateireferenz nur für den E-Mail-Kopf (z. B. t3://file?uid=123). Leer = kein Logo in Formular-E-Mails. Nicht das Site-Header-Logo.</target>
+      </trans-unit>
+      <trans-unit id="form.email.logo.form.label" resname="form.email.logo.form.label" approved="yes">
+        <source>Form email logo (FAL)</source>
+        <target>Formular-E-Mail Logo (FAL)</target>
+      </trans-unit>
+      <trans-unit id="form.email.logoAlt.form.description" resname="form.email.logoAlt.form.description" approved="yes">
+        <source>Alternative text for the mail logo image. Empty = decorative (empty alt).</source>
+        <target>Alternativtext für das E-Mail-Logo. Leer = dekorativ (leeres alt).</target>
+      </trans-unit>
+      <trans-unit id="form.email.logoAlt.form.label" resname="form.email.logoAlt.form.label" approved="yes">
+        <source>Form email logo alt text</source>
+        <target>Formular-E-Mail Logo Alt-Text</target>
+      </trans-unit>
+      <trans-unit id="form.email.footerText.form.description" resname="form.email.footerText.form.description" approved="yes">
+        <source>HTML footer for form emails (Imprint, disclaimer). Empty = copyright and legal links from site configuration.</source>
+        <target>HTML-Fußzeile für Formular-E-Mails (Impressum, Hinweise). Leer = Copyright und Rechtslinks aus der Site-Konfiguration.</target>
+      </trans-unit>
+      <trans-unit id="form.email.footerText.form.label" resname="form.email.footerText.form.label" approved="yes">
+        <source>Form email footer</source>
+        <target>Formular-E-Mail Fußzeile</target>
+      </trans-unit>
+      <trans-unit id="form.email.headerColor.form.description" resname="form.email.headerColor.form.description" approved="yes">
+        <source>Optional CSS color for the mail header band. Empty = site configuration color-primary.</source>
+        <target>Optionale CSS-Farbe für den E-Mail-Kopfbereich. Leer = Site-Konfiguration color-primary.</target>
+      </trans-unit>
+      <trans-unit id="form.email.headerColor.form.label" resname="form.email.headerColor.form.label" approved="yes">
+        <source>Form email header color</source>
+        <target>Formular-E-Mail Kopffarbe</target>
+      </trans-unit>
+      <trans-unit id="form.email.footerColor.form.description" resname="form.email.footerColor.form.description" approved="yes">
+        <source>Optional CSS color for the mail footer band. Empty = site configuration color-secondary.</source>
+        <target>Optionale CSS-Farbe für den E-Mail-Fußbereich. Leer = Site-Konfiguration color-secondary.</target>
+      </trans-unit>
+      <trans-unit id="form.email.footerColor.form.label" resname="form.email.footerColor.form.label" approved="yes">
+        <source>Form email footer color</source>
+        <target>Formular-E-Mail Fußfarbe</target>
+      </trans-unit>
       <trans-unit id="form.honeypot.enabled.form.description" resname="form.honeypot.enabled.form.description" approved="yes">
         <source>Enable honeypot spam protection</source>
         <target>Honeypot-Spam-Schutz aktivieren</target>

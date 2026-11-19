@@ -1,0 +1,92 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers">
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td style="padding-top:16px;">
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #e0e0e0;">
+    <formvh:renderAllFormValues renderable="{form.formDefinition}" as="formValue">
+        <f:variable name="elementIdentifier" value="{formValue.element.identifier}" />
+        <f:variable name="elementType" value="{formValue.element.type}" />
+        <f:if condition="{elementType} == 'ContentElement' || {elementType} == 'Honeypot'">
+            <f:then><!-- skip --></f:then>
+            <f:else>
+                <f:if condition="{elementIdentifier} == 'text-2'">
+                    <f:then><!-- spam check --></f:then>
+                    <f:else>
+                        <f:if condition="{audience} == 'sender' && {elementIdentifier} == 'checkbox-1'">
+                            <f:then><!-- visitor confirmation: omit GDPR checkbox body --></f:then>
+                            <f:else>
+                                <tr>
+                                    <f:if condition="{formValue.isSection}">
+                                        <f:then>
+                                            <td colspan="2" style="padding:12px 14px;background-color:#f5f5f5;border-bottom:1px solid #e0e0e0;">
+                                                <f:if condition="{formValue.element.properties.sectionHeadingLevel}">
+                                                    <f:then>
+                                                        <f:render partial="Fieldset/SectionHeading" arguments="{element: formValue.element, context: 'email', languageKey: languageKey}" />
+                                                    </f:then>
+                                                    <f:else>
+                                                        <strong>{formvh:translateElementProperty(element: formValue.element, property: 'label', languageKey: languageKey)}</strong>
+                                                        <f:variable name="sectionSubheader" value="{formValue.element.properties.sectionSubheader -> f:format.trim()}" />
+                                                        <f:if condition="{sectionSubheader}">
+                                                            <br />
+                                                            <span style="font-size:14px;line-height:150%;color:#555555;">{sectionSubheader}</span>
+                                                        </f:if>
+                                                    </f:else>
+                                                </f:if>
+                                            </td>
+                                        </f:then>
+                                        <f:else>
+                                            <td valign="top" align="left" width="35%" style="padding:10px 14px;border-bottom:1px solid #e0e0e0;">
+                                                <strong>
+                                                    <f:if condition="{elementIdentifier} == 'checkbox-1'">
+                                                        <f:then>
+                                                            <f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.label" />
+                                                        </f:then>
+                                                        <f:else>
+                                                            {formvh:translateElementProperty(element: formValue.element, property: 'label', languageKey: languageKey) -> f:sanitize.html() -> f:transform.html()}
+                                                        </f:else>
+                                                    </f:if>
+                                                </strong>
+                                            </td>
+                                            <td valign="top" align="left" style="padding:10px 14px;border-bottom:1px solid #e0e0e0;">
+                                                <f:if condition="{elementIdentifier} == 'checkbox-1'">
+                                                    <f:then>
+                                                        <f:if condition="{formValue.value}">
+                                                            <f:then>
+                                                                <f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.yes" />
+                                                            </f:then>
+                                                            <f:else>
+                                                                <f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.no" />
+                                                            </f:else>
+                                                        </f:if>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:if condition="{formValue.value}">
+                                                            <f:then>
+                                                                <f:if condition="{formValue.isMultiValue}">
+                                                                    <f:then>
+                                                                        <f:for each="{formValue.processedValue}" as="value" iteration="it">
+                                                                            <f:if condition="{it.isLast}"><f:then>{value}</f:then><f:else>{value}, </f:else></f:if>
+                                                                        </f:for>
+                                                                    </f:then>
+                                                                    <f:else>
+                                                                        <f:format.nl2br>{formValue.processedValue}</f:format.nl2br>
+                                                                    </f:else>
+                                                                </f:if>
+                                                            </f:then>
+                                                            <f:else>-</f:else>
+                                                        </f:if>
+                                                    </f:else>
+                                                </f:if>
+                                            </td>
+                                        </f:else>
+                                    </f:if>
+                                </tr>
+                            </f:else>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+    </formvh:renderAllFormValues>
+</table>
+</td></tr></table>
+</html>

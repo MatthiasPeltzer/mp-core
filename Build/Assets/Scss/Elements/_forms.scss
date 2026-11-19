@@ -6,6 +6,16 @@ legend {
   font-weight: 700;
 }
 
+// Section fieldsets: heading lives inside the legend; avoid legend typography stacking on h2–h4.
+legend.form-fieldset-legend {
+  font-size: inherit;
+  font-weight: normal;
+
+  .form-fieldset-heading {
+    font-weight: $headings-font-weight;
+  }
+}
+
 .multicheckbox {
   display: flex;
   justify-content: space-between;

@@ -273,6 +273,36 @@
       <trans-unit id="form.email.senderName.form.label" resname="form.email.senderName.form.label">
         <source>Email Sender Name</source>
       </trans-unit>
+      <trans-unit id="form.email.logo.form.description" resname="form.email.logo.form.description">
+        <source>FAL file reference for the mail header only (e.g. t3://file?uid=123). Empty = no logo in form mails. Does not use the site header logo.</source>
+      </trans-unit>
+      <trans-unit id="form.email.logo.form.label" resname="form.email.logo.form.label">
+        <source>Form email logo (FAL)</source>
+      </trans-unit>
+      <trans-unit id="form.email.logoAlt.form.description" resname="form.email.logoAlt.form.description">
+        <source>Alternative text for the mail logo image. Empty = decorative (empty alt).</source>
+      </trans-unit>
+      <trans-unit id="form.email.logoAlt.form.label" resname="form.email.logoAlt.form.label">
+        <source>Form email logo alt text</source>
+      </trans-unit>
+      <trans-unit id="form.email.footerText.form.description" resname="form.email.footerText.form.description">
+        <source>HTML footer for form emails (Imprint, disclaimer). Empty = copyright and legal links from site configuration.</source>
+      </trans-unit>
+      <trans-unit id="form.email.footerText.form.label" resname="form.email.footerText.form.label">
+        <source>Form email footer</source>
+      </trans-unit>
+      <trans-unit id="form.email.headerColor.form.description" resname="form.email.headerColor.form.description">
+        <source>Optional CSS color for the mail header band. Empty = site configuration color-primary.</source>
+      </trans-unit>
+      <trans-unit id="form.email.headerColor.form.label" resname="form.email.headerColor.form.label">
+        <source>Form email header color</source>
+      </trans-unit>
+      <trans-unit id="form.email.footerColor.form.description" resname="form.email.footerColor.form.description">
+        <source>Optional CSS color for the mail footer band. Empty = site configuration color-secondary.</source>
+      </trans-unit>
+      <trans-unit id="form.email.footerColor.form.label" resname="form.email.footerColor.form.label">
+        <source>Form email footer color</source>
+      </trans-unit>
       <trans-unit id="form.honeypot.enabled.form.description" resname="form.honeypot.enabled.form.description">
         <source>Enable honeypot spam protection</source>
       </trans-unit>

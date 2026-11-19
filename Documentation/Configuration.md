@@ -220,6 +220,13 @@ Source: `Configuration/Sets/mp-core-form/`
 | `form.email.senderName` | string | `Website Contact Form` |
 | `form.email.senderEmail` | string | `noreply@example.com` |
 | `form.email.replyToEmail` | string | `info@example.com` |
+| `form.email.logo` | string (FAL) | (empty — **no** logo in mail header; does not use site header logos) |
+| `form.email.logoAlt` | string | (empty — decorative logo with empty `alt`) |
+| `form.email.footerText` | text (HTML) | (empty — footer falls back to copyright + Imprint/Privacy links from site configuration) |
+| `form.email.headerColor` | string (CSS color) | (empty — uses site `color-primary`) |
+| `form.email.footerColor` | string (CSS color) | (empty — uses site `color-secondary`) |
+
+Form notification templates (`ContactReceiver` / `ContactSender`): set **`form.email.logo`** to a FAL reference (`t3://file?uid=…` from the file list). The image links to the language homepage. Header/footer colours still come from site configuration (or `form.email.headerColor` / `form.email.footerColor` overrides). Transport addresses: `config/sites/*/settings.yaml`.
 | `form.validation.clientSide` | bool | `true` |
 | `form.validation.showInlineErrors` | bool | `true` |
 | `form.storage.saveToDatabase` | bool | `false` |

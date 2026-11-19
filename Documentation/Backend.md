@@ -15,7 +15,7 @@ TYPO3 backend integration for **mpc/mp-core**: Page TSconfig, RTE preset, backen
 | CKEditor plugin | `Resources/Public/JavaScripts/ckeditor/definition-list.js` | Definition list toolbar plugin |
 | Preview renderer | `Classes/Preview/CustomContentPreviewRenderer.php` | Page module content previews |
 | Backend layouts | `Configuration/TsConfig/Page/Mod/WebLayout/BackendLayouts/` | Web > Page colPos structure |
-| Form YAML | `Resources/Extensions/form/Yaml/BaseSetup.yaml` | EXT:form styling (when `form` is loaded) |
+| Form YAML | `Resources/Extensions/form/Yaml/BaseSetup.yaml` | EXT:form styling (when `form` is loaded); Fieldset inspector: heading H2–H4 or legend-only, optional subheader (page + contact mail) |
 
 ---
 

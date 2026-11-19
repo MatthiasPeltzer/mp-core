@@ -1,0 +1,12 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+<f:layout name="MpcoreFormEmail" />
+<f:section name="Title">{title}</f:section>
+<f:section name="Main">
+    <f:if condition="{messageBefore}">{messageBefore -> f:sanitize.html() -> f:format.html()}</f:if>
+    <f:if condition="!{hideFormValues}">
+        <f:render partial="Finishers/Email/ContactFormValues" arguments="{form: form, languageKey: languageKey, audience: 'sender'}" />
+    </f:if>
+    <f:if condition="{messageAfter}">{messageAfter -> f:sanitize.html() -> f:format.html()}</f:if>
+</f:section>
+</html>

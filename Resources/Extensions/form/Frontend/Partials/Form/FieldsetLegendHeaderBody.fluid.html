@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{headingLevel}">
+    <f:then>
+        <f:switch expression="{headingLevel}">
+            <f:case value="h2"><h2 class="form-fieldset-heading h2 mb-1">{sectionLabel}</h2></f:case>
+            <f:case value="h3"><h3 class="form-fieldset-heading h3 mb-1">{sectionLabel}</h3></f:case>
+            <f:case value="h4"><h4 class="form-fieldset-heading h4 mb-1">{sectionLabel}</h4></f:case>
+            <f:defaultCase><span class="form-fieldset-heading d-block fw-semibold mb-1">{sectionLabel}</span></f:defaultCase>
+        </f:switch>
+    </f:then>
+    <f:else>
+        {sectionLabel}
+    </f:else>
+</f:if>
+<f:if condition="{sectionSubheader}">
+    <span class="form-fieldset-subheader d-block fw-normal fs-6 text-body-secondary lh-base">{sectionSubheader}</span>
+</f:if>
+</html>
