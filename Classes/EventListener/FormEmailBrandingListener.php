@@ -12,11 +12,11 @@ declare(strict_types=1);
 namespace Mpc\MpCore\EventListener;
 
 use Mpc\MpCore\Service\FormEmailBrandingBuilder;
-use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Form\Event\BeforeEmailFinisherInitializedEvent;
 
 /**
  * Injects per-site branding variables into form FluidEmail templates.
+ * Requires TYPO3 ≥ 14.0 ({@see BeforeEmailFinisherInitializedEvent}); registered from Configuration/Services.php.
  */
 final class FormEmailBrandingListener
 {
@@ -24,7 +24,6 @@ final class FormEmailBrandingListener
         private readonly FormEmailBrandingBuilder $formEmailBrandingBuilder,
     ) {}
 
-    #[AsEventListener('mpc/mp-core/form-email-branding')]
     public function __invoke(BeforeEmailFinisherInitializedEvent $event): void
     {
         $options = $event->getOptions();
