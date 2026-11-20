@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.5] - 2026-11-20
+
+### Fixed
+- `BrandedEmailFinisher`: explicit constructor/DI wiring (mail services + `FormEmailBrandingBuilder`) so `GeneralUtility::makeInstance()` resolves dependencies on the form summary step (functional tests stay form-free).
+- `BrandedEmailFinisher`: TYPO3 13.4-compatible constructor/DI (no `TemplatedEmailFactory`; mail deps wired only when class exists).
+- Plain-text form mail partial `ContactFormValues.fluid.txt`: correct nested `f:if` / `f:else` closing tags; line breaks via template text nodes inside `f:spaceless` (not `&#10;` in `f:format.raw`).
+
+### Changed
+- Multi-step form overview: rely on the normal page stage (`Header.Title` / H1 + background); removed duplicate fieldset intro above the summary list.
+
+### Fixed
+- Multi-step form POST: omit Fluid form `section` anchor so the browser does not jump to the form id and clip the page stage hero.
+
+### Security
+- Form mail: sanitize custom `form.email.footerText` before `f:format.html()`; plain-text footer omits unsafe link URLs from custom HTML.
+- Form fieldset section headings (page + mail): sanitize/transform labels and subheaders like field labels.
+
+### Fixed
+- CI Quality job: declare `typo3/cms-form` dependency, install it in the PHPStan matrix, and satisfy PHPStan on form mail branding (`generateUri` route casting, footer builder PHPDoc).
+
+### Changed
+- Form mail branding: `BrandedEmailFinisher` replaces the TYPO3 14-only event listener; works on TYPO3 13.4 and 14.x via `BaseSetup.yaml` finishers.
+
 ## [1.3.4] - 2026-11-19
 
 ### Added
@@ -22,6 +45,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Form mail branding: cast `Site::getBase()` to string for TYPO3 14 (`Uri` object).
+- `form.email.logo`: resolve `t3://file?uid=…` via `LinkService` (fixes 500 / wrong FAL path).
+
+### Changed
+- Plain-text form mails: structured field list (`ContactFormValues` partial), readable footer with `Impressum`/`Datenschutz` URLs (`footerTextPlain`) instead of stripped link labels.
+- Form summary step: restore contact intro header (`Kontaktformular` + required-fields hint) in `Form.html` / `Form.fluid.html` (first fieldset with `sectionHeadingLevel`, not only when `sectionSubheader` is set).
+
+### Fixed
+- Form mail footer legal links: pass site language via `_language` in `PageRouter::generateUri()` (was invalid 4th argument).
 
 ## [1.3.3] - 2026-11-18
 
@@ -952,6 +983,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.3.5]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.4...v1.3.5
 [1.3.4]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.3...v1.3.4
 [1.3.3]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.1...v1.3.2
