@@ -11,7 +11,7 @@ services:
 
   Mpc\MpCore\:
     resource: '../Classes/*'
-    exclude: '../Classes/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+    exclude: '../Classes/{DependencyInjection,Entity,Migrations,Tests,Kernel.php,Domain/Finishers/BrandedEmailFinisher.php}'
 
   # Dedicated cache frontend for the /robots.txt and /llms.txt middleware.
   cache.mp_core_geotext:
@@ -58,6 +58,8 @@ services:
   Mpc\MpCore\Preview\CustomContentPreviewRenderer:
     public: true
 
-  # Resolved via GeneralUtility::makeInstance() from FormDefinition::createFinisher().
+  # FormDefinition::createFinisher() uses GeneralUtility::makeInstance(); no autowire (form optional in tests).
   Mpc\MpCore\Domain\Finishers\BrandedEmailFinisher:
     public: true
+    autowire: false
+    autoconfigure: false
