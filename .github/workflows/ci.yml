@@ -106,7 +106,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require --no-update typo3/testing-framework:^9.3
+          composer require --no-update typo3/cms-form:^14.3 typo3/testing-framework:^9.3
           composer update --no-interaction --no-progress
 
       - name: Functional tests (sqlite)
@@ -162,7 +162,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require --no-update typo3/testing-framework:^9.3
+          composer require --no-update typo3/cms-form:^14.3 typo3/testing-framework:^9.3
           composer update --no-interaction --no-progress
 
       - name: Build Codeception actors

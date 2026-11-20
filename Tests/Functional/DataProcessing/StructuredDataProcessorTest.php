@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\Tests\Functional\DataProcessing;
 
+use Mpc\MpCore\Tests\Support\MpCoreTcaManifest;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -20,7 +21,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class StructuredDataProcessorTest extends FunctionalTestCase
 {
-    protected array $coreExtensionsToLoad = ['rte_ckeditor', 'seo'];
+    protected array $coreExtensionsToLoad = MpCoreTcaManifest::CORE_EXTENSIONS_TO_LOAD;
 
     protected array $testExtensionsToLoad = [
         'b13/container',

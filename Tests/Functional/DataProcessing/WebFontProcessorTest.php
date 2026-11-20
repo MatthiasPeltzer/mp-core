@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mpc\MpCore\Tests\Functional\DataProcessing;
 
 use Mpc\MpCore\DataProcessing\WebFontProcessor;
+use Mpc\MpCore\Tests\Support\MpCoreTcaManifest;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -28,7 +29,7 @@ final class WebFontProcessorTest extends FunctionalTestCase
     /**
      * mp_core's ext_emconf declares hard dependencies on these system extensions.
      */
-    protected array $coreExtensionsToLoad = ['rte_ckeditor', 'seo'];
+    protected array $coreExtensionsToLoad = MpCoreTcaManifest::CORE_EXTENSIONS_TO_LOAD;
 
     /**
      * mp_core's TCA overrides reference b13/container and content_blocks APIs at
