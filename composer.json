@@ -70,7 +70,6 @@
     "saschaegerer/phpstan-typo3": "^3.0",
     "typo3/coding-standards": "^0.8.0",
     "typo3/cms-backend": "^13.4 || ^14.3",
-    "typo3/cms-form": "^13.4 || ^14.3",
     "typo3/cms-install": "^13.4 || ^14.3",
     "typo3/testing-framework": "^9.3"
   },
