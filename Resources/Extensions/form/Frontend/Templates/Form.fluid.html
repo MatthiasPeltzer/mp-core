@@ -6,7 +6,6 @@
         method="{form.renderingOptions.httpMethod}"
         class="form"
         id="{form.identifier}"
-        section="{form.identifier}"
         enctype="{form.renderingOptions.httpEnctype}"
         addQueryString="{form.renderingOptions.addQueryString}"
         argumentsToBeExcludedFromQueryString="{form.renderingOptions.argumentsToBeExcludedFromQueryString}"
@@ -14,19 +13,6 @@
         additionalAttributes="{formvh:translateElementProperty(element: form, property: 'fluidAdditionalAttributes')}"
         novalidate="novalidate"
     >
-        <f:if condition="{form.currentPage.type} == 'SummaryPage'">
-            <f:variable name="firstFormPage" value="{form.pages.0}" />
-            <f:for each="{firstFormPage.elements}" as="introElement">
-                <f:if condition="{introElement.type} == 'Fieldset'">
-                    <f:variable name="introSubheader" value="{introElement.properties.sectionSubheader -> f:format.trim()}" />
-                    <f:if condition="{introSubheader}">
-                        <div class="form-page-intro mb-4">
-                            <f:render partial="Form/FieldsetLegendHeader" arguments="{element: introElement, container: 'div'}" />
-                        </div>
-                    </f:if>
-                </f:if>
-            </f:for>
-        </f:if>
         <f:render partial="{form.currentPage.templateName}" arguments="{page: form.currentPage}" />
         <div class="{form.renderingOptions.formNavigation.navigationWrapperClassAttribute}">
             <f:render partial="Form/Navigation" arguments="{form: form}" />

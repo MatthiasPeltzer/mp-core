@@ -372,8 +372,8 @@
         <target>Formular-E-Mail Logo Alt-Text</target>
       </trans-unit>
       <trans-unit id="form.email.footerText.form.description" resname="form.email.footerText.form.description" approved="yes">
-        <source>HTML footer for form emails (Imprint, disclaimer). Empty = copyright and legal links from site configuration.</source>
-        <target>HTML-Fußzeile für Formular-E-Mails (Impressum, Hinweise). Leer = Copyright und Rechtslinks aus der Site-Konfiguration.</target>
+        <source>Limited HTML footer for form emails (links, paragraphs). Only site administrators should edit this. Output is sanitized like finisher messages. Empty = copyright and legal links from site configuration.</source>
+        <target>Begrenztes HTML für die Formular-E-Mail-Fußzeile (Links, Absätze). Nur Site-Administratoren sollten dies bearbeiten; die Ausgabe wird wie Finisher-Texte bereinigt. Leer = Copyright und Rechtslinks aus der Site-Konfiguration.</target>
       </trans-unit>
       <trans-unit id="form.email.footerText.form.label" resname="form.email.footerText.form.label" approved="yes">
         <source>Form email footer</source>

@@ -89,9 +89,90 @@ final class FormEmailBrandingBuilderTest extends TestCase
 
         self::assertSame('https://example.test/fileadmin/logo.png', $brand['logoUrl']);
         self::assertSame('mpcore', $brand['logoAlt']);
-        self::assertSame('https://example.test', $brand['homeUrl']);
+        self::assertSame('https://example.test/', $brand['homeUrl']);
         self::assertSame('#112233', $brand['headerBackgroundColor']);
         self::assertSame('#445566', $brand['footerBackgroundColor']);
         self::assertSame('<p>Custom footer</p>', $brand['footerText']);
+        self::assertSame('Custom footer', $brand['footerTextPlain']);
+    }
+
+    #[Test]
+    public function buildFromRequestBuildsPlainFooterWithLegalUrls(): void
+    {
+        $logoResolver = new SiteLogoResolver($this->createMock(ResourceFactory::class), $this->createMock(LinkService::class));
+
+        $settings = SiteSettings::createFromSettingsTree([
+            'form.email.logo' => '',
+            'form.email.footerText' => '',
+            'mpcConsent.imprintPage' => 10,
+            'mpcConsent.privacyPolicyPage' => 11,
+        ]);
+
+        $site = $this->createMock(Site::class);
+        $site->method('getRootPageId')->willReturn(1);
+        $site->method('getBase')->willReturn(new Uri('https://example.test/'));
+        $router = $this->createMock(RouterInterface::class);
+        $router->method('generateUri')->willReturnCallback(
+            static fn (int|string $pageUid): Uri => new Uri('https://example.test/page-' . $pageUid)
+        );
+        $site->method('getRouter')->willReturn($router);
+        $site->method('getConfiguration')->willReturn(['copyrightText' => 'mpc GmbH']);
+        $site->method('getSettings')->willReturn($settings);
+        $site->method('getIdentifier')->willReturn('mpc');
+
+        $language = $this->createMock(SiteLanguage::class);
+        $language->method('toArray')->willReturn([]);
+        $language->method('getLanguageId')->willReturn(0);
+
+        $request = $this->createMock(ServerRequestInterface::class);
+        $request->method('getAttribute')->willReturnMap([
+            ['site', null, $site],
+            ['language', null, $language],
+        ]);
+
+        $brand = (new FormEmailBrandingBuilder($logoResolver))->buildFromRequest($request);
+
+        self::assertStringContainsString('©', $brand['footerTextPlain']);
+        self::assertStringContainsString('mpc GmbH', $brand['footerTextPlain']);
+        self::assertStringContainsString('Impressum: https://example.test/page-10', $brand['footerTextPlain']);
+        self::assertStringContainsString('Datenschutz: https://example.test/page-11', $brand['footerTextPlain']);
+    }
+
+    #[Test]
+    public function buildFromRequestPlainFooterOmitsUnsafeHyperlinks(): void
+    {
+        $logoResolver = new SiteLogoResolver($this->createMock(ResourceFactory::class), $this->createMock(LinkService::class));
+
+        $settings = SiteSettings::createFromSettingsTree([
+            'form.email.logo' => '',
+            'form.email.footerText' => '<p>Safe <a href="https://example.test/legal">Legal</a> '
+                . '<a href="javascript:alert(1)">Bad</a></p>',
+        ]);
+
+        $site = $this->createMock(Site::class);
+        $site->method('getRootPageId')->willReturn(1);
+        $site->method('getBase')->willReturn(new Uri('https://example.test/'));
+        $router = $this->createMock(RouterInterface::class);
+        $router->method('generateUri')->willReturn(new Uri('https://example.test/'));
+        $site->method('getRouter')->willReturn($router);
+        $site->method('getConfiguration')->willReturn([]);
+        $site->method('getSettings')->willReturn($settings);
+        $site->method('getIdentifier')->willReturn('mpc');
+
+        $language = $this->createMock(SiteLanguage::class);
+        $language->method('toArray')->willReturn([]);
+        $language->method('getLanguageId')->willReturn(0);
+
+        $request = $this->createMock(ServerRequestInterface::class);
+        $request->method('getAttribute')->willReturnMap([
+            ['site', null, $site],
+            ['language', null, $language],
+        ]);
+
+        $brand = (new FormEmailBrandingBuilder($logoResolver))->buildFromRequest($request);
+
+        self::assertStringContainsString('Legal: https://example.test/legal', $brand['footerTextPlain']);
+        self::assertStringNotContainsString('javascript:', $brand['footerTextPlain']);
+        self::assertStringContainsString('Bad', $brand['footerTextPlain']);
     }
 }

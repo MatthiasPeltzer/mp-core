@@ -1,23 +1,13 @@
 <f:layout name="MpcoreFormEmail" />
 <f:section name="Title">{title}</f:section>
 <f:section name="Main">
-    <f:if condition="{messageBefore}">{messageBefore -> f:format.stripTags() -> f:format.htmlentitiesDecode()}</f:if>
+    <f:if condition="{messageBefore}">{messageBefore -> f:format.stripTags() -> f:format.htmlentitiesDecode()}
+
+</f:if>
     <f:if condition="!{hideFormValues}">
-        <formvh:renderAllFormValues renderable="{form.formDefinition}" as="formValue">
-            <f:variable name="elementIdentifier" value="{formValue.element.identifier}" />
-            <f:if condition="{formValue.element.type} != 'ContentElement' && {elementIdentifier} != 'text-2'">
-                <f:if condition="{formValue.isSection}">
-                    <f:then>
-                        ** {formvh:translateElementProperty(element: formValue.element, property: 'label', languageKey: languageKey)} **
-                        <f:variable name="sectionSubheader" value="{formValue.element.properties.sectionSubheader -> f:format.trim()}" />
-                        <f:if condition="{sectionSubheader}">{sectionSubheader}</f:if>
-                    </f:then>
-                    <f:else>
-                        {formvh:translateElementProperty(element: formValue.element, property: 'label', languageKey: languageKey) -> f:format.stripTags()}: <f:if condition="{elementIdentifier} == 'checkbox-1'"><f:then><f:if condition="{formValue.value}"><f:then><f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.yes" /></f:then><f:else><f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.no" /></f:else></f:if></f:then><f:else>{formValue.processedValue}</f:else></f:if>
-                    </f:else>
-                </f:if>
-            </f:if>
-        </formvh:renderAllFormValues>
+        <f:render partial="Finishers/Email/ContactFormValues" arguments="{form: form, languageKey: languageKey, audience: 'receiver'}" />
     </f:if>
-    <f:if condition="{messageAfter}">{messageAfter -> f:format.stripTags() -> f:format.htmlentitiesDecode()}</f:if>
+    <f:if condition="{messageAfter}">
+
+{messageAfter -> f:format.stripTags() -> f:format.htmlentitiesDecode()}</f:if>
 </f:section>

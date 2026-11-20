@@ -10,24 +10,24 @@
     <f:if condition="{context} == 'email'">
         <f:then>
             <f:switch expression="{headingLevel}">
-                <f:case value="h2"><h2 style="padding:0 0 6px 0;font-size:22px;line-height:150%;">{sectionLabel}</h2></f:case>
-                <f:case value="h3"><h3 style="padding:0 0 6px 0;font-size:20px;line-height:150%;">{sectionLabel}</h3></f:case>
-                <f:case value="h4"><h4 style="padding:0 0 6px 0;font-size:18px;line-height:150%;">{sectionLabel}</h4></f:case>
-                <f:defaultCase><strong>{sectionLabel}</strong></f:defaultCase>
+                <f:case value="h2"><h2 style="padding:0 0 6px 0;font-size:22px;line-height:150%;">{sectionLabel -> f:sanitize.html() -> f:transform.html()}</h2></f:case>
+                <f:case value="h3"><h3 style="padding:0 0 6px 0;font-size:20px;line-height:150%;">{sectionLabel -> f:sanitize.html() -> f:transform.html()}</h3></f:case>
+                <f:case value="h4"><h4 style="padding:0 0 6px 0;font-size:18px;line-height:150%;">{sectionLabel -> f:sanitize.html() -> f:transform.html()}</h4></f:case>
+                <f:defaultCase><strong>{sectionLabel -> f:sanitize.html() -> f:transform.html()}</strong></f:defaultCase>
             </f:switch>
             <f:if condition="{subheader}">
-                <p style="padding:0 0 4px 0;font-size:14px;line-height:150%;color:#555555;">{subheader}</p>
+                <p style="padding:0 0 4px 0;font-size:14px;line-height:150%;color:#555555;">{subheader -> f:sanitize.html() -> f:transform.html()}</p>
             </f:if>
         </f:then>
         <f:else>
             <f:switch expression="{headingLevel}">
-                <f:case value="h2"><h2 class="form-fieldset-heading h2 mb-1">{sectionLabel}</h2></f:case>
-                <f:case value="h3"><h3 class="form-fieldset-heading h3 mb-1">{sectionLabel}</h3></f:case>
-                <f:case value="h4"><h4 class="form-fieldset-heading h4 mb-1">{sectionLabel}</h4></f:case>
-                <f:defaultCase><span class="form-fieldset-heading d-block fw-semibold mb-1">{sectionLabel}</span></f:defaultCase>
+                <f:case value="h2"><h2 class="form-fieldset-heading h2 mb-1">{sectionLabel -> f:sanitize.html() -> f:transform.html()}</h2></f:case>
+                <f:case value="h3"><h3 class="form-fieldset-heading h3 mb-1">{sectionLabel -> f:sanitize.html() -> f:transform.html()}</h3></f:case>
+                <f:case value="h4"><h4 class="form-fieldset-heading h4 mb-1">{sectionLabel -> f:sanitize.html() -> f:transform.html()}</h4></f:case>
+                <f:defaultCase><span class="form-fieldset-heading d-block fw-semibold mb-1">{sectionLabel -> f:sanitize.html() -> f:transform.html()}</span></f:defaultCase>
             </f:switch>
             <f:if condition="{subheader}">
-                <span class="form-fieldset-subheader d-block fw-normal fs-6 text-body-secondary lh-base mb-2">{subheader}</span>
+                <span class="form-fieldset-subheader d-block fw-normal fs-6 text-body-secondary lh-base mb-2">{subheader -> f:sanitize.html() -> f:transform.html()}</span>
             </f:if>
         </f:else>
     </f:if>

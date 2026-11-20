@@ -1,1 +1,223 @@
-import{d as e,l as t,n,r,t as i,u as a}from"./i18n-DzV21DJp.js";import{a as o,c as s,i as c,l,o as u,r as d,s as f,t as p}from"./domUtils-CnWucRtt.js";var m={desktop:{container:`.mainnav-desktop`,buttonSelector:`.dropdown-item-button`,dropdownButtonSelector:`.first-nav-button`,menuSelector:`.collapse`,parentMenuSelector:`.subnav-children`},mobile:{container:`#main-menu`,buttonSelector:`.dropdown-item-button`,menuSelector:`.collapse`,parentMenuSelector:`.collapse`},breakpoint:`(min-width: 62rem)`};function h(e,n,r=!1,a=!0){if(!e)return;let o=n?i:t;e.setAttribute(`aria-label`,o),e.setAttribute(`aria-expanded`,n?`true`:`false`),a&&e.classList.toggle(`collapsed`,!n);let s=e.querySelector(`svg title`);if(s&&(s.textContent=o),r){let t=e.querySelector(`.visually-hidden`);t&&(t.textContent=o)}}function g(e,t,n=null,r=!1){let i=`${e} ${t}`;document.querySelectorAll(i).forEach(e=>{if(e===n)return;let t=e.getAttribute(`data-bs-target`);h(e,document.querySelector(t)?.classList.contains(`show`)??!1,r)})}function _(e){let t=e.target.id;return document.querySelector(`[data-bs-target="#${t}"]`)}function v(e,t=!1){let{container:n,buttonSelector:r,menuSelector:i}=e;document.addEventListener(`show.bs.collapse`,e=>{if(!e.target.closest(n))return;let a=_(e);a&&(p(a,r,i),g(n,r,a,t),h(a,!0,t))}),document.addEventListener(`hide.bs.collapse`,e=>{if(!e.target.closest(n))return;let r=_(e);r&&h(r,!1,t)}),document.addEventListener(`shown.bs.collapse`,e=>{if(!e.target.closest(n))return;let i=_(e);i&&h(i,!0,t),g(n,r,null,t)}),document.addEventListener(`hidden.bs.collapse`,e=>{if(!e.target.closest(n))return;let i=_(e);i&&h(i,!1,t),g(n,r,null,t)})}function y(e,t=!1){document.addEventListener(`click`,n=>{let r=n.target.closest(e);r&&h(r,r.classList.contains(`collapsed`),t)})}function b(){f(document.body,document.querySelector(`.header-wrapper`),()=>c(m.desktop.container))}function x(){let{container:e,dropdownButtonSelector:t}=m.desktop;document.querySelectorAll(`${e} ${t}`).forEach(e=>{h(e,e.classList.contains(`show`),!1,!1)})}function S(){let e=m.desktop.container;document.addEventListener(`show.bs.dropdown`,t=>{t.target.closest(e)&&b()}),document.addEventListener(`shown.bs.dropdown`,t=>{t.target.closest(e)&&(s(m.desktop.container),b(),x())}),document.addEventListener(`hide.bs.dropdown`,t=>{t.target.closest(e)&&(o(t.clickEvent)||b())}),document.addEventListener(`hidden.bs.dropdown`,t=>{t.target.closest(e)&&(o(t.clickEvent)||(b(),x()))}),y(`${m.desktop.container} ${m.desktop.buttonSelector}`),v(m.desktop,!1),setTimeout(()=>{u(m.desktop.parentMenuSelector,i),g(m.desktop.container,m.desktop.buttonSelector,null,!1),x()},100)}function C(){let t=document.body,c=document.querySelector(`.header-wrapper`),f=document.querySelector(`.navbar-toggler`),h=document.querySelector(`.navbar-toggler span.txt > .visually-hidden`),_=document.getElementById(`main-menu`);_&&(d(_,()=>{l(!0,t,c,f,h,e,r,a,n),s(m.mobile.container)},i=>{o(i.clickEvent)||l(!1,t,c,f,h,e,r,a,n)}),document.querySelectorAll(`.main-menu-desktop .btn-close`).forEach(e=>{e.addEventListener(`click`,()=>{document.querySelector(`.first-nav-button.show`)?.click()})}),document.querySelectorAll(`.subnav-children .hassub`).forEach(e=>{e.addEventListener(`click`,()=>{p(e,`.subnav-children .hassub`,`.subnav-children`)})}),y(`${m.mobile.container} ${m.mobile.buttonSelector}`,!0),v(m.mobile,!0),setTimeout(()=>{u(m.mobile.parentMenuSelector,i),g(m.mobile.container,m.mobile.buttonSelector,null,!0)},100))}function w(){let e=document.getElementById(`main-menu`),t=document.querySelector(`.navbar-toggler`);e?.classList.contains(`show`)&&t&&t.click(),document.querySelectorAll(`${m.mobile.container} .collapse.show`).forEach(e=>{let t=document.querySelector(`[data-bs-target="#${e.id}"]`);t&&!t.classList.contains(`collapsed`)&&t.click()})}function T(){document.querySelectorAll(`.first-nav-button.show, .mainnav-desktop .dropdown-toggle.show`).forEach(e=>{e.click()}),document.querySelectorAll(`${m.desktop.container} .collapse.show`).forEach(e=>{let t=document.querySelector(`[data-bs-target="#${e.id}"]`);t&&!t.classList.contains(`collapsed`)&&t.click()})}function E(){let e=window.matchMedia(m.breakpoint),t=document.body,n=document.querySelector(`.header-wrapper`);e.addEventListener(`change`,e=>{e&&(e.matches?w():T(),t.classList.remove(`active-nav-body`),n?.classList.remove(`active-nav`))})}function D(){document.querySelector(`.mainnav-desktop`)&&S(),document.getElementById(`main-menu`)&&C(),E()}D();
+import { d as openTitleMessage, l as openButtonMessage, n as closeNavMessage, r as closeTitleMessage, t as closeButtonMessage, u as openNavMessage } from "./i18n-D-i_rRaW.js";
+import { a as isDropdownNavLinkClick, c as scrollToCurrentElement, i as hasOpenDesktopOrMobileNav, l as toggleNavState, o as openCurrentPageParents, r as handleDropdownVisibility, s as scheduleNavOverlaySync, t as closeOtherSubmenus } from "./domUtils-4h3QtqRC.js";
+// Assets/Scripts/code/Navigation/Tertiary/navigation.js
+/**
+* Handles both desktop and mobile navigation interactions including:
+* - Dropdown visibility
+* - Collapse/expand submenus
+* - Button state management (icons, aria attributes)
+* - Responsive behavior
+*/
+var CONFIG = {
+	desktop: {
+		container: ".mainnav-desktop",
+		buttonSelector: ".dropdown-item-button",
+		dropdownButtonSelector: ".first-nav-button",
+		menuSelector: ".collapse",
+		parentMenuSelector: ".subnav-children"
+	},
+	mobile: {
+		container: "#main-menu",
+		buttonSelector: ".dropdown-item-button",
+		menuSelector: ".collapse",
+		parentMenuSelector: ".collapse"
+	},
+	breakpoint: "(min-width: 62rem)"
+};
+/**
+* @param {HTMLElement} button
+* @param {boolean} isOpen
+* @param {boolean} updateVisuallyHidden - Whether to update .visually-hidden text (mobile only)
+* @param {boolean} toggleCollapsed - Whether to toggle Bootstrap collapse .collapsed class
+*/
+function updateButtonState(button, isOpen, updateVisuallyHidden = false, toggleCollapsed = true) {
+	if (!button) return;
+	const label = isOpen ? closeButtonMessage : openButtonMessage;
+	button.setAttribute("aria-label", label);
+	button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+	if (toggleCollapsed) button.classList.toggle("collapsed", !isOpen);
+	const svgTitle = button.querySelector("svg title");
+	if (svgTitle) svgTitle.textContent = label;
+	if (updateVisuallyHidden) {
+		const buttonText = button.querySelector(".visually-hidden");
+		if (buttonText) buttonText.textContent = label;
+	}
+}
+/**
+* @param {string} containerSelector
+* @param {string} buttonSelector
+* @param {HTMLElement|null} excludeButton
+* @param {boolean} updateVisuallyHidden
+*/
+function syncAllButtonStates(containerSelector, buttonSelector, excludeButton = null, updateVisuallyHidden = false) {
+	const selector = `${containerSelector} ${buttonSelector}`;
+	document.querySelectorAll(selector).forEach((button) => {
+		if (button === excludeButton) return;
+		const targetMenuId = button.getAttribute("data-bs-target");
+		updateButtonState(button, document.querySelector(targetMenuId)?.classList.contains("show") ?? false, updateVisuallyHidden);
+	});
+}
+/**
+* @param {Event} event
+* @returns {HTMLElement|null}
+*/
+function getTriggerButton(event) {
+	const targetId = event.target.id;
+	return document.querySelector(`[data-bs-target="#${targetId}"]`);
+}
+/**
+* Creates and registers Bootstrap collapse event handlers for a navigation container.
+* @param {Object} config
+* @param {boolean} updateVisuallyHidden
+*/
+function registerCollapseHandlers(config, updateVisuallyHidden = false) {
+	const { container, buttonSelector, menuSelector } = config;
+	document.addEventListener("show.bs.collapse", (event) => {
+		if (!event.target.closest(container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (!triggerButton) return;
+		closeOtherSubmenus(triggerButton, buttonSelector, menuSelector);
+		syncAllButtonStates(container, buttonSelector, triggerButton, updateVisuallyHidden);
+		updateButtonState(triggerButton, true, updateVisuallyHidden);
+	});
+	document.addEventListener("hide.bs.collapse", (event) => {
+		if (!event.target.closest(container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) updateButtonState(triggerButton, false, updateVisuallyHidden);
+	});
+	document.addEventListener("shown.bs.collapse", (event) => {
+		if (!event.target.closest(container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) updateButtonState(triggerButton, true, updateVisuallyHidden);
+		syncAllButtonStates(container, buttonSelector, null, updateVisuallyHidden);
+	});
+	document.addEventListener("hidden.bs.collapse", (event) => {
+		if (!event.target.closest(container)) return;
+		const triggerButton = getTriggerButton(event);
+		if (triggerButton) updateButtonState(triggerButton, false, updateVisuallyHidden);
+		syncAllButtonStates(container, buttonSelector, null, updateVisuallyHidden);
+	});
+}
+/**
+* @param {string} selector
+*/
+function registerClickHandler(selector, updateVisuallyHidden = false) {
+	document.addEventListener("click", (event) => {
+		const button = event.target.closest(selector);
+		if (!button) return;
+		updateButtonState(button, button.classList.contains("collapsed"), updateVisuallyHidden);
+	});
+}
+function syncDesktopNavOverlay() {
+	scheduleNavOverlaySync(document.body, document.querySelector(".header-wrapper"), () => hasOpenDesktopOrMobileNav(CONFIG.desktop.container));
+}
+/**
+* Syncs aria-label / SVG title on desktop top-level dropdown toggles (.first-nav-button).
+*/
+function syncDesktopDropdownButtonStates() {
+	const { container, dropdownButtonSelector } = CONFIG.desktop;
+	document.querySelectorAll(`${container} ${dropdownButtonSelector}`).forEach((button) => {
+		updateButtonState(button, button.classList.contains("show"), false, false);
+	});
+}
+function initDesktopNavigation() {
+	const desktopRoot = CONFIG.desktop.container;
+	document.addEventListener("show.bs.dropdown", (event) => {
+		if (!event.target.closest(desktopRoot)) return;
+		syncDesktopNavOverlay();
+	});
+	document.addEventListener("shown.bs.dropdown", (event) => {
+		if (!event.target.closest(desktopRoot)) return;
+		scrollToCurrentElement(CONFIG.desktop.container);
+		syncDesktopNavOverlay();
+		syncDesktopDropdownButtonStates();
+	});
+	document.addEventListener("hide.bs.dropdown", (event) => {
+		if (!event.target.closest(desktopRoot)) return;
+		if (isDropdownNavLinkClick(event.clickEvent)) return;
+		syncDesktopNavOverlay();
+	});
+	document.addEventListener("hidden.bs.dropdown", (event) => {
+		if (!event.target.closest(desktopRoot)) return;
+		if (isDropdownNavLinkClick(event.clickEvent)) return;
+		syncDesktopNavOverlay();
+		syncDesktopDropdownButtonStates();
+	});
+	registerClickHandler(`${CONFIG.desktop.container} ${CONFIG.desktop.buttonSelector}`);
+	registerCollapseHandlers(CONFIG.desktop, false);
+	setTimeout(() => {
+		openCurrentPageParents(CONFIG.desktop.parentMenuSelector, closeButtonMessage);
+		syncAllButtonStates(CONFIG.desktop.container, CONFIG.desktop.buttonSelector, null, false);
+		syncDesktopDropdownButtonStates();
+	}, 100);
+}
+function initMobileNavigation() {
+	const body = document.body;
+	const headerWrapper = document.querySelector(".header-wrapper");
+	const navbarToggler = document.querySelector(".navbar-toggler");
+	const navbarTogglerText = document.querySelector(".navbar-toggler span.txt > .visually-hidden");
+	const dropdown = document.getElementById("main-menu");
+	if (!dropdown) return;
+	handleDropdownVisibility(dropdown, () => {
+		toggleNavState(true, body, headerWrapper, navbarToggler, navbarTogglerText, openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
+		scrollToCurrentElement(CONFIG.mobile.container);
+	}, (event) => {
+		if (isDropdownNavLinkClick(event.clickEvent)) return;
+		toggleNavState(false, body, headerWrapper, navbarToggler, navbarTogglerText, openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
+	});
+	document.querySelectorAll(".main-menu-desktop .btn-close").forEach((button) => {
+		button.addEventListener("click", () => {
+			document.querySelector(".first-nav-button.show")?.click();
+		});
+	});
+	document.querySelectorAll(".subnav-children .hassub").forEach((subButton) => {
+		subButton.addEventListener("click", () => {
+			closeOtherSubmenus(subButton, ".subnav-children .hassub", ".subnav-children");
+		});
+	});
+	registerClickHandler(`${CONFIG.mobile.container} ${CONFIG.mobile.buttonSelector}`, true);
+	registerCollapseHandlers(CONFIG.mobile, true);
+	setTimeout(() => {
+		openCurrentPageParents(CONFIG.mobile.parentMenuSelector, closeButtonMessage);
+		syncAllButtonStates(CONFIG.mobile.container, CONFIG.mobile.buttonSelector, null, true);
+	}, 100);
+}
+function closeMobileMenus() {
+	const mainMenu = document.getElementById("main-menu");
+	const navbarToggler = document.querySelector(".navbar-toggler");
+	if (mainMenu?.classList.contains("show") && navbarToggler) navbarToggler.click();
+	document.querySelectorAll(`${CONFIG.mobile.container} .collapse.show`).forEach((menu) => {
+		const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
+		if (button && !button.classList.contains("collapsed")) button.click();
+	});
+}
+function closeDesktopMenus() {
+	document.querySelectorAll(".first-nav-button.show, .mainnav-desktop .dropdown-toggle.show").forEach((button) => {
+		button.click();
+	});
+	document.querySelectorAll(`${CONFIG.desktop.container} .collapse.show`).forEach((menu) => {
+		const button = document.querySelector(`[data-bs-target="#${menu.id}"]`);
+		if (button && !button.classList.contains("collapsed")) button.click();
+	});
+}
+function initResponsiveBehavior() {
+	const mediaQuery = window.matchMedia(CONFIG.breakpoint);
+	const body = document.body;
+	const headerWrapper = document.querySelector(".header-wrapper");
+	const handleBreakpointChange = (event) => {
+		if (!event) return;
+		if (event.matches) closeMobileMenus();
+		else closeDesktopMenus();
+		body.classList.remove("active-nav-body");
+		headerWrapper?.classList.remove("active-nav");
+	};
+	mediaQuery.addEventListener("change", handleBreakpointChange);
+}
+function init() {
+	if (document.querySelector(".mainnav-desktop")) initDesktopNavigation();
+	if (document.getElementById("main-menu")) initMobileNavigation();
+	initResponsiveBehavior();
+}
+init();
+
+//# sourceMappingURL=navigationTertiary.js.map

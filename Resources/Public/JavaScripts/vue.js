@@ -1,2 +1,91 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./TodoList-qUqdr6N6.js","./vendor-swiper-D4Cn2xIm.js","../StyleSheets/vendor-swiper.css","./vendor-vue-Bepb8KzN.js","../StyleSheets/TodoList.css","./SwiperSlider-D_b_FV3K.js","./i18n-DzV21DJp.js","./swiper-effect-params-B8xzyyd9.js","./vidply-dynamic-content-C8SI7UWP.js","./GallerySwiper-DQlPS31o.js"])))=>i.map(i=>d[i]);
-import"./vendor-swiper-D4Cn2xIm.js";import{t as e}from"./vendor-vue-Bepb8KzN.js";import{t}from"./preload-helper-DclECHGd.js";var n={TodoList:()=>t(()=>import(`./TodoList-qUqdr6N6.js`),__vite__mapDeps([0,1,2,3,4]),import.meta.url),SwiperSlider:()=>t(()=>import(`./SwiperSlider-D_b_FV3K.js`),__vite__mapDeps([5,1,2,6,7,8]),import.meta.url),GallerySwiper:()=>t(()=>import(`./GallerySwiper-DQlPS31o.js`),__vite__mapDeps([9,1,2,6,7,8]),import.meta.url)};function r(e,t,n){let r=e.querySelectorAll(t);if(r.length===0)return;let i=Array.from(r).map((e,t)=>n(e,t));e.setAttribute(`data-slides-data`,JSON.stringify(i))}function i(e,t){t===`SwiperSlider`?r(e,`.swiper-slide-content`,(e,t)=>({id:t,content:e.innerHTML})):t===`GallerySwiper`&&r(e,`.gallery-slide-content`,(e,t)=>{let n=e.querySelector(`.gallery-main-content`),r=n?n.innerHTML:e.innerHTML,i=e.querySelector(`.gallery-thumbnail-template`),a=i?i.innerHTML:r;return{id:t,content:r.trim(),thumbnail:a.trim()}})}async function a(t,r){let a=n[r];if(a){i(t,r);try{let n=await a(),r=n.default??n;if(!r)return;let i=e(r);i.provide(`mpcMountElement`,t),i.mount(t),t.classList.add(`swiper-vue-ready`)}catch(e){typeof console<`u`&&console.error(`[mp-core/vue] failed to mount "${r}"`,e)}}}function o(){let e=document.querySelectorAll(`[data-container="vue"]`);e.length&&e.forEach(e=>{let t=e.getAttribute(`data-component`);t&&a(e,t)})}typeof window<`u`&&(document.readyState===`loading`?document.addEventListener(`DOMContentLoaded`,o):o());
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./TodoList-BrQGQs8r.js","./vendor-swiper-B2SPrBpt.js","../StyleSheets/vendor-swiper.css","./vendor-vue-D7IRw3Vx.js","../StyleSheets/TodoList.css","./SwiperSlider-DDQyslr3.js","./i18n-D-i_rRaW.js","./swiper-effect-params-BvLHmNUM.js","./vidply-dynamic-content-x2lxO_CE.js","./GallerySwiper-BWcszQtu.js"])))=>i.map(i=>d[i]);
+import "./vendor-swiper-B2SPrBpt.js";
+import { t as createApp } from "./vendor-vue-D7IRw3Vx.js";
+import { t as __vitePreload } from "./preload-helper-CALLvQDj.js";
+// Assets/Scripts/code/Vue/vue-initialisation.js
+/**
+* Usage in TYPO3 templates:
+*   <div data-container="vue" data-component="TodoList"></div>
+*
+* Optional configuration via data attributes:
+*   <div data-container="vue" data-component="TodoList"
+*        data-card-title="My Tasks"
+*        data-color-scheme="primary"></div>
+*
+* SECURITY — trust boundary for slide HTML:
+*   For the SwiperSlider / GallerySwiper code paths below, this script reads
+*   `innerHTML` from server-rendered `.swiper-slide-content` / `.gallery-*`
+*   elements (TYPO3 Fluid output for content elements — RTE bodytext, images,
+*   etc.) and serialises it into a `data-slides-data` attribute. The Vue
+*   components then re-render that HTML via `v-html`. The content is therefore
+*   only as safe as the upstream Fluid pipeline (backend editors are trusted).
+*   NEVER use these components on user-submitted markup without server-side
+*   sanitisation first. The components carry matching SECURITY comments.
+*/
+/**
+* Lazy component loaders. Each entry returns the dynamic import promise for
+* the matching SFC. Vite/Rollup code-splits these into separate chunks, so a
+* page that only uses `SwiperSlider` never downloads `TodoList` or
+* `GallerySwiper`. Add new components here following the same pattern.
+*/
+var componentLoaders = {
+	TodoList: () => __vitePreload(() => import("./TodoList-BrQGQs8r.js"), __vite__mapDeps([0,1,2,3,4]), import.meta.url),
+	SwiperSlider: () => __vitePreload(() => import("./SwiperSlider-DDQyslr3.js"), __vite__mapDeps([5,1,2,6,7,8]), import.meta.url),
+	GallerySwiper: () => __vitePreload(() => import("./GallerySwiper-BWcszQtu.js"), __vite__mapDeps([9,1,2,6,7,8]), import.meta.url)
+};
+function captureSlides(element, slideSelector, extract) {
+	const slideElements = element.querySelectorAll(slideSelector);
+	if (slideElements.length === 0) return;
+	const slidesData = Array.from(slideElements).map((el, index) => extract(el, index));
+	element.setAttribute("data-slides-data", JSON.stringify(slidesData));
+}
+function preserveSlideContent(element, componentName) {
+	if (componentName === "SwiperSlider") {
+		captureSlides(element, ".swiper-slide-content", (el, index) => ({
+			id: index,
+			content: el.innerHTML
+		}));
+		return;
+	}
+	if (componentName === "GallerySwiper") captureSlides(element, ".gallery-slide-content", (el, index) => {
+		const mainContentEl = el.querySelector(".gallery-main-content");
+		const content = mainContentEl ? mainContentEl.innerHTML : el.innerHTML;
+		const thumbnailTemplate = el.querySelector(".gallery-thumbnail-template");
+		const thumbnail = thumbnailTemplate ? thumbnailTemplate.innerHTML : content;
+		return {
+			id: index,
+			content: content.trim(),
+			thumbnail: thumbnail.trim()
+		};
+	});
+}
+async function mountComponent(element, componentName) {
+	const loader = componentLoaders[componentName];
+	if (!loader) return;
+	preserveSlideContent(element, componentName);
+	try {
+		const module = await loader();
+		const component = module.default ?? module;
+		if (!component) return;
+		const app = createApp(component);
+		app.provide("mpcMountElement", element);
+		app.mount(element);
+		element.classList.add("swiper-vue-ready");
+	} catch (err) {
+		if (typeof console !== "undefined") console.error(`[mp-core/vue] failed to mount "${componentName}"`, err);
+	}
+}
+function initializeVueComponents() {
+	const containers = document.querySelectorAll("[data-container=\"vue\"]");
+	if (!containers.length) return;
+	containers.forEach((element) => {
+		const componentName = element.getAttribute("data-component");
+		if (componentName) mountComponent(element, componentName);
+	});
+}
+if (typeof window !== "undefined") {
+	if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initializeVueComponents);
+	else initializeVueComponents();
+}
+
+//# sourceMappingURL=vue.js.map

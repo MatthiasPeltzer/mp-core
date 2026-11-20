@@ -81,7 +81,7 @@
                             <td align="center" valign="top" style="color:#ffffff;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:150%;">
                                 <f:if condition="{emailBrand.footerText}">
                                     <f:then>
-                                        {emailBrand.footerText -> f:format.html()}
+                                        {emailBrand.footerText -> f:sanitize.html() -> f:format.html()}
                                     </f:then>
                                     <f:else>
                                         <p style="padding:0;">

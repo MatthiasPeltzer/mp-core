@@ -1,0 +1,53 @@
+<formvh:renderAllFormValues renderable="{form.formDefinition}" as="formValue">
+<f:variable name="elementIdentifier" value="{formValue.element.identifier}" />
+<f:variable name="elementType" value="{formValue.element.type}" />
+<f:if condition="{elementType} == 'ContentElement' || {elementType} == 'Honeypot'">
+<f:then></f:then>
+<f:else>
+<f:if condition="{elementIdentifier} == 'text-2'">
+<f:then></f:then>
+<f:else>
+<f:if condition="{audience} == 'sender' && {elementIdentifier} == 'checkbox-1'">
+<f:then></f:then>
+<f:else>
+<f:if condition="{formValue.isSection}">
+<f:then>
+
+{formvh:translateElementProperty(element: formValue.element, property: 'label', languageKey: languageKey) -> f:format.stripTags()}
+<f:variable name="sectionSubheader" value="{formValue.element.properties.sectionSubheader -> f:format.stripTags() -> f:format.trim()}" />
+<f:if condition="{sectionSubheader}">
+{sectionSubheader}
+</f:if>
+</f:then>
+<f:else>
+<f:if condition="{elementIdentifier} == 'checkbox-1'">
+<f:then>
+<f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.label" />: <f:if condition="{formValue.value}"><f:then><f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.yes" /></f:then><f:else><f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.no" /></f:else></f:if>
+</f:then>
+<f:else>
+<f:if condition="{formValue.isMultiValue}">
+<f:then>
+{formvh:translateElementProperty(element: formValue.element, property: 'label', languageKey: languageKey) -> f:format.stripTags()}:
+<f:for each="{formValue.processedValue}" as="singleValue">- {singleValue -> f:format.stripTags() -> f:format.htmlentitiesDecode()}
+</f:for>
+</f:then>
+<f:else>
+<f:if condition="{formValue.value}">
+<f:then>
+{formvh:translateElementProperty(element: formValue.element, property: 'label', languageKey: languageKey) -> f:format.stripTags()}: {formValue.processedValue -> f:format.stripTags() -> f:format.htmlentitiesDecode()}
+</f:then>
+<f:else>
+{formvh:translateElementProperty(element: formValue.element, property: 'label', languageKey: languageKey) -> f:format.stripTags()}: -
+</f:else>
+</f:if>
+</f:else>
+</f:if>
+</f:else>
+</f:else>
+</f:if>
+
+</f:else>
+</f:if>
+</f:else>
+</f:if>
+</formvh:renderAllFormValues>

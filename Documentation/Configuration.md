@@ -222,7 +222,7 @@ Source: `Configuration/Sets/mp-core-form/`
 | `form.email.replyToEmail` | string | `info@example.com` |
 | `form.email.logo` | string (FAL) | (empty — **no** logo in mail header; does not use site header logos) |
 | `form.email.logoAlt` | string | (empty — decorative logo with empty `alt`) |
-| `form.email.footerText` | text (HTML) | (empty — footer falls back to copyright + Imprint/Privacy links from site configuration) |
+| `form.email.footerText` | text (limited HTML) | (empty — footer falls back to copyright + Imprint/Privacy links from site configuration). **Trusted site admins only**; allowed markup is sanitized in the mail layout (same as finisher `messageBefore` / `messageAfter`). |
 | `form.email.headerColor` | string (CSS color) | (empty — uses site `color-primary`) |
 | `form.email.footerColor` | string (CSS color) | (empty — uses site `color-secondary`) |
 

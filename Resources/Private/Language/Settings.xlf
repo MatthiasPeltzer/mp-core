@@ -286,7 +286,7 @@
         <source>Form email logo alt text</source>
       </trans-unit>
       <trans-unit id="form.email.footerText.form.description" resname="form.email.footerText.form.description">
-        <source>HTML footer for form emails (Imprint, disclaimer). Empty = copyright and legal links from site configuration.</source>
+        <source>Limited HTML footer for form emails (links, paragraphs). Only site administrators should edit this. Output is sanitized like finisher messages. Empty = copyright and legal links from site configuration.</source>
       </trans-unit>
       <trans-unit id="form.email.footerText.form.label" resname="form.email.footerText.form.label">
         <source>Form email footer</source>
