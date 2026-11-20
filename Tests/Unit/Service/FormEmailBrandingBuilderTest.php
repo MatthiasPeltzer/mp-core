@@ -6,6 +6,7 @@ namespace Mpc\MpCore\Tests\Unit\Service;
 
 use Mpc\MpCore\Service\FormEmailBrandingBuilder;
 use Mpc\MpCore\Service\SiteLogoResolver;
+use TYPO3\CMS\Core\LinkHandling\LinkService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -27,7 +28,10 @@ final class FormEmailBrandingBuilderTest extends TestCase
         $request = $this->createMock(ServerRequestInterface::class);
         $request->method('getAttribute')->with('site')->willReturn(null);
 
-        $builder = new FormEmailBrandingBuilder(new SiteLogoResolver($this->createMock(ResourceFactory::class)));
+        $builder = new FormEmailBrandingBuilder(new SiteLogoResolver(
+            $this->createMock(ResourceFactory::class),
+            $this->createMock(LinkService::class),
+        ));
         self::assertSame([], $builder->buildFromRequest($request));
     }
 
@@ -36,11 +40,11 @@ final class FormEmailBrandingBuilderTest extends TestCase
     {
         $file = $this->createMock(File::class);
         $file->method('getPublicUrl')->willReturn('https://example.test/fileadmin/logo.png');
-        $resourceFactory = $this->createMock(ResourceFactory::class);
-        $resourceFactory->method('getFileObjectFromCombinedIdentifier')
+        $linkService = $this->createMock(LinkService::class);
+        $linkService->method('resolveByStringRepresentation')
             ->with('t3://file?uid=5')
-            ->willReturn($file);
-        $logoResolver = new SiteLogoResolver($resourceFactory);
+            ->willReturn(['file' => $file]);
+        $logoResolver = new SiteLogoResolver($this->createMock(ResourceFactory::class), $linkService);
 
         $settings = SiteSettings::createFromSettingsTree([
             'form.email.logo' => 't3://file?uid=5',

@@ -11,10 +11,13 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\Service;
 
-use TYPO3\CMS\Core\Resource\Exception\ResourceDoesNotExistException;
+use TYPO3\CMS\Core\LinkHandling\LinkService;
+use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
  * Resolves site logo file references using the same cascades as {@see \Mpc\MpCore\DataProcessing\HeaderLogoProcessor}.
@@ -33,7 +36,13 @@ final class SiteLogoResolver
 
     public function __construct(
         private readonly ResourceFactory $resourceFactory,
+        private readonly ?LinkService $linkService = null,
     ) {}
+
+    private function getLinkService(): LinkService
+    {
+        return $this->linkService ?? GeneralUtility::makeInstance(LinkService::class);
+    }
 
     /**
      * Returns the combined file reference for the mail header (prefers the small logo cascade).
@@ -47,17 +56,22 @@ final class SiteLogoResolver
     }
 
     /**
-     * Resolves a t3:// file reference to an absolute public URL suitable for &lt;img src&gt;.
+     * Resolves a FAL reference (t3://file?uid=…, sys_file uid, or "storage:path") to an absolute public URL.
      */
     public function resolvePublicFileUrl(string $fileReference, Site $site): string
     {
-        if ($fileReference === '' || !str_starts_with($fileReference, 't3://')) {
+        $fileReference = trim($fileReference);
+        if ($fileReference === '') {
             return '';
         }
 
         try {
-            $file = $this->resourceFactory->getFileObjectFromCombinedIdentifier($fileReference);
-        } catch (ResourceDoesNotExistException) {
+            $file = $this->resolveFile($fileReference);
+        } catch (\Throwable) {
+            return '';
+        }
+
+        if ($file === null) {
             return '';
         }
 
@@ -71,6 +85,27 @@ final class SiteLogoResolver
         }
 
         return rtrim((string)$site->getBase(), '/') . '/' . ltrim($publicUrl, '/');
+    }
+
+    /**
+     * @throws \Throwable
+     */
+    private function resolveFile(string $reference): ?File
+    {
+        if (str_starts_with($reference, 't3://file')) {
+            $data = $this->getLinkService()->resolveByStringRepresentation($reference);
+            $file = $data['file'] ?? null;
+
+            return $file instanceof File ? $file : null;
+        }
+
+        if (MathUtility::canBeInterpretedAsInteger($reference)) {
+            return $this->resourceFactory->getFileObject((int)$reference);
+        }
+
+        $object = $this->resourceFactory->retrieveFileOrFolderObject($reference);
+
+        return $object instanceof File ? $object : null;
     }
 
     /**
