@@ -12,7 +12,9 @@ declare(strict_types=1);
 namespace Mpc\MpCore\Domain\Finishers;
 
 use Mpc\MpCore\Service\FormEmailBrandingBuilder;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Psr\EventDispatcher\EventDispatcherInterface;
+use TYPO3\CMS\Core\Mail\MailerInterface;
+use TYPO3\CMS\Core\Mail\TemplatedEmailFactory;
 use TYPO3\CMS\Form\Domain\Finishers\EmailFinisher;
 
 /**
@@ -20,6 +22,15 @@ use TYPO3\CMS\Form\Domain\Finishers\EmailFinisher;
  */
 final class BrandedEmailFinisher extends EmailFinisher
 {
+    public function __construct(
+        EventDispatcherInterface $eventDispatcher,
+        TemplatedEmailFactory $templatedEmailFactory,
+        MailerInterface $mailer,
+        private readonly FormEmailBrandingBuilder $formEmailBrandingBuilder,
+    ) {
+        parent::__construct($eventDispatcher, $templatedEmailFactory, $mailer);
+    }
+
     protected function executeInternal(): void
     {
         $this->mergeEmailBrandIntoOptions();
@@ -29,7 +40,7 @@ final class BrandedEmailFinisher extends EmailFinisher
     private function mergeEmailBrandIntoOptions(): void
     {
         $request = $this->finisherContext->getRequest();
-        $emailBrand = GeneralUtility::makeInstance(FormEmailBrandingBuilder::class)->buildFromRequest($request);
+        $emailBrand = $this->formEmailBrandingBuilder->buildFromRequest($request);
         if ($emailBrand === []) {
             return;
         }

@@ -58,8 +58,15 @@ services:
   Mpc\MpCore\Preview\CustomContentPreviewRenderer:
     public: true
 
-  # FormDefinition::createFinisher() uses GeneralUtility::makeInstance(); no autowire (form optional in tests).
+  # FormDefinition::createFinisher() uses GeneralUtility::makeInstance(); wire core mail deps explicitly
+  # (AbstractFinisher inject* is added from Configuration/Services.php when EXT:form is active).
   Mpc\MpCore\Domain\Finishers\BrandedEmailFinisher:
     public: true
+    shared: false
     autowire: false
     autoconfigure: false
+    arguments:
+      - '@Psr\EventDispatcher\EventDispatcherInterface'
+      - '@TYPO3\CMS\Core\Mail\TemplatedEmailFactory'
+      - '@TYPO3\CMS\Core\Mail\MailerInterface'
+      - '@Mpc\MpCore\Service\FormEmailBrandingBuilder'

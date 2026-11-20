@@ -1,14 +1,7 @@
 <f:render section="Title" optional="true" />
 
-
 <f:render section="Main" />
-
 ---
-<f:if condition="{emailBrand.footerTextPlain}">
-    <f:then>
-{emailBrand.footerTextPlain}
-    </f:then>
-    <f:else>
-<f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:footer.sentFrom" arguments="{0: typo3.sitename, 1: normalizedParams.siteUrl}" />
-    </f:else>
-</f:if>
+<f:if condition="{emailBrand.footerTextPlain}"><f:then>
+{emailBrand.footerTextPlain}</f:then><f:else>
+<f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:footer.sentFrom" arguments="{0: typo3.sitename, 1: normalizedParams.siteUrl}" /></f:else></f:if>
