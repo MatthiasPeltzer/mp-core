@@ -24,13 +24,13 @@ final class BrandedEmailFinisher extends EmailFinisher
     public function __construct(
         private readonly FormEmailBrandingBuilder $formEmailBrandingBuilder,
         ?EventDispatcherInterface $eventDispatcher = null,
-        ?object $templatedEmailFactory = null,
+        mixed $templatedEmailFactory = null,
         ?MailerInterface $mailer = null,
     ) {
         if (
             class_exists('TYPO3\CMS\Core\Mail\TemplatedEmailFactory')
             && $eventDispatcher instanceof EventDispatcherInterface
-            && $templatedEmailFactory !== null
+            && $templatedEmailFactory instanceof \TYPO3\CMS\Core\Mail\TemplatedEmailFactory
             && $mailer instanceof MailerInterface
         ) {
             parent::__construct($eventDispatcher, $templatedEmailFactory, $mailer);

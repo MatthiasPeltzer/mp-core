@@ -10,3 +10,11 @@ parameters:
     # Fluid ViewHelpers and DataProcessors are instantiated by the framework;
     # ignore the "unused" reports the container-driven wiring would trigger.
     treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        # EmailFinisher gained a constructor with TemplatedEmailFactory in TYPO3 14 only.
+        -
+            message: '#^Call to an undefined static method TYPO3\\CMS\\Form\\Domain\\Finishers\\EmailFinisher::__construct\(\)\.$#'
+            path: Classes/Domain/Finishers/BrandedEmailFinisher.php
+        -
+            message: '#^Class TYPO3\\CMS\\Core\\Mail\\TemplatedEmailFactory not found\.$#'
+            path: Classes/Domain/Finishers/BrandedEmailFinisher.php
