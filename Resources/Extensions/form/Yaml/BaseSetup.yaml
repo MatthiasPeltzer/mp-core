@@ -88,6 +88,7 @@ TYPO3:
                   200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Layouts/'
           finishersDefinition:
             EmailToReceiver:
+              implementationClassName: Mpc\MpCore\Domain\Finishers\BrandedEmailFinisher
               options:
                 layoutRootPaths:
                   200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Layouts/'
@@ -96,6 +97,7 @@ TYPO3:
                 templateRootPaths:
                   200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Templates/Finishers/Email/'
             EmailToSender:
+              implementationClassName: Mpc\MpCore\Domain\Finishers\BrandedEmailFinisher
               options:
                 layoutRootPaths:
                   200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Layouts/'

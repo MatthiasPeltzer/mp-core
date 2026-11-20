@@ -11,7 +11,7 @@ services:
 
   Mpc\MpCore\:
     resource: '../Classes/*'
-    exclude: '../Classes/{DependencyInjection,Entity,Migrations,Tests,Kernel.php,EventListener/FormEmailBrandingListener.php}'
+    exclude: '../Classes/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
   # Dedicated cache frontend for the /robots.txt and /llms.txt middleware.
   cache.mp_core_geotext:
@@ -56,4 +56,8 @@ services:
 
   # Resolved via TCA ctrl.previewRenderer and GeneralUtility::makeInstance().
   Mpc\MpCore\Preview\CustomContentPreviewRenderer:
+    public: true
+
+  # Resolved via GeneralUtility::makeInstance() from FormDefinition::createFinisher().
+  Mpc\MpCore\Domain\Finishers\BrandedEmailFinisher:
     public: true
