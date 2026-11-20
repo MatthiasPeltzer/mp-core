@@ -14,7 +14,6 @@ namespace Mpc\MpCore\Domain\Finishers;
 use Mpc\MpCore\Service\FormEmailBrandingBuilder;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Mail\MailerInterface;
-use TYPO3\CMS\Core\Mail\TemplatedEmailFactory;
 use TYPO3\CMS\Form\Domain\Finishers\EmailFinisher;
 
 /**
@@ -23,12 +22,19 @@ use TYPO3\CMS\Form\Domain\Finishers\EmailFinisher;
 final class BrandedEmailFinisher extends EmailFinisher
 {
     public function __construct(
-        EventDispatcherInterface $eventDispatcher,
-        TemplatedEmailFactory $templatedEmailFactory,
-        MailerInterface $mailer,
         private readonly FormEmailBrandingBuilder $formEmailBrandingBuilder,
+        ?EventDispatcherInterface $eventDispatcher = null,
+        ?object $templatedEmailFactory = null,
+        ?MailerInterface $mailer = null,
     ) {
-        parent::__construct($eventDispatcher, $templatedEmailFactory, $mailer);
+        if (
+            class_exists('TYPO3\CMS\Core\Mail\TemplatedEmailFactory')
+            && $eventDispatcher instanceof EventDispatcherInterface
+            && $templatedEmailFactory !== null
+            && $mailer instanceof MailerInterface
+        ) {
+            parent::__construct($eventDispatcher, $templatedEmailFactory, $mailer);
+        }
     }
 
     protected function executeInternal(): void
