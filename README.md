@@ -6,6 +6,7 @@ MP Core delivers a Bootstrap- and Vue-powered site package for TYPO3 13.4 / 14.3
 - Container elements (accordion, tabs, slider, grid, wrapper) via b13/container.
 - Content Blocks support (definition list) via friendsoftypo3/content-blocks.
 - Six Site Sets (`mp-core`, `mp-core-base`, `mp-core-container`, `mp-core-news`, `mp-core-form`, `mp-core-seo`) that plug into TYPO3 Site Settings.
+- Branded form notification mails (`ContactReceiver` / `ContactSender`) via `BrandedEmailFinisher` and `form.email.*` settings.
 - Schema.org JSON-LD output (WebSite, WebPage, BlogPosting, BreadcrumbList, MusicGroup, NewsArticle).
 - Frontend build pipeline based on Vite 8, Bootstrap 5.3, Vue 3, Sass, PostCSS, ESLint, Stylelint, Swiper, and Jarallax.
 
@@ -34,6 +35,7 @@ Detailed guides live in [`Documentation/README.md`](Documentation/README.md):
 - [Backend](Documentation/Backend.md) — RTE, TSconfig, backend previews
 - [Content elements](Documentation/ContentElements.md) — per-CType TCA reference
 - [Favicons](Documentation/Favicons.md) — assets, Fluid partial, site config (not static HTML paste)
+- [Form email branding](Documentation/FormEmail.md) — branded contact mails, site settings, finishers
 
 ## License & Support
 

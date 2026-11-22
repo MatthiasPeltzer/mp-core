@@ -225,12 +225,12 @@ Source: `Configuration/Sets/mp-core-form/`
 | `form.email.footerText` | text (limited HTML) | (empty — footer falls back to copyright + Imprint/Privacy links from site configuration). **Trusted site admins only**; allowed markup is sanitized in the mail layout (same as finisher `messageBefore` / `messageAfter`). |
 | `form.email.headerColor` | string (CSS color) | (empty — uses site `color-primary`) |
 | `form.email.footerColor` | string (CSS color) | (empty — uses site `color-secondary`) |
-
-Form notification templates (`ContactReceiver` / `ContactSender`): set **`form.email.logo`** to a FAL reference (`t3://file?uid=…` from the file list). The image links to the language homepage. Header/footer colours still come from site configuration (or `form.email.headerColor` / `form.email.footerColor` overrides). Transport addresses: `config/sites/*/settings.yaml`.
 | `form.validation.clientSide` | bool | `true` |
 | `form.validation.showInlineErrors` | bool | `true` |
 | `form.storage.saveToDatabase` | bool | `false` |
 | `form.storage.uploadFolder` | string | `1:/forms/` |
+
+**Form notification mail:** finishers use **`BrandedEmailFinisher`** and templates **`ContactReceiver`** / **`ContactSender`** (layout **`MpcoreFormEmail`**). Set **`form.email.logo`** to a FAL reference (`t3://file?uid=…`); the image links to the language homepage. Override sender addresses in **`config/sites/*/settings.yaml`**. Per-form finisher options, deliverability, and troubleshooting: [FormEmail.md](FormEmail.md).
 
 ### SEO (`mpc/mp-core-seo`)
 
@@ -688,6 +688,7 @@ CREATE TABLE tt_content (
 - [Content elements](ContentElements.md) -- Per-CType TCA field reference
 - [Frontend](Frontend.md) -- Build system and asset pipeline
 - [Favicons](Favicons.md) -- Favicon generation
+- [Form email](FormEmail.md) -- Branded contact finishers and `form.email.*`
 - [TYPO3 TCA Reference](https://docs.typo3.org/m/typo3/reference-tca/main/en-us/)
 - [TYPO3 Site Sets](https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/SiteHandling/SiteSets.html)
 - [TYPO3 TypoScript Reference](https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/)
