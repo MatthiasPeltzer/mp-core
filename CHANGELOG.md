@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.6] - 2026-11-22
+
+### Added
+- Documentation: [FormEmail.md](Documentation/FormEmail.md) — branded form mails, finishers, site settings, troubleshooting.
+
+### Changed
+- Documentation: `Configuration.md` form section table fix; cross-links in README, OVERVIEW, Backend; CHANGELOG 1.3.4 finisher wording.
+
 ## [1.3.5] - 2026-11-20
 
 ### Fixed
@@ -32,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Branded HTML/plain form mail layouts (`MpcoreFormEmail`) and contact templates (`ContactReceiver`, `ContactSender`) with site logo, colours, and configurable footer (`form.email.footerText`, optional header/footer colour overrides).
-- `FormEmailBrandingListener` injects per-site branding into `EmailToReceiver` / `EmailToSender` FluidEmail templates.
+- `BrandedEmailFinisher` and `FormEmailBrandingBuilder` inject per-site branding into `EmailToReceiver` / `EmailToSender` FluidEmail templates.
 - Form **Fieldset**: editor options for visible heading level (H2–H4 or legend-only) and optional subheader; rendered on the page and in mpcore contact e-mails (`Fieldset/SectionHeading` partial).
 - Form **Page** partial: no automatic page-label `<h2>` (TYPO3 page title / fieldset legends carry section headings instead).
 - Form **Summary** step: intro title + required-fields hint once above overview (div, same styles as step 1); not repeated in the summary list; then “Summary” H2 and section groups.
@@ -983,6 +991,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.3.6]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.5...v1.3.6
 [1.3.5]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.4...v1.3.5
 [1.3.4]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.3...v1.3.4
 [1.3.3]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.2...v1.3.3
