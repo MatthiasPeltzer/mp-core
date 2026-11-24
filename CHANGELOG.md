@@ -5,6 +5,50 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+Bootstrap 6 frontend migration (`feature/bootstrap-6` only; **`main` remains Bootstrap 5.3** until release). Overview: [Bootstrap6Migration.md](Documentation/Bootstrap6Migration.md), [Frontend.md — Bootstrap version and Git branches](Documentation/Frontend.md#bootstrap-version-and-git-branches).
+
+### Added
+- Frontend dependency **Bootstrap 6.0.0-alpha.2** with **Floating UI** (`@floating-ui/dom`) instead of Popper; optional **vanilla-calendar-pro** for BS6 Datepicker.
+- **Upgrade wizards** (Install Tool): migrate stored `tx_link_layout` button classes and RTE HTML (`bodytext`, …) from Bootstrap 5 markup to Bootstrap 6 (`Bootstrap6LinkLayoutUpgradeWizard`, `Bootstrap6RteHtmlUpgradeWizard`, shared `Bootstrap6ContentMigrationService`).
+- Build scripts: **`npm run audit:bs6`** (forbidden BS5 pattern scan), **`codemod:bs6-utilities`**, **`codemod:bs6-rename`**; bundle size budgets rebaselined for BS6 CSS/JS.
+- **TypeScript** for the screen/navigation/Vue pipeline: strict `tsconfig`, **`vue-tsc`** in production `build`, Vitest unit/browser specs for gallery dialog, modal content hooks, and form BS6 widgets.
+- BS6 **design tokens** compile path: `_mpc-bootstrap-theme.scss` / `_mpc-bs6-root-overrides.scss`; site frame colours **`--bg-1` … `--bg-8`** in `Styles.html` (no legacy `--bs-*` SCSS bridge).
+- Shared **Dialog** chrome: `Partials/Dialog/Header.html` for record modals and gallery; gallery footer slide counter driven by `galleryDialog.ts`.
+- ext:form: optional **Bootstrap 6 Datepicker** on the native **Date** element and optional **Combobox** on **MultiSelect** (Form Editor flags, hidden multi-select sync); [FormBootstrap6.md](Documentation/FormBootstrap6.md), `locallang_form_bs6.xlf`.
+- Documentation: [Bootstrap6Migration.md](Documentation/Bootstrap6Migration.md), [FormBootstrap6.md](Documentation/FormBootstrap6.md); README / Build README / Frontend branch policy and alpha.2 targets.
+
+### Changed
+- **Breaking (branch):** Fluid templates, FSC overrides, navigation, containers, and gallery move from BS5 **Modal/Dropdown** to BS6 **Dialog/Menu** (`data-bs-toggle="dialog"|"menu"`), responsive utilities (`md:col-*`, semantic `fs-*`), **Menu** mobile nav, and BS6 accordion/details patterns.
+- JavaScript bundles register BS6 **Button, Carousel, Collapse, Combobox, Datepicker, Dialog, Drawer, Menu, Tab**; custom nav/search/gallery code targets Menu/Dialog events and APIs.
+- **Sass module system:** MPC SCSS uses **`@use` / `@forward`** (no `@import` screen stack); Bootstrap SCSS compiled with MPC token maps; navigation BS6 **`.menu` / `.menu-item`** override partials.
+- **Grid and breakpoints:** MPC custom BS6 breakpoint file removed; picture `lg` sources and Swiper breakpoints align with BS6 default **1024px** grid.
+- Typography and spacing: templates use BS6 **`fs-*` utilities** and theme tokens; trimmed legacy MPC design-token SCSS; **CKEditor** frontend CSS mirrors BS6 mixins/tokens.
+- Theme switch uses Bootstrap 6 **`.switch`**; colour mode still driven by `data-bs-theme`.
+- Form fieldset section subheader: **`fs-sm`** (replaces `fs-6`).
+- Gallery lightbox: Dialog markup, footer controls, and typography utilities; stage/content templates aligned with BS6 utilities.
+- CI **frontend** job: **`npm run audit:bs6`** in the release gate alongside lint, unit tests, and build.
+- Rebuilt **`Resources/Public/`** JavaScript and CSS assets for BS6 bundles (larger `vendor-bootstrap` chunk with Datepicker/Combobox).
+
+### Fixed
+- Primary/secondary/tertiary **Menu** layout: desktop flyouts and mobile overlay match production (padding, full-width panels, dark backgrounds).
+- **Breadcrumb** chevron dividers and transparent hover under BS6 link tokens.
+- **Subnav** link titles wrap again (specificity matches BS6 compiled `.nav-link` rules).
+- **Gallery** dialog parity: controls, typography, slide counter; **Stage** header rendering with Admin Panel.
+- Article **hr** and **search** nav button typography; dialog/stage CE utility migration and redundant SCSS trimmed.
+- **`screen.scss` `@use` stack** restored after merging `main` into `feature/bootstrap-6`.
+
+### Tests
+- Unit test for `Bootstrap6ContentMigrationService` (RTE/link-layout HTML codemods).
+- Vitest: gallery dialog, modal content root, `formComboboxSync`, `formBootstrapEnhancements`.
+
+### Upgrade
+- After checkout of **`feature/bootstrap-6`**: `cd Build && npm ci && npm run build`, then flush caches.
+- Run upgrade wizards **MP Core: Migrate tx_link_layout…** and **MP Core: Migrate RTE HTML…** (see [Bootstrap6Migration.md](Documentation/Bootstrap6Migration.md)).
+- Site configuration **`styles:`** must not rely on legacy `--bs-*` custom properties; use BS6 token names or leave empty (YAML is not wizard-migrated).
+- Visual parity vs [mpcore.de](https://www.mpcore.de/) sign-off checklist in [Bootstrap6Migration.md](Documentation/Bootstrap6Migration.md#visual-parity-sign-off-vs-production).
+
 ## [1.3.6] - 2026-11-22
 
 ### Added
