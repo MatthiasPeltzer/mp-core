@@ -1,0 +1,104 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<formvh:renderRenderable renderable="{element}">
+    <f:form.validationResults for="{element.rootForm.identifier}.{element.identifier}">
+        <f:if condition="{element.properties.elementDescription}">
+            <f:variable name="aria" value="{describedby: '{element.uniqueIdentifier}-desc'}"/>
+        </f:if>
+        <f:if condition="{validationResults.errors}">
+            <f:variable name="aria" value="{invalid: 'true', describedby: '{element.uniqueIdentifier}-errors'}"/>
+        </f:if>
+        <f:variable name="options" value="{formvh:translateElementProperty(element: element, property: 'options')}"/>
+
+        <f:render partial="Field/Field" arguments="{element: element}" contentAs="elementContent">
+            <f:if condition="{element.properties.useBootstrapCombobox}">
+                <f:then>
+                    <div class="mp-form-combobox" data-mp-combobox-root="1">
+                        <f:if condition="{element.properties.prependOptionLabel}">
+                            <f:then>
+                                <f:form.select
+                                    property="{element.identifier}"
+                                    id="{element.uniqueIdentifier}-backing"
+                                    class="visually-hidden mp-combobox-backing-select"
+                                    options="{options}"
+                                    multiple="multiple"
+                                    errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
+                                    additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+                                    prependOptionLabel="{formvh:translateElementProperty(element: element, property: 'prependOptionLabel')}"
+                                    prependOptionValue="{formvh:translateElementProperty(element: element, property: 'prependOptionValue')}"
+                                    aria="{aria}"
+                                />
+                            </f:then>
+                            <f:else>
+                                <f:form.select
+                                    property="{element.identifier}"
+                                    id="{element.uniqueIdentifier}-backing"
+                                    class="visually-hidden mp-combobox-backing-select"
+                                    options="{options}"
+                                    multiple="multiple"
+                                    errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
+                                    additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+                                    aria="{aria}"
+                                />
+                            </f:else>
+                        </f:if>
+                        <div
+                            class="combobox-control"
+                            data-bs-toggle="combobox"
+                            data-bs-multiple="true"
+                            data-mp-combobox-control="1"
+                            data-mp-combobox-backing="{element.uniqueIdentifier}-backing"
+                        >
+                            <input
+                                type="text"
+                                class="form-ghost combobox-input"
+                                id="{element.uniqueIdentifier}"
+                                autocomplete="off"
+                                aria-controls="{element.uniqueIdentifier}-combobox-menu"
+                                aria-labelledby="{element.uniqueIdentifier}-label"
+                                placeholder="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf:form.bootstrap6.combobox.placeholder')}"
+                            />
+                        </div>
+                        <div class="menu" id="{element.uniqueIdentifier}-combobox-menu" role="listbox" aria-label="{formvh:translateElementProperty(element: element, property: 'label')}">
+                            <f:for each="{options}" as="optionLabel" key="optionValue">
+                                <f:if condition="{optionValue} != ''">
+                                    <button class="menu-item" type="button" data-bs-value="{optionValue}">{optionLabel}</button>
+                                </f:if>
+                            </f:for>
+                        </div>
+                    </div>
+                </f:then>
+                <f:else>
+                    <f:if condition="{element.properties.prependOptionLabel}">
+                        <f:then>
+                            <f:form.select
+                                property="{element.identifier}"
+                                id="{element.uniqueIdentifier}"
+                                class="{element.properties.elementClassAttribute}"
+                                options="{options}"
+                                multiple="multiple"
+                                errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
+                                additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+                                prependOptionLabel="{formvh:translateElementProperty(element: element, property: 'prependOptionLabel')}"
+                                prependOptionValue="{formvh:translateElementProperty(element: element, property: 'prependOptionValue')}"
+                                aria="{aria}"
+                            />
+                        </f:then>
+                        <f:else>
+                            <f:form.select
+                                property="{element.identifier}"
+                                id="{element.uniqueIdentifier}"
+                                class="{element.properties.elementClassAttribute}"
+                                options="{options}"
+                                multiple="multiple"
+                                errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
+                                additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+                                aria="{aria}"
+                            />
+                        </f:else>
+                    </f:if>
+                </f:else>
+            </f:if>
+        </f:render>
+    </f:form.validationResults>
+</formvh:renderRenderable>
+</html>

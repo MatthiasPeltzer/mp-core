@@ -78,6 +78,7 @@ Compare on **https://mpcore.ddev.docker/** after `npm run build` and `vendor/bin
 | Container | Accordion, Tabs, Grid, Slider, Modal record link | `Container/*.html`, `openAccordionAndTabs.ts`, `Modal.html`, `modalContent.ts` |
 | FSC | Text/media, uploads, menus, image popup | `Resources/Extensions/fluid_styled_content/**` |
 | Search | indexed_search form + results | `Resources/Extensions/indexed_search/**` |
+| Forms | Date (optional BS6 Datepicker), MultiSelect (optional BS6 Combobox) | `Resources/Extensions/form/**`, `formBootstrapEnhancements.ts` — see [FormBootstrap6.md](FormBootstrap6.md) |
 | Global | Sticky header, totop, jarallax, pagination | `sticky.ts`, `totop.ts`, `jarallax.ts`, `pagination.ts` |
 | Global | VidPly dynamic content hooks | `vidply-dynamic-content.ts` |
 | Editor | CKEditor frontend mirror | `ckeditor.css`, `Configuration/RTE/Default.yaml` |
@@ -115,7 +116,7 @@ Compare **https://mpcore.ddev.docker/** with [mpcore.de](https://www.mpcore.de/)
 - Stage, teaser, supplement (secondary subtle gradient), banner
 - Gallery (Dialog + footer counter + prev/next + download/copyright Menu)
 - Carousel CE, accordion/details, tabs hash deep-link
-- ext:form fields, indexed search (collapse advanced)
+- ext:form fields (native date, optional BS6 datepicker / combobox multi-select), indexed search (collapse advanced)
 - CKEditor frontend (`ckeditor.css`) on RTE test pages
 
 Record fixes in `CHANGELOG.md` `[Unreleased]`; leave the changelog unstaged until release curation.

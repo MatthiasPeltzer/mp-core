@@ -14,6 +14,7 @@ TYPO3:
           formEditor:
             translationFiles:
               20: 'EXT:mp_core/Resources/Private/Language/locallang_form_fieldset.xlf'
+              30: 'EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf'
           formElementsDefinition:
             FileUpload:
               formEditor:
@@ -77,6 +78,52 @@ TYPO3:
               properties:
                 sectionHeadingLevel: ''
                 sectionSubheader: ''
+            Date:
+              formEditor:
+                editors:
+                  320:
+                    identifier: enableBootstrapDatepicker
+                    templateName: Inspector-CheckboxEditor
+                    label: formEditor.elements.Date.editor.enableBootstrapDatepicker.label
+                    propertyPath: properties.enableBootstrapDatepicker
+                    description: formEditor.elements.Date.editor.enableBootstrapDatepicker.description
+                  325:
+                    identifier: bootstrapDateMin
+                    templateName: Inspector-TextEditor
+                    label: formEditor.elements.Date.editor.bootstrapDateMin.label
+                    propertyPath: properties.bootstrapDateMin
+                    description: formEditor.elements.Date.editor.bootstrapDateMin.description
+                    doNotSetIfPropertyValueIsEmpty: true
+                  326:
+                    identifier: bootstrapDateMax
+                    templateName: Inspector-TextEditor
+                    label: formEditor.elements.Date.editor.bootstrapDateMax.label
+                    propertyPath: properties.bootstrapDateMax
+                    description: formEditor.elements.Date.editor.bootstrapDateMax.description
+                    doNotSetIfPropertyValueIsEmpty: true
+                predefinedDefaults:
+                  properties:
+                    enableBootstrapDatepicker: false
+                    bootstrapDateMin: ''
+                    bootstrapDateMax: ''
+              properties:
+                enableBootstrapDatepicker: false
+                bootstrapDateMin: ''
+                bootstrapDateMax: ''
+            MultiSelect:
+              formEditor:
+                editors:
+                  320:
+                    identifier: useBootstrapCombobox
+                    templateName: Inspector-CheckboxEditor
+                    label: formEditor.elements.MultiSelect.editor.useBootstrapCombobox.label
+                    propertyPath: properties.useBootstrapCombobox
+                    description: formEditor.elements.MultiSelect.editor.useBootstrapCombobox.description
+                predefinedDefaults:
+                  properties:
+                    useBootstrapCombobox: false
+              properties:
+                useBootstrapCombobox: false
             Form:
               renderingOptions:
                 templateVariant: version2

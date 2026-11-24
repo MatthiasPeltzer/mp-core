@@ -2,7 +2,7 @@
 
 MP Core delivers a Bootstrap 6– and Vue-powered site package for TYPO3 13.4 / 14.3, including ready-made content elements, container layouts, Schema.org structured data, and a Vite-based frontend toolchain. It is designed as a solid starting point for personal, corporate and public sector websites.
 
-> **Git branches:** Frontend work on **`feature/bootstrap-6`** uses **Bootstrap 6** (`6.0.0-alpha.1`). Release branch **`main`** still ships **Bootstrap 5.3** for production — do not merge BS6 into `main`. See [Frontend — Bootstrap branches](Documentation/Frontend.md#bootstrap-version-and-git-branches).
+> **Git branches:** Frontend work on **`feature/bootstrap-6`** uses **Bootstrap 6** (`6.0.0-alpha.2`). Release branch **`main`** still ships **Bootstrap 5.3** for production — do not merge BS6 into `main`. See [Frontend — Bootstrap branches](Documentation/Frontend.md#bootstrap-version-and-git-branches).
 
 - Prebuilt content modules (stage, banner, gallery, single teaser, menu subpages, Vue todo list) with Fluid templates.
 - Container elements (accordion, tabs, slider, grid, wrapper) via b13/container.
@@ -10,7 +10,7 @@ MP Core delivers a Bootstrap 6– and Vue-powered site package for TYPO3 13.4 / 
 - Six Site Sets (`mp-core`, `mp-core-base`, `mp-core-container`, `mp-core-news`, `mp-core-form`, `mp-core-seo`) that plug into TYPO3 Site Settings.
 - Branded form notification mails (`ContactReceiver` / `ContactSender`) via `BrandedEmailFinisher` and `form.email.*` settings.
 - Schema.org JSON-LD output (WebSite, WebPage, BlogPosting, BreadcrumbList, MusicGroup, NewsArticle).
-- Frontend build pipeline: Vite 8, strict TypeScript, Bootstrap **6.0.0-alpha.1**, Vue 3, Sass, PostCSS, ESLint, Stylelint, Vitest (browser), Swiper 14, and Jarallax (`Build/` — see [Build/README.md](Build/README.md)).
+- Frontend build pipeline: Vite 8, strict TypeScript, Bootstrap **6.0.0-alpha.2**, Vue 3, Sass, PostCSS, ESLint, Stylelint, Vitest (browser), Swiper 14, and Jarallax (`Build/` — see [Build/README.md](Build/README.md)).
 
 ## Requirements
 

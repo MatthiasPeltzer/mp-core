@@ -20,8 +20,8 @@
     "print.css":               { "gzip":   800, "brotli":   700 }
   },
   "totals": {
-    "$comment": "Sum across all JS+CSS bundles. Headroom over current baseline (~160 KiB gzip / ~140 KiB brotli) leaves room for two ~10 KiB features before requiring a budget review.",
-    "gzip":   220000,
-    "brotli": 195000
+    "$comment": "Sum across all JS+CSS bundles. Rebased 2026-11-24: BS6 alpha.2 + Datepicker/Combobox in vendor-bootstrap (~52 KiB gzip).",
+    "gzip":   252000,
+    "brotli": 208000
   }
 }

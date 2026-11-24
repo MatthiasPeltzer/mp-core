@@ -13,7 +13,7 @@ Build system, asset pipeline, JavaScript/SCSS architecture, and best practices.
 
 - **Vite 8** -- Build tool with HMR
 - **Vue.js 3.5** -- Interactive components (TodoList, GallerySwiper, SwiperSlider)
-- **Bootstrap** -- **5.3** on `main` (production line); **6.0.0-alpha.1** (npm) on `feature/bootstrap-6` — see [Bootstrap version and Git branches](#bootstrap-version-and-git-branches)
+- **Bootstrap** -- **5.3** on `main` (production line); **6.0.0-alpha.2** (npm) on `feature/bootstrap-6` — see [Bootstrap version and Git branches](#bootstrap-version-and-git-branches)
 - **Sass 1.99** -- CSS preprocessing (modern-compiler API)
 - **PostCSS** -- preset-env, pxtorem
 - **ESLint 10** / **Stylelint 17** -- Code quality
@@ -56,7 +56,7 @@ The Bootstrap 6 migration is developed on a long-lived feature branch. **`main` 
 | Git branch | Bootstrap (`Build/package.json`) | Role |
 |------------|----------------------------------|------|
 | **`main`** | `5.3.x` (npm) | Default branch; matches [mpcore.de](https://www.mpcore.de/) and receives version releases / hotfixes. |
-| **`feature/bootstrap-6`** | `6.0.0-alpha.1` (npm) | Work-in-progress: SCSS bundle, Fluid markup, JS (Menu/Dialog), and rebuilt public assets. |
+| **`feature/bootstrap-6`** | `6.0.0-alpha.2` (npm) | Work-in-progress: SCSS bundle, Fluid markup, JS (Menu/Dialog), and rebuilt public assets. |
 
 ### Workflow
 

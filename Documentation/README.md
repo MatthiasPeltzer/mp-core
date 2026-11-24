@@ -21,6 +21,7 @@ Documentation hub for **mpc/mp-core** — the TYPO3 13.4 / 14.3 site package (`e
 | [Content elements](ContentElements.md) | Per-CType field reference (gallery, stage, containers, …) |
 | [Favicons](Favicons.md) | Icon assets, `Favicons.html`, site config, dynamic manifest (`typeNum` 8412) |
 | [Form email](FormEmail.md) | Branded `EmailToReceiver` / `EmailToSender`, `form.email.*`, `ContactReceiver` / `ContactSender` |
+| [Form BS6 widgets](FormBootstrap6.md) | Optional Datepicker / Combobox on ext:form |
 
 ## Package layout (quick reference)
 
@@ -36,7 +37,7 @@ Documentation hub for **mpc/mp-core** — the TYPO3 13.4 / 14.3 site package (`e
 ## External Resources
 
 - [TYPO3 Documentation](https://docs.typo3.org/)
-- [Bootstrap 6](https://getbootstrap.com/docs/6.0/getting-started/introduction/) (this branch; npm `6.0.0-alpha.1`)
+- [Bootstrap 6](https://getbootstrap.com/docs/6.0/getting-started/introduction/) (this branch; npm `6.0.0-alpha.2`)
 - [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/) ( **`main`** release line only)
 - [Vue.js 3](https://vuejs.org/)
 - [Vite](https://vitejs.dev/)

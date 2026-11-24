@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf" date="2026-11-24T00:00:00Z" product-name="mp_core">
+		<header/>
+		<body>
+			<trans-unit id="formEditor.elements.Date.editor.enableBootstrapDatepicker.label" resname="formEditor.elements.Date.editor.enableBootstrapDatepicker.label">
+				<source>Bootstrap 6 date picker (popup calendar)</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Date.editor.enableBootstrapDatepicker.description" resname="formEditor.elements.Date.editor.enableBootstrapDatepicker.description">
+				<source>Replaces the native calendar with the Bootstrap 6 datepicker. Submits ISO dates (YYYY-MM-DD). Without JavaScript, a plain text field remains.</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Date.editor.bootstrapDateMin.label" resname="formEditor.elements.Date.editor.bootstrapDateMin.label">
+				<source>Earliest date (ISO)</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Date.editor.bootstrapDateMin.description" resname="formEditor.elements.Date.editor.bootstrapDateMin.description">
+				<source>Optional lower bound, e.g. 2026-01-01. Empty = no minimum.</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Date.editor.bootstrapDateMax.label" resname="formEditor.elements.Date.editor.bootstrapDateMax.label">
+				<source>Latest date (ISO)</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Date.editor.bootstrapDateMax.description" resname="formEditor.elements.Date.editor.bootstrapDateMax.description">
+				<source>Optional upper bound, e.g. 2026-12-31. Empty = no maximum.</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.MultiSelect.editor.useBootstrapCombobox.label" resname="formEditor.elements.MultiSelect.editor.useBootstrapCombobox.label">
+				<source>Bootstrap 6 combobox (searchable multi select)</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.MultiSelect.editor.useBootstrapCombobox.description" resname="formEditor.elements.MultiSelect.editor.useBootstrapCombobox.description">
+				<source>Chip-style multi selection with a filterable menu. Values still submit through the native multi-select field.</source>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.combobox.placeholder" resname="form.bootstrap6.combobox.placeholder">
+				<source>Filter or add options…</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

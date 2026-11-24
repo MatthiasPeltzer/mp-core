@@ -17,6 +17,7 @@ import './code/jarallax.js'
 import './code/openAccordionAndTabs.js'
 import './code/i18nLinkHelper.js'
 import './code/searchAutosuggest.js'
+import './code/formBootstrapEnhancements.js'
 import './code/main.js'
 
 // Stylesheets

@@ -1,6 +1,6 @@
 # Build folder
 
-Frontend asset pipeline for **mpc/mp-core**. Requires **Node.js 22+** and npm. On **`feature/bootstrap-6`**, dependencies target **Bootstrap 6.0.0-alpha.1** (see `package.json`).
+Frontend asset pipeline for **mpc/mp-core**. Requires **Node.js 22+** and npm. On **`feature/bootstrap-6`**, dependencies target **Bootstrap 6.0.0-alpha.2** (see `package.json`).
 
 Output is written to **`../Resources/Public/`** (JavaScripts, StyleSheets, Fonts, Icons, Images, Favicons, BackendLayouts).
 
