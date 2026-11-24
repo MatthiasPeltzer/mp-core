@@ -1,0 +1,15 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          validatorsDefinition:
+            IsoDateRangeString:
+              implementationClassName: Mpc\MpCore\Mvc\Validation\IsoDateRangeStringValidator
+              formEditor:
+                iconIdentifier: form-validator
+                label: formEditor.elements.DateRange.validators.IsoDateRangeString.label
+                predefinedDefaults:
+                  options:
+                    minimum: ''
+                    maximum: ''

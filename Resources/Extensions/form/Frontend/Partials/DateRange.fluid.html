@@ -1,0 +1,45 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<formvh:renderRenderable renderable="{element}">
+    <f:form.validationResults for="{element.rootForm.identifier}.{element.identifier}">
+        <f:if condition="{element.properties.elementDescription}">
+            <f:variable name="aria" value="{describedby: '{element.uniqueIdentifier}-desc'}"/>
+        </f:if>
+        <f:if condition="{validationResults.errors}">
+            <f:variable name="aria" value="{invalid: 'true', describedby: '{element.uniqueIdentifier}-errors'}"/>
+        </f:if>
+
+        <f:variable name="placeholder" value="{element.properties.fluidAdditionalAttributes.placeholder}" />
+        <f:if condition="{placeholder} == ''">
+            <f:variable name="placeholder" value="YYYY-MM-DD – YYYY-MM-DD" />
+        </f:if>
+
+        <f:render partial="Field/Field" arguments="{element: element}" contentAs="elementContent">
+            <div
+                class="form-field mp-form-datepicker mp-form-date-range"
+                data-mp-bs-form-datepicker="1"
+                data-mp-bs-form-date-range="1"
+                data-bs-date-min="{element.properties.bootstrapDateMin}"
+                data-bs-date-max="{element.properties.bootstrapDateMax}"
+                data-bs-display-months-count="{element.properties.bootstrapDisplayMonthsCount}"
+            >
+                <f:form.textfield
+                    type="text"
+                    property="{element.identifier}"
+                    id="{element.uniqueIdentifier}"
+                    class="{element.properties.elementClassAttribute}"
+                    errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
+                    additionalAttributes="{
+                        data-bs-toggle: 'datepicker',
+                        data-bs-selection-mode: 'multiple-ranged',
+                        data-bs-locale: 'default',
+                        autocomplete: 'off',
+                        readonly: 'readonly',
+                        placeholder: placeholder
+                    }"
+                    aria="{aria}"
+                />
+            </div>
+        </f:render>
+    </f:form.validationResults>
+</formvh:renderRenderable>
+</html>

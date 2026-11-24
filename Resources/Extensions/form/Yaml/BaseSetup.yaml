@@ -1,3 +1,7 @@
+imports:
+  - { resource: 'EXT:mp_core/Resources/Extensions/form/Yaml/Validators/IsoDateRangeString.yaml' }
+  - { resource: 'EXT:mp_core/Resources/Extensions/form/Yaml/FormElements/DateRange.yaml' }
+
 TYPO3:
   CMS:
     Form:
@@ -15,6 +19,8 @@ TYPO3:
             translationFiles:
               20: 'EXT:mp_core/Resources/Private/Language/locallang_form_fieldset.xlf'
               30: 'EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf'
+            formEditorPartials:
+              FormElement-DateRange: 'Stage/SimpleTemplate'
           formElementsDefinition:
             FileUpload:
               formEditor:

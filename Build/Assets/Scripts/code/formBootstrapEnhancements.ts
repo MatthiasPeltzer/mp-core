@@ -14,6 +14,8 @@ export function initFormBootstrapEnhancements(): void {
   initFormComboboxes()
 }
 
+const ISO_DATE_RANGE = /^\d{4}-\d{2}-\d{2},\d{4}-\d{2}-\d{2}$/
+
 function initFormDatepickers(): void {
   for (const wrapper of document.querySelectorAll<HTMLElement>('[data-mp-bs-form-datepicker]')) {
     const input = wrapper.querySelector<HTMLInputElement>('[data-bs-toggle="datepicker"]')
@@ -29,6 +31,20 @@ function initFormDatepickers(): void {
     }
     if (max !== '') {
       input.setAttribute('data-bs-date-max', max)
+    }
+    const isRange = wrapper.dataset.mpBsFormDateRange === '1'
+    if (isRange) {
+      input.setAttribute('data-bs-selection-mode', 'multiple-ranged')
+      input.readOnly = true
+      const displayMonths = wrapper.dataset.bsDisplayMonthsCount?.trim() ?? ''
+      if (displayMonths === '2') {
+        input.setAttribute('data-bs-display-months-count', '2')
+      }
+      const initial = input.value.trim()
+      if (ISO_DATE_RANGE.test(initial)) {
+        const [start, end] = initial.split(',', 2)
+        input.setAttribute('data-bs-selected-dates', JSON.stringify([start, end]))
+      }
     }
     Datepicker.getOrCreateInstance(input)
   }

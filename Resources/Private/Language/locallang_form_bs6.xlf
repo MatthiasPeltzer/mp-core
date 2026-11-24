@@ -21,6 +21,33 @@
 			<trans-unit id="formEditor.elements.Date.editor.bootstrapDateMax.description" resname="formEditor.elements.Date.editor.bootstrapDateMax.description">
 				<source>Optional upper bound, e.g. 2026-12-31. Empty = no maximum.</source>
 			</trans-unit>
+			<trans-unit id="formEditor.elements.DateRange.label" resname="formEditor.elements.DateRange.label">
+				<source>Date range</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateRange.description" resname="formEditor.elements.DateRange.description">
+				<source>Start and end date in one Bootstrap 6 range picker. Submits one value as comma-separated ISO dates (YYYY-MM-DD,YYYY-MM-DD).</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateRange.editor.defaultValue.label" resname="formEditor.elements.DateRange.editor.defaultValue.label">
+				<source>Default range (ISO)</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateRange.editor.defaultValue.description" resname="formEditor.elements.DateRange.editor.defaultValue.description">
+				<source>Optional preset, e.g. 2026-06-10,2026-06-18 (start comma end).</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.label" resname="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.label">
+				<source>Calendar months in popup</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.description" resname="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.description">
+				<source>Show one or two months when the calendar opens.</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.one" resname="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.one">
+				<source>One month</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.two" resname="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.two">
+				<source>Two months</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateRange.validators.IsoDateRangeString.label" resname="formEditor.elements.DateRange.validators.IsoDateRangeString.label">
+				<source>ISO date range format</source>
+			</trans-unit>
 			<trans-unit id="formEditor.elements.MultiSelect.editor.useBootstrapCombobox.label" resname="formEditor.elements.MultiSelect.editor.useBootstrapCombobox.label">
 				<source>Bootstrap 6 combobox (searchable multi select)</source>
 			</trans-unit>

@@ -2,6 +2,20 @@
 
 Optional **Bootstrap 6 Datepicker** and **Combobox** for the standard form prototype (`BaseSetup.yaml`). Both are **opt-in per field** in the Form Editor. Header search autosuggest remains the custom [`searchAutosuggest.ts`](../Build/Assets/Scripts/code/searchAutosuggest.ts) listbox, not Bootstrap Combobox.
 
+## Date range (BS6 ranged datepicker)
+
+| Property | Default | Purpose |
+|----------|---------|---------|
+| `bootstrapDateMin` | empty | ISO lower bound (`data-bs-date-min`) |
+| `bootstrapDateMax` | empty | ISO upper bound (`data-bs-date-max`) |
+| `bootstrapDisplayMonthsCount` | `1` | `1` or `2` months in the popup |
+
+New Form Editor element **Date range** (`DateRange`): one readonly text field with `multiple-ranged` Bootstrap Datepicker. Submits **one** property as `YYYY-MM-DD,YYYY-MM-DD` (comma-separated ISO). Mails show `d.m.Y – d.m.Y` via `displayFormat`.
+
+Markup: [`DateRange.fluid.html`](../Resources/Extensions/form/Frontend/Partials/DateRange.fluid.html). Validator: `IsoDateRangeString`.
+
+Example form (import via Form module, storage path `EXT:mp_core/Resources/Extensions/form/Forms/`): [`ExampleContactWithDateRange.form.yaml`](../Resources/Extensions/form/Forms/ExampleContactWithDateRange.form.yaml). On the dev site, `kontakt_1` includes a **Reisezeitraum** field for manual testing.
+
 ## Date (native + BS6 Datepicker)
 
 | Property | Default | Purpose |

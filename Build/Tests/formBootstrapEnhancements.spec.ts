@@ -13,6 +13,18 @@ describe('form datepicker markup', () => {
   })
 })
 
+describe('form date range markup', () => {
+  it('exposes ranged datepicker hooks', () => {
+    document.body.innerHTML = `
+      <div class="form-field mp-form-datepicker mp-form-date-range" data-mp-bs-form-datepicker="1" data-mp-bs-form-date-range="1">
+        <input type="text" id="range-1" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" class="form-control" name="tx_form[form][travel]" readonly />
+      </div>
+    `
+    expect(document.querySelector('[data-mp-bs-form-date-range]')).not.toBeNull()
+    expect(document.querySelector('[data-bs-selection-mode="multiple-ranged"]')).not.toBeNull()
+  })
+})
+
 describe('form combobox markup', () => {
   it('keeps a hidden backing multi-select', () => {
     document.body.innerHTML = `
