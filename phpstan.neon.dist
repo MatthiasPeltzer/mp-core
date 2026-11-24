@@ -10,3 +10,9 @@ parameters:
     # Fluid ViewHelpers and DataProcessors are instantiated by the framework;
     # ignore the "unused" reports the container-driven wiring would trigger.
     treatPhpDocTypesAsCertain: false
+    # Dual TYPO3 13.4 / 14 matrix: version-specific PHPStan ignores may not apply in every job.
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        -
+            message: '#^Call to an undefined static method TYPO3\\CMS\\Form\\Domain\\Finishers\\EmailFinisher::__construct\(\)\.$#'
+            path: Classes/Domain/Finishers/BrandedEmailFinisher.php

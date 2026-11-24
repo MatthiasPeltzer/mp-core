@@ -20,6 +20,7 @@ Documentation hub for **mpc/mp-core** — the TYPO3 13.4 / 14.3 site package (`e
 | [Backend](Backend.md) | RTE preset, Page TSconfig, previews, backend layouts, Content Blocks |
 | [Content elements](ContentElements.md) | Per-CType field reference (gallery, stage, containers, …) |
 | [Favicons](Favicons.md) | Icon assets, `Favicons.html`, site config, dynamic manifest (`typeNum` 8412) |
+| [Form email](FormEmail.md) | Branded `EmailToReceiver` / `EmailToSender`, `form.email.*`, `ContactReceiver` / `ContactSender` |
 
 ## Package layout (quick reference)
 

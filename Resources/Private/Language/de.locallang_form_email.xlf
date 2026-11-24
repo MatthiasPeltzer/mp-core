@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2026-03-23T12:00:00Z" product-name="mp_core">
+		<header/>
+		<body>
+			<trans-unit id="consent.label" resname="consent.label" approved="yes">
+				<source>Consent</source>
+				<target>Einwilligung</target>
+			</trans-unit>
+			<trans-unit id="consent.yes" resname="consent.yes" approved="yes">
+				<source>Yes</source>
+				<target>Ja</target>
+			</trans-unit>
+			<trans-unit id="consent.no" resname="consent.no" approved="yes">
+				<source>No</source>
+				<target>Nein</target>
+			</trans-unit>
+			<trans-unit id="footer.sentFrom" resname="footer.sentFrom" approved="yes">
+				<source>This message was sent from %1$s (%2$s).</source>
+				<target>Diese Nachricht wurde von %1$s (%2$s) gesendet.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

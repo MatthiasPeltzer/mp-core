@@ -6,7 +6,7 @@ Build system, asset pipeline, JavaScript/SCSS architecture, and best practices.
 
 ## Requirements
 
-- **Node.js** >=22 (Node 24 recommended)
+- **Node.js** >=26 (mpcore DDEV and GitHub Actions use Node 26)
 - **npm** >=10
 
 ## Technology Stack

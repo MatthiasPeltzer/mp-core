@@ -2,7 +2,3 @@ name: mpc/mp-core-container
 label: MP Core - Container Extension Configuration
 dependencies:
   - mpc/mp-core-base
-settings:
-  definitions: settings.definitions.yaml
-  defaults: settings.yaml
-

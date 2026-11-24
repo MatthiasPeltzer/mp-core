@@ -5,6 +5,102 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.6] - 2026-11-22
+
+### Added
+- Documentation: [FormEmail.md](Documentation/FormEmail.md) — branded form mails, finishers, site settings, troubleshooting.
+
+### Changed
+- Documentation: `Configuration.md` form section table fix; cross-links in README, OVERVIEW, Backend; CHANGELOG 1.3.4 finisher wording.
+
+## [1.3.5] - 2026-11-20
+
+### Fixed
+- `BrandedEmailFinisher`: explicit constructor/DI wiring (mail services + `FormEmailBrandingBuilder`) so `GeneralUtility::makeInstance()` resolves dependencies on the form summary step (functional tests stay form-free).
+- `BrandedEmailFinisher`: TYPO3 13.4-compatible constructor/DI (no `TemplatedEmailFactory`; mail deps wired only when class exists).
+- Plain-text form mail partial `ContactFormValues.fluid.txt`: correct nested `f:if` / `f:else` closing tags; line breaks via template text nodes inside `f:spaceless` (not `&#10;` in `f:format.raw`).
+
+### Changed
+- Multi-step form overview: rely on the normal page stage (`Header.Title` / H1 + background); removed duplicate fieldset intro above the summary list.
+
+### Fixed
+- Multi-step form POST: omit Fluid form `section` anchor so the browser does not jump to the form id and clip the page stage hero.
+
+### Security
+- Form mail: sanitize custom `form.email.footerText` before `f:format.html()`; plain-text footer omits unsafe link URLs from custom HTML.
+- Form fieldset section headings (page + mail): sanitize/transform labels and subheaders like field labels.
+
+### Fixed
+- CI Quality job: declare `typo3/cms-form` dependency, install it in the PHPStan matrix, and satisfy PHPStan on form mail branding (`generateUri` route casting, footer builder PHPDoc).
+
+### Changed
+- Form mail branding: `BrandedEmailFinisher` replaces the TYPO3 14-only event listener; works on TYPO3 13.4 and 14.x via `BaseSetup.yaml` finishers.
+
+## [1.3.4] - 2026-11-19
+
+### Added
+- Branded HTML/plain form mail layouts (`MpcoreFormEmail`) and contact templates (`ContactReceiver`, `ContactSender`) with site logo, colours, and configurable footer (`form.email.footerText`, optional header/footer colour overrides).
+- `BrandedEmailFinisher` and `FormEmailBrandingBuilder` inject per-site branding into `EmailToReceiver` / `EmailToSender` FluidEmail templates.
+- Form **Fieldset**: editor options for visible heading level (H2–H4 or legend-only) and optional subheader; rendered on the page and in mpcore contact e-mails (`Fieldset/SectionHeading` partial).
+- Form **Page** partial: no automatic page-label `<h2>` (TYPO3 page title / fieldset legends carry section headings instead).
+- Form **Summary** step: intro title + required-fields hint once above overview (div, same styles as step 1); not repeated in the summary list; then “Summary” H2 and section groups.
+
+### Changed
+- Contact form definitions (`kontakt_1`, `contact_1`): site sender address, visitor `Reply-To`, staff + visitor confirmation mails; English `contact_1` aligned with German fieldsets, labels, subject options, and spam validator.
+- Form mail logo: dedicated site setting `form.email.logo` (no fallback to site header logos); mail logo links to the language homepage.
+- Form mail HTML: Outlook-oriented layout (MSO conditionals, 600px tables, `bgcolor`, inline typography) aligned with TYPO3 `SystemEmail`; minimal `<style>` block (rounded corners in `@media` only).
+- Form mail layout: fluid `width="100%"` shell with `max-width:600px` in CSS only (no fixed 600px table attribute); tighter horizontal padding to avoid mobile overflow without `word-break` / `!important`.
+
+### Fixed
+- Form mail branding: cast `Site::getBase()` to string for TYPO3 14 (`Uri` object).
+- `form.email.logo`: resolve `t3://file?uid=…` via `LinkService` (fixes 500 / wrong FAL path).
+
+### Changed
+- Plain-text form mails: structured field list (`ContactFormValues` partial), readable footer with `Impressum`/`Datenschutz` URLs (`footerTextPlain`) instead of stripped link labels.
+- Form summary step: restore contact intro header (`Kontaktformular` + required-fields hint) in `Form.html` / `Form.fluid.html` (first fieldset with `sectionHeadingLevel`, not only when `sectionSubheader` is set).
+
+### Fixed
+- Form mail footer legal links: pass site language via `_language` in `PageRouter::generateUri()` (was invalid 4th argument).
+
+## [1.3.3] - 2026-11-18
+
+### Changed
+- Updated frontend dependencies.
+- Ubuntu 24.04 and Node 26 in Actions.
+
+## [1.3.2] - 2026-11-12
+
+### Changed
+- Updated frontend dependencies to Bootstrap 5.3.9 and Vue 3.5.45.
+- Updated build tooling: `eslint-plugin-vue` 10.12.1, `globals` 17.14.0, `jsdom` 31.0.0, `sass` 1.108.2, `stylelint-order` 8.1.3, `vite` 8.3.8, and `vitest` 5.1.0.
+- Rebuilt the public JavaScript and CSS assets.
+
+## [1.3.1] - 2026-10-31
+
+### Added
+- Site setting `seo.llmsTxt.menuDepth` (1–5, default `2`) to control how many page-tree levels appear in the generated `llms.txt` menu (third level and deeper render as nested bullet lists).
+- Multilingual XML sitemap: combined `/sitemap.xml` urlset per language (pages + EXT:news), browser preview via XSLT 1.0 (`Resources/Public/Seo/Sitemap.xsl`), site settings `seo.sitemap.news.storagePid` and `seo.sitemap.news.detailPageId`.
+
+### Changed
+- XML sitemap TypoScript lives in `Configuration/Sets/mp-core-seo/xml-sitemap.typoscript` (removed legacy `Configuration/Extensions/seo/…` and sitemap-index Fluid template). Root `/sitemap.xml` always merges providers; `/sitemap-type/…` remains for single-provider slices only.
+
+## [1.3.0] - 2026-10-25
+
+### Added
+- Site Set `mpc/mp-core-page` for page rendering without bundled SEO: same base/news/form/container stack as `mpc/mp-core`, but without `mpc/mp-core-seo`. Use with `mpc/mp-core-seo` (or another SEO extension) when meta robots, verification tags, title separator, and JSON-LD should not come from the `mpc/mp-core` aggregator.
+
+### Changed
+- Site path TypoScript constants (`mpcSitepackage.*`) now read flat site settings (`{$pageTemplates}`, `{$basePath}`, …) instead of a non-standard `{$settings.*}` prefix, so values from the backend Site Settings editor resolve correctly.
+- Updated Build npm dependencies (`vue`, `eslint`, `vite`, `vitest`, `sass`, `postcss`, `postcss-preset-env`, `stylelint`, and related dev tooling) and rebuilt public Vue/Swiper JavaScript bundles.
+
+### Fixed
+- Removed erroneous `settings:` blocks from Site Set `config.yaml` files that exposed stray `definitions` and `defaults` settings at runtime.
+- Open Graph `og:type` meta now outputs `website` or `article` instead of the literal string `TEXT`.
+
+### Upgrade
+- If a project sitepackage overrides path settings, use flat keys in the set's `settings.yaml` (not wrapped under a top-level `settings:` key). A wrapped `settings.yaml` no longer affects mp-core path constants.
+- To decouple SEO from the template stack, swap `mpc/mp-core` for `mpc/mp-core-page` plus `mpc/mp-core-seo` (or your SEO set) in the site configuration.
+
 ## [1.2.29] - 2026-10-01
 
 ### Fixed
@@ -895,6 +991,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.3.6]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.5...v1.3.6
+[1.3.5]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.4...v1.3.5
+[1.3.4]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.3...v1.3.4
+[1.3.3]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.2...v1.3.3
+[1.3.2]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.1...v1.3.2
+[1.3.1]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.29...v1.3.0
 [1.2.29]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.28...v1.2.29
 [1.2.28]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.27...v1.2.28
 [1.2.27]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.2.26...v1.2.27

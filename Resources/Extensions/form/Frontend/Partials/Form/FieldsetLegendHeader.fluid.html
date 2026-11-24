@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:variable name="sectionLabel" value="{formvh:translateElementProperty(element: element, property: 'label')}" />
+<f:variable name="headingLevel" value="{element.properties.sectionHeadingLevel}" />
+<f:variable name="sectionSubheader" value="{element.properties.sectionSubheader -> f:format.trim()}" />
+<f:if condition="{sectionLabel}">
+    <f:if condition="{container} == 'div'">
+        <f:then>
+            <div class="form-fieldset-legend float-none w-100">
+                <f:render partial="Form/FieldsetLegendHeaderBody" arguments="{sectionLabel: sectionLabel, headingLevel: headingLevel, sectionSubheader: sectionSubheader}" />
+            </div>
+        </f:then>
+        <f:else>
+            <legend class="form-fieldset-legend float-none w-100">
+                <f:render partial="Form/FieldsetLegendHeaderBody" arguments="{sectionLabel: sectionLabel, headingLevel: headingLevel, sectionSubheader: sectionSubheader}" />
+            </legend>
+        </f:else>
+    </f:if>
+</f:if>
+</html>

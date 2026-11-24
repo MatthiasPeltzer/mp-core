@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="messages" date="2026-03-23T14:00:00Z" product-name="mp_core">
+		<header/>
+		<body>
+			<trans-unit id="formEditor.elements.Fieldset.editor.sectionHeadingLevel.label" resname="formEditor.elements.Fieldset.editor.sectionHeadingLevel.label">
+				<source>Visible section heading</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Fieldset.editor.sectionHeadingLevel.legend" resname="formEditor.elements.Fieldset.editor.sectionHeadingLevel.legend">
+				<source>Legend only (default)</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Fieldset.editor.sectionHeadingLevel.h2" resname="formEditor.elements.Fieldset.editor.sectionHeadingLevel.h2">
+				<source>Heading level 2</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Fieldset.editor.sectionHeadingLevel.h3" resname="formEditor.elements.Fieldset.editor.sectionHeadingLevel.h3">
+				<source>Heading level 3</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Fieldset.editor.sectionHeadingLevel.h4" resname="formEditor.elements.Fieldset.editor.sectionHeadingLevel.h4">
+				<source>Heading level 4</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Fieldset.editor.sectionSubheader.label" resname="formEditor.elements.Fieldset.editor.sectionSubheader.label">
+				<source>Section subheader</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Fieldset.editor.sectionSubheader.description" resname="formEditor.elements.Fieldset.editor.sectionSubheader.description">
+				<source>Leave empty unless you need a short hint under the heading (page and contact mail only when filled in).</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

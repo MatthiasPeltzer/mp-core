@@ -3,7 +3,3 @@ label: MP Core - SEO Extension Configuration
 dependencies:
   - mpc/mp-core-base
   - typo3/seo-sitemap
-settings:
-  definitions: settings.definitions.yaml
-  defaults: settings.yaml
-

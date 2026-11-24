@@ -1,0 +1,7 @@
+<f:layout name="MpcoreFormEmail" />
+<f:section name="Title">{title}</f:section>
+<f:section name="Main"><f:if condition="{messageBefore}">{messageBefore -> f:format.stripTags() -> f:format.htmlentitiesDecode() -> f:format.trim()}
+
+</f:if><f:if condition="!{hideFormValues}"><f:render partial="Finishers/Email/ContactFormValues" arguments="{form: form, languageKey: languageKey, audience: 'receiver'}" /></f:if><f:if condition="{messageAfter}">
+
+{messageAfter -> f:format.stripTags() -> f:format.htmlentitiesDecode() -> f:format.trim()}</f:if></f:section>

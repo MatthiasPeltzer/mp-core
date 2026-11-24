@@ -28,6 +28,11 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
 
     private const MAX_DESCRIPTION_LENGTH = 160;
 
+    /** Maximum page-tree depth listed under each top-level section in llms.txt. */
+    private const MAX_MENU_DEPTH = 5;
+
+    private const DEFAULT_MENU_DEPTH = 2;
+
     /**
      * @var list<int>
      */
@@ -114,28 +119,10 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
         }
 
         $menuRepository = $this->menuRepository($language);
+        $menuDepth = $this->resolveMenuDepth($site);
 
-        foreach ($this->resolveMenuPages($menuRepository, $site, $language, $site->getRootPageId()) as $section) {
-            $lines[] = '## ' . $this->markdownLink($section['title'], $section['url']);
-
-            if ($section['description'] !== '') {
-                $lines[] = '';
-                $lines[] = $section['description'];
-            }
-
-            $children = $this->resolveMenuPages($menuRepository, $site, $language, $section['uid']);
-            if ($children !== []) {
-                $lines[] = '';
-                foreach ($children as $child) {
-                    $line = '- ' . $this->markdownLink($child['title'], $child['url']);
-                    if ($child['description'] !== '') {
-                        $line .= ': ' . $child['description'];
-                    }
-                    $lines[] = $line;
-                }
-            }
-
-            $lines[] = '';
+        foreach ($this->buildTopLevelMenuLines($menuRepository, $site, $language, $menuDepth) as $line) {
+            $lines[] = $line;
         }
 
         foreach ($this->buildNewsSection($site, $language) as $line) {
@@ -325,6 +312,94 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
     private function parseStringList(string $raw): array
     {
         return array_values(array_filter(array_map(trim(...), explode(',', $raw))));
+    }
+
+    private function resolveMenuDepth(Site $site): int
+    {
+        $depth = (int)$this->resolveSiteSetting($site, 'seo.llmsTxt.menuDepth', self::DEFAULT_MENU_DEPTH);
+
+        return max(1, min(self::MAX_MENU_DEPTH, $depth));
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function buildTopLevelMenuLines(
+        PageRepository $pageRepository,
+        Site $site,
+        SiteLanguage $language,
+        int $menuDepth
+    ): array {
+        $lines = [];
+        foreach ($this->resolveMenuPages($pageRepository, $site, $language, $site->getRootPageId()) as $section) {
+            $lines[] = '## ' . $this->markdownLink($section['title'], $section['url']);
+
+            if ($section['description'] !== '') {
+                $lines[] = '';
+                $lines[] = $section['description'];
+            }
+
+            if ($menuDepth >= 2) {
+                $childLines = $this->buildNestedMenuLines(
+                    $pageRepository,
+                    $site,
+                    $language,
+                    $section['uid'],
+                    2,
+                    $menuDepth,
+                    ''
+                );
+                if ($childLines !== []) {
+                    $lines[] = '';
+                    array_push($lines, ...$childLines);
+                }
+            }
+
+            $lines[] = '';
+        }
+
+        return $lines;
+    }
+
+    /**
+     * Bullet-list lines for menu levels below the top-level `##` sections.
+     *
+     * @return list<string>
+     */
+    private function buildNestedMenuLines(
+        PageRepository $pageRepository,
+        Site $site,
+        SiteLanguage $language,
+        int $parentPageId,
+        int $currentDepth,
+        int $maxDepth,
+        string $indent
+    ): array {
+        $lines = [];
+        foreach ($this->resolveMenuPages($pageRepository, $site, $language, $parentPageId) as $page) {
+            $line = $indent . '- ' . $this->markdownLink($page['title'], $page['url']);
+            if ($page['description'] !== '') {
+                $line .= ': ' . $page['description'];
+            }
+            $lines[] = $line;
+
+            if ($currentDepth < $maxDepth) {
+                array_push(
+                    $lines,
+                    ...$this->buildNestedMenuLines(
+                        $pageRepository,
+                        $site,
+                        $language,
+                        $page['uid'],
+                        $currentDepth + 1,
+                        $maxDepth,
+                        $indent . '  '
+                    )
+                );
+            }
+        }
+
+        return $lines;
     }
 
     /**

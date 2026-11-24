@@ -1,15 +1,15 @@
 mpcSitepackage {
     plugins {
         news {
-            templates = {$settings.pluginsNewsTemplates}
-            partials = {$settings.pluginsNewsPartials}
-            layouts = {$settings.pluginsNewsLayouts}
+            templates = {$pluginsNewsTemplates}
+            partials = {$pluginsNewsPartials}
+            layouts = {$pluginsNewsLayouts}
         }
 
         indexedSearch {
-            templates = {$settings.pluginsIndexedSearchTemplates}
-            partials = {$settings.pluginsIndexedSearchPartials}
-            layouts = {$settings.pluginsIndexedSearchLayouts}
+            templates = {$pluginsIndexedSearchTemplates}
+            partials = {$pluginsIndexedSearchPartials}
+            layouts = {$pluginsIndexedSearchLayouts}
         }
     }
 }

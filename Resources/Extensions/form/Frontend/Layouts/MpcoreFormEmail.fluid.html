@@ -1,0 +1,104 @@
+<!doctype html>
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:v="urn:schemas-microsoft-com:vml"
+    xmlns:o="urn:schemas-microsoft-com:office:office"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    xmlns:mpc="http://typo3.org/ns/Mpc/MpCore/ViewHelpers"
+>
+<head>
+    <!--[if gte mso 15]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="x-apple-disable-message-reformatting">
+    <title></title>
+    <style type="text/css"><![CDATA[
+        img{-ms-interpolation-mode:bicubic;}
+        table{mso-table-lspace:0pt;mso-table-rspace:0pt;}
+        p,a,td{mso-line-height-rule:exactly;}
+        a,td,body,table{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+        .templateContainer{max-width:600px;}
+        @media only screen and (min-width:600px){
+            .emailHeaderCell{border-top-left-radius:4px;border-top-right-radius:4px;}
+            .emailFooterCell{border-bottom-left-radius:4px;border-bottom-right-radius:4px;}
+        }
+    ]]></style>
+</head>
+<body style="padding:0;width:100%;">
+<center>
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" id="bodyTable" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;"><tr><td align="center" valign="top" id="bodyCell" style="padding:0;">
+
+        <!--[if (gte mso 9)|(IE)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;"><tr><td align="center" valign="top" width="600" style="width:600px;"><![endif]-->
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+            <tr>
+                <td align="center" valign="top" class="emailHeaderCell" bgcolor="{emailBrand.headerBackgroundColor -> mpc:format.cssColor()}" style="background-color:{emailBrand.headerBackgroundColor -> mpc:format.cssColor()};padding:28px 16px;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                        <f:if condition="{emailBrand.logoUrl}">
+                            <tr>
+                                <td align="center" valign="top" style="padding:0 0 12px 0;">
+                                    <a href="{emailBrand.homeUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+                                        <img src="{emailBrand.logoUrl -> core:normalizedUrl()}" alt="{emailBrand.logoAlt}" width="220" height="48" style="width:220px;border:0;" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </f:if>
+                        <tr>
+                            <td align="center" valign="top" style="padding:0;font-family:Helvetica,Arial,sans-serif;font-size:22px;line-height:150%;color:#ffffff;">
+                                <strong style="font-size:22px;line-height:150%;color:#ffffff;"><f:render section="Title" optional="true" /></strong>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" valign="top" bgcolor="#ffffff" style="background-color:#ffffff;padding:32px 16px;">
+                    <!--[if mso]><table align="left" border="0" cellspacing="0" cellpadding="0" width="568" style="width:568px;"><tr><td valign="top" width="568" style="width:568px;"><![endif]-->
+                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                        <tr>
+                            <td align="left" valign="top" style="color:#1a1a1a;font-family:Helvetica,Arial,sans-serif;font-size:16px;line-height:150%;">
+                                <f:render section="Main" />
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if mso]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+            <tr>
+                <td align="center" valign="top" class="emailFooterCell" bgcolor="{emailBrand.footerBackgroundColor -> mpc:format.cssColor()}" style="background-color:{emailBrand.footerBackgroundColor -> mpc:format.cssColor()};padding:24px 16px;">
+                    <!--[if mso]><table align="center" border="0" cellspacing="0" cellpadding="0" width="568" style="width:568px;"><tr><td valign="top" width="568" style="width:568px;" align="center"><![endif]-->
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;">
+                        <tr>
+                            <td align="center" valign="top" style="color:#ffffff;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:150%;">
+                                <f:if condition="{emailBrand.footerText}">
+                                    <f:then>
+                                        {emailBrand.footerText -> f:sanitize.html() -> f:format.html()}
+                                    </f:then>
+                                    <f:else>
+                                        <p style="padding:0;">
+                                            <f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:footer.sentFrom" arguments="{0: typo3.sitename, 1: normalizedParams.siteUrl}" />
+                                        </p>
+                                    </f:else>
+                                </f:if>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if mso]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+        </table>
+        <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+
+    </td></tr></table>
+</center>
+</body>
+</html>

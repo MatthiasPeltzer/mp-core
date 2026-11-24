@@ -25,7 +25,7 @@ Overview of all functions, features, and integrations provided by **mpc/mp-core*
 2. `mpc/mp-core-base` (required foundation) -- System extension dependencies (`typo3/form`, `typo3/indexed-search`, …) and shared Site Settings definitions (YAML files live under `Configuration/Sets/mp-core/`)
 3. `mpc/mp-core-container` -- Container element configuration
 4. `mpc/mp-core-news` -- News extension integration (`georgringer/news`)
-5. `mpc/mp-core-form` -- Form framework configuration
+5. `mpc/mp-core-form` -- Form framework configuration, branded mail finishers (`BrandedEmailFinisher`), `form.email.*` site settings
 6. `mpc/mp-core-seo` -- SEO optimization settings
 
 **Custom feature sets** must depend on `mpc/mp-core-base`, not on `mpc/mp-core` — otherwise TYPO3’s SetRegistry can deadlock (`aggregator → child → aggregator → …`). See `Configuration/Sets/mp-core/config.yaml`.
@@ -59,6 +59,14 @@ Activated automatically when the extension is installed:
 
 - **CompressHtmlWhitespaceOnCacheableContentListener** -- Minifies HTML on `AfterCacheableContentIsGeneratedEvent` before the page cache row is written. Preserves `<pre>`, `<textarea>`, `<script>`, `<style>`, `<svg>`, and HTML comments. Always on; no Site Setting toggle.
 
+### Services / form mail
+
+- **BrandedEmailFinisher** -- Extends core `EmailFinisher`; injects `emailBrand` via **FormEmailBrandingBuilder** (TYPO3 13.4 and 14.x)
+- **FormEmailBrandingBuilder** -- Logo, colours, homepage URL, HTML/plain footer from site settings
+- **SiteLogoResolver** -- Public URL for `form.email.logo` (`t3://file?uid=…`)
+
+See [FormEmail.md](FormEmail.md).
+
 ### ViewHelpers
 
 - **SvgInlineViewHelper** (`mpc:svgInline`) -- Inline SVG rendering with DOM sanitization (removes `<script>`/`<foreignObject>`/`<iframe>`/`<embed>`/`<object>`, strips `on*` event handlers, neutralizes `javascript:`/`vbscript:`/`data:` URIs in `href`/`xlink:href`/`src`, and restricts `<use>`/`<image>` to same-document fragment refs), attribute merging, and per-request caching
@@ -87,7 +95,7 @@ Activated automatically when the extension is installed:
 
 - **fluid_styled_content** -- Bootstrap 5 styled content rendering
 - **EXT:news** -- List/detail views, categories, pagination
-- **EXT:form** -- Bootstrap forms, YAML configuration
+- **EXT:form** -- Bootstrap forms, YAML configuration, branded contact mails (`ContactReceiver` / `ContactSender`)
 - **EXT:indexed_search** -- Bootstrap search results
 - **EXT:seo** -- Open Graph, Twitter Cards, Schema.org, XML sitemap
 
@@ -105,3 +113,4 @@ Activated automatically when the extension is installed:
 - [Backend](Backend.md) -- RTE, TSconfig, previews, Content Blocks
 - [Content elements](ContentElements.md) -- Gallery, stage, banner, containers, field reference
 - [Favicons](Favicons.md) -- Favicon assets, `Favicons.html`, web manifest
+- [Form email](FormEmail.md) -- Branded form finishers and `form.email.*`

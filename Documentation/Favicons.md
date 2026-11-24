@@ -182,6 +182,12 @@ Override in Site Settings or `settings.yaml` only if you provide a custom Fluid 
 
 ---
 
+## Non-HTML URLs (`/llms.txt`, `/robots.txt`, …)
+
+HTML pages receive favicon `<link>` tags from this partial. Plain-text responses do not, so browsers request **`/favicon.ico`** at the TYPO3 document root. Keep **`public/favicon.ico`** aligned with `Resources/Public/Favicons/favicon.ico` (copy after regenerating icons).
+
+---
+
 ## Validation
 
 - [RealFaviconGenerator favicon checker](https://realfavicongenerator.net/favicon_checker)

@@ -17,7 +17,7 @@ page {
 
     headerData {
         2039 {
-            # Resolved at runtime from Site Set YAML (CONSTANTS {$settings.*} is not substituted for site settings).
+            # Favicon partial path is read at runtime via site:settings.pageFaviconsFile.
             file.data = site:settings.pageFaviconsFile // EXT:mp_core/Resources/Private/Partials/Page/Favicons.html
         }
 
@@ -123,10 +123,9 @@ tt_content {
 }
 
 page.meta.og:type >
-page.meta.og:type = TEXT
+page.meta.og:type = website
 page.meta.og:type {
     attribute = property
-    value = website
     override = article
     override.if.isPositive.data = request:routing|arguments|tx_news_pi1|news
 }

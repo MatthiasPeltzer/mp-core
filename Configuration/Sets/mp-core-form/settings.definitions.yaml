@@ -47,6 +47,41 @@ settings:
     category: MPCoreForm
     type: string
     default: 'info@example.com'
+
+  form.email.logo:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.logo.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.logo.form.description'
+    category: MPCoreForm
+    type: string
+    default: ''
+
+  form.email.logoAlt:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.logoAlt.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.logoAlt.form.description'
+    category: MPCoreForm
+    type: string
+    default: ''
+
+  form.email.footerText:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.footerText.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.footerText.form.description'
+    category: MPCoreForm
+    type: text
+    default: ''
+
+  form.email.headerColor:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.headerColor.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.headerColor.form.description'
+    category: MPCoreForm
+    type: string
+    default: ''
+
+  form.email.footerColor:
+    label: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.footerColor.form.label'
+    description: 'LLL:EXT:mp_core/Resources/Private/Language/Settings.xlf:form.email.footerColor.form.description'
+    category: MPCoreForm
+    type: string
+    default: ''
   
   # Form Validation Settings
   form.validation.clientSide:

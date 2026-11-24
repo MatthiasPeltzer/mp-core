@@ -1,0 +1,112 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<formvh:renderRenderable renderable="{page}">
+    <f:if condition="{page.label}">
+        <h2 class="form-fieldset-heading h2 mb-3">{formvh:translateElementProperty(element: page, property: 'label')}</h2>
+    </f:if>
+    <div class="{page.renderingOptions.listClassAttribute}">
+            <formvh:renderAllFormValues renderable="{page.rootForm}" as="formValue">
+                <f:variable name="elementIdentifier" value="{formValue.element.identifier}" />
+                <f:variable name="elementType" value="{formValue.element.type}" />
+                <f:if condition="{elementType} == 'ContentElement' || {elementType} == 'Honeypot' || {elementIdentifier} == 'text-2'">
+                    <f:then><!-- skip --></f:then>
+                    <f:else>
+                        <f:if condition="{formValue.isSection}">
+                            <f:then>
+                                <f:variable name="sectionSubheader" value="{formValue.element.properties.sectionSubheader -> f:format.trim()}" />
+                                <f:if condition="{sectionSubheader}">
+                                    <f:then><!-- intro fieldset: no section title on overview --></f:then>
+                                    <f:else>
+                                        <f:render partial="Fieldset/SectionHeading" arguments="{element: formValue.element, context: 'frontend'}" />
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <dl class="{page.renderingOptions.listRowClassAttribute}">
+                                    <dt class="{page.renderingOptions.labelWrapperClassAttribute}">
+                                        <f:if condition="{elementIdentifier} == 'checkbox-1'">
+                                            <f:then>
+                                                <f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.label" />
+                                            </f:then>
+                                            <f:else>
+                                                {formvh:translateElementProperty(element: formValue.element, property: 'label') -> f:sanitize.html() -> f:transform.html()}
+                                            </f:else>
+                                        </f:if>
+                                    </dt>
+                                    <dd class="{page.renderingOptions.valueWrapperClassAttribute}">
+                                        <f:if condition="{elementType} == 'Checkbox'">
+                                            <f:then>
+                                                <f:if condition="{formValue.value}">
+                                                    <f:then>
+                                                        <f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.yes" />
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:translate key="LLL:EXT:mp_core/Resources/Private/Language/locallang_form_email.xlf:consent.no" />
+                                                    </f:else>
+                                                </f:if>
+                                            </f:then>
+                                            <f:else>
+                                                <f:if condition="{formValue.value}">
+                                                    <f:then>
+                                                        <f:if condition="{0: elementType} == {0: 'ImageUpload'}">
+                                                            <f:then>
+                                                                <f:if condition="{formValue.isMultiValue}">
+                                                                    <f:then>
+                                                                        <ul class="image-upload-preview">
+                                                                            <f:for each="{formValue.value}" as="value">
+                                                                                <li class="image-{value.originalResource.extension}">
+                                                                                    <f:image image="{value}" maxWidth="{formValue.element.properties.imageMaxWidth}" maxHeight="{formValue.element.properties.imageMaxHeight}" alt="{formvh:translateElementProperty(element: formValue.element, property: 'altText')}"/>
+                                                                                </li>
+                                                                            </f:for>
+                                                                        </ul>
+                                                                    </f:then>
+                                                                    <f:else>
+                                                                        <f:image image="{formValue.value}" maxWidth="{formValue.element.properties.imageMaxWidth}" maxHeight="{formValue.element.properties.imageMaxHeight}" alt="{formvh:translateElementProperty(element: formValue.element, property: 'altText')}"/>
+                                                                    </f:else>
+                                                                </f:if>
+                                                            </f:then>
+                                                            <f:else if="{0: elementType} == {0: 'FileUpload'}">
+                                                                <f:if condition="{formValue.isMultiValue}">
+                                                                    <f:then>
+                                                                        <ul class="file-upload-preview">
+                                                                            <f:for each="{formValue.value}" as="value">
+                                                                                <li class="file-{value.originalResource.extension}">{value.originalResource.originalFile.name}</li>
+                                                                            </f:for>
+                                                                        </ul>
+                                                                    </f:then>
+                                                                    <f:else>
+                                                                        <f:format.nl2br>{formValue.processedValue}</f:format.nl2br>
+                                                                    </f:else>
+                                                                </f:if>
+                                                            </f:else>
+                                                            <f:else>
+                                                                <f:if condition="{formValue.isMultiValue}">
+                                                                    <f:then>
+                                                                        <ul>
+                                                                            <f:for each="{formValue.processedValue}" as="value">
+                                                                                <li>{value}</li>
+                                                                            </f:for>
+                                                                        </ul>
+                                                                    </f:then>
+                                                                    <f:else>
+                                                                        <f:format.nl2br>{formValue.processedValue}</f:format.nl2br>
+                                                                    </f:else>
+                                                                </f:if>
+                                                            </f:else>
+                                                        </f:if>
+                                                    </f:then>
+                                                    <f:else>
+                                                        -
+                                                    </f:else>
+                                                </f:if>
+                                            </f:else>
+                                        </f:if>
+                                    </dd>
+                                </dl>
+                            </f:else>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </formvh:renderAllFormValues>
+    </div>
+</formvh:renderRenderable>
+</html>

@@ -1,9 +1,9 @@
 mpcSitepackage {
     contentTypes {
-        templates = {$settings.contentTypesTemplates}
+        templates = {$contentTypesTemplates}
 
         gallery {
-            templates = {$settings.contentTypesGalleryTemplates}
+            templates = {$contentTypesGalleryTemplates}
         }
     }
 }

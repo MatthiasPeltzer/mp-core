@@ -1,3 +1,4 @@
+# XML sitemap (EXT:seo): combined /sitemap.xml per language, pages + EXT:news, mp-core XSL preview.
 plugin.tx_seo {
   config {
     xslFile = EXT:mp_core/Resources/Public/Seo/Sitemap.xsl
@@ -12,21 +13,17 @@ plugin.tx_seo {
           }
         }
 
-        # News sitemap
-        # NOTE: If you get 500 errors for language-specific sitemaps, ensure:
-        # 1. Page 31 (news detail page) exists and is accessible in all languages
-        # 2. News records have translations in all languages
-        # To temporarily disable, comment out the news section below
         news {
-          provider = GeorgRinger\News\Seo\NewsXmlSitemapDataProvider
+          provider = Mpc\MpCore\Seo\NewsXmlSitemapDataProvider
           config {
             table = tx_news_domain_model_news
-            sortField = sorting
+            sortField = datetime
+            sortDirection = DESC
             lastModifiedField = tstamp
-            pid = 29
+            pid = {$seo.sitemap.news.storagePid}
             recursive = 1
             url {
-              pageId = 31
+              pageId = {$seo.sitemap.news.detailPageId}
               fieldToParameterMap {
                 uid = tx_news_pi1[news]
               }
@@ -43,4 +40,12 @@ plugin.tx_seo {
       }
     }
   }
+
+  view.templateRootPaths {
+    100 = EXT:mp_core/Resources/Private/Templates/XmlSitemap
+  }
+}
+
+seo_sitemap {
+  10.userFunc = Mpc\MpCore\Seo\XmlSitemapRenderer->render
 }

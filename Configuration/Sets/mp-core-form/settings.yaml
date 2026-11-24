@@ -6,6 +6,11 @@ form.requiredFieldMarker: '*'
 form.email.senderName: 'Website Contact Form'
 form.email.senderEmail: 'noreply@example.com'
 form.email.replyToEmail: 'info@example.com'
+form.email.logo: ''
+form.email.logoAlt: ''
+form.email.footerText: ''
+form.email.headerColor: ''
+form.email.footerColor: ''
 
 form.validation.clientSide: true
 form.validation.showInlineErrors: true

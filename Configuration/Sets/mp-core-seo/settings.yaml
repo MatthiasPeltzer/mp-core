@@ -17,6 +17,8 @@ seo.twitter.site: ''
 seo.sitemap.enabled: true
 seo.sitemap.excludeHiddenPages: true
 seo.sitemap.priority: '0.5'
+seo.sitemap.news.storagePid: '29'
+seo.sitemap.news.detailPageId: 31
 
 seo.canonical.enabled: true
 
@@ -49,6 +51,7 @@ seo.robots.crawlDelay: 0
 seo.robots.additional: ''
 
 seo.llmsTxt.enabled: true
+seo.llmsTxt.menuDepth: 2
 seo.llmsTxt.intro: ''
 seo.llmsTxt.news.storagePid: ''
 seo.llmsTxt.news.detailPageId: 0

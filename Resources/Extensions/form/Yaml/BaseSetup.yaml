@@ -11,6 +11,9 @@ TYPO3:
         allowDeleteFromExtensionPaths: true
       prototypes:
         standard:
+          formEditor:
+            translationFiles:
+              20: 'EXT:mp_core/Resources/Private/Language/locallang_form_fieldset.xlf'
           formElementsDefinition:
             FileUpload:
               formEditor:
@@ -40,6 +43,40 @@ TYPO3:
                       10:
                         value: '2:/formupload/'
                         label: '2:/formupload/'
+            Fieldset:
+              formEditor:
+                editors:
+                  210:
+                    identifier: sectionHeadingLevel
+                    templateName: Inspector-SingleSelectEditor
+                    label: formEditor.elements.Fieldset.editor.sectionHeadingLevel.label
+                    propertyPath: properties.sectionHeadingLevel
+                    selectOptions:
+                      10:
+                        value: ''
+                        label: formEditor.elements.Fieldset.editor.sectionHeadingLevel.legend
+                      20:
+                        value: h2
+                        label: formEditor.elements.Fieldset.editor.sectionHeadingLevel.h2
+                      30:
+                        value: h3
+                        label: formEditor.elements.Fieldset.editor.sectionHeadingLevel.h3
+                      40:
+                        value: h4
+                        label: formEditor.elements.Fieldset.editor.sectionHeadingLevel.h4
+                  220:
+                    identifier: sectionSubheader
+                    templateName: Inspector-TextEditor
+                    label: formEditor.elements.Fieldset.editor.sectionSubheader.label
+                    propertyPath: properties.sectionSubheader
+                    description: formEditor.elements.Fieldset.editor.sectionSubheader.description
+                predefinedDefaults:
+                  properties:
+                    sectionHeadingLevel: ''
+                    sectionSubheader: ''
+              properties:
+                sectionHeadingLevel: ''
+                sectionSubheader: ''
             Form:
               renderingOptions:
                 templateVariant: version2
@@ -49,21 +86,22 @@ TYPO3:
                   200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Partials/'
                 layoutRootPaths:
                   200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Layouts/'
-            Checkbox:
-              properties:
-                containerClassAttribute: 'mb-3'
-                elementClassAttribute: ''
-                labelClassAttribute: ''
-                labelTextClassAttribute: ''
-            MultiCheckbox:
-              properties:
-                containerClassAttribute: 'mb-2'
-                elementClassAttribute: ''
-                labelClassAttribute: ''
-                labelTextClassAttribute: ''
-            RadioButton:
-              properties:
-                containerClassAttribute: 'mb-2'
-                elementClassAttribute: 'radio'
-                labelClassAttribute: ''
-                labelTextClassAttribute: ''
+          finishersDefinition:
+            EmailToReceiver:
+              implementationClassName: Mpc\MpCore\Domain\Finishers\BrandedEmailFinisher
+              options:
+                layoutRootPaths:
+                  200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Layouts/'
+                partialRootPaths:
+                  200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Partials/'
+                templateRootPaths:
+                  200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Templates/Finishers/Email/'
+            EmailToSender:
+              implementationClassName: Mpc\MpCore\Domain\Finishers\BrandedEmailFinisher
+              options:
+                layoutRootPaths:
+                  200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Layouts/'
+                partialRootPaths:
+                  200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Partials/'
+                templateRootPaths:
+                  200: 'EXT:mp_core/Resources/Extensions/form/Frontend/Templates/Finishers/Email/'

@@ -8,6 +8,7 @@ MP Core delivers a Bootstrap 6– and Vue-powered site package for TYPO3 13.4 / 
 - Container elements (accordion, tabs, slider, grid, wrapper) via b13/container.
 - Content Blocks support (definition list) via friendsoftypo3/content-blocks.
 - Six Site Sets (`mp-core`, `mp-core-base`, `mp-core-container`, `mp-core-news`, `mp-core-form`, `mp-core-seo`) that plug into TYPO3 Site Settings.
+- Branded form notification mails (`ContactReceiver` / `ContactSender`) via `BrandedEmailFinisher` and `form.email.*` settings.
 - Schema.org JSON-LD output (WebSite, WebPage, BlogPosting, BreadcrumbList, MusicGroup, NewsArticle).
 - Frontend build pipeline: Vite 8, strict TypeScript, Bootstrap **6.0.0-alpha.1**, Vue 3, Sass, PostCSS, ESLint, Stylelint, Vitest (browser), Swiper 14, and Jarallax (`Build/` — see [Build/README.md](Build/README.md)).
 
@@ -15,7 +16,7 @@ MP Core delivers a Bootstrap 6– and Vue-powered site package for TYPO3 13.4 / 
 
 - TYPO3 `^13.4 || ^14.3`
 - PHP `>=8.2`
-- Node.js `>=22` and npm `>=10` for the frontend build
+- Node.js `>=26` and npm `>=10` for the frontend build
 
 ## Quick Start
 
@@ -37,6 +38,7 @@ Detailed guides live in [`Documentation/README.md`](Documentation/README.md):
 - [Backend](Documentation/Backend.md) — RTE, TSconfig, backend previews
 - [Content elements](Documentation/ContentElements.md) — per-CType TCA reference
 - [Favicons](Documentation/Favicons.md) — assets, Fluid partial, site config (not static HTML paste)
+- [Form email branding](Documentation/FormEmail.md) — branded contact mails, site settings, finishers
 
 ## License & Support
 

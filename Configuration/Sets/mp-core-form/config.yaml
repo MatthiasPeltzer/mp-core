@@ -4,7 +4,3 @@ dependencies:
   - mpc/mp-core-base
 optionalDependencies:
   - typo3/form
-settings:
-  definitions: settings.definitions.yaml
-  defaults: settings.yaml
-

@@ -71,7 +71,7 @@ node Documentation/scripts/sync-site-settings.mjs
 
 ### Core (shared — `mpc/mp-core` / registered via `mpc/mp-core-base`)
 
-Site Settings definitions and defaults live in `Configuration/Sets/mp-core/settings.definitions.yaml` and `settings.yaml`. The base set only references these files.
+Site Settings definitions and defaults live in `Configuration/Sets/mp-core/settings.definitions.yaml` and `settings.yaml`. TYPO3 loads `settings.definitions.yaml` and `settings.yaml` from each set directory by filename; do not declare a `settings:` block in `config.yaml`.
 
 Source: `Configuration/Sets/mp-core/`
 
@@ -220,10 +220,17 @@ Source: `Configuration/Sets/mp-core-form/`
 | `form.email.senderName` | string | `Website Contact Form` |
 | `form.email.senderEmail` | string | `noreply@example.com` |
 | `form.email.replyToEmail` | string | `info@example.com` |
+| `form.email.logo` | string (FAL) | (empty — **no** logo in mail header; does not use site header logos) |
+| `form.email.logoAlt` | string | (empty — decorative logo with empty `alt`) |
+| `form.email.footerText` | text (limited HTML) | (empty — footer falls back to copyright + Imprint/Privacy links from site configuration). **Trusted site admins only**; allowed markup is sanitized in the mail layout (same as finisher `messageBefore` / `messageAfter`). |
+| `form.email.headerColor` | string (CSS color) | (empty — uses site `color-primary`) |
+| `form.email.footerColor` | string (CSS color) | (empty — uses site `color-secondary`) |
 | `form.validation.clientSide` | bool | `true` |
 | `form.validation.showInlineErrors` | bool | `true` |
 | `form.storage.saveToDatabase` | bool | `false` |
 | `form.storage.uploadFolder` | string | `1:/forms/` |
+
+**Form notification mail:** finishers use **`BrandedEmailFinisher`** and templates **`ContactReceiver`** / **`ContactSender`** (layout **`MpcoreFormEmail`**). Set **`form.email.logo`** to a FAL reference (`t3://file?uid=…`); the image links to the language homepage. Override sender addresses in **`config/sites/*/settings.yaml`**. Per-form finisher options, deliverability, and troubleshooting: [FormEmail.md](FormEmail.md).
 
 ### SEO (`mpc/mp-core-seo`)
 
@@ -246,6 +253,8 @@ Source: `Configuration/Sets/mp-core-seo/`
 | `seo.sitemap.enabled` | bool | `true` |
 | `seo.sitemap.excludeHiddenPages` | bool | `true` |
 | `seo.sitemap.priority` | string | `0.5` |
+| `seo.sitemap.news.storagePid` | string | (empty; mpcore demo default `29`) |
+| `seo.sitemap.news.detailPageId` | int | `0` (mpcore demo default `31`) |
 | `seo.canonical.enabled` | bool | `true` |
 | `seo.schema.enabled` | bool | `true` |
 | `seo.schema.organizationType` | string | `Organization` |
@@ -274,6 +283,7 @@ Source: `Configuration/Sets/mp-core-seo/`
 | `seo.robots.crawlDelay` | int | `0` |
 | `seo.robots.additional` | string | (empty) |
 | `seo.llmsTxt.enabled` | bool | `true` |
+| `seo.llmsTxt.menuDepth` | int | `2` |
 | `seo.llmsTxt.intro` | text | (empty) |
 | `seo.llmsTxt.news.storagePid` | string | (empty) |
 | `seo.llmsTxt.news.detailPageId` | int | `0` |
@@ -283,7 +293,7 @@ Source: `Configuration/Sets/mp-core-seo/`
 
 ### Using Settings in TypoScript
 
-Site settings are exposed as flat TypoScript constants under their dotted key (no `settings.` prefix), e.g. `{$navigation.maxDepth}`, `{$config.admPanel}`, `{$PIDs.pidWebFonts}`. The path settings (`pageTemplates`, `basePath`, …) are additionally exposed with a `settings.` prefix, which is why the `mpcSitepackage.*` path constants reference `{$settings.pageTemplates}`.
+Site settings are exposed as flat TypoScript constants under their key, e.g. `{$navigation.maxDepth}`, `{$config.admPanel}`, `{$PIDs.pidWebFonts}`, `{$pageTemplates}`, `{$basePath}`. The `mpcSitepackage.*` path constants reference those same flat keys (`{$pageTemplates}`, …).
 
 For values that must be resolved at render time (e.g. inside `config`, `page.meta`, or DataProcessor properties), read them directly via the `site:settings.*` data getter instead of a constant:
 
@@ -528,15 +538,15 @@ page.10 = FLUIDTEMPLATE
 page.10 {
   templateRootPaths {
     0 = EXT:mp_core/Resources/Private/Templates/Page/
-    10 = {$settings.pageTemplates}
+    10 = {$pageTemplates}
   }
   partialRootPaths {
     0 = EXT:mp_core/Resources/Private/Partials/
-    10 = {$settings.pagePartials}
+    10 = {$pagePartials}
   }
   layoutRootPaths {
     0 = EXT:mp_core/Resources/Private/Layouts/
-    10 = {$settings.pageLayouts}
+    10 = {$pageLayouts}
   }
 }
 ```
@@ -678,6 +688,7 @@ CREATE TABLE tt_content (
 - [Content elements](ContentElements.md) -- Per-CType TCA field reference
 - [Frontend](Frontend.md) -- Build system and asset pipeline
 - [Favicons](Favicons.md) -- Favicon generation
+- [Form email](FormEmail.md) -- Branded contact finishers and `form.email.*`
 - [TYPO3 TCA Reference](https://docs.typo3.org/m/typo3/reference-tca/main/en-us/)
 - [TYPO3 Site Sets](https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/SiteHandling/SiteSets.html)
 - [TYPO3 TypoScript Reference](https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/)

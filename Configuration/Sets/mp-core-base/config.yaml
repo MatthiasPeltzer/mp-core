@@ -9,6 +9,3 @@ optionalDependencies:
   - georgringer/news-sitemap
   - mpc/mpc-vidply
   - mpc/mpc-rss
-settings:
-  definitions: EXT:mp_core/Configuration/Sets/mp-core/settings.definitions.yaml
-  defaults: EXT:mp_core/Configuration/Sets/mp-core/settings.yaml
