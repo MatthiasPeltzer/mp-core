@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf" date="2026-11-24T00:00:00Z" product-name="mp_core">
+		<header/>
+		<body>
+			<trans-unit id="form.bootstrap6.date.placeholder" resname="form.bootstrap6.date.placeholder" approved="yes">
+				<source>DD/MM/YYYY</source>
+				<target>TT.MM.JJJJ</target>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.dateRange.placeholder" resname="form.bootstrap6.dateRange.placeholder" approved="yes">
+				<source>DD/MM/YYYY – DD/MM/YYYY</source>
+				<target>TT.MM.JJJJ – TT.MM.JJJJ</target>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.dateRange.rangeEndMessage" resname="form.bootstrap6.dateRange.rangeEndMessage" approved="yes">
+				<source>Choose an end date.</source>
+				<target>Bitte Enddatum wählen.</target>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.dateRange.clear.label" resname="form.bootstrap6.dateRange.clear.label" approved="yes">
+				<source>Clear date range</source>
+				<target>Reisezeitraum löschen</target>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.dateFromTo.startLabel" resname="form.bootstrap6.dateFromTo.startLabel" approved="yes">
+				<source>From</source>
+				<target>Von</target>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.dateFromTo.endLabel" resname="form.bootstrap6.dateFromTo.endLabel" approved="yes">
+				<source>To</source>
+				<target>Bis</target>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.combobox.placeholder" resname="form.bootstrap6.combobox.placeholder" approved="yes">
+				<source>Filter or add options…</source>
+				<target>Filtern oder Optionen wählen…</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

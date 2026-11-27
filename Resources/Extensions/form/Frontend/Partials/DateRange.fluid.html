@@ -10,10 +10,11 @@
 
         <f:variable name="placeholder" value="{element.properties.fluidAdditionalAttributes.placeholder}" />
         <f:if condition="{placeholder} == ''">
-            <f:variable name="placeholder" value="YYYY-MM-DD – YYYY-MM-DD" />
+            <f:variable name="placeholder" value="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf:form.bootstrap6.dateRange.placeholder')}" />
         </f:if>
 
         <f:render partial="Field/Field" arguments="{element: element}" contentAs="elementContent">
+            <f:variable name="rangeEndMessage" value="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf:form.bootstrap6.dateRange.rangeEndMessage')}" />
             <div
                 class="form-field mp-form-datepicker mp-form-date-range"
                 data-mp-bs-form-datepicker="1"
@@ -21,23 +22,36 @@
                 data-bs-date-min="{element.properties.bootstrapDateMin}"
                 data-bs-date-max="{element.properties.bootstrapDateMax}"
                 data-bs-display-months-count="{element.properties.bootstrapDisplayMonthsCount}"
+                data-mp-bs-range-end-message="{rangeEndMessage}"
             >
-                <f:form.textfield
-                    type="text"
-                    property="{element.identifier}"
-                    id="{element.uniqueIdentifier}"
-                    class="{element.properties.elementClassAttribute}"
-                    errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
-                    additionalAttributes="{
-                        data-bs-toggle: 'datepicker',
-                        data-bs-selection-mode: 'multiple-ranged',
-                        data-bs-locale: 'default',
-                        autocomplete: 'off',
-                        readonly: 'readonly',
-                        placeholder: placeholder
-                    }"
-                    aria="{aria}"
-                />
+                <div class="form-control form-adorn mb-0">
+                    <f:form.textfield
+                        type="text"
+                        property="{element.identifier}"
+                        id="{element.uniqueIdentifier}"
+                        class="form-ghost"
+                        errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
+                        additionalAttributes="{
+                            data-bs-toggle: 'datepicker',
+                            data-bs-selection-mode: 'multiple-ranged',
+                            data-bs-locale: 'default',
+                            autocomplete: 'off',
+                            readonly: 'readonly',
+                            placeholder: placeholder
+                        }"
+                        aria="{aria}"
+                    />
+                    <button
+                        type="button"
+                        class="btn-icon"
+                        data-mp-bs-date-range-clear="1"
+                        aria-label="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf:form.bootstrap6.dateRange.clear.label')}"
+                        hidden="hidden"
+                        disabled="disabled"
+                    >
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
             </div>
         </f:render>
     </f:form.validationResults>

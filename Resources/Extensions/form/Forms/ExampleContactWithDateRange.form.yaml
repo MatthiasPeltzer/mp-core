@@ -1,3 +1,4 @@
+
 identifier: example-contact-date-range
 type: Form
 label: 'Beispiel: Kontakt mit Reisezeitraum'
@@ -6,7 +7,6 @@ renderingOptions:
   submitButtonLabel: Absenden
 finishers:
   -
-    identifier: EmailToReceiver
     options:
       subject: 'Anfrage {example-contact-date-range}: {subject}'
       title: 'Neue Kontaktanfrage'
@@ -18,8 +18,8 @@ finishers:
       addHtmlPart: true
       replyToRecipients:
         '{email}': '{name}'
+    identifier: EmailToReceiver
   -
-    identifier: EmailToSender
     options:
       subject: 'Ihre Nachricht'
       title: Eingangsbestätigung
@@ -29,21 +29,25 @@ finishers:
       recipients:
         '{email}': '{name}'
       addHtmlPart: true
+    identifier: EmailToSender
   -
-    identifier: Confirmation
     options:
-      message: 'Vielen Dank. Wir haben Ihre Nachricht erhalten.'
+      message: '<p>Vielen Dank. Wir haben Ihre Nachricht erhalten.</p>'
+    identifier: Confirmation
 renderables:
   -
+    renderingOptions:
+      previousButtonLabel: 'Previous step'
+      nextButtonLabel: 'Next step'
     identifier: page-1
     label: Kontakt
     type: Page
     renderables:
       -
+        defaultValue: ''
         identifier: name
         label: Name
         type: Text
-        defaultValue: ''
         properties:
           fluidAdditionalAttributes:
             required: required
@@ -52,10 +56,10 @@ renderables:
           -
             identifier: NotEmpty
       -
+        defaultValue: ''
         identifier: email
         label: E-Mail
         type: Email
-        defaultValue: ''
         properties:
           fluidAdditionalAttributes:
             required: required
@@ -66,10 +70,10 @@ renderables:
           -
             identifier: EmailAddress
       -
+        defaultValue: ''
         identifier: subject
         label: Betreff
         type: Text
-        defaultValue: ''
         properties:
           fluidAdditionalAttributes:
             required: required
@@ -77,25 +81,41 @@ renderables:
           -
             identifier: NotEmpty
       -
-        identifier: travel-dates
-        label: Reisezeitraum
-        type: DateRange
+        defaultValue:
+          start: ''
+          end: ''
+        properties:
+          startLabel: Von
+          endLabel: Bis
+          bootstrapDateMin: '2026-11-24'
+          bootstrapDateMax: '2026-12-24'
+          fluidAdditionalAttributes:
+            required: required
+        type: DateFromTo
+        identifier: datefromto-1
+        label: 'Reisezeitraum (zwei Felder)'
+        validators:
+          -
+            identifier: NotEmpty
+      -
         defaultValue: ''
         properties:
-          bootstrapDateMin: ''
-          bootstrapDateMax: ''
           bootstrapDisplayMonthsCount: '2'
           fluidAdditionalAttributes:
             required: required
-            placeholder: 'YYYY-MM-DD – YYYY-MM-DD'
+          bootstrapDateMin: '2026-11-24'
+          bootstrapDateMax: '2026-12-24'
+        identifier: travel-dates
+        label: 'Reisezeitraum (ein Feld)'
+        type: DateRange
         validators:
           -
             identifier: NotEmpty
       -
+        defaultValue: ''
         identifier: message
         label: Nachricht
         type: Textarea
-        defaultValue: ''
         properties:
           fluidAdditionalAttributes:
             required: required
@@ -104,6 +124,10 @@ renderables:
           -
             identifier: NotEmpty
   -
+    renderingOptions:
+      previousButtonLabel: 'Previous step'
+      nextButtonLabel: 'Next step'
     identifier: summary
     label: Zusammenfassung
     type: SummaryPage
+variants: {  }

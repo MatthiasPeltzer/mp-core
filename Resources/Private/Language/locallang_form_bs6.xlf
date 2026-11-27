@@ -37,7 +37,7 @@
 				<source>Calendar months in popup</source>
 			</trans-unit>
 			<trans-unit id="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.description" resname="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.description">
-				<source>Show one or two months when the calendar opens.</source>
+				<source>Two months recommended: pick a start date, then an end date (same or next month). One month: calendar stays open after the first click—use month arrows if the end date is later.</source>
 			</trans-unit>
 			<trans-unit id="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.one" resname="formEditor.elements.DateRange.editor.bootstrapDisplayMonthsCount.one">
 				<source>One month</source>
@@ -47,6 +47,39 @@
 			</trans-unit>
 			<trans-unit id="formEditor.elements.DateRange.validators.IsoDateRangeString.label" resname="formEditor.elements.DateRange.validators.IsoDateRangeString.label">
 				<source>ISO date range format</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateFromTo.label" resname="formEditor.elements.DateFromTo.label">
+				<source>Date from–to (two fields)</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateFromTo.description" resname="formEditor.elements.DateFromTo.description">
+				<source>Accessible start and end with native date inputs (ISO). Works without JavaScript; with JavaScript, the end date cannot be before the start.</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateFromTo.editor.startLabel.label" resname="formEditor.elements.DateFromTo.editor.startLabel.label">
+				<source>Start date label</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateFromTo.editor.endLabel.label" resname="formEditor.elements.DateFromTo.editor.endLabel.label">
+				<source>End date label</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.DateFromTo.validators.IsoDateFromTo.label" resname="formEditor.elements.DateFromTo.validators.IsoDateFromTo.label">
+				<source>ISO start/end dates</source>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.dateFromTo.startLabel" resname="form.bootstrap6.dateFromTo.startLabel">
+				<source>From</source>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.dateFromTo.endLabel" resname="form.bootstrap6.dateFromTo.endLabel">
+				<source>To</source>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.date.placeholder" resname="form.bootstrap6.date.placeholder">
+				<source>DD/MM/YYYY</source>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.dateRange.placeholder" resname="form.bootstrap6.dateRange.placeholder">
+				<source>DD/MM/YYYY – DD/MM/YYYY</source>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.dateRange.clear.label" resname="form.bootstrap6.dateRange.clear.label">
+				<source>Clear date range</source>
+			</trans-unit>
+			<trans-unit id="form.bootstrap6.dateRange.rangeEndMessage" resname="form.bootstrap6.dateRange.rangeEndMessage">
+				<source>Choose an end date.</source>
 			</trans-unit>
 			<trans-unit id="formEditor.elements.MultiSelect.editor.useBootstrapCombobox.label" resname="formEditor.elements.MultiSelect.editor.useBootstrapCombobox.label">
 				<source>Bootstrap 6 combobox (searchable multi select)</source>

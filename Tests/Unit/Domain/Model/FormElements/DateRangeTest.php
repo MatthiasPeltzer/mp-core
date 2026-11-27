@@ -14,6 +14,7 @@ namespace Mpc\MpCore\Tests\Unit\Domain\Model\FormElements;
 use Mpc\MpCore\Domain\Model\FormElements\DateRange;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
 
 final class DateRangeTest extends TestCase
 {
@@ -23,5 +24,17 @@ final class DateRangeTest extends TestCase
         $element = new DateRange('travel', 'DateRange');
         $element->setProperty('displayFormat', 'd.m.Y');
         self::assertSame('10.06.2026 – 18.06.2026', $element->valueToString('2026-06-10,2026-06-18'));
+    }
+
+    #[Test]
+    public function processElementValueFormatsForMailAndSummary(): void
+    {
+        $element = new DateRange('travel', 'DateRange');
+        $element->setProperty('displayFormat', 'd.m.Y');
+        $runtime = $this->createMock(FormRuntime::class);
+        self::assertSame(
+            '10.06.2026 – 18.06.2026',
+            $element->processElementValue('2026-06-10,2026-06-18', $runtime)
+        );
     }
 }

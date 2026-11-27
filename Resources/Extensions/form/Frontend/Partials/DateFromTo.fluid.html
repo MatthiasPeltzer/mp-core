@@ -1,0 +1,88 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:variable name="startLabel" value="{formvh:translateElementProperty(element: element, property: 'startLabel')}" />
+<f:if condition="{startLabel} == ''">
+    <f:variable name="startLabel" value="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf:form.bootstrap6.dateFromTo.startLabel')}" />
+</f:if>
+<f:variable name="endLabel" value="{formvh:translateElementProperty(element: element, property: 'endLabel')}" />
+<f:if condition="{endLabel} == ''">
+    <f:variable name="endLabel" value="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf:form.bootstrap6.dateFromTo.endLabel')}" />
+</f:if>
+<f:variable name="dateMin" value="{element.properties.bootstrapDateMin}" />
+<f:variable name="dateMax" value="{element.properties.bootstrapDateMax}" />
+
+<formvh:renderRenderable renderable="{element}">
+    <f:form.validationResults for="{element.rootForm.identifier}.{element.identifier}">
+        <f:if condition="{element.properties.elementDescription}">
+            <f:variable name="startAria" value="{describedby: '{element.uniqueIdentifier}-desc'}"/>
+            <f:variable name="endAria" value="{describedby: '{element.uniqueIdentifier}-desc'}"/>
+        </f:if>
+        <f:if condition="{validationResults.errors}">
+            <f:variable name="startAria" value="{invalid: 'true', describedby: '{element.uniqueIdentifier}-errors'}"/>
+            <f:variable name="endAria" value="{invalid: 'true', describedby: '{element.uniqueIdentifier}-errors'}"/>
+        </f:if>
+
+        <f:render partial="Field/Field" arguments="{element: element, renderFieldset: '{element.properties.renderFieldset}'}" contentAs="elementContent">
+            <div
+                class="mp-form-date-from-to row g-3"
+                data-mp-bs-form-date-from-to="1"
+                data-bs-date-min="{dateMin}"
+                data-bs-date-max="{dateMax}"
+            >
+                <div class="col-12 col-md-6">
+                    <label class="{element.properties.labelClassAttribute}" for="{element.uniqueIdentifier}-start">
+                        {startLabel}
+                        <f:if condition="{element.required}">
+                            <f:render partial="Field/Required" arguments="{element: element}"/>
+                        </f:if>
+                    </label>
+                    <f:form.textfield
+                        type="date"
+                        property="{element.identifier}.start"
+                        id="{element.uniqueIdentifier}-start"
+                        class="{element.properties.elementClassAttribute}"
+                        errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
+                        additionalAttributes="{
+                            data-mp-date-from-to-start: '1',
+                            min: dateMin,
+                            max: dateMax,
+                            autocomplete: 'off'
+                        }"
+                        aria="{startAria}"
+                    />
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <label class="{element.properties.labelClassAttribute}" for="{element.uniqueIdentifier}-end">
+                        {endLabel}
+                        <f:if condition="{element.required}">
+                            <f:render partial="Field/Required" arguments="{element: element}"/>
+                        </f:if>
+                    </label>
+                    <f:form.textfield
+                        type="date"
+                        property="{element.identifier}.end"
+                        id="{element.uniqueIdentifier}-end"
+                        class="{element.properties.elementClassAttribute}"
+                        errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
+                        additionalAttributes="{
+                            data-mp-date-from-to-end: '1',
+                            min: dateMin,
+                            max: dateMax,
+                            autocomplete: 'off'
+                        }"
+                        aria="{endAria}"
+                    />
+                </div>
+            </div>
+            <f:if condition="{validationResults.errors}">
+                <span id="{element.uniqueIdentifier}-errors" class="{element.rootForm.renderingOptions.fieldProperties.errorMsgClassAttribute}" role="alert">
+                    <f:for each="{validationResults.errors}" as="error">
+                        <f:format.htmlspecialchars>{formvh:translateElementError(element: element, error: error)}</f:format.htmlspecialchars>
+                        <br/>
+                    </f:for>
+                </span>
+            </f:if>
+        </f:render>
+    </f:form.validationResults>
+</formvh:renderRenderable>
+</html>

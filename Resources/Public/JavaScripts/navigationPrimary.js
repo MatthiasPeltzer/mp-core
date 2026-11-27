@@ -1,1 +1,89 @@
-import{d as e,u as t}from"./vendor-bootstrap-DkWZajnW.js";import{d as n,l as r,n as i,r as a,t as o,u as s}from"./i18n-B5WUtYMV.js";import{c,l,o as u,t as d}from"./domUtils-Bsii5olG.js";import{n as f,t as p}from"./domTypes-DjLwduRd.js";var m=`primaryNavigation`,h={container:`#main-menu`,buttonSelector:`.btn-open`,menuSelector:`.collapse`};function g(e,t){let n=e.querySelector(`.visually-hidden`);n&&(n.textContent=t?o:r),e.setAttribute(`title`,t?o:r),e.setAttribute(`aria-expanded`,t?`true`:`false`),e.classList.toggle(`collapsed`,!t)}function _(e){let t=e.target;return!(t instanceof Element)||!t.id?null:p(document.querySelector(`[data-bs-target="#${t.id}"]`))}function v(e){return!!f(e)?.closest(h.container)}var y=class extends t{static NAME=m;static get Default(){return{}}constructor(e,t){super(e,t),this._bind()}_bind(){let t=this._element,r=document.body,f=p(document.querySelector(`.header-wrapper`)),m=p(document.querySelector(`.navbar-toggler`)),y=p(document.querySelector(`.navbar-toggler span.txt > .visually-hidden`)),b=()=>{document.querySelectorAll(`${h.container} ${h.buttonSelector}`).forEach(e=>{let t=p(e);if(!t)return;let n=t.getAttribute(`data-bs-target`);n&&g(t,document.querySelector(n)?.classList.contains(`show`)??!1)})};e.on(t,`show.bs.menu`,()=>{l(!0,r,f,m,y,n,a,s,i)}),e.on(t,`shown.bs.menu`,()=>{c(h.container)}),e.on(t,`hide.bs.menu`,()=>{l(!1,r,f,m,y,n,a,s,i)});let x=(e,t)=>{if(!v(e))return;let n=_(e);n&&(t&&d(n,h.buttonSelector,h.menuSelector),g(n,t))};e.on(document,`show.bs.collapse`,e=>{x(e,!0)}),e.on(document,`hide.bs.collapse`,e=>{x(e,!1)}),e.on(document,`shown.bs.collapse`,e=>{x(e,!0)}),e.on(document,`hidden.bs.collapse`,e=>{x(e,!1)}),setTimeout(()=>{u(h.menuSelector,o),b()},100)}},b=document.getElementById(`main-menu`);b&&y.getOrCreateInstance(b);
+import { d as EventHandler, u as BaseComponent } from "./vendor-bootstrap-BzDtiPY7.js";
+import { d as openTitleMessage, l as openButtonMessage, n as closeNavMessage, r as closeTitleMessage, t as closeButtonMessage, u as openNavMessage } from "./i18n-D9tefVeF.js";
+import { c as scrollToCurrentElement, l as toggleNavState, o as openCurrentPageParents, t as closeOtherSubmenus } from "./domUtils-Brfr75Yf.js";
+import { n as eventTargetElement, t as asHTMLElement } from "./domTypes-DZ0kIKBi.js";
+// Assets/Scripts/code/Navigation/Primary/navigation.ts
+var NAME = "primaryNavigation";
+var CONFIG = {
+	container: "#main-menu",
+	buttonSelector: ".btn-open",
+	menuSelector: ".collapse"
+};
+function updateButtonState(button, isOpen) {
+	const buttonText = button.querySelector(".visually-hidden");
+	if (buttonText) buttonText.textContent = isOpen ? closeButtonMessage : openButtonMessage;
+	button.setAttribute("title", isOpen ? closeButtonMessage : openButtonMessage);
+	button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+	button.classList.toggle("collapsed", !isOpen);
+}
+function getTriggerButton(event) {
+	const target = event.target;
+	if (!(target instanceof Element) || !target.id) return null;
+	return asHTMLElement(document.querySelector(`[data-bs-target="#${target.id}"]`));
+}
+function isInPrimaryContainer(event) {
+	const target = eventTargetElement(event);
+	return Boolean(target?.closest(CONFIG.container));
+}
+var PrimaryNavigation = class extends BaseComponent {
+	static NAME = NAME;
+	static get Default() {
+		return {};
+	}
+	constructor(element, config) {
+		super(element, config);
+		this._bind();
+	}
+	_bind() {
+		const mainMenu = this._element;
+		const body = document.body;
+		const headerWrapper = asHTMLElement(document.querySelector(".header-wrapper"));
+		const navbarToggler = asHTMLElement(document.querySelector(".navbar-toggler"));
+		const navbarTogglerText = asHTMLElement(document.querySelector(".navbar-toggler span.txt > .visually-hidden"));
+		const syncAllButtonStates = () => {
+			document.querySelectorAll(`${CONFIG.container} ${CONFIG.buttonSelector}`).forEach((node) => {
+				const button = asHTMLElement(node);
+				if (!button) return;
+				const targetMenuId = button.getAttribute("data-bs-target");
+				if (!targetMenuId) return;
+				updateButtonState(button, document.querySelector(targetMenuId)?.classList.contains("show") ?? false);
+			});
+		};
+		EventHandler.on(mainMenu, "show.bs.menu", () => {
+			toggleNavState(true, body, headerWrapper, navbarToggler, navbarTogglerText, openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
+		});
+		EventHandler.on(mainMenu, "shown.bs.menu", () => {
+			scrollToCurrentElement(CONFIG.container);
+		});
+		EventHandler.on(mainMenu, "hide.bs.menu", () => {
+			toggleNavState(false, body, headerWrapper, navbarToggler, navbarTogglerText, openTitleMessage, closeTitleMessage, openNavMessage, closeNavMessage);
+		});
+		const onCollapseLifecycle = (event, isOpen) => {
+			if (!isInPrimaryContainer(event)) return;
+			const triggerButton = getTriggerButton(event);
+			if (!triggerButton) return;
+			if (isOpen) closeOtherSubmenus(triggerButton, CONFIG.buttonSelector, CONFIG.menuSelector);
+			updateButtonState(triggerButton, isOpen);
+		};
+		EventHandler.on(document, "show.bs.collapse", (event) => {
+			onCollapseLifecycle(event, true);
+		});
+		EventHandler.on(document, "hide.bs.collapse", (event) => {
+			onCollapseLifecycle(event, false);
+		});
+		EventHandler.on(document, "shown.bs.collapse", (event) => {
+			onCollapseLifecycle(event, true);
+		});
+		EventHandler.on(document, "hidden.bs.collapse", (event) => {
+			onCollapseLifecycle(event, false);
+		});
+		setTimeout(() => {
+			openCurrentPageParents(CONFIG.menuSelector, closeButtonMessage);
+			syncAllButtonStates();
+		}, 100);
+	}
+};
+var mainMenu = document.getElementById("main-menu");
+if (mainMenu) PrimaryNavigation.getOrCreateInstance(mainMenu);
+
+//# sourceMappingURL=navigationPrimary.js.map

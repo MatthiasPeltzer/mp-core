@@ -13,14 +13,16 @@ namespace Mpc\MpCore\Domain\Model\FormElements;
 
 use Mpc\MpCore\Mvc\Validation\IsoDateRangeStringValidator;
 use TYPO3\CMS\Form\Domain\Model\FormElements\AbstractFormElement;
+use TYPO3\CMS\Form\Domain\Model\FormElements\ProcessableValueFormElementInterface;
 use TYPO3\CMS\Form\Domain\Model\FormElements\StringableFormElementInterface;
+use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
 
 /**
  * Form element value: comma-separated ISO dates (Y-m-d,Y-m-d) from BS6 ranged datepicker.
  *
  * @internal
  */
-final class DateRange extends AbstractFormElement implements StringableFormElementInterface
+final class DateRange extends AbstractFormElement implements ProcessableValueFormElementInterface, StringableFormElementInterface
 {
     public function initializeFormElement(): void
     {
@@ -42,6 +44,15 @@ final class DateRange extends AbstractFormElement implements StringableFormEleme
             }
             $validator->setOptions($options);
         }
+    }
+
+    public function processElementValue(mixed $value, FormRuntime $formRuntime): mixed
+    {
+        if (!is_string($value) || trim($value) === '') {
+            return $value;
+        }
+
+        return $this->valueToString($value);
     }
 
     public function valueToString(mixed $value): string

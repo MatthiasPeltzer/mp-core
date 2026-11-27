@@ -1,0 +1,80 @@
+identifier: example-contact-date-from-to
+type: Form
+label: 'Example: contact with from–to dates'
+prototypeName: standard
+renderingOptions:
+  submitButtonLabel: Submit
+finishers:
+  -
+    identifier: EmailToReceiver
+    options:
+      subject: 'Inquiry {example-contact-date-from-to}'
+      title: 'New contact request'
+      templateName: ContactReceiver
+      senderAddress: noreply@example.com
+      senderName: 'Website contact form'
+      recipients:
+        mail@example.com: Example
+      addHtmlPart: true
+  -
+    identifier: Confirmation
+    options:
+      message: 'Thank you. We have received your message.'
+renderables:
+  -
+    identifier: page-1
+    label: Contact
+    type: Page
+    renderables:
+      -
+        identifier: name
+        label: Name
+        type: Text
+        defaultValue: ''
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+            autocomplete: name
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        identifier: email
+        label: Email
+        type: Email
+        defaultValue: ''
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+            autocomplete: email
+        validators:
+          -
+            identifier: NotEmpty
+          -
+            identifier: EmailAddress
+      -
+        identifier: travel-period
+        label: Travel period
+        type: DateFromTo
+        defaultValue:
+          start: ''
+          end: ''
+        properties:
+          bootstrapDateMin: ''
+          bootstrapDateMax: ''
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        identifier: message
+        label: Message
+        type: Textarea
+        defaultValue: ''
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty

@@ -8,6 +8,11 @@
             <f:variable name="aria" value="{invalid: 'true', describedby: '{element.uniqueIdentifier}-errors'}"/>
         </f:if>
 
+        <f:variable name="datePlaceholder" value="{element.properties.fluidAdditionalAttributes.placeholder}" />
+        <f:if condition="{datePlaceholder} == ''">
+            <f:variable name="datePlaceholder" value="{f:translate(key: 'LLL:EXT:mp_core/Resources/Private/Language/locallang_form_bs6.xlf:form.bootstrap6.date.placeholder')}" />
+        </f:if>
+
         <f:render partial="Field/Field" arguments="{element: element}" contentAs="elementContent">
             <f:if condition="{element.properties.enableBootstrapDatepicker}">
                 <f:then>
@@ -27,7 +32,7 @@
                                 data-bs-toggle: 'datepicker',
                                 data-bs-locale: 'default',
                                 autocomplete: 'off',
-                                placeholder: 'YYYY-MM-DD'
+                                placeholder: datePlaceholder
                             }"
                             aria="{aria}"
                         />

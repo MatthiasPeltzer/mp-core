@@ -17,7 +17,17 @@ Bootstrap 6 frontend migration (`feature/bootstrap-6` only; **`main` remains Boo
 - BS6 **design tokens** compile path: `_mpc-bootstrap-theme.scss` / `_mpc-bs6-root-overrides.scss`; site frame colours **`--bg-1` … `--bg-8`** in `Styles.html` (no legacy `--bs-*` SCSS bridge).
 - Shared **Dialog** chrome: `Partials/Dialog/Header.html` for record modals and gallery; gallery footer slide counter driven by `galleryDialog.ts`.
 - ext:form: optional **Bootstrap 6 Datepicker** on the native **Date** element and optional **Combobox** on **MultiSelect** (Form Editor flags, hidden multi-select sync); [FormBootstrap6.md](Documentation/FormBootstrap6.md), `locallang_form_bs6.xlf`.
+- ext:form: **Date range** element (`DateRange`) with BS6 `multiple-ranged` datepicker; submits one field as comma-separated ISO dates (`IsoDateRangeString` validator).
+- ext:form: **Date from–to** element (`DateFromTo`) — two native `type="date"` fields with optional min/max and JS coupling (`IsoDateFromTo`); keeps `DateRange` as the one-field alternative.
 - Documentation: [Bootstrap6Migration.md](Documentation/Bootstrap6Migration.md), [FormBootstrap6.md](Documentation/FormBootstrap6.md); README / Build README / Frontend branch policy and alpha.2 targets.
+
+### Fixed
+- ext:form **DateRange**: mails and summary show `d.m.Y – d.m.Y` via `processElementValue`; re-init ranged datepicker after BS data-api so ISO presets render as a calendar range (not raw `YYYY-MM-DD,YYYY-MM-DD` in the field).
+- ext:form BS datepicker: `formDatepickerA11y` (dialog semantics, day `aria-label`s, live selection announcements; weekday chrome hidden from AT).
+- ext:form **DateRange**: always apply `displayMonthsCount` (1/2) on re-init; localized “choose end date” hint; default two months for range UX.
+- ext:form **DateFromTo**: both native date inputs get server `min`/`max`; JS snaps out-of-range keyboard values to bounds.
+- ext:form **DateRange**: clear control (×) resets the selection and shows the placeholder again when the field is not required; hidden until a range is selected.
+- ext:form BS6 date/range placeholders follow site language (`DD/MM/YYYY` / `TT.MM.JJJJ`) when the Form Editor leaves placeholder empty.
 
 ### Changed
 - **Breaking (branch):** Fluid templates, FSC overrides, navigation, containers, and gallery move from BS5 **Modal/Dropdown** to BS6 **Dialog/Menu** (`data-bs-toggle="dialog"|"menu"`), responsive utilities (`md:col-*`, semantic `fs-*`), **Menu** mobile nav, and BS6 accordion/details patterns.

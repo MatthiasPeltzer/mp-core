@@ -1,0 +1,11 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          validatorsDefinition:
+            IsoDateFromTo:
+              implementationClassName: Mpc\MpCore\Mvc\Validation\IsoDateFromToValidator
+              formEditor:
+                iconIdentifier: form-validator
+                label: formEditor.elements.DateFromTo.validators.IsoDateFromTo.label

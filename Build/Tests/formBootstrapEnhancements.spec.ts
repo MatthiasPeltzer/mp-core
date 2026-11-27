@@ -17,7 +17,10 @@ describe('form date range markup', () => {
   it('exposes ranged datepicker hooks', () => {
     document.body.innerHTML = `
       <div class="form-field mp-form-datepicker mp-form-date-range" data-mp-bs-form-datepicker="1" data-mp-bs-form-date-range="1">
-        <input type="text" id="range-1" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" class="form-control" name="tx_form[form][travel]" readonly />
+        <p class="form-control form-adorn mb-0">
+          <input type="text" id="range-1" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" class="form-ghost" name="tx_form[form][travel]" readonly />
+          <button type="button" class="btn-icon" data-mp-bs-date-range-clear="1" aria-label="Clear date range" hidden disabled>×</button>
+        </p>
       </div>
     `
     expect(document.querySelector('[data-mp-bs-form-date-range]')).not.toBeNull()
