@@ -65,3 +65,24 @@ rm -rf node_modules ../Resources/Public && npm ci && npm run build
 ```
 
 On Windows, delete `node_modules` and `Resources/Public` manually, then run `npm ci` and `npm run build`.
+
+---
+
+## PHP quality (`composer ci`)
+
+Run from the **mp-core** package root. With DDEV (from `mpcore/`):
+
+```bash
+ddev exec bash -c "cd packages/mp-core && composer ci"
+```
+
+Composer invokes linters under **`Build/scripts/`** (lowercase). Git always uses that path; on Windows the folder must use the same casing on disk or DDEV’s Linux mount exposes `Build/Scripts` and `php Build/scripts/...` fails.
+
+If `composer ci` or `lint:*` reports a missing `Build/scripts/*.php` file inside DDEV but the files exist under `Build\Scripts`, fix NTFS casing (no content change in git):
+
+```bash
+git mv Build/scripts Build/_scripts_tmp
+git mv Build/_scripts_tmp Build/scripts
+```
+
+Confirm in the container: `ls packages/mp-core/Build/scripts/lintPhp.php`.
