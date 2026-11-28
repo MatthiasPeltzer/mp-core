@@ -139,7 +139,7 @@
         <source>(not accessible)</source>
       </trans-unit>
       <trans-unit id="is_accessible.1" resname="is_accessible.1">
-        <source/>
+        <source>(accessible)</source>
       </trans-unit>
       <trans-unit id="link.newwindow" resname="link.newwindow">
         <source>External (New window)</source>

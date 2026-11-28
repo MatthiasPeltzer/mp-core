@@ -47,17 +47,8 @@ jobs:
             composer update --no-interaction --no-progress
           fi
 
-      - name: Coding standards
-        run: composer cs
-
-      - name: PHPStan
-        run: composer phpstan
-
-      - name: Linters
-        run: composer lint:all
-
-      - name: Unit tests
-        run: composer test:unit
+      - name: Composer CI (cs, phpstan, lint, unit)
+        run: composer ci
 
   functional:
     name: Functional (${{ matrix.db }})

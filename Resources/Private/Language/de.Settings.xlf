@@ -91,6 +91,14 @@
         <source>SEO Settings</source>
         <target>SEO-Einstellungen</target>
       </trans-unit>
+      <trans-unit id="MPCoreTemplates.description" resname="MPCoreTemplates.description" approved="yes">
+        <source>Template root paths, resources, and JSON-LD options (site layer)</source>
+        <target>Vorlagen-Pfade, Ressourcen und JSON-LD-Optionen (Site-Ebene)</target>
+      </trans-unit>
+      <trans-unit id="MPCoreTemplates.label" resname="MPCoreTemplates.label" approved="yes">
+        <source>Templates &amp; structured data</source>
+        <target>Vorlagen &amp; strukturierte Daten</target>
+      </trans-unit>
       <trans-unit id="PIDs.description" resname="PIDs.description" approved="yes">
         <source>All relevant page IDs can be set here.</source>
         <target>Hier können alle relevanten Seiten-IDs eingestellt werden.</target>

@@ -648,26 +648,6 @@
         <source>H3 - Hidden (SR only)</source>
         <target>H3 - Versteckt (nur SR)</target>
       </trans-unit>
-      <trans-unit id="language.de" resname="language.de" approved="yes">
-        <source>Deutsch</source>
-        <target>Deutsch</target>
-      </trans-unit>
-      <trans-unit id="language.en" resname="language.en" approved="yes">
-        <source>English</source>
-        <target>Englisch</target>
-      </trans-unit>
-      <trans-unit id="language.es" resname="language.es" approved="yes">
-        <source>Español</source>
-        <target>Spanisch</target>
-      </trans-unit>
-      <trans-unit id="language.fr" resname="language.fr" approved="yes">
-        <source>Français</source>
-        <target>Französisch</target>
-      </trans-unit>
-      <trans-unit id="language.ja" resname="language.ja" approved="yes">
-        <source>日本語</source>
-        <target>Japanisch</target>
-      </trans-unit>
       <trans-unit id="layout.0" resname="layout.0" approved="yes">
         <source>Normal box (default)</source>
         <target>Normale Box (Standard)</target>
@@ -1310,10 +1290,6 @@
         <source>YouTube</source>
         <target>YouTube</target>
       </trans-unit>
-      <trans-unit id="site.configuration.youtube.label" resname="site.configuration.youtube.label" approved="yes">
-        <source>YouTube</source>
-        <target>YouTube</target>
-      </trans-unit>
       <trans-unit id="slider.autoplay_delay" resname="slider.autoplay_delay" approved="yes">
         <source>Autoplay delay</source>
         <target>Autoplay-Verzögerung</target>
@@ -1349,6 +1325,10 @@
       <trans-unit id="slider.description" resname="slider.description" approved="yes">
         <source>Container element for Slider</source>
         <target>Container für Slider</target>
+      </trans-unit>
+      <trans-unit id="slider.elements" resname="slider.elements" approved="yes">
+        <source>Slider elements</source>
+        <target>Slider-Elemente</target>
       </trans-unit>
       <trans-unit id="slider.free_mode_enabled" resname="slider.free_mode_enabled" approved="yes">
         <source>Free mode</source>
@@ -1610,10 +1590,6 @@
         <source>Show Outline</source>
         <target>Outline anzeigen</target>
       </trans-unit>
-      <trans-unit id="sys_file_reference.tx_quality_label" resname="sys_file_reference.tx_quality_label" approved="yes">
-        <source>Quality Label</source>
-        <target>Qualitätslabel</target>
-      </trans-unit>
       <trans-unit id="tabs.description" resname="tabs.description" approved="yes">
         <source>The content elements are accessible through tabs</source>
         <target>Die Inhaltselemente sind über Tabs zugänglich</target>
@@ -1637,10 +1613,6 @@
       <trans-unit id="tt_content.CType.div._images_" resname="tt_content.CType.div._images_" approved="yes">
         <source>Pictures</source>
         <target>Bilder</target>
-      </trans-unit>
-      <trans-unit id="tt_content.CType.div.video" resname="tt_content.CType.div.video" approved="yes">
-        <source>Multimedia</source>
-        <target>Multimedia</target>
       </trans-unit>
       <trans-unit id="tt_content.CType.gallery" resname="tt_content.CType.gallery" approved="yes">
         <source>Gallery</source>

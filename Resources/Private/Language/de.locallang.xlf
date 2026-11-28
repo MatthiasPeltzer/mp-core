@@ -184,8 +184,8 @@
         <target>(nicht barrierefrei)</target>
       </trans-unit>
       <trans-unit id="is_accessible.1" resname="is_accessible.1" approved="yes">
-        <source/>
-        <target/>
+        <source>(accessible)</source>
+        <target>(barrierefrei)</target>
       </trans-unit>
       <trans-unit id="link.newwindow" resname="link.newwindow" approved="yes">
         <source>External (New window)</source>

@@ -1,7 +1,6 @@
 {
   "name": "mpc/mp-core",
-  "title": "MP-Core - Accessible TYPO3 Sitepackage",
-  "description": "Core TYPO3 CMS sitepackage extension providing base templates, styling, container, content blocks and backend configurations",
+  "description": "MP-Core - Accessible TYPO3 sitepackage extension providing base templates, styling, container, content blocks and backend configurations",
   "license": [
     "GPL-2.0-or-later"
   ],
@@ -71,6 +70,8 @@
     "typo3/coding-standards": "^0.8.0",
     "typo3/cms-backend": "^13.4 || ^14.3",
     "typo3/cms-form": "^13.4 || ^14.3",
+    "typo3/cms-indexed-search": "^13.4 || ^14.3",
+    "typo3/cms-redirects": "^13.4 || ^14.3",
     "typo3/cms-install": "^13.4 || ^14.3",
     "typo3/testing-framework": "^9.3"
   },
@@ -99,13 +100,22 @@
     "phpstan": "phpstan analyse -c phpstan.neon.dist --memory-limit=512M",
     "cs": "php .Build/bin/php-cs-fixer fix --dry-run -v --config .php-cs-fixer.dist.php",
     "cs:fix": "php .Build/bin/php-cs-fixer fix -v --config .php-cs-fixer.dist.php",
-    "lint:php": "find Classes Tests -name '*.php' -print0 | xargs -0 -n1 php -l",
-    "lint:yaml": "find Configuration -name '*.yaml' -o -name '*.yml' | xargs -r .Build/bin/yaml-lint --parse-tags",
+    "lint:php": "php Build/scripts/lintPhp.php",
+    "lint:yaml": "php Build/scripts/lintYaml.php",
     "lint:typoscript": "php Build/scripts/lintTypoScript.php",
+    "lint:xliff": "php Build/scripts/lintXliff.php",
     "lint:all": [
       "@lint:php",
       "@lint:yaml",
-      "@lint:typoscript"
+      "@lint:typoscript",
+      "@lint:xliff"
+    ],
+    "ci": [
+      "composer validate --no-check-publish",
+      "@cs",
+      "@phpstan",
+      "@lint:all",
+      "@test:unit"
     ]
   }
 }
