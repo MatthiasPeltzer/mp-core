@@ -13,7 +13,7 @@ MP Core delivers a Bootstrap- and Vue-powered site package for TYPO3 13.4 / 14.3
 ## Requirements
 
 - TYPO3 `^13.4 || ^14.3`
-- PHP `>=8.2`
+- PHP `>=8.3 <8.7` (8.3–8.6)
 - Node.js `>=26` and npm `>=10` for the frontend build
 
 ## Quick Start

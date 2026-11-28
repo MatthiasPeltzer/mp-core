@@ -6,6 +6,7 @@ $EM_CONF['mp_core'] = [
     'category' => 'templates',
     'constraints' => [
         'depends' => [
+            'php' => '8.3.0-8.6.99',
             'typo3' => '13.4.0-14.3.99',
             'rte_ckeditor' => '13.4.0-14.3.99',
             'seo' => '13.4.0-14.3.99',
