@@ -7,12 +7,10 @@ namespace Mpc\MpCore\Tests\Functional\Configuration;
 use Mpc\MpCore\Tests\Support\MpCoreTcaManifest;
 use Mpc\MpCore\Tests\Support\TcaShowitemInspector;
 use PHPUnit\Framework\Attributes\Test;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use Mpc\MpCore\Tests\Support\MpCoreFunctionalTestCase;
 
-final class TcaShowitemIntegrityTest extends FunctionalTestCase
+final class TcaShowitemIntegrityTest extends MpCoreFunctionalTestCase
 {
-    protected array $coreExtensionsToLoad = MpCoreTcaManifest::CORE_EXTENSIONS_TO_LOAD;
-
     protected array $testExtensionsToLoad = MpCoreTcaManifest::FUNCTIONAL_TEST_EXTENSIONS;
 
     private TcaShowitemInspector $inspector;

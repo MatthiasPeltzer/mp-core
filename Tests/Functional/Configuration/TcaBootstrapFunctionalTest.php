@@ -8,12 +8,10 @@ use Mpc\MpCore\Tests\Support\MpCoreTcaManifest;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use Mpc\MpCore\Tests\Support\MpCoreFunctionalTestCase;
 
-final class TcaBootstrapFunctionalTest extends FunctionalTestCase
+final class TcaBootstrapFunctionalTest extends MpCoreFunctionalTestCase
 {
-    protected array $coreExtensionsToLoad = MpCoreTcaManifest::CORE_EXTENSIONS_TO_LOAD;
-
     protected array $testExtensionsToLoad = MpCoreTcaManifest::FUNCTIONAL_TEST_EXTENSIONS;
 
     #[Test]

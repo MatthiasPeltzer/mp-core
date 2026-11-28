@@ -8,13 +8,11 @@ use Mpc\MpCore\Tests\Functional\Support\FunctionalSiteTrait;
 use Mpc\MpCore\Tests\Support\MpCoreTcaManifest;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use Mpc\MpCore\Tests\Support\MpCoreFunctionalTestCase;
 
-final class LlmsTxtMiddlewareFunctionalTest extends FunctionalTestCase
+final class LlmsTxtMiddlewareFunctionalTest extends MpCoreFunctionalTestCase
 {
     use FunctionalSiteTrait;
-
-    protected array $coreExtensionsToLoad = MpCoreTcaManifest::CORE_EXTENSIONS_TO_LOAD;
 
     protected array $testExtensionsToLoad = MpCoreTcaManifest::FUNCTIONAL_TEST_EXTENSIONS;
 

@@ -37,8 +37,6 @@ jobs:
             typo3/cms-rte-ckeditor:"${{ matrix.typo3 }}" \
             typo3/cms-seo:"${{ matrix.typo3 }}" \
             typo3/cms-backend:"${{ matrix.typo3 }}" \
-            typo3/cms-form:"${{ matrix.typo3 }}" \
-            typo3/cms-install:"${{ matrix.typo3 }}" \
             typo3/testing-framework:^9.3
           # georgringer/news require-dev still caps at php <8.6 until upstream widens the range
           if [ "${{ matrix.php }}" = "8.6" ]; then
@@ -110,8 +108,6 @@ jobs:
             typo3/cms-rte-ckeditor:"${{ matrix.typo3 }}" \
             typo3/cms-seo:"${{ matrix.typo3 }}" \
             typo3/cms-backend:"${{ matrix.typo3 }}" \
-            typo3/cms-form:"${{ matrix.typo3 }}" \
-            typo3/cms-install:"${{ matrix.typo3 }}" \
             typo3/testing-framework:^9.3
           composer update --no-interaction --no-progress
 

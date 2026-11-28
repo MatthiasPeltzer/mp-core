@@ -68,7 +68,6 @@
     "phpunit/phpunit": "^10.5 || ^11.5",
     "saschaegerer/phpstan-typo3": "^3.0",
     "typo3/coding-standards": "^0.8.0",
-    "typo3/cms-backend": "^13.4 || ^14.3",
     "typo3/cms-form": "^13.4 || ^14.3",
     "typo3/cms-indexed-search": "^13.4 || ^14.3",
     "typo3/cms-redirects": "^13.4 || ^14.3",

@@ -9,13 +9,11 @@ use PHPUnit\Framework\Attributes\IgnoreDeprecations;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Site\Set\SetRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use Mpc\MpCore\Tests\Support\MpCoreFunctionalTestCase;
 
 #[IgnoreDeprecations]
-final class SiteSetMinimalDependenciesFunctionalTest extends FunctionalTestCase
+final class SiteSetMinimalDependenciesFunctionalTest extends MpCoreFunctionalTestCase
 {
-    protected array $coreExtensionsToLoad = MpCoreTcaManifest::CORE_EXTENSIONS_TO_LOAD;
-
     protected array $testExtensionsToLoad = MpCoreTcaManifest::FUNCTIONAL_TEST_EXTENSIONS;
 
     #[Test]

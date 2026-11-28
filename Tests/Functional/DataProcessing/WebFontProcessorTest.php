@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Mpc\MpCore\Tests\Functional\DataProcessing;
 
 use Mpc\MpCore\DataProcessing\WebFontProcessor;
-use Mpc\MpCore\Tests\Support\MpCoreTcaManifest;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -14,28 +13,18 @@ use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use Mpc\MpCore\Tests\Support\MpCoreFunctionalTestCase;
 
 /**
  * Functional test for {@see WebFontProcessor}: exercises the real QueryBuilder /
  * FAL resolution path against a database with the extension's schema installed.
  * This is the sample that proves the functional-test harness works end to end.
  */
-final class WebFontProcessorTest extends FunctionalTestCase
+final class WebFontProcessorTest extends MpCoreFunctionalTestCase
 {
     private const FAMILY_TABLE = 'tx_mpcore_domain_model_webfontfamily';
     private const FACE_TABLE = 'tx_mpcore_domain_model_webfontface';
 
-    /**
-     * mp_core's ext_emconf declares hard dependencies on these system extensions.
-     */
-    protected array $coreExtensionsToLoad = MpCoreTcaManifest::CORE_EXTENSIONS_TO_LOAD;
-
-    /**
-     * mp_core's TCA overrides reference b13/container and content_blocks APIs at
-     * load time, so those packages must be present even though ext_emconf only
-     * lists the system-extension dependencies above.
-     */
     protected array $testExtensionsToLoad = [
         'b13/container',
         'friendsoftypo3/content-blocks',

@@ -41,7 +41,9 @@ return static function (ContainerConfigurator $container, ContainerBuilder $cont
             $definition->addTag('form.finisher');
             $definition->addMethodCall('injectViewFactory', [new Reference(ViewFactoryInterface::class)]);
             $definition->addMethodCall('injectTranslationService', [new Reference(TranslationService::class)]);
-            $definition->addMethodCall('injectFormValueResolver', [new Reference(FormValueResolver::class)]);
+            if ($container->hasDefinition(FormValueResolver::class)) {
+                $definition->addMethodCall('injectFormValueResolver', [new Reference(FormValueResolver::class)]);
+            }
         }
     });
 };

@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Mpc\MpCore\Tests\Functional\DataProcessing;
 
-use Mpc\MpCore\Tests\Support\MpCoreTcaManifest;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+use Mpc\MpCore\Tests\Support\MpCoreFunctionalTestCase;
 
 /**
  * Functional test for {@see \Mpc\MpCore\DataProcessing\StructuredDataProcessor}.
@@ -19,10 +18,8 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  * real site routing (typolink), page information and rootline — the parts that
  * unit tests cannot cover.
  */
-final class StructuredDataProcessorTest extends FunctionalTestCase
+final class StructuredDataProcessorTest extends MpCoreFunctionalTestCase
 {
-    protected array $coreExtensionsToLoad = MpCoreTcaManifest::CORE_EXTENSIONS_TO_LOAD;
-
     protected array $testExtensionsToLoad = [
         'b13/container',
         'friendsoftypo3/content-blocks',

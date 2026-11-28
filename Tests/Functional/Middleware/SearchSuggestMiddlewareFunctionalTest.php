@@ -5,20 +5,14 @@ declare(strict_types=1);
 namespace Mpc\MpCore\Tests\Functional\Middleware;
 
 use Mpc\MpCore\Tests\Functional\Support\FunctionalSiteTrait;
+use Mpc\MpCore\Tests\Support\MpCoreFunctionalTestCase;
 use Mpc\MpCore\Tests\Support\MpCoreTcaManifest;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-final class SearchSuggestMiddlewareFunctionalTest extends FunctionalTestCase
+final class SearchSuggestMiddlewareFunctionalTest extends MpCoreFunctionalTestCase
 {
     use FunctionalSiteTrait;
-
-    /** @var list<string> */
-    protected array $coreExtensionsToLoad = [
-        ...MpCoreTcaManifest::CORE_EXTENSIONS_TO_LOAD,
-        'indexed_search',
-    ];
 
     protected array $testExtensionsToLoad = MpCoreTcaManifest::FUNCTIONAL_TEST_EXTENSIONS;
 
