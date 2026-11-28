@@ -5,6 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-11-28
+
+### Added
+
+- `composer ci` (validate, cs, PHPStan, `lint:all`, unit tests); quality CI job runs `composer ci`.
+- `composer lint:xliff` and git-scoped `lint:php` / `lint:yaml` for tracked files.
+- Functional frontend smokes: `/llms.txt`, search suggest JSON, site set registry boot (structured data smoke existed).
+
+### Fixed
+
+- Functional tests on TYPO3 14: `MpCoreFunctionalTestCase` activates composer require-dev sysexts during bootstrap; `BrandedEmailFinisher` injects `FormValueResolver` only when the service exists (TYPO3 13.4).
+- **Security:** `/llms.txt` and the news section build in anonymous frontend context; search suggest words respect the same index access rules as page hits; stricter `q` validation.
+- **Security:** News archive/slider teasers use `f:format.html()`; inline SVG runs through the core `SvgSanitizer`.
+- Share and prefill URLs use `typolink` with `forceAbsoluteUrl` (`lib.sharePageUrl` / `lib.prefillUrl`).
+- Remove registration of missing `backend.css` in the TYPO3 backend; CKEditor stylesheet unchanged.
+- `ext_tables.sql`: drop redundant web font DDL (TCA-derived columns only).
+- News TypoScript: replace legacy `INCLUDE_TYPOSCRIPT` with `@import`; remove dead Slider/Paginate Fluid templates.
+- Site sets: `typo3/form`, `redirects`, `indexed-search` and `georgringer/news` are optional dependencies (not hard set deps).
+- **Windows + DDEV:** Document NTFS `Build/Scripts` vs `Build/scripts` casing so `composer ci` and `lint:*` resolve under Linux bind mounts.
+
+### Changed
+
+- **PHP 8.3–8.6 only:** `composer.json` requires `>=8.3 <8.7`; PHP 8.2 is no longer supported. CI quality matrix and functional jobs use 8.3–8.6; README requirements updated. `ext_emconf.php` documents the supported PHP range where applicable.
+- Composer `description` aligned with MP-Core naming; removed deprecated `title` property.
+- German XLF: orphan units removed, missing `slider.elements` / `MPCoreTemplates.*` added, duplicate YouTube label and empty `is_accessible.1` targets fixed.
+
+### Tests
+
+- Dev dependencies `typo3/cms-indexed-search` and `typo3/cms-redirects` for functional site-set and suggest coverage.
+- Functional: site set registry without optional sys extensions; suggest `q` type handling (unit).
+
+### Changed
+
+- CI: functional job matrix includes TYPO3 `^13.4` and `^14.3`; `actions/checkout` / `setup-node` v7; MySQL 8.4 service image.
+
 ## [1.3.6] - 2026-11-22
 
 ### Added
@@ -991,6 +1026,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial tracked release.
 
+[1.4.0]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.6...v1.4.0
 [1.3.6]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.5...v1.3.6
 [1.3.5]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.4...v1.3.5
 [1.3.4]: https://github.com/MatthiasPeltzer/mp-core/compare/v1.3.3...v1.3.4
