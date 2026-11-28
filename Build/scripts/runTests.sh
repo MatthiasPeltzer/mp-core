@@ -73,7 +73,7 @@ Options:
                  unit, functional, phpstan, cgl, lintPhp, lintYaml, lintTypoScript,
                  lintHtml, lintScss, unitJavascript, acceptance, composerUpdate, clean, update
   -d <db>        Database for functional|acceptance: sqlite|mariadb|mysql|postgres
-  -p <version>   PHP version: 8.2|8.3|8.4|8.5 (default 8.2)
+  -p <version>   PHP version: 8.3|8.4|8.5|8.6 (default 8.3)
   -t <version>   TYPO3 major for composerUpdate: 13|14
   -b <bin>       Container binary: docker|podman
   -n             Dry-run for cgl
@@ -97,7 +97,7 @@ fi
 TEST_SUITE=""
 DBMS="sqlite"
 DBMS_VERSION=""
-PHP_VERSION="8.2"
+PHP_VERSION="8.3"
 TYPO3_VERSION="14"
 PHP_XDEBUG_ON=0
 PHP_XDEBUG_PORT=9003

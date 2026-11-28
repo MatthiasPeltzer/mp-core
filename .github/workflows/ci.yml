@@ -40,7 +40,12 @@ jobs:
             typo3/cms-form:"${{ matrix.typo3 }}" \
             typo3/cms-install:"${{ matrix.typo3 }}" \
             typo3/testing-framework:^9.3
-          composer update --no-interaction --no-progress
+          # georgringer/news require-dev still caps at php <8.6 until upstream widens the range
+          if [ "${{ matrix.php }}" = "8.6" ]; then
+            composer update --no-interaction --no-progress --ignore-platform-req=php
+          else
+            composer update --no-interaction --no-progress
+          fi
 
       - name: Coding standards
         run: composer cs
@@ -169,7 +174,7 @@ jobs:
         run: .Build/bin/codecept build -c codeception.yml
 
       - name: Acceptance tests via runTests.sh
-        run: bash Build/scripts/runTests.sh -b docker -s acceptance -d sqlite
+        run: bash Build/scripts/runTests.sh -b docker -s acceptance -d sqlite -p 8.3
 
   frontend:
     name: Frontend lint & JS unit tests
