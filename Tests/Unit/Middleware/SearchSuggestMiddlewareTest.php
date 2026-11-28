@@ -10,10 +10,13 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Routing\RouterInterface;
 use TYPO3\CMS\Core\Site\Entity\Site;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 
 #[CoversClass(SearchSuggestMiddleware::class)]
 final class SearchSuggestMiddlewareTest extends TestCase
@@ -92,6 +95,31 @@ final class SearchSuggestMiddlewareTest extends TestCase
         ]);
 
         self::assertSame('https://example.com/detail/example', $url);
+    }
+
+    #[Test]
+    public function rejectsNonStringQueryParameter(): void
+    {
+        $middleware = new SearchSuggestMiddleware(new SearchSuggestService(
+            $this->createMock(ConnectionPool::class),
+            $this->createMock(Context::class),
+        ));
+
+        $language = $this->createConfiguredMock(SiteLanguage::class, ['getLanguageId' => 0]);
+        $site = $this->createConfiguredMock(Site::class, ['getRootPageId' => 1]);
+
+        $request = (new ServerRequest())
+            ->withQueryParams(['tx_mpcore_suggest' => '1', 'q' => ['evil']])
+            ->withAttribute('site', $site)
+            ->withAttribute('language', $language);
+
+        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler->expects(self::never())->method('handle');
+
+        $response = $middleware->process($request, $handler);
+        $payload = json_decode((string)$response->getBody(), true, 512, JSON_THROW_ON_ERROR);
+        self::assertSame('', $payload['query']);
+        self::assertSame([], $payload['suggestions']);
     }
 
     #[Test]

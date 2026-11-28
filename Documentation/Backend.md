@@ -10,7 +10,6 @@ TYPO3 backend integration for **mpc/mp-core**: Page TSconfig, RTE preset, backen
 |------|----------|---------|
 | Page TSconfig | `Configuration/Sets/mp-core/page.tsconfig` | Loaded via Site Set; imports all backend/editor TSconfig |
 | RTE preset | `Configuration/RTE/Default.yaml` | Registered as global preset `default` in `ext_localconf.php` |
-| Backend CSS | `Resources/Public/StyleSheets/backend.css` | TYPO3 backend UI tweaks (Vite entry `backend.js`) |
 | CKEditor CSS | `Resources/Public/StyleSheets/ckeditor.css` | WYSIWYG appearance in backend + frontend RTE output |
 | CKEditor plugin | `Resources/Public/JavaScripts/ckeditor/definition-list.js` | Definition list toolbar plugin |
 | Preview renderer | `Classes/Preview/CustomContentPreviewRenderer.php` | Page module content previews |
@@ -49,6 +48,8 @@ Default values when creating records, e.g. `tt_content.filelink_size = 1`, `imag
 ### `TCEMAIN.tsconfig`
 
 Default permission flags for new content (group/user edit rights).
+
+`permissions.groupid = 1` assigns new pages to backend group **1** by default. That is intentional for this sitepackage; changing it affects who owns new pages on existing installations and is a release decision, not a patch tweak.
 
 ### Content element wizards
 
@@ -98,7 +99,6 @@ Tag remapping in the same file: `b` → `strong`, `i` → `em`, `s` → `del` (R
 
 | Constant | File |
 |----------|------|
-| `BE.stylesheets.mp_core_backend` | `Resources/Public/StyleSheets/backend.css` |
 | `BE.stylesheets.mp_core_ckeditor` | `Resources/Public/StyleSheets/ckeditor.css` |
 
 Rebuild with `npm run build` in `Build/` after SCSS changes.
@@ -191,4 +191,4 @@ Content Blocks are provided by `friendsoftypo3/content-blocks` (Composer depende
 
 - [Content elements](ContentElements.md) — per-CType TCA fields and templates
 - [Configuration](Configuration.md) — Site Settings, site `config.yaml` fields
-- [Frontend](Frontend.md) — Vite build for `backend.css` / `ckeditor.css`
+- [Frontend](Frontend.md) — Vite build for `ckeditor.css` and frontend bundles

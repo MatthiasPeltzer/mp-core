@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer;
+use Mpc\MpCore\Service\LanguageAwarePageRepositoryFactory;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 
@@ -36,7 +36,7 @@ final class LlmsTxtNewsProviderTest extends TestCase
 
         $provider = new LlmsTxtNewsProvider(
             $connectionPool,
-            $this->createMock(FrontendRestrictionContainer::class),
+            $this->createMock(LanguageAwarePageRepositoryFactory::class),
         );
 
         $result = $provider->recentNews(

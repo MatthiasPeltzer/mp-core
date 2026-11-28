@@ -32,7 +32,6 @@ final class LlmsTxtMiddlewareTest extends TestCase
     private function resolvePageDescription(array $page): string
     {
         $middleware = new LlmsTxtMiddleware(
-            $this->createMock(PageRepository::class),
             $this->createMock(FrontendInterface::class),
             $this->emptyNewsProvider(),
             $this->createMock(LanguageAwarePageRepositoryFactory::class),
@@ -160,7 +159,6 @@ final class LlmsTxtMiddlewareTest extends TestCase
         $pageRepositoryFactory->method('create')->willReturn($pageRepository);
 
         return new LlmsTxtMiddleware(
-            $pageRepository,
             $cache,
             $newsProvider ?? $this->emptyNewsProvider(),
             $pageRepositoryFactory
@@ -184,7 +182,6 @@ final class LlmsTxtMiddlewareTest extends TestCase
     public function escapesMarkdownMetacharactersInLinks(): void
     {
         $middleware = new LlmsTxtMiddleware(
-            $this->createMock(PageRepository::class),
             $this->createMock(FrontendInterface::class),
             $this->emptyNewsProvider(),
             $this->createMock(LanguageAwarePageRepositoryFactory::class),
@@ -463,21 +460,18 @@ final class LlmsTxtMiddlewareTest extends TestCase
         $cache = $this->createMock(FrontendInterface::class);
         $cache->method('get')->willReturn(false);
 
-        $defaultRepository = $this->createMock(PageRepository::class);
-        $defaultRepository->expects(self::never())->method('getMenu');
-
         $languageRepository = $this->createMock(PageRepository::class);
         $languageRepository->expects(self::atLeastOnce())->method('getMenu')->willReturn([]);
 
         $factory = $this->createMock(LanguageAwarePageRepositoryFactory::class);
         $factory->expects(self::once())->method('create')->with($en)->willReturn($languageRepository);
 
-        $middleware = new LlmsTxtMiddleware($defaultRepository, $cache, $this->emptyNewsProvider(), $factory);
+        $middleware = new LlmsTxtMiddleware($cache, $this->emptyNewsProvider(), $factory);
         $middleware->process($this->request('/en/llms.txt', $site), $this->passthroughHandler());
     }
 
     #[Test]
-    public function usesInjectedRepositoryForDefaultLanguage(): void
+    public function usesFactoryForDefaultLanguage(): void
     {
         $cache = $this->createMock(FrontendInterface::class);
         $cache->method('get')->willReturn(false);
@@ -486,9 +480,9 @@ final class LlmsTxtMiddlewareTest extends TestCase
         $defaultRepository->expects(self::atLeastOnce())->method('getMenu')->willReturn([]);
 
         $factory = $this->createMock(LanguageAwarePageRepositoryFactory::class);
-        $factory->expects(self::never())->method('create');
+        $factory->expects(self::once())->method('create')->willReturn($defaultRepository);
 
-        $middleware = new LlmsTxtMiddleware($defaultRepository, $cache, $this->emptyNewsProvider(), $factory);
+        $middleware = new LlmsTxtMiddleware($cache, $this->emptyNewsProvider(), $factory);
         $middleware->process($this->request('/llms.txt', $this->site()), $this->passthroughHandler());
     }
 

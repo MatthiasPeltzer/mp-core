@@ -1,10 +1,9 @@
 name: mpc/mp-core-base
 label: MP Core (shared settings / system dependencies)
-dependencies:
+optionalDependencies:
   - typo3/form
   - typo3/redirects
   - typo3/indexed-search
-optionalDependencies:
   - georgringer/news-recordlinks
   - georgringer/news-sitemap
   - mpc/mpc-vidply

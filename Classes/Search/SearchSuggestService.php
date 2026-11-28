@@ -30,7 +30,8 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
  */
 final class SearchSuggestService
 {
-    private const MIN_TERM_LENGTH = 2;
+    public const MIN_TERM_LENGTH = 2;
+    public const MAX_TERM_LENGTH = 128;
     private const MAX_WORDS = 6;
     private const MAX_PAGES = 5;
 
@@ -55,12 +56,13 @@ final class SearchSuggestService
     public function suggest(string $term, int $rootPageId, int $languageId): array
     {
         $term = trim($term);
-        if (mb_strlen($term) < self::MIN_TERM_LENGTH || $rootPageId <= 0) {
+        $length = mb_strlen($term);
+        if ($length < self::MIN_TERM_LENGTH || $length > self::MAX_TERM_LENGTH || $rootPageId <= 0) {
             return ['words' => [], 'pages' => []];
         }
 
         return [
-            'words' => $this->findWords($term, $rootPageId),
+            'words' => $this->findWords($term, $rootPageId, $languageId),
             'pages' => $this->findPages($term, $rootPageId, $languageId),
         ];
     }
@@ -70,7 +72,7 @@ final class SearchSuggestService
      *
      * @return list<string>
      */
-    private function findWords(string $term, int $rootPageId): array
+    private function findWords(string $term, int $rootPageId, int $languageId): array
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable('index_words');
         // Index tables carry no TCA / enable columns, so restriction containers
@@ -78,17 +80,35 @@ final class SearchSuggestService
         $queryBuilder->getRestrictions()->removeAll();
 
         $prefix = $queryBuilder->escapeLikeWildcards(mb_strtolower($term)) . '%';
+        $userGroupList = $this->userGroupList();
+        $groupListParameter = $queryBuilder->createNamedParameter($userGroupList);
 
         $rows = $queryBuilder
             ->select('IW.baseword')
             ->addSelectLiteral($queryBuilder->expr()->sum('IR.count', 'occurrences'))
             ->from('index_words', 'IW')
             ->innerJoin('IW', 'index_rel', 'IR', $queryBuilder->expr()->eq('IW.wid', $queryBuilder->quoteIdentifier('IR.wid')))
-            ->innerJoin('IR', 'index_section', 'ISEC', $queryBuilder->expr()->eq('ISEC.phash', $queryBuilder->quoteIdentifier('IR.phash')))
+            ->innerJoin('IR', 'index_phash', 'IP', $queryBuilder->expr()->eq('IR.phash', $queryBuilder->quoteIdentifier('IP.phash')))
+            ->innerJoin('IP', 'index_section', 'ISEC', $queryBuilder->expr()->eq('ISEC.phash', $queryBuilder->quoteIdentifier('IP.phash')))
+            ->leftJoin(
+                'IP',
+                'index_grlist',
+                'IGL',
+                (string)$queryBuilder->expr()->and(
+                    $queryBuilder->expr()->eq('IGL.phash', $queryBuilder->quoteIdentifier('IP.phash')),
+                    $queryBuilder->expr()->eq('IGL.gr_list', $groupListParameter),
+                )
+            )
             ->where(
                 $queryBuilder->expr()->eq('IW.is_stopword', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT)),
                 $queryBuilder->expr()->like('IW.baseword', $queryBuilder->createNamedParameter($prefix)),
                 $queryBuilder->expr()->eq('ISEC.rl0', $queryBuilder->createNamedParameter($rootPageId, Connection::PARAM_INT)),
+                $queryBuilder->expr()->eq('IP.item_type', $queryBuilder->createNamedParameter('0')),
+                $queryBuilder->expr()->eq('IP.sys_language_uid', $queryBuilder->createNamedParameter($languageId, Connection::PARAM_INT)),
+                $queryBuilder->expr()->or(
+                    $queryBuilder->expr()->eq('IP.gr_list', $groupListParameter),
+                    $queryBuilder->expr()->isNotNull('IGL.phash'),
+                )
             )
             ->groupBy('IW.baseword')
             ->orderBy('occurrences', 'DESC')
@@ -114,16 +134,12 @@ final class SearchSuggestService
      */
     private function findPages(string $term, int $rootPageId, int $languageId): array
     {
-        $userGroupList = implode(
-            ',',
-            $this->context->getPropertyFromAspect('frontend.user', 'groupIds', [0, -1])
-        );
+        $userGroupList = $this->userGroupList();
 
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable('index_phash');
         $queryBuilder->getRestrictions()->removeAll();
 
         $needle = '%' . $queryBuilder->escapeLikeWildcards($term) . '%';
-        // Reused in both the access join and the WHERE, so the value is bound once.
         $groupListParameter = $queryBuilder->createNamedParameter($userGroupList);
 
         $rows = $queryBuilder
@@ -185,6 +201,14 @@ final class SearchSuggestService
             ],
             $rows
         ));
+    }
+
+    private function userGroupList(): string
+    {
+        return implode(
+            ',',
+            $this->context->getPropertyFromAspect('frontend.user', 'groupIds', [0, -1])
+        );
     }
 
     /**

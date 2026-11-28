@@ -1,4 +1,4 @@
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:news/Configuration/TypoScript/setup.typoscript">
+@import 'EXT:news/Configuration/TypoScript/setup.typoscript'
 
 plugin.tx_news {
   view {
@@ -20,7 +20,6 @@ plugin.tx_news {
       2 = {$plugin.tx_news.view.twb.layoutRootPath}
     }
 
-    widget.GeorgRinger\News\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = EXT:mp_core/Resources/Extensions/news/Templates/
   }
 
   settings {

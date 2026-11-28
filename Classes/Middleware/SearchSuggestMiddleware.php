@@ -51,7 +51,15 @@ final class SearchSuggestMiddleware implements MiddlewareInterface
         $language = $request->getAttribute('language');
         $languageId = $language instanceof SiteLanguage ? $language->getLanguageId() : 0;
 
-        $term = trim((string)($queryParams['q'] ?? ''));
+        $rawTerm = $queryParams['q'] ?? '';
+        if (!is_string($rawTerm)) {
+            return new JsonResponse([
+                'query' => '',
+                'suggestions' => [],
+            ]);
+        }
+
+        $term = trim($rawTerm);
         $result = $this->suggestService->suggest($term, $site->getRootPageId(), $languageId);
 
         $suggestions = [];

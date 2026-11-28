@@ -23,6 +23,18 @@ final class SearchSuggestServiceTest extends TestCase
     }
 
     #[Test]
+    public function suggestRejectsTermsLongerThanMaxLength(): void
+    {
+        $service = new SearchSuggestService(
+            $this->createMock(\TYPO3\CMS\Core\Database\ConnectionPool::class),
+            $this->createMock(\TYPO3\CMS\Core\Context\Context::class),
+        );
+
+        $tooLong = str_repeat('a', SearchSuggestService::MAX_TERM_LENGTH + 1);
+        self::assertSame(['words' => [], 'pages' => []], $service->suggest($tooLong, 1, 0));
+    }
+
+    #[Test]
     public function decodeStaticPageArgumentsReturnsDecodedArray(): void
     {
         $method = new \ReflectionMethod(SearchSuggestService::class, 'decodeStaticPageArguments');

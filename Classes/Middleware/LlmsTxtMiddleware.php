@@ -47,7 +47,6 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
     ];
 
     public function __construct(
-        private readonly PageRepository $pageRepository,
         private readonly FrontendInterface $cache,
         private readonly LlmsTxtNewsProvider $newsProvider,
         private readonly LanguageAwarePageRepositoryFactory $pageRepositoryFactory,
@@ -266,16 +265,12 @@ final class LlmsTxtMiddleware implements MiddlewareInterface
     }
 
     /**
-     * PageRepository used to resolve the page menu. The default language uses the
-     * injected (default-context) repository; other languages get a language-aware
-     * repository so `getMenu()` returns the correct translation overlay.
+     * PageRepository used to resolve the page menu in anonymous frontend context
+     * (guest user, live workspace) so llms.txt never lists pages visible only to
+     * the current session.
      */
     private function menuRepository(SiteLanguage $language): PageRepository
     {
-        if ($language->getLanguageId() === 0) {
-            return $this->pageRepository;
-        }
-
         return $this->pageRepositoryFactory->create($language);
     }
 

@@ -1,20 +1,29 @@
 lib {
   prefillUrl = TEXT
   prefillUrl {
-    dataWrap = {getIndpEnv:TYPO3_REQUEST_HOST}|
     typolink {
       parameter {
         current = 1
       }
 
+      forceAbsoluteUrl = 1
       returnLast = url
     }
   }
 
-  currentURL = TEXT
-  currentURL {
-    data = getIndpEnv:TYPO3_REQUEST_URL
+  sharePageUrl = TEXT
+  sharePageUrl {
+    typolink {
+      parameter {
+        current = 1
+      }
+
+      forceAbsoluteUrl = 1
+      returnLast = url
+    }
   }
+
+  currentURL =< lib.sharePageUrl
 
   parseFunc {
     tags {

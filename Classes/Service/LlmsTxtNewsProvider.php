@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer;
 use TYPO3\CMS\Core\Routing\InvalidRouteArgumentsException;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Resolves recent EXT:news records for the llms.txt "Latest news" section.
@@ -25,7 +26,7 @@ class LlmsTxtNewsProvider
 
     public function __construct(
         private readonly ConnectionPool $connectionPool,
-        private readonly FrontendRestrictionContainer $restrictionContainer,
+        private readonly LanguageAwarePageRepositoryFactory $pageRepositoryFactory,
     ) {}
 
     /**
@@ -47,8 +48,14 @@ class LlmsTxtNewsProvider
         $languageId = $language->getLanguageId();
 
         try {
+            $publicContext = $this->pageRepositoryFactory->createPublicAccessContext($language);
+            $restrictionContainer = GeneralUtility::makeInstance(
+                FrontendRestrictionContainer::class,
+                $publicContext,
+            );
+
             $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::NEWS_TABLE);
-            $queryBuilder->setRestrictions($this->restrictionContainer);
+            $queryBuilder->setRestrictions($restrictionContainer);
             $queryBuilder
                 ->select('uid', 'l10n_parent', 'title', 'teaser')
                 ->from(self::NEWS_TABLE)

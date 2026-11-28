@@ -6,6 +6,8 @@ namespace Mpc\MpCore\ViewHelpers;
 
 use Mpc\MpCore\Exception\FileException;
 use TYPO3\CMS\Core\Resource\FileInterface;
+use TYPO3\CMS\Core\Resource\Security\SvgSanitizer;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
@@ -134,6 +136,11 @@ class SvgInlineViewHelper extends AbstractViewHelper
      */
     protected static function getInlineSvgCached(string $svgContent, array $attributes = []): string
     {
+        $svgContent = GeneralUtility::makeInstance(SvgSanitizer::class)->sanitizeContent($svgContent);
+        if ($svgContent === '') {
+            return '';
+        }
+
         $normalizedAttributes = self::normalizeAttributes($attributes);
         $cacheKey = sha1($svgContent . '|' . serialize($normalizedAttributes));
         if (isset(self::$inlineSvgCache[$cacheKey])) {
